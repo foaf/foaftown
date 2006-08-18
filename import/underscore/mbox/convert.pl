@@ -1,18 +1,26 @@
-#!/usr/bin/perl
 
-use Mail::Box::Mbox;
-use Data::Dumper;
+stalking _ members...
 
-#my $folder = Mail::Box::Mbox->new(folder => 'test-files/august-mails.mbox');
-my $folder = Mail::Box::Mbox->new(folder => 'test-files/2006-August.txt');
-
-my @messages   = $folder->messages;
+existing foaf:
+http://gidden.net/tom/foaf.rdf
 
 
-foreach my $msg (@messages) {
-	my $time = $msg->guessTimestamp();
-	my @fromarr = $msg->from();
-	my $from = $fromarr[0];
-	my $subj = $msg->subject();
-	print "$time\t$subj\t".$from->name."\t".$from->address."\n";
-}
+
+
+stalking:
+
+
+
+
+
+http://www.davehodgkinson.com/index.shtml
+http://www.flickr.com/people/davehodg/
+Dave Hodgkinson	mailto:davehodg@gmail.com
+
+http://petef.com/
+
+
+Andrew Parkhouse
+http://tdb.berlinale-talentcampus.de/campus/talent/andrew-parkhouse/profile?pos=151
+
+
