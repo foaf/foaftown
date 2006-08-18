@@ -1,0 +1,16 @@
+Suggested repository structure
+------------------------------
+
+* Put data importing subprojects under import/, eg. import/flickr, import/livejournal 
+
+* Mailing lists can consist of two different types of import:
+  - import of existing archives (import/underscore/mbox) 
+  - and on-the-fly import (import/underscore/email)
+
+* Add other top-level projects as needed.
+
+Since the Underscore importer is just a snippet of code (at the moment) I've eschewed the recommended branches|tags|trunk tree.
+
+-- 
+Tom Gidden <tom@gidden.net>
+
