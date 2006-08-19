@@ -1,5 +1,7 @@
 #!perl
 
+use strict;
+
 use Mail::Box;
 use Digest::SHA1 qw(sha1_hex);
 
@@ -16,7 +18,7 @@ sub rdffooter() {
 }
 
 sub rdfize($) {
-	my ($msg) = @_;
+	my ($msg) = @_; # Should be a Mail::Box::Message object
 
 	my $time = $msg->guessTimestamp();
 	my @fromarr = $msg->from();
@@ -27,7 +29,11 @@ sub rdfize($) {
 
 	my $sha1sum = sha1_hex("mailto:".$email);
 
-	my @post;
+    # Pushing to an array buffer and then joining is faster and more
+    # efficient than string concatenation.  Not that it really matters
+    # that much at this point, but if the nugget outputted by this
+    # function gets bigger, it's probably worth it.
+ 	my @post;
 
 	push @post, '<foaf:Document><dc:title>'.$subj.'</dc:title>';
 	push @post, '   <foaf:maker><foaf:Person><foaf:name>'.$who.'</foaf:name>';
