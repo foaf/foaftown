@@ -3,10 +3,9 @@
 
 # Pick an example... any example:
 
-my $input_fn = 'test-files/august-mails.mbox';
-#my $input_fn = 'test-files/2006-August.txt';
-#my $input_fn = 'test-files/sample.txt');
-
+my $INPUT_FN = 'test-files/august-mails.mbox'; my $UNMUNGE = 0;
+#my $INPUT_FN = 'test-files/2006-August.txt'; my $UNMUNGE = 1;
+#my $INPUT_FN = 'test-files/sample.txt'); my $UNMUNGE = 1;
 
 use Mail::Box::Manager;
 use Data::Dumper;
@@ -36,12 +35,12 @@ my $mgr = new Mail::Box::Manager;
 
 
 # Load the input file
-my $folder = $mgr->open(folder => $input_fn);
+my $folder = $mgr->open(folder => $INPUT_FN);
 
 
 # Un-spam-protect the email addresses.  Only necessary if using raw files
 # from http://www.under-score.org.uk/
-underscore_unmunge($folder);
+underscore_unmunge($folder) if($UNMUNGE);
 
 
 # Get all threads from the archive
