@@ -102,7 +102,11 @@ sub foaf_message($$) {
 	# node we don't know about), we can't really do much.
 	return undef unless($msg and !$msg->isDummy);
 
+	# This needs to be used somewhere, I guess.
 	my $time = $msg->guessTimestamp();
+
+	# This id is probably wrong.  Might be okay for a nodeID, but not a
+	# resource URI.
 	my $id = 'mid:'.$msg->messageId();
 
 	# If this is a reply, we need to find out what the parent is.  $ref
