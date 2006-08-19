@@ -3,6 +3,18 @@
 use Mail::Box;
 use Digest::SHA1 qw(sha1_hex);
 
+sub rdfheader() {
+	return '<rdf:RDF '.
+	'xmlns:dc="http://purl.org/dc/elements/1.1/" '.
+	'xmlns:foaf="http://xmlns.com/foaf/0.1/" '.
+	'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"'.
+	'>';
+}
+
+sub rdffooter() {
+	return '</rdf:RDF>';
+}
+
 sub rdfize($) {
 	my ($msg) = @_;
 

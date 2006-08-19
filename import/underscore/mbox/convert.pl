@@ -11,19 +11,16 @@ my @messages = $folder->messages;
 
 my @rdfbuf;
 
-push @rdfbuf, '<rdf:RDF '.
-	'xmlns:dc="http://purl.org/dc/elements/1.1/" '.
-	'xmlns:foaf="http://xmlns.com/foaf/0.1/" '.
-	'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"'.
-	'>';
+push @rdfbuf, rdfheader();
 
 foreach my $msg (@messages) {
 	push @rdfbuf, rdfize($msg);
 }
 
-push @rdfbuf, "</rdf:RDF>\n\n";
+push @rdfbuf, rdffooter();
 
 print join "\n", @rdfbuf;
+print "\n";
 
 
 
