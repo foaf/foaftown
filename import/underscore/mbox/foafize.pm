@@ -76,7 +76,7 @@ sub foaf_author($$) {
 
 	# Add the Person to the RDF model.
 	$self->assert_resource($author_id, 'rdf:type', 'foaf:Person');
-	$self->assert_literal($author_id, 'foaf:Name', $from->name);
+	$self->assert_literal($author_id, 'foaf:name', $from->name);
 	$self->assert_literal($author_id, 'foaf:mbox', $from->address);
 	$self->assert_literal($author_id, 'foaf:mbox_sha1sum', $sha1sum);
 

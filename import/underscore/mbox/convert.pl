@@ -3,8 +3,8 @@
 
 # Pick an example... any example:
 
-my $INPUT_FN = 'test-files/august-mails.mbox'; my $UNMUNGE = 0;
-#my $INPUT_FN = 'test-files/2006-August.txt'; my $UNMUNGE = 1;
+#my $INPUT_FN = 'test-files/august-mails.mbox'; my $UNMUNGE = 0;
+my $INPUT_FN = 'test-files/2006-August.txt'; my $UNMUNGE = 1;
 #my $INPUT_FN = 'test-files/sample.txt'); my $UNMUNGE = 1;
 
 use Mail::Box::Manager;
