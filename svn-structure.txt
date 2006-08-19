@@ -5,7 +5,7 @@ Suggested repository structure
 
 * Mailing lists can consist of two different types of import:
   - import of existing archives (import/underscore/mbox) 
-  - and on-the-fly import (import/underscore/email)
+  - and on-the-fly import (import/underscore/incoming)
 
 * Add other top-level projects as needed.
 
