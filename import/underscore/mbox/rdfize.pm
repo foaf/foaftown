@@ -1,3 +1,5 @@
+die "OBSELETE:  Use foafize.pm instead.  This file is a candidate for 'svn delete'.";
+
 #!perl
 
 use strict;
@@ -26,6 +28,10 @@ sub rdfize($) {
 	my $who = $from->name;
 	my $email = $from->address;
 	my $subj = $msg->subject();
+	my $id = $msg->messageId();
+
+	# Remove any <> chars, just in case.
+	$id =~ tr/[<>]/[\[\]]/;
 
 	my $sha1sum = sha1_hex("mailto:".$email);
 
@@ -35,7 +41,8 @@ sub rdfize($) {
     # function gets bigger, it's probably worth it.
  	my @post;
 
-	push @post, '<foaf:Document><dc:title>'.$subj.'</dc:title>';
+	push @post, '<foaf:Document rdf:nodeID="'.$id.'">';
+	push @post, '   <dc:title>'.$subj.'</dc:title>';
 	push @post, '   <foaf:maker><foaf:Person><foaf:name>'.$who.'</foaf:name>';
 	push @post, '   <foaf:mbox rdf:resource="mailto:'.$email.'"/>';
 	push @post, '   <foaf:mbox_sha1sum>'.$sha1sum.'</foaf:mbox_sha1sum>';
