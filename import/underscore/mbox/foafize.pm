@@ -5,22 +5,10 @@ package foafize;
 use strict;
 use warnings;
 
-# Since Redland's a bit wordy thanks to all the correctness and stuff, we
-# use RDF::Helper instead to make lives easier.  This sits on top of
-# Redland and does what we want it to.
-use RDF::Helper;
-
-# We're actually going to derive from RDF::Helper::RDFRedland. Usually
-# we'd derive from RDF::Helper, but since a call to RDF::Helper DOESN'T
-# return an RDF::Helper object (a RDF::Helper::<foo> object instead, where
-# <foo> is the helper type), it makes inheritance hard: this class now
-# would have to dynamically change its inheritance, to be able to act as
-# the correct helper class.
-#
-# Instead, I'm going to hardcode it as RDFRedland instead.  If you know
-# how to fix this, please do.  You'll need to attack new() to rebless the
-# class correctly, I think.
-use base qw|RDF::Helper::RDFRedland|;
+# Redland's the API of choice.  Previous use of RDF::Helper was stymied by
+# certain (lack of) features, such as setting the xml:lang attribute.
+# Redland's harder to work with, but more powerful.
+use RDF::Redland;
 
 # Used for mbox hashing
 use Digest::SHA1 qw(sha1_hex);
@@ -28,33 +16,109 @@ use Digest::SHA1 qw(sha1_hex);
 # The actual tool for getting the data out of the passed message.
 use Mail::Box;
 
-our %default_namespaces = (
+our %namespaces = (
 	'dc' => 'http://purl.org/dc/elements/1.1/',
 	'foaf' => 'http://xmlns.com/foaf/0.1/',
 	'rdf' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
 	);
 
 sub new ($;%) {
-# A wrapper around RDF::Helper::new, setting some defaults, and some necessary parameters.
 	my ($class, %args) = @_;
 
-	# Set default namespaces if they're not already set.
-	foreach my $ns (keys %default_namespaces) {
-		$args{'Namespaces'}{$ns} = $default_namespaces{$ns}
-			unless($args{'Namespaces'}{$ns});
+	%args = () unless(%args);
+
+	# Create the new object
+	my $self = bless \%args, $class;
+
+	# Set up storage and model if not already set
+	unless($self->{'Model'}) {
+		unless($self->{'Storage'}) {
+			$self->{'Storage'} = new RDF::Redland::Storage("hashes",
+														   "test",
+														   "new='yes',hash-type='memory'");
+		}
+
+		$self->{'Model'} = new RDF::Redland::Model($self->{'Storage'}, "");
 	}
 
-    # ExpandQNames is a very useful feature that expands things in the
-    # above namespaces to their full URIs, rather than having to create
-    # URI objects for every little thing.
-	$args{'ExpandQNames'} = 1;
+	# Set default namespaces if they're not already set.
+	$self->{'Namespaces'} = \%namespaces
+		unless($self->{'Namespaces'});
 
-	# Call the superclass with the above parameters.
-	my $self = $class->SUPER::new(%args);
+	return $self;
+}
 
-	# Now, this is the bit that might need changing.  See comment at the
-	# top of this file, w.r.t. 'use base'
-	return bless $self, $class;
+sub serialize($;%) {
+# Returns the XML'ized version of the model, using a serializer supplied
+# in the Serializer parameter, or a new one if not supplied.
+	my ($self, %args) = @_;
+
+	%args = () unless(%args);
+
+	# Create a new serializer if not supplied.
+	my $sz = $args{'Serializer'};
+	$sz = new RDF::Redland::Serializer('rdfxml-abbrev') unless($args{'Serializer'});
+
+	# Add each namespace to the serializer
+	if($self->{'Namespaces'}) {
+		foreach my $key (keys %{$self->{'Namespaces'}}) {
+			$sz->set_namespace($key, new RDF::Redland::URI($self->{'Namespaces'}{$key}));
+		}
+	}
+
+	# Serialise the content
+	my $str = $sz->serialize_model_to_string($self->{'BaseURI'}, $self->{'Model'});
+
+    # Is there a better way of doing this with RDF::Redland?
+	$str =~ s/<rdf:RDF /<rdf:RDF xml:lang="en" /;
+
+
+	return $str;
+}
+
+
+# Okay, this lot is fairly random.
+
+sub assert_resource($$$$) {
+	my ($self, $s, $p, $o) = @_;
+
+	$self->{'Model'}->add(my $subj = $self->nodify($s),
+						  $self->nodify($p),
+						  $self->nodify($o));
+	return $subj;
+}
+
+sub assert_literal($$$$) {
+	my ($self, $s, $p, $o) = @_;
+
+	$self->{'Model'}->add(my $subj = $self->nodify($s),
+						  $self->nodify($p),
+						  $self->nodify($o));
+	return $subj;
+}
+
+sub nodify($$) {
+	my ($self, $inp) = @_;
+
+	return $inp if(ref($inp) and (
+					   $inp->isa('RDF::Redland::Node') or
+					   $inp->isa('RDF::Redland::URI') or
+					   $inp->isa('URI')));
+
+	return $self->uriify($inp) if($inp =~ m/^(\w+):/);
+
+	return new RDF::Redland::LiteralNode($inp); # undef,'en');
+}
+
+sub uriify($$) {
+	my ($self, $inp) = @_;
+
+	if($inp =~ m/^(\w+):(.+)$/) {
+		if(my $uri = $self->{'Namespaces'}{$1}) {
+			return new RDF::Redland::URI($uri.$2);
+		}
+	}
+	return new RDF::Redland::URI($inp);
 }
 
 sub foaf_author($$) {
