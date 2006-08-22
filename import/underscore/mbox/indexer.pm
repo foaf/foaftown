@@ -18,14 +18,23 @@ sub new($;%) {
 	$args{word_table_text} = 'word'  unless($args{word_table_text});
 	$args{word_table_id} = 'word_id' unless($args{word_table_id});
 
-	$args{doc_table} = 'message'           unless($args{doc_table});
-	$args{doc_table_text} = 'message_name' unless($args{doc_table_text});
-	$args{doc_table_id} = 'message_id'     unless($args{doc_table_id});
+	$args{doc_table} = 'message'          unless($args{doc_table});
+	$args{doc_table_text} = 'name'        unless($args{doc_table_text});
+	$args{doc_table_id} = 'message_id'    unless($args{doc_table_id});
+	$args{doc_table_author} = 'author_id' unless($args{doc_table_author});
+	$args{doc_table_timestamp} = 'time'   unless($args{doc_table_timestamp});
+
+	$args{author_table} = 'author'       unless($args{author_table});
+	$args{author_table_text} = 'email'   unless($args{author_table_text});
+	$args{author_table_name} = 'name'    unless($args{author_table_name});
+	$args{author_table_id} = 'author_id' unless($args{author_table_id});
 
 	$args{occur_table} = 'occurrence'                 unless($args{occur_table});
 	$args{occur_table_doc_id} = $args{doc_table_id}   unless($args{occur_table_doc_id});
 	$args{occur_table_word_id} = $args{word_table_id} unless($args{occur_table_word_id});
 	$args{occur_table_pos} = 'position'               unless($args{occur_table_pos});
+
+	$args{table_type} = 'MyISAM' unless($args{table_type});
 
 	return bless \%args, $class;
 }
@@ -55,6 +64,21 @@ sub connect($;$$$$) {
 	return $self->{dbh};
 }
 
+sub set_sql_indexes_onoff($$) {
+	my ($self, $onoff) = @_;
+
+	my $dbh = $self->connect();
+
+	$onoff = $onoff ? 1 : 0;
+	my $endisable = $onoff ? 'ENABLE' : 'DISABLE';
+
+	$dbh->do("SET UNIQUE_CHECKS=$onoff") or die "Can't $endisable unique checks: $!";
+	$dbh->do("ALTER TABLE $self->{author_table} $endisable KEYS") or die "Can't $endisable keys: $!";
+	$dbh->do("ALTER TABLE $self->{word_table} $endisable KEYS") or die "Can't $endisable keys: $!";
+	$dbh->do("ALTER TABLE $self->{occur_table} $endisable KEYS") or die "Can't $endisable keys: $!";
+	$dbh->do("ALTER TABLE $self->{doc_table} $endisable KEYS") or die "Can't $endisable keys: $!";
+}
+
 sub database_setup_script($) {
 # Returns the SQL to cut-and-paste into a root mysql client to setup the
 # database correctly.
@@ -77,19 +101,31 @@ sub database_setup_script($) {
 
 	push @buf, "USE $self->{DB}";
 
+	push @buf, "CREATE TABLE $self->{author_table} (".
+		"$self->{author_table_id} INT NOT NULL AUTO_INCREMENT,".
+		"$self->{author_table_text} VARCHAR(255) NOT NULL,".
+		"$self->{author_table_name} VARCHAR(255) NOT NULL,".
+		"PRIMARY KEY ($self->{author_table_id}),".
+		"UNIQUE ($self->{author_table_text})".
+		") ENGINE=$self->{table_type}";
+
 	push @buf, "CREATE TABLE $self->{word_table} (".
 		"$self->{word_table_id} INT NOT NULL AUTO_INCREMENT,".
 		"$self->{word_table_text} VARCHAR(255) NOT NULL,".
 		"PRIMARY KEY ($self->{word_table_id}),".
 		"UNIQUE ($self->{word_table_text})".
-		") ENGINE=InnoDB";
+		") ENGINE=$self->{table_type}";
 
 	push @buf, "CREATE TABLE $self->{doc_table} (".
 		"$self->{doc_table_id} INT NOT NULL AUTO_INCREMENT,".
 		"$self->{doc_table_text} VARCHAR(255) NOT NULL,".
+		"$self->{doc_table_author} INT NOT NULL,".
+		"$self->{doc_table_timestamp} INT DEFAULT NULL,".
 		"PRIMARY KEY ($self->{doc_table_id}),".
-		"UNIQUE ($self->{doc_table_text})".
-		") ENGINE=InnoDB";
+		"UNIQUE ($self->{doc_table_text}),".
+		"INDEX ($self->{doc_table_timestamp}, $self->{doc_table_author}),".
+		"INDEX ($self->{doc_table_author})".
+		") ENGINE=$self->{table_type}";
 
 	push @buf, "CREATE TABLE $self->{occur_table} (".
 		"$self->{occur_table_doc_id} INT NOT NULL,".
@@ -97,7 +133,7 @@ sub database_setup_script($) {
 		"$self->{occur_table_pos} INT NOT NULL,".
 		"PRIMARY KEY ($self->{occur_table_doc_id}, $self->{occur_table_pos}),".
 		"INDEX wordpos_to_doc ($self->{occur_table_word_id}, $self->{occur_table_pos})".
-		") ENGINE=InnoDB";
+		") ENGINE=$self->{table_type}";
 
 	push @buf, '';
 
@@ -107,11 +143,11 @@ sub database_setup_script($) {
 # Item ID cache.
 our %id_cache;
 
-sub _selectinsert_to_get_id($$$) {
+sub selectinsert_to_get_id($$$;$) {
 # Conversion of item to id within the domain $base.  Firstly, it looks for
 # the id in the local hash cache.  If not found, it checks the database.
 # If not found, it adds it to the database.
-	my ($self, $base, $val) = @_;
+	my ($self, $base, $val, $extra) = @_;
 
 	# First, check cache
 	return $id_cache{$base}{$val} if($id_cache{$base}{$val});
@@ -145,17 +181,32 @@ sub _selectinsert_to_get_id($$$) {
 		return $id_cache{$base}{$val} = $id;
 	}
 
+	# Include extra columns
+	my ($extracols, $extraplaces, $extraid) = ('','','');
+	if($extra) {
+		foreach my $key (keys %$extra) {
+			$extracols .= $self->{$base.'_table_'.$key}.',';
+			$extraplaces .= '?,';
+			$extraid .= '_'.$key;
+		}
+	}
+
 	# Word not found, so prepare the insert query if necessary
 	my $iq;
-	$iq = $self->{'q_insert_'.$base} =
+	$iq = $self->{'q_insert_'.$base.$extracols} =
 		$dbh->prepare('INSERT INTO '.$self->{$base.'_table'}.' '.
-					  '('.$self->{$base.'_table_id'}.','.$self->{$base.'_table_text'}.') '.
-					  'VALUES (NULL,?)')
+					  '('.$extracols.
+					  $self->{$base.'_table_id'}.','.$self->{$base.'_table_text'}.') '.
+					  'VALUES ('.$extraplaces.'NULL,?)')
 		unless($iq = $self->{'q_insert_'.$base});
+
+	# Construct values array
+	my @vals = values %$extra;
+	push @vals, $val;
 
 	# Execute the query
 	die "Can't prepare $base INSERT query: $!" unless($iq);
-	die "Can't INSERT $val INTO $base: $!" unless($iq->execute($val));
+	die "Can't INSERT $val INTO $base: $!" unless($iq->execute(@vals));
 
 	# Get the inserted id
 	die "Can't get inserted id for $base: $!"
@@ -173,6 +224,7 @@ sub word_normalize($$) {
 	my ($self, $word) = @_;
 
 	# Normalize.  A bit simplistic, I suppose.  Stemming might be handy.
+	$word =~ s/^\W*(.+?)\W*$/$1/;
 	return lc($word);
 }
 
@@ -181,32 +233,48 @@ sub word_id($$) {
 # adding it if it's not already known.
 	my ($self, $word) = @_;
 
-	return $self->_selectinsert_to_get_id('word',
-										  $self->word_normalize($word));
+	return $self->selectinsert_to_get_id('word', $word);
 }
 
-sub doc_id($$) {
+sub doc_id($$;$$) {
 # Returns the primary key for a doc, either from cache or database, or by
 # adding it if it's not already known.
-	my ($self, $doc) = @_;
+	my ($self, $doc_id, $author_id, $time) = @_;
 
-	return $self->_selectinsert_to_get_id('doc', $doc);
+	return $self->selectinsert_to_get_id('doc', $doc_id,
+										 {author=>$author_id,
+										  timestamp=>$time});
 }
 
-sub index_content($$$) {
+sub author_id($$$) {
+# Returns the primary key for an author, either from cache or database, or by
+# adding it if it's not already known.
+	my ($self, $email, $name) = @_;
+
+	return $self->selectinsert_to_get_id('author', $email, {name=>$name});
+}
+
+sub index_content($$$$$) {
 # Indexes a given document, and returns the numeric doc_id which was
 # assigned to the document.
-	my ($self, $doc_name, $content) = @_;
+	my ($self, $doc_name, $content, $author_id, $time) = @_;
 
 	my $count = 0;
 
-	my $doc_id = $self->doc_id($doc_name);
+	my $doc_id = $self->doc_id($doc_name, $author_id, $time);
 
 	$self->delete_occurrences_for_doc($doc_id);
 
 	foreach my $word ($self->extract_words($content)) {
 		next unless($word =~ m/\w/);
-		my $word_id = $self->word_id($word);
+
+		my $word_normal = $self->word_normalize($word);
+
+		next unless($word =~ m/\S/);
+
+		my $word_id = $self->word_id($word_normal);
+
+		next unless($word_id);
 
 		$self->add_word_occurrence($doc_id, $word_id, $count++);
 	}
