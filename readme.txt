@@ -9,5 +9,3 @@ This SVN is being used for foaftown/ collaborations only, at this stage.
 
 Dan <danbri@danbri.org>
 <danbrickley@gmail.com>
-
-and me!
