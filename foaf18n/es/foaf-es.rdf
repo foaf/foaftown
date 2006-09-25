@@ -56,6 +56,56 @@ Translations for: Agent, Document, Group, Image,
 </rdf:Description>
 
 
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/knows">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/img">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depicts">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/topic">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
 <!--
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/">
   <rdfs:label></rdfs:label>
