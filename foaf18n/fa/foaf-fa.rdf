@@ -1,0 +1,71 @@
+
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:wot="http://xmlns.com/wot/0.1/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="fa">
+<!-- what xml:lang for persian written in a romanisation? -->
+
+<!--
+What's the Persian for: Agent, Document, Group, Image, Online Account, Organization, Person, Project ... -->
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+  <rdfs:label>Kargozar</rdfs:label>
+  <!-- namayandeh, kargozar, amel, vaseteh  ... namayandeh and kargozar are closest -->
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+  <rdfs:label>Madrak</rdfs:label>
+  <!-- document = sanad, madrak -->
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+  <rdfs:label>Aks</rdfs:label>
+  <!-- image = tasvir, naghsh, aks .... photo = ax( aks) -->
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+  <rdfs:label>Gorouh</rdfs:label>
+  <!-- group = gorouh, dasteh -->
+
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+  <rdfs:label>?</rdfs:label>
+<!-- mehrnaz: there is one a lit bit close but i doubt : hesab, gozaresh, sharh -->
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+  <rdfs:label>Sazmandehi</rdfs:label>
+  <!-- or : sazman, nezam, dastegah, system --> 
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+  <rdfs:label>Shakhs</rdfs:label>
+  <!-- or nafar ? -->
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Project">
+  <rdfs:label>Porojeh</rdfs:label>
+</rdf:Description>
+
+
+<!--
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/">
+  <rdfs:label></rdfs:label>
+</rdf:Description>
+-->
+
+</rdf:RDF>
+
+
+
+
+
+
+
+
+
