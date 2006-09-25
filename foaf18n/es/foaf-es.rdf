@@ -1,0 +1,75 @@
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:wot="http://xmlns.com/wot/0.1/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="es">
+
+<!-- we can over-ride 'es' with specifics if there are 
+different spanish words for L.A., Arg, Spain etc... -->
+
+<!--
+Translations for: Agent, Document, Group, Image, 
+	OnlineAccount, Organization, Person, Project ... -->
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+  <rdfs:label>Agente</rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+  <rdfs:label>Documento</rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+  <rdfs:label>Imagen</rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+  <rdfs:label>Grupo</rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+  <rdfs:label>Sazmandehi</rdfs:label>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Project">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+
+
+<!--
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/">
+  <rdfs:label></rdfs:label>
+  <rdfs:comment></rdfs:comment>
+</rdf:Description>
+-->
+
+</rdf:RDF>
+
+
+
+
+
+
+
+
+
