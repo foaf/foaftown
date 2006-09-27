@@ -124,6 +124,21 @@ foaf:img
 foaf:knows
 foaf:person --- case error
 
+
+foaf:Person
+
+    foaf:weblog // or home page
+    foaf:title
+    foaf:firstName
+    foaf:surname
+    foaf:Organization
+    foaf:phone
+    foaf:IM IDs //Any Instant Message IDs and nicks. Beware exposing email addresses
+    foaf:workplaceHomepage
+    foaf:based_near
+
+        geo:Point geo:lat="" geo:long=""
+
 non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard -->
 
 
