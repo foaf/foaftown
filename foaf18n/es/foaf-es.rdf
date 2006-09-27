@@ -139,7 +139,20 @@ foaf:Person
 
         geo:Point geo:lat="" geo:long=""
 
-non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard -->
+non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard 
+
+
+    vCard:ADR //Address info. vCard is the best I've found.
+
+        vCard:Street
+        vCard:Locality
+        vCard:Region
+        vCard:Pcode
+        vCard:Country
+
+
+eg http://www.eu.socialtext.net/foafnet/index.cgi?sample_file_from_orkut
+-->
 
 
 <!--
