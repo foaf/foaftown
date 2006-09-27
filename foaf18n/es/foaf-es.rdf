@@ -40,7 +40,7 @@ Translations for: Agent, Document, Group, Image,
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
-  <rdfs:label>OrganizaciÛn</rdfs:label>
+  <rdfs:label>Organizaci√≥n</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
@@ -60,13 +60,14 @@ Translations for: Agent, Document, Group, Image,
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
+
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
   <rdfs:label>nombre</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
-  <rdfs:label>p·gina personal</rdfs:label>
+  <rdfs:label>p√°gina personal</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
@@ -112,7 +113,37 @@ Translations for: Agent, Document, Group, Image,
 </rdf:Description>
 -->
 
+<!-- from foafnet, more todo (some of these covered above) -->
+foaf:PersonalProfileDocument
+foaf:maker
+foaf:primaryTopic
+foaf:Person
+foaf:name
+foaf:mbox_sha1sum 
+foaf:img 
+foaf:knows
+foaf:person --- case error
+
+non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard -->
+
+
+<!--
+
+from Shadi re EARL:
+
+we are using (dependency) foaf:Agent and foaf:Person, iwe also reference foaf:Organization, foaf:Group. Properties: mbox, sha1sum, and name
+	unstable: foaf:Agent, foaf:Group, foaf:Org
+	testing: name, sha1sum
+	stable: Person, mbox
+	stable: homepage (we also use that one)
+-->
+
+
+
+
+
 </rdf:RDF>
+
 
 
 
