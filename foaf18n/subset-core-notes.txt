@@ -1,0 +1,26 @@
+
+from Shadi re EARL:
+
+we are using (dependency) foaf:Agent and foaf:Person, iwe also reference foaf:Organization, foaf:Group. Properties: mbox, sha1sum, and name
+	unstable: foaf:Agent, foaf:Group, foaf:Org
+	testing: name, sha1sum
+	stable: Person, mbox
+	stable: homepage (we also use that one)
+
+ re EARL usage and need for a 'Software' class: looked at DOAP but 
+ "it is too much project oriented rather than software (in terms of an agent)"
+
+Note: we don't necessarily need foaf:Group and foaf:Org to be stable (but then we will not be able to have dependencies on these)
+
+<!--
+shadi:	we had assumed that both foaf:Org and foaf:Group are foaf:Agents
+danbri:	i think they're declared as, but their own relationship was vague
+shadi:  but that a foaf:Group could contain further foaf:Agents
+danbri:	does saying "all organizations are groups" break anything for you?
+shadi:  we have a similar construct for earl:Assertor
+shadi:  no, it doesn't break anything
+->
+
+
+
+
