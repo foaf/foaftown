@@ -17,6 +17,6 @@
 
 <xsl:template match="photo">{<xsl:for-each select="@*"> 
    "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" } <xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
-}</xsl:template>
+}<xsl:if test="position() != last()">, </xsl:if></xsl:template>
 
 </xsl:stylesheet>
