@@ -9,7 +9,7 @@
 { "head": { "vars": [
       <xsl:for-each select="photo[1]/@*">
 	"<xsl:value-of select="name()" />"
-	<xsl:if test="not(last())">, </xsl:if>
+	<xsl:if test="position() != last()">, </xsl:if>
       </xsl:for-each> ]
   } ,
 "results": { "distinct": true , "ordered": true ,
@@ -21,7 +21,7 @@
 <xsl:template match="photo">  {
     <xsl:for-each select="@*">
       "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" }
-      	<xsl:if test="not(last())">, </xsl:if></xsl:for-each>
+      	<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
   }</xsl:template>
 
 </xsl:stylesheet>
