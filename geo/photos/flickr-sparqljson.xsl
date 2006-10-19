@@ -7,11 +7,7 @@
 <xsl:strip-space elements="*" />
 
 <xsl:template match="/rsp/photos">
-{ "head": { "vars": [
-      <xsl:for-each select="photo[1]/@*">
-	"<xsl:value-of select="name()" />"
-	<xsl:if test="position() != last()">, </xsl:if>
-      </xsl:for-each> ]
+{ "head": { "vars": [ <xsl:for-each select="photo[1]/@*">"<xsl:value-of select="name()" />" <xsl:if test="position() != last()">, </xsl:if> </xsl:for-each> ]
   } ,
 "results": { "distinct": true , "ordered": true ,
    "bindings": [ <xsl:apply-templates /> ]
@@ -19,10 +15,8 @@
 }
 </xsl:template>
 
-<xsl:template match="photo">  {
-    <xsl:for-each select="@*">
-    {  "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" }
-     } 	<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
-  }</xsl:template>
+<xsl:template match="photo">{<xsl:for-each select="@*"> 
+   "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" } <xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
+}</xsl:template>
 
 </xsl:stylesheet>
