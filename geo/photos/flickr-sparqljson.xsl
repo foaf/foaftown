@@ -4,6 +4,7 @@
     xmlns:rdf  ="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 
 <xsl:output method="text"/>
+<xsl:strip-space elements="*" />
 
 <xsl:template match="/rsp/photos">
 { "head": { "vars": [
@@ -20,8 +21,8 @@
 
 <xsl:template match="photo">  {
     <xsl:for-each select="@*">
-      "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" }
-      	<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
+    {  "<xsl:value-of select="name()" />" : { "type": "literal" , "value": "<xsl:value-of select="." />" }
+     } 	<xsl:if test="position() != last()">, </xsl:if></xsl:for-each>
   }</xsl:template>
 
 </xsl:stylesheet>
