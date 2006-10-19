@@ -1,7 +1,7 @@
 #FLICKR_API_KEY=dc4a7XXXXXXXX
 # set this here or in your environment vars, .bashrc etc
 
-all:	clean fpretty.xml
+all:	clean f.json
 
 clean:
 	rm -f api-flickr.xml
@@ -19,4 +19,6 @@ f.xml:	api-flickr.xml
 fpretty.xml:	f.xml
 	xsltproc pretty-xml.xsl f.xml > fpretty.xml
 
+f.json:	api-flickr.xml
+	xsltproc flickr-sparqljson.xsl api-flickr.xml > f.js
 
