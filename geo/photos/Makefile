@@ -7,7 +7,7 @@
 # Iranians http://www.flickr.com/groups/iranian/pool/map
 
 GROUP_ID=43935391225@N01
-# Buenos Aires
+# Buenos Aires http://www.flickr.com/groups/bsas/pool/map
  
 #GROUP_ID=46594087@N00
 # http://www.flickr.com/groups/bristol/pool/map
