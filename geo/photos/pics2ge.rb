@@ -14,6 +14,18 @@ def esc(str)
    str.gsub(">", "&gt;")
 end
 
+def nameFromID(user_id)
+  require 'net/http'
+  require 'uri'
+  api_key=ENV["FLICKR_API_KEY"] 
+  uri="http://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=#{api_key}&user_id=#{user_id}"
+  who = Net::HTTP.get(URI.parse(uri))
+  who =~ /<username>(.*)<\/username>/
+  return $1
+end
+
+#puts "Looked up " + nameFromID("80889079@N00")
+
 res = JSON.parse pics
 
 puts '<?xml version="1.0" encoding="UTF-8"?>'
@@ -49,7 +61,7 @@ puts "<Folder>
 
 	<a href='#{img_page}'><img alt='#{title}' 
 			width='240' src='#{m_url}' /></a>  
-	by #{owner} at lat:#{lat} lon:#{lon} 
+	by #{nameFromID(owner)} at lat:#{lat} lon:#{lon} 
 
 	]]></description>
       <name> #{title} </name>
@@ -78,3 +90,4 @@ puts "</kml>\n\n";
 
 
 
+##http://www.ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html
