@@ -53,7 +53,9 @@ def nameFromID(user_id, cache)
 
   require 'net/http'
   require 'uri'
-  api_key=ENV["FLICKR_API_KEY"] 
+
+  api_key=ENV["FLICKR_API_KEY"] if ENV["FLICKR_API_KEY"]
+
   uri="http://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=#{api_key}&user_id=#{user_id}"
   who = Net::HTTP.get(URI.parse(uri))
   STDERR.puts("REST API user lookup: #{uri}")
@@ -164,9 +166,11 @@ def storeGroupMapJSON(group_id)
   fdata = File.new("_fdata.xml","w")
   fdata.puts(mymapdata)
   fdata.close
-  `xsltproc flickr-sparqlxml.xsl _fdata.xml > _tmp.xml`
-  `xsltproc pretty-xml.xsl _tmp.xml > _fdata_sparql.xml`
-  `xsltproc flickr-sparqljson.xsl _fdata.xml > _fdata_json.js`
+
+  bin="/home/danbri/working/bin/"
+  `#{bin}xsltproc flickr-sparqlxml.xsl _fdata.xml > _tmp.xml`
+  `#{bin}xsltproc pretty-xml.xsl _tmp.xml > _fdata_sparql.xml`
+  `#{bin}xsltproc flickr-sparqljson.xsl _fdata.xml > _fdata_json.js`
 end
 
 def getGroupKML(group_id)
