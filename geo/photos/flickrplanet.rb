@@ -8,6 +8,21 @@ require 'json'
 # by Dan Brickley <danbrickley@gmail.com>
 # $Id$
 
+# Notes:
+#
+# We use JSON that has been transformed from XML
+# rather than Flickr's native JSON output. This is to explore 
+# possibility of a compatibility layer with SPARQL-accessed RDF data
+# eg. such as that archived by the Net::Flickr::Backup CPAN module.
+# Our JSON is in a tabular structure specified by W3C as a representation 
+# of the results we might get back from an RDF query. Basically, a bit like SQL.
+# 
+# To achieve this we create some scratch files (_*.xml etc) and run 
+# XSLT on the commandline. Bit of a mess. But you'll live.
+# 
+# Other mess:
+# JSON library is a Ruby gem installation. How do we do that on Dreamhost?
+
 # Escape a string for printing to XML
 # 
 def esc(str)
