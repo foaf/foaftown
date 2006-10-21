@@ -7,5 +7,7 @@ There is currently no migration plan.
 
 This SVN is being used for foaftown/ collaborations only, at this stage.
 
+You'll find various things here...
+
 Dan <danbri@danbri.org>
 <danbrickley@gmail.com>
