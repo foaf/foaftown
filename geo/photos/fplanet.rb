@@ -136,9 +136,25 @@ def getGroupMapXML(group_id)
   require 'net/http'
   require 'uri'
   api_key=ENV["FLICKR_API_KEY"]
-  uri="http://api.flickr.com/services/rest/?min_taken_date=1970-01-01%2000:00:00&bbox=-180,-90,180,90&method=flickr.photos.search&name=value&api_key=#{api_key}&group_id=#{group_id}&extras=license,date_upload,date_taken,owner_name,icon_server,original_format,last_update,geo&per_page=500&accuracy=6"
+
+  # min_taken_date=1970-01-01%2000:00:00&bbox=-180,-90,180,90&
+
+  # even if we set per_page=500, we get paged results here
+  #<photos page="2" pages="3" perpage="250" total="657">
+
+  # It might be time to use a proper API
+
+  uri="http://api.flickr.com/services/rest/?bbox=-180,-90,180,90&method=flickr.photos.search&api_key=#{api_key}&group_id=#{group_id}&extras=license,date_upload,date_taken,owner_name,icon_server,original_format,last_update,geo&per_page=500&accuracy=6"
   xdata = Net::HTTP.get(URI.parse(uri))
   xdata.gsub!("&quot;","&apos;") # so we can XSLT into JSON
+
+# See http://www.flickr.com/services/api/flickr.photos.search.html
+#per_page (Optional)
+#    Number of photos to return per page. If this argument is omitted, it defaults to 100. The #maximum allowed value is 500.
+#page (Optional)
+#    The page of results to return. If this argument is omitted, it defaults to 1.
+
+
   return xdata
 end
 
