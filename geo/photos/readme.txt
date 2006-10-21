@@ -1,4 +1,8 @@
 
+Old notes, out of date...
+
+
+
 That old photos-on-maps thing.
 
 Flickr
