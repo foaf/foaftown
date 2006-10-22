@@ -1,0 +1,149 @@
+
+<html>
+<head>
+<title>FOAFtown photos: Flickr groups on Google Earth</title>
+<style type="text/css">
+
+dt { weight: heavy } 
+
+</style>
+
+</head>
+<body>
+
+<img src="foaftown.gif" alt="FOAFTown" />
+
+<h1>FOAFtown photo experiments</h1>
+
+<h2>Flickr groups on Google Earth</h2>
+
+
+<p>
+This page describes some experimental <a href="http://earth.google.com/">Google Earth</a> data feeds that I've made available for a few region-based Flickr groups. If you have Google Earth installed, and a high-bandwidth 'net connection, the following <a href="http://earth.google.com/kml/">KML</a> links will overlay some photos on the globe, where the photos are public, posted to one of the selected Flickr group pools below, and tagged with their location.
+</p>
+
+<p>
+<strong>Note:</strong> Please be aware that this is a work in progress, and that the usability and reliability of these feeds should be improved in the future.
+</p>
+
+<p>Links below are to Flickr pages, followed by the link for Google Earth. If you don't have Google Earth, you can still check out the photos via Flickr's Web interface by following the 'map' link.</p>
+
+<dl>
+
+<dt><a href="http://www.flickr.com/groups/iranian/">Iranian group</a>
+(<a href="http://www.flickr.com/groups/iranian/pool">pool</a>
+<a href="http://www.flickr.com/groups/iranian/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_52240190192@N01.kml">Google Earth overlay</a></dd>
+
+<dt><a href="http://www.flickr.com/groups/bsas/">Buenos Aires group</a>
+(<a href="http://www.flickr.com/groups/bsas/pool">pool</a>
+<a href="http://www.flickr.com/groups/bsas/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_43935391225@N01.kml">Google Earth overlay</a></dd>
+
+<dt><a href="http://www.flickr.com/groups/bristol/">Bristol group</a>
+(<a href="http://www.flickr.com/groups/bristol/pool">pool</a>
+<a href="http://www.flickr.com/groups/bristol/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_52240190192@N01.kml">Google Earth overlay</a></dd>
+
+<dt><a href="http://www.flickr.com/groups/rome/">Rome group</a>
+(<a href="http://www.flickr.com/groups/rome/pool">pool</a>
+<a href="http://www.flickr.com/groups/rome/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_52240113490@N01.kml">Google Earth overlay</a></dd>
+
+<dt><a href="http://www.flickr.com/groups/londinium/">London group</a>
+(<a href="http://www.flickr.com/groups/londinium/pool">pool</a>
+<a href="http://www.flickr.com/groups/londinium/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_35034349318@N01.kml">Google Earth overlay</a></dd>
+
+<dt><a href="http://www.flickr.com/groups/sanfransisco/">San Francisco group</a>
+(<a href="http://www.flickr.com/groups/sanfransisco/pool">pool</a>
+<a href="http://www.flickr.com/groups/sanfransisco/pool/map">map</a>)
+</dt>
+<dd><a href="_pool_51035615908@N01.kml">Google Earth overlay</a></dd>
+</dl>
+
+<h2>How it Works</h2>
+
+<p>
+Flickr is a popular photo-sharing service owned by Yahoo. Their photo organizer has a facility for "tagging" a photo with its location, allowing you to see it using Yahoo maps displayed within Flickr. Since they also allow external software to read this information, we can write tools that display photos in other ways. All we have here is the result of reading some photo descriptions from the Flickr site, and generating files that Google Earth can understand.
+</p>
+
+<h2>Issues</h2>
+<dl>
+<dt>250 photo limit</dt>
+<dd>The main issue we have is that currently we only grab information about 250 geo-tagged photos per pool. This is enough to get a feel for the possibilities, without overloading either Google Earth viewer, or the Flickr Web service.
+</dd>
+<dt>Usability</dt>
+<dd>he usability of the current system is questionable. Ideas for improvements would be welcomed.</dd>
+<dt>Image loading</dt>
+<dd>Images can take several seconds to load, both the small image displayed on the globe, and the larger image visible within the placemark. This can be confusing.
+</dd>
+
+<h2>Screenshots</h2>
+
+<p>
+I've <a href="http://www.flickr.com/photos/danbri/sets/72157594339531354/">posted a few screenshots</a> to Flickr.</p>
+
+<a href="http://www.flickr.com/photos/danbri/275405472/" title="Photo Sharing"><img src="http://static.flickr.com/95/275405472_8ce6ce3647.jpg" width="500" height="334" alt="Worlds within worlds" /></a>
+
+<a href="http://www.flickr.com/photos/danbri/274680841/" title="Photo Sharing"><img src="http://static.flickr.com/86/274680841_5780c3a358_o.jpg" width="1196" height="712" alt="bombonera stadium" /></a>
+
+
+<h2>Technical Details</h2>
+
+<p>
+No claim to originality here. Everyone's playing with such things these days. Here's how this version works. This bit is for technical developers, programmers and the terminally curious.
+</p>
+
+<p>The software is all <a href="http://svn.foaf-project.org/foaftown/geo/photos/">available online</a> if you're interested in the detail. There isn't much to it. It's a hack. The basic idea here was to experiment with an approach to consuming photo data that was neutral between Web service and "data dump" approaches. If we have a local repository of photo metadata (from Flickr eg. via Aaron Straup Cope's <a href="http://search.cpan.org/~ascope/Net-Flickr-Backup-2.6/">Net::Flickr::Backup</a>, or from elsewhere), we should also be able to generate maps, 3d globe overlays, HTML pages etc., regardless of where the data comes from. 
+</p>
+<p>
+So what we've tried here (and big thanks to Danny Ayers for XSLT help) is the idea of using W3C's SPARQL RDF query interface as a datasource abstraction. 
+<a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> provides a language for querying aggregated Web data, structured in terms of the RDF graph data model. It looks a bit like SQL, in that it begins with the word "SELECT" and returns tables of fieldname/value bindings. The <a href="http://www.w3.org/TR/rdf-dawg-uc/">use cases</a> and <a href="http://www.w3.org/TR/rdf-sparql-protocol/">protocol</a> documents are worth a look if you're interested in this area. Here we focus on the idea that many Flickr Web Service API calls result in a structure very similar to a SPARQL resultset. Basically, a set of "hits", each one of which carries a collection of field/value pairs. 
+</p>
+<p>
+What we've done is convert Flickr's data structures into one that might have come from running a SPARQL RDF query. We didn't even write the query yet. But we imagine that we have one that returns a table of results with named fields as columns, and each photo corresponding to one row.
+</p>
+<p>
+SPARQL comes with a simple XML format for representing such tables of results, the <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">SPARQL Query Results XML Format</a>. There is also a version of the format expressed as JSON (ie. a scripting-language friendly subset of Javascript): see the <a href="http://www.w3.org/TR/rdf-sparql-json-res/">Serializing SPARQL Query Results in JSON</a> spec.
+</p>
+<p>
+At the moment, what we do is run Danny's XSLT to generate JSON. And then consume the JSON in a Ruby script. Since Flickr itself also offers a JSON resultset format, this might appear rather longwinded and bloodyminded. Why not just generate the KML from code than runs directly over Flickr's own JSON? Basically, because we don't want to be bothering Flickr's Web Service so frequently. It's better to put a little bit of abstraction between code that generate user interface, and code that knows about a particular datasource. 
+</p>
+<p>
+The working hypothesis here is that RDF/SPARQL can provide such an abstraction, and that a cleaned-up successor to this code should be able to do interesting things with RDF data from running something like the Perl CPAN Net::Flickr::Backup tool against a Flickr pool. And that this could run from local machine, without the need to have a local implementation of the Flickr Web Service APIs. Or we might not be using Flickr at all. Geotags might come from elsewhere, eg. <a href="http://svn.foaf-project.org/foaftown/geo/photos/old/geoloc_media.pl">a little Perl code</a> can reconcile GPS tracklogs with timestamped-photos.</p>
+
+<h3>Next steps</h3>
+<p>
+Currently, when we get more than 250 photos back from querying Flickr, it comes in several pages. At the moment we stop at the first page, ... but it would be nice to represent <em>all</em> photos from a group. At this point I think we should drop XSLT, and write adaptor code that consumes JSON and wraps the result of several "pages" of photo descriptions to look like SPARQL JSON. I'd also like to offer ability to run something like this tool for more ad-hoc groups (eg. several Flickr pools, or a person plus their friends). At some point this will mean moving to a more dynamic KML generation strategy (the current system rebuilds 6 KML files on a crontab schedule). There is also plenty more that could be done to improve the Google Earth KML side of things. Perhaps representing people and groups as fictional GE "features" orbiting in space, for example? Suggestions as ever welcomed...
+</p>
+<p>Maybe this deserves a Flickr group for discussion / development?</p>
+
+<h3>Related Links</h3>
+
+<p>Where to begin? Everyone's putting photos on maps... a few background links...</p>
+
+<ul>
+<li><a href="http://www.flickr.com/groups/geotagging/">GeoTagging Flickr</a> group</li>
+<li><a href="http://geobloggers.com/archives/2006/10/20/past-flickr-mapping-secret-revealed-at-last/"><em>It’s been going on since people were drawing “Here be Dragons” on ocean maps.</em></a></li>
+<li><a href="http://www.trippermap.com/">Trippermap</a> have some GE tools, which can help you tag your photos when GE's imagery is better than that in Yahoo Maps</li>
+<li><a href="http://mappinghacks.com/">Mapping Hacks</a> site</li>
+<li><a href="http://www.w3.org/2003/01/geo/">W3C SW Interest Group basic Geo vocab</a></li>
+<li><a href="http://tenyearsof.us/meta/2003/12/27/rdf_photo_annotation_with_movable_type">RDF photo annotation with Movable Type</a>, from Bryce Benton (<a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-December/012254.html">on the FOAF list</a>)</li>
+<li><a href="http://www.kanzaki.com/works/2004/imgdsc/0106.html#img-gps">Image description</a> notes from Kanzaki Masahide</a></li>
+</ul>
+
+<hr />
+<address><a href="http://danbri.org/">Dan Brickley</a> &lt;danbrickley@gmail.com&gtl</address>
+</body>
+</html>
+
+
+
+
+
