@@ -31,7 +31,7 @@ class Jaspwr:
 
     head_prefix = '\n   "head": { \"vars\": [ "'
     head_suffix = '"  ] \n} ,'
-    head_separator = '" , ß"'
+    head_separator = '" , "'
 
     results_prefix = '\n   "results": { "distinct": true , "ordered": false ,'
     results_suffix = '}'
