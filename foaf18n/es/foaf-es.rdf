@@ -16,22 +16,22 @@ Translations for: Agent, Document, Group, Image,
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
   <rdfs:label>Agente</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un agente (ej. persona, grupo, software o artefacto físico).</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
   <rdfs:label>Documento</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un documento.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
   <rdfs:label>Imagen</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un imagen.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
   <rdfs:label>Grupo</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Una clase de Agentes.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
@@ -41,75 +41,75 @@ Translations for: Agent, Document, Group, Image,
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
   <rdfs:label>Organización</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Una organización.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
   <rdfs:label>Persona</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Una persona.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Project">
   <rdfs:label>Proyecto</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un proyecto (un esfuerzo collectivo de cierta clase).</rdfs:comment>
 </rdf:Description>
 
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/knows">
   <rdfs:label>conoce a</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Una persona conocida por esta persona (indicando cierto nivel de interacción recíproca entre las partes).</rdfs:comment>
 </rdf:Description>
 
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
   <rdfs:label>nombre</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un nombre para algo.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
-  <rdfs:label>página personal</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:label>página principal</rdfs:label>
+  <rdfs:comment>Una página principal para algo.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
   <rdfs:label xml:lang="es-ES">bitácora</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment xml:lang="es-ES">Una bitácora de algo o alguien (ya sea una persona, grupo, compañia, etc.).</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/img">
   <rdfs:label>imagen</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Una imagen que puede ser utilizada para representar algo (p.ej. retratos que son particularmente representativos de algo, ej. una foto en una página personal).</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depicts">
   <rdfs:label>retrata a</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un algo o alguien retratado en esta representación.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
   <rdfs:label>retrato</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un retrato de algo o alguien.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/topic">
   <rdfs:label>tópico</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un tópico de una página o documento.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
   <rdfs:label>tópico principal</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>El tópico principal de una página o documento.</rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
   <rdfs:label>es tópico principal de</rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>Un documento del cual este algo es el tópico principal.</rdfs:comment>
 </rdf:Description>
 
 <!--
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/">
   <rdfs:label></rdfs:label>
-  <rdfs:comment></rdfs:comment>
+  <rdfs:comment>.</rdfs:comment>
 </rdf:Description>
 -->
 
