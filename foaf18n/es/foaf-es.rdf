@@ -72,7 +72,7 @@ Translations for: Agent, Document, Group, Image,
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
-  <rdfs:label></rdfs:label>
+  <rdfs:label xml:lang="es-ES">bitácora</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
@@ -92,17 +92,17 @@ Translations for: Agent, Document, Group, Image,
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/topic">
-  <rdfs:label></rdfs:label>
+  <rdfs:label>tópico</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
-  <rdfs:label></rdfs:label>
+  <rdfs:label>tópico principal</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
 <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
-  <rdfs:label></rdfs:label>
+  <rdfs:label>es tópico principal de</rdfs:label>
   <rdfs:comment></rdfs:comment>
 </rdf:Description>
 
@@ -119,8 +119,8 @@ foaf:maker
 foaf:primaryTopic
 foaf:Person
 foaf:name
-foaf:mbox_sha1sum 
-foaf:img 
+foaf:mbox_sha1sum
+foaf:img
 foaf:knows
 foaf:person --- case error
 
@@ -139,7 +139,7 @@ foaf:Person
 
         geo:Point geo:lat="" geo:long=""
 
-non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard 
+non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard
 
 
     vCard:ADR //Address info. vCard is the best I've found.
@@ -160,10 +160,10 @@ eg http://www.eu.socialtext.net/foafnet/index.cgi?sample_file_from_orkut
 from Shadi re EARL:
 
 we are using (dependency) foaf:Agent and foaf:Person, iwe also reference foaf:Organization, foaf:Group. Properties: mbox, sha1sum, and name
-	unstable: foaf:Agent, foaf:Group, foaf:Org
-	testing: name, sha1sum
-	stable: Person, mbox
-	stable: homepage (we also use that one)
+    unstable: foaf:Agent, foaf:Group, foaf:Org
+    testing: name, sha1sum
+    stable: Person, mbox
+    stable: homepage (we also use that one)
 -->
 
 
