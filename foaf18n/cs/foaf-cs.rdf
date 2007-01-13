@@ -1,0 +1,100 @@
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:wot="http://xmlns.com/wot/0.1/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xml:lang="cs"
+>
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+  	<rdfs:label>Agent</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+  	<rdfs:label>Dokument</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+  	<rdfs:label>Obraz</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+  	<rdfs:label>Skupina</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+  	<rdfs:label>On-line účet</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+  	<rdfs:label>Organizace</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+  	<rdfs:label>Osoba</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Project">
+  	<rdfs:label>Projekt</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/knows">
+  	<rdfs:label>zná</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
+  	<rdfs:label>jméno</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+  	<rdfs:label>osobní stránka</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
+  	<rdfs:label>weblog</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/img">
+  	<rdfs:label>obraz</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depicts">
+  	<rdfs:label>vyobrazuje</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
+  	<rdfs:label>vyobrazení</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/topic">
+  	<rdfs:label>téma</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
+  	<rdfs:label>primární téma</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  	<rdfs:label>je primárním tématem</rdfs:label>
+  	<rdfs:comment></rdfs:comment>
+	</rdf:Description>
+</rdf:RDF>
