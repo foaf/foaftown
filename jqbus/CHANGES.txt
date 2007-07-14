@@ -1,0 +1,37 @@
+2007-07-14
+
+ * Updated to use Jena 2.5.3 including the ResultSetFormatter which was pre-release when this was originally coded.
+ 
+ * Updated to use latest Smack library (3.0.x) in lib/ and tested with LiveJournal Jabber accounts.
+
+ * Reluctantly updated to use Java 5, required by Smack.
+
+ * Added a method to QueryClient allowing app to pass in a handler that gets called when we have a response (untested).
+	public void sendQuery(String jid, String query, MessageListener handler) 
+   ...this may be a conceptual confusion; hard to test when offline!
+
+* Added ant build task for javadoc generation. 
+
+2005-09-15
+
+ * Factored out most of the client code into QueryClient class. 
+   Can now more easily address different jids with different 
+   queries.
+   
+ * Factored out server code into QueryServer class. Can now 
+   more easily configure additional data files
+ 
+ * Removed extra copy of xmlpull parser jar
+ 
+ * Tweaked build file adding client and server targets to 
+   simplify command line.
+   
+   To set Jabber password create a file called build.properties 
+   next to build.xml and add the following:
+   
+   foaftown.pwd=PASSWORD
+   
+   This file will be used to hold other config when running via 
+   Ant.
+   
+   ant client, or ant server will then run the appropriate app.
