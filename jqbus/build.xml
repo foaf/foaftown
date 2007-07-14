@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+
+<!--
+see README.txt for details. Quick start:
+
+    ant -Dfoaftown.pwd=$P -Dfoaftown.role=server
+    ant -Dfoaftown.pwd=$P -Dfoaftown.role=client
+-->
+
+<project name="foaftown" default="run" basedir=".">
+  <description>FOAF and JABBER, a match made in heaven?</description>
+  
+	<!--
+	  Allow property overriding from current directory or user home;
+	  Properties defined in these files will override the 
+	  defaults specified here
+	-->	
+    <property file="build.properties"/>	
+	
+    <property name="build.dir"   value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="main-class"  value="com.xmlns.foaftown.FoafJabberNode"/>
+    <property name="foaftown.pwd" value=""/>
+    <property name="doc.title" value="FOAFtown JQbus API" />
+    <property name="doc.copyright" value="Some rights reserved." />
+    <property name="source.dir"  value="src" />
+    <property name="javadoc.dir"  value="doc" />
+    <property name="packagenames"  value="com.xmlns.foaftown" />
+
+    <path id="my.classpath">
+      <pathelement path="${classes.dir}"/>
+      <fileset dir=".">
+        <include name="lib/*.jar"/>
+      </fileset>
+    </path>
+
+    <target name="prepare">
+      <mkdir dir="${classes.dir}"/>
+    </target>
+
+    <target name="build" depends="prepare" description="Build classes">
+        <javac srcdir="."
+          debug="true"
+          optimize="false"
+          includes="**/*.java"
+          destdir="${classes.dir}"
+          classpathref="my.classpath"
+          />
+    </target>
+
+   <target name="clean" description="Clean up">
+        <delete dir="build"/>
+    </target>
+
+    <target name="run" depends="build" description="Run this thing">
+      <java classname="${main-class}"
+        fork="true"
+        classpathref="my.classpath"
+        >  
+	<!-- http://ant.apache.org/manual/using.html#arg -->
+        <arg line="${foaftown.pwd} ${foaftown.role}"/>
+      </java>
+    </target>
+
+	<target name="client" depends="build" description="run the client">
+		<java classname="${main-class}"
+			  fork="true"
+			  classpathref="my.classpath">
+	        <arg line="${foaftown.pwd} client"/>			
+		</java>
+    </target>
+
+	<target name="server" depends="build" description="run the server">
+		<java classname="${main-class}"
+			  fork="true"
+			  classpathref="my.classpath">
+	        <arg line="${foaftown.pwd} server"/>			
+		</java>
+    </target>
+
+
+           <target name="javadoc"
+                    description="make javadoc">
+                <javadoc
+                         packagenames="${packagenames}"
+                         sourcepath="${source.dir}"
+                                 source="${source.dir}"
+                         destdir="${javadoc.dir}"
+                         author="true"
+                         version="true"
+                         classpathref="my.classpath"
+                         windowtitle="${doc.title}"
+                         doctitle="${doc.title}"
+                         Public="true"
+                         Use="true" bottom="${doc.copyright}"   additionalparam="-breakiterator -link http://jena.sourceforge.net/javadoc/ com.hp.hpl.jena -link http://jena.sourceforge.net/ARQ/javadoc/ com.hp.hpl.query -link http://java.sun.com/j2se/ java">
+              </javadoc>
+            </target>
+
+
+
+</project>
