@@ -89,6 +89,30 @@ Info/Query, or IQ, is a request-response mechanism, similar in some ways to HTTP
 <p>Even stalkers and historians have better things to do than read the pre-Subversion <a href="http://rdfweb.org/viewcvs/viewcvs.cgi/foafproject/htdocs/2005/code/foaftown/jabber/src/com/xmlns/foaftown/">cvs logs</a>. Forgive
 me for not migrating them. And thanks once more to Leigh Dodds for cleaning up that old mess!</p>
 
+<h3>Quick Start</h3>
+
+<p>Read the README. Or if you're feeling lucky:</p>
+
+<pre>
+wget -nd http://svn.foaf-project.org/foaftown/downloads/jqbus-latest.tar.gz
+tar -zxvf jqbus-latest.tar.gz 
+cd jqbus/
+
+# Configure accounts (server_jid and client_jid):
+vi src/com/xmlns/foaftown/FoafJabberNode.java 
+
+# Run in server role:
+#
+ant -Dfoaftown.pwd=xxxxxx -Dfoaftown.role=server
+
+# Run in client role (wait 30 secs for the server, and do this in another terminal window):
+#
+ant -Dfoaftown.pwd=xxxxxx -Dfoaftown.role=client
+
+# Gasp in amazement as stuff scrolls up the screen...
+# ...
+</pre>
+
 <h2>Contact</h2>
 
 <p><a href="http:/danbri.org">Dan Brickley</a>, danbri@danbri.org or danbrickley@gmail.com if you're not on my whitelist yet. </p>
