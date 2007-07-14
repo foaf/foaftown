@@ -78,6 +78,7 @@ class FoafJabberNode
 			System.err.println("No role given, defaulting to client");
 			hj.role = "client";
 		}
+		
 		hj.startup();
 	}
 
@@ -111,8 +112,7 @@ class FoafJabberNode
 		server_userid = StringUtils.parseName(server_jid); // "foaf2";
 		server_host = StringUtils.parseServer(server_jid);
 		
-		System.err.println("Initiating connection, role is: [" + role + "].");
-		System.err.println("Using password (test accounts only!): " + my_pwd);
+		// System.err.println("Using password (test accounts only!): " + my_pwd);
 
 		IQProvider myqueryprov = new SPARQLQueryProvider();
 		IQProvider myresultsprov = new SPARQLResultsProvider();
@@ -123,6 +123,8 @@ class FoafJabberNode
 	
 	public void startup() throws XMPPException, Exception
 	{
+		System.err.println("Initiating connection, role is: [" + role + "].");
+
 		if (role.equals("client"))
 		{
 			sparql_client();
