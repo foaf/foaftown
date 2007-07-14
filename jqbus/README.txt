@@ -3,6 +3,10 @@ JQbus - Jabber chat for query services
 We use off-the-shelf Jabber chat services as a generic information bus, passing SPARQL queries and
 results via user accounts, encoded as XMPP IQ messages.
 
+See pages at http://svn.foaf-project.org/foaftown/jqbus/intro.html
+
+(I may migrate text from README.txt into there... for now, read both!)
+
 Thanks to Peter Saint-Andre and Dirk-Willem van Gulik for help with the original Jabber/XMPP design, 
 Chris Schmidt for getting a Python implementation (see http://crschmidt.net/semweb/sparqlxmpp/ )
 out the door before I even finished this one, and especially to Leigh Dodds for refactoring the original 
@@ -196,4 +200,4 @@ Fix build.xml to do something like this, or read subversion manual:
 
 and this
 
- cd ..; tar -cvf downloads/jqbus-latest.tar.gz jqbus/
+ cd ..; tar -zcvf downloads/jqbus-latest.tar.gz jqbus/
