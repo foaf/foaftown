@@ -193,3 +193,7 @@ Fix build.xml to do something like this, or read subversion manual:
     find . -name \*.html -exec svn propset svn:mime-type text/html {} \;
     find . -name \*.png -exec svn propset svn:mime-type image/png {} \;
     find . -name \*.jpg -exec svn propset svn:mime-type image/jpeg {} \;
+
+and this
+
+ cd ..; tar -cvf downloads/jqbus-latest.tar.gz jqbus/
