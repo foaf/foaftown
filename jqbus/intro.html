@@ -15,9 +15,9 @@
 
   <h2>JQbus - Jabber chat for query services</h2>
 
-  <p>We use off-the-shelf Jabber chat services as a generic
-  information bus, passing SPARQL queries and results via user
-  accounts, encoded as XMPP IQ messages.</p>
+  <p>JQbus uses off-the-shelf Jabber chat services as a generic
+  information bus, passing <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> queries and results via user
+  accounts, encoded as <a href="http://www.xmpp.org/rfcs/rfc3920.html#stanzas-semantics-iq">XMPP IQ</a> messages.</p>
 
   <h3>Documentation</h3>
 
@@ -29,7 +29,8 @@
   "http://danbri.org/words/2005/08/24/132">began</a> with a
   <a href="http://www.saint-andre.com/blog/2005-08.html#2005-08-30T12:07">
   conversation</a> with Peter Saint-Andre about binding SPARQL to
-  Jabber. Chris Schmidt has a nice <a href=
+  Jabber, and an implementation I started and Leigh Dodds kindly helped clean up. 
+  Chris Schmidt has a nice <a href=
   "http://crschmidt.net/semweb/sparqlxmpp/">implementation</a> of
   Peter's original design using Python/Redland. This Java
   implementation uses a slightly different binding. Hopefully we
@@ -57,15 +58,24 @@
 
   <h4>Protocol Overview</h4>
 
-  <p>This is an overview of the Jabber conversations undertaken by
+
+<p>From <a href="http://www.xmpp.org/rfcs/rfc3920.html#stanzas-semantics-iq">RFC-3920</a>:
+<blockquote>
+Info/Query, or IQ, is a request-response mechanism, similar in some ways to HTTP. The semantics of IQ enable an entity to make a request of, and receive a response from, another entity. The data content of the request and response is defined by the namespace declaration of a direct child element of the IQ element, and the interaction is tracked by the requesting entity through use of the 'id' attribute.
+</blockquote>
+</p>
+  <p>The <a href="README.txt">README</a> has more details on the protocol. To be real sure, see the code. Sorry! :)</p>
+
+
+  <p>This diagram gives an overview of the Jabber conversations undertaken by
   an installation playing the "server" role; since it is a real
   Jabber account, other things can also be seen. This gives an idea
   of the data environment in which this code finds itself (eg.
   presence info from friends on the roster aka buddylist).</p>
  
-  <p>The <a href="README.txt">README</a> has more details on the protocol. To be real sure, see the code. Sorry! :)</p>
 
-  <p><img src="images/serverlog.png" alt="JQbus server log" /></p>
+
+ <p><img src="images/serverlog.png" alt="JQbus server log" /></p>
 
   <h2>Code</h2>
 
@@ -85,3 +95,4 @@ me for not migrating them. And thanks once more to Leigh Dodds for cleaning up t
 
 </body>
 </html>
+
