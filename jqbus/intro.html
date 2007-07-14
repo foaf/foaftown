@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Mac OS X (vers 1st December 2004), see www.w3.org" />
+
+  <title>JQbus</title>
+
+</head>
+
+<body style="margin: 5em">
+  <h1>JQbus</h1>
+
+  <h2>JQbus - Jabber chat for query services</h2>
+
+  <p>We use off-the-shelf Jabber chat services as a generic
+  information bus, passing SPARQL queries and results via user
+  accounts, encoded as XMPP IQ messages.</p>
+
+  <h3>Documentation</h3>
+
+  <p>See the <a href="README.txt">README.txt</a> for overview,
+  <a href="CHANGES.txt">CHANGES.txt</a> for progress reports, and
+  the <a href="doc/index.html">javadoc</a> for API detail. This is
+  experimental code; assume nothing works, and maybe you'll be
+  pleasantly suprised. This code <a href=
+  "http://danbri.org/words/2005/08/24/132">began</a> with a
+  <a href="http://www.saint-andre.com/blog/2005-08.html#2005-08-30T12:07">
+  conversation</a> with Peter Saint-Andre about binding SPARQL to
+  Jabber. Chris Schmidt has a nice <a href=
+  "http://crschmidt.net/semweb/sparqlxmpp/">implementation</a> of
+  Peter's original design using Python/Redland. This Java
+  implementation uses a slightly different binding. Hopefully we
+  can converge these and other implementations...</p>
+
+  <h3>Familiar Looking Cloud Diagram</h3>
+
+  <p>We've all been drawing such diagrams for years. The
+  justification for this one is as a way to explain how "Semantic
+  Desktop" efforts might plug into a story for broader access to
+  personal data on the Semantic Web. Loosly: efforts like
+  Nepomuk-KDE and Gnowsis are providing an RDF view of much desktop
+  data, through which descriptions of photos, audio/video,
+  calendars, addressbooks etc might be made available - selectively
+  - to friends, colleagues and software working on behalf of those
+  people. JQbus is an experimental toy for exposing desktop data in
+  this fashion, using off-the-shelf Jabber accounts. The other
+  services sketched in the diagram are part of a bigger unwritten
+  story for how this infrastructure facilitates decentralised
+  social networks. Short version: social networks are about people,
+  not commercial websites. They can't be bought nor sold, nor
+  fenced in :) But anyway...</p>
+
+  <p><img src="images/jqbus.jpg" alt="JQbus diagram" /></p>
+
+  <h4>Protocol Overview</h4>
+
+  <p>This is an overview of the Jabber conversations undertaken by
+  an installation playing the "server" role; since it is a real
+  Jabber account, other things can also be seen. This gives an idea
+  of the data environment in which this code finds itself (eg.
+  presence info from friends on the roster aka buddylist).</p>
+
+  <p><img src="images/serverlog.png" alt="JQbus server log" /></p>
+
+  <h2>Code</h2>
+
+ <p>
+ There is Java src in subversion <a href="http://svn.foaf-project.org/foaftown/jqbus/">in Subversion</a>. 
+
+
+</body>
+</html>
