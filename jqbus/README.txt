@@ -7,48 +7,9 @@ See pages at http://svn.foaf-project.org/foaftown/jqbus/intro.html
 
 (I may migrate text from README.txt into there... for now, read both!)
 
-Thanks to Peter Saint-Andre and Dirk-Willem van Gulik for help with the original Jabber/XMPP design, 
-Chris Schmidt for getting a Python implementation (see http://crschmidt.net/semweb/sparqlxmpp/ )
-out the door before I even finished this one, and especially to Leigh Dodds for refactoring the original 
-source into something more sane. If we can sync several implementations of the basic concept, 
-I'll try to update http://www.w3.org/2005/09/xmpp-sparql-binding and investigate possibilities for 
-a W3C Note.
-
 Contact: Dan Brickley <http://danbri.org/> 
 	email: danbri@danbri.org 
 	(please cc: danbrickley@gmail.com if I might not know your email address yet)
-
-
-
-What is this, exactly?
-
-JQbus is a Java implementation of a draft XMPP/Jabber transport for SPARQL queries. It allows ordinary 
-Jabber accounts to be used for question/answer sessions using W3C's RDF as a data model and SPARQL 
-as a querying framework. Each question comes "from" some Jabber account, and is routed by Jabber magic to
-code attached to another such account, whose response is transmitted back without concern for knowing IP 
-or Web service addresses. 
-
-JQbus uses the HP Labs Jena library for RDF support (including the ARQ SPARQL engine), and the Ignite Realtime 
-(Jive software) Smack library for XMPP/Jabber support. SPARQL queries are defined by 
-http://www.w3.org/TR/rdf-sparql-query/ and an XML response format is defined by 
-http://www.w3.org/TR/rdf-sparql-XMLres/ - this software depends upon both. W3C also has specs for a 
-SPARQL protocol, http://www.w3.org/TR/rdf-sparql-protocol/ and a JSON response format, 
-http://www.w3.org/TR/rdf-sparql-json-res/ - this work does not currently pay close enough attention to 
-the SPARQL Protocol specification, and offers no support for JSON or other result format bindings. 
-ÃThese are natural areas for further work.
-
-
-What does it do?
-
-Given a pair of Jabber accounts capable of exchanging messages (and in particular, custom IQ 
-XMPP 'queries'), we provide some basic glue between Jena and Smack that handles the passing of 
-SPARQL queries and their corresponding XML-encoded responses. The Jabber layers, in turn, take care 
-of ugly details such as authentication, buddylists, getting messages through NAT/firewalls. JQbus
-puts us in design area where we have an incoming message, perhaps arriving at a personal desktop. We know
-that the message carries a SPARQL query, we know the Jabber ID of the party sending it. And we have 
-have an easy way to send a response. It provides no direct access control machinery, although we could 
-(presumably) check to see if the requester is on our buddylist roster. And no error handling yet.
-
 
 
 How does it look?
@@ -115,6 +76,8 @@ The Python code at http://crschmidt.net/semweb/sparqlxmpp/ uses a slightly diffe
 	  <head> ...
 
 
+
+
 JQbus Details: Getting Started
 
 The build.xml supplied here should get you running, assuming a Java 5 system. You can 
@@ -131,7 +94,6 @@ Prequisites:
 
  * two Jabber accounts that can exchange IQ messages (not clear if GTalk works)
  * their passwords 
-
 
 Currently, client/server roles in a conversation are hardcoded from the main test script,
 ie. FoafJabberNode. The role and password are passed in from this build script:

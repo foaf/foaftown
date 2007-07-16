@@ -26,6 +26,8 @@ see README.txt for details. Quick start:
     <property name="source.dir"  value="src" />
     <property name="javadoc.dir"  value="doc" />
     <property name="packagenames"  value="com.xmlns.foaftown" />
+   
+
 
     <path id="my.classpath">
       <pathelement path="${classes.dir}"/>
@@ -46,6 +48,7 @@ see README.txt for details. Quick start:
           destdir="${classes.dir}"
           classpathref="my.classpath"
           />
+   	   <!--<arg line="-Xlint:unchecked"/> -->
     </target>
 
    <target name="clean" description="Clean up">
@@ -58,7 +61,10 @@ see README.txt for details. Quick start:
         classpathref="my.classpath"
         >  
 	<!-- http://ant.apache.org/manual/using.html#arg -->
-        <arg line="${foaftown.pwd} ${foaftown.role}"/>
+	    <sysproperty key="foaftown.pwd" value="${foaftown.pwd}" />
+    	<sysproperty key="foaftown.role" value="${foaftown.role}" />
+    	<sysproperty key="foaftown.jid" value="${foaftown.jid}" />
+        <arg line="${foaftown.pwd} ${foaftown.role} ${foaftown.jid} "/>
       </java>
     </target>
 
@@ -66,7 +72,7 @@ see README.txt for details. Quick start:
 		<java classname="${main-class}"
 			  fork="true"
 			  classpathref="my.classpath">
-	        <arg line="${foaftown.pwd} client"/>			
+	        <arg line="${foaftown.pwd} client ${foaftown.jid}"/>			
 		</java>
     </target>
 
@@ -74,7 +80,7 @@ see README.txt for details. Quick start:
 		<java classname="${main-class}"
 			  fork="true"
 			  classpathref="my.classpath">
-	        <arg line="${foaftown.pwd} server"/>			
+	        <arg line="${foaftown.pwd} server ${foaftown.jid}"/>			
 		</java>
     </target>
 

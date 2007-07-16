@@ -3,25 +3,53 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="generator" content=
-  "HTML Tidy for Mac OS X (vers 1st December 2004), see www.w3.org" />
+  <title>JQbus - Jabber chat query services</title>
 
-  <title>JQbus</title>
+<style>
+.xmppcode {
+ margin: 3em; 
+ color: green; 
+ background: black; 
+ padding: 1em; width 60%;
+}
+</style>
+
 
 </head>
 
-<body style="margin: 5em">
-  <h1>JQbus</h1>
+<body style="margin: 8em">
 
-  <h2>JQbus - Jabber chat for query services</h2>
+  <h1>JQbus - Jabber chat query services</h2>
 
   <p>JQbus uses off-the-shelf Jabber chat services as a generic
-  information bus, passing <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> queries and results via user
-  accounts, encoded as <a href="http://www.xmpp.org/rfcs/rfc3920.html#stanzas-semantics-iq">XMPP IQ</a> messages.</p>
+  information bus, passing <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> queries and results via user accounts, encoded as <a href="http://www.xmpp.org/rfcs/rfc3920.html#stanzas-semantics-iq">XMPP IQ</a> messages.</p>
 
-  <h3>Documentation</h3>
+ 
+  <div style="float: right; padding: 2em;">
+<a href="images/botchat.txt"><img src="images/botchat.jpg" alt="Jabber bot dialog showing sparql" longdesc="images/botchat.txt" border="0"/></a></div>
 
-  <p>See the <a href="README.txt">README.txt</a> for overview,
+<p>
+JQbus provides a Jabber (XMPP) transport for SPARQL queries and responses, using Java.
+Each question comes "from" some Jabber account (possibly shared with a human user)  
+and is routed by Jabber magic to code attached to another such account, whose response is 
+transmitted back, addressed only to a jabber: ID. 
+</p>
+
+
+<h3>What does it do?</h3>
+
+<p>
+Given a pair of Jabber accounts capable of exchanging messages (and in particular, custom IQ 
+queries), we provide basic glue code that handles the passing of SPARQL queries and 
+their corresponding XML-encoded responses. 
+</p>
+<p>
+The Jabber layers, in turn, take care of ugly details such as authentication, buddylists, getting messages through NAT/firewalls. 
+</p>
+
+ <h3>Documentation</h3>
+
+  <p>See also the <a href="README.txt">README.txt</a> for some getting-started specifics,
   <a href="CHANGES.txt">CHANGES.txt</a> for progress reports, and
   the <a href="doc/index.html">javadoc</a> for API detail. This is
   experimental code; assume nothing works, and maybe you'll be
@@ -32,11 +60,20 @@
   Jabber, and an implementation I started and Leigh Dodds kindly helped clean up. 
   Chris Schmidt has a nice <a href=
   "http://crschmidt.net/semweb/sparqlxmpp/">implementation</a> of
-  Peter's original design using Python/Redland. This Java
-  implementation uses a slightly different binding. Hopefully we
-  can converge these and other implementations...</p>
+  Peter's original design using Python/Redland. This Java implementation uses a slightly different binding.</p>
+
+    
+<p>Thanks to Peter Saint-Andre and Dirk-Willem van Gulik for help with the original Jabber/XMPP design, Chris  for getting a <a href="http://crschmidt.net/semweb/sparqlxmpp/">Python implementation</a> out the door before I even finished this one, and especially to Leigh for refactoring the original code into something more sane. If we can sync several implementations of the basic concept, I'll try to update <a href="http://www.w3.org/2005/09/xmpp-sparql-binding">http://www.w3.org/2005/09/xmpp-sparql-binding</a> and investigate possibilities for a W3C Note.</p>
+
+<p>
+JQbus uses the HP Labs Jena library for RDF support (including the ARQ SPARQL engine), and the Ignite Realtime (Jive software) Smack library for XMPP/Jabber support. SPARQL queries are defined by <a href="http://www.w3.org/TR/rdf-sparql-query/">the W3C sparql spec</a>
+alongside an XML <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">response format</a> - this software depends upon both. W3C also has specs for a <a href="http://www.w3.org/TR/rdf-sparql-protocol/">SPARQL protocol</a>, and a <a href="http://www.w3.org/TR/rdf-sparql-json-res/ ">JSON response format</a>. This work does not currently pay close enough attention to the SPARQL Protocol specification, and offers no support for JSON or other result format bindings. These are natural areas for further work. There is also a WSDL representation of sparql-protocol; however the expectation behind this work is that Jabber offers enough specialist facilities (discovery, rosters, etc.) for a custom rather than machine generated interface to be worthwhile, even though there may be automatic WSDL-to-XMPP mappings. Again, an area for investigation.
+</p>
 
   <h3>Familiar Looking Cloud Diagram</h3>
+
+  <div style="float: right; margin: 2em"><a href="images/jqbus.txt"><img border="0" longdesc="images/jqbus.txt" 
+				src="images/jqbus.jpg" alt="JQbus diagram" /></a></div>
 
   <p>We've all been drawing such diagrams for years. The
   justification for this one is as a way to explain how "Semantic
@@ -46,7 +83,7 @@
   data, through which descriptions of photos, audio/video,
   calendars, addressbooks etc might be made available - selectively
   - to friends, colleagues and software working on behalf of those
-  people. JQbus is an experimental toy for exposing desktop data in
+Ã  people. JQbus is an experimental toy for exposing desktop data in
   this fashion, using off-the-shelf Jabber accounts. The other
   services sketched in the diagram are part of a bigger unwritten
   story for how this infrastructure facilitates decentralised
@@ -54,8 +91,17 @@
   not commercial websites. They can't be bought nor sold, nor
   fenced in :) But anyway...</p>
 
-  <p><img src="images/jqbus.jpg" alt="JQbus diagram" /></p>
+<p>JQbus and other such systems put us in a design space where we can have an incoming message, 
+perhaps arriving at a personal desktop. We know that the message carries a SPARQL query, 
+we know the Jabber ID of the party sending it. And we have have an easy way to send a response. 
+It provides no direct access control machinery, although we could check to see if the requester is on our buddylist roster. 
+</p>
 
+
+
+
+
+<div style="clear: both"/>
   <h4>Protocol Overview</h4>
 
 
@@ -64,7 +110,91 @@
 Info/Query, or IQ, is a request-response mechanism, similar in some ways to HTTP. The semantics of IQ enable an entity to make a request of, and receive a response from, another entity. The data content of the request and response is defined by the namespace declaration of a direct child element of the IQ element, and the interaction is tracked by the requesting entity through use of the 'id' attribute.
 </blockquote>
 </p>
-  <p>The <a href="README.txt">README</a> has more details on the protocol. To be real sure, see the code. Sorry! :)</p>
+
+<h3>How does it look?</h3>
+
+<p>
+A Jabber (ie. XMPP) client maintains an XML-based conversation with a service connection. It is  
+something like a never-ending streamed XML document. Here is an "IQ" stanza within such a 
+conversation, from the point of view of the sender:</p>
+
+
+<pre class="xmppcode">
+&lt;iq id="S3IG2-4" to="danbri@livejournal.com/sparqlserver" type="get"&gt;
+&lt;query xmlns='http://www.w3.org/2005/09/xmpp-sparql-binding'&gt;
+PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1/&amp;gt; SELECT DISTINCT ?o WHERE {?s foaf:name ?o.}
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre>
+
+<p>Here is how that looks to the receiving party, in <em>their</em> conversation with their Jabber service:</p>
+
+<pre class="xmppcode">
+&lt;iq id="40z5D-4" to="danbri@livejournal.com/sparqlserver" from="bandri@livejournal.com/sparqlclient" type="get"&gt;
+&lt;query xmlns="http://www.w3.org/2005/09/xmpp-sparql-binding"&gt;
+PREFIX foaf: &amp;lt;http://xmlns.com/foaf/0.1/&amp;gt; SELECT DISTINCT ?o WHERE {?s foaf:name ?o.}
+&lt;/query&gt;
+&lt;/iq&gt;
+</pre>
+
+<p>
+Note I'm testing with two LiveJournal accounts, here "bandri" is asking questions of "danbri"; it should be 
+possible to use jabber.org, gmail/gtalk and other providers, so long as the Jabber servers are federated fully. You can see 
+that the data is pretty much unchanged, except that a different stream-specific id is used in each. The id serves to
+tie together a conversation across various XML elements, locally between a Jabber client and its service provider. Looking to 
+the response format, again from the querying party's perspect, we see:
+</p>
+
+<pre class="xmppcode">
+&lt;iq id="40z5D-4" to="bandri@livejournal.com/sparqlclient" 
+  from="danbri@livejournal.com/sparqlserver" type="result"&gt;
+&lt;query-result xmlns="http://www.w3.org/2005/09/xmpp-sparql-binding"&gt;
+&lt;meta comments="content generated via DOM conversion."/&gt;
+&lt;sparql xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#" 
+	xmlns="http://www.w3.org/2005/sparql-results#"&gt;
+  &lt;head&gt;
+    &lt;variable name="o"/&gt;
+  &lt;/head&gt;
+  &lt;results&gt;
+    &lt;result&gt;
+      &lt;binding name="o"&gt;
+        &lt;literal&gt;Libby Miller&lt;/literal&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+    &lt;result&gt;
+      &lt;binding name="o"&gt;
+        &lt;literal&gt;Tim Berners-Lee&lt;/literal&gt;
+      &lt;/binding&gt;
+    &lt;/result&gt;
+&lt;!-- ... more bindings here --&gt;
+  &lt;/results&gt;
+&lt;/sparql&gt;
+&lt;/query-result&gt;
+&lt;/iq&gt;
+</pre>
+
+<p>
+Note: the markup here is as specified for the XML results format, but embedded within a broader protocol context. 
+The initial design used &lt;query&gt; elements for both the question and response. The current design uses different 
+XML element names; this was largely motivated by implementation pragmatics w.r.t. the Smack library and the way
+it attaches custom handlers to IQ messages. But it also makes some sense intuitively; a response is not a query.
+</p>
+
+<p>The Python code at http://crschmidt.net/semweb/sparqlxmpp/ uses a slightly different binding:</p>
+
+<pre class="xmppcode">
+
+	&lt;iq to='crschmidt@crschmidt.net/sparql' type='result' id='2' from='crschmidt@crschmidt.net/sparql'&gt;
+	&lt;query xmlns='http://www.w3.org/2005/09/xmpp-sparql-binding'&gt;
+	&lt;meta /&gt;
+	&lt;sparql xmlns='http://www.w3.org/2001/sw/DataAccess/rf1/result'&gt;
+	  &lt;head&gt; ...
+
+</pre>
+
+<p>Chris' code uses 'query' subelements of 'iq' for both request and response (the underlying jabber.py encourages this), and the
+SPARQL results namespace needs updating.</p>
 
 
   <p>This diagram gives an overview of the Jabber conversations undertaken by
@@ -75,7 +205,7 @@ Info/Query, or IQ, is a request-response mechanism, similar in some ways to HTTP
  
 
 
- <p><img src="images/serverlog.png" alt="JQbus server log" /></p>
+ <div style="margin: 1em"><img src="images/s2.png" alt="JQbus server log" /></div>
 
   <h2>Code</h2>
 
@@ -87,13 +217,14 @@ Info/Query, or IQ, is a request-response mechanism, similar in some ways to HTTP
 </p>
 
 <p>Even stalkers and historians have better things to do than read the pre-Subversion <a href="http://rdfweb.org/viewcvs/viewcvs.cgi/foafproject/htdocs/2005/code/foaftown/jabber/src/com/xmlns/foaftown/">cvs logs</a>. Forgive
-me for not migrating them. And thanks once more to Leigh Dodds for cleaning up that old mess!</p>
+me for not migrating them.</p>
+
 
 <h3>Quick Start</h3>
 
 <p>Read the <a href="README.txt">README.txt</a>. Or if you're feeling lucky:</p>
 
-<pre style="margin: 3em; color: green; background: black; padding: 1em; width 70%">
+<pre style="margin: 3em; color: green; background: black; padding: 1em; width 60%">
 wget -nd http://svn.foaf-project.org/foaftown/downloads/jqbus-latest.tar.gz
 tar -zxvf jqbus-latest.tar.gz 
 cd jqbus/
@@ -113,11 +244,17 @@ ant -Dfoaftown.pwd=xxxxxx -Dfoaftown.role=client
 # ...
 </pre>
 
+<h2>Limitations</h2>
+
+<p>At the moment, JQbus provides only minimalist glue code. The Jabber-level autodiscovery is not yet implemented. There is no access 
+control. Account details are hard coded. There is no roster inspection. RDF datasources are hardcoded, and loaded into a flat triple-space 
+instead of into named graph contexts. We're still at the proof of concept stage, basically. But it's a start!
+</p>
+
 <h2>Contact</h2>
 
-<p><a href="http:/danbri.org">Dan Brickley</a>, danbri@danbri.org or danbrickley@gmail.com if you're not on my whitelist yet. </p>
+<p><a href="http:/danbri.org">Dan Brickley</a> </p>
 
 </body>
 </html>
-
 
