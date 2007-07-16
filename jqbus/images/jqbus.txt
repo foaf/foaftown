@@ -1,0 +1,11 @@
+
+A familiar looking cloud diagram, which contrasts a Jabber-mediated "Social data bus" with machine-specific "personal data bus" services.
+
+The idea is the latter are provided by initiatives such as Nepomuk-KDE, providing a unified view of data within some (typically personal) 
+context. Aspects of this can then be exposed via SPARQL/Jabber to a wider network of interested parties. The diagram shows a central 
+"Social data bus" cloud, with 3 laptops below (mac, windows, linux), each with their own local "personal data bus". 
+
+Above the central cloud, we see several additional value-adding services, as examples. YASNs ("yet another social network"), which 
+are shown interacting directly with the per-user machines, and with an "OpenID++" service representing decentralised authentication and
+identity features. We also show search/browse/aggregate as an example service that deals with the "Social data bus" cloud, alongside
+Personal and group caches (such as SparqlPress, an RDF addon for WordPress, designed as a local-area SemWeb crawler).
