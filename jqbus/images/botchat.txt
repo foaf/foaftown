@@ -1,0 +1,22 @@
+botchat.jpg shows a sequence of cartoon messages between parties talking Jabber; the following describes
+the interaction shown in the image (with a few details added).
+
+bandri@livejournal.com/jqbus (shown as a laptop) asks the Jabber service, "Who is on my roster"?
+
+Jabber service replies to bandri with a list of 5 Jabber "JIDs" (identifiers), which include
+sub-resource names. So we see danbri@livejournal.com/ichat 
+danbri@livejournal.com/jqbus libbymiller@gmail.com/jqbus libbymiller@gmail.com/jqbus alice@example.com/Adium and bob@example.com/tvp
+
+We then see bandri ask "Who speaks SPARQL?" to each JID on his roster, using "DISCO" (the XMPP 
+service discovery spec). The diagram shows one response, from libby@gmail.com/jbus confirming that 
+it "can do http://www.w3.org/2005/09/xmpp-sparql-binding" (IQ extensions are identified by URI).
+
+Next bandri sends a SPARQL query to that JID. Note that we skip over any form of Semantic Web service
+discovery here, and any access control. In practice, this step is where we might ask for a list of 
+"named graph" datasets, and determine whether they are accessible. The SPARQL shown is simple, and addressed 
+as an IQ 'get' to jabber:libbymiller@gmail.com/jqbus:
+ 
+SELECT ?name, ?nick WHERE { [ a :Person, :name ?name; :nick ?nick ] }
+
+A tabular response send to bandri is shown, with columns for the variables ?name and ?nick, and a row 
+for each Person description that matched.
