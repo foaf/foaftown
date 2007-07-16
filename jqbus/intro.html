@@ -222,25 +222,23 @@ me for not migrating them.</p>
 
 <h3>Quick Start</h3>
 
-<p>Read the <a href="README.txt">README.txt</a>. Or if you're feeling lucky:</p>
+<p>Read the <a href="README.txt">README.txt</a>, althought it may lag behind the code. Or if you're feeling lucky, try running these scripts:</p>
 
 <pre style="margin: 3em; color: green; background: black; padding: 1em; width 60%">
 wget -nd http://svn.foaf-project.org/foaftown/downloads/jqbus-latest.tar.gz
 tar -zxvf jqbus-latest.tar.gz 
 cd jqbus/
 
-# Configure accounts (server_jid and client_jid):
-vi src/com/xmlns/foaftown/FoafJabberNode.java 
+# please substitute your own Jabber accounts here! :)
 
-# Run in server role:
-#
-ant -Dfoaftown.pwd=xxxxxx -Dfoaftown.role=server
+# to run in server mode:
+ant -Dfoaftown.role=server -Dfoaftown.pwd=yyyy -Dfoaftown.my_jid=danbri@livejournal.com
 
-# Run in client role (wait 30 secs for the server, and do this in another terminal window):
-#
-ant -Dfoaftown.pwd=xxxxxx -Dfoaftown.role=client
+# to run in client mode (we have to name a server JID too):
+ant -Dfoaftown.role=client -Dfoaftown.pwd=xxxx -Dfoaftown.my_jid=danbrickley@gmail.com -Dfoaftown.other_jid=danbri@livejournal.com
 
-# Gasp in amazement as stuff scrolls up the screen...
+
+# Gasp in amazement as stuff scrolls up the screen and debug windows show you the XMPP conversations from point of view of server and/or client.
 # ...
 </pre>
 
