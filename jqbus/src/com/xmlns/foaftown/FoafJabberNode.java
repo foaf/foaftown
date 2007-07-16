@@ -10,10 +10,13 @@ import org.jivesoftware.smack.provider.ProviderManager;
 import org.jivesoftware.smack.util.StringUtils;
 import org.jivesoftware.smack.MessageListener; 
 import org.jivesoftware.smack.Chat; 
+import org.jivesoftware.smack.Roster; 
 import org.jivesoftware.smack.packet.Message; 
 
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFormatter;
+
+import java.util.Iterator;
 
 /**
  * @author Dan Brickley
@@ -25,13 +28,23 @@ import com.hp.hpl.jena.query.ResultSetFormatter;
 class FoafJabberNode
 {
 
-	public String my_pwd;
+	public final static String XMPP_SPARQL_BINDING_URI = "http://www.w3.org/2005/09/xmpp-sparql-binding";
+
+
+	// From -D commandline, passed through via sysproperty in build.xml:
+
 
 	public String role;
 
-	// Making up a URI for this. Unreviewed by DAWG or others yet, may change.
-	public final static String XMPP_SPARQL_BINDING_URI = "http://www.w3.org/2005/09/xmpp-sparql-binding";
+	public String pwd;
 
+	public String my_jid;
+
+	public String other_jid;
+	
+	
+	// derrived from commandline
+	
 	public String client_jid;
 
 	public String client_userid;
@@ -40,75 +53,60 @@ class FoafJabberNode
 
 	public String client_res;
 
+
 	public String server_jid;
 
-	public String server_userid;
+	public String server_userid = "n/a";
 
-	public String server_host;
+	public String server_host = "n/a";
 
 	public String server_res;
+
 	
-	public String args_jid;
 	
 	public static void main(String args[]) throws XMPPException, Exception
 	{
 		java.util.Enumeration keys = System.getProperties().keys();
-		// while( keys.hasMoreElements() ) { System.out.println(keys.nextElement() ); }
-
+		// while( keys.hasMoreElements() ) { System.err.println(keys.nextElement() ); }
+	
 		XMPPConnection.DEBUG_ENABLED = true;
 		FoafJabberNode hj = new FoafJabberNode();
-		if (args.length > 0)
-		{
-			hj.my_pwd = args[0];
-		}
-		else
-		{
-			System.err.println("Warning: no sender account password given");
-		}
-		System.err.println("Args.length: " + args.length);
-
-		if (args.length > 2) {
-			hj.args_jid = args[2];
-			System.err.println("Setting args_jid to "+hj.args_jid);
+	
+	
+		if (System.getProperty( "foaftown.role" ) != null ) {
+			hj.role = System.getProperty( "foaftown.role" );
+			System.err.println("Set .role to "+hj.role);
+	    } else { 
+			throw new Exception("No role specified in System preferences");
 		}
 
+		if (System.getProperty( "foaftown.pwd" ) != null ) {
+			hj.pwd = System.getProperty( "foaftown.pwd" );
+			// Nah :) System.err.println("Set .pwd to "+hj.pwd);
+	    }
 
-		if (args.length > 1)
-		{
-			hj.role = args[1];
-			System.err.println("Setting role from foaftown.role: [" + hj.role
-					+ "]");
+		if (System.getProperty( "foaftown.my_jid" ) != null ) {
+			hj.my_jid = System.getProperty( "foaftown.my_jid" );
+			System.err.println("Set .my_jid to "+hj.my_jid);
+	    } else {
+			throw new Exception("No my_jid specified in System preferences");
 		}
-		else
-		{
-			System.err.println("No role given, defaulting to client");
-			hj.role = "client";
+
+		// only needed if we are a client
+		if (System.getProperty( "foaftown.other_jid" ) != null ) {
+			hj.other_jid = System.getProperty( "foaftown.other_jid" );
+			System.err.println("Set .other_jid to "+hj.other_jid);
+			if (hj.role.equals("server") ) { System.err.println("Ignoring other_jid as in server role"); }
+	    } else {
+			System.err.println("Warning, no other_jid specified in System preferences");
 		}
-		
+
 		hj.startup();
 	}
 
 
 	public FoafJabberNode()
 	{
-
-		// Edit these:
-		server_jid = "danbrickley@talk.google.com";
-		server_jid = "danbri@livejournal.com";
-		// server_jid = "foaf2@jabber.org";
-		//server_jid = "foaf2@crschmidt.net";
-
-		client_jid = "foaf@jabber-hispano.org";
-		client_jid = "danbri@talk.google.com";
-		client_jid = "bandri@livejournal.com"; //f27
-		// client_jid = "foaf@jabber.org";
-	
-		// we will be playing either client or server role
-		my_pwd = ""; // i may be client or server, but will need its password
-		role = "client"; // or server, if passed in -Dfoaftown.role=server
-		
-		// System.err.println("Using password (test accounts only!): " + my_pwd);
-
 		IQProvider myqueryprov = new SPARQLQueryProvider();
 		IQProvider myresultsprov = new SPARQLResultsProvider();
 		ProviderManager.getInstance().addIQProvider("query", XMPP_SPARQL_BINDING_URI, myqueryprov);
@@ -118,17 +116,23 @@ class FoafJabberNode
 	
 	public void startup() throws XMPPException, Exception
 	{
-		System.err.println("Initiating connection, role is: [" + role + "].");
 
-		// default to commandline
+		System.err.println("Node startup. Reading everything from commandline.");
 
-		if (args_jid != null) { client_jid = args_jid; };
-		if (args_jid != null) { server_jid = args_jid; }; 	
-		
+		if (my_jid == null) { throw new Exception ("Who am I? no -Dfoaftown.my_jid specified..."); }
+
+		if (my_jid != null && role.equals("client")) { 
+			client_jid = my_jid; 
+			server_jid = other_jid; 
+			System.err.println("As a client, Set client_jid to be my_jid, ie. "+my_jid);
+		};
+		if (my_jid != null && role.equals("server")) { server_jid = my_jid; System.err.println("As a server, Set server_jid to be my_jid, ie. "+my_jid);}; 			
 		client_userid = StringUtils.parseName(client_jid);			
 		client_host = StringUtils.parseServer(client_jid); 
 		server_userid = StringUtils.parseName(server_jid); 
 		server_host = StringUtils.parseServer(server_jid);
+		System.err.println("Server_jid: "+server_jid);
+		System.err.println("client_userid: "+client_userid+" client_host: "+client_host+" server_userid: "+server_userid+ " server_host: "+ server_host+"\n\n");
 	
 	    if (server_host.equals("gmail.com") ) { server_host = "talk.google.com"; System.err.println("Specialcasing gmail: "+server_host); }
 		
@@ -150,7 +154,7 @@ class FoafJabberNode
 
 			final XMPPConnection con = new XMPPConnection(client_host);
 			con.connect();
-			con.login(client_userid, my_pwd, "sparqlclient");		
+			con.login(client_userid, pwd, "sparqlclient");		
 			QuerySPARQLIQ spRequest = new QuerySPARQLIQ(q); 
 			spRequest.setTo(server_jid + "/sparqlserver"); 
 			con.sendPacket(spRequest);
@@ -177,7 +181,7 @@ class FoafJabberNode
 			System.err.println("Music test:\n" + q + "\n");
 
 			final XMPPConnection con = new XMPPConnection(client_host);
-			con.login(client_userid, my_pwd, "findmusic");		
+			con.login(client_userid, pwd, "findmusic");		
 			QuerySPARQLIQ spRequest = new QuerySPARQLIQ(q); 
 			spRequest.setTo(server_jid + "/sparqlserver"); 
 			con.sendPacket(spRequest);
@@ -203,7 +207,7 @@ class FoafJabberNode
 		System.err.println("Attaching RDF to Jabber at server="+server_host+" user= "+server_userid);
 		
 	    QueryServer server = new QueryServer(server_host,
-	            server_userid, my_pwd, "sparqlserver");
+	            server_userid, pwd, "sparqlserver");
 	    //server.addFile("c:\\projects\\ldodds-knows.rdf");
 	    server.getModel().read("http://danbri.org/foaf.rdf");
 	    // server.addFile("/home/danbri/semlife/_music.rdf");
@@ -213,7 +217,7 @@ class FoafJabberNode
 	public void sparql_client() throws XMPPException
 	{
 	    QueryClient client = new QueryClient(
-	            client_host, client_userid, my_pwd, "sparqlclient");
+	            client_host, client_userid, pwd, "sparqlclient");
 	    
 	
 		String q =  "SELECT ?s ?p ?o WHERE {?s ?p ?o.}";
@@ -221,7 +225,28 @@ class FoafJabberNode
 
 		q =  "SELECT DISTINCT ?p ?o WHERE {?s ?p ?o.}"; // ok
 		q =  "SELECT DISTINCT ?p ?o WHERE {?s <http://xmlns.com/foaf/0.1/name> ?o.}"; // ok
-		q =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/> SELECT DISTINCT ?p ?o WHERE {?s foaf:name ?o.}"; // not ok
+		q =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/> SELECT DISTINCT ?o WHERE {?s foaf:name ?o.}"; // not ok
+		
+		/*		
+		Roster r = con.getRoster();
+		System.err.println("Connection roster of client " + client_jid
+				+ " is: " + r.toString());
+		for (Iterator i = r.getEntries(); (Iterator)i.hasNext();)
+		{
+			System.err.println("Roster item: " + i.next());
+		}
+
+		Iterator them = r.getPresences(server_jid);
+		if (them == null)
+		{
+			System.err.println("Server " + server_jid
+					+ " has no presences visible to " + client_jid);
+		}
+		else
+		{
+			System.err.println("Presences: " + them.toString());
+		}
+		*/
 		
 	    client.sendQuery(server_jid+"/sparqlserver", q);
 		
@@ -249,26 +274,7 @@ class FoafJabberNode
 		// Have a look around to see who is online
 		// (eventually we'll select target jids here)
 		//
-		/*
-		Roster r = con.getRoster();
-		System.err.println("Connection roster of client " + client_jid
-				+ " is: " + r.toString());
-		for (Iterator i = r.getEntries(); i.hasNext();)
-		{
-			System.err.println("Roster item: " + i.next());
-		}
 
-		Iterator them = r.getPresences(server_jid);
-		if (them == null)
-		{
-			System.err.println("Server " + server_jid
-					+ " has no presences visible to " + client_jid);
-		}
-		else
-		{
-			System.err.println("Presences: " + them.toString());
-		}
-		*/
 		
 	}
 }
@@ -326,3 +332,11 @@ class FoafJabberNode
  * 
  * http://www.jivesoftware.org/builds/messenger/docs/latest/documentation/javadoc/org/jivesoftware/messenger/handler/IQHandler.html
  */
+
+		// Edit these:
+		// server_jid = "danbrickley@talk.google.com";
+		// server_jid = "danbri@livejournal.com";
+		// server_jid = "foaf2@jabber.org";
+		// client_jid = "danbri@talk.google.com";
+		// client_jid = "bandri@livejournal.com"; //f27
+		// client_jid = "foaf@jabber.org";

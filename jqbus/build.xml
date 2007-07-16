@@ -61,27 +61,11 @@ see README.txt for details. Quick start:
         classpathref="my.classpath"
         >  
 	<!-- http://ant.apache.org/manual/using.html#arg -->
-	    <sysproperty key="foaftown.pwd" value="${foaftown.pwd}" />
+	<sysproperty key="foaftown.pwd" value="${foaftown.pwd}" />
     	<sysproperty key="foaftown.role" value="${foaftown.role}" />
-    	<sysproperty key="foaftown.jid" value="${foaftown.jid}" />
-        <arg line="${foaftown.pwd} ${foaftown.role} ${foaftown.jid} "/>
+    	<sysproperty key="foaftown.my_jid" value="${foaftown.my_jid}" />
+    	<sysproperty key="foaftown.other_jid" value="${foaftown.other_jid}" />
       </java>
-    </target>
-
-	<target name="client" depends="build" description="run the client">
-		<java classname="${main-class}"
-			  fork="true"
-			  classpathref="my.classpath">
-	        <arg line="${foaftown.pwd} client ${foaftown.jid}"/>			
-		</java>
-    </target>
-
-	<target name="server" depends="build" description="run the server">
-		<java classname="${main-class}"
-			  fork="true"
-			  classpathref="my.classpath">
-	        <arg line="${foaftown.pwd} server ${foaftown.jid}"/>			
-		</java>
     </target>
 
 
