@@ -47,14 +47,13 @@ class FoafJabberNode
 	public String server_host;
 
 	public String server_res;
-
+	
+	public String args_jid;
+	
 	public static void main(String args[]) throws XMPPException, Exception
 	{
-		// java.util.Properties p = System.getProperties(); // TODO: we really
-		// want ant's -D args
-		// java.util.Enumeration keys = p.keys();
-		// while( keys.hasMoreElements() ) { System.out.println(
-		// keys.nextElement() ); }
+		java.util.Enumeration keys = System.getProperties().keys();
+		// while( keys.hasMoreElements() ) { System.out.println(keys.nextElement() ); }
 
 		XMPPConnection.DEBUG_ENABLED = true;
 		FoafJabberNode hj = new FoafJabberNode();
@@ -67,6 +66,13 @@ class FoafJabberNode
 			System.err.println("Warning: no sender account password given");
 		}
 		System.err.println("Args.length: " + args.length);
+
+		if (args.length > 2) {
+			hj.args_jid = args[2];
+			System.err.println("Setting args_jid to "+hj.args_jid);
+		}
+
+
 		if (args.length > 1)
 		{
 			hj.role = args[1];
@@ -87,10 +93,8 @@ class FoafJabberNode
 	{
 
 		// Edit these:
-		server_jid = "foaf2@jabber-hispano.org";
 		server_jid = "danbrickley@talk.google.com";
 		server_jid = "danbri@livejournal.com";
-		// server_jid = "crschmidt@jabber-hispano.org";
 		// server_jid = "foaf2@jabber.org";
 		//server_jid = "foaf2@crschmidt.net";
 
@@ -98,19 +102,10 @@ class FoafJabberNode
 		client_jid = "danbri@talk.google.com";
 		client_jid = "bandri@livejournal.com"; //f27
 		// client_jid = "foaf@jabber.org";
-		
-		//client_jid = "foaf@crschmidt.net";
-
-		// note that I got errors from jabber.ru re authentication type
-        // ...and odd message buffering delays from Chris's server
-		
+	
 		// we will be playing either client or server role
 		my_pwd = ""; // i may be client or server, but will need its password
 		role = "client"; // or server, if passed in -Dfoaftown.role=server
-		client_userid = StringUtils.parseName(client_jid); // "foaf";
-		client_host = StringUtils.parseServer(client_jid); // "jabber-hispano.org";
-		server_userid = StringUtils.parseName(server_jid); // "foaf2";
-		server_host = StringUtils.parseServer(server_jid);
 		
 		// System.err.println("Using password (test accounts only!): " + my_pwd);
 
@@ -125,6 +120,18 @@ class FoafJabberNode
 	{
 		System.err.println("Initiating connection, role is: [" + role + "].");
 
+		// default to commandline
+
+		if (args_jid != null) { client_jid = args_jid; };
+		if (args_jid != null) { server_jid = args_jid; }; 	
+		
+		client_userid = StringUtils.parseName(client_jid);			
+		client_host = StringUtils.parseServer(client_jid); 
+		server_userid = StringUtils.parseName(server_jid); 
+		server_host = StringUtils.parseServer(server_jid);
+	
+	    if (server_host.equals("gmail.com") ) { server_host = "talk.google.com"; System.err.println("Specialcasing gmail: "+server_host); }
+		
 		if (role.equals("client"))
 		{
 			sparql_client();
@@ -193,6 +200,8 @@ class FoafJabberNode
 	
 	public void sparql_server() throws XMPPException
 	{
+		System.err.println("Attaching RDF to Jabber at server="+server_host+" user= "+server_userid);
+		
 	    QueryServer server = new QueryServer(server_host,
 	            server_userid, my_pwd, "sparqlserver");
 	    //server.addFile("c:\\projects\\ldodds-knows.rdf");

@@ -10,17 +10,15 @@ import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.PacketListener;
 import org.jivesoftware.smack.packet.IQ;
 import org.jivesoftware.smack.packet.Packet;
+import org.jivesoftware.smack.ChatManager; 
+import org.jivesoftware.smack.Chat; 
+import org.jivesoftware.smack.MessageListener; 
+import org.jivesoftware.smack.packet.Message; 
 
 import com.hp.hpl.jena.query.*;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.FileManager;
-
-
-import org.jivesoftware.smack.ChatManager; // new in 2007 :)
-import org.jivesoftware.smack.Chat; 
-import org.jivesoftware.smack.MessageListener; 
-import org.jivesoftware.smack.packet.Message; 
 
 /**
  * @author Dan Brickley
