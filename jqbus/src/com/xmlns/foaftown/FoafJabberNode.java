@@ -225,8 +225,12 @@ class FoafJabberNode
 
 		q =  "SELECT DISTINCT ?p ?o WHERE {?s ?p ?o.}"; // ok
 		q =  "SELECT DISTINCT ?p ?o WHERE {?s <http://xmlns.com/foaf/0.1/name> ?o.}"; // ok
+		q =  "SELECT DISTINCT ?p ?o WHERE {?s ?p ?o.}"; // ok
 		q =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/> SELECT DISTINCT ?o WHERE {?s foaf:name ?o.}"; // not ok
 		
+		
+		q =  "SELECT DISTINCT ?x ?y WHERE {?x <http://www.w3.org/2004/02/skos/core#broader> ?y .}"; // skos
+
 		/*		
 		Roster r = con.getRoster();
 		System.err.println("Connection roster of client " + client_jid
