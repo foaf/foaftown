@@ -163,3 +163,18 @@ Fix build.xml to do something like this, or read subversion manual:
 and this
 
  cd ..; tar -zcvf downloads/jqbus-latest.tar.gz jqbus/
+
+Notes with stpeter:
+
+is there a (practical? official?) limit to IQ message size? just beginning cross-client tests:
+Ouch, network error
+Error: 1, Query:
+SELECT DISTINCT ?x ?y WHERE {?x <http://www.w3.org/2004/02/skos/core#broader> ?y .}
+hmm
+on jabber.org we limit packet sizes to 65k
+...using Chris Schmidt's Python server code, it died before it got the response out
+so i'd need to keep packets < both LJ's and GTalk's?
+well, they may not impose such limits
+not sure about their services
+there's no hard limit in the protocol
+
