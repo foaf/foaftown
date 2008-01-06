@@ -229,7 +229,7 @@ class FoafJabberNode
 		q =  "PREFIX foaf: <http://xmlns.com/foaf/0.1/> SELECT DISTINCT ?o WHERE {?s foaf:name ?o.}"; // not ok
 		
 		
-		q =  "SELECT DISTINCT ?x ?y WHERE {?x <http://www.w3.org/2004/02/skos/core#broader> ?y .}"; // skos
+//q =  "SELECT DISTINCT ?x ?y WHERE {?x <http://www.w3.org/2004/02/skos/core#broader> ?y .}"; // skos
 
 		/*		
 		Roster r = con.getRoster();
