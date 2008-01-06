@@ -75,6 +75,10 @@ class QueryResult
     # @return: converted result
     # @rtype: PyXlib DOM node
 	def _convertXML() 
+
+    require 'rexml/document'
+    return REXML::Document.new(self.response)
+
     raise "Unimplemented."
     
 	#			from xml.dom.ext.reader import PyExpat
