@@ -1,0 +1,133 @@
+Query string: 
+SELECT DISTINCT ?name ?url WHERE {  [ <http://xmlns.com/foaf/0.1/name> ?name ; <http://xmlns.com/foaf/0.1/homepage> ?url ]  }
+
+Response from GET to http://sandbox.foaf-project.org/2008/foaf/ggg.php?query=SELECT+DISTINCT+%3Fname+%3Furl+WHERE+%7B++%5B+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%3E+%3Fname+%3B+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%3E+%3Furl+%5D++%7D&output=json&results=json&format=json& was: 
+
+Note: the value truncation seems to be a problem with the server not this client
+
+
+Name: n Brickley	http://danbri.org/
+Name: n Brickley	http://danbri.org/
+Name: 	http://johnromkey.livejournal.com/
+Name: m Berners-Lee	http://www.w3.org/People/Berners-Lee/
+Name: an Jackson	http://www.grorg.org/dean/
+Name:  Benn	http://www.mrbenn.co.uk
+Name: d Dumbill	http://heddley.com/edd/
+Name: rtin Poulter	http://www.weird.co.uk/martin/
+Name: rtin L. Poulter	http://www.weird.co.uk/martin/
+Name: ic Miller	http://purl.org/net/eric/
+Name: n Brickley	http://www.ecademy.com/account.php?sha=6e80d02de4cb3376605a34976e31188bb16180d0
+Name: n Brickley	http://my.opera.com/danbri/
+Name: arles McCathieNevile	http://my.opera.com/chaals/
+Name: ralie mercier	http://my.opera.com/koalie/
+Name: rima	http://my.opera.com/Pecorra/
+Name: etil Kjernsmo	http://my.opera.com/kjetilk/
+Name: pA	http://my.opera.com/novara/
+Name: die Lopez	http://my.opera.com/Eddie_Lopez/
+Name: a MÃ©ndez	http://my.opera.com/evamen/
+Name: egory J. Rosmaita	http://my.opera.com/oedipus/
+Name: liana Maspons	http://my.opera.com/lmaspons/
+Name: rgio Madera	http://my.opera.com/SergeWood/
+Name: bin Berjon	http://my.opera.com/robin-berjon/
+Name: n	http://people.tribe.net/1e34b2eb-34c4-45df-9b93-38f35d6bd8d0
+Name: am	http://people.tribe.net/signal9
+Name: ly	http://people.tribe.net/068a09eb-4631-4fe5-82d2-d0b5aac359dd
+Name: ana	http://people.tribe.net/littleredhairedgirl
+Name: ng	http://people.tribe.net/hqu
+Name: rc	http://people.tribe.net/marccanter
+Name: rgaret	http://people.tribe.net/mags
+Name: ul	http://people.tribe.net/paul
+Name: ndy	http://people.tribe.net/randymorin
+Name: 	http://www.livejournal.com/users/crschmidt/
+Name: ic Sigler	http://esigler.2nw.net/
+Name: e Lambda	http://www.w3.org/2003/12/rdf-in-xhtml-xslts/complete-example.html
+Name: d Dumbill	http://usefulinc.com/edd/blog
+Name: 	http://karlmtl.meinbild.ch/
+Name: x Froumentin	http://www.w3.org/People/maxf/
+Name: y van der Hiel	http://people.w3.org/amy/
+Name: tt Biddulph	http://www.hackdiary.com/
+Name: bby Miller	http://ilrt.org/people/libby/
+Name: n Brickley	http://rdfweb.org/people/danbri/
+Name: nny Ayers	http://danja.typepad.com/
+Name: rten Frederiksen	http://mortenf.typepad.com/
+Name: aine Cook	http://romeda.org/
+Name:  Messina	http://factoryjoe.com/
+Name: lson Minar	http://www.somebits.com/weblog/
+Name: owe Boyd	http://www.stoweboyd.com/message
+Name: remy Keith	http://adactio.com/journal/
+Name: ter Saint-Andre	http://https://stpeter.im/
+Name: iner Wasserfuhr	http://id.mindbroker.de/twit
+Name: ntek Çelik	http://tantek.com/
+Name: nny Ayers	http://dannyayers.com
+Name: mon Willison	http://simonwillison.net/
+Name: m Coates	http://www.plasticbag.org/
+Name: v Dan Catt	http://www.geobloggers.com
+Name: d Dumbill	http://times.usefulinc.com/
+Name: n Davis	http://iandavis.com/blog
+Name: il Wilson	http://philwilson.org/blog/
+Name: obleizer	http://scobleshow.com
+Name: ul Downey	http://blog.whatfettle.com
+Name: igh Dodds	http://www.ldodds.com/blog
+Name: ian Suda	http://suda.co.uk/
+Name: ar	http://code-bear.com
+Name: llo	http://www.totaltactics.org
+Name: K. DeLong	http://bkdelong.livejournal.com
+Name: m	http://tommorris.org/
+Name: ildash	http://www.anildash.com/
+Name: ott Kveton	http://kveton.com
+Name: rio Menti	http://menti.net
+Name: ff Barr	http://www.jeff-barr.com
+Name: rian McMahon	http://Segala.com/blog
+Name: hok	http://ashok.videdot.com/
+Name: ter	http://outer-impressions.blogspot.com/
+Name: ll de hOra	http://dehora.net/journal
+Name: arl van Niekerk	http://charlvn.za.net/
+Name: ul Walsh	http://segala.com/about-segala/key-people/paul-walsh/
+Name: ristoph Görn	http://B4mad.Net/
+Name: meo Wood	http://cameo.livejournal.com
+Name: ic Le Meur	http://www.loiclemeur.com
+Name: vid Recordon	http://www.davidrecordon.com/
+Name: ralie Mercier	http://my.opera.com/koalie/blog/
+Name: ul Miller	http://paulmiller.typepad.com/
+Name: cas Gonze	http://gonze.com/about
+Name: n Weiner	http://lostinpatterns.com/
+Name: chael Randall	http://pigpog.com/michael
+Name: ris Wilson	http://blogs.msdn.com/cwilso
+Name: chael Hausenblas	http://mhausenblas.blogr.com/stories/
+Name: hn Breslin	http://www.johnbreslin.com/blog/
+Name: lian Bond	http://www.voidstar.com
+Name: dis Bojars	http://captsolo.net/
+Name: exandre Passant	http://apassant.net
+Name: m Bray	http://www.tbray.org/ongoing/
+Name: ngsley Idehen	http://www.openlinksw.com/blog/~kidehen
+Name: drew Badera	http://andrew.badera.us/
+Name: ve Pawson	http://www.dpawson.co.uk/nodesets
+Name: livier jacq	http://blog.ojacq.com
+Name: an B. Palmer	http://inamidst.com/sbp/
+Name: ijah wright	http://www.geek-guides.com/
+Name: een Living	http://lighterfootstep.com
+Name: n Udell	http://blog.jonudell.net
+Name: chlan Hunt	http://lachy.id.au/
+Name: ATWG	http://whatwg.org/
+Name: ntguarde	http://web.g.hatena.ne.jp/vantguarde/
+Name: sahide KANZAKI	http://www.kanzaki.com/
+Name: rcos Caceres	http://datadriven.com.au
+Name: ssell Beattie	http://www.russellbeattie.com
+Name: ndy Chisholm	http://gilhooly.blogspot.com
+Name: urian Gridinoc	http://purl.org/net/laur
+Name: seph Smarr	http://josephsmarr.com
+Name: guru Hamazaki	http://www.webspiritus.com/
+Name: sa Rein	http://www.onlisareinsradar.com
+Name: rk Nottingham	http://www.mnot.net/
+Name: chael(tm) Smith	http://sideshowbarker.net
+Name: ristopher Schmidt	http://crschmidt.net/
+Name: rman Walsh	http://norman.walsh.name/
+Name: o Cei	http://agylen.com/
+Name: on Kimbro	http://www.speakeasy.org/~lion/
+Name: ytter	http://www.pwytter.com/
+Name: va Spivack	http://www.mindingtheplanet.net
+Name: lvain Wallez	http://bluxte.net/
+Name: arles Nepote	http://rn7.net/b/
+Name: bertob	http://linusmat.com
+Name: rc Canter	http://marc.blogs.it
+Name: keon	http://eikeon.com/
