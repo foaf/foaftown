@@ -1,0 +1,66 @@
+/* CSS Document */
+html {
+	text-align:center;
+}
+body {
+	margin: auto;
+	margin-top: 50px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: left;
+}
+td {
+	font-size: 10px;
+}
+tr {
+	vertical-align: top;
+}
+.music {
+	font-size: 9px;
+}
+
+.name {
+	color: #666666;
+}
+
+h1 {
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:30px;
+	font-style: normal;
+	text-decoration: none;
+	font-weight: normal;
+}
+h6 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #993300;
+	font-style: normal;
+	text-decoration: none;
+	font-weight: normal;
+}
+.btn {
+	background-color: #FFFFFF;
+	color: #333333;
+	border: 1px solid #333333;
+}
+
+.footer {
+	font-size: 10px;
+	color:#666666;
+	margin-top: 100px;
+}
+.footer a {
+	color: #333333;
+}
+
+a {
+	color:#003399;
+}
+
+/* divs */
+#container {
+	width: 500px;
+	text-align: left;
+	height: 700px;
+	margin-top: 50px;
+}
