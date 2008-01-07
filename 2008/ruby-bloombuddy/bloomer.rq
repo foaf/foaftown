@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX wot: <http://xmlns.com/wot/0.1/>
+PREFIX foaf.rdf: <file:foaf.rdf>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+SELECT DISTINCT ?prop ?val ?name 
+
+FROM foaf.rdf:
+FROM foaf:
+
+WHERE {
+    [
+      a foaf:Person ;
+      foaf:openid <http://danbri.org/> ;
+      foaf:knows [ foaf:name ?name ; ?prop ?val] ;
+    ] . 
+    ?prop a owl:InverseFunctionalProperty .
+   
+} 

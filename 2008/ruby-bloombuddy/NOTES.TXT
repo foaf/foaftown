@@ -1,0 +1,25 @@
+
+Some Ruby experiments with Bloom filters.  Dan <http://danbri.org/>
+
+Nearby in the Web:
+Related to FOAF whitelisting experiments from 2001: http://www.w3.org/2001/12/rubyrdf/util/foafwhite/intro.html
+also obviously to LOAF http://loaf.cantbedone.org/ from Joshua Schachter, Maciej Ceglowski 
+and the W3C SWEO Whitelisting email project, http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/FOAFWhitelisting
+
+Current thinking (Jan '08): I could imagine a widget for Facebook and OpenSocial that allows my buddies to download basic 
+FOAF for me, which includes an encoded bloom filter generated FOR THEM. And inside the bloom, we hide some data that allows 
+us to detect that it was generated for them (assuming some server-side bookkeeping) if any of the blooms are leaked. I'm handwaving 
+somewhat here. Also got to figure out how salts fit in. --danbri
+
+Code status: I forget. It was kinda looking promising, but I don't think it works.
+
+
+Related: 
+
+Scripts to get input data:
+
+osascript -e 'tell application "Address Book" to get the value of every email of every person' | perl -pe 's/,+ /\n/g' | sort | uniq
+Help, why doesn't this work?! I only get 6 addresses...
+
+Ruby SPARQL client, see ../ filetree.
+
