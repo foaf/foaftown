@@ -3,21 +3,29 @@
 # Proof of concept FOAF "knows" contact list Bloom filter. danbri@danbri.org
 
 require 'rubygems'
-require 'BloominSimple'
+gem 'bloomfilter'
+require 'bloomfilter/BloomFilter'
+
+
+
+# also needed: gem install RubyInline
+
+# this version uses the gem packaged successor to BloominSimple
+
+
 require 'json'
-require 'digest/sha1'
 
 # we pass in a hasher block
-#bf = BloominSimple.new(1_000_000) { |item| Digest::SHA1.digest(item.downcase.strip).unpack("VVVV") }
-bf = BloominSimple.new(1000) do |item| Digest::SHA1.digest(item.downcase.strip).unpack("VVVV") end
+# http://blog.rapleaf.com/dev/?p=6
+bf = BloomFilter.new(1000) do |item| Digest::SHA1.digest(item.downcase.strip).unpack("VVVV") end
 
 
-# see also http://ajax.suaccess.org/ruby/ruby-on-rails-converting-between-numeric-bases/
-# http://www.faqs.org/rfcs/rfc2045.html
+#see also http://ajax.suaccess.org/ruby/ruby-on-rails-converting-between-numeric-bases/
+#http://www.faqs.org/rfcs/rfc2045.html
 # perl: http://perldoc.perl.org/functions/pack.html
-#     b	A bit string (ascending bit order inside each byte, like vec()).
-# http://safari.oreilly.com/9780596529864/array_pack_directives
-# http://www.rubycentral.com/pickaxe/ref_c_array.html#Array.pack
+#    b	A bit string (ascending bit order inside each byte, like vec()).
+#http://safari.oreilly.com/9780596529864/array_pack_directives
+#http://www.rubycentral.com/pickaxe/ref_c_array.html#Array.pack
 puts "############"
 
 js = `roqet -q bloomer.rq -r json`; # get contact list as prop/value pairs
@@ -30,27 +38,13 @@ res["results"]["bindings"].each do |contact|
     puts
 end
 
-puts                bf.includes?("http://xmlns.com/foaf/0.1/mbox mailto:d.m.steer@lse.ac.uk")     # => true
-puts                bf.includes?("http://xmlns.com/foaf/0.1/mbox mailto:santaclaus@npole.example.com")    # => false
-puts                bf.includes?("http://xmlns.com/foaf/0.1/openid http://santa.example.com/")    # => false
+puts                bf.include?("http://xmlns.com/foaf/0.1/mbox mailto:d.m.steer@lse.ac.uk")     # => true
+puts                bf.include?("http://xmlns.com/foaf/0.1/mbox mailto:santaclaus@npole.example.com")    # => false
+puts                bf.include?("http://xmlns.com/foaf/0.1/openid http://santa.example.com/")    # => false
  
 
-puts "Serializing to base 16: "
-a= eval "0b"+bf.bitfield.to_s()
-puts a.to_s(base=16)
+puts "Serializing: "
 
-puts "a is "+a.to_s
+bf.to_s
 
-s = [a.to_s].pack("m")
-puts "Base64: #{s}"
-
-#puts bf.hashnums
-puts bf.class
-
-#puts "Binary: "
-#a= eval "0b"+bf.bitfield.to_s()
-#puts a.to_s(base=2)
-
-#%w{wonderful ball stereo jester flag shshshshsh nooooooo newyorkcity}.each do |a|
-#  puts "#{sprintf("%15s", a)}: #{bf.includes?(a)}"
-#end
+puts bf.save("tmp/b1")
