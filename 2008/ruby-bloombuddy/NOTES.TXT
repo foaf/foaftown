@@ -6,6 +6,9 @@ Related to FOAF whitelisting experiments from 2001: http://www.w3.org/2001/12/ru
 also obviously to LOAF http://loaf.cantbedone.org/ from Joshua Schachter, Maciej Ceglowski 
 and the W3C SWEO Whitelisting email project, http://esw.w3.org/topic/SweoIG/TaskForces/CommunityProjects/FOAFWhitelisting
 
+A lot of this is spelled out here:
+http://www.perl.com/pub/a/2004/04/08/bloom_filters.html?page=2
+
 Current thinking (Jan '08): I could imagine a widget for Facebook and OpenSocial that allows my buddies to download basic 
 FOAF for me, which includes an encoded bloom filter generated FOR THEM. And inside the bloom, we hide some data that allows 
 us to detect that it was generated for them (assuming some server-side bookkeeping) if any of the blooms are leaked. I'm handwaving 
