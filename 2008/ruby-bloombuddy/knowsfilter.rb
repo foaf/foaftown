@@ -41,19 +41,22 @@ end
 puts                bf.include?("http://xmlns.com/foaf/0.1/mbox mailto:d.m.steer@lse.ac.uk")     # => true
 puts                bf.include?("http://xmlns.com/foaf/0.1/mbox mailto:santaclaus@npole.example.com")    # => false
 puts                bf.include?("http://xmlns.com/foaf/0.1/openid http://santa.example.com/")    # => false
- 
 
-puts "Serializing: "
 
-puts bf.class
-puts bf.guts.class
-puts bf.guts.size
+class BloomFilter
 
-#puts bf.save("tmp/b1")
-
-i=0
-while(i<bf.guts.size) 
-  puts i
-  i +=1 
-  puts bf.guts[i]
+  def guts
+    puts "Serializing: "
+    i=0
+    asc=""
+    while(i< @bits.size) 
+      i +=1 
+      v = @bits[i]? 1 : 0 
+      asc += v.to_s
+    end
+    return asc
+  end
 end
+
+puts bf.guts
+
