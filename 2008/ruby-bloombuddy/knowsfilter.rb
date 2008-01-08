@@ -43,7 +43,14 @@ puts                bf.include?("http://xmlns.com/foaf/0.1/mbox mailto:santaclau
 puts                bf.include?("http://xmlns.com/foaf/0.1/openid http://santa.example.com/")    # => false
 
 
+
+require 'Base64'
+
 class BloomFilter
+
+  def to_web
+    Base64.encode64("#{@bits.size} #{@bits.to_s}")
+  end
 
   def guts
     puts "Serializing: "
@@ -58,5 +65,5 @@ class BloomFilter
   end
 end
 
-puts bf.guts
+puts bf.to_web
 
