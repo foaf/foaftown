@@ -45,6 +45,15 @@ puts                bf.include?("http://xmlns.com/foaf/0.1/openid http://santa.e
 
 puts "Serializing: "
 
-bf.to_s
+puts bf.class
+puts bf.guts.class
+puts bf.guts.size
 
-puts bf.save("tmp/b1")
+#puts bf.save("tmp/b1")
+
+i=0
+while(i<bf.guts.size) 
+  puts i
+  i +=1 
+  puts bf.guts[i]
+end
