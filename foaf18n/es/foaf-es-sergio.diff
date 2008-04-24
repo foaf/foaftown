@@ -1,0 +1,98 @@
+--- foaf-es.rdf	2007-01-26 23:43:23.000000000 +0100
++++ foaf-es-sergio.rdf	2008-04-18 15:30:05.000000000 +0200
+@@ -31,19 +31,19 @@ Translations for: Agent, Document, Group
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+   <rdfs:label>Imagen</rdfs:label>
+-  <rdfs:comment>Un imagen.</rdfs:comment>
++  <rdfs:comment>Una imagen.</rdfs:comment>
+ </rdf:Description>
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+   <rdfs:label>Grupo</rdfs:label>
+-  <rdfs:comment>Una clase de Agentes.</rdfs:comment>
++  <rdfs:comment>Una grupo de agentes.</rdfs:comment>
+ </rdf:Description>
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+-  <rdfs:label></rdfs:label>
+-  <rdfs:comment></rdfs:comment>
++  <rdfs:label>Cuenta online</rdfs:label>
++  <rdfs:comment>Cuenta en algún tipo de servicio online.</rdfs:comment>
+ </rdf:Description>
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+@@ -85,8 +85,8 @@ Translations for: Agent, Document, Group
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+-  <rdfs:label xml:lang="es-ES">bitácora</rdfs:label>
+-  <rdfs:comment xml:lang="es-ES">Una bitácora de algo o alguien (ya sea una persona, grupo, compañia, etc.).</rdfs:comment>
++  <rdfs:label>bitácora</rdfs:label>
++  <rdfs:comment>Una bitácora de algo o alguien (ya sea una persona, grupo, compañia, etc.).</rdfs:comment>
+ </rdf:Description>
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/img">
+@@ -98,12 +98,12 @@ Translations for: Agent, Document, Group
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depicts">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+   <rdfs:label>retrata a</rdfs:label>
+-  <rdfs:comment>Un algo o alguien retratado en esta representación.</rdfs:comment>
++  <rdfs:comment>Representación que retrata alguien o algo.</rdfs:comment>
+ </rdf:Description>
+ 
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+-  <rdfs:label>retrato</rdfs:label>
++  <rdfs:label>Retrato</rdfs:label>
+   <rdfs:comment>Un retrato de algo o alguien.</rdfs:comment>
+ </rdf:Description>
+ 
+@@ -122,7 +122,7 @@ Translations for: Agent, Document, Group
+ <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+   <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+   <rdfs:label>es tópico principal de</rdfs:label>
+-  <rdfs:comment>Un documento del cual este algo es el tópico principal.</rdfs:comment>
++  <rdfs:comment>Un documento del cual es el tópico principal.</rdfs:comment>
+ </rdf:Description>
+ 
+ <!--
+@@ -133,7 +133,7 @@ Translations for: Agent, Document, Group
+ </rdf:Description>
+ -->
+ 
+-<!-- from foafnet, more todo (some of these covered above) -->
++<!-- from foafnet, more todo (some of these covered above)
+ foaf:PersonalProfileDocument
+ foaf:maker
+ foaf:primaryTopic
+@@ -142,7 +142,7 @@ foaf:name
+ foaf:mbox_sha1sum
+ foaf:img
+ foaf:knows
+-foaf:person --- case error
++foaf:person  case error
+ 
+ 
+ foaf:Person
+@@ -186,18 +186,5 @@ we are using (dependency) foaf:Agent and
+     stable: homepage (we also use that one)
+ -->
+ 
+-
+-
+-
+-
+ </rdf:RDF>
+ 
+-
+-
+-
+-
+-
+-
+-
+-
+-

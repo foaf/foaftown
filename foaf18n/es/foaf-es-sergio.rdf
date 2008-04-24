@@ -1,0 +1,190 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:wot="http://xmlns.com/wot/0.1/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="es">
+
+<!-- we can over-ride 'es' with specifics if there are
+different spanish words for L.A., Arg, Spain etc... -->
+
+<!--
+Translations for: Agent, Document, Group, Image,
+    OnlineAccount, Organization, Person, Project ... -->
+
+<owl:Ontology rdf:about="http://xmlns.com/foaf/0.1/" />
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Agente</rdfs:label>
+  <rdfs:comment>Un agente (ej. persona, grupo, software o artefacto físico).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Documento</rdfs:label>
+  <rdfs:comment>Un documento.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Imagen</rdfs:label>
+  <rdfs:comment>Una imagen.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Grupo</rdfs:label>
+  <rdfs:comment>Una grupo de agentes.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Cuenta online</rdfs:label>
+  <rdfs:comment>Cuenta en algún tipo de servicio online.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Organization">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Organización</rdfs:label>
+  <rdfs:comment>Una organización.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Persona</rdfs:label>
+  <rdfs:comment>Una persona.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Project">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Proyecto</rdfs:label>
+  <rdfs:comment>Un proyecto (un esfuerzo collectivo de cierta clase).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/knows">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>conoce a</rdfs:label>
+  <rdfs:comment>Una persona conocida por esta persona (indicando cierto nivel de interacción recíproca entre las partes).</rdfs:comment>
+</rdf:Description>
+
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/name">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>nombre</rdfs:label>
+  <rdfs:comment>Un nombre para algo.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>página principal</rdfs:label>
+  <rdfs:comment>Una página principal para algo.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/weblog">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>bitácora</rdfs:label>
+  <rdfs:comment>Una bitácora de algo o alguien (ya sea una persona, grupo, compañia, etc.).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/img">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>imagen</rdfs:label>
+  <rdfs:comment>Una imagen que puede ser utilizada para representar algo (p.ej. retratos que son particularmente representativos de algo, ej. una foto en una página personal).</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depicts">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>retrata a</rdfs:label>
+  <rdfs:comment>Representación que retrata alguien o algo.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>Retrato</rdfs:label>
+  <rdfs:comment>Un retrato de algo o alguien.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/topic">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>tópico</rdfs:label>
+  <rdfs:comment>Un tópico de una página o documento.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/primaryTopic">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>tópico principal</rdfs:label>
+  <rdfs:comment>El tópico principal de una página o documento.</rdfs:comment>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label>es tópico principal de</rdfs:label>
+  <rdfs:comment>Un documento del cual es el tópico principal.</rdfs:comment>
+</rdf:Description>
+
+<!--
+<rdf:Description rdf:about="http://xmlns.com/foaf/0.1/">
+  <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/" />
+  <rdfs:label></rdfs:label>
+  <rdfs:comment>.</rdfs:comment>
+</rdf:Description>
+-->
+
+<!-- from foafnet, more todo (some of these covered above)
+foaf:PersonalProfileDocument
+foaf:maker
+foaf:primaryTopic
+foaf:Person
+foaf:name
+foaf:mbox_sha1sum
+foaf:img
+foaf:knows
+foaf:person  case error
+
+
+foaf:Person
+
+    foaf:weblog // or home page
+    foaf:title
+    foaf:firstName
+    foaf:surname
+    foaf:Organization
+    foaf:phone
+    foaf:IM IDs //Any Instant Message IDs and nicks. Beware exposing email addresses
+    foaf:workplaceHomepage
+    foaf:based_near
+
+        geo:Point geo:lat="" geo:long=""
+
+non foaf properties used in foafnet: rdfs:seeAlso and a bunch of vCard
+
+
+    vCard:ADR //Address info. vCard is the best I've found.
+
+        vCard:Street
+        vCard:Locality
+        vCard:Region
+        vCard:Pcode
+        vCard:Country
+
+
+eg http://www.eu.socialtext.net/foafnet/index.cgi?sample_file_from_orkut
+-->
+
+
+<!--
+
+from Shadi re EARL:
+
+we are using (dependency) foaf:Agent and foaf:Person, iwe also reference foaf:Organization, foaf:Group. Properties: mbox, sha1sum, and name
+    unstable: foaf:Agent, foaf:Group, foaf:Org
+    testing: name, sha1sum
+    stable: Person, mbox
+    stable: homepage (we also use that one)
+-->
+
+</rdf:RDF>
+
