@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xhv="http://www.w3.org/1999/xhtml/vocab#"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#mimeType">
+    <rdfs:label xml:lang="en">mimeType</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#MediaItem">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">MediaItem</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#scaredOf">
+    <rdfs:label xml:lang="en">scaredOf</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Person">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#food">
+    <rdfs:label xml:lang="en">food</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#tags">
+    <rdfs:label xml:lang="en">tags</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#streamUrl">
+    <rdfs:label xml:lang="en">streamUrl</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Activity">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#bodyId">
+    <rdfs:label xml:lang="en">bodyId</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Message">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Message</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#thumbnailUrl">
+    <rdfs:label xml:lang="en">thumbnailUrl</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#addresses">
+    <rdfs:label xml:lang="en">addresses</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#urls">
+    <rdfs:label xml:lang="en">urls</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#status">
+    <rdfs:label xml:lang="en">status</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#profileUrl">
+    <rdfs:label xml:lang="en">profileUrl</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#activities">
+    <rdfs:label xml:lang="en">activities</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#currentLocation">
+    <rdfs:label xml:lang="en">currentLocation</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#webpage">
+    <rdfs:label xml:lang="en">webpage</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Organization">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#pets">
+    <rdfs:label xml:lang="en">pets</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#title">
+    <rdfs:label xml:lang="en">title</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#phoneNumbers">
+    <rdfs:label xml:lang="en">phoneNumbers</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#happiestWhen">
+    <rdfs:label xml:lang="en">happiestWhen</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#age">
+    <rdfs:label xml:lang="en">age</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#children">
+    <rdfs:label xml:lang="en">children</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#id">
+    <rdfs:label xml:lang="en">id</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#streamSourceUrl">
+    <rdfs:label xml:lang="en">streamSourceUrl</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#schools">
+    <rdfs:label xml:lang="en">schools</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#region">
+    <rdfs:label xml:lang="en">region</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Address">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#familyName">
+    <rdfs:label xml:lang="en">familyName</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Name">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Name</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#description">
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#subField">
+    <rdfs:label xml:lang="en">subField</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#relationshipStatus">
+    <rdfs:label xml:lang="en">relationshipStatus</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#locality">
+    <rdfs:label xml:lang="en">locality</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#fashion">
+    <rdfs:label xml:lang="en">fashion</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#cars">
+    <rdfs:label xml:lang="en">cars</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#hasApp">
+    <rdfs:label xml:lang="en">hasApp</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#sexualOrientation">
+    <rdfs:label xml:lang="en">sexualOrientation</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#linkText">
+    <rdfs:label xml:lang="en">linkText</rdfs:label>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Url">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Url</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#quotes">
+    <rdfs:label xml:lang="en">quotes</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#streamTitle">
+    <rdfs:label xml:lang="en">streamTitle</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#body">
+    <rdfs:label xml:lang="en">body</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#languagesSpoken">
+    <rdfs:label xml:lang="en">languagesSpoken</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#dateOfBirth">
+    <rdfs:label xml:lang="en">dateOfBirth</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#livingArrangement">
+    <rdfs:label xml:lang="en">livingArrangement</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#externalId">
+    <rdfs:label xml:lang="en">externalId</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#type">
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Url"/>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Email">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Email</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:domain>
+      <owl:Class rdf:about="http://danbri.org/2008/opensource/_latest#Phone">
+        <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <rdfs:label xml:lang="en">Phone</rdfs:label>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#MediaItem"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Message"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#userId">
+    <rdfs:label xml:lang="en">userId</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#tvShows">
+    <rdfs:label xml:lang="en">tvShows</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#bodyType">
+    <rdfs:label xml:lang="en">bodyType</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#honorificSuffix">
+    <rdfs:label xml:lang="en">honorificSuffix</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Name"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#country">
+    <rdfs:label xml:lang="en">country</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#number">
+    <rdfs:label xml:lang="en">number</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Phone"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#turnOffs">
+    <rdfs:label xml:lang="en">turnOffs</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#books">
+    <rdfs:label xml:lang="en">books</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#drinker">
+    <rdfs:label xml:lang="en">drinker</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#turnOns">
+    <rdfs:label xml:lang="en">turnOns</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#politicalViews">
+    <rdfs:label xml:lang="en">politicalViews</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#heroes">
+    <rdfs:label xml:lang="en">heroes</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#postedTime">
+    <rdfs:label xml:lang="en">postedTime</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#ethnicity">
+    <rdfs:label xml:lang="en">ethnicity</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#additionalName">
+    <rdfs:label xml:lang="en">additionalName</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Name"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#latitude">
+    <rdfs:label xml:lang="en">latitude</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#profileVideo">
+    <rdfs:label xml:lang="en">profileVideo</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#music">
+    <rdfs:label xml:lang="en">music</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#movies">
+    <rdfs:label xml:lang="en">movies</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#templateParams">
+    <rdfs:label xml:lang="en">templateParams</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#titleId">
+    <rdfs:label xml:lang="en">titleId</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#mediaItems">
+    <rdfs:label xml:lang="en">mediaItems</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#startDate">
+    <rdfs:label xml:lang="en">startDate</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#field">
+    <rdfs:label xml:lang="en">field</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#unstructured">
+    <rdfs:label xml:lang="en">unstructured</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Name"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#lookingFor">
+    <rdfs:label xml:lang="en">lookingFor</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#salary">
+    <rdfs:label xml:lang="en">salary</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#honorificPrefix">
+    <rdfs:label xml:lang="en">honorificPrefix</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Name"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#unstructuredAddress">
+    <rdfs:label xml:lang="en">unstructuredAddress</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#givenName">
+    <rdfs:label xml:lang="en">givenName</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Name"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#interests">
+    <rdfs:label xml:lang="en">interests</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#emails">
+    <rdfs:label xml:lang="en">emails</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#romance">
+    <rdfs:label xml:lang="en">romance</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#appId">
+    <rdfs:label xml:lang="en">appId</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#humor">
+    <rdfs:label xml:lang="en">humor</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#priority">
+    <rdfs:label xml:lang="en">priority</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#endDate">
+    <rdfs:label xml:lang="en">endDate</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#profileSong">
+    <rdfs:label xml:lang="en">profileSong</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#sports">
+    <rdfs:label xml:lang="en">sports</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#extendedAddress">
+    <rdfs:label xml:lang="en">extendedAddress</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#timeZone">
+    <rdfs:label xml:lang="en">timeZone</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#aboutMe">
+    <rdfs:label xml:lang="en">aboutMe</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#streamFaviconUrl">
+    <rdfs:label xml:lang="en">streamFaviconUrl</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#networkPresence">
+    <rdfs:label xml:lang="en">networkPresence</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#longitude">
+    <rdfs:label xml:lang="en">longitude</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#address">
+    <rdfs:label xml:lang="en">address</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Email"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Organization"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Url"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#postalCode">
+    <rdfs:label xml:lang="en">postalCode</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#jobInterests">
+    <rdfs:label xml:lang="en">jobInterests</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#smoker">
+    <rdfs:label xml:lang="en">smoker</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#religion">
+    <rdfs:label xml:lang="en">religion</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#streetAddress">
+    <rdfs:label xml:lang="en">streetAddress</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#nickname">
+    <rdfs:label xml:lang="en">nickname</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#url">
+    <rdfs:label xml:lang="en">url</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#MediaItem"/>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Activity"/>
+  </rdf:Property>
+  <owl:Ontology/>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#jobs">
+    <rdfs:label xml:lang="en">jobs</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#gender">
+    <rdfs:label xml:lang="en">gender</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Person"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://danbri.org/2008/opensource/_latest#poBox">
+    <rdfs:label xml:lang="en">poBox</rdfs:label>
+    <rdfs:domain rdf:resource="http://danbri.org/2008/opensource/_latest#Address"/>
+  </rdf:Property>
+</rdf:RDF>
