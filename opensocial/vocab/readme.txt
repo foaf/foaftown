@@ -12,6 +12,9 @@ opensocial/*.js comes from the OpenSocial SVN, copied for now from
  http://opensocial-resources.googlecode.com/svn/spec/0.8/opensocia
 l/
 
+canonical json data taken from https://issues.apache.org/jira/browse/SHINDIG-413
+
+
 Dan 
 
 --
