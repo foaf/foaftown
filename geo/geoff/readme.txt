@@ -2,6 +2,10 @@ Geo Friend Finder?
 
 Inspired by a note from Mike Liebhold to the GeoWankers list.
 
+see announcement: 
+http://lists.burri.to/pipermail/geowanking/2008-September/005596.html
+
+
 Status: grabs archive and generates a crude participation count per 
 email address. Beginnings of code for poking into Google SGAPI but nothing 
 working yet. See .txt logs for sample output.
