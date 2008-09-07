@@ -2,6 +2,11 @@ Geo Friend Finder?
 
 Inspired by a note from Mike Liebhold to the GeoWankers list.
 
+Status: grabs archive and generates a crude participation count per 
+email address. Beginnings of code for poking into Google SGAPI but nothing 
+working yet. See .txt logs for sample output.
+
+
 This downloads the gzipped archives from mailman.
 
 
@@ -63,8 +68,8 @@ Airbag:geoff danbri$ grep -i danbri log2.txt
 
 ... people's contribution count could be truncated.
 
-Here, my count is too low, showing that the ugly regex parsing of the mail
-archive files isn't working well enough yet.
+
+
 
 Ideas for development:
 
