@@ -10,7 +10,7 @@ admin = ['bounces@lists.burri.to','geowanking@lists.burri.to']
 
 
 def mbox2sgapi(mbox)
-  mbox= mbox.chomp
+  mbox = mbox.chomp
 #  base ='http://socialgraph.apis.google.com/otherme?pretty=1&q='
   base='http://socialgraph.apis.google.com/lookup?fme=1&pretty=1&sgn=1&q='  # mailto%3Adanbri%40danbri.org'
 
@@ -73,7 +73,10 @@ sorted = posters.sort { |x, y| y[1] <=> x[1] }  # via pair_sort_bm.rb
 sorted.each do |x|
   who=x[0]
   c=x[1]
-  puts "#{c}: \t#{who} "
+  who_escaped = "#{who}"
+  who_escaped.gsub!(/@/, " / ")
+
+  puts "#{c}: \t#{who_escaped} "
 
   # TODO: see http://code.google.com/apis/socialgraph/docs/api.html
   # urls = mbox2sgapi(who)
