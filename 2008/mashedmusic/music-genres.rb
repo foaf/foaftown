@@ -25,8 +25,16 @@ require 'net/http'
     end
 
 userid='HarryHalpin'
-userid='danbri'
 userid='darobin'
+userid=''
+cmdline = ARGV.shift
+if (cmdline != nil) 
+  puts "Got and using: #{cmdline}"
+  userid = cmdline.chomp
+else 
+  userid='danbri'
+  puts "#Defaulting to user: danbri"
+end
 artists=fetch('http://ws.audioscrobbler.com/1.0/user/'+userid+'/topartists.txt?type=12month').body
 
 genres={}
@@ -48,7 +56,7 @@ artists.split(/\n/).each do |line|
   mbid,i,label=line.split(/,/,3)
   #  puts "MBID: #{mbid} I: #{i} Label: #{label}"
   g=genres[mbid]
-#   puts "Genre is: #{ g } \n\n"
+  #   puts "Genre is: #{ g } \n\n"
   if (g)
 
 # Robin's use case: "but I don't listen to World music!"
@@ -64,7 +72,7 @@ artists.split(/\n/).each do |line|
 end
 
 profile.each_pair do |cat,score|
-  puts "#{cat}: #{score}"
+  puts "#{cat}\t#{score}\t#{Math.log10(score * 100)}"
 end
 
 # todo: 
