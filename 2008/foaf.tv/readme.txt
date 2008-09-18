@@ -21,3 +21,13 @@ countHint='362'/>
 ...and get a link to the atom for them.
 
 
+This has different kinds of categorisation.
+
+Tokenized text keywords, in a http://gdata.youtube.com/schemas/2007/keywords.cat 
+namespace. This is empty since it would otherwise contain millions of tokens.
+
+also we see categories.cat, eg.
+<media:category label="Music"
+ scheme="http://gdata.youtube.com/schemas/2007/categories.cat"
+	>Music</media:category>
+
