@@ -31,3 +31,12 @@ also we see categories.cat, eg.
  scheme="http://gdata.youtube.com/schemas/2007/categories.cat"
 	>Music</media:category>
 
+
+
+Using XSLT to access this, try:
+
+cd tmp/
+svn co http://svn.foaf-project.org/foaftown/2008/foaf.tv/
+cd foaf.tv/
+xsltproc atom2html.xsl modanbri-favourites.xml > foo.html
+
