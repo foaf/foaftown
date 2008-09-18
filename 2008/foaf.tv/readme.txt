@@ -10,4 +10,14 @@ http://code.google.com/apis/youtube/developers_guide_protocol.html#Authenticatio
 my profile at youtube
 http://gdata.youtube.com/feeds/api/users/modanbri
 
+From which you can determine that I have a certain number of favourited vids:
+
+<gd:feedLink 
+rel='http://gdata.youtube.com/schemas/2007#user.favorites' 
+href='http://gdata.youtube.com/feeds/api/users/modanbri/favorites' 
+countHint='362'/>
+
+
+...and get a link to the atom for them.
+
 
