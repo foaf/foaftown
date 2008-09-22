@@ -1,4 +1,6 @@
 
+
+
 see also mashablemusic
 
 http://gdata.youtube.com/schemas/2007/categories.cat
@@ -39,4 +41,8 @@ cd tmp/
 svn co http://svn.foaf-project.org/foaftown/2008/foaf.tv/
 cd foaf.tv/
 xsltproc atom2html.xsl modanbri-favourites.xml > foo.html
+
+
+
+ roqet -e 'select * from <file:z.rdf> where { ?x <http://xmlns.com/foaf/0.1/interest_topic> ?y } '  -r json > interests.json.txt
 
