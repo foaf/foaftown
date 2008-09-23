@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/" 
+  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+<head>
+<title>Sanford Bergman headings</title>
+</head>
+<body style="background: white">
+<img src="typewriter.png" alt="Picture of an old typewriter, from Sanford's page"/>
+<h1>Sanford Bergman LCSH Scorecard</h1>
+<p>
+	See headings111607.pdf and <a href=
+"http://wiki.foaf-project.org/SanfordBergmanLCSHScorecard">FOAF
+Wiki</a> for background. This example is illformed in various ways currently.
+</p>
+
+<p about="http://lcsh.info/sh960xyz123123#concept" typeof="skos:Concept">
+	
+An LCSH heading 
+<span rel="skos:broader">
+	  "<span property="skos:prefLabel">INFORMATION ETHICS</span>"
+		 was proposed. It was accepted on <span property="dcterms:created">2007-05-16</span> as 
+		"INFORMATION TECHNOLOGY--MORAL AND ETHICAL ASPECTS" (UF Information Ethics).
+		The proposer was <span rel="dcterms:creator"><span typeof="foaf:Person" property="foaf:name">Sanford Bergman</span>.
+		</span>
+</span>
+
+</p>
+<hr />
+<h2>Extracted RDFa data</h2>
+<p>The following is the result of parsing this document for RDFa (prefixes hidden).</p>
+<pre style="color: green; background: #eeeeee; margin: 2em; border-style: dotted;">
+
+&lt;http://lcsh.info/sh960xyz123123#concept&gt;
+    a skos:Concept ;
+    skos:broader 
+	[
+    		dcterms:created "2007-05-16" ;
+    		dcterms:creator 
+			[
+    			    a foaf:Person ;
+    			    foaf:name "Sanford Bergman"
+		    	] ;
+	    	skos:prefLabel "INFORMATION ETHICS" .
+    ]
+</pre>
+
+</body>
+</html>
