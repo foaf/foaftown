@@ -1,0 +1,23 @@
+PREFIX dc: <http://purl.org/dc/terms/> 
+
+SELECT ?T ?X ?Y 
+FROM <file:_rels.nt> 
+WHERE
+{ 
+	# where our dataset uses 'x relation y' to mean
+	# that page X has a topical see also hyperlink to page Y.
+
+	?X dc:relation ?T . 
+	?Y dc:relation ?T . 
+			# just these 2 give: Query returned 21822 results
+
+	?T dc:relation ?X . # roqet: Query returned 3055 results
+#	?T dc:relation ?Y . # either of these, both 3055. why?
+				# drops to 2599 with x!+t below
+
+	filter( ?X != ?Y ) . 
+
+	filter( ?X != ?T ) . # 21286 with this, 21822 without
+			     # ie. 536 in which topic page reciprocates	
+} 
+
