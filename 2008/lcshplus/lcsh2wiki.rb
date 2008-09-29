@@ -34,7 +34,7 @@ st="#{st}"
 st.chomp!
 
 puts "Grepping lcsh subset for term: #{st} into _tmp_st.nt"
-#`grep prefLabel lcsh.nt | grep -i '#{st}' > _st.nt`
+`grep prefLabel lcsh.nt | grep -i '#{st}' > _st.nt`
 
 # we get the labels and concept IDs
 comm= "roqet -r json -e 'select ?c ?n from <file:_st.nt> where { ?c <http://www.w3.org/2004/02/skos/core#prefLabel> ?n }' " 
