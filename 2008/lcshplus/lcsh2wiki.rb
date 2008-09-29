@@ -7,7 +7,8 @@
 # A further goal might be to wrap these inside an openid-logins website
 # so that people could use some ajaxy widget to indicate exact, broad, near 
 # etc matches to wikipedia (and hence DBpedia) URIs.
-
+#
+# dc:creator [ :openid <http://danbri.org/>; :mbox <mailto:danbri@danbri.org> ].
 
 
 require 'rubygems'
