@@ -1,5 +1,15 @@
 #!/usr/bin/ruby
 
+# Script to consult Google regarding some subset of the LCSH SKOS data
+# We grep the preferred labels from the lcsh.info NTriples download,
+# and for each phrase, find some candidate matches from Google.
+#
+# A further goal might be to wrap these inside an openid-logins website
+# so that people could use some ajaxy widget to indicate exact, broad, near 
+# etc matches to wikipedia (and hence DBpedia) URIs.
+
+
+
 require 'rubygems'
 require 'json/pure'
 
