@@ -14,7 +14,6 @@
 #   http://inkdroid.org/lcco/
 # dc:creator [ :openid <http://danbri.org/>; :mbox <mailto:danbri@danbri.org> ].
 
-require 'rubygems'
 require 'treemap'
 
 root = Treemap::Node.new
