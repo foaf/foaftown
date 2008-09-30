@@ -15,11 +15,24 @@
 # dc:creator [ :openid <http://danbri.org/>; :mbox <mailto:danbri@danbri.org> ].
 
 require 'treemap'
+require 'rena'
+include Rena
+
+ntdoc = `cat _bristol.nt`
+
+graph = N3Parser.new('_bristol.nt')
+#graph = N3Parser.new(ntdoc)
+
+#    graph = RdfXmlParser.new(sampledoc)
+#    graph.is_rdf?.should == true
+#    graph.graph.size == 6
+#    print graph.graph.to_ntriples
+
 
 root = Treemap::Node.new
 
-root.new_child(:size => 6)
-root.new_child(:size => 6)
+root.new_child(:size => 6, :label => "SKOS Test" )
+root.new_child(:size => 6, :label => "LCSH data" )
 root.new_child(:size => 4)
 root.new_child(:size => 3)
 root.new_child(:size => 2)
