@@ -1,32 +1,13 @@
 #!/usr/bin/env ruby
 #
-# example.rb - Redland example Ruby program
-#
-# Copyright (C) 2002-2004 David Beckett - http://www.dajobe.org/
-# Copyright (C) 2002-2004 University of Bristol - http://www.bristol.ac.uk/
-# 
-# This package is Free Software or Open Source available under the
-# following licenses (these are alternatives):
-#   1. GNU Lesser General Public License (LGPL)
-#   2. GNU General Public License (GPL)
-#   3. Mozilla Public License (MPL)
-# 
-# See LICENSE.html or LICENSE.txt at the top of this package for the
-# full license terms.
-# 
-#
-# USAGE: ruby example.rb file:../data/dc.rdf raptor
-# 
-#
 
 require 'rdf/redland'
 
-uri_string=ARGV[0]
-parser_name=ARGV[1]
+uri_string= 'file:lcsh.rdf'
+parser_name = 'rdfxml'
 
 storage=Redland::TripleStore.new("memory", "test", "new='yes'")
 raise "Failed to create RDF storage" if !storage
-
 
 model=Redland::Model.new(storage)
 if !model then
@@ -51,7 +32,6 @@ while !stream.end?()
 end
 
 puts "Parsing added #{count} statements"
-
 
 puts "Printing all statements"
 stream=model.as_stream()
