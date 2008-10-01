@@ -11,8 +11,8 @@
 # <http://lcsh.info/sh96011169#concept> <http://www.w3.org/2004/02/skos/core#prefLabel> "Prerogative, Royal--France"@en .
 
 
-f = File.new('tree.nt')
-#f = File.new('1000.nt')
+#f = File.new('tree.nt')
+f = File.new('1000.nt') # head -1000 tree.nt > 1000.nt
 
 require 'treemap'
 
