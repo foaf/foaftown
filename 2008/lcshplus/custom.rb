@@ -2,12 +2,19 @@
 #
 # Hand-crafted parser for LCSH SKOS ntriples 
 # 
-
-f = File.new('tree.nt')
-
+# we can extract a subset of the ntriples first, to reduce working set.
+#
+# egrep '(prefLabel|broader|narrower)' lcsh.nt > tree.nt
+#
 # <http://lcsh.info/sh85016247#concept> <http://www.w3.org/2004/02/skos/core#prefLabel> "Brachycentrus"@en .
 # <http://lcsh.info/sh96011169#concept> <http://www.w3.org/2004/02/skos/core#narrower> <http://lcsh.info/sh85077475#concept> .
 # <http://lcsh.info/sh96011169#concept> <http://www.w3.org/2004/02/skos/core#prefLabel> "Prerogative, Royal--France"@en .
+
+
+f = File.new('tree.nt')
+#f = File.new('1000.nt')
+
+require 'treemap'
 
 broader = {}
 labels = {}
@@ -35,10 +42,10 @@ f.each do |c|
     if (p =~ /broader/) 
 #      puts "broader"   
       if broader[s] != nil
-        puts "Got a value for #{s} already: #{broader[s]}"
+#        puts "Got a value for #{s} already: #{broader[s]}"
       else
         broader[s] = o
-        puts "broader #{s} = #{o}"
+#        puts "broader #{s} = #{o}"
       end
     elsif (p =~ /narrower/)
 #      puts "narrower (reversing lookup)"
@@ -46,14 +53,32 @@ f.each do |c|
 #        puts "Got a value for #{o} already: #{broader[o]}"
       else
         broader[o] = s
-        puts "broader #{o} = #{s}"
+#        puts "broader #{o} = #{s}"
       end
     else 
-      puts "Unexpected value."
+#      puts "Unexpected value."
     end
   end
 end
 
+root = Treemap::Node.new(:label => "All", :size => 1000, :color => "#FFCCFF")
+
+cache={}
 broader.each_pair do |x,y|
-  puts "#{x} > #{y}"
+#  puts "#{x} > #{y}"
+   
+   l1 = labels[x]
+   l2 = labels[y]
+   c1 = Treemap::Node.new(:label => l1 , :size => 2 )
+   c2 = Treemap::Node.new(:label => l2 , :size => 2 )
+   c1.add_child(c2)
+   root.add_child(c1)
 end
+
+output = Treemap::HtmlOutput.new do |o|
+  o.width = 850
+  o.height = 850
+  o.center_labels_at_depth = 1
+end
+puts output.to_html(root)
+
