@@ -1,7 +1,35 @@
-roqet -e 'select distinct ?p from <file:drizzle-example.rdf> where { ?s ?p ?o }'
+<html>
+<head>
+<title>launchpad rdf vocab - mapping to doap?</title>
+</head>
+<body>
+<pre>
+quick notes on mapping launchpad's rdf into doap
+
+this is plain text, could be RDFa-ized later. --danbri
+
+via ... roqet -e 'select distinct ?p from <file:drizzle-example.rdf> where { ?s ?p ?o }'
+
 
 
 result: [p=uri<https://launchpad.net/rdf/launchpad#specifiedAt>]
 
-specifiedAt, name, displayName, title, shortDescription, description, creationDate,
-homepage, wiki, programmingLanguage, series, sshPubKey, owner, status
+classes: lp:Project = doap:Project
+
+lp:specifiedAt
+lp:name ... doap:name
+lp:displayName ... doap:??
+lp:title
+lp:shortDescription ... doap:shortdesc
+lp:description ... doap:description
+lp:creationDate ... doap:created
+lp:homepage ... doap:homepage
+lp:wiki ... ...?
+lp:programmingLanguage doap:programming-language
+series
+sshPubKey
+lp:owner ... related to doap:maintainer, but former allows Group, latter only Person
+status
+
+</pre>
+</html>
