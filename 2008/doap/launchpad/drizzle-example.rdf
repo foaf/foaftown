@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:doaml="http://ns.balbinus.net/doaml#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:lp="https://launchpad.net/rdf/launchpad#"
+         xmlns:wot="http://xmlns.com/wot/0.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <lp:Product>
+        <lp:specifiedAt rdf:resource="/drizzle/+rdf"/>
+        <lp:name>drizzle</lp:name>
+        <lp:displayName>Drizzle</lp:displayName>
+        <lp:title>A Lightweight SQL Database for Cloud and Web</lp:title>
+        <lp:shortDescription>The Drizzle project is building a database optimized for Cloud and Net applications. It is being designed for massive concurrency on modern multi-cpu/core architecture. The code is originally derived from MySQL. </lp:shortDescription>
+        <lp:description>The drizzle project is discussed on the drizzle-discuss mailing list. If you want to show your support for the project, or join the mailing list, sign up here:
+https://launchpad.net/~drizzle-discuss/
+
+The project is focused on making a database that is:
+1) Reliable
+2) Fast and scalable on modern architecture
+3) Simply design for ease of installation and management
+
+Quick Build:
+bzr branch lp:drizzle ; cd drizzle; ./config/autorun.sh ; ./configure &amp;&amp; make </lp:description>
+        <lp:creationDate>2008-05-12 17:30:52 UTC</lp:creationDate> 
+        <lp:homepage/>
+        <lp:wiki rdf:resource="http://drizzle.wikia.com/"/>
+        
+        
+        <lp:programmingLanguage>C++</lp:programmingLanguage>
+        
+        
+        <lp:series>
+            <lp:ProductSeries>
+                <lp:specifiedAt
+    rdf:resource="/drizzle/trunk/+rdf"/>
+            </lp:ProductSeries>
+        </lp:series>
+        <lp:owner>
+  
+  <foaf:Group>
+    <foaf:name>Drizzle-developers</foaf:name>
+    <foaf:nick>drizzle-developers</foaf:nick>
+    <foaf:img rdf:resource="http://launchpadlibrarian.net/17248419/drizzle-14x14.png"/>
+    <foaf:img rdf:resource="http://launchpadlibrarian.net/17248420/drizzle-64x64.png"/>
+    <foaf:img rdf:resource="http://launchpadlibrarian.net/17248421/drizzle-logo-192x192.png"/>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Andrew Garner</foaf:name>
+        <foaf:nick>muzazzi</foaf:nick>
+        
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/16493198/wtf.PNG"/>
+        <foaf:mbox_sha1sum>E8D4180E1E0836ABFFAF6E555B0131DB05BDC0E8</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEA1iWkv7lOmpJUUbX0ntZ3sURP3LHkOslGMyxzBg958BbR6L9okv1vgKEHtlzCJI6N0huBDOQU2iB8zLTg9NgOGeaAZnoTwanOEAYyaHvG+uxBQa4XDR172WbiwDn9InEStJFQ0Ln/X+InhNXlEwuYcRN7TN7/84YhZ0NbBM7z4dxRcLBGmezSdnFiAiVLhGsQTImiWZMZb91W646ZjRd3NsYmwRd1CUsUa/RjbFU3WiJPrGnva6rSpMxHTayzcx5uN7raeG2AChiZt7yojC5OIQhJ17tzwgwuT5rhqgy13OZqwHxUZB4yRjA1/2T5SW91p9f/2O4LDCY2nsT4cFQ4iw==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Arjen Lentz</foaf:name>
+        <foaf:nick>arjen-lentz</foaf:nick>
+        
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/16243382/arjen-openquery-192x192-launchpad.png"/>
+        <foaf:mbox_sha1sum>5DBB2EA55AD72E29F46100EFC00B7A4DCA308923</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>7F22E7A7</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>0E542032DF29CE55053B2D751C933DEA7F22E7A7</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x0E542032DF29CE55053B2D751C933DEA7F22E7A7&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAIEA4a7q3LGMisuZaK8nDP4Sv7Pwtn8A5LHmeMxCAKbgabfwEnxj8dOKdSZKd2sdQaLRUejANpf2P3yQbtTjgWM9ZwEvUjY422Y/7YxJtdJjWT/qUtg2P027oQupoxcCHqzZPq2XjCLbr68LOzc/lppRGovgfX72wIn2NEJtd705L+0=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>benrami24</foaf:name>
+        <foaf:nick>benrami24</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>1C26128FCFC33549F1F8516E87854B9FDC9C3F5C</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Brian Aker</foaf:name>
+        <foaf:nick>brianaker</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>FAAD20D5F45F0E8D7C2512FA6041ADDC4F288D5D</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAOXNROQG2KuhPGivdQGXf38oQxGkMU5n7SmkUBp+/r/1KKjx2EE/qAW0pxNhqssJTAk71c3uoXlIQu37tZEsqiG/3jCwlO5drATsulNsZAueJ1OMpVgx7Fqp++ABEfAHRGMR+pgoZGtqKBoxzEosjH3/Cd3YI+2S9iGAKg8X7+i1AAAAFQDszwlv4YkTmnjVE86aL1ji6AdyaQAAAIANXtU/Xm4pbMPeUm4bzCqlcl/l2DqJHa2qGpHDLqFHWpDGjfHJteByAczNcqYL/iFQrx5zZbdVAoBmO+GHD81pfaWOIBkhihwxpZ1ZPQrqsFgi7l20RshSidTHaj4jqnyBvPjdtA8TZPjkkhdDt9nUQuSFMeAz32ziFhMlaYkG8gAAAIEAxE5+NMytNk8KJ/55Fns9h4+xN32B8fafDvYBLYX5L67VRAQ35gtwZArYTDD1LkUTxZK31vIJPt5j2UiS6jbsTFJ60zD9b1JXv/+Sc7SLNd0X2UA2c6ZlnP8BF6I0dAn3YejjD9/tWDgRrfVtbEARHHhndxPhmQB4h1OnyFfjBY8=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>CaptTofu</foaf:name>
+        <foaf:nick>patg-patg</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>EA7DC1E2AF0DB7B4BE0E06327BB89670BE8B4182</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAICoyQ7Fe1BakzyriM8dj5zpXAqfCTrYH9QFJUR7hxQlBnamPxO2n7RTlHiS23e3qtOyNmQZKSHTPraHFceu1POdBFz85w+PX/Cpb1U9d7V8/wR7cqAor28FrH8Y0JGROK13sZLllLJhuZ2h1Cen2yLf33HeUiuCgnlJMQAnw5XLAAAAFQCYamq1egzs9wGEh4Kli0GDYD5NSQAAAIAUf22jCOhYNMxbyZLpmuNv4tOn5EuKC76lPPARxZgW6eC4fe91lrYw/NJ1me9Ol3gRnPtV/cbW6O7EAaYH0F8ZiVMmrmMxexTznL2HhhRBBkfTG2f4UswVPXZIAS8+rqj5QGIO0fP1Sowws+XQfy7onjirnXnjtEMT4HkrdeNznwAAAIBMqwPHDF8dV7GuusaoXpV1Y/mBsiuYPFRSymh3/Yv3Q3hotAUwZBUz/NPMZx0DeFJrdcox3b8JBBlmiVqNxD0ma7NW4NbqjZK1fgLGe0DXBq+W7XQyBxjV9Vmz+WDA+5YqnCIzcg4q0KqfKTnB1Vmmn05RNFsq3gfRBOY6OORQ9w==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAICoyQ7Fe1BakzyriM8dj5zpXAqfCTrYH9QFJUR7hxQlBnamPxO2n7RTlHiS23e3qtOyNmQZKSHTPraHFceu1POdBFz85w+PX/Cpb1U9d7V8/wR7cqAor28FrH8Y0JGROK13sZLllLJhuZ2h1Cen2yLf33HeUiuCgnlJMQAnw5XLAAAAFQCYamq1egzs9wGEh4Kli0GDYD5NSQAAAIAUf22jCOhYNMxbyZLpmuNv4tOn5EuKC76lPPARxZgW6eC4fe91lrYw/NJ1me9Ol3gRnPtV/cbW6O7EAaYH0F8ZiVMmrmMxexTznL2HhhRBBkfTG2f4UswVPXZIAS8+rqj5QGIO0fP1Sowws+XQfy7onjirnXnjtEMT4HkrdeNznwAAAIBMqwPHDF8dV7GuusaoXpV1Y/mBsiuYPFRSymh3/Yv3Q3hotAUwZBUz/NPMZx0DeFJrdcox3b8JBBlmiVqNxD0ma7NW4NbqjZK1fgLGe0DXBq+W7XQyBxjV9Vmz+WDA+5YqnCIzcg4q0KqfKTnB1Vmmn05RNFsq3gfRBOY6OORQ9w==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Colin Charles</foaf:name>
+        <foaf:nick>ccharles</foaf:nick>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/7735827/ccharles_logo.png"/>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/7735881/mugshot.png"/>
+        <foaf:mbox_sha1sum>5718ADF79D058373F256E3A5829FF8E29D7C361D</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>9819A8C4</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>DCD293F08E6BD1AF072F8A9B614B21BA9819A8C4</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0xDCD293F08E6BD1AF072F8A9B614B21BA9819A8C4&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAJxdEHEugeEvUSUSiTtIEgnp7f3t9N2f+ukaQu3dz6U63T9qXOvYogjo7C/qdvhpirQMCVnzMJHpF53qIxrQ9NoTR8E67znOtXTohNQbsgQRxlT+3b+vmrZSreMsqV9Y3Dqeg8TLyV5dYBoClEhOSWUy+2t4zjPga47TrpMVetaRAAAAFQC6wO4SDyQ/POCfb9OLbPE0c7m/IwAAAIA5rccsil8zZrez/U0jhE0ypgneT2Tsaagvz3lYwj9GwWhkMsgBFSqNQs+wzyCJcvMUwCxV5RBybSyBEAqjYj3EB/2B8/XlQoWYF0oIN/kRDLNdWcrVcR3xNz94qtj+5rBST5wFPtm8fA3Sux+tl79czY8UGj50gkpi49YXqdtQBwAAAIAaCHTKJspp71IDZ/Yk9wMXvSXIWJEKAalc2Ldu5qopWJUPe1Fs9rmjY/V95xUpdEY5/w99s8/UmAm0/ap7JbVwJ4PX65lM5KnzMMs7U2jE7AFHYaMccxsFYLCsQjRXGMIK1vuou1InNL5z5PHYAbUXe6MF08JBr+HaplfqQ/PllA==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Daniel Saito</foaf:name>
+        <foaf:nick>saitodaniel</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>51D8F044943E225AC07B580C99567C3A3F5CA6CF</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Elliot Murphy</foaf:name>
+        <foaf:nick>statik</foaf:nick>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/8492996/elliot-mugshot-64x64.png"/>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/7529745/elliot-mugshot.png"/>
+        <foaf:mbox_sha1sum>B571D61C04B30C3863F1D154237F6D2C95407C40</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>4C18F305</wot:hex_id>
+            <wot:length>2048</wot:length>
+            <wot:fingerprint>C3ABF14DC34A3BF6A816CB78388ED1E44C18F305</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0xC3ABF14DC34A3BF6A816CB78388ED1E44C18F305&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>608C0112</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>D964593C1D5FA13692B1F2461A2E378A608C0112</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0xD964593C1D5FA13692B1F2461A2E378A608C0112&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAtOzi9CLzwA6WeVE2ZA4BkSEtk5OMMrZpsQflwc8yK2O/fg/o6+Nky8XueNnWVHnNme0DTv2oLHoNf4DgojTDtLB9AP/I4BeUNFFpHIch0v9w4rZC7rKDpyuDZ45AIN074268UPemUM/6oYBBNEyY73Mar20cRoIaXlhUrM1I8LIJu1nUWqP43ov0aFNu5P40nTNJ+VgzHY+zfco7EttcRI1EOqTAD9EGElDlQxTpSSLvN2TfnbaCCiTfL3SLyMyUOiebnEZX1rWQsDhCOXvss2XQcC5UXEWqXeJE64M7JxfqoSehhVQFn0/rHfzyEO1AIO1c8ImGfdRtCkO1NrlG2w==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Eric Day</foaf:name>
+        <foaf:nick>eday</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>68F641BE204A61A0A7A0346DE22EC6001792ECE5</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAgEAz4JTxj3rKKx6Ee5n/tdA9JHEgQNx2KbFxnUw6ByCeRolzEv3Qe28cOmyccg7FqOWKQuW/SLpERejOodaeKZkF/hiath3fFiy78SUd/WCID7vCIalPfyKzg9KNnP00cCuc5JqF7ACpj6egHZVkbHhMIS4UgtYk1QsvZWNGjbSl3isK+sMs184SfEzt7LEpVB9ymxiGHsjDOORYTo9b2vIBSaz0OG2MWSG9D/PFAm7xZW43m3GMX7l1Ijm2Zxetv3Ijf3tHxxyyxoGcVbLBpPxs+eL3VjjzZC+2A7RbaJW0DbAM9J1s94w2udNqI5TmOQRRCrhzPpZJ6uPgcKBNRTQir4CGiNsuzt9NLlvC7H8d0M2eUwfySeErbbwaHlQjEHj3JAPGPNuDz8YHn6Gyev3p9YLz8dc+3oFOf1FkNYQdzhQOX1tQTB5DPbCaV17hXCY/O2twr9z6S6ZWDA8+yqLmot/Ou5zQRARY1N06Fh1GEUy4I6lEKjHj6oCSdwwxG9D/3xb4z/d09PJZhvuEwg6aqiAHAjDO7nyaets+5xr3BTWCyB17fzLv81TcRlzUGrd+NLOaB+o7X+rRBA5y0fNFA93/30hDikxzFApKZRO64U8cgHxASCBR2HHU216Tjwd/WJ1MbISU5MIGTxR6UpGK017Az0Fh1p31qqDRMQCNeE=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Giuseppe Maxia</foaf:name>
+        <foaf:nick>giuseppe-maxia</foaf:nick>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/14763131/dc_64x64.png"/>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/14763164/dc_192x192.png"/>
+        <foaf:mbox_sha1sum>4C16FBC065845F515153AF644334B147994115EB</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>FE32A457</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>0C040C8C452626BD6AD1144A06D8467DFE32A457</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x0C040C8C452626BD6AD1144A06D8467DFE32A457&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAL1bjRroa9dmhqQCqX6sAuAQ1ng9DgBHzC94pi+AyDRGjBiqnE5P/7qXWKqRk+wfXkovOuAsBdrxF0Xk72kPqESe7Owcb06m3tddl+QFAwkhKP2xMa//Q4Qs3Mn7XjCwaOrHB1gsrX6YFXB/+Bp0JQMArHpIDVoFEgissA5FKVObAAAAFQCs/Ig5q14YaSOj2iFp3Iwp0SmGAQAAAIA8bF9ENb66SI9wPJNbuKPsDAVktAFUKC7CzH5N+Pq+A0XuyYdWp/51tlfjZbL22mqvp3FH/TNtDIQIaZpByPTrA73vaWo5IEbPCNAQqyIhd9Bi5P9eA5ryP0i/vb7EF/LrZFR2+KVaH6C/dBSTm/B7Ynu8srdkf1STXugtb2CGkQAAAIAIdlxV0oYHONEs6RG34IqaVrohkjKm5pDikL1/y0zSjyC1EltL128WmpIdHsxAK7ifDoIzsdo+ZO9AAYTEMY/hY9XWBi94UuETfWJ4YZYP5zsEfgTPhCRDjpRvQrKddtcxAfoA9nS+DLmqEbAtpMJq/Ht+PhA1GO/C17WzlmdQjw==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Hartmut Holzgraefe</foaf:name>
+        <foaf:nick>hartmut-php</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>7BBB9758DB46546C975A7FE2552521FB26B19757</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>DBA0B1B6</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>99D82CE1C4078CA258D6E289665D9CBEDBA0B1B6</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x99D82CE1C4078CA258D6E289665D9CBEDBA0B1B6&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAIEA2WM/2lKPchB2fLzXAp/76wLily8jt9HbIER57oUS5ykGq/ymSFXLveoTdGBJbpj1qqnRsm+MflS8L7yoE9kGotWLoLO/K/+npxD9e5DV2fWp5/wX1/fR9rwPpYGSVYSM6qGG2ZuGkLDne9a6X/s+byGAM1xPJMmw2H7xmlySBEs=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Jay Pipes</foaf:name>
+        <foaf:nick>jaypipes</foaf:nick>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/14740953/jaysmall.jpg"/>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/17005613/jay-192x192.png"/>
+        <foaf:mbox_sha1sum>9518C194BDA57E98027B1029D5AC676607D6C856</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>9C5804A8</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>16C550D4706103A148CD38260CAD7BD99C5804A8</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x16C550D4706103A148CD38260CAD7BD99C5804A8&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>EFE99E75</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>4C89EE482ECC290C165CDAEF2536A9E3EFE99E75</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x4C89EE482ECC290C165CDAEF2536A9E3EFE99E75&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBALbZ2fIY2MIgJZ73cv3wLVXkPqjC1d7V3yd0F7B8iRiZ7SbSSpDWOevkc+8ShomkmRZ3j91Q9n2vaj4ifbPlkXrnKcrX1EW2k2wuN08tEKaESwPeyDya0d+K1y0lqwfRtTPmLxqp8cJbIuKRjt1PYxhZM6B96RluttFibUSzGL2XAAAAFQDNs6u+gJDJIhRc0iHAxcGCPNVqtQAAAIEAkueQXBBl+RpRc/nL6O14EFkrWBhHmgSNIdsofQiTF1BIM8wLPZLaLZwWhtpaB0Dcqosi3/z9Aczfl5Xsdk5skzmRBKTrpJcnrms8ZmEcQFgDiY8b6gKO+31CifpdgH24wTHwrlGfB4klk9fn4lzvBRAao5Ny1AX4wu1KJuTnyocAAACACVe8+f+8mPqXbOgA7Td81W9Vsgd7fIIzm54tUjbID5N//yorQcrfIpQjhQ3gkRNnV9CP2vjH9S0/XUYNjh9TgH7AhZX6pQemf7kHkD0GZ66eGFklM+SaHNc8sMWzAv2ezRvjU0NMaD42PrD7k61g5oE9FpyY7JGopFiOCbZKk6c=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Jeffrey Hulten</foaf:name>
+        <foaf:nick>jhulten</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>A89A636ABB64FCA829BE98014E19CB074758C2F3</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAvbzNVmU8eO8IJaQIb82qGjyTsSwkavUunYy0aEzY7OGKdRKA6GO1HqR7AjP2GfhYQe5v1lY9gz9h93BZsTqqHqziA1bQ1jTF
+WxtuvU0xgjWzTRudJle0fz8BFoTxtYOTD3UloWzTPvithvAlRIgc2NtcI51VWEuNw7u75zNNdm5ST5N6daGZBP2vsw40jJLyzw5MT6jCrtoCYltr7eeA93QhPzOUDwlQhqYN
+oYipRp6rY5whHJGSyOQOR7jJ4dA+9oHG8xE+QLIWWMJsYkxJNaeqati6cU0bMIfcai4/uGvwsyyTtHSu120wWfVIw/k41DsMhp+ZxWGMBI3TauIYvQ==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>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</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Jim Winstead</foaf:name>
+        <foaf:nick>jimw</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>8A17C4A01FD69BEF7F90B65D02D50E74CAA36954</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAIEA3Qxve2DerPo4NIC6K/7AJF7dynVZzajg15a6d7zifC2hJ0nC9GiQBYPAd4fKlrsJbkRSGdnBEVFIT0lO5FD5JhyonL9GBen5weXKkl03GjSRYYbuRIBm+PhcXAHae17yV/uEHRvkJtwhtHM8KLPuXRryHWnbrBg0MRViuDa5J8M=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>joao.sov</foaf:name>
+        <foaf:nick>joao-soveral</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>955ECD609237365C7E58C890346ECF71C8D92A23</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>kay</foaf:name>
+        <foaf:nick>kay-roepke</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>761EED0C7DFEC14C71BA9A45A100FAF8862CB8BB</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAAEBAOZEVg/NTZfSg1nbC31/EuVHp9/kvOllHNobbL75GFX9GXes3hGfltWYLVNP+43r3rq2XtTG4KxZKimkYZAx2x3tUp7zaCFALHZiX+AUSEETS0gbJS3aHE/1fisfi1VgYeqHGAkkBc4jI5rzdy1QF1x+5qbYNoqyYHflXFkQq/15dT4+XgxAsRZxEBBZSAiNlc9PaxCtTt+z+BEGRGq7hHQHXkbCN4m497NEwV0iCHyjyIfEWXfLLwn4Sqp2QQeGzGqw2adscZcnX8qpJ4TKYfj+O0nA9X4nHXo6F5uBZ0T0VRVb/nRNIncSkJoM9XVIiMgFw1ZBcpI2VQ0znvd+N1UAAAAVAJZCZlaAwaXdblfIoP35L/zbOL2bAAABAQCqdwRddmx2Te0lao6MOvrdsYySxH9AuiPKkkLnlN1xOotmpdLTekB3incQGmqMGZa5NZHu1WHzD2Nt7kEOSkxa0/RF70n+Wykr65Pe0nkCkjcUjW8Qr9SKqReJn4DpueyDjjkCrPd56SLxqfhACZlelCFu7kHLDNaY7Is1b0SiyVQUkjNpNsHykcJWnkI8mumLOC7HiHmuQHyNoif7PTRwIjjW1FsqjmMxO+MY2eh+LoeiazqvhGdbYDH/FtfrsX0tWHgywmo0Xb34IR9GsTgedTqBvjJmsZiNY/pHPm72j6YOp0Aitk+iv9k065nc20u270xd70NRiphqqas76F/TAAABADQN1YSPP0p0vWx1tbzFJhVXnQLtraTrcolDpuMJ3ZeQ/pPCctEwAmPcLVo+b1a/fWQLRhMjH6LutnTSJ8DxPqGgL9qEcj5vt2ZDFvrlvL0+WjgxZmGYdlR1aP80aHr+mfT3MtGRmMHJlKV70UFDqiRTlfmtYasAPmEbQ8nb3TDaSuNZZpdozoS1xAgAwQ5LuauW9OgjqCG9r4dsFhZlioAQmW4ayaaSiL5SbpcMePoGH/Q71jlQalm7Yr+gYe7crBjCuDnShg0ovYo0P0uO8hrUaehySezJe2YJr0dciN7kvZr5DAu73s5rscmD3xJrVFzGilBjpRRu/c8jM0w5ON0=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Kenichi Yonekawa</foaf:name>
+        <foaf:nick>yonekawa</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>8E49DD4010A6EFA7ACBD4502366090ED97F3D9B1</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>kriezo</foaf:name>
+        <foaf:nick>kriezo</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>14D2E5115A05554885B215AE20AB4B96A2E4C8EB</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Lars Thalmann</foaf:name>
+        <foaf:nick>lars-mysql</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>FBF7B946E01D4FF17F603E8BC90633374CC456C0</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>LenZ</foaf:name>
+        <foaf:nick>lenzgr</foaf:nick>
+        
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/16254301/LenZ.png"/>
+        <foaf:mbox_sha1sum>31A4BEB6ADD0EB7A6AE7AB3A3BB91467685475FC</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>B27291F2</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>709CCE9076840DAE3965DA374950E12AB27291F2</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x709CCE9076840DAE3965DA374950E12AB27291F2&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAO47/QtAMpAS3xlAQgL4M7Hm3yVvGez0TqglSTbmcd5RDbIh56XRtHlHNmAE50Zg2Admzce4azM9/cIpcTk/c2DLFDALCT5XWw3kQD7Xp1SDfQLBCtLYmz9IOHZ2Xvq+d2s2/9KWH95if94IC2PPa7W5K4tvt7cyXaCGo66tPGitAAAAFQDzs+57hsewX393+lE/7y4C/OpaRQAAAIEAlHjiIBbGnXvhgFH1iJ2Y4/t0iif6K9jbHa1hU9V0LgezEorcpx3Colh34mXicjksJH+E9a2soOddAKiB6rL8F9I4rORHOmnysIXFmqY1lJLDy+gAYIhgS5/Rp5xh5tq/4I1YKq4hjND5atogxgpg2OSo4CguxWi5u0/28/vZuT0AAACBALXEeR3kO1W4lJC1RGm94tXZBhMNEcSWagfRYnx7ENwXiCdnobBB9yIIAjiPjs2pn/XGqB4+/pG7Kd4MMgFjfMmNRpMTu9noFD9c/PfefcHzx/ZgyYCQ0rXnmrj5+GyhudNewCt1NxcKG1GTBEIalJA6K1Xq0buKGD9GoXgiz9Pj</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Mark Atwood</foaf:name>
+        <foaf:nick>fallenpegasus</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>5C2D506DB2F1ED64701485404E42263141813DFA</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAo5CQIiX0UWVVxkGaJ6pTP4dTwxmkUcpvvapTKshIRXuc4teP12rWOrikahQu+TJzPgKU3PNZnUV5ItFJhc8BCBP3D7xn1C7waiAquO3T4FlbNa6UwrLJIQPjfZXs6/57jCpDPgiCcqM+rjpB1VNn00lX4LEblghP7+g03ebHNmmCmwmbjahJU850b6HdlIX7e/zAx1f3zGBFC0MTkUIt7zUZ1Gvo6rJOy/3PEbL5de5HCJkjmTqDTotNxDm7LUUzTNBbq6AcEXqWLxiHqNlb8+JXy+j7jmfmstBA3ZM+kORuhBBtGmXfkzQ3ZHmbC+jMh3mKS6Dnt/t0ou7irDhd7Q==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Mats Kindahl</foaf:name>
+        <foaf:nick>mkindahl</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>1CD4AE3DB9AAC625BB71B49D13152365E907DFF7</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>B1462DEB</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>39918448DB8C94A1F58B0CDABBC1B5E5B1462DEB</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x39918448DB8C94A1F58B0CDABBC1B5E5B1462DEB&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAIEAxE/aE8Pf1M5s7aJ7xG7U8K2KMCzKJrOAkbEdFe1vBEH0QFJYlpYHD7HO2FVSlgMvp7VQJ4z/UVuVeQuYWsSZp4LTx7G7bC+7S2IqXP4o3VW1QjFl02YlcjZA6ekyUuSxbrl8eowvPWoSi3AxuWwgr5I8JrfkY4bzNkTxZyvD5/M=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>MC Brown</foaf:name>
+        <foaf:nick>martin-brown</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>B268EDFA001373730C90F6067B42D693482118D1</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Monty Taylor</foaf:name>
+        <foaf:nick>mordred</foaf:nick>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/13939960/my_face_blue_eyes_64_64.jpg"/>
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/13939961/my_face.jpg"/>
+        <foaf:mbox_sha1sum>F0B31C7384204E6D71A62AF33B027188B901D5E6</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>52B54601</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>890C20CD2E2F19B76FEB2EE7D89BFBFD52B54601</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x890C20CD2E2F19B76FEB2EE7D89BFBFD52B54601&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>917E436B</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>4C6A6D88B508C5DCBC57ABD7E17EF46D917E436B</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x4C6A6D88B508C5DCBC57ABD7E17EF46D917E436B&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAN2I6q4yjydSwEnhf45GPBDvj/MUjPBlTj3Buf+xunUtfdXSIpTDvasTVibEKhNrNkr0zkIe8hE5uOM3pHeSLRx9Tj8Txjn5RN3xsKhkqhS/j/GCPiDWRQnpfHPWHK7NxEMwbMv7Rato8YubVmSq9UodXSWytcSXZCTtQVZJvDMjAAAAFQCA+aVTTD9XcC7A575rcu0j75f2HwAAAIA8tdrsQoNV1AMde6r0iE8T8wkw9T9cA9bwK8sbIR3S81FG805bMdVanBfDBwfOTM/rbuGQoH4F8oqURor7njwARh5BLTFrpqSqSw6vTm30TJnRDUS7qrDG0xrzqk+RF5AXHHJ4MJKbjpUc2C3MHOo+rybjE1rJh9OWr9xG3oRroAAAAIAyN2Btf9fCJh2MhqPrtVCfSUzcE7qz/7XludszUwrWElsTfqXtSfRqiQybXSImVPz9DE+ZufOHGLMGolEi+ALRgLp4L7JDBld+Gga64HnAbg/jmDKN97CyFrRbmVbln/oFQFmDhLchGnERhRKQWOWwXKdOrDgGvDwHORsCffUVLw==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAN2I6q4yjydSwEnhf45GPBDvj/MUjPBlTj3Buf+xunUtfdXSIpTDvasTVibEKhNrNkr0zkIe8hE5uOM3pHeSLRx9Tj8Txjn5RN3xsKhkqhS/j/GCPiDWRQnpfHPWHK7NxEMwbMv7Rato8YubVmSq9UodXSWytcSXZCTtQVZJvDMjAAAAFQCA+aVTTD9XcC7A575rcu0j75f2HwAAAIA8tdrsQoNV1AMde6r0iE8T8wkw9T9cA9bwK8sbIR3S81FG805bMdVanBfDBwfOTM/rbuGQoH4F8oqURor7njwARh5BLTFrpqSqSw6vTm30TJnRDUS7qrDG0xrzqk+RF5AXHHJ4MJKbjpUc2C3MHOo+rybjE1rJh9OWr9xG3oRroAAAAIAyN2Btf9fCJh2MhqPrtVCfSUzcE7qz/7XludszUwrWElsTfqXtSfRqiQybXSImVPz9DE+ZufOHGLMGolEi+ALRgLp4L7JDBld+Gga64HnAbg/jmDKN97CyFrRbmVbln/oFQFmDhLchGnERhRKQWOWwXKdOrDgGvDwHORsCffUVLw==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Parvesh Garg</foaf:name>
+        <foaf:nick>parveshgarg</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>D174EF198E53D7CB1D36268D25A1EF1FB2D3349D</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Roland Bouman</foaf:name>
+        <foaf:nick>roland-bouman</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>0722D59F8B1F404BCCE0D056C51E75F841FF96CF</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Savu Andrei</foaf:name>
+        <foaf:nick>savu-andrei</foaf:nick>
+        
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/16470264/65308_4.jpg"/>
+        <foaf:mbox_sha1sum>7AE705BF83758E3DF6DF9CD1C4F8BE0A603E860B</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Sean Murphy</foaf:name>
+        <foaf:nick>seanmurphy</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>FCCCF6D4210D596C469A456B1AA6AFBE9ADFE38E</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEA5CR4SM3Sz7zL9maMpSMy4CWAocMpZDVIbh/Vz/qIaqDN2ZJ1F3ha+fS6zJmvvQwmL0SDXwed4XpF6g4zxa0hgA6p8PmjOP9I3ZUYnG8gRoJDOOL3aR9+UMiDW9yrxV2i99M3AYxRrGNtBfWGdqh34NMr7uhJRX5O99NY0TysreMUmUgbqetGwSXN2huSIftRIkS3m1DzCYeP6EmTZHY/CaKlxC7pqPB8+CGiHXzaRJduIPhrbROzVgIZKtpBQ25DJ+SsLsvbuyd+FtZMFc0lS0ZIVjK/Hm9FyieY0GnDQvgWKgp2PLPtWMTyHGzwjDmCEpCvNnazaipKVd8+VO9wDw==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>shinguz</foaf:name>
+        <foaf:nick>oli-sennhauser</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>B21FAFF8401F1D3A559912C362DAF8228D981214</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Stewart Smith</foaf:name>
+        <foaf:nick>stewart-flamingspork</foaf:nick>
+        
+        <foaf:img rdf:resource="http://launchpadlibrarian.net/16973777/stewart2007_192x192.jpg"/>
+        <foaf:mbox_sha1sum>66287C9A6038490277AA1034C767EACA752C2909</foaf:mbox_sha1sum>
+        <wot:hasKey>
+          <wot:PubKey>
+            <wot:hex_id>D37D4A89</wot:hex_id>
+            <wot:length>1024</wot:length>
+            <wot:fingerprint>2E161F5CCA342728E8C49D0D16D242F6D37D4A89</wot:fingerprint>
+            <wot:pubkeyAddress
+    rdf:resource="http://keyserver.ubuntu.com:11371/pks/lookup?search=0x2E161F5CCA342728E8C49D0D16D242F6D37D4A89&amp;op=index"/>
+          </wot:PubKey>
+        </wot:hasKey>
+        
+          <lp:sshPubKey>AAAAB3NzaC1kc3MAAACBAP40eJ9rwBNkTckTDJS5nGsgrtkXfId8tDRotMMzQk8oxQVcHk5SaxpyQQuJfqt4GwIly1nPobQbt9XSn7aX2qAUScqswdBs92RHni7sXnW2OCwjpYLDJOLWe37itarRlGdjZHEZiadrV7BNKr866psEv3xgAPZZQlKdttbVIwZdAAAAFQDlvv6a9cEbXG6pqukWnnt2fZXwSwAAAIEAzlvq4Ftj1f2Jz2zFjYWIIfmHqo9/aYDsBWnEComezhYuDTMLnfXSikmrsCxfDzeRsn/oUNNnAe0I43HOn37ZU2dNJ22U4cfxN8/U/zpmWj99GHASLreJdEd8aQzhEJHVzZWrlTiiDl/hZoXI/2n16711Z4hy0zsBaa9TLfuQVvAAAACAZj3hMX+rsT8L86Hg3ry1qVkDVL8SqUu5TxjQ+vd0kVIEwpCK0L85N7Wbxr3pO9ORhh/V7swD1NJWvxrM9G0S6FOmqQNij7WPX9VHAAaTKkBtSc/wV01tGfdoce1v+ck1z+7NN/KFgcKvE/FKpKHlHLfKqOae9p/pfEBK7ZejEag=</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Toru Maesaka</foaf:name>
+        <foaf:nick>tmaesaka</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>3AC8B5981729D7F8361D1157192E33330B63A8E7</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEA3kk1tkwrx3Km8TdtUT1DczlseE7QXs0au8zQqZa9gPSRnVWHy0B+49JqJqiIT4ai3NV7Ax8wBkiy8slXdtTQp+/9a5iJRgoJucbf0TDFrR/kUYjG6KpX8V+YooQHw7RQJhT1IT6OwwJAQPx3JA3JFjJ6Nyy5VwswPYEilGAGUKdwxqGwa2DBFoKcNCm/5PiiJUAFxQynxOiaYdOVSY+fUp3gQXRVnVo7UbNJKfM/looKh8/jmdcu6CVfznTdQLp+0BsFDfDO8hLM7+pjEfE7TRtJ2gU0AZ32Fysj7MT8+AGbvQIMFG1ePMqo8nImYVHpas9CP+4EoqV4gHwBAc59Sw==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAmdj5ALxVbhsuwkjE1EL4qJrXiU6ePQrx6+EWhr/D3z7FLVWUGw3RNOVcRdOm9COqV/FyCl1GwdEJwXTZIHjfANgHDqTJxHAOu1RyBnjPLZtt5xSmEa9V0h5YP26dku+Ic5odHFCNahFEI19SXNVCxUZd/UVD+c4FZ3DrK4+NPpz3TCs2BauikacnSWZDZ7Gv3IRYjl/bs2B5LGleZ/fRuntM20DeFcmtmirXmtfBTyvHDjX5eZI77u6sfl6dIXGxDaIFuIn3S5IejZ2up+ciY9SW9FK1TUysk088SpU43f0xj0MjOAQEqVs8r2jJpyI0eyWcy6kJt88cGj8G++IXiQ==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAnF5cTpSVXbibvYhzi5gwKNxypvk8scNQyRNM2Ha7lt1arM0bzCLEphzVhg7PdxT+s1UTgqI3km2X+dvktWRUWZoUeFQeC4gjNmKgnBSnFWs+hTJS5qtSg79C1SNvRU1Vyu9jiCXJ8+0qZYHRzIVV2y9kjXQu8nyI30MH7OD7gAIyIxa3/QiiPL+RgdwusUeHn0lem5jyt7DtPOB8t5Ge4fy0bOzxn3+mrhQVuc8lJQdpj4h7tDkuKbsISAAXfNQNlkUTOqUADuldPy/dwfeel6o6hfnwSv1fJ5FegZQV+v2mFA5r6s7dFxmUH2IrrHuHfydHR+zv3DctQWQf4Kd7pQ==</lp:sshPubKey>
+        
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEAq37DAvZdz21Mj9FbSmDrXwwCxU9kzF62o/kQ0HqBL3O/yJlWu+pWPNGHKZ64/TT8XweuV9HSlor5oQlq2U6sS75dnyWplPNDm5/Hxt7R6v8bH/vWUHUESahFP6Q+fhe+HaiD9BgvPt6z06K6Wd3nlWxKl+WPIeFMZnZKQNPA17Oy81BJ6IbsfZtgnQQI6i1bIvIfCrnZrkthvY6ncLiZx9l5HwIj4YeX96/BcsKpjlG5He2A7tNz2MP2AyuYzDTGhlJJp8SUzNITRy6cWLSaMdIVTfksL5pymBkbwo661mXrhxofbCh6/TFCg4yjn8LXBP2RZveH+SwkY/v/wdRxYw==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Toshiya Tsuru</foaf:name>
+        <foaf:nick>turutosiya</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>3148103A7F3DA21DA67AE2EC0FB595A9B126D487</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>wtoconnor</foaf:name>
+        <foaf:nick>wtoconnor</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>8E5B4D269EDF61EBE6095885802E48BD759717AB</foaf:mbox_sha1sum>
+        
+          <lp:sshPubKey>AAAAB3NzaC1yc2EAAAABIwAAAQEA1XFUvvjnv2kiTmfvY4E4tx2+HhWi8VxsWMlJz0SaNxP3mcS++zmdhcunLWt2ACoGlWn/SJVAm5R+ee1Uj9lTp
+R3T3IYtRc4QBT8MZW4SShXqlGpxR6XlTJpMrMmA/n8k1SDUCW9umGVMxLG1sRCYiGmCyQXLd8iOUR/CMtKVoe99d9vn9qK7hzBJPYETg5/Mu1yxzC/n57QXaV
+O1l1jHoR1utXSigHiFB/I4b45M2pMGm6QF2pjEkQTLZ4f6Aopj7HTEZlvhqoH9V+56G6UgarjkEN3Tb6+RId0ubrtfduVz7w/In5uqEHoHUGO1gnW7AWn+tTx
+ftlMzTse5PoA1uQ==</lp:sshPubKey>
+        
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>z19</foaf:name>
+        <foaf:nick>limea</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>74E5B33DE97B128A09406E08DA2202E9DB93DBF2</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+    <foaf:member>
+      
+      <foaf:Person>
+        <foaf:name>Zak Greant</foaf:name>
+        <foaf:nick>zak-greant</foaf:nick>
+        
+        
+        <foaf:mbox_sha1sum>3F14A4D53CA0E559EDE7D27B2B7106B044FABB10</foaf:mbox_sha1sum>
+      </foaf:Person>
+    
+    </foaf:member>
+  </foaf:Group>
+
+</lp:owner>
+        <lp:status>Active</lp:status>
+        
+    </lp:Product>
+</rdf:RDF>
