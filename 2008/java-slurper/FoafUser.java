@@ -21,9 +21,11 @@ public static void main(String[] args){
 
  try{
   FoafUser u = new FoafUser();
-  u.getDetails(lookup);
+  boolean f=u.hasPath(lookup,"http://nicecupoftea.org","362ce75324396f0aa2d3e5f1246f40bf3bb44401");
+  System.out.println("Path: "+f);
+//  u.getDetails(lookup);
   System.out.println("Attributes: "+u.getAttributes());
-  u.getContacts(lookup);
+//  u.getContacts(lookup);
   System.out.println("Contacts: "+u.getContactsReferencedMap());
 
  }catch(Exception e){
@@ -201,5 +203,30 @@ public FoafUser getContacts(String url) throws java.io.IOException{
 return this;
 
 }
+
+
+/** 
+
+Path thingy
+
+*/
+
+public boolean hasPath(String url,String id1, String id2) throws java.io.IOException{
+
+ this.getDetails(url); 
+ this.getContacts(url); 
+
+ if(attributes.containsValue(id1)){
+  if(this.getContactsReferencedMap().containsKey(id2)){
+   return true;
+  }else{
+   return false;
+  }
+ }else{
+  return false;
+ }
+
+}
+
 
 }

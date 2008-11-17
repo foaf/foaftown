@@ -21,6 +21,7 @@ public static void main(String[] args){
 
  try{
   QdosUser u = new QdosUser();
+//getDetails doesn't work
 //  u.getDetails(lookup);
 //  System.out.println("Attributes: "+u.getAttributes());
   u.getContacts(lookup);
@@ -213,6 +214,28 @@ public QdosUser getContacts(String url) throws java.io.IOException{
 
 return this;
 
+}
+
+
+/**
+
+path thingy
+
+*/
+
+public boolean hasPath(String url,String id1, String id2) throws
+java.io.IOException{
+ this.getDetails(url);
+ this.getContacts(url);
+ if(attributes.containsValue(id1)){
+  if(this.getContactsReferencedMap().containsKey(id2)){
+   return true;
+  }else{
+   return false;
+  }
+ }else{
+  return false;
+ }
 }
 
 }
