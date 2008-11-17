@@ -3,7 +3,7 @@ import java.util.*;
 import com.hp.hpl.jena.rdf.model.*;
 import com.hp.hpl.jena.query.*;
 
-public class FoafUser{
+public class QdosUser{
 
 /**
 
@@ -14,15 +14,15 @@ Main method demonstrating getDetails and getContacts.
 
 public static void main(String[] args){
 
- String lookup="danbri.org";
+ String lookup="danbri@danbri.org";
  if(args.length > 0){
   lookup=args[0];
  }
 
  try{
-  FoafUser u = new FoafUser();
-  u.getDetails(lookup);
-  System.out.println("Attributes: "+u.getAttributes());
+  QdosUser u = new QdosUser();
+//  u.getDetails(lookup);
+//  System.out.println("Attributes: "+u.getAttributes());
   u.getContacts(lookup);
   System.out.println("Contacts: "+u.getContactsReferencedMap());
 
@@ -69,12 +69,14 @@ You have to pass it a foaf file explaicitly.
 */
 
 
-public FoafUser getDetails(String url) throws java.io.IOException{
+public QdosUser getDetails(String url) throws java.io.IOException{
 
 try{
 
+ String qdosLookup="http://foaf.qdos.com/reverse?ifp=foaf:mbox&path=mailto:"+url;
+
  Model model = ModelFactory.createDefaultModel();
- model.read(url); 
+ model.read(qdosLookup); 
 
  // Create a new query
  String queryString = 
@@ -138,22 +140,33 @@ though it'd be simple to do.
 */
 
 
-public FoafUser getContacts(String url) throws java.io.IOException{
+public QdosUser getContacts(String url) throws java.io.IOException{
 
  try{
 
+ String qdosLookup="http://foaf.qdos.com/reverse?";
+
+ if(url.indexOf("@")!=-1){
+  qdosLookup=qdosLookup+"ifp=foaf:mbox&path=mailto:"+url;
+ }else if(url.indexOf("http")!=-1){
+  qdosLookup=qdosLookup+"ifp=foaf:homepage&path="+url;
+ }else{
+ //assume mboxsha1sum
+  qdosLookup=qdosLookup+"ifp=foaf:mbox_sha1sum&path="+url;
+ }
+
  Model model = ModelFactory.createDefaultModel();
- model.read(url); 
+ model.read(qdosLookup); 
 
  String queryString = 
   "PREFIX foaf:   <http://xmlns.com/foaf/0.1/> "+
   "select distinct ?fn ?weblog ?homepage ?mbox ?mboxsha1 where { "+
-  "?x foaf:knows ?y . "+
+  "?y foaf:knows ?x . "+
   "optional {?y foaf:name ?fn}. "+
   "optional {?y foaf:mbox ?mbox}. "+
   "optional {?y foaf:weblog ?weblog}. "+
   "optional {?y foaf:homepage ?homepage}. "+
-  "optional {?y foaf:mbox_sha1sum ?mboxsha1}. }";
+  "optional {?y foaf:mbox_sha1sum ?mboxsha1}.} ";
 
   Query query = QueryFactory.create(queryString);
   QueryExecution qe = QueryExecutionFactory.create(query, model);
@@ -172,7 +185,7 @@ public FoafUser getContacts(String url) throws java.io.IOException{
    Map m= new HashMap();
    String id=null;
 
-   for (int i = 0; i < resultVars.size(); i++) { 
+   for (int i = 0; i < resultVars.size(); i++) {  
     String s=resultVars.get(i);
     Object v=rs.get(s);
     String r=null;
