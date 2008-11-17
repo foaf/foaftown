@@ -1,0 +1,25 @@
+<div typeof="foaf:Document">
+
+<dl>
+<dt class="Key" property="dc:identifier"><$citeKey/>&#160;
+</dt>
+<dd class="Pub">
+	<span class="Title" property="dc:title"><$fields.Title/></span><br />
+	<span class="Author" property="dc:creator"><$pubAuthorsForDisplay/></span><br />
+	<span class="Journal"><$fields.Journal/></span>     &#160;   
+	<span class="Volume"><$fields.Volume/></span>      &#160;  
+	<span class="Pages"><$fields.Pages/></span>      &#160;  
+	(<span class="Date" property="dc:date"><$fields.Year/>
+</span>)<br />
+<$localFiles>
+	<span class="File"><a href="<$URL.absoluteString/>"><$URL.path/></a></span><br />
+</$localFiles>
+<$remoteURLs>
+	<span class="URL"><a rel="dc:identifer" href="<$URL.absoluteString/>"><$URL.absoluteString/></a></span><br />
+</$remoteURLs>
+	<div class="Abstract" property="dc:description"><$fields.Abstract/>
+&#160;
+</div>
+</dd>
+</dl>
+</div>
