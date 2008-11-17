@@ -32,7 +32,7 @@ Main method illustrates the use of getDetails.
    u.getDetails(lookup,recursive);
    System.out.println("Attributes: "+u.getAttributes());
    u.getContacts(lookup,recursive);
-   System.out.println("Contacts: "+u.getContactsReferenced());
+   System.out.println("Contacts: "+u.getContactsReferencedMap());
   }catch(Exception e){
    System.out.println("problem "+e);
    e.printStackTrace();
@@ -48,6 +48,7 @@ Two useful Maps for the user:
 
  Map attributes=new HashMap();
  List contactsReferenced=new ArrayList();
+ Map contactsReferencedMap=new HashMap();
  private Map nodes=null;
 
 /**
@@ -62,6 +63,10 @@ Get methods for the useful Maps.
 
  public List getContactsReferenced(){
   return this.contactsReferenced;
+ }
+
+ public Map getContactsReferencedMap(){
+  return this.contactsReferencedMap;
  }
 
 
@@ -165,8 +170,79 @@ It only returns the ones that are not 'me'.
     }
    }
   }
+
+  this.getMultipleDetails(contactsReferenced);
+
   return this;
 
  }
+
+/**
+
+Goes back to the API and gets the names of the users from a list.
+
+*/
+
+ public void getMultipleDetails(List people) throws java.io.IOException{
+
+   List peopleShorter = new ArrayList();
+   String urlStart="http://socialgraph.apis.google.com/lookup?pretty=1&edo=1";
+
+   String qstring="";
+
+   //max 15 queries from the api (it seems; docs say 50)
+   int max=15;
+
+   //construct query string
+   for(int i=0;i<people.size();i++){
+    String id=people.get(i).toString();
+    if(i<max){
+     id=id.replaceAll("\\?","%3F");
+     id=id.replaceAll("=","%3D");
+     qstring=qstring+","+id;
+    }else{
+     peopleShorter.add(id);
+    }
+   }
+
+   URL u=new URL(urlStart+"&q="+qstring);
+
+   JsonFactory jf = new JsonFactory(); 
+   JavaTypeMapper jtm=new JavaTypeMapper();
+   jtm.setDupFieldHandling(BaseMapper.DupFields.valueOf("USE_FIRST"));
+
+   Map hash = (Map)jtm.read(jf.createJsonParser(u));
+   Map friendNodes  = (Map) hash.get("nodes");
+
+   //for each of these cannonical mappings get the name and add it to the map
+   //contactsReferencedMap
+
+  for ( Iterator<String> nodesIt = friendNodes.keySet().iterator(); nodesIt.hasNext(); ) {
+   String str = nodesIt.next();
+   Map vals = (Map)friendNodes.get(str);
+   for ( Iterator<String> attsIt = vals.keySet().iterator(); attsIt.hasNext(); ) {
+    String str2 = attsIt.next();
+    if(str2.equals("attributes")){
+      LinkedHashMap vals2 = (LinkedHashMap)vals.get(str2);
+      contactsReferencedMap.put(str,vals2);
+    }
+   }
+
+  }
+
+
+  if(people.size()>max){
+    //System.out.println("XXXXXXXXXXXXXX recursing at "+peopleShorter.size());
+    for(int j=0;j<max;j++){
+      String key=people.get(j).toString();
+      if(!contactsReferencedMap.containsKey(key)){
+        contactsReferencedMap.put(key,new LinkedHashMap());
+      }
+    }
+    this.getMultipleDetails(peopleShorter);
+  }
+
+ }
+
 
 }
