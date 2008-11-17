@@ -36,16 +36,17 @@ Main method illustrates the use of getDetails.
   SGUser u = new SGUser();
   try{
 
-  boolean f=u.hasPath(lookup,lookup2);
-
-  System.out.println("Path: "+f);
-//   u.getDetails(lookup,recursive);
+    boolean f=u.hasPath(lookup,lookup2);
+//  System.out.println("Path: "+f);
+//  u.getDetails(lookup,recursive);
 //  System.out.println("Attributes: "+u.getAttributes());
-//   u.getContacts(lookup,recursive);
+//  u.getContacts(lookup,recursive);
 //  System.out.println("Contacts: "+u.getContactsReferencedMap());
 
   //goes for 2 levels
   //System.out.println("Contacts: "+u.getFoafs());
+
+    System.out.println("Contacts: "+u.getContactsRSS());
 
   }catch(Exception e){
    System.out.println("problem "+e);
@@ -65,6 +66,7 @@ Two useful Maps for the user:
  Map contactsReferencedMap=new HashMap();
  private Map nodes=null;
  List foafs=new ArrayList();
+ Map contactsRSS=new HashMap();
 
 /**
 
@@ -82,6 +84,10 @@ Get methods for the useful Maps.
 
  public List getFoafs(){
   return this.foafs;
+ }
+
+ public Map getContactsRSS(){
+  return this.contactsRSS;
  }
 
  public Map getContactsReferencedMap(){
@@ -247,6 +253,12 @@ Goes back to the API and gets the names of the users from a list.
         str=str.substring(19);
       }
       contactsReferencedMap.put(str,vals2);
+      if(vals2.containsKey("rss")){
+        contactsRSS.put(vals2.get("rss"),vals2);
+      }
+      if(vals2.containsKey("atom")){
+      contactsRSS.put(vals2.get("atom"),vals2);
+      }
     }
     if(str2.equals("nodes_referenced")){
       LinkedHashMap vals22 = (LinkedHashMap)vals.get(str2);
