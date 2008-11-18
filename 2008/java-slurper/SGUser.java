@@ -10,37 +10,47 @@ public class SGUser{
 
 /**
 
-Main method illustrates the use of getDetails.
+Main method illustrates the use of getDetails and getContacts.
 
 */
 
  public static void main(String[] args){
 
-  String lookup="danbri.org";
+  String lookup=null;
+  String flag=null;
   String recursive="true";
 
-  if(args.length > 0){
-   lookup=args[0];
-  }
   if(args.length > 1){
-   lookup=args[0];
-   recursive=args[1];
-  }
-  if(args.length == 0){
-    System.out.println("Usage: java -classpath .:jackson-asl-0.9.3.jar SGUser userId [recursive]");
-    System.out.println("Doing a lookup on defaults "+lookup+" "+recursive);
+   flag=args[0];
+   lookup=args[1];
+  }else if(args.length > 2){
+   flag=args[0];
+   lookup=args[1];
+   recursive=args[2];
   }
 
-  SGUser u = new SGUser();
-  try{
-    u.getDetails(lookup,recursive);
-    System.out.println("Attributes: "+u.getAttributes());
-    u.getContacts(lookup,recursive);
-    System.out.println("Contacts: "+u.getContactsReferencedMap());
-  }catch(Exception e){
-   System.out.println("problem "+e);
-   e.printStackTrace();
+  if(flag!=null && lookup!=null && (flag.equals("--details") || flag.equals("--contacts") )){
+   SGUser u = new SGUser();
+   try{
+    if(flag.equals("--details")){
+      u.getDetails(lookup,recursive);
+      System.out.println("Attributes: "+u.getAttributes());
+    }else if(flag.equals("--contacts")){
+      u.getContacts(lookup,recursive);
+      System.out.println("Contacts: "+u.getContactsReferencedMap());
+    }else{
+      System.out.println("Usage: java -classpath .:jackson-asl-0.9.3.jar SGUser <flag> <userId> [recursive]");
+      System.out.println("Available flags are --details and --contacts");
+    }
+   }catch(Exception e){
+    System.out.println("Problem "+e);
+   }
+
+  }else{
+   System.out.println("Usage: java -classpath .:jackson-asl-0.9.3.jar SGUser <flag> <userId> [recursive]");
+   System.out.println("Available flags are --details and --contacts");
   }
+
  }
 
 /** 

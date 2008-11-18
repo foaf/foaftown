@@ -14,20 +14,32 @@ Main method demonstrating getDetails and getContacts.
 
 public static void main(String[] args){
 
- String lookup="http://danbri.org/foaf.rdf";
- if(args.length > 0){
-  lookup=args[0];
+ String lookup=null;
+ String flag=null;
+ if(args.length > 1){
+  flag=args[0];
+  lookup=args[1];
+  FoafUser u = new FoafUser();
+
+  try{
+    if(flag.equals("--details")){
+     u.getDetails(lookup);
+     System.out.println("Attributes: "+u.getAttributes());
+    }else if(flag.equals("--contacts")){
+     u.getContacts(lookup);
+     System.out.println("Contacts: "+u.getContactsReferencedMap());
+    }else{
+      System.out.println("Usage: sh foafuser.sh <flag> <foafFileURL");
+      System.out.println("Available flags are --details and --contacts");
+    }
+   }catch(Exception e){
+    System.out.println("Problem "+e);
+   }
+ }else{
+   System.out.println("Usage: sh foafuser.sh <flag> <foafFileURL>");
+   System.out.println("Available flags are --details and --contacts");
  }
 
- try{
-  FoafUser u = new FoafUser();
-  u.getDetails(lookup);
-  System.out.println("Attributes: "+u.getAttributes());
-  u.getContacts(lookup);
-  System.out.println("Contacts: "+u.getContactsReferencedMap());
- }catch(Exception e){
-  System.out.println("problem "+e);
- }
 }
 
 /**
