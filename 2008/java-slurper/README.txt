@@ -10,8 +10,12 @@ http://jackson.codehaus.org/
 
 Usage:
 
-javac -cp .:jackson-asl-0.9.3.jar SGUser.java
-java -classpath .:jackson-asl-0.9.3.jar SGUser twitter.com/libbymiller
+ javac -cp .:jackson-asl-0.9.3.jar SGUser.java
+ java -classpath .:jackson-asl-0.9.3.jar SGUser <flag> <UserId>
+
+Example:
+
+ java -classpath .:jackson-asl-0.9.3.jar SGUser --details http://twitter.com/libbymiller
 
 
 FoafUser
@@ -27,6 +31,12 @@ http://jena.sourceforge.net/
 - however it's basically a couple of sparql queries.
 
 
-Usage:
+Usage: 
 
-sh foafuser.sh http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf
+ sh foafuser.sh <flag> <foafFileURL>
+
+ Available flags are --details and --contacts
+
+Example:
+
+ sh foafuser.sh --details http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf
