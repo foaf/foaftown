@@ -17,8 +17,7 @@ Main method illustrates the use of getDetails.
  public static void main(String[] args){
 
   String lookup="danbri.org";
-  String lookup2="6de4ff27ef927b9ba21ccc88257e41a2d7e7d293";
-  String recursive="false";
+  String recursive="true";
 
   if(args.length > 0){
    lookup=args[0];
@@ -27,27 +26,17 @@ Main method illustrates the use of getDetails.
    lookup=args[0];
    recursive=args[1];
   }
-  if(args.length > 2){
-   lookup=args[0];
-   recursive=args[1];
-   lookup2=args[2];
+  if(args.length == 0){
+    System.out.println("Usage: java -classpath .:jackson-asl-0.9.3.jar SGUser userId [recursive]");
+    System.out.println("Doing a lookup on defaults "+lookup+" "+recursive);
   }
 
   SGUser u = new SGUser();
   try{
-
-    boolean f=u.hasPath(lookup,lookup2);
-//  System.out.println("Path: "+f);
-//  u.getDetails(lookup,recursive);
-//  System.out.println("Attributes: "+u.getAttributes());
-//  u.getContacts(lookup,recursive);
-//  System.out.println("Contacts: "+u.getContactsReferencedMap());
-
-  //goes for 2 levels
-  //System.out.println("Contacts: "+u.getFoafs());
-
-    System.out.println("Contacts: "+u.getContactsRSS());
-
+    u.getDetails(lookup,recursive);
+    System.out.println("Attributes: "+u.getAttributes());
+    u.getContacts(lookup,recursive);
+    System.out.println("Contacts: "+u.getContactsReferencedMap());
   }catch(Exception e){
    System.out.println("problem "+e);
    e.printStackTrace();
@@ -56,17 +45,16 @@ Main method illustrates the use of getDetails.
 
 /** 
 
-Two useful Maps for the user:
+Useful Maps for the user:
  * attributes are thing like fn (first name), rss
  * contactsReferenced are a list of IDs for contacts (urls, mboxsha1sum, mbox)
+ * contactsReferencedMap is a map of the IDs to the attributes of the contacts
 */
 
  Map attributes=new HashMap();
  List contactsReferenced=new ArrayList();
  Map contactsReferencedMap=new HashMap();
  private Map nodes=null;
- List foafs=new ArrayList();
- Map contactsRSS=new HashMap();
 
 /**
 
@@ -82,14 +70,6 @@ Get methods for the useful Maps.
   return this.contactsReferenced;
  }
 
- public List getFoafs(){
-  return this.foafs;
- }
-
- public Map getContactsRSS(){
-  return this.contactsRSS;
- }
-
  public Map getContactsReferencedMap(){
   return this.contactsReferencedMap;
  }
@@ -103,7 +83,6 @@ Method for getting the url and parsing it.
 
  private void getNodes(String userID,String recursive) throws java.io.IOException{
 
-  if(this.nodes==null){
    String urlStart="http://socialgraph.apis.google.com/lookup?pretty=1&edo=1";
    if(recursive!=null && recursive.equals("true")){
    urlStart=urlStart+"&fme=1";
@@ -118,7 +97,6 @@ Method for getting the url and parsing it.
    Map hash = (Map)jtm.read(jf.createJsonParser(u));
 
    this.nodes = (Map) hash.get("nodes");
-  }
 
  }
 
@@ -128,10 +106,10 @@ Method for getting the url and parsing it.
 Get the details for the user.
 
 The aim is to get minimal useful information about the user from the
-google social graph. It looks recursively for attributes unless the
-second argment is false, but takes the first ones if there are duplicates
-(since ordering doesn't seem to put the requested node first this may
-not be helpful).
+google social graph. It looks recursively for attributes of claimed
+nodes unless the second argment is false, but takes the first ones if
+there are duplicates (since ordering doesn't seem to put the requested
+node first this may not be helpful).
 
 */
 
@@ -154,6 +132,7 @@ not be helpful).
   }
   return this;
  }
+
 
 /**
 
@@ -231,16 +210,13 @@ Goes back to the API and gets the names of the users from a list.
    }
 
    URL u=new URL(urlStart+"&q="+qstring);
-
+   //System.out.println("URL is "+u);
    JsonFactory jf = new JsonFactory(); 
    JavaTypeMapper jtm=new JavaTypeMapper();
    jtm.setDupFieldHandling(BaseMapper.DupFields.valueOf("USE_FIRST"));
 
    Map hash = (Map)jtm.read(jf.createJsonParser(u));
    Map friendNodes  = (Map) hash.get("nodes");
-
-   //for each of these cannonical mappings get the name and add it to the map
-   //contactsReferencedMap
 
   for ( Iterator<String> nodesIt = friendNodes.keySet().iterator(); nodesIt.hasNext(); ) {
    String str = nodesIt.next();
@@ -252,33 +228,10 @@ Goes back to the API and gets the names of the users from a list.
       if(str.indexOf("sgn://mboxsha1/?pk=")!=-1){
         str=str.substring(19);
       }
+
       contactsReferencedMap.put(str,vals2);
-      if(vals2.containsKey("rss")){
-        contactsRSS.put(vals2.get("rss"),vals2);
-      }
-      if(vals2.containsKey("atom")){
-      contactsRSS.put(vals2.get("atom"),vals2);
-      }
     }
-    if(str2.equals("nodes_referenced")){
-      LinkedHashMap vals22 = (LinkedHashMap)vals.get(str2);
 
-      for ( Iterator<String> contactsIt2 = vals22.keySet().iterator();contactsIt2.hasNext(); ) {
-
-       String str3 = contactsIt2.next();
-       Map vals3 = (Map)vals22.get(str3);
-       for ( Iterator<String> contactsTypesIt2 = vals3.keySet().iterator(); contactsTypesIt2.hasNext(); ) {
-         String str4 = contactsTypesIt2.next();
-         List vals4 = (List)vals3.get(str4);
-         if(!vals4.contains("me")){
-           if(str3.indexOf("sgn://mboxsha1/?pk=")!=-1){
-            str3=str3.substring(19);
-           }
-           this.foafs.add(str3);
-         }
-       }
-      }
-    }
    }
 
   }
@@ -293,38 +246,11 @@ Goes back to the API and gets the names of the users from a list.
       }
       if(!contactsReferencedMap.containsKey(key)){
         contactsReferencedMap.put(key,new LinkedHashMap());
-        if(key.indexOf("sgn://mboxsha1/?pk=")!=-1){
-          key=key.substring(19);
-        }
-        this.foafs.add(key);
       }
     }
     this.getMultipleDetails(peopleShorter);
   }
-
  }
-
-
-/**
-
-Path thingy
-
-*/
-
-public boolean hasPath(String id1, String id2) throws
-java.io.IOException{
-
- this.getDetails(id1,"true");
- this.getContacts(id2,"true");
-
-  if(this.foafs.contains(id2)){
-   return true;
-  }else{
-   return false;
-  }
-}
-
-
 
 
 }

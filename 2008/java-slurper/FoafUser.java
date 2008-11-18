@@ -14,20 +14,17 @@ Main method demonstrating getDetails and getContacts.
 
 public static void main(String[] args){
 
- String lookup="danbri.org";
+ String lookup="http://danbri.org/foaf.rdf";
  if(args.length > 0){
   lookup=args[0];
  }
 
  try{
   FoafUser u = new FoafUser();
-  boolean f=u.hasPath(lookup,"http://nicecupoftea.org","362ce75324396f0aa2d3e5f1246f40bf3bb44401");
-  System.out.println("Path: "+f);
-//  u.getDetails(lookup);
+  u.getDetails(lookup);
   System.out.println("Attributes: "+u.getAttributes());
-//  u.getContacts(lookup);
+  u.getContacts(lookup);
   System.out.println("Contacts: "+u.getContactsReferencedMap());
-
  }catch(Exception e){
   System.out.println("problem "+e);
  }
@@ -130,12 +127,7 @@ return this;
 
 /**
 
-Get the user's contacts from their foaf file. It only returns the url,
-mboxsha1s or email at the moment, and the mboxsha1s are not normalised to the
-google social graph sgns.
-
-Nor do we yet include any other info (like name) for the user's friends,
-though it'd be simple to do.
+Get the user's contacts from their foaf file, returning a map. 
 
 */
 
@@ -184,7 +176,6 @@ public FoafUser getContacts(String url) throws java.io.IOException{
       if(id==null && (!s.equals("fn"))){
        id=r;
       }
-//    System.out.println("S "+s+" r "+r);
     }
    }
    if(id!=null){
@@ -204,29 +195,6 @@ return this;
 
 }
 
-
-/** 
-
-Path thingy
-
-*/
-
-public boolean hasPath(String url,String id1, String id2) throws java.io.IOException{
-
- this.getDetails(url); 
- this.getContacts(url); 
-
- if(attributes.containsValue(id1)){
-  if(this.getContactsReferencedMap().containsKey(id2)){
-   return true;
-  }else{
-   return false;
-  }
- }else{
-  return false;
- }
-
-}
 
 
 }
