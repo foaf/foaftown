@@ -23,8 +23,7 @@ end
 
 f.each_line do |line|
  line.gsub!(/<a href="([^"]*)">([^<]*)<\/a>\s*<br\s*\/>/) do  
-    "<div typeof='foaf:Organization #{oiltype}'>"+
-    "<a rev='foaf:primaryTopic' about='#{$1}#itself' "+
+    "<div><a typeof='foaf:Organization #{oiltype}' rev='foaf:primaryTopic' about='#{$1}#itself' "+
     "href='#{$1}' property='foaf:name' >#{$2}</a></div>\n"
  end
 
