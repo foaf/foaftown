@@ -68,5 +68,27 @@ parsed output of these pages. So for example, here is the data so far in this sa
 </pre>
 </small>
 
+<p>
+And here is how to query to find out what other articles there might be on this person:
+</p>
+
+<pre>
+PREFIX target: &lt;http://www.oilit.com/2journal/2index/2peo/21551.htm#itself&gt; .
+PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; .
+PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+SELECT DISTINCT ?what ?title WHERE {
+ ?article foaf:topic &lt;http://www.oilit.com/2journal/2index/2peo/21551.htm#itself&gt; . 
+ ?article foaf:topic ?topic2 . 
+ ?topic2 foaf:name ?what . 
+ ?article dc:title ?title . 
+} 
+</pre>
+
+<p>
+Of course we could also ask questions based on other properties, such as having a 'workplace' of BP. But to do this for real 
+would require a larger and more coherent aggregation of information than we have on hand right now.
+</p>
+
+
 </body>
 </html>
