@@ -3,7 +3,7 @@
 # Reads a file, outputs a basic RDFa-ization of it
 # Dan Brickley <http://danbri.org/>
 
-oiltype="oilit:OilIndustryOrganization"
+oiltype="foaf:Organization oilit:OilIndustryOrganization"
 oiltype="oilit:OilIndustryProduct"
 
 file = ARGV.shift
@@ -22,8 +22,8 @@ if f == nil
 end
 
 f.each_line do |line|
- line.gsub!(/<a href="([^"]*)">([^<]*)<\/a>\s*<br\s*\/>/) do  
-    "<div><a typeof='foaf:Organization #{oiltype}' rev='foaf:primaryTopic' about='#{$1}#itself' "+
+ line.gsub!(/<a href="([^"]*)">([^<]*)<\/a>\s*<br\s*\/>/i) do  
+    "<div><a typeof='#{oiltype}' rev='foaf:primaryTopic' about='#{$1}#itself' "+
     "href='#{$1}' property='foaf:name' >#{$2}</a></div>\n"
  end
 
