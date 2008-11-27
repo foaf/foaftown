@@ -40,3 +40,30 @@ Usage:
 Example:
 
  sh foafuser.sh --details http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf
+
+
+QdosUser
+--------
+
+A tiny java utility that takes an identifier sends it to Qdos
+(http://qdos.com/apps) and returns java structures with useful
+information in (user details and contacts).
+
+This requires Jena RDF library:
+
+http://jena.sourceforge.net/
+
+- however it's basically a couple of sparql queries.
+
+
+Usage: 
+
+ sh qdosuser.sh <flag> <foafFileUserID|email|mboxsha1sum|homepage>
+
+ Available flag is --contacts
+
+Example:
+
+ sh foafuser.sh --contacts http://danbri.org/foaf.rdf#danbri
+ sh foafuser.sh --contacts 01e253737c46286ff7cc1183be05ab64fea15438
+
