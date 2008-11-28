@@ -22,7 +22,7 @@
 
 -->
 
-<xsl:output method="xml"/>
+<xsl:output method="xml" indent="yes"/>
 <xsl:template match="/">
 <rdf:RDF>
   <foaf:Person rdf:about="#who">
@@ -57,6 +57,7 @@
 
   <foaf:Document rdf:about="{atom:link[@rel='alternate']/@href}"> 
 
+<dc:title>    <xsl:if test="atom:title"><xsl:value-of select="atom:title"/></xsl:if></dc:title>
   <xsl:if test="atom:category">
 
       <dc:subject>
