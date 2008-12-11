@@ -183,13 +183,13 @@ class Vocab:
 
   # TODO: default to English
   def index(self):
-    speclog("Indexing description of "+str(self))
+#    speclog("Indexing description of "+str(self))
     g = self.graph
     query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property } ')
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
         p = Property(term)
-        print "Made a property! "+str(p) + "using label: "#+str(label)
+#        print "Made a property! "+str(p) + "using label: "#+str(label)
         p.label = label
         p.comment = comment
         self.terms.append(p)
@@ -198,7 +198,7 @@ class Vocab:
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
         c = Class(term)
-        print "Made a class! "+str(p) + "using comment: "+comment
+#        print "Made a class! "+str(p) + "using comment: "+comment
         c.label = label
         c.comment = comment
         self.terms.append(c)
