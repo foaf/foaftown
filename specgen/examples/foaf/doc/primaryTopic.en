@@ -1,0 +1,30 @@
+<p>
+The <code>foaf:primaryTopic</code> property relates a document to the
+main thing that the document is about.
+</p>
+
+<p>
+The <code>foaf:primaryTopic</code> property is <em>functional</em>: for
+any document it applies to, it can have at most one value. This is
+useful, as it allows for data merging. In many cases it may be difficult
+for third parties to determine the primary topic of a document, but in
+a useful number of cases (eg. descriptions of movies, restaurants,
+politicians, ...) it should be reasonably obvious. Documents are very
+often the most authoritative source of information about their own
+primary topics, although this cannot be guaranteed since documents cannot be
+assumed to be accurate, honest etc.
+</p>
+
+<p>
+It is an inverse of the <code>foaf:isPrimaryTopicOf</code> property, which relates a 
+thing to  a document <em>primarily</em> about that thing. The choice between these two 
+properties is purely pragmatic. When describing documents, we 
+use <code>foaf:primaryTopic</code> former to point to the things they're about. When 
+describing things (people etc.), it is useful to be able to directly cite documents which 
+have those things as their main topic - so we use <code>foaf:isPrimaryTopicOf</code>. In this 
+way, Web sites such as <a href="http://www.wikipedia.org/">Wikipedia</a> or <a 
+href="http://www.nndb.com/">NNDB</a> can provide indirect identification for the things they 
+have descriptions of.
+</p>
+
+

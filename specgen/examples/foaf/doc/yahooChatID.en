@@ -1,0 +1,13 @@
+<p>
+The <code>foaf:yahooChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the Yahoo online Chat system. 
+See Yahoo's the <a href="http://chat.yahoo.com/">Yahoo! Chat</a> site for more details of their 
+service. Yahoo chat IDs are also used across several other Yahoo services, including email and 
+<a href="http://www.yahoogroups.com/">Yahoo! Groups</a>.
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
+
