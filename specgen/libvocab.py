@@ -30,6 +30,10 @@ OWL = Namespace('http://www.w3.org/2002/07/owl#')
 VS = Namespace('http://www.w3.org/2003/06/sw-vocab-status/ns#')
 DC = Namespace('http://purl.org/dc/elements/1.1/')
 DOAP = Namespace('http:// usefulinc.com/ns/doap#')
+SIOC = Namespace('http://rdfs.org/sioc/ns#')
+SIOCTYPES = Namespace('http://rdfs.org/sioc/types#')
+SIOCSERVICES = Namespace('http://rdfs.org/sioc/services#')
+#
 # add more here...
 
 import sys, time, re, urllib, getopt
