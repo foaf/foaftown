@@ -1,0 +1,22 @@
+<p>The <code>foaf:name</code> of something is a simple textual string.</p>
+
+<p>
+XML language tagging may be used to indicate the language of the name. For example:
+</p>
+
+<div class="example">
+<code>
+&lt;foaf:name xml:lang="en"&gt;Dan Brickley&lt;/foaf:name&gt;
+</code>
+</div>
+
+<p>
+FOAF provides some other naming constructs.  While foaf:name does not explicitly represent name substructure (family vs given etc.) it 
+does provide a basic level of interoperability. See the <a 
+href="http://rdfweb.org/topic/IssueTracker">issue tracker</a> for status of work on this issue.
+</p>
+
+<p>
+The <code>foaf:name</code> property, like all RDF properties with a range of rdfs:Literal, may be used with XMLLiteral datatyped 
+values. This usage is, however, not yet widely adopted. Feedback on this aspect of the FOAF design is particularly welcomed.
+</p>

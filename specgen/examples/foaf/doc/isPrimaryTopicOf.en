@@ -1,0 +1,25 @@
+<p>
+The <code>foaf:isPrimaryTopicOf</code> property relates something to a document that is 
+mainly about it.
+</p>
+
+
+<p>
+The <code>foaf:isPrimaryTopicOf</code> property is <em>inverse functional</em>: for
+any document that is the value of this property, there is at most one thing in the world
+that is the primary topic of that document. This is useful, as it allows for data 
+merging, as described in the documentation for its inverse, <code>foaf:primaryTopic</code>.
+</p>
+
+<p>
+<code>foaf:page</code> is a super-property of <code>foaf:isPrimaryTopicOf</code>. The change 
+of terminology between the two property names reflects the utility of 'primaryTopic' and its 
+inverse when identifying things. Anything that has an <code>isPrimaryTopicOf</code> relation 
+to some document X, also has a <code>foaf:page</code> relationship to it.
+</p>
+<p>
+Note that <code>foaf:homepage</code>, is a sub-property of both <code>foaf:page</code> and 
+<code>foaf:isPrimarySubjectOf</code>. The awkwardly named 
+<code>foaf:isPrimarySubjectOf</code> is less specific, and can be used with any document 
+that is primarily about the thing of interest (ie. not just on homepages).
+</p>

@@ -1,0 +1,16 @@
+<p>
+The <code>foaf:msnChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the MSN online Chat system. 
+See Microsoft's the <a href="http://chat.msn.com/">MSN chat</a> site for more details (or for a 
+message saying <em>"MSN Chat is not currently compatible with your Internet browser and/or 
+computer operating system"</em> if your computing platform is deemed unsuitable). 
+</p>
+
+<p class="editorial">
+It is not currently clear how MSN chat IDs relate to the more general Microsoft Passport 
+identifiers.
+</p>
+
+<p>See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a 
+more general (and verbose) mechanism for describing IM and chat accounts. 
+</p>

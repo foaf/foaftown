@@ -1,0 +1,15 @@
+<p>
+The <code>foaf:icqChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the ICQ Chat system. 
+See the <a href="http://web.icq.com/icqchat/">icq chat</a> site for more details of the 'icq' 
+service. Their "<a href="http://www.icq.com/products/whatisicq.html">What is ICQ?</a>" document 
+provides a basic overview, while their "<a href="http://company.icq.com/info/">About Us</a> page 
+notes that ICQ has been acquired by AOL. Despite the relationship with AOL, ICQ is at 
+the time of writing maintained as a separate identity from the AIM brand (see 
+<code>foaf:aimChatID</code>).
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
