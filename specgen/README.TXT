@@ -16,7 +16,7 @@ http://lists.foaf-project.org/pipermail/foaf-dev/2008-December/009415.html
 http://groups.google.com/group/sioc-dev/browse_thread/thread/36190062d384624d
 
 See also: http://forge.morfeo-project.org/wiki_en/index.php/SpecGen (another rewrite)
-http://crschmidt.net/semweb/redland/
+http://crschmidt.net/semweb/redland/ https://lists.morfeo-project.org/pipermail/specgen-devel/
 
 Goals:
 
