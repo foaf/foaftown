@@ -11,6 +11,13 @@ The last FOAF spec was built using http://xmlns.com/foaf/0.1/specgen.py
 This reads an index.rdf, a template.html file plus a set of per-term files, 
 eg. 'doc/homepage.en' etc., then generates the main HTML FOAF spec.
 
+Announcement: 
+http://lists.foaf-project.org/pipermail/foaf-dev/2008-December/009415.html
+http://groups.google.com/group/sioc-dev/browse_thread/thread/36190062d384624d
+
+See also: http://forge.morfeo-project.org/wiki_en/index.php/SpecGen (another rewrite)
+http://crschmidt.net/semweb/redland/
+
 Goals:
 
  - be usable at least for (re)-generating the FOAF spec and similar
