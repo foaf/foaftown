@@ -50,12 +50,11 @@ from libvocab import Property
 
 
 # Test FOAF spec
-
-fn = 'examples/foaf/index.rdf'
-spec = Vocab( fn )
+spec = Vocab( 'examples/foaf/index.rdf' )
 spec.uri = 'http://xmlns.com/foaf.0.1/'
-# spec.raw()
 spec.index() # slurp info from sources
+
+# spec.raw()
 # print spec.report().encode('UTF-8')
 
 for p in spec.properties:

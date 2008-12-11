@@ -8,6 +8,12 @@ __all__ = [ 'main' ]
 # danbri@danbri.org
 
 # currently: seems to partially load but shows nothing
+#
+# TODO: fix Vocab.index so it checks for the OWL ways of describing a property.
+# this can be done with a filter.
+# q= 'SELECT distinct ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type . FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty> || ?type = <http://www.w3.org/2002/07/owl#DatatypeProperty> || ?type = <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> || ?type = <http://www.w3.org/2002/07/owl#FunctionalProperty> || ?type = <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>) } '
+
+
 
 import libvocab
 from libvocab import Vocab
@@ -25,7 +31,7 @@ spec = Vocab( fn )
 
 spec.uri = SIOC
 
-# spec.raw()
+spec.raw()
 spec.index() # slurp info from sources
 print spec.report().encode('UTF-8')
 

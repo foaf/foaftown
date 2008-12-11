@@ -18,17 +18,20 @@ from libvocab import DOAP
 
 # Test DOAP spec
 
-fn = 'examples/doap/doap-en.rdf'
-fn = 'examples/doap/doap.rdf'
+fn = 'examples/doap/doap-en.rdf' 
+
+# fn = 'examples/doap/doap.rdf' 
+
 spec = Vocab( fn )
 
 # Note: I separated out a doap-en since libvocab makes assumptions of 'en'
+# this avoids combinatorial explosion of spanish/french/eng labels vs comments
 # TODO: don't assume the main index.rdf is monolingual (whether 'en' or other)
 
 # spec = Vocab( DOAP )
 
 spec.uri = DOAP
-# spec.raw()
+spec.raw()
 spec.index() # slurp info from sources
 # print spec.report()
 
