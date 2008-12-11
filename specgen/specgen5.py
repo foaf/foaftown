@@ -56,11 +56,11 @@ spec = Vocab( fn )
 spec.uri = 'http://xmlns.com/foaf.0.1/'
 # spec.raw()
 spec.index() # slurp info from sources
-# print spec.report()
+# print spec.report().encode('UTF-8')
 
 for p in spec.properties:
   print "Got a property: " + p
-  print p.simple_report()
+  print p.simple_report().encode('UTF-8')
 for c in spec.classes:
   print "Got a class: " + c
-  print c.simple_report()
+  print c.simple_report().encode('UTF-8')

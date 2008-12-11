@@ -19,6 +19,7 @@ from libvocab import DOAP
 # Test DOAP spec
 
 fn = 'examples/doap/doap-en.rdf'
+fn = 'examples/doap/doap.rdf'
 spec = Vocab( fn )
 
 # Note: I separated out a doap-en since libvocab makes assumptions of 'en'
@@ -33,7 +34,7 @@ spec.index() # slurp info from sources
 
 for p in spec.properties:
   print "Got a property: " + p
-  print p.simple_report()
+  print p.simple_report().encode('UTF-8')
 for c in spec.classes:
   print "Got a class: " + c
-  print c.simple_report()
+  print c.simple_report().encode('UTF-8')
