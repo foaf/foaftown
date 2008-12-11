@@ -7,7 +7,7 @@ __all__ = [ 'main' ]
 # Quick script to see if this stuff works on another schema: SIOC.
 # danbri@danbri.org
 
-# currently: seems to partially load but shows nothing
+# currently: seems to partially load but shows nothing
 
 import libvocab
 from libvocab import Vocab
@@ -23,17 +23,15 @@ fn = 'examples/sioc/sioc.rdf'
 
 spec = Vocab( fn )
 
-# spec = Vocab( DOAP )
-
 spec.uri = SIOC
 
 # spec.raw()
 spec.index() # slurp info from sources
-print spec.report()
+print spec.report().encode('UTF-8')
 
 for p in spec.properties:
   print "Got a property: " + p
-  print p.simple_report()
+  print p.simple_report().encode('UTF-8')
 for c in spec.classes:
   print "Got a class: " + c
-  print c.simple_report()
+  print c.simple_report().encode('UTF-8')
