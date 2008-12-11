@@ -63,14 +63,49 @@ class testSpecgen(unittest.TestCase):
     doap_spec.uri = str(DOAP)
     self.assertEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
 
-  # I'd like this to be failing. need to lookup property set/getter stuff in .py
-  # then we can trap calls to get/set .uri and str'ify them?
-  # 
   def testCanUseNonStrURI(self):
+    """I'd like this to stop failing. need to lookup property set/getter stuff in .py then we can trap calls to get/set .uri and str'ify them?"""
     doap_spec = Vocab('examples/doap/doap-en.rdf')
     doap_spec.index()
     doap_spec.uri = Namespace('http://usefulinc.com/ns/doap#')  # likely a common mistake
-    self.assertNotEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
+    self.assertEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
+
+  def testFOAFminprops(self):
+    """Check we found at least 20 FOAF properties."""
+    foaf_spec = Vocab('examples/foaf/index.rdf')
+    foaf_spec.index()
+    foaf_spec.uri = str(FOAF)
+    c = len(foaf_spec.properties)
+    print "FOAF property count: ",c
+    self.failUnless(c > 20 , "FOAF has more than 20 properties")
+
+  def testFOAFmaxprops(self):
+    foaf_spec = Vocab('examples/foaf/index.rdf')
+    foaf_spec.index()
+    foaf_spec.uri = str(FOAF)
+    c = len(foaf_spec.properties)
+    print "FOAF property count: ",c
+    self.failUnless(c < 500 , "FOAF has less than 500 properties")
+
+
+  def testSIOCminprops(self):
+    """Check we found at least 20 SIOC properties. If we didn't, known bug. See rdf:Property issue in README.TXT"""
+    sioc_spec = Vocab('examples/sioc/sioc.rdf')
+    sioc_spec.index()
+    sioc_spec.uri = str(SIOC)
+    c = len(sioc_spec.properties)
+    print "SIOC property count: ",c
+    self.failUnless(c > 20 , "SIOC has more than 20 properties")
+
+  def testSIOCmaxprops(self):
+    sioc_spec = Vocab('examples/foaf/index.rdf')
+    sioc_spec.index()
+    sioc_spec.uri = str(SIOC)
+    c = len(sioc_spec.properties)
+    print "SIOC property count: ",c
+    self.failUnless(c < 500 , "SIOC has less than 500 properties")
+
+
 
 def suite():
       suite = unittest.TestSuite()
@@ -80,13 +115,24 @@ def suite():
 if __name__ == '__main__':
     print "Running tests..."
     suiteFew = unittest.TestSuite()
+
+#   Add things we know should pass to a subset suite
+#   (only skip things we have explained with a todo)
+# 
     suiteFew.addTest(testSpecgen("testFOAFns"))
     suiteFew.addTest(testSpecgen("testSIOCns"))
     suiteFew.addTest(testSpecgen("testDOAPns"))
+#    suiteFew.addTest(testSpecgen("testCanUseNonStrURI")) # todo: ensure .uri etc can't be non-str
+    suiteFew.addTest(testSpecgen("testFOAFminprops"))
+#    suiteFew.addTest(testSpecgen("testSIOCminprops")) # todo: improve .index() to read more OWL vocab
+    suiteFew.addTest(testSpecgen("testSIOCmaxprops"))
 
-#    unittest.TextTestRunner(verbosity=2).run(suiteFew)
+    unittest.TextTestRunner(verbosity=2).run(suiteFew)
+# 
+#  we can use this to create a suite that bypasses known issues
+#  or we can run everything:
 
-    unittest.TextTestRunner(verbosity=2).run(suite())
+#    unittest.TextTestRunner(verbosity=2).run(suite())
 
 
 # http://agiletesting.blogspot.com/2005/01/python-unit-testing-part-1-unittest.html g = foafspec.graph 
