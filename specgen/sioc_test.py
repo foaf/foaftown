@@ -4,9 +4,10 @@ __all__ = [ 'main' ]
 
 
 
-# Quick script to see if this stuff works on another schema: DOAP's.
-# For now, we find problems with accents ...'Versi\xf3n' vs 'Version'
+# Quick script to see if this stuff works on another schema: SIOC.
 # danbri@danbri.org
+
+# currently: seems to partially load but shows nothing
 
 import libvocab
 from libvocab import Vocab
@@ -14,22 +15,21 @@ from libvocab import Term
 from libvocab import Class
 from libvocab import Property
 
-from libvocab import DOAP
+from libvocab import SIOC
 
-# Test DOAP spec
+# Test SIOC spec
 
-fn = 'examples/doap/doap-en.rdf'
+fn = 'examples/sioc/sioc.rdf'
+
 spec = Vocab( fn )
-
-# Note: I separated out a doap-en since libvocab makes assumptions of 'en'
-# TODO: don't assume the main index.rdf is monolingual (whether 'en' or other)
 
 # spec = Vocab( DOAP )
 
-spec.uri = DOAP
+spec.uri = SIOC
+
 # spec.raw()
 spec.index() # slurp info from sources
-# print spec.report()
+print spec.report()
 
 for p in spec.properties:
   print "Got a property: " + p
