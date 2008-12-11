@@ -9,7 +9,9 @@
 #
 # RDFlib:
 # http://www.science.uva.nl/research/air/wiki/RDFlib
-
+#
+# http://dowhatimean.net/2006/03/spellchecking-vocabularies-with-sparql
+#
 # We define basics, Vocab, Term, Property, Class
 # and populate them with data from RDF schemas, OWL, translations ... and nearby html files.
 
