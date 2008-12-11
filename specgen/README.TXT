@@ -1,5 +1,10 @@
 This is an experimental new codebase for specgen tools.
 
+It depends utterly upon rdflib. See http://rdflib.net/2.4.0/
+
+If you're lucky, typing this is enough: 
+					easy_install -U rdflib==2.4.0
+
 Inputs: RDF, HTML and OWL description(s) of an RDF vocabulary
 Output: an XHTML+RDFa specification designed for human users
 
