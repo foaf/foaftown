@@ -200,14 +200,18 @@ class testSpecgen(unittest.TestCase):
     self.failUnless( a=='http://example.com/foo/bar/')
     self.failUnless( b=='fee') # is this a bad idiom? use AND in a single assertion instead?
  
-  def test_lookup(self):
+  def test_lookup_Person(self):
     """find a term given it's uri"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
-    # 
+    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
     p = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person')
-    print "lookup for Person: ",p
+    # print "lookup for Person: ",p
     self.assertNotEqual(p.uri,  None, "Couldn't find person class in FOAF")
 
+  def test_lookup_Wombat(self):
+    """fail to a bogus term given it's uri"""
+    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
+    p = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Wombat') # No Wombats in FOAF yet.
+    self.assertEqual(p,  None, "lookup for Wombat should return None")
 
 #  def test_label_for_foaf_Person(self):
 #    """check we can get the label for foaf's Person class"""

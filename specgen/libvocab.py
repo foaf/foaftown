@@ -271,13 +271,14 @@ class Vocab(object):
   # todo, use a dictionary index instead. RTFM.
   def lookup(self, uri):
     for t in self.terms:
-      print "Lookup: comparing '"+t.uri+"' to '"+uri+"'"
-      print "type of t.uri is ",t.uri.__class__
+      # print "Lookup: comparing '"+t.uri+"' to '"+uri+"'"
+      # print "type of t.uri is ",t.uri.__class__
       if t.uri==uri:
-        print "Matched."
+        # print "Matched."  # should we str here, to be more liberal?
         return t
       else:
-        print "Fail."
+        # print "Fail."
+        ''
     return None
 
   # print a raw debug summary, direct from the RDF
