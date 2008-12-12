@@ -1,9 +1,16 @@
 #!/usr/bin/env python
-
+#
+# Tests for specgen.
+#
 # trying to test using ...
 # http://agiletesting.blogspot.com/2005/01/python-unit-testing-part-1-unittest.html 
-# but getting errors. --danbri
 # http://docs.python.org/library/unittest.html
+
+# TODO: convert debug print statements to appropriate testing / verbosity logger API
+# TODO: make frozen snapshots of some more namespace RDF files
+# TODO: find an idiom for conditional tests, eg. if we have xmllint handy for checking output, or rdfa ...
+
+FOAFSNAPSHOT = 'examples/foaf/index-20081211.rdf' # a frozen copy for sanity' sake
  
 import libvocab
 from libvocab import Vocab
@@ -18,6 +25,7 @@ from libvocab import RDF
 from libvocab import DOAP
 from libvocab import XFN
 
+# used in SPARQL queries below
 bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"owl": OWL, u"doap": DOAP, u"sioc": SIOC, u"foaf": FOAF }
 
 import rdflib
@@ -39,7 +47,7 @@ class testSpecgen(unittest.TestCase):
     """set up data used in the tests. Called  before each test function execution."""
 
   def testFOAFns(self):
-    foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
+    foaf_spec = Vocab(FOAFSNAPSHOT)
     foaf_spec.index()
     foaf_spec.uri = FOAF
     print "FOAF should be "+FOAF
@@ -80,7 +88,7 @@ class testSpecgen(unittest.TestCase):
     self.failUnless(c > 20 , "FOAF has more than 20 properties")
 
   def testFOAFmaxprops(self):
-    foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
+    foaf_spec = Vocab(FOAFSNAPSHOT)
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
@@ -94,17 +102,80 @@ class testSpecgen(unittest.TestCase):
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
-    print "SIOC property count: ",c
+#    print "SIOC property count: ",c
     self.failUnless(c > 20 , "SIOC has more than 20 properties")
 
   def testSIOCmaxprops(self):
-    """sioc max props"""
+    """sioc max props: not more than 500 properties in SIOC"""
     sioc_spec = Vocab('examples/sioc/sioc.rdf')
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
     print "SIOC property count: ",c
     self.failUnless(c < 500 , "SIOC has less than 500 properties")
+
+
+  # work in progress.  
+  def testDOAPusingFOAFasExternal(self):
+    """when DOAP mentions a FOAF class, the API should let us know it is external"""
+    doap_spec = Vocab('examples/doap/doap.rdf')
+    doap_spec.index()
+    doap_spec.uri = str(DOAP)
+    for t in doap_spec.classes:
+#      print "is class "+t+" external? "
+#      print t.is_external(doap_spec)
+      ''
+
+  # work in progress.  
+  def testFOAFusingDCasExternal(self):
+    """FOAF using external vocabs"""
+    foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec.index()
+    foaf_spec.uri = str(FOAF)
+    for t in foaf_spec.terms:
+      # print "is term "+t+" external? ", t.is_external(foaf_spec)
+      ''
+
+  def testniceName_1foafmyprop(self):
+    """simple test of nicename for a known namespace (FOAF), unknown property"""
+    foaf_spec = Vocab(FOAFSNAPSHOT)
+    u = 'http://xmlns.com/foaf/0.1/myprop'
+    nn = foaf_spec.niceName(u)
+    print "nicename for ",u," is: ",nn
+    self.failUnless(nn == 'foaf:myprop', "Didn't extract nicename")
+
+
+  # we test behaviour for real vs fake properties, just in case...
+  def testniceName_2foafhomepage(self):
+    """simple test of nicename for a known namespace (FOAF), known property."""
+    foaf_spec = Vocab(FOAFSNAPSHOT)
+    u = 'http://xmlns.com/foaf/0.1/homepage'
+    nn = foaf_spec.niceName(u)
+    # print "nicename for ",u," is: ",nn
+    self.failUnless(nn == 'foaf:homepage', "Didn't extract nicename")
+
+  def testniceName_3mystery(self):
+    """simple test of nicename for an unknown namespace"""
+    foaf_spec = Vocab(FOAFSNAPSHOT)
+    u = 'http:/example.com/mysteryns/myprop'
+    nn = foaf_spec.niceName(u)
+    print "nicename for ",u," is: ",nn
+    self.failUnless(nn == 'http:/example.com/mysteryns/:myprop', "Didn't extract verbose nicename")
+
+  def testniceName_3baduri(self):
+    """niceName should return same string if passed a non-URI (but log a warning?)"""
+    foaf_spec = Vocab(FOAFSNAPSHOT)
+    u = 'thisisnotauri'
+    nn = foaf_spec.niceName(u)
+    print "nicename for ",u," is: ",nn
+    self.failUnless(nn == u, "niceName didn't return same string when given a non-URI")
+
+
+
+
+
+
+
 
 
 
@@ -128,14 +199,17 @@ if __name__ == '__main__':
 #    suiteFew.addTest(testSpecgen("testSIOCminprops")) # todo: improve .index() to read more OWL vocab
     suiteFew.addTest(testSpecgen("testSIOCmaxprops"))
 
-    unittest.TextTestRunner(verbosity=2).run(suiteFew)
+
+
+#   run tests we expect to pass:
+#    unittest.TextTestRunner(verbosity=2).run(suiteFew)
+
+#   run tests that should eventually pass:
+    unittest.TextTestRunner(verbosity=2).run(suite())
+
+
 # 
-#  we can use this to create a suite that bypasses known issues
 #  or we can run everything:
-
-#    unittest.TextTestRunner(verbosity=2).run(suite())
-
-
 # http://agiletesting.blogspot.com/2005/01/python-unit-testing-part-1-unittest.html g = foafspec.graph 
 #q= 'SELECT ?x ?l ?c ?type WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type . FILTER (?type = owl:ObjectProperty || ?type = owl:DatatypeProperty || ?type = rdf:Property || ?type = owl:FunctionalProperty || ?type = owl:InverseFunctionalProperty) } '
 #query = Parse(q)
@@ -143,3 +217,4 @@ if __name__ == '__main__':
 #for (term, label, comment) in relations:
 #        p = Property(term)
 #        print "property: "+str(p) + "label: "+str(label)+ " comment: "+comment
+
