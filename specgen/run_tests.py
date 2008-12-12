@@ -11,7 +11,8 @@
 # TODO: find an idiom for conditional tests, eg. if we have xmllint handy for checking output, or rdfa ...
 
 FOAFSNAPSHOT = 'examples/foaf/index-20081211.rdf' # a frozen copy for sanity' sake
- 
+DOAPSNAPSHOT = 'examples/doap/doap-en.rdf'  # maybe we should use dated url / frozen files for all
+
 import libvocab
 from libvocab import Vocab
 from libvocab import Term
@@ -226,6 +227,19 @@ class testSpecgen(unittest.TestCase):
     l = foaf_spec.lookup('http://xmlns.com/foaf/0.1/workplaceHomepage').label
     # print "Label for foaf workplaceHomepage is "+l
     self.assertEqual(l,"workplace homepage")
+
+  def test_status_for_foaf_Person(self):
+    """check we can get the status for foaf's Person class"""
+    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    s = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person').status
+    self.assertEqual(s,"stable")
+
+  # http://usefulinc.com/ns/doap#Repository
+  def test_status_for_doap_Repository(self):
+    """check we can get the computed 'unknown' status for doap's Repository class"""
+    doap_spec = Vocab(f=DOAPSNAPSHOT, uri='http://usefulinc.com/ns/doap#')
+    s = doap_spec.lookup('http://usefulinc.com/ns/doap#Repository').status
+    self.assertEqual(s,"unknown", "if vs:term_status isn't used, we set t.status to 'unknown'")
 
 
 
