@@ -259,7 +259,14 @@ class Vocab(object):
   # TODO: be explicit if/where we default to English
   # TODO: do we need a separate index(), versus just use __init__ ?
   def index(self):
-#    speclog("Indexing description of "+str(self))
+    #    speclog("Indexing description of "+str(self))
+
+    # blank down anything we learned already
+
+    self.terms = []
+    self.properties = []
+    self.classes = []
+
     g = self.graph
     query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property } ')
     relations = g.query(query, initNs=bindings)
