@@ -208,6 +208,12 @@ class testSpecgen(unittest.TestCase):
     # print "Label for foaf Person is "+l
     self.assertEqual(l,"Person")
 
+  def test_label_for_sioc_Community(self):
+    """check we can get the label for sioc's Community class"""
+    sioc_spec = Vocab(f=SIOCSNAPSHOT, uri=SIOC)
+    l = sioc_spec.lookup(SIOC+'Community').label
+    self.assertEqual(l,"Community")
+
   def test_label_for_foaf_workplaceHomepage(self):
     """check we can get the label for foaf's workplaceHomepage property"""
     foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
@@ -264,6 +270,19 @@ class testSpecgen(unittest.TestCase):
     sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
     c = len(sioc_spec.properties)
     self.failUnless(c > 5 , "SIOC has more than 10 properties. count was "+str(c))
+
+  def testSIOCmin_classes(self):
+    """Check we found at least 5 SIOC classes."""
+    sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    c = len(sioc_spec.classes)
+    self.failUnless(c > 5 , "SIOC has more than 10 classes. count was "+str(c))
+
+  def testFOAFmin_classes(self):
+    """Check we found at least 5 FOAF classes."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    c = len(foaf_spec.classes)
+    self.failUnless(c > 5 , "FOAF has more than 10 classes. count was "+str(c))
+
 
 
 def suite():

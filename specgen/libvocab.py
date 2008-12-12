@@ -277,7 +277,7 @@ class Vocab(object):
         p.comment = str(comment)
         self.terms.append(p)
 
-    query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdfs:Class } ')
+    query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type  FILTER (?type = <http://www.w3.org/2002/07/owl#Class> || ?type = <http://www.w3.org/2000/01/rdf-schema#Class> ) }')
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
         c = Class(term)
@@ -306,6 +306,8 @@ class Vocab(object):
 
     # Go back and see if we missed any properties defined in OWL. TODO: classes too. Or rewrite above SPARQL. addd more types for full query.
     q= 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type .  FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty>)}'
+    q= 'SELECT distinct ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type . FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty> || ?type = <http://www.w3.org/2002/07/owl#DatatypeProperty> || ?type = <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> || ?type = <http://www.w3.org/2002/07/owl#FunctionalProperty> || ?type = <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>) } '
+
     query = Parse(q)
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
