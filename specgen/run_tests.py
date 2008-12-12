@@ -81,22 +81,17 @@ class testSpecgen(unittest.TestCase):
     self.assertEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
 
   def testFOAFminprops(self):
-    """Check we found at least 20 FOAF properties."""
+    """Check we found at least 50 FOAF properties."""
     foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
-   #  print "FOAF property count: ",c
-    self.failUnless(c > 20 , "FOAF has more than 20 properties")
+    self.failUnless(c > 50 , "FOAF has more than 50 properties. count: "+str(c))
 
   def testFOAFmaxprops(self):
-    foaf_spec = Vocab(FOAFSNAPSHOT)
-    foaf_spec.index()
-    foaf_spec.uri = str(FOAF)
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     c = len(foaf_spec.properties)
-    # print "FOAF property count: ",c
-    self.failUnless(c < 500 , "FOAF has less than 500 properties")
-
+    self.failUnless(c < 100 , "FOAF has less than 100 properties. count: "+str(c))
 
   def testSIOCminprops(self):
     """Check we found at least 20 SIOC properties. If we didn't, known bug. See rdf:Property issue in README.TXT"""
@@ -104,7 +99,6 @@ class testSpecgen(unittest.TestCase):
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
-#    print "SIOC property count: ",c
     self.failUnless(c > 20 , "SIOC has more than 20 properties. count was "+str(c))
 
   def testSIOCmaxprops(self):
@@ -240,6 +234,14 @@ class testSpecgen(unittest.TestCase):
     doap_spec = Vocab(f=DOAPSNAPSHOT, uri='http://usefulinc.com/ns/doap#')
     s = doap_spec.lookup('http://usefulinc.com/ns/doap#Repository').status
     self.assertEqual(s,"unknown", "if vs:term_status isn't used, we set t.status to 'unknown'")
+
+  def test_reindexing_not_fattening(self):
+    "Indexing on construction and then a couple more times shouldn't affect property count."
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
+    foaf_spec.index()
+    c = len(foaf_spec.properties)
+    self.failUnless(c < 100 , "After indexing 3 times, foaf property count should still be < 100: "+str(c))
 
 
 
