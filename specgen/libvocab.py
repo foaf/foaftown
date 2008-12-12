@@ -5,7 +5,18 @@
 # Usage:
 #
 # >>> from libvocab import Vocab, Term, Class, Property
-# >>> v = Vocab(f='examples/foaf/index.rdf', uri='http://xmlns.com/foaf/0.1/')
+#
+# >>> from libvocab import Vocab, Term, Class, Property
+# >>> v = Vocab( f='examples/foaf/index.rdf', uri='http://xmlns.com/foaf/0.1/')
+# >>> dna = v.lookup('http://xmlns.com/foaf/0.1/dnaChecksum')
+# >>> dna.label
+#     'DNA checksum'
+# >>> dna.comment
+#     'A checksum for the DNA of some thing. Joke.'
+# >>> dna.id
+#     u'dnaChecksum'
+# >>> dna.uri
+#     'http://xmlns.com/foaf/0.1/dnaChecksum'
 #
 #
 # Python OO notes:
@@ -251,8 +262,8 @@ class Vocab(object):
     for (term, label, comment) in relations:
         p = Property(term)
 #        print "Made a property! "+str(p) + "using label: "#+str(label)
-        p.label = label
-        p.comment = comment
+        p.label = str(label)
+        p.comment = str(comment)
         self.terms.append(p)
 
     query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdfs:Class } ')
@@ -260,8 +271,8 @@ class Vocab(object):
     for (term, label, comment) in relations:
         c = Class(term)
 #        print "Made a class! "+str(p) + "using comment: "+comment
-        c.label = label
-        c.comment = comment
+        c.label = str(label)
+        c.comment = str(comment)
         self.terms.append(c)
     self.detect_types()
     self.terms.sort()
