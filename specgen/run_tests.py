@@ -50,7 +50,7 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT)
     foaf_spec.index()
     foaf_spec.uri = FOAF
-    print "FOAF should be "+FOAF
+    # print "FOAF should be "+FOAF
     self.assertEqual(str(foaf_spec.uri), 'http://xmlns.com/foaf/0.1/')
 
   def testSIOCns(self):
@@ -71,8 +71,9 @@ class testSpecgen(unittest.TestCase):
     doap_spec.uri = str(DOAP)
     self.assertEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
 
+  #reading list: http://tomayko.com/writings/getters-setters-fuxors
   def testCanUseNonStrURI(self):
-    """I'd like this to stop failing. need to lookup property set/getter stuff in .py then we can trap calls to get/set .uri and str'ify them?"""
+    """If some fancy object used with a string-oriented setter, we just take the string."""
     doap_spec = Vocab('examples/doap/doap-en.rdf')
     doap_spec.index()
     doap_spec.uri = Namespace('http://usefulinc.com/ns/doap#')  # likely a common mistake
@@ -84,7 +85,7 @@ class testSpecgen(unittest.TestCase):
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
-    print "FOAF property count: ",c
+   #  print "FOAF property count: ",c
     self.failUnless(c > 20 , "FOAF has more than 20 properties")
 
   def testFOAFmaxprops(self):
@@ -92,7 +93,7 @@ class testSpecgen(unittest.TestCase):
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
-    print "FOAF property count: ",c
+    # print "FOAF property count: ",c
     self.failUnless(c < 500 , "FOAF has less than 500 properties")
 
 
@@ -103,7 +104,7 @@ class testSpecgen(unittest.TestCase):
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
 #    print "SIOC property count: ",c
-    self.failUnless(c > 20 , "SIOC has more than 20 properties")
+    self.failUnless(c > 20 , "SIOC has more than 20 properties. count was "+str(c))
 
   def testSIOCmaxprops(self):
     """sioc max props: not more than 500 properties in SIOC"""
@@ -111,8 +112,8 @@ class testSpecgen(unittest.TestCase):
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
-    print "SIOC property count: ",c
-    self.failUnless(c < 500 , "SIOC has less than 500 properties")
+    # print "SIOC property count: ",c
+    self.failUnless(c < 500 , "SIOC has less than 500 properties. count was "+str(c))
 
 
   # work in progress.  
@@ -141,8 +142,8 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT)
     u = 'http://xmlns.com/foaf/0.1/myprop'
     nn = foaf_spec.niceName(u)
-    print "nicename for ",u," is: ",nn
-    self.failUnless(nn == 'foaf:myprop', "Didn't extract nicename")
+    # print "nicename for ",u," is: ",nn
+    self.failUnless(nn == 'foaf:myprop', "Didn't extract nicename. input is"+u+"output was"+nn)
 
 
   # we test behaviour for real vs fake properties, just in case...
@@ -159,7 +160,7 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT)
     u = 'http:/example.com/mysteryns/myprop'
     nn = foaf_spec.niceName(u)
-    print "nicename for ",u," is: ",nn
+    # print "nicename for ",u," is: ",nn
     self.failUnless(nn == 'http:/example.com/mysteryns/:myprop', "Didn't extract verbose nicename")
 
   def testniceName_3baduri(self):
@@ -167,12 +168,38 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT)
     u = 'thisisnotauri'
     nn = foaf_spec.niceName(u)
-    print "nicename for ",u," is: ",nn
+    #  print "nicename for ",u," is: ",nn
     self.failUnless(nn == u, "niceName didn't return same string when given a non-URI")
 
+  def test_set_uri_in_constructor(self):
+    """v = Vocab( uri=something ) can be used to set the Vocab's URI. """
+    u = 'http://example.com/test_set_uri_in_constructor'
+    foaf_spec = Vocab(FOAFSNAPSHOT,uri=u)
+    self.failUnless( foaf_spec.uri == u, "Vocab's URI was supposed to be "+u+" but was "+foaf_spec.uri)
+
+  def test_set_bad_uri_in_constructor(self):
+    """v = Vocab( uri=something ) can be used to set the Vocab's URI to a bad URI (but should warn). """
+    u = 'notauri'
+    foaf_spec = Vocab(FOAFSNAPSHOT,uri=u)
+    self.failUnless( foaf_spec.uri == u, "Vocab's URI was supposed to be "+u+" but was "+foaf_spec.uri)
 
 
+  def test_getset_uri(self):
+    """getting and setting a Vocab uri property"""
+    foaf_spec = Vocab(FOAFSNAPSHOT,uri='http://xmlns.com/foaf/0.1/')
+    u = 'http://foaf.tv/example#'
+    # print "a) foaf_spec.uri is: ", foaf_spec.uri 
+    foaf_spec.uri = u
+    # print "b) foaf_spec.uri is: ", foaf_spec.uri 
+    # print
+    self.failUnless( foaf_spec.uri == u, "Failed to change uri.")
 
+  def test_ns_split(self):
+    from libvocab import ns_split
+    a,b = ns_split('http://example.com/foo/bar/fee')
+    self.failUnless( a=='http://example.com/foo/bar/')
+    self.failUnless( b=='fee') # is this a bad idiom? use AND in a single assertion instead?
+ 
 
 
 
@@ -205,7 +232,7 @@ if __name__ == '__main__':
 #    unittest.TextTestRunner(verbosity=2).run(suiteFew)
 
 #   run tests that should eventually pass:
-    unittest.TextTestRunner(verbosity=2).run(suite())
+#    unittest.TextTestRunner(verbosity=2).run(suite())
 
 
 # 
@@ -218,3 +245,6 @@ if __name__ == '__main__':
 #        p = Property(term)
 #        print "property: "+str(p) + "label: "+str(label)+ " comment: "+comment
 
+if __name__ == '__main__':
+
+    unittest.main()
