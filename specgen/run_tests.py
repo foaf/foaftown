@@ -213,11 +213,19 @@ class testSpecgen(unittest.TestCase):
     p = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Wombat') # No Wombats in FOAF yet.
     self.assertEqual(p,  None, "lookup for Wombat should return None")
 
-#  def test_label_for_foaf_Person(self):
-#    """check we can get the label for foaf's Person class"""
-#    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
-#    self.assertEqual(foaf_spec.find('http://xmlns.com/foaf/0.1/Person')
+  def test_label_for_foaf_Person(self):
+    """check we can get the label for foaf's Person class"""
+    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    l = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person').label
+    # print "Label for foaf Person is "+l
+    self.assertEqual(l,"Person")
 
+  def test_label_for_foaf_workplaceHomepage(self):
+    """check we can get the label for foaf's workplaceHomepage property"""
+    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    l = foaf_spec.lookup('http://xmlns.com/foaf/0.1/workplaceHomepage').label
+    # print "Label for foaf workplaceHomepage is "+l
+    self.assertEqual(l,"workplace homepage")
 
 
 
