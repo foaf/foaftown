@@ -74,7 +74,7 @@ ns_list = { "http://www.w3.org/1999/02/22-rdf-syntax-ns#"   : "rdf",
 import sys, time, re, urllib, getopt
 import logging
 
-bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS }
+bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"vs": VS }
 
 #g = None
 
@@ -140,9 +140,6 @@ class Term(object):
     print "Comparing property URI ",self.uri," with vocab uri: " + vocab.uri
     return(False)
 
-  def status(self):
-    print 'status is: unknown'
-
   def __repr__(self):
     return(self.__str__)
 
@@ -171,8 +168,22 @@ class Term(object):
     s += "xmlns:   \t\t"+t.xmlns +"\n"
     s += "label:   \t\t"+t.label +"\n"
     s += "comment: \t\t" + t.comment +"\n"
+    s += "status: \t\t" + t.status +"\n"
     s += "\n"
     return s
+
+
+  def _get_status(self):
+    try:
+      return self._status
+    except:
+      return 'unknown'
+
+  def _set_status(self, value):
+    self._status = str(value)
+
+  status = property(_get_status,_set_status)
+
 
 
 # a Python class representing an RDFS/OWL property.
@@ -210,6 +221,10 @@ class Class(Term):
 
 
 
+
+
+
+
 # A python class representing (a description of) some RDF vocabulary
 #
 class Vocab(object):
@@ -237,17 +252,6 @@ class Vocab(object):
     self._uri = str( value )
 
   uri = property(_get_uri,_set_uri)
-  xuri = property(_get_uri,_set_uri)
-
-
-  def _get_foobar(self):
-    return self._foobar
-
-  def _set_foobar(self, value):
-    print "SETTER for foobar"
-    self._foobar = value
-
-  foobar = property(_get_foobar,_set_foobar)
 
   def set_filename(self, filename):
     self.filename = filename
@@ -279,8 +283,23 @@ class Vocab(object):
     self.classes.sort()
     self.properties.sort()
 
+
+    # http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    query = Parse('SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }')
+    status = g.query(query, initNs=bindings) 
+    # print "status results: ",status.__len__()
+    for x, vs in status:
+      # print "STATUS: ",vs, " for ",x
+      t = self.lookup(x)
+      if t != None:
+        t.status = vs
+        # print "Set status.", t.status
+      else:
+        speclog("Couldn't lookup term: "+x)
+
   # todo, use a dictionary index instead. RTFM.
   def lookup(self, uri):
+    uri = str(uri)
     for t in self.terms:
       # print "Lookup: comparing '"+t.uri+"' to '"+uri+"'"
       # print "type of t.uri is ",t.uri.__class__
