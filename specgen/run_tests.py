@@ -12,6 +12,7 @@
 
 FOAFSNAPSHOT = 'examples/foaf/index-20081211.rdf' # a frozen copy for sanity' sake
 DOAPSNAPSHOT = 'examples/doap/doap-en.rdf'  # maybe we should use dated url / frozen files for all
+SIOCSNAPSHOT = 'examples/sioc/sioc.rdf'
 
 import libvocab
 from libvocab import Vocab
@@ -92,14 +93,6 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     c = len(foaf_spec.properties)
     self.failUnless(c < 100 , "FOAF has less than 100 properties. count: "+str(c))
-
-  def testSIOCminprops(self):
-    """Check we found at least 20 SIOC properties. If we didn't, known bug. See rdf:Property issue in README.TXT"""
-    sioc_spec = Vocab('examples/sioc/sioc.rdf')
-    sioc_spec.index()
-    sioc_spec.uri = str(SIOC)
-    c = len(sioc_spec.properties)
-    self.failUnless(c > 20 , "SIOC has more than 20 properties. count was "+str(c))
 
   def testSIOCmaxprops(self):
     """sioc max props: not more than 500 properties in SIOC"""
@@ -243,6 +236,34 @@ class testSpecgen(unittest.TestCase):
     c = len(foaf_spec.properties)
     self.failUnless(c < 100 , "After indexing 3 times, foaf property count should still be < 100: "+str(c))
 
+  def test_got_sioc(self):
+    sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    cr =  sioc_spec.lookup('http://rdfs.org/sioc/ns#creator_of')
+    # print("Looked up creator_of in sioc. result: "+cr)
+    # print("Looked up creator_of comment: "+cr.comment)
+    # print "Sioc spec with comment has size: ", len(sioc_spec.properties)
+
+  def testSIOCminprops(self):
+    """Check we found at least 20 SIOC properties (which means matching OWL properties)"""
+    sioc_spec = Vocab('examples/sioc/sioc.rdf')
+    sioc_spec.index()
+    sioc_spec.uri = str(SIOC)
+    c = len(sioc_spec.properties)
+    self.failUnless(c > 20 , "SIOC has more than 20 properties. count was "+str(c))
+
+
+  def testSIOCminprops_v2(self):
+    """Check we found at least 10 SIOC properties."""
+    sioc_spec = Vocab(f='examples/sioc/sioc.rdf', uri = SIOC)
+    c = len(sioc_spec.properties)
+    self.failUnless(c > 10 , "SIOC has more than 10 properties. count was "+str(c))
+
+  def testSIOCminprops_v3(self):
+    """Check we found at least 5 SIOC properties."""
+    # sioc_spec = Vocab(f='examples/sioc/sioc.rdf', uri = SIOC)
+    sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    c = len(sioc_spec.properties)
+    self.failUnless(c > 5 , "SIOC has more than 10 properties. count was "+str(c))
 
 
 def suite():

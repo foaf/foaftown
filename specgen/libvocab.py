@@ -140,8 +140,8 @@ class Term(object):
     print "Comparing property URI ",self.uri," with vocab uri: " + vocab.uri
     return(False)
 
-  def __repr__(self):
-    return(self.__str__)
+  #def __repr__(self):
+  #  return(self.__str__)
 
   def __str__(self):
     try:
@@ -303,6 +303,24 @@ class Vocab(object):
         # print "Set status.", t.status
       else:
         speclog("Couldn't lookup term: "+x)
+
+    # Go back and see if we missed any properties defined in OWL. TODO: classes too. Or rewrite above SPARQL. addd more types for full query.
+    q= 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type .  FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty>)}'
+    query = Parse(q)
+    relations = g.query(query, initNs=bindings)
+    for (term, label, comment) in relations:
+        p = Property(str(term))
+        got = self.lookup( str(term) )
+        if got==None:
+          # print "Made an OWL property! "+str(p.uri) 
+          p.label = str(label)
+          p.comment = str(comment)
+          self.terms.append(p)
+
+    self.detect_types() # probably important 
+    self.terms.sort()   # does this even do anything? 
+    self.classes.sort()
+    self.properties.sort()
 
   # todo, use a dictionary index instead. RTFM.
   def lookup(self, uri):
