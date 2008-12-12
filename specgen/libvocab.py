@@ -2,6 +2,12 @@
 
 # total rewrite. --danbri
 
+# Usage:
+#
+# >>> from libvocab import Vocab, Term, Class, Property
+# >>> v = Vocab(f='examples/foaf/index.rdf', uri='http://xmlns.com/foaf/0.1/')
+#
+#
 # Python OO notes:
 # http://www.devshed.com/c/a/Python/Object-Oriented-Programming-With-Python-part-1/
 # http://www.daniweb.com/code/snippet354.html
@@ -84,7 +90,7 @@ def ns_split(uri):
 
 
 
-class Term:
+class Term(object):
 
   def __init__(self, uri='file://dev/null'):
     self.uri = uri
@@ -193,19 +199,46 @@ class Class(Term):
 
 # A python class representing (a description of) some RDF vocabulary
 #
-class Vocab:
+class Vocab(object):
+
+  def __init__(self, f='index.rdf'  ,  uri=None ):
+    self.graph = rdflib.ConjunctiveGraph()
+    self.filename = f
+    self._uri = uri
+    self.graph.parse(self.filename)
+    self.terms = []
+    # should also load translations here?
+    
+  # properties will be: uri, label, comment, id   
+
+  # TODO: python question - can we skip needing getters? and only define setters. i tried/failed. --danbri
+  def _get_uri(self):
+        return self._uri
+
+  def _set_uri(self, value):
+    v = str(value) # we don't want Namespace() objects and suchlike, but we can use them without whining.
+    if ':' not in v:
+      speclog("Warning: this doesn't look like a URI: "+v)
+      # raise Exception("This doesn't look like a URI.")
+    self._uri = str( value )
+
+  uri = property(_get_uri,_set_uri)
+  xuri = property(_get_uri,_set_uri)
+
+
+  def _get_foobar(self):
+    return self._foobar
+
+  def _set_foobar(self, value):
+    print "SETTER for foobar"
+    self._foobar = value
+
+  foobar = property(_get_foobar,_set_foobar)
 
   def set_filename(self, filename):
     self.filename = filename
 
-  def __init__(self, f='index.rdf'):
-    self.graph = rdflib.ConjunctiveGraph()
-    self.filename = f
-    self.graph.parse(self.filename)
-    self.terms = []
-    # should also load translations here?
-
-  # TODO: default to English
+  # TODO: be explicit if/where we default to English
   # TODO: do we need a separate index(), versus just use __init__ ?
   def index(self):
 #    speclog("Indexing description of "+str(self))
@@ -274,11 +307,11 @@ class Vocab:
   def niceName(self, uri = None ):
     if uri is None: 
       return
-    speclog("Nicing uri "+uri)
+    # speclog("Nicing uri "+uri)
     regexp = re.compile( "^(.*[/#])([^/#]+)$" )
     rez = regexp.search( uri )  
     if rez == None:
-      print "Failed to niceName. Returning the whole thing."
+      # print "Failed to niceName. Returning the whole thing."
       return(uri)   
     pref = rez.group(1)
     # todo: make this work when uri doesn't match the regex --danbri
