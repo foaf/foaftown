@@ -93,7 +93,9 @@ def ns_split(uri):
 class Term(object):
 
   def __init__(self, uri='file://dev/null'):
-    self.uri = uri
+    self.uri = str(uri)
+    self.uri = self.uri.rstrip()
+
     # speclog("Parsing URI " + uri)
     a,b = ns_split(uri)
     self.id = b
@@ -208,8 +210,9 @@ class Vocab(object):
     self.graph.parse(self.filename)
     self.terms = []
     # should also load translations here?
-    
-  # properties will be: uri, label, comment, id   
+
+    if f != None:    
+      self.index()
 
   # TODO: python question - can we skip needing getters? and only define setters. i tried/failed. --danbri
   def _get_uri(self):
@@ -264,6 +267,18 @@ class Vocab(object):
     self.terms.sort()
     self.classes.sort()
     self.properties.sort()
+
+  # todo, use a dictionary index instead. RTFM.
+  def lookup(self, uri):
+    for t in self.terms:
+      print "Lookup: comparing '"+t.uri+"' to '"+uri+"'"
+      print "type of t.uri is ",t.uri.__class__
+      if t.uri==uri:
+        print "Matched."
+        return t
+      else:
+        print "Fail."
+    return None
 
   # print a raw debug summary, direct from the RDF
   def raw(self):
