@@ -39,7 +39,7 @@ class testSpecgen(unittest.TestCase):
     """set up data used in the tests. Called  before each test function execution."""
 
   def testFOAFns(self):
-    foaf_spec = Vocab('examples/foaf/index.rdf')
+    foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
     foaf_spec.index()
     foaf_spec.uri = FOAF
     print "FOAF should be "+FOAF
@@ -72,7 +72,7 @@ class testSpecgen(unittest.TestCase):
 
   def testFOAFminprops(self):
     """Check we found at least 20 FOAF properties."""
-    foaf_spec = Vocab('examples/foaf/index.rdf')
+    foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
@@ -80,7 +80,7 @@ class testSpecgen(unittest.TestCase):
     self.failUnless(c > 20 , "FOAF has more than 20 properties")
 
   def testFOAFmaxprops(self):
-    foaf_spec = Vocab('examples/foaf/index.rdf')
+    foaf_spec = Vocab('examples/foaf/index-20081211.rdf')
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     c = len(foaf_spec.properties)
@@ -98,7 +98,8 @@ class testSpecgen(unittest.TestCase):
     self.failUnless(c > 20 , "SIOC has more than 20 properties")
 
   def testSIOCmaxprops(self):
-    sioc_spec = Vocab('examples/foaf/index.rdf')
+    """sioc max props"""
+    sioc_spec = Vocab('examples/sioc/sioc.rdf')
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
