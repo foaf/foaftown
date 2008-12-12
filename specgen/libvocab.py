@@ -36,7 +36,23 @@ SIOC = Namespace('http://rdfs.org/sioc/ns#')
 SIOCTYPES = Namespace('http://rdfs.org/sioc/types#')
 SIOCSERVICES = Namespace('http://rdfs.org/sioc/services#')
 #
-# add more here...
+# TODO: rationalise these two lists. or at least check they are same.
+
+ns_list = { "http://www.w3.org/1999/02/22-rdf-syntax-ns#"   : "rdf",
+            "http://www.w3.org/2000/01/rdf-schema#"         : "rdfs",
+            "http://www.w3.org/2002/07/owl#"                : "owl",
+            "http://www.w3.org/2001/XMLSchema#"             : "xsd",
+            "http://rdfs.org/sioc/ns#"                      : "sioc",
+            "http://xmlns.com/foaf/0.1/"                    : "foaf", 
+            "http://purl.org/dc/elements/1.1/"              : "dc",
+            "http://purl.org/dc/terms/"                     : "dct",
+            "http://usefulinc.com/ns/doap#"                 : "doap",
+            "http://www.w3.org/2003/06/sw-vocab-status/ns#" : "status",
+            "http://purl.org/rss/1.0/modules/content/"      : "content", 
+            "http://www.w3.org/2003/01/geo/wgs84_pos#"      : "geo",
+            "http://www.w3.org/2004/02/skos/core#"          : "skos"
+          }
+
 
 import sys, time, re, urllib, getopt
 import logging
@@ -101,6 +117,10 @@ class Term:
       speclog('No ID for'+self)
     return str(s)
 
+  def is_external(self, vocab):
+    print "Comparing property URI ",self.uri," with vocab uri: " + vocab.uri
+    return(False)
+
   def status(self):
     print 'status is: unknown'
 
@@ -152,6 +172,7 @@ class Property(Term):
 
 
 
+
 # A Python class representing an RDFS/OWL class
 #
 
@@ -168,6 +189,10 @@ class Class(Term):
 
 
 
+
+
+# A python class representing (a description of) some RDF vocabulary
+#
 class Vocab:
 
   def set_filename(self, filename):
@@ -179,9 +204,9 @@ class Vocab:
     self.graph.parse(self.filename)
     self.terms = []
     # should also load translations here?
- 
 
   # TODO: default to English
+  # TODO: do we need a separate index(), versus just use __init__ ?
   def index(self):
 #    speclog("Indexing description of "+str(self))
     g = self.graph
@@ -229,6 +254,7 @@ class Vocab:
       s += t.simple_report()
     return s
 
+  # for debugging only
   def detect_types(self):
     self.properties = []
     self.classes = []
@@ -241,3 +267,20 @@ class Vocab:
         # print "is_class."
         self.classes.append(t)
 
+
+# CODE FROM ORIGINAL specgen:
+
+ 
+  def niceName(self, uri = None ):
+    if uri is None: 
+      return
+    speclog("Nicing uri "+uri)
+    regexp = re.compile( "^(.*[/#])([^/#]+)$" )
+    rez = regexp.search( uri )  
+    if rez == None:
+      print "Failed to niceName. Returning the whole thing."
+      return(uri)   
+    pref = rez.group(1)
+    # todo: make this work when uri doesn't match the regex --danbri
+    # AttributeError: 'NoneType' object has no attribute 'group'
+    return ns_list.get(pref, pref) + ":" + rez.group(2)
