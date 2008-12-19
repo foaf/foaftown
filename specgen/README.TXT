@@ -10,6 +10,18 @@ Output: an XHTML+RDFa specification designed for human users
 
 See libvocab.py and specgen5.py for details. --danbri
 
+To test, see run_tests.py
+
+This is quite flexible. use -h for help, or run all with ./run_tests.py
+
+When working on a specific test, it is faster to use something like: 
+
+	./run_tests.py testSpecgen.testHTMLazlistExists
+
+See the src for adding more tests (simple and encouraged!), or for
+defining collections that can be run together.
+
+
 "What it does":
 
 The last FOAF spec was built using http://xmlns.com/foaf/0.1/specgen.py
