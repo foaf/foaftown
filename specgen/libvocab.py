@@ -390,3 +390,48 @@ class Vocab(object):
     # todo: make this work when uri doesn't match the regex --danbri
     # AttributeError: 'NoneType' object has no attribute 'group'
     return ns_list.get(pref, pref) + ":" + rez.group(2)
+
+
+
+  # HTML stuff, should be a separate class
+
+  def azlist(self):
+    """Builds the A-Z list of terms"""
+    az = """<div class="azlist">"""
+    az = """%s\n<p>Classes: |""" % az
+    c_ids = []
+    p_ids = []
+
+    for p in self.properties:
+    #  print "Storing property: ", p   
+      p_ids.append(str(p.id))
+
+    for c in self.classes:
+    #  print "Storing class: ", c
+      c_ids.append(str(c.id))
+ 
+    print 
+    print "c_ids is ", c_ids.sort()
+
+    print "ALL"
+    print c_ids, p_ids
+
+    c_ids.sort()
+    for c in c_ids:
+        print("Class "+c+" in az generation.")
+        az = """%s <a href="#term_%s">%s</a> | """ % (az, str(c).replace(" ", ""), c)
+
+    az = """%s\n</p>""" % az
+    az = """%s\n<p>Properties: |""" % az
+    print "p_ids is ", p_ids.sort()
+
+    p_ids.sort()
+    for p in p_ids:
+        speclog("Property "+p+" in az generation.")
+        az = """%s <a href="#term_%s">%s</a> | """ % (az, str(p).replace(" ", ""), p)
+    az = """%s\n</p>""" % az
+    az = """%s\n</div>""" % az
+
+    return az
+
+

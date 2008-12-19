@@ -283,7 +283,12 @@ class testSpecgen(unittest.TestCase):
     c = len(foaf_spec.classes)
     self.failUnless(c > 5 , "FOAF has more than 10 classes. count was "+str(c))
 
-
+  def testHTMLazlistExists(self):
+    """Check we have some kind of azlist. Note that this shouldn't really be HTML from Vocab API ultimately."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    az = foaf_spec.azlist()   
+    print "AZ list is ", az
+    self.assertNotEqual (az != None, "We should have an azlist.")
 
 def suite():
       suite = unittest.TestSuite()
