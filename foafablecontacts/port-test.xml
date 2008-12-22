@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!-- todo, make up some better test data -->
+
+<response xmlns="http://portablecontacts.net/spec/1.0#">
+<contact>
+<name>
+<givenName>Arches</givenName>
+<foo>bar</foo>
+</name>
+<displayName>Arches</displayName>
+</contact>
+<contact>
+<name>
+<familyName>Davis</familyName>
+<givenName>Ian</givenName>
+</name>
+<displayName>Ian Davis</displayName>
+<phoneNumbers>
+<value>+441234123412341234</value>
+<type>CELL</type>
+</phoneNumbers>
+<phoneNumbers>
+<value>+44123412341234</value>
+<type>pref</type>
+</phoneNumbers>
+</contact>
+<contact>
+<name>
+<familyName>Brickley;J/M</familyName>
+</name>
+<displayName>Brickley;J/M</displayName>
+<phoneNumbers>
+<value>+440000000000</value>
+<type>CELL</type>
+</phoneNumbers>
+<phoneNumbers>
+<value>+44790000000</value>
+<type>pref</type>
+</phoneNumbers>
+</contact>
+</response>
