@@ -1,0 +1,10 @@
+PREFIX pc: <http://portablecontacts.net/spec/1.0#> 
+PREFIX foaf: <http://xmlns.com/foaf/0.1/> 
+SELECT ?fn, ?gn, ?hp WHERE 
+{ 
+ [
+  a foaf:Agent;
+    foaf:workplaceHomepage ?hp;  
+    foaf:complex_name [ pc:familyName ?fn ; pc:givenName ?gn ] ;
+ ]
+}
