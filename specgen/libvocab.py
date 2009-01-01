@@ -397,41 +397,63 @@ class Vocab(object):
 
   def azlist(self):
     """Builds the A-Z list of terms"""
-    az = """<div class="azlist">"""
-    az = """%s\n<p>Classes: |""" % az
     c_ids = []
     p_ids = []
-
     for p in self.properties:
-    #  print "Storing property: ", p   
       p_ids.append(str(p.id))
-
     for c in self.classes:
-    #  print "Storing class: ", c
       c_ids.append(str(c.id))
- 
-    print 
-    print "c_ids is ", c_ids.sort()
-
-    print "ALL"
-    print c_ids, p_ids
-
     c_ids.sort()
+    p_ids.sort()
+    return (c_ids, p_ids)
+
+class VocabReport(object):
+
+  def __init__(self, vocab, basedir='./examples/', temploc='template.html'):
+    self.vocab = vocab
+    self.basedir = basedir
+    self.temploc = temploc
+
+    self._template = "no template loaded"
+
+  def _get_template(self):
+        self._template = self.load_template() # should be conditional
+        return self._template
+
+  def _set_template(self, value):
+    self._template = str(value)
+
+  template = property(_get_template,_set_template)
+
+  def load_template(self):
+    f = open(self.basedir + self.temploc, "r")
+    template = f.read()
+    return(template)
+
+  def generate(self):
+    print "TODO: Make a report"
+    return("Nope!")
+
+  def az(self):
+    """AZ List for html doc"""
+    c_ids, p_ids = self.vocab.azlist()
+    az = """<div class="azlist">"""
+    az = """%s\n<p>Classes: |""" % az
+    print c_ids, p_ids
     for c in c_ids:
-        print("Class "+c+" in az generation.")
+        speclog("Class "+c+" in az generation.")
         az = """%s <a href="#term_%s">%s</a> | """ % (az, str(c).replace(" ", ""), c)
 
     az = """%s\n</p>""" % az
     az = """%s\n<p>Properties: |""" % az
-    print "p_ids is ", p_ids.sort()
-
-    p_ids.sort()
     for p in p_ids:
         speclog("Property "+p+" in az generation.")
         az = """%s <a href="#term_%s">%s</a> | """ % (az, str(p).replace(" ", ""), p)
     az = """%s\n</p>""" % az
     az = """%s\n</div>""" % az
+    return(az)
 
-    return az
 
+  def rdfa(self):
 
+    return( "<html>rdfa here</html>")
