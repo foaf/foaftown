@@ -16,6 +16,7 @@ SIOCSNAPSHOT = 'examples/sioc/sioc.rdf'
 
 import libvocab
 from libvocab import Vocab
+from libvocab import VocabReport
 from libvocab import Term
 from libvocab import Class
 from libvocab import Property
@@ -287,8 +288,66 @@ class testSpecgen(unittest.TestCase):
     """Check we have some kind of azlist. Note that this shouldn't really be HTML from Vocab API ultimately."""
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     az = foaf_spec.azlist()   
-    print "AZ list is ", az
+#    print "AZ list is ", az
     self.assertNotEqual (az != None, "We should have an azlist.")
+
+  def testOutputHTML(self):
+    """Check HTML output formatter does something"""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec)
+    az = page.az()
+    self.failUnless(az)
+
+
+  def testGotRDFa(self):
+    """Check HTML output formatter rdfa method returns some text"""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec)
+    rdfa = page.rdfa()
+    self.failUnless(rdfa)
+
+  def testTemplateLoader(self):
+    """Check we can load a template file."""
+    basedir = './examples/'
+    temploc = 'template.html'
+    f = open(basedir + temploc, "r")
+    template = f.read()
+    self.failUnless(template != None)
+
+
+  def testTemplateLoader2(self):
+    """Check we can load a template file thru constructors."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
+    tpl = page.template
+    print "Page template is: ", tpl
+    self.failUnless(tpl != None)
+
+  def testTemplateLoader3(self):
+    """Check loaded template isn't default string."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
+    tpl = page.template
+    self.assertNotEqual(tpl, "no template loaded")
+
+# TODO: check this fails appropriately: 
+#  IOError: [Errno 2] No such file or directory: './examples/nonsuchfile.html'
+#
+#  def testTemplateLoader4(self):
+#    """Check loaded template isn't default string when using bad filename."""
+#    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+#    page = VocabReport(foaf_spec, basedir='./examples/', temploc='nonsuchfile.html')
+#    tpl = page.template
+#    self.assertNotEqual(tpl, "no template loaded")
+
+  def testGenerateReport(self):
+    """Use the template to generate our report page."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
+    tpl = page.template
+    page.generate()
+    rdfa = page.rdfa()
+    self.assertNotEqual(page.generate(), "Nope!")
 
 def suite():
       suite = unittest.TestSuite()
