@@ -1,4 +1,9 @@
 
+You can also test this via WWW version,
+roqet -D http://www.advogato.org/person/connolly/foaf.rdf http://svn.foaf-project.org/foaftown/2009/headstream/examples/advogato/advogato2trust.rq
+...note that it generates double output for some reason.
+
+
 
 This example strips out the piece of an advogato profile that tells you the group they're in. Everything else is discarded.
 
