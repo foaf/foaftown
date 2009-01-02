@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns="http://xmlns.com/foaf/0.1/" xml:base="http://www.advogato.org/person/danbri/">
+  <Person rdf:about="file:///Users/danbri/working/foaftown/2009/headstream/examples/advogato/danbri-advogato-foaf.rdf#me">
+    <weblog rdf:resource="diary.html"/>
+  </Person>
+  <Group rdf:about="../../ns/trust#Journeyer">
+    <member rdf:resource="file:///Users/danbri/working/foaftown/2009/headstream/examples/advogato/danbri-advogato-foaf.rdf#me"/>
+  </Group>
+</rdf:RDF>

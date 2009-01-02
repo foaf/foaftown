@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <foaf:PersonalProfileDocument rdf:about="">
+    <rdfs:label>Advogato FOAF profile for Dan Connolly</rdfs:label>
+    <foaf:maker rdf:resource="#me"/>
+    <foaf:primaryTopic rdf:resource="#me"/>
+  </foaf:PersonalProfileDocument>
+  <foaf:Group rdf:about="http://www.advogato.org/ns/trust#Master">
+    <foaf:member rdf:resource="#me"/>
+  </foaf:Group>
+  <foaf:Person rdf:about="#me">
+    <foaf:name>Dan Connolly</foaf:name>
+    <foaf:nick>connolly</foaf:nick>
+    <foaf:mbox_sha1sum>94b6eb0c835f928c5ed565dc3ed1a355ac1b41e5</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://www.w3.org/People/Connolly/"/>
+    <foaf:weblog rdf:resource="http://www.advogato.org/person/connolly/diary.html"/>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/connolly/foaf.rdf#me">
+        <foaf:nick>connolly</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/connolly/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/jwz/foaf.rdf#me">
+        <foaf:nick>jwz</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/jwz/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/gtaylor/foaf.rdf#me">
+        <foaf:nick>gtaylor</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/gtaylor/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/jg/foaf.rdf#me">
+        <foaf:nick>jg</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/jg/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/jtauber/foaf.rdf#me">
+        <foaf:nick>jtauber</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/jtauber/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/fdrake/foaf.rdf#me">
+        <foaf:nick>fdrake</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/fdrake/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/robla/foaf.rdf#me">
+        <foaf:nick>robla</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/robla/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/ger/foaf.rdf#me">
+        <foaf:nick>ger</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/ger/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/aaronsw/foaf.rdf#me">
+        <foaf:nick>aaronsw</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/aaronsw/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/ndw/foaf.rdf#me">
+        <foaf:nick>ndw</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/ndw/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/kbob/foaf.rdf#me">
+        <foaf:nick>kbob</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/kbob/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/DV/foaf.rdf#me">
+        <foaf:nick>DV</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/DV/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/ping/foaf.rdf#me">
+        <foaf:nick>ping</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/ping/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/gstein/foaf.rdf#me">
+        <foaf:nick>gstein</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/gstein/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/mikehearn/foaf.rdf#me">
+        <foaf:nick>mikehearn</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/mikehearn/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/dajobe/foaf.rdf#me">
+        <foaf:nick>dajobe</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/dajobe/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/edd/foaf.rdf#me">
+        <foaf:nick>edd</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/edd/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/vdv/foaf.rdf#me">
+        <foaf:nick>vdv</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/vdv/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/Ankh/foaf.rdf#me">
+        <foaf:nick>Ankh</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/Ankh/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/timbl/foaf.rdf#me">
+        <foaf:nick>timbl</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/timbl/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/djweitzner/foaf.rdf#me">
+        <foaf:nick>djweitzner</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/djweitzner/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/SWAP/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Daily%20Chump/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Zope/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Python/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/internet/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/RDDL/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Open%20Projects/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/MusicBrainz/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Mercurial/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/freenode/"/>
+    <foaf:currentProject rdf:resource="http://www.advogato.org/proj/Tabulator/"/>
+  </foaf:Person>
+</rdf:RDF>
