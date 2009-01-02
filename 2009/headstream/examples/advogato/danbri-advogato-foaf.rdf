@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <foaf:PersonalProfileDocument rdf:about="">
+    <rdfs:label>Advogato FOAF profile for Dan Brickley</rdfs:label>
+    <foaf:maker rdf:resource="#me"/>
+    <foaf:primaryTopic rdf:resource="#me"/>
+  </foaf:PersonalProfileDocument>
+  <foaf:Group rdf:about="http://www.advogato.org/ns/trust#Journeyer">
+    <foaf:member rdf:resource="#me"/>
+  </foaf:Group>
+  <foaf:Person rdf:about="#me">
+    <foaf:name>Dan Brickley</foaf:name>
+    <foaf:nick>danbri</foaf:nick>
+    <foaf:mbox_sha1sum>748934f32135cfcf6f8c06e253c53442721e15e7</foaf:mbox_sha1sum>
+    <foaf:homepage rdf:resource="http://danbri.org/"/>
+    <foaf:weblog rdf:resource="http://www.advogato.org/person/danbri/diary.html"/>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/danbri/foaf.rdf#me">
+        <foaf:nick>danbri</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/danbri/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/connolly/foaf.rdf#me">
+        <foaf:nick>connolly</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/connolly/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+    <foaf:knows>
+      <foaf:Person rdf:about="http://www.advogato.org/person/timbl/foaf.rdf#me">
+        <foaf:nick>timbl</foaf:nick>
+        <rdfs:seeAlso rdf:resource="http://www.advogato.org/person/timbl/foaf.rdf"/>
+      </foaf:Person>
+    </foaf:knows>
+  </foaf:Person>
+</rdf:RDF>

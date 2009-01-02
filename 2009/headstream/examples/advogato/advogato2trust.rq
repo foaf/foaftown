@@ -1,0 +1,17 @@
+# eg. FROM <http://www.advogato.org/person/connolly/foaf.rdf> 
+
+PREFIX : <http://xmlns.com/foaf/0.1/> 
+
+CONSTRUCT {
+  ?x a :Person .
+  ?x :weblog ?w .
+  ?trustgroup :member ?x .
+  ?trustgroup a :Group .
+}
+
+WHERE {
+  ?x a :Person .
+  ?x :weblog ?w .
+  ?trustgroup :member ?x .
+
+}
