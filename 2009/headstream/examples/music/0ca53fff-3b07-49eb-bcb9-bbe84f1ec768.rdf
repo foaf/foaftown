@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf      = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs     = "http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl      = "http://www.w3.org/2002/07/owl#"
+         xmlns:dc       = "http://purl.org/dc/elements/1.1/"
+         xmlns:foaf     = "http://xmlns.com/foaf/0.1/"
+         xmlns:rel      = "http://www.perceive.net/schemas/relationship/"
+         xmlns:mo       = "http://purl.org/ontology/mo/"
+         xmlns:rev      = "http://purl.org/stuff/rev#"
+>
+
+<rdf:Description rdf:about="/music/artists/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768.rdf">
+  <rdfs:label>Description of the artist The Rumble Strips</rdfs:label>
+  <foaf:primaryTopic rdf:resource="/music/artists/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768#artist"/>
+</rdf:Description>
+
+<mo:MusicGroup rdf:about="/music/artists/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768#artist">
+  <foaf:name>The Rumble Strips</foaf:name>
+  <owl:sameAs rdf:resource="http://dbpedia.org/resource/The_Rumble_Strips" />
+  <mo:image rdf:resource="/music/images/artists/7col_in/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768.jpg" />
+
+  <foaf:page rdf:resource="/music/artists/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768.html" />
+  <mo:musicbrainz rdf:resource="http://musicbrainz.org/artist/0ca53fff-3b07-49eb-bcb9-bbe84f1ec768.html" />
+  <mo:homepage rdf:resource="http://www.therumblestrips.com/" />
+  <mo:wikipedia rdf:resource="http://en.wikipedia.org/wiki/The_Rumble_Strips" />
+  <mo:myspace rdf:resource="http://www.myspace.com/rumblestripsuk" />
+
+  <mo:member rdf:resource="/music/artists/58b526f0-7b93-418d-b59d-e32ea8e730dc#artist" />
+
+
+  <foaf:maker>
+    <mo:Record>
+      <dc:title>Girls and Weather</dc:title>
+      
+      <mo:musicbrainz rdf:resource="http://musicbrainz.org/release/95f00eac-529d-4724-9af2-6f348e27f52a.html" />
+      <rev:hasReview rdf:resource="/music/reviews/4q9x#review" />
+    </mo:Record>
+  </foaf:maker>
+
+</mo:MusicGroup>
+
+<mo:SoloMusicArtist rdf:about="/music/artists/58b526f0-7b93-418d-b59d-e32ea8e730dc#artist">
+  <foaf:name>Charlie Waller</foaf:name>
+</mo:SoloMusicArtist>
+
+
+
+</rdf:RDF>
