@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>layers</key>
+	<array>
+		<dict>
+			<key>file</key>
+			<string>fig1.gif</string>
+			<key>offsetX</key>
+			<real>-11.5</real>
+			<key>offsetY</key>
+			<real>35.5</real>
+			<key>type</key>
+			<string>image</string>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CISharpenLuminance</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputSharpness</key>
+				<real>2</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIGaussianGradient</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputCenter_CIVectorValue</key>
+				<string>[150 150]</string>
+				<key>inputColor0_CIColorValue</key>
+				<string>1 1 1 1</string>
+				<key>inputColor1_CIColorValue</key>
+				<string>0 0 0 0</string>
+				<key>inputRadius</key>
+				<real>0.0</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CINoiseReduction</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputNoiseLevel</key>
+				<real>0.10000000149011612</real>
+				<key>inputSharpness</key>
+				<real>2</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIColorPosterize</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputLevels</key>
+				<real>2</real>
+			</dict>
+		</dict>
+		<dict>
+			<key>classname</key>
+			<string>CIBumpDistortion</string>
+			<key>type</key>
+			<string>filter</string>
+			<key>values</key>
+			<dict>
+				<key>inputCenter_CIVectorValue</key>
+				<string>[361 161 0 0]</string>
+				<key>inputRadius</key>
+				<real>600</real>
+				<key>inputScale</key>
+				<real>0.48148143291473389</real>
+			</dict>
+		</dict>
+	</array>
+	<key>windowHeight</key>
+	<real>455</real>
+	<key>windowWidth</key>
+	<real>615</real>
+</dict>
+</plist>

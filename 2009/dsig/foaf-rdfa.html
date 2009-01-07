@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"        xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+        xmlns:owl="http://www.w3.org/2002/07/owl#" 
+        xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<head >
+ <title>FOAF -- メタデータによる知人ネットワークの表現</title>
+
+<!-- borrowed from kanzaki site, testing idea this could be in rdfa ... todo: fix (c) section to show this -->
+
+</head>
+<body>
+
+<table  summary="RDF properties" class="foaf-vocab">
+<caption>FOAFのID/名前付けプロパティ一覧</caption>
+<thead>
+ <tr><th>Property name</th><th>comment</th><th>domain</th><th>range</th><th>type</th></tr>
+</thead>
+<tbody>
+<tr about="http://xmlns.com/foaf/0.1/mbox">
+ <td>foaf:mbox</td>
+ <td>この人のメールボックスで、IDとして機能する。他の人（家族など）と共有していてはいけない。mailto:で始めるURI</td><td>foaf:Agent</td><td>owl:Thing</td><td>OI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/mbox_sha1sum">
+ <td>foaf:mbox_sha1sum</td>
+<td property="rdfs:comment">この人のメールボックスのSHA1ハッシュ値。IDとして機能する。こちらはリテラル</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/name">
+ <td>foaf:name</td>
+ <td property="rdfs:comment">名前（人に限らず使える）</td><td>owl:Thing</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/firstName">
+ <td>foaf:firstName</td>
+ <td property="rdfs:comment">姓名の「名」</td><td>foaf:Person</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/surname">
+ <td>foaf:surname</td>
+ <td property="rdfs:comment">姓名の「姓」。名字</td><td>foaf:Person</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/givenname"> 
+ <td>foaf:givenname</td>
+ <td property="rdfs:comment">姓名の「名」。foaf:firstNameと同じ</td><td>-</td><td>-</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/family_name">
+ <td>foaf:family_name</td>
+ <td property="rdfs:comment">姓名の「姓」。foaf:surnameと同じ</td><td>foaf:Person</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/nick">
+ <td id="foaf-nick">foaf:nick</td>
+ <td property="rdfs:comment">ニックネーム。IRCで使ったりとか</td><td>-</td><td>-</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/title">
+ <td>foaf:title</td>
+ <td>敬称(Mr, Mrs, Ms, Dr. etc)</td><td>-</td><td>-</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/gender">
+ <td>foaf:gender</td>
+ <td>性別(male, female...)</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DF</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/aimChatID">
+ <td>foaf:aimChatID</td>
+ <td><abbr title="AOL Instant Message">AIM</abbr>チャットのID</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/msnChatID">
+ <td>foaf:msnChatID</td>
+ <td><abbr title="Microsoft Network">MSN</abbr>チャットのID</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/jabberID">
+ <td>foaf:jabberID</td>
+ <td>XMLプロトコル（<abbr title="Extensible Messaging and Presence Protocol">XMPP</abbr>）を使ったオープン<abbr title="Instant Message">IM</abbr>システム<a href="#ref-jabber">[Jabber]</a>のID</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/icqChatID">
+ <td>foaf:icqChatID</td>
+ <td>ICQチャットのID</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/yahooChatID">
+ <td>foaf:yahooChatID</td>
+ <td>yahoo!チャットのID</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/img">
+ <td>foaf:img</td>
+ <td>この人を示す（ホームページで使うような）画像。foaf:depictionの方が一般的</td><td>foaf:Person</td><td>foaf:Image</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/myersBriggs"> 
+ <td>foaf:myersBriggs</td>
+ <td>この人のMyers Briggs (MBTI)による性格分類コード</td><td>foaf:Person</td><td>rdfs:Literal</td><td>D?</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/geekcode">
+ <td>foaf:geekcode</td>
+ <td>この人の<a href="#ref-geekcode">[GEEKCODE]</a></td><td>foaf:Person</td><td>rdfs:Literal</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/plan">
+ <td>foaf:plan</td>
+ <td>この人の'プラン'。UNIXのfingerで使う'.plan'ファイルに準じているらしいので、計画というよりモットーみたいなものか。ほら、よくメールの署名のあとにひとこと書いてる人がいるでしょ。</td><td>foaf:Person</td><td>rdfs:Literal</td><td>D</td></tr>
+
+<tr about="http://xmlns.com/foaf/0.1/knows">
+ <td>foaf:knows</td>
+ <td property="rdfs:comment">この人を知っている（相互に知り合っているレベル）</td>
+ <td rel="rdfs:domain" resource="http://xmlns.com/foaf/0.1/Person" >foaf:Person</td> <!-- danbri test -->
+ <td>foaf:Person</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/interest">
+ <td>foaf:interest</td>
+ <td property="rdfs:comment">この人が関心を持っていることに関するページ</td><td>foaf:Person</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/topic_interest"> 
+ <td>foaf:topic_interest</td>
+ <td property="rdfs:comment">この人が関心を持っているトピック</td><td>foaf:Person</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/publications">
+ <td >foaf:publications</td>
+ <td property="rdfs:comment">この人の出版物へのリンク</td><td>foaf:Person</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/made">
+ <td id="foaf-made">foaf:made</td>
+ <td property="rdfs:comment" content="この人が作ったもの。 ...xxxtodo">この人が作ったもの。<a href="#foaf-maker">foaf:maker</a>の逆</td><td>foaf:Agent</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/schoolHomepage">
+ <td property="rdfs:comment">foaf:schoolHomepage</td>
+ <td>この人の母校のホームページ</td><td>foaf:Person</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/workplaceHomepage">
+ <td>foaf:workplaceHomepage</td>
+ <td property="rdfs:comment">この人の勤務先のホームページ</td><td>foaf:Person</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/workInfoHomepage">
+ <td>foaf:workInfoHomepage</td>
+ <td property="rdfs:label">この人の仕事の内容を説明しているホームページ</td><td>foaf:Person</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/currentProject"> 
+ <td>foaf:currentProject</td>
+ <td property="rdfs:comment">この人が現在手がけているプロジェクト</td><td>foaf:Person</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/pastProject">
+ <td>foaf:pastProject</td>
+ <td property="rdfs:comment">この人が以前手がけたプロジェクト</td><td>foaf:Person</td><td>owl:Thing</td><td>O</td></tr>
+
+<tr about="http://xmlns.com/foaf/0.1/homepage">
+ <td>foaf:homepage</td>
+ <td property="rdfs:comment"  >ホームページがある。pageおよびisPrimaryTopicOfのサブプロパティ</td><td>owl:Thing</td><td>foaf:Document</td><td>OI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/weblog">
+ <td>foaf:weblog</td>
+ <td  property="rdfs:comment" >ウェブログがある。pageのサブプロパティ</td><td>foaf:Agent</td><td>foaf:Document</td><td>OI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/depiction">
+ <td id="foaf-depiction">foaf:depiction</td>
+ <td  property="rdfs:comment" >対象を描いたもの。写真やイラストなど</td><td>owl:Thing</td><td>foaf:Image</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/tipjar">
+ <td id="foaf-tipjar">foaf:tipjar</td>
+ <td  property="rdfs:comment" >この人物に対して支払いやお礼をする方法を記述したページ。pageのサブプロパティ</td><td>foaf:Agent</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/phone">
+ <td>foaf:phone</td>
+ <td property="rdfs:comment" >国際識別コードからフルに記述した電話番号のURI。tel:+81-3-3210-1234 など</td><td>-</td><td>-</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/based_near">
+ <td>foaf:based_near</td>
+ <td property="rdfs:comment" >○○の近くにいる（ある）ことを示そうという実験的プロパティ</td><td>geo:SpatialThing</td><td>geo:SpatialThing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/birthday">
+ <td>foaf:birthday</td>
+ <td property="rdfs:comment" >主語の誕生日。月日のみをmm-ddの形式で記述する。</td><td>foaf:Agent</td><td>rdfs:Literal</td><td>DF</td></tr>
+
+<tr about="http://xmlns.com/foaf/0.1/page">
+ <td>foaf:page</td>
+ <td  property="rdfs:comment" >主語リソースに関するページ、文書</td><td>owl:Thing</td><td>foaf:Document</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/topic">
+ <td id="foaf-topic">foaf:topic</td>
+ <td property="rdfs:comment" >主語ページ、文書のトピック（foaf:pageの逆）</td><td>foaf:Document</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/primaryTopic">
+ <td>foaf:primaryTopic</td>
+ <td property="rdfs:comment" >主語ページ、文書のメインとなるトピック。1つしか持つことができないFunctionlProperty</td><td>foaf:Document</td><td>owl:Thing</td><td>OF</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">
+ <td>foaf:isPrimaryTopicOf</td>
+ <td property="rdfs:comment" >主語が目的語ページ、文書のメイントピックである。primaryTopicの逆でIFP。pageのサブプロパティでもある</td><td>owl:Thing</td><td>foaf:Document</td><td>OI</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/theme">
+ <td>foaf:theme</td>
+ <td property="rdfs:comment" >あるリソースのテーマ</td><td>owl:Thing</td><td>owl:Thing</td><td>O</td></tr>
+
+ <tr class="deprecated"> <!-- danbri todo: can we use OWL here? --> 
+ <td><del>foaf:linkedWith</del></td>
+ <td><del>一般的なリンク</del></td><td>owl:Thing</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/fundedBy">
+ <td>foaf:fundedBy</td>
+ <td property="rdfs:comment" >プロジェクトあるいは人物に資金を提供している組織</td><td>owl:Thing</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/maker">
+ <td id="foaf-maker">foaf:maker</td>
+ <td property="rdfs:comment" content="このリソースを作った人、グループなど。foaf:made xxxdanbritodo-need non xml here">このリソースを作った人、グループなど。<a href="#foaf-made">foaf:made</a>の逆で、dc:creatorに代わって構造化リソースとしての作者を記述する</td><td>owl:Thing</td><td>foaf:Agent</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/logo">
+ <td>foaf:logo</td>
+ <td property="rdfs:comment" >ロゴマーク</td><td>owl:Thing</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/depicts">
+ <td>foaf:depicts</td>
+ <td property="rdfs:comment" >この画像が描写しているもの。<a href="#foaf-depiction">foaf:depiction</a>の逆</td><td>foaf:Image</td><td>owl:Thing</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/thumbnail">
+ <td>foaf:thumbnail</td>
+ <td property="rdfs:comment" >画像のサムネイル</td><td>foaf:Image</td><td>foaf:Image</td><td>O</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/sha1">
+ <td>foaf:sha1</td>
+ <td property="rdfs:comment" >ドキュメントのSHA1ハッシュの16進数値（リテラル）</td><td>foaf:Document</td><td>-</td><td>D</td></tr>
+<tr about="http://xmlns.com/foaf/0.1/dnaChecksum">
+ <td>foaf:dnaChecksum</td>
+ <td property="rdfs:comment" >何かのDNAのチェックサム（ジョークですが、人を特定するIDというのは、あまり歓迎できない手段も含めさまざまあることを示唆しています）</td><td>-</td><td>rdfs:Literal</td><td>D</td></tr>
+
+  <tr about="http://xmlns.com/foaf/0.1/holdsAccount">
+   <td>foaf:holdsAccount</td>
+   <td property="rdfs:comment" >主語エージェントがアカウントを保持している</td>
+   <td>foaf:Agent</td>
+   <td>foaf:OnlineAccount</td>
+   <td>O</td>
+  </tr>
+  <tr about="http://xmlns.com/foaf/0.1/accountServiceHomepage">
+   <td>foaf:accountServiceHomepage</td>
+   <td property="rdfs:comment" >このオンライン・アカウントを提供するサービスのホームページ</td>
+   <td>foaf:OnlineAccount</td>
+   <td>foaf:Document</td>
+   <td>O</td>
+  </tr>
+  <tr about="http://xmlns.com/foaf/0.1/accountName">
+   <td>foaf:accountName</td>
+   <td property="rdfs:comment" >このオンライン・アカウントに結びつけられた名前（識別子）</td>
+   <td>foaf:OnlineAccount</td>
+   <td>rdfs:Literal</td>
+   <td>D</td>
+  </tr>
+  <tr about="http://xmlns.com/foaf/0.1/member">
+   <td>foaf:member</td>
+   <td property="rdfs:comment" >目的語は主語グループのメンバーである</td>
+   <td>foaf:Group</td>
+   <td>foaf:Agent</td>
+   <td>O</td>
+  </tr>
+  <tr about="http://xmlns.com/foaf/0.1/membershipClass">
+   <td>foaf:membershipClass</td>
+   <td property="rdfs:comment" >目的語となる人物クラスは主語グループのメンバーである</td>
+   <td><del>foaf:Group</del></td>
+   <td><del>rdfs:Class</del></td>
+   <td>A</td>
+  </tr>
+ </tbody>
+</table>
+
+
+</body>
+</html>
+
