@@ -1,0 +1,63 @@
+
+Properties:
+
+# from Signature
+
+keyInfo
+    KeyName
+    KeyValue
+    SubjectName
+    RetrievalMethod
+
+    X509Data
+     X509Issueserial
+     X509SKI
+     X509Name
+     X509Certificate
+     X509CRL
+ 
+   PGPData
+     PGPKeyID
+     PGPKeyPacket
+
+
+Object
+     ID=
+     Encoding=
+     Type=
+
+SignatureValue
+     value
+     Encoding=
+   
+SignatureProperty
+     [element only]
+
+signedInfo
+    id=
+    signatureMethod
+       algorithm=
+       parameter
+    canonicalizationMethod
+       algorithm=
+       parameter
+    reference
+      transforms
+        transform
+          Algorithm=
+          Type=
+          charset=
+          parameter
+      digestMethod
+        algorithm
+          value
+          parameter
+      digestValue
+        value
+        encoding=
+      uri=
+      id= 
+      idref=
+      type=
+      
+

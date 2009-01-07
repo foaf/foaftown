@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"        xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+        xmlns:owl="http://www.w3.org/2002/07/owl#" 
+        xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+        xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<title>KeyInfo vocabulary</title>
+</head>
+<body>
+
+<img src="keyinfo-zoom.png" alt="Keyinfo image" width="158"
+style="float: right" />
+
+<h1 style="clear: both">KeyInfo vocabulary</h1>
+
+<p>
+This RDF vocabulary provides terminology for describing key
+information, based on structures from XML Signature.
+</p>
+<p>
+It defines classes and properties that correspond to a subset of the
+xmlsig-core RDF datamodel that was sketched as part of the W3C XML Digital Signature recommendation (2000, 2nd edition 200x).
+</p>
+<p>
+We are concerned here purely with the 'key info' construct, and with
+reflecting into an RDF vocabulary just enough of the XML Signature
+concepts that we can associate X509 and PGP key data with other claims
+about the parties (whether personal, organizational, or something else)
+that hold them. 
+</p>
+
+<p>
+<strong>IMPORTANT:</strong> Please note that this work is <em>purely
+speculative. Do not use it for anything beyond research
+activities. Feedback is welcomed via foaf-protocols@lists.foaf-project.org
+</p>
+
+<h2>Overview</h2>
+
+<p>
+The core concept here is 'KeyInfo'. XML Signature captures this in an
+XML element, and the suggested RDF representation included in the spec
+models this as a relationship between a "Signature" object and another
+object of un-named type. As we are only representing KeyInfo, rather
+than attempting a full expression of xmlsig in RDF, we will begin with
+an RDF class, "KeyInfo", and then pick up the suggested properties for
+this class directly from the xmlsig design.
+</p>
+
+<p>
+The XML Signature diagram includes the following key:
+</p>
+
+<ul>
+  <li>(...) - anonymous node</li>
+  <li>blue - xml keyword</li>
+  <li>Element Attribute = - implicit element content</li>
+  <li>element/attribute - "literal"</li>
+  </ul>
+
+<p>
+This is not entirely clear. The diagram also contains indicative
+  instance data, which helps give some sense of the intended
+  design. These examples are elaborated upon here, for similar
+  reason.</p>
+
+<h2>Vocabulary</h2>
+
+  <
+  
+
+<h2>Open Issues</h2>
+
+<ul>
+  <li>How much RDFS/OWL do we need to capture things more
+  explicitly?</li>
+  <li>How do we say that a property can point to an XML element?</li>
+  <li>What additional considerations does an RDF environment bring?
+  (eg. partial information, extensions, use of URIs/IRIs, whitespace
+  handling; syntax-layer issues eg. GRDDL, N3, RDF/XML, RDFa, SPARQL,
+  RIF)</li>
+  <li>Do we say anything about classes where URIs are expected vs
+  bnodes? security/privacy aspects of parties identifying others by http
+  URI? (HTTP logs etc. re privacy, plus usual http insecurities)</li>
+</ul>
+  
+<h3>Appendix A: Raw Notes</h3>
+
+<img src="xmldsig-datamodel-20000112.gif" alt="W3C datamodel image"  width="600"/>
+
+<p>The 2000 diagram provides only a rough indication of property
+names. These are extracted below.</p>
+
+<pre>
+keyInfo
+    KeyName
+    KeyValue
+    SubjectName
+    RetrievalMethod
+
+    X509Data
+     X509Issueserial
+     X509SKI
+     X509Name
+     X509Certificate
+     X509CRL
+        
+   PGPData
+     PGPKeyID  
+     PGPKeyPacket 
+</pre>
+
+</body>
+</html>
