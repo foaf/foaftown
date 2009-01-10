@@ -1,0 +1,14 @@
+see also 
+http://lists.w3.org/Archives/Public/www-archive/2009Jan/0002.html
+
+http://lists.w3.org/Archives/Public/public-powderwg/2009Jan/0021.html
+
+
+how to make this work?
+
+rapper --trace -i grddl powder.xml 
+rapper: Parsing URI file:///Users/danbri/working/foaftown/2009/powder/powder.xml with parser grddl
+rapper: Serializing with serializer ntriples
+rapper: Processing URI http://www.w3.org/2007/05/powder/
+rapper: Parsing returned 0 triples
+
