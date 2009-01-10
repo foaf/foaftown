@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<powder xmlns="http://www.w3.org/2007/05/powder/"
+foo="http://www.w3.org/2007/05/powder#" 
+	xmlns:dcterms="http://purl.org/dc/terms/"
+        xmlns:ex="http://example.org/vocab#">
+
+<!-- can we write an example, from w3c, saying that w3c published its people page? -->
+
+  <attribution>
+    <issuedby src="http://www.w3.org/#w3citself" />
+    <issued>2008-01-10T00:00:00</issued>
+  </attribution>
+
+  <dr>
+
+    <iriset>
+      <includehosts>www.w3.org</includehosts>
+      <includepathstartswith>/People</includepathstartswith> <!-- too broad? -->
+    </iriset>
+
+    <descriptorset>
+      <dcterms:publisher rdf:resource="http://www.w3.org/#w3citself" />
+      <displaytext>Everything on www.w3.org alumni page is published by W3C</displaytext>
+      <displayicon src="http://authority.example.org/icon.png" />
+    </descriptorset>
+
+   </dr>
+
+</powder>
