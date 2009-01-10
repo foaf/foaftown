@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<powder xmlns="http://www.w3.org/2007/05/powder#" 
+      xmlns:ex="http://example.org/vocab#">
+
+  <attribution>
+    <issuedby src="http://authority.example.org/company.rdf#me" />
+    <issued>2007-12-14T00:00:00</issued>
+    <abouthosts>example.com</abouthosts>
+  </attribution>
+
+  <ol>
+
+    <dr>
+      <iriset>
+         <includehosts>example.com</includehosts>
+         <includepathstartswith>/foo</includepathstartswith>
+      </iriset>
+      <descriptorset>
+        <ex:color>blue</ex:color>
+      </descriptorset>
+    </dr>
+
+    <dr>
+      <iriset>
+        <includehosts>example.com</includehosts>
+      </iriset>
+      <descriptorset>
+        <ex:color>red</ex:color>
+      </descriptorset>
+    </dr>
+
+  </ol>
+
+</powder>
