@@ -1,3 +1,5 @@
+See http://danbri.org/words/2009/01/18/390
+
 The data file (in gedcom and derrived form in RDF)
  is credited to Matt & Ellie Buell, "Uploaded By: Eochaid", 1995-05-25.
 
