@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>testing html5ish rdfa</title>
+</head>
+<body>
+<div xmlns:foaf="http://xmlns.com/foaf/0.1/">
+   <ul>
+      <!-- Bob, a person with a name and a homepage -->
+      <li typeof="foaf:Person"><a property="foaf:name" rel="foaf:homepage" href="http://example.com/bob/">Bob</a></li>
+
+      <!-- Eve, a person who is in a uri-identified group that has a  uri-identified homepage -->
+      <li typeof="foaf:Person">
+        <a property="foaf:name" rel="foaf:homepage" href="http://example.com/eve/">Eve</a> 
+           is in the  
+            <span rev="foaf:member"> <!-- reversed relation; the group has a member, which is Eve -->
+             <span typeof="foaf:Group" about="/groups/html#it">   <!-- a uri for the group, considered as a thing in itself -->
+                 <a href="/groups/html" rel="foaf:homepage">HTML group</a> <!-- the group's homepage -->
+             </span>
+            </span> 
+      </li>
+      <li typeof="foaf:Person"> <!-- this is more cut down, we just say that Manu is in a group whose name is 'RDFa group' -->
+        <a property="foaf:name" rel="foaf:homepage" href="http://example.com/manu/">Manu</a> is in the 
+	<span rev="foaf:member"><span typeof="foaf:Group" property="foaf:name">RDFa Group</span></span>
+      </li>
+   </ul>
+</div>
+</body>
+</html>
