@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:http="http:">
+<head>
+<title>testing html5ish rdfa</title>
+</head>
+<body>
+<div xmlns:foaf="http://xmlns.com/foaf/0.1/">
+   <ul>
+      <li typeof="http://xmlns.com/foaf/0.1/Person">
+        <a property="http://xmlns.com/foaf/0.1/name" rel="http://xmlns.com/foaf/0.1/homepage" href="http://example.com/bob/">Bob</a>
+      </li>
+      <li typeof="foaf:Person">
+        <a property="foaf:name" rel="foaf:homepage" href="http://example.com/eve/">Eve</a>
+      </li>
+      <li typeof="foaf:Person">
+        <a property="foaf:name" rel="foaf:homepage" href="http://example.com/manu/">Manu</a>
+      </li>
+   </ul>
+</div>
+</body>
+</html>
