@@ -11,7 +11,9 @@ svn propset svn:mime-type 'application/xhtml+xml' t5.html
 svn propset svn:mime-type 'text/html' t6.html 
 svn propset svn:mime-type 'text/html' t7.html 
 svn propset svn:mime-type 'text/html' t8.html 
+
 svn propset svn:mime-type 'application/xhtml+xml' g1.html 
+svn propset svn:mime-type 'text/html' g2.html 
 
 svn commit -m 'updated mimetypes by script mime.sh' *.html mime.sh
 
