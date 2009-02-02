@@ -24,7 +24,7 @@ end
 
 class Twitter
 
-   def Twitter.status(un)
+   def Twitter.status()
 
        u = "http://www.bbc.co.uk/radio4/programmes/schedules/fm/today.json"
        da = DateTime.now - (30/1440.0)
@@ -34,31 +34,9 @@ class Twitter
        req = Net::HTTP::Get.new(url.path)
 
        # retrieve the json data
+       # should be some error checking here
 
-       begin
-           res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
-           case res
-              when Net::HTTPSuccess, Net::HTTPRedirection
-                   if !res.body
-                       result = -1
-                   else
-                       result = 1 # ok
-                   end
-               else
-                   res.error!
-                   result = -1
-               end
-
-           rescue SocketError
-              result = -1
-
-           if result == 1
-              puts 'Succeeded'
-           else
-              puts 'Something went wrong at the other end'
-           end
-
-       end
+       res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
 
        # Parse the json data
 
@@ -113,7 +91,7 @@ class Twitter
            puts "[2] SQLException #{e.backtrace}"
        end
 
-       # Inset the data
+       # Insert the data
 
        begin
            conn = JavaSql::DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa",""); 
@@ -123,13 +101,12 @@ class Twitter
               dt = j[now]['start']
               pid = j[now]['programme']['pid']
               txt = j[now]['programme']['display_titles']['title']
-              #puts "#{now} #{dt} #{txt}"
+              puts "#{now} #{dt} #{txt}"
               if dt!=nil && dt =~ /(.*)T(.*)Z/
                 d = $1
                 t = $2 
                 ds = "#{d} #{t}"
                 sql = "INSERT INTO beeb VALUES('#{ds}','#{pid}','#{d}','#{t}',?);"
-                #puts "sql is #{sql} and txt is #{txt}"
                 pstmt = conn.prepareStatement(sql)
                 pstmt.setString(1,txt);
                 rs = pstmt.executeUpdate()
@@ -152,5 +129,5 @@ class Twitter
 end
 
 
-Twitter.status("foo")
+Twitter.status()
 

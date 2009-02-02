@@ -24,46 +24,15 @@ class TodaysTwits
 
 
  def TodaysTwits.foo(text)
-      u = "http://twitter.com/statuses/update.json"
-      url = URI.parse u
-      puts "sending update #{url} of #{text}"
+       u = "http://twitter.com/statuses/update.json"
+       url = URI.parse u
+       puts "sending update #{text}"
                   
-      req = Net::HTTP::Post.new(url.path)
-      req.basic_auth 'username', 'pass' # put the real username and pass here
-      req.set_form_data({'status'=>text}, ';') 
-      begin
+       req = Net::HTTP::Post.new(url.path)
+       req.basic_auth 'CharBotGreen', 'trousers' # put the real username and pass here
+       req.set_form_data({'status'=>text}, ';') 
+       res = Net::HTTP.new(url.host, url.port).start {|http|http.request(req) }
 
-           res = Net::HTTP.new(url.host, url.port).start {|http|http.request(req) }
-           #puts "res  #{res.body}"
-
-           case res
-               when Net::HTTPSuccess, Net::HTTPRedirection
-                   if res.body.empty
-                       result = -1
-                   else
-                       result = 1
-                   end
-               else
-                   res.error!
-                   result = -1
-               end
-
-           rescue
-              result = 0
-                   
-           rescue SocketError
-              result = -1
-                       
-           if result == 1
-              puts 'Authentication succeeded'
-           elsif result == 0
-              puts 'Authentication failed'
-           else
-              puts 'Something went wrong with the other end'
-           end
-                  
-       end
-           
        j = nil
        begin
            j = JSON.parse(res.body)
@@ -73,6 +42,8 @@ class TodaysTwits
                    raise 'Not Found'
                when /^304/
                    raise 'No Info'
+               when /^error/
+                   raise 'Error'
            end
        end
 
@@ -84,11 +55,17 @@ class TodaysTwits
  begin
   arr = []
   d = Date.today
-  da = DateTime.now #this is GMT apparantly 
-  da1 = DateTime.now + (5/1440.0)
+  da = DateTime.now # this is GMT apparantly 
+
+# Adding 5 mins to current time
+# Date, Time, DateTime can all do this I think but googling around 
+# this seems the best way 
+
+  da1 = DateTime.now + (5/1440.0) 
   h = da.hour
   m = da.min
   m0 = da.min
+
   h1 = da1.hour
   m1 = da1.min
   if h < 10
@@ -97,6 +74,7 @@ class TodaysTwits
   if m < 10
     m = "0#{m}"
   end
+
   if h1 < 10
     h1 = "0#{h1}"
   end
@@ -113,7 +91,9 @@ class TodaysTwits
   conn = JavaSql::DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test","sa","");
   stmt = conn.createStatement
 
-  # Get anything now or in the next 5 mins - non-inclusive for 5 mins time
+  # Get anything now or in the next 5 mins - non-inclusive for 5 mins' time
+  # So at 55, things at 00 will have to wait for the next thing
+  # but 58 will be caught
 
   txt = "SELECT * FROM beeb WHERE D = '#{d}' AND T >= '#{t}' AND T < '#{t1}';"
   rs = stmt.executeQuery(txt)
@@ -129,6 +109,9 @@ class TodaysTwits
       tim = $2
     end
     mdiff = tim.to_i - m0
+
+    # Text niceness
+
     if mdiff > 0
       arr.push("In a few minutes on Radio 4: #{txt} #pid:#{rs.getString("pid")} http://www.bbc.co.uk/programmes/#{rs.getString("pid")}")
     elsif mdiff < 0 #should never happen
