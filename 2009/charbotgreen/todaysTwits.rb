@@ -29,7 +29,7 @@ class TodaysTwits
        puts "sending update #{text}"
                   
        req = Net::HTTP::Post.new(url.path)
-       req.basic_auth 'CharBotGreen', 'trousers' # put the real username and pass here
+       req.basic_auth 'username', 'password' # put the real username and pass here
        req.set_form_data({'status'=>text}, ';') 
        res = Net::HTTP.new(url.host, url.port).start {|http|http.request(req) }
 
