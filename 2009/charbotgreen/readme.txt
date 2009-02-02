@@ -44,6 +44,9 @@ jruby -S gem install json_pure
 CLASSPATH=h2/bin/h2.jar
 export CLASSPATH
 
+curl -O http://svn.foaf-project.org/foaftown/2009/charbotgreen/beeb.rb
+curl -O http://svn.foaf-project.org/foaftown/2009/charbotgreen/todaysTwits.rb
+
 # edit the todaysTwits.rb with the correct username and password
 
 jruby beeb.rb # run once a day between 1am and 5:20am
