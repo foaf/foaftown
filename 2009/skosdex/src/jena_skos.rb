@@ -23,10 +23,18 @@ import com.hp.hpl.jena.rdf.model.SimpleSelector
 import com.hp.hpl.jena.vocabulary.RDF
 import com.hp.hpl.jena.util.FileManager
 
+#import com.hp.hpl.jena.query
+import com.hp.hpl.jena.query.larq.IndexBuilderString
+import com.hp.hpl.jena.query.larq.IndexLARQ
+import com.hp.hpl.jena.query.larq.LARQ
+import com.hp.hpl.jena.sparql.util.StringUtils
+import com.hp.hpl.jena.sparql.util.Utils
+
+
 ############## Simple SKOS Object Model ######################################
 
 class SKOS
-  attr_accessor :concepts, :skosdb, :skos_ns
+  attr_accessor :concepts, :skosdb, :skos_ns, :larq
 
   def initialize( fn = nil, dir='.', c = {} )
     self.concepts = c
@@ -56,6 +64,17 @@ class SKOS
     return(self)
   end
 
+  def larqdex(datafile = "./tmp/larq")
+
+     puts "Making a larq index for #{datafile} "
+
+     larqBuilder = IndexBuilderString.new
+     larqBuilder.indexStatements(@skosdb.listStatements()) 
+     larqBuilder.closeWriter() 
+     @larq = larqBuilder.getIndex()
+    
+  end
+
   def readModel(jenamodel = com.hp.hpl.jena.rdf.model.ModelFactory.createFileModelMaker('.').openModel('skos.rdf',true) )
     self.skosdb = jenamodel
     self.load()
@@ -76,27 +95,50 @@ class SKOS
      if (l != nil)
        l = l.getLiteral()
      end
-     b = c.getProperty(skos_broader)
-     if (b != nil) 
-       b = b.getResource
-     end
-     n = c.getProperty(skos_narrower)
-     if (n.class != NilClass) 
-       n= n.getResource
-     end
-#     puts "Concept: #{c} label: #{l} b: #{b} n: #{n} "
-     con = Concept.new(l, b, n)
+#     b = c.getProperty(skos_broader)
+#     if (b != nil) 
+#       b = b.getResource
+#     end
+#     n = c.getProperty(skos_narrower)
+#     if (n.class != NilClass) 
+#       n= n.getResource
+#     end
+     con = Concept.new(c, l, self)
      self.concepts[ c.to_s ] = con
     end
   end
 end
 
 class Concept
-  attr_accessor :prefLabel, :broader, :narrower
-  def initialize(prefLabel="", broader = [], narrower = [] )
-#    puts "Init concept... #{prefLabel}"
+
+  attr_accessor :prefLabel, :broader, :narrower, :uri, :scheme
+
+  def initialize(c, prefLabel="", m = nil)
+    self.uri = c
     self.prefLabel = prefLabel
+    self.scheme = m
   end 
+
+  def broader()
+    me = @uri
+    qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#broader> ?y }"
+    puts "Query: #{qs} against model: #{@model}"
+    broader = []
+    query = QueryFactory.create(qs)
+    qexec = QueryExecutionFactory.create(query, @scheme.skosdb)
+    begin
+      results = qexec.execSelect()
+      puts results
+      while (results.hasNext())
+        row = results.nextSolution
+        y = row.get("y").to_s
+        broader.push(y)
+      end
+    rescue
+      puts "Saved! "+ $!
+    end
+    return broader
+  end
 end
 
 ################################################################################
