@@ -25,7 +25,6 @@ import com.hp.hpl.jena.vocabulary.RDF
 class SKOS
   attr_accessor :concepts, :skosdb, :skos_ns
 
-  #def initialize(c = {} )
   def initialize( fn = nil, dir='.', c = {} )
     self.concepts = c
     # puts "SKOS fn is #{ fn }"
@@ -39,7 +38,10 @@ class SKOS
   end
 
   def read(fn = "default.rdf", dir=".")
-    self.readModel( ModelFactory.createFileModelMaker(dir).openModel(fn,true)  )
+    puts("Reading from #{fn} in #{dir}")
+    m = ModelFactory.createFileModelMaker(dir).openModel(fn,true)  
+#    puts("Model is #{m}")
+    self.readModel(m)
     return(self)
   end
 
@@ -88,8 +90,21 @@ end
 
 ################################################################################
 
-dir = './samples'
-arch_thes = SKOS.new("mini.rdf", dir).concepts.each_pair do |k,v|
+dir = './samples/'
+#arch_thes = SKOS.new("mini.rdf", dir).concepts.each_pair do |k,v|
+#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
+#end
+
+#dir = "./samples/"
+#thb_thes = SKOS.new( 'THBOntology.owl' ,dir).concepts.each_pair do |k,v|
+#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
+#end
+
+ukat = "ukat_concepts.rdf"
+dir = "./samples/ukat"
+dir = "./samples"
+puts "UKAT IS #{ukat} in #{dir}"
+arch_thes = SKOS.new( ukat ,dir).concepts.each_pair do |k,v|
   puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
 end
 
