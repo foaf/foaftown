@@ -18,4 +18,5 @@ c41 = s1.concepts["http://www.wasab.dk/morten/blog/archives/author/mortenf/skos.
 puts "C41 is "+c41.to_s
 
 puts "C41 has broader: "+c41.broader.to_s
+puts "C41 has narrower: "+c41.narrower.to_s
 

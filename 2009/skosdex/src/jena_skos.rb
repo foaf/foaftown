@@ -139,6 +139,29 @@ class Concept
     end
     return broader
   end
+
+
+  def narrower()
+    me = @uri
+    qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#narrower> ?y }"
+    puts "Query: #{qs} against model: #{@model}"
+    narrower = []
+    query = QueryFactory.create(qs)
+    qexec = QueryExecutionFactory.create(query, @scheme.skosdb)
+    begin
+      results = qexec.execSelect()
+      puts results
+      while (results.hasNext())
+        row = results.nextSolution
+        y = row.get("y").to_s
+        narrower.push(y)
+      end
+    rescue
+      puts "Saved! "+ $!
+    end
+    return narrower
+  end
+
 end
 
 ################################################################################
