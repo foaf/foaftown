@@ -3,6 +3,8 @@
 # export CLASSPATH=:./lib/antlr-2.7.5.jar:./lib/arq-extra.jar:./lib/arq.jar:./lib/commons-logging-1.1.1.jar:./lib/concurrent.jar:./lib/icu4j_3_4.jar:./lib/iri.jar:./lib/jena.jar:./lib/jenatest.jar:./lib/json.jar:./lib/junit.jar:./lib/log4j-1.2.12.jar:./lib/lucene-core-2.2.0.jar:./lib/stax-api-1.0.jar:./lib/wstx-asl-3.0.0.jar:./lib/xercesImpl.jar:./lib/xml-apis.jar:.
 
 # Utility to load SKOS from RDF/XML
+#
+# Notes: _ in filenames seems to confuse jruby; they expand to _C and the file isn't found.
 
 dir = "/Users/danbri/working/jena/Jena-2.5.5"
 
@@ -19,6 +21,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode
 import com.hp.hpl.jena.rdf.model.Literal
 import com.hp.hpl.jena.rdf.model.SimpleSelector
 import com.hp.hpl.jena.vocabulary.RDF
+import com.hp.hpl.jena.util.FileManager
 
 ############## Simple SKOS Object Model ######################################
 
@@ -31,6 +34,7 @@ class SKOS
     @skos_ns = "http://www.w3.org/2004/02/skos/core#"
     @rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 
+    # TODO: check for fn = http: or https: URI. or ftp:
     if (fn != nil)
       puts "Loading from file #{fn} in dir #{dir} "
       self.read(fn,dir)
@@ -39,8 +43,15 @@ class SKOS
 
   def read(fn = "default.rdf", dir=".")
     puts("Reading from #{fn} in #{dir}")
-    m = ModelFactory.createFileModelMaker(dir).openModel(fn,true)  
-#    puts("Model is #{m}")
+#   m = ModelFactory.createFileModelMaker(dir).openModel(fn,true)  
+    if (!fn =~ /^http/) 
+      data = dir + "/" + fn
+    else
+      data = fn
+    end
+    puts "Data string is: #{data} "
+    m = FileManager.get().loadModel( data ) 
+    # puts("Model is #{m}")
     self.readModel(m)
     return(self)
   end
@@ -100,13 +111,13 @@ dir = './samples/'
 #  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
 #end
 
-ukat = "ukat_concepts.rdf"
-dir = "./samples/ukat"
-dir = "./samples"
-puts "UKAT IS #{ukat} in #{dir}"
-arch_thes = SKOS.new( ukat ,dir).concepts.each_pair do |k,v|
-  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-end
+#ukat = "ukatconcepts.rdf"
+#dir = "./samples/ukat"
+#dir = "./samples"
+#puts "UKAT IS #{ukat} in #{dir}"
+#arch_thes = SKOS.new( ukat ,dir).concepts.each_pair do |k,v|
+#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
+#end
 
 #thb_thes = SKOS.new("thb-test.rdf",dir).concepts.each_pair do |k,v|
 #  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
