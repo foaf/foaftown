@@ -138,6 +138,9 @@ class Concept
     end
     if (code != nil)   
       res.each do |y|
+	c = scheme.concepts[y]
+        puts "Concept in scheme #{scheme} is : "+c
+	# todo. we get a nil here sometimes... 
         code.call(y)
       end
     else
