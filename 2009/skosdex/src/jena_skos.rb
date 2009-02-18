@@ -30,6 +30,9 @@ import com.hp.hpl.jena.query.larq.LARQ
 import com.hp.hpl.jena.sparql.util.StringUtils
 import com.hp.hpl.jena.sparql.util.Utils
 
+import com.hp.hpl.jena.query.QueryFactory
+import com.hp.hpl.jena.query.QueryExecutionFactory
+
 
 ############## Simple SKOS Object Model ######################################
 
@@ -41,22 +44,14 @@ class SKOS
     # puts "SKOS fn is #{ fn }"
     @skos_ns = "http://www.w3.org/2004/02/skos/core#"
     @rdf_ns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-
-    # TODO: check for fn = http: or https: URI. or ftp:
     if (fn != nil)
-      puts "Loading from file #{fn} in dir #{dir} "
-      self.read(fn,dir)
+      puts "Loading from file #{fn} "
+      self.read(fn)
     end
   end
 
-  def read(fn = "default.rdf", dir=".")
-    puts("Reading from #{fn} in #{dir}")
-#   m = ModelFactory.createFileModelMaker(dir).openModel(fn,true)  
-    if (!fn =~ /^http/) 
-      data = dir + "/" + fn
-    else
-      data = fn
-    end
+  def read(data = "file:default.rdf")
+    puts("Reading from #{data}")
     puts "Data string is: #{data} "
     m = FileManager.get().loadModel( data ) 
     # puts("Model is #{m}")
@@ -64,10 +59,9 @@ class SKOS
     return(self)
   end
 
+  # experiment. not working.
   def larqdex(datafile = "./tmp/larq")
-
      puts "Making a larq index for #{datafile} "
-
      larqBuilder = IndexBuilderString.new
      larqBuilder.indexStatements(@skosdb.listStatements()) 
      larqBuilder.closeWriter() 
@@ -95,14 +89,6 @@ class SKOS
      if (l != nil)
        l = l.getLiteral()
      end
-#     b = c.getProperty(skos_broader)
-#     if (b != nil) 
-#       b = b.getResource
-#     end
-#     n = c.getProperty(skos_narrower)
-#     if (n.class != NilClass) 
-#       n= n.getResource
-#     end
      con = Concept.new(c, l, self)
      self.concepts[ c.to_s ] = con
     end
@@ -115,51 +101,48 @@ class Concept
 
   def initialize(c, prefLabel="", m = nil)
     self.uri = c
-    self.prefLabel = prefLabel
+    self.prefLabel = prefLabel.to_s
     self.scheme = m
   end 
 
-  def broader()
-    me = @uri
-    qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#broader> ?y }"
-    puts "Query: #{qs} against model: #{@model}"
-    broader = []
-    query = QueryFactory.create(qs)
-    qexec = QueryExecutionFactory.create(query, @scheme.skosdb)
-    begin
-      results = qexec.execSelect()
-      puts results
-      while (results.hasNext())
-        row = results.nextSolution
-        y = row.get("y").to_s
-        broader.push(y)
-      end
-    rescue
-      puts "Saved! "+ $!
-    end
-    return broader
+  def to_s
+    return self.uri.to_s
   end
 
+  def to_str
+    return self.uri.to_s
+  end
 
-  def narrower()
+  def narrower(&code)
+    rel("narrower",&code)
+  end
+
+  def broader(&code)
+    rel("broader", &code)
+  end
+
+  def rel(rel, &code)
     me = @uri
-    qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#narrower> ?y }"
-    puts "Query: #{qs} against model: #{@model}"
-    narrower = []
+    qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#"+rel+"> ?y }"
+#    puts "Query: #{qs} against model: #{@model}"
+    res = []
     query = QueryFactory.create(qs)
     qexec = QueryExecutionFactory.create(query, @scheme.skosdb)
     begin
       results = qexec.execSelect()
-      puts results
       while (results.hasNext())
-        row = results.nextSolution
-        y = row.get("y").to_s
-        narrower.push(y)
+        res.push(results.nextSolution().get("y").to_s)
       end
     rescue
       puts "Saved! "+ $!
     end
-    return narrower
+    if (code != nil)   
+      res.each do |y|
+        code.call(y)
+      end
+    else
+      return res
+    end
   end
 
 end
