@@ -3,8 +3,6 @@
 # export CLASSPATH=:./lib/antlr-2.7.5.jar:./lib/arq-extra.jar:./lib/arq.jar:./lib/commons-logging-1.1.1.jar:./lib/concurrent.jar:./lib/icu4j_3_4.jar:./lib/iri.jar:./lib/jena.jar:./lib/jenatest.jar:./lib/json.jar:./lib/junit.jar:./lib/log4j-1.2.12.jar:./lib/lucene-core-2.2.0.jar:./lib/stax-api-1.0.jar:./lib/wstx-asl-3.0.0.jar:./lib/xercesImpl.jar:./lib/xml-apis.jar:.
 
 # Utility to load SKOS from RDF/XML
-#
-# Notes: _ in filenames seems to confuse jruby; they expand to _C and the file isn't found.
 
 dir = "/Users/danbri/working/jena/Jena-2.5.5"
 
@@ -150,38 +148,3 @@ class Concept
 
 end
 
-################################################################################
-
-dir = './samples/'
-#arch_thes = SKOS.new("mini.rdf", dir).concepts.each_pair do |k,v|
-#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-#end
-
-#dir = "./samples/"
-#thb_thes = SKOS.new( 'THBOntology.owl' ,dir).concepts.each_pair do |k,v|
-#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-#end
-
-#ukat = "ukatconcepts.rdf"
-#dir = "./samples/ukat"
-#dir = "./samples"
-#puts "UKAT IS #{ukat} in #{dir}"
-#arch_thes = SKOS.new( ukat ,dir).concepts.each_pair do |k,v|
-#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-#end
-
-#thb_thes = SKOS.new("thb-test.rdf",dir).concepts.each_pair do |k,v|
-#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-#end
-
-#thb_thes = SKOS.new("nofarsi.xml",dir).concepts.each_pair do |k,v|
-#  puts "ARCH Concept: #{k} prefLabel: #{v.prefLabel}"
-#end
-
-
-# docs:
-#
-# file:///Users/danbri/working/jena/Jena-2.5.5/doc/javadoc/com/hp/hpl/jena/rdf/model/StmtIterator.html
-# 
-#import java.util.Iterator
-#import com.hp.hpl.jena.rdf.model.impl.Util
