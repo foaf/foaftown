@@ -192,12 +192,12 @@
      pagecolor="#ffffff"
      id="base"
      showgrid="false"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="562.8972"
-     inkscape:cy="1157.9949"
+     inkscape:zoom="2"
+     inkscape:cx="828.02419"
+     inkscape:cy="848.61936"
      inkscape:window-x="44"
      inkscape:window-y="26"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer13"
      showguides="true"
      inkscape:snap-global="false"
      units="px"
@@ -781,7 +781,7 @@
      style="display:inline">
     <g
        id="g4647"
-       transform="matrix(0.8706474,0,0,0.7754532,-6638.1123,-1967.2271)">
+       transform="matrix(0.8706474,0,0,0.7754532,-6699.6881,-1809.8668)">
       <rect
          id="rect5940"
          style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -1302,11 +1302,6 @@
        id="path2681"
        sodipodi:nodetypes="cccc" />
     <path
-       d="M 4890.9335,-461.36774 L 6159.6511,-454.43124 L 6711.309,484.24374 L 4384.5244,447.90324"
-       style="opacity:1;fill:#ffffff;stroke:#ffffff;stroke-width:0;display:inline"
-       id="path2683"
-       sodipodi:nodetypes="cccc" />
-    <path
        d="M 6728.0457,-1293.0841 L 6363.5571,-1295.0848 L 6831.4891,-1096.5879 L 7380.8015,-1102.586"
        style="opacity:1;fill:none;stroke:#000000;stroke-width:7.5;display:inline"
        id="path2667"
@@ -1561,7 +1556,7 @@
        style="fill:#ff00ff;stroke:#ff5b40;stroke-width:67.2474823;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
        id="path4254" />
     <path
-       d="M 3229.185,-2021.5372 L 3995.7041,-895.06099"
+       d="M 3153.9257,-1905.2274 L 3920.4448,-778.75122"
        style="fill:#ff00ff;stroke:#ff5b40;stroke-width:71.34455872;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
        id="path4658" />
   </g>
@@ -1743,6 +1738,30 @@
        width="12500.745"
        sodipodi:absref="/Users/danbri/working/foaftown/2009/talks/twenty/Image1.gif"
        xlink:href="Image1.gif" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer13"
+     inkscape:label="minimemo">
+    <g
+       id="g3358">
+      <path
+         sodipodi:nodetypes="cccc"
+         id="path2683"
+         style="display:inline;opacity:1;fill:#ffffff;stroke:#ffffff;stroke-width:0"
+         d="M 4890.9335,-461.36774 L 6159.6511,-454.43124 L 6711.309,484.24374 L 4384.5244,447.90324"
+         transform="translate(0,-3.2365979e-6)" />
+      <image
+         transform="matrix(0.999998,-2.0126958e-3,8.8450571e-3,0.9999609,0,0)"
+         xlink:href="Image1.gif"
+         sodipodi:absref="/Users/danbri/working/foaftown/2009/talks/twenty/Image1.gif"
+         width="1255.6558"
+         height="899.01404"
+         id="image3353"
+         x="4900.3198"
+         y="-447.25562"
+         style="display:inline" />
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
