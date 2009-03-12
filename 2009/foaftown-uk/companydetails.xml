@@ -1,0 +1,71 @@
+Checking url http://xmlgw.companieshouse.gov.uk/v1-0/xmlgw/Gateway
+response <?xml version="1.0" encoding="UTF-8" ?>
+<GovTalkMessage xsi:schemaLocation="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader http://xmlgw.companieshouse.gov.uk/v1-0/schema/Egov_ch.xsd" xmlns="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:gt="http://www.govtalk.gov.uk/schemas/govtalk/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <EnvelopeVersion>1.0</EnvelopeVersion>
+  <Header>
+    <MessageDetails>
+      <Class>CompanyDetails</Class>
+      <Qualifier>response</Qualifier>
+      <TransactionID>5</TransactionID>
+      <GatewayTimestamp>2009-03-09T10:17:27-00:00</GatewayTimestamp>
+    </MessageDetails>
+    <SenderDetails>
+      <IDAuthentication>
+        <SenderID>XMLGatewayTestUser</SenderID>
+        <Authentication>
+          <Method>CHMD5</Method>
+          <Value></Value>
+        </Authentication>
+      </IDAuthentication>
+      <EmailAddress>libby+spam@nicecupoftea.org</EmailAddress>
+    </SenderDetails>
+  </Header>
+  <GovTalkDetails>
+    <Keys/>
+  </GovTalkDetails>
+  <Body>
+    <CompanyDetails xmlns="http://xmlgw.companieshouse.gov.uk/v1-0/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlgw.companieshouse.gov.uk/v1-0/schema http://xmlgw.companieshouse.gov.uk/v1-0/schema/CompanyDetails.xsd">
+	<CompanyName>MILLENNIUM STADIUM PLC</CompanyName>
+	<CompanyNumber>03176906</CompanyNumber>
+	<RegAddress>
+		<AddressLine>MILLENNIUM STADIUM</AddressLine>
+		<AddressLine>WESTGATE STREET</AddressLine>
+		<AddressLine>CARDIFF</AddressLine>
+		<AddressLine>CF10 1NS</AddressLine>
+	</RegAddress>
+	<CompanyCategory>Public Limited Company</CompanyCategory>
+	<CompanyStatus>Active</CompanyStatus>
+	<CountryOfOrigin>United Kingdom</CountryOfOrigin>
+	<RegDateType>0</RegDateType>
+	<IncorporationDate>1996-03-25</IncorporationDate>
+	<Accounts>
+		<AccountRefDate>31-05</AccountRefDate>
+		<NextDueDate>2009-11-30</NextDueDate>
+		<Overdue>NO</Overdue>
+		<LastMadeUpDate>2008-05-31</LastMadeUpDate>
+		<AccountCategory>FULL</AccountCategory>
+		<DocumentAvailable>1</DocumentAvailable>
+	</Accounts>
+	<Returns>
+		<NextDueDate>2009-04-22</NextDueDate>
+		<Overdue>NO</Overdue>
+		<LastMadeUpDate>2008-03-25</LastMadeUpDate>
+		<DocumentAvailable>1</DocumentAvailable>
+	</Returns>
+	<Mortgages>
+		<MortgageInd>LT300</MortgageInd>
+		<NumMortCharges>9</NumMortCharges>
+		<NumMortOutstanding>9</NumMortOutstanding>
+		<NumMortPartSatisfied>0</NumMortPartSatisfied>
+		<NumMortSatisfied>0</NumMortSatisfied>
+	</Mortgages>
+	<SICCodes>
+        	<SicText>9261 - Operate sports arenas &amp; stadiums</SicText>
+	</SICCodes>
+	<LastFullMemDate>2008-03-25</LastFullMemDate>
+	<HasBranchInfo>0</HasBranchInfo>
+	<HasAppointments>1</HasAppointments>
+	<InLiquidation>0</InLiquidation>
+</CompanyDetails>
+  </Body>
+</GovTalkMessage>

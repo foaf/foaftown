@@ -1,0 +1,81 @@
+Checking url http://xmlgw.companieshouse.gov.uk/v1-0/xmlgw/Gateway
+response <?xml version="1.0" encoding="UTF-8" ?>
+<GovTalkMessage xsi:schemaLocation="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader http://xmlgw.companieshouse.gov.uk/v1-0/schema/Egov_ch.xsd" xmlns="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:gt="http://www.govtalk.gov.uk/schemas/govtalk/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <EnvelopeVersion>1.0</EnvelopeVersion>
+  <Header>
+    <MessageDetails>
+      <Class>CompanyAppointments</Class>
+      <Qualifier>response</Qualifier>
+      <TransactionID>5</TransactionID>
+      <GatewayTimestamp>2009-03-12T11:28:51-00:00</GatewayTimestamp>
+    </MessageDetails>
+    <SenderDetails>
+      <IDAuthentication>
+        <SenderID>XMLGatewayTestUser</SenderID>
+        <Authentication>
+          <Method>CHMD5</Method>
+          <Value></Value>
+        </Authentication>
+      </IDAuthentication>
+      <EmailAddress>libby+spam@nicecupoftea.org</EmailAddress>
+    </SenderDetails>
+  </Header>
+  <GovTalkDetails>
+    <Keys/>
+  </GovTalkDetails>
+  <Body>
+    <CompanyAppointments xmlns="http://xmlgw.companieshouse.gov.uk/v1-0/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlgw.companieshouse.gov.uk/v1-0/schema http://xmlgw.companieshouse.gov.uk/v1-0/schema/CompanyAppointments.xsd">
+  <CompanyName>MILLENNIUM STADIUM PLC</CompanyName>
+  <CompanyNumber>03176906</CompanyNumber>
+  <NumCurrentAppt>2</NumCurrentAppt>
+  <NumResignedAppt>27</NumResignedAppt>
+  <SearchRows>2</SearchRows>
+  <CoAppt>
+    <Person>
+      <Forename>Foo</Forename>
+      <Forename>Bar</Forename>
+      <Surname>BAS</Surname>
+      <Title></Title>
+      <Honours></Honours>
+      <DOB>1962-11-18</DOB>
+      <Nationality>BRITISH</Nationality>
+      <PersonAddress>
+        <AddressLine>23 FOO STREET</AddressLine>
+        <PostTown>LONDON</PostTown>
+        <County></County>
+        <Country></Country>
+        <Postcode>W1 BAR</Postcode>
+      </PersonAddress>
+      <PersonID>CSeJxNkMGOgjAURffzFYS9tmKcsHjWkKgRM4FEmTVB+tBGKdgWI39vIcPApjnv9La3KWze5cN5odKikmt3MaeugzKvuJDXtfub7Ge+62zYF9yxtWtW19pkptGMAhmHzpu2xj/bI3ChikqhzEpkxziIop1zPuzCnwDIdKvL6Ub1fE6CaB+ftn1ikF3ACPOwREbkQj9DybvGAeGeYtqmIuUsLgqRowrtTaOEGpVsygvzKF14PvWWHpDBgcZM5bekfzqZDnp6jFL/e2U7/6UtsD/zAe2NcI4=</PersonID>
+    </Person>
+    <NumAppointments>1</NumAppointments>
+    <AppointmentType>DIR</AppointmentType>
+    <AppointmentStatus>CURRENT</AppointmentStatus>
+    <AppointmentDate>2008-12-03</AppointmentDate>
+  </CoAppt>
+  <CoAppt>
+    <Person>
+      <Forename>BAR</Forename>
+      <Forename>BAZ</Forename>
+      <Surname>FOO</Surname>
+      <Title></Title>
+      <Honours></Honours>
+      <DOB>1965-12-19</DOB>
+      <Nationality>BRITISH</Nationality>
+      <PersonAddress>
+        <AddressLine>612 BAR STREET</AddressLine>
+        <PostTown>BRISTOL</PostTown>
+        <County></County>
+        <Country></Country>
+        <Postcode>BS53 ZZZ</Postcode>
+      </PersonAddress>
+      <PersonID>CSeJxNkMEKwjAMQO9+xdhd2w1FhVgRRFTQgc6DpzHXTIuum20n7u9dh3NewstLQkJg/s4ezguVFrmcud6Aug7KJOdCXmfuKVz1J64zZz24Y1XHuCi0iU2pGQXSJdabqsCvbRC4UGmuUMYZskNwdrbBeg/k39oWXaqGw3WwWxybeqts2QjzqIl0yIV+biS3q1qEe4RRFYmIsyBNRYJqswTSSShQyTK7MEo93/PHI38IpHWgMVbJLWxuJv+J7sboeEonPp3WDb85Yl/yAVhFbsI=</PersonID>
+    </Person>
+    <NumAppointments>4</NumAppointments>
+    <AppointmentType>DIR</AppointmentType>
+    <AppointmentStatus>CURRENT</AppointmentStatus>
+    <AppointmentDate>2008-11-08</AppointmentDate>
+  </CoAppt>
+</CompanyAppointments>
+  </Body>
+</GovTalkMessage>
