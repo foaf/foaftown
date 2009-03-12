@@ -1,0 +1,174 @@
+Checking url http://xmlgw.companieshouse.gov.uk/v1-0/xmlgw/Gateway
+response <?xml version="1.0" encoding="UTF-8" ?>
+<GovTalkMessage xsi:schemaLocation="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader http://xmlgw.companieshouse.gov.uk/v1-0/schema/Egov_ch.xsd" xmlns="http://www.govtalk.gov.uk/schemas/govtalk/govtalkheader" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:gt="http://www.govtalk.gov.uk/schemas/govtalk/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <EnvelopeVersion>1.0</EnvelopeVersion>
+  <Header>
+    <MessageDetails>
+      <Class>NameSearch</Class>
+      <Qualifier>response</Qualifier>
+      <TransactionID>3</TransactionID>
+      <GatewayTimestamp>2009-03-09T10:16:52-00:00</GatewayTimestamp>
+    </MessageDetails>
+    <SenderDetails>
+      <IDAuthentication>
+        <SenderID>XMLGatewayTestUser</SenderID>
+        <Authentication>
+          <Method>CHMD5</Method>
+          <Value></Value>
+        </Authentication>
+      </IDAuthentication>
+      <EmailAddress>libby+spam@nicecupoftea.org</EmailAddress>
+    </SenderDetails>
+  </Header>
+  <GovTalkDetails>
+    <Keys/>
+  </GovTalkDetails>
+  <Body>
+    <NameSearch xmlns="http://xmlgw.companieshouse.gov.uk/v1-0/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlgw.companieshouse.gov.uk/v1-0/schema http://xmlgw.companieshouse.gov.uk/v1-0/schema/NameSearch.xsd">
+  <ContinuationKey>bc3c84eJytz1trwjAYBuBarXbBOZ2bgf2HQfWyeLFGxwy0mWhlu5PQBSqrBzyBd+ov3xsVT7vcQh5IPr7k5bOyZWYxe8MoCbjvvwrBewEjKUfXSN45W4w+CefU5DUDLng37HghfxeMvjTGw4kcDdSsNV7MlOvqe1fJaRS7bnQ8t+ToK1HTWt/pn/56TgZLpRNNwzBSV7H2Wm9iDeU8ig8dmd2Df8gkZrXKqFnDdMX2cTqv3eEi3NftLeK39eukz8B/+/gd6CWTWH6r1UXwnx4/6oFBD56GDFiQhRzYcAME8nALBbiDEtxDGR5A/1UB+gOLDYEB</ContinuationKey>
+  <RegressionKey>bc3c84eJytz1trwjAYBuBarXbBOZ2bgf2HQfWyeLFGxwy0mWhlu5PQBSqrBzyBd+ov3xsVT7vcQh5IPr7k5bOyZWYxe8MoCbjvvwrBewEjKUfXSN45W4w+CefU5DUDLng37HghfxeMvjTGw4kcDdSsNV7MlOvqe1fJaRS7bnQ8t+ToK1HTWt/pn/56TgZLpRNNwzBSV7H2Wm9iDeU8ig8dmd2Df8gkZrXKqFnDdMX2cTqv3eEi3NftLeK39eukz8B/+/gd6CWTWH6r1UXwnx4/6oFBD56GDFiQhRzYcAME8nALBbiDEtxDGR5A/1UB+gOLDYEB</RegressionKey>
+  <SearchRows>20</SearchRows>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA PRINT LIMITED</CompanyName>
+    <CompanyNumber>03319459</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA PROPERTY LIMITED</CompanyName>
+    <CompanyNumber>05189965</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus>DISSOLVED</CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA SIGNS (UK) LIMITED</CompanyName>
+    <CompanyNumber>04753924</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA SOLUTIONS LIMITED</CompanyName>
+    <CompanyNumber>03261454</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA STAFF SOLUTIONS LIMITED</CompanyName>
+    <CompanyNumber>05585371</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus>DISSOLVED</CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA STRATIGRAPHIC CONSULTANTS LIMITED</CompanyName>
+    <CompanyNumber>05313271</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIATECH SERVICES UK LIMITED</CompanyName>
+    <CompanyNumber>05164212</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIA TRAINING LIMITED</CompanyName>
+    <CompanyNumber>04663861</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIAVISION LTD</CompanyName>
+    <CompanyNumber>05256617</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIC MUSIC INCORPORATED LIMITED</CompanyName>
+    <CompanyNumber>03910995</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM LTD</CompanyName>
+    <CompanyNumber>03466920</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+    <SearchMatch>EXACT</SearchMatch>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM AC LIMITED</CompanyName>
+    <CompanyNumber>06429240</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACCOMMODATION LTD</CompanyName>
+    <CompanyNumber>04070208</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACCOUNTANCY LIMITED</CompanyName>
+    <CompanyNumber>03170998</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus>DISSOLVED</CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACCOUNTANCY &amp; COMPUTER SERVICES LTD</CompanyName>
+    <CompanyNumber>03581145</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACCOUNTING &amp; FINANCIAL SERVICE LTD</CompanyName>
+    <CompanyNumber>06061940</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACCREDITATION COMMISSION</CompanyName>
+    <CompanyNumber>06567694</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ACTION GROUP</CompanyName>
+    <CompanyNumber>06350232</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>MILLENNIUM ADJUSTERS LIMITED</CompanyName>
+    <CompanyNumber>03656456</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+  <CoSearchItem>
+    <CompanyName>THE MILLENNIUM ADMINISTRATION COMPANY LIMITED</CompanyName>
+    <CompanyNumber>02396496</CompanyNumber>
+    <DataSet>LIVE</DataSet>
+    <CompanyIndexStatus></CompanyIndexStatus>
+    <CompanyDate></CompanyDate>
+  </CoSearchItem>
+</NameSearch>
+  </Body>
+</GovTalkMessage>
