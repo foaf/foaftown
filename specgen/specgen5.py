@@ -43,7 +43,7 @@
 __all__ = [ 'main' ]
 
 import libvocab
-from libvocab import Vocab
+from libvocab import Vocab, VocabReport
 from libvocab import Term
 from libvocab import Class
 from libvocab import Property
@@ -54,12 +54,18 @@ spec = Vocab( 'examples/foaf/index.rdf' )
 spec.uri = 'http://xmlns.com/foaf.0.1/'
 spec.index() # slurp info from sources
 
-# spec.raw()
-# print spec.report().encode('UTF-8')
+out = VocabReport( spec ) 
+#print spec.unique_terms()
+print out.generate()
 
-for p in spec.properties:
-  print "Got a property: " + p
-  print p.simple_report().encode('UTF-8')
-for c in spec.classes:
-  print "Got a class: " + c
-  print c.simple_report().encode('UTF-8')
+#spec.raw()
+#print spec.report().encode('UTF-8')
+
+#for p in spec.properties:
+#  print "Got a property: " + p
+#  print p.simple_report().encode('UTF-8')
+#for c in spec.classes:
+#  print "Got a class: " + c
+#  print c.simple_report().encode('UTF-8')
+#
+#print spec.generate()
