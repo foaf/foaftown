@@ -235,10 +235,23 @@ class Vocab(object):
     self._uri = uri
     self.graph.parse(self.filename)
     self.terms = []
+    self.uterms = []
     # should also load translations here?
+    # and deal with a base-dir?
 
     if f != None:    
       self.index()
+
+
+  def unique_terms(self):
+    tmp=[]
+    for t in list(set(self.terms)):
+      s = str(t)
+      if (not s in self.uterms): 
+        print "STORING: ", s
+        self.uterms.append(s)
+        tmp.append(s)
+
 
   # TODO: python question - can we skip needing getters? and only define setters. i tried/failed. --danbri
   def _get_uri(self):
@@ -324,6 +337,8 @@ class Vocab(object):
     self.classes.sort()
     self.properties.sort()
 
+    self.unique_terms()
+
   # todo, use a dictionary index instead. RTFM.
   def lookup(self, uri):
     uri = str(uri)
@@ -351,14 +366,7 @@ class Vocab(object):
 
    # TODO: work out how to do ".encode('UTF-8')" here
 
-  # report what we've parsed from our various sources
-  def report(self):
-    s = "Report for vocabulary from " + self.filename + "\n"
-    if self.uri != None:
-      s += "URI: " + self.uri + "\n\n"
-    for t in self.terms:
-      s += t.simple_report()
-    return s
+
 
   # for debugging only
   def detect_types(self):
@@ -392,7 +400,6 @@ class Vocab(object):
     return ns_list.get(pref, pref) + ":" + rez.group(2)
 
 
-
   # HTML stuff, should be a separate class
 
   def azlist(self):
@@ -406,6 +413,8 @@ class Vocab(object):
     c_ids.sort()
     p_ids.sort()
     return (c_ids, p_ids)
+
+
 
 class VocabReport(object):
 
@@ -431,29 +440,117 @@ class VocabReport(object):
     return(template)
 
   def generate(self):
-    print "TODO: Make a report"
-    return("Nope!")
+    tpl = self.template
+    azlist = self.az()
+    termlist = self.termlist()
+#    print "RDF is in ", self.vocab.filename
+    f = open ( self.vocab.filename, "r")
+    rdfdata = f.read()
+#    print "GENERATING >>>>>>>> "
+    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+#    print tpl
+    return(tpl)
+
+#    u = urllib.urlopen(specloc)
+#    rdfdata = u.read()
+#    rdfdata = re.sub(r"(<\?xml version.*\?>)", "", rdfdata)
+#    rdfdata = re.sub(r"(<!DOCTYPE[^]]*]>)", "", rdfdata)
+#    rdfdata.replace("""<?xml version="1.0"?>""", "")
 
   def az(self):
     """AZ List for html doc"""
     c_ids, p_ids = self.vocab.azlist()
     az = """<div class="azlist">"""
     az = """%s\n<p>Classes: |""" % az
-    print c_ids, p_ids
+    # print c_ids, p_ids
     for c in c_ids:
-        speclog("Class "+c+" in az generation.")
+        # speclog("Class "+c+" in az generation.")
         az = """%s <a href="#term_%s">%s</a> | """ % (az, str(c).replace(" ", ""), c)
 
     az = """%s\n</p>""" % az
     az = """%s\n<p>Properties: |""" % az
     for p in p_ids:
-        speclog("Property "+p+" in az generation.")
+        # speclog("Property "+p+" in az generation.")
         az = """%s <a href="#term_%s">%s</a> | """ % (az, str(p).replace(" ", ""), p)
     az = """%s\n</p>""" % az
     az = """%s\n</div>""" % az
     return(az)
 
+  def termlist(self):
+    """Term List for html doc"""
+    c_ids, p_ids = self.vocab.azlist()
+    tl = """<div class="termlist">"""
+    tl = """%s<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />\n\n""" % tl
+    # first classes, then properties
+    eg = """div class="specterm" id="term_Agent">
+<h3>Class: foaf:XXX</h3>
+<em>LABEL</em> - COMMENT <br /><table style="th { float: top; }">
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th>
+<td><a href="#term_maker">foaf:maker</a> <a href="#term_member">foaf:member</a> </td></tr>
+<tr><th>in-domain-of:</th>
+<td>
+  <a href="#term_mbox">foaf:mbox</a> 
+  <a href="#term_mbox_sha1sum">foaf:mbox_sha1sum</a> 
+  <a href="#term_gender">foaf:gender</a> <a href="#term_jabberID">foaf:jabberID</a> 
+  <a href="#term_aimChatID">foaf:aimChatID</a> 
+  <a href="#term_icqChatID">foaf:icqChatID</a> 
+  <a href="#term_yahooChatID">foaf:yahooChatID</a> 
+  <a href="#term_msnChatID">foaf:msnChatID</a> 
+  <a href="#term_weblog">foaf:weblog</a> 
+  <a href="#term_tipjar">foaf:tipjar</a> 
+  <a href="#term_made">foaf:made</a>  
+  <a href="#term_holdsAccount">foaf:holdsAccount</a> 
+  <a href="#term_birthday">foaf:birthday</a> 
+</td></tr></table>
+<p>BLAHBLAH from Agent.en</p>
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+<br/>
+</div>"""
+
+    # todo, push this into an api call (c_ids currently setup by az above)
+    print "Testing uterms", self.vocab.uterms
+    for term in self.vocab.uterms:
+      tl = """GOT TERM: %s <br /> \n""" % (term)
+      tl = """%s \n%s  \n """ % (tl, term)
+
+
+    # todo: properties
+    tl = """%s\n fooooooooooooooo""" % tl
+    tl = """%s\n</div>\n</div>""" % tl
+    return(tl)
+
 
   def rdfa(self):
 
     return( "<html>rdfa here</html>")
+
+
+  def htmlDocInfo( t, termdir='../docs' ):
+    """Opens a file based on the term name (t) and termdir (defaults to
+    current directory. Reads in the file, and returns a linkified
+    version of it."""
+    if termdir==None:
+      termdir=self.basedir
+
+    doc = ""
+    try:
+        f = open("%s/%s.en" % (termdir, t), "r")
+        doc = f.read()
+        doc = termlink(doc)
+    except: 
+        return "<p>No detailed documentation for this term.</p>"
+    return doc
+
+  # report what we've parsed from our various sources
+  def report(self):
+    s = "Report for vocabulary from " + self.vocab.filename + "\n"
+    if self.vocab.uri != None:
+      s += "URI: " + self.vocab.uri + "\n\n"
+    for t in self.vocab.uterms:
+      print "TERM as string: ",t
+
+      s += t.simple_report()
+    return s
+ 

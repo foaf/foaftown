@@ -320,7 +320,7 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
     tpl = page.template
-    print "Page template is: ", tpl
+    # print "Page template is: ", tpl
     self.failUnless(tpl != None)
 
   def testTemplateLoader3(self):
@@ -345,9 +345,19 @@ class testSpecgen(unittest.TestCase):
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
     tpl = page.template
-    page.generate()
+    final = page.generate()
     rdfa = page.rdfa()
-    self.assertNotEqual(page.generate(), "Nope!")
+    self.assertNotEqual(final, "Nope!")
+
+
+  def testSimpleReport(self):
+    """Use the template to generate a simple test report in txt."""
+    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
+ 
+    simple = page.report()
+    print "Simple report: ", simple
+    self.assertNotEqual(simple, "Nope!")
 
 def suite():
       suite = unittest.TestSuite()
