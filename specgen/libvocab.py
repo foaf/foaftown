@@ -248,7 +248,7 @@ class Vocab(object):
     for t in list(set(self.terms)):
       s = str(t)
       if (not s in self.uterms): 
-        print "STORING: ", s
+#        print "STORING: ", s
         self.uterms.append(s)
         tmp.append(s)
 

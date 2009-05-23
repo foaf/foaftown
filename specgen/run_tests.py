@@ -2,6 +2,31 @@
 #
 # Tests for specgen.
 #
+# What is this, and how can you help?
+#
+# This is the test script for a rewrite of the FOAF spec generation tool. It uses Pure python rdflib for parsing.
+# That makes it easier to install than the previous tools which required successful compilation and installation of  
+# Redland and its language bindings (Ruby, Python ...).  
+#
+# Everything is in public SVN. Ask danbri for an account or password reminder if you're contributing.
+#
+# Code: svn co http://svn.foaf-project.org/foaftown/specgen/
+#
+# Run tests (with verbose flag):
+# ./run_tests.py -v
+#
+# What it does:
+#  The FOAF spec is essentially built from an index.rdf file, plus a collection of per-term *.en HTML fragments.
+#  This filetree includes a copy of the FOAF index.rdf and markup-fragment files (see examples/foaf/ and examples/foaf/doc/).
+# 
+# Code overview: 
+# 
+# The class Vocab represents a parsed RDF vocabulary. VocabReport represents the spec we're generating from a Vocab.
+# We can at least load the RDF and poke around it with SPARQL. The ideal target output can be seen by looking at the
+# current spec, basically we get to a "Version 1.0" when something 99% the same as the current spec can be built using this
+# toolset, and tested as having done so.
+# 
+# Rough notes follow:
 # trying to test using ...
 # http://agiletesting.blogspot.com/2005/01/python-unit-testing-part-1-unittest.html 
 # http://docs.python.org/library/unittest.html
