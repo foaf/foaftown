@@ -247,9 +247,8 @@ class Vocab(object):
     tmp=[]
     for t in list(set(self.terms)):
       s = str(t)
-      if (not s in self.uterms): 
-#        print "STORING: ", s
-        self.uterms.append(s)
+      if (not s in tmp): 
+        self.uterms.append(t)
         tmp.append(s)
 
 
@@ -446,9 +445,9 @@ class VocabReport(object):
 #    print "RDF is in ", self.vocab.filename
     f = open ( self.vocab.filename, "r")
     rdfdata = f.read()
-#    print "GENERATING >>>>>>>> "
+#   print "GENERATING >>>>>>>> "
     tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
-#    print tpl
+#   print tpl
     return(tpl)
 
 #    u = urllib.urlopen(specloc)
@@ -550,7 +549,6 @@ class VocabReport(object):
       s += "URI: " + self.vocab.uri + "\n\n"
     for t in self.vocab.uterms:
       print "TERM as string: ",t
-
       s += t.simple_report()
     return s
  
