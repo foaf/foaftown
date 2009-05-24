@@ -1,0 +1,200 @@
+<!-- 
+This is a little experiment to put MPs expenses into simple HTML tables.
+Data is from 
+http://www.newsquestmidlands.co.uk/downloads/ks_additional_costs_allowance.pd
+via 
+http://www.worcesternews.co.uk/news/4382424.Wyre_Forest_MP_s_expenses_published/ 
+
+Do whatever you want with it!
+-->
+<html>
+<head>
+</head>
+<body>
+<table>
+  <caption><a href="http://www.theyworkforyou.com/mp/richard_taylor/wyre_forest">Richard Taylor MP</a> Expenses</caption>
+  <tr>
+    <th>Period of claim start</th>
+    <th>Period of claim end</th>
+    <th>Hotel Stays</th>
+    <th>Mortgage Interest / Rent</th>
+    <th>Food</th>
+    <th>Utilities</th>
+    <th>Council Tax / Rates</th>
+    <th>Telephone and telecommunication</th>
+    <th>Cleaning</th>
+    <th>Service / Maintenence</th>
+    <th>Replairs / Insurance / Security</th>
+    <th>Other</th>
+    <th>Other</th>
+    <th>Other</th>
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td class="start">1/3/08</td>
+    <td class="end">31/3/08</td>
+    <td class="hotel"></td>
+    <td class="mortgage">1516.67</td>
+    <td class="food"></td>
+    <td class="utilities"></td>
+    <td class="counciltax">49.91</td>
+    <td class="telephone"></td>
+    <td class="cleaning"></td>
+    <td class="service"></td> 
+    <td class="repairs"></td>
+    <td class="other1"></td> 
+    <td class="other2"></td>
+    <td class="other3"></td>  
+    <td class="total"></td>  
+  </tr>
+  <tr>
+    <td class="start"></td>
+    <td class="end"></td>
+    <td class="hotel"></td>
+    <td class="mortgage"></td>
+    <td class="food"></td>
+    <td class="utilities"></td>
+    <td class="counciltax"></td>
+    <td class="telephone"></td>
+    <td class="cleaning"></td>
+    <td class="service"></td> 
+    <td class="repairs"></td>
+    <td class="other1"></td> 
+    <td class="other2"></td>
+    <td class="other3"></td>  
+    <td class="total"></td>  
+  </tr>
+</table>
+<table>
+  <caption><a href="http://www.theyworkforyou.com/mp/richard_taylor/wyre_forest">Richard Taylor MP</a> Incidental Expenses Provision / Staffing Allowance - Direct Payment tof Suppliers</caption>
+  <tr>
+    <th>Date of Claim</th>
+    <th>Allowance Year</th>
+    <th>Suppliers 1</th>
+    <th>Amount Item 1</th>
+    <th>Suppliers 2</th>
+    <th>Amount Item 2</th>
+    <th>Suppliers 3</th>
+    <th>Amount Item 3</th>
+    <th>Suppliers 4</th>
+    <th>Amount Item 4</th>
+    <th>Suppliers 5</th>
+    <th>Amount Item 5</th>    
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td class="date">20/8/07</td>
+    <td class="year">07/08</td>
+    <td class="suppliers1">BT</td>
+    <td class="amount1">68.89</td>
+    <td class="suppliers2"></td>
+    <td class="amount2"></td>
+    <td class="suppliers3"></td>
+    <td class="amount3"></td>
+    <td class="suppliers4"></td>
+    <td class="amount4"></td>
+    <td class="suppliers5"></td>
+    <td class="amount5"></td>
+    <td class="total"></td>  
+  </tr>
+</table>
+
+<table>
+  <caption><a href="http://www.theyworkforyou.com/mp/richard_taylor/wyre_forest">Richard Taylor MP</a> Incidental Expenses Provision / Staffing Allowance - Members Reimbursement Form</caption>
+  <tr>
+    <th>Period of claim start</th>
+    <th>Period of claim end</th>
+    <th>Allowance Year</th>
+    <th>Item 1</th>
+    <th>Amount Item 1</th>
+    <th>Item 2</th>
+    <th>Amount Item 2</th>
+    <th>Item 3</th>
+    <th>Amount Item 3</th>
+    <th>Item 4</th>
+    <th>Amount Item 4</th>
+    <th>Item 5</th>
+    <th>Amount Item 5</th>    
+    <th>Item 6</th>
+    <th>Amount Item 6</th> 
+    <th>Item 7</th>
+    <th>Amount Item 7</th> 
+    <th>Item 8</th>
+    <th>Amount Item 8</th> 
+    <th>Item 9</th>
+    <th>Amount Item 9</th> 
+    <th>Item 10</th>
+    <th>Amount Item 10</th> 
+    <th>Total</th>
+  </tr>
+  <tr>
+    <td class="start">15/12/07</td>
+    <td class="end">22/01/08</td>
+    <td class="year">07/08</td>
+    <td class="item1">Ink Cartridge</td>
+    <td class="amount1">41.00</td>
+    <td class="item2"></td>
+    <td class="amount2"></td>
+    <td class="item3"></td>
+    <td class="amount3"></td>
+    <td class="item4"></td>
+    <td class="amount4"></td>
+    <td class="item5"></td>
+    <td class="amount5"></td>
+    <td class="item6"></td>
+    <td class="amount6"></td>
+    <td class="item7"></td>
+    <td class="amount7"></td>
+    <td class="item8"></td>
+    <td class="amount8"></td>  
+    <td class="item9"></td>
+    <td class="amount9"></td>  
+    <td class="item10"></td>
+    <td class="amount10"></td>
+    <td class="total"></td>  
+  </tr>
+</table>
+
+
+<script type="text/javascript">
+var allPageTags = new Array(); 
+function total() {
+ var className = 'total';
+ var allPageTags=document.getElementsByTagName("td");
+ for (var i=0; i<allPageTags.length; i++) {
+  if (allPageTags[i].className==className) {
+    t = 0
+    arr = []
+    getSiblings(arr,allPageTags[i],allPageTags[i].parentNode.childNodes.length, allPageTags[i]);
+  }
+ }
+} 
+
+function getSiblings(arr, el,n,el1){
+      if (el){
+        sib = el.previousSibling;
+      }
+      if(sib && sib.textContent){
+        z = sib.textContent.replace(/(\n|\r|\s)+$/, '')
+        y = parseFloat(z);
+        if(isNaN(z) || z=="" && y!=NaN){
+        }else{
+          arr.push(y);
+        }
+      }
+      if(n!=0){
+        getSiblings(arr,sib,n-1,el1);
+      }else{
+        t = 0;
+        for (var i=0;i<arr.length;i++){
+           t = t+arr[i];
+        }
+        t = Math.round(t * 100 ) / 100;
+        el1.textContent=t
+      }
+}
+
+total('total')
+</script>
+</body>
+</html>
