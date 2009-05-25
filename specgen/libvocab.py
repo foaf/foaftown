@@ -239,10 +239,11 @@ class Vocab(object):
     # should also load translations here?
     # and deal with a base-dir?
 
-    if f != None:    
-      self.index()
+    ##if f != None:    
+    ##  self.index()
 
 
+  # not currently used
   def unique_terms(self):
     tmp=[]
     for t in list(set(self.terms)):
@@ -250,7 +251,6 @@ class Vocab(object):
       if (not s in tmp): 
         self.uterms.append(t)
         tmp.append(s)
-
 
   # TODO: python question - can we skip needing getters? and only define setters. i tried/failed. --danbri
   def _get_uri(self):
@@ -272,15 +272,18 @@ class Vocab(object):
   # TODO: do we need a separate index(), versus just use __init__ ?
   def index(self):
     #    speclog("Indexing description of "+str(self))
-
     # blank down anything we learned already
 
     self.terms = []
     self.properties = []
     self.classes = []
+    tmpclasses=[]
+    tmpproperties=[]
 
     g = self.graph
+
     query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property } ')
+
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
         p = Property(term)
@@ -288,6 +291,9 @@ class Vocab(object):
         p.label = str(label)
         p.comment = str(comment)
         self.terms.append(p)
+        if (not str(p) in tmpproperties): 
+          tmpproperties.append(str(p))
+          self.properties.append(p)
 
     query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type  FILTER (?type = <http://www.w3.org/2002/07/owl#Class> || ?type = <http://www.w3.org/2000/01/rdf-schema#Class> ) }')
     relations = g.query(query, initNs=bindings)
@@ -297,11 +303,13 @@ class Vocab(object):
         c.label = str(label)
         c.comment = str(comment)
         self.terms.append(c)
-    self.detect_types()
-    self.terms.sort()
-    self.classes.sort()
-    self.properties.sort()
+        if (not str(c) in tmpclasses): 
+          self.classes.append(c)
+          tmpclasses.append(str(c))
 
+#    self.terms.sort()
+#    self.classes.sort()
+#    self.properties.sort()
 
     # http://www.w3.org/2003/06/sw-vocab-status/ns#"
     query = Parse('SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }')
@@ -330,13 +338,13 @@ class Vocab(object):
           p.label = str(label)
           p.comment = str(comment)
           self.terms.append(p)
+          if (not str(p) in tmpproperties): 
+            tmpproperties.append(str(p))
+            self.properties.append(p)
 
-    self.detect_types() # probably important 
-    self.terms.sort()   # does this even do anything? 
-    self.classes.sort()
-    self.properties.sort()
-
-    self.unique_terms()
+#    self.terms.sort()   # does this even do anything? 
+#    self.classes.sort()
+#    self.properties.sort()
 
   # todo, use a dictionary index instead. RTFM.
   def lookup(self, uri):
@@ -447,7 +455,6 @@ class VocabReport(object):
     rdfdata = f.read()
 #   print "GENERATING >>>>>>>> "
     tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
-#   print tpl
     return(tpl)
 
 #    u = urllib.urlopen(specloc)
@@ -481,43 +488,91 @@ class VocabReport(object):
     tl = """<div class="termlist">"""
     tl = """%s<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />\n\n""" % tl
     # first classes, then properties
-    eg = """div class="specterm" id="term_Agent">
-<h3>Class: foaf:XXX</h3>
-<em>LABEL</em> - COMMENT <br /><table style="th { float: top; }">
-	<tr><th>Status:</th>
-	<td>stable</td></tr>
-<tr><th>in-range-of:</th>
-<td><a href="#term_maker">foaf:maker</a> <a href="#term_member">foaf:member</a> </td></tr>
-<tr><th>in-domain-of:</th>
-<td>
-  <a href="#term_mbox">foaf:mbox</a> 
-  <a href="#term_mbox_sha1sum">foaf:mbox_sha1sum</a> 
-  <a href="#term_gender">foaf:gender</a> <a href="#term_jabberID">foaf:jabberID</a> 
-  <a href="#term_aimChatID">foaf:aimChatID</a> 
-  <a href="#term_icqChatID">foaf:icqChatID</a> 
-  <a href="#term_yahooChatID">foaf:yahooChatID</a> 
-  <a href="#term_msnChatID">foaf:msnChatID</a> 
-  <a href="#term_weblog">foaf:weblog</a> 
-  <a href="#term_tipjar">foaf:tipjar</a> 
-  <a href="#term_made">foaf:made</a>  
-  <a href="#term_holdsAccount">foaf:holdsAccount</a> 
-  <a href="#term_birthday">foaf:birthday</a> 
-</td></tr></table>
-<p>BLAHBLAH from Agent.en</p>
-<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-<br/>
-</div>"""
+    eg = """<div class="specterm" id="term_%s">
+            <h3>%s: foaf:%s</h3> 
+            <em>%s</em> - %s <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>%s</td></tr>
+            </table>
+            <p>BLAHBLAH from Agent.en</p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div>""" 
 
     # todo, push this into an api call (c_ids currently setup by az above)
-    print "Testing uterms", self.vocab.uterms
-    for term in self.vocab.uterms:
-      tl = """GOT TERM: %s <br /> \n""" % (term)
-      tl = """%s \n%s  \n """ % (tl, term)
+
+# classes
+
+    for term in self.vocab.classes:
+       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status)
+       tl = "%s %s" % (tl, zz)
+
+#class in domain of
+       g = self.vocab.graph
+       q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th>in-domain-of:</th><td>\n'
+
+       tt = ''
+       for (domain, label) in relations:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          tl = "%s %s %s" % (tl, sss, tt)
 
 
-    # todo: properties
-    tl = """%s\n fooooooooooooooo""" % tl
-    tl = """%s\n</div>\n</div>""" % tl
+# class in range of
+       q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
+       query2 = Parse(q2)
+       relations2 = g.query(query2, initNs=bindings)
+       sss = '<tr><th>in-range-of:</th>\n'
+       tt = ''
+       for (range, label) in relations2:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+          #print "D ",tt
+
+       if tt != "":
+          tl = "%s %s %s" % (tl, sss, tt)
+
+# properties
+
+    for term in self.vocab.properties:
+       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status)
+       tl = "%s %s" % (tl, zz)
+
+# domain of properties
+       g = self.vocab.graph
+       q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th>domain:</th><td>\n'
+
+       tt = ''
+       for (domain, label) in relations:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          tl = "%s %s %s" % (tl, sss, tt)
+
+
+# range of properties
+       q2 = 'SELECT ?d ?l WHERE {<%s> rdfs:range ?d . ?d rdfs:label ?l } ' % (term.uri)
+       query2 = Parse(q2)
+       relations2 = g.query(query2, initNs=bindings)
+       sss = '<tr><th>range:</th>\n'
+       tt = ''
+       for (range, label) in relations2:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+#          print "D ",tt
+
+       if tt != "":
+          tl = "%s %s %s" % (tl, sss, tt)
+
     return(tl)
 
 
