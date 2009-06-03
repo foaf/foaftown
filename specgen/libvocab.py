@@ -454,7 +454,8 @@ class VocabReport(object):
     f = open ( self.vocab.filename, "r")
     rdfdata = f.read()
 #   print "GENERATING >>>>>>>> "
-    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+    tpl = tpl % (azlist, termlist, rdfdata)
+##    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
     return(tpl)
 
 #    u = urllib.urlopen(specloc)
@@ -493,29 +494,29 @@ class VocabReport(object):
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td>%s</td></tr>
+            %s
+            %s
             </table>
             <p>%s</p>
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
 
+
     # todo, push this into an api call (c_ids currently setup by az above)
 
 # classes
 
     for term in self.vocab.classes:
-       # @@ shouldn't be hardcoded
-       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
-       s = f.read()
-       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status, s)
-       tl = "%s %s" % (tl, zz)
+       foo = 'foo: '
+       foo1 = 'foo1: '
 
 #class in domain of
        g = self.vocab.graph
        q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>in-domain-of:</th><td>\n'
+       sss = '<tr><th>in-domain-of:</th>\n'
 
        tt = ''
        for (domain, label) in relations:
@@ -523,38 +524,42 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          tl = "%s %s %s" % (tl, sss, tt)
+          foo = "%s <td> %s </td></tr>" % (sss, tt)
 
 
 # class in range of
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
        query2 = Parse(q2)
        relations2 = g.query(query2, initNs=bindings)
-       sss = '<tr><th>in-range-of:</th>\n'
+       snippet = '<tr><th>in-range-of:</th>\n'
        tt = ''
        for (range, label) in relations2:
           ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
           tt = "%s %s" % (tt, ss)
-          #print "D ",tt
+          #print "R ",tt
 
        if tt != "":
-          tl = "%s %s %s" % (tl, sss, tt)
+          foo1 = "%s <td> %s</td></tr> " % (snippet, tt)
+
+       # @@ shouldn't be hardcoded
+       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       s = f.read()
+       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status,foo,foo1, s)
+       tl = "%s %s" % (tl, zz)
 
 # properties
 
+   
     for term in self.vocab.properties:
-       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
-       s = f.read()
-
-       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, s)
-       tl = "%s %s" % (tl, zz)
+       foo = ''
+       foo1 = ''
 
 # domain of properties
        g = self.vocab.graph
        q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>domain:</th><td>\n'
+       sss = '<tr><th>Domain:</th>\n'
 
        tt = ''
        for (domain, label) in relations:
@@ -562,14 +567,14 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          tl = "%s %s %s" % (tl, sss, tt)
+          foo = "%s <td>%s</td></tr>" % (sss, tt)
 
 
 # range of properties
        q2 = 'SELECT ?d ?l WHERE {<%s> rdfs:range ?d . ?d rdfs:label ?l } ' % (term.uri)
        query2 = Parse(q2)
        relations2 = g.query(query2, initNs=bindings)
-       sss = '<tr><th>range:</th>\n'
+       sss = '<tr><th>Range:</th>\n'
        tt = ''
        for (range, label) in relations2:
           ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
@@ -577,7 +582,13 @@ class VocabReport(object):
 #          print "D ",tt
 
        if tt != "":
-          tl = "%s %s %s" % (tl, sss, tt)
+          foo1 = "%s <td>%s</td>	</tr>" % (sss, tt)
+
+       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       s = f.read()
+
+       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, foo, foo1, s)
+       tl = "%s %s" % (tl, zz)
 
     return(tl)
 
