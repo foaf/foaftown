@@ -55,6 +55,7 @@ import os.path
 def makeSpec(dir, uri):
   spec = Vocab( dir, 'index.rdf')
   spec.uri = uri
+  spec.shortName = shortName
   spec.index() # slurp info from sources
 
   out = VocabReport( spec, dir ) 
@@ -88,17 +89,18 @@ def makeFoaf():
 
 
 def usage():
-  print "Usage:",sys.argv[0],"dir uri"
+  print "Usage:",sys.argv[0],"dir uri shortName"
   print "e.g. "
-  print sys.argv[0], "examples/foaf/ http://xmlns.com/foaf/0.1/"
+  print sys.argv[0], "examples/foaf/ http://xmlns.com/foaf/0.1/ foaf"
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 4:
   usage()
   sys.exit(2)   
 else:
   # check it is a dir and it is readable and writeable
   dir = sys.argv[1]
   uri = sys.argv[2]
+  shortName = sys.argv[3]
 
   if (os.path.isdir(dir)):
     print "ok"

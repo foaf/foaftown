@@ -231,7 +231,7 @@ class Class(Term):
 #
 class Vocab(object):
 
-  def __init__(self, dir, f='index.rdf'  ,  uri=None ):
+  def __init__(self, dir, f='index.rdf', uri=None ):
     self.graph = rdflib.ConjunctiveGraph()
     self._uri = uri
     self.dir = dir
@@ -494,7 +494,7 @@ class VocabReport(object):
     tl = """%s<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />\n\n""" % tl
     # first classes, then properties
     eg = """<div class="specterm" id="term_%s">
-            <h3>%s: foaf:%s</h3> 
+            <h3>%s: %s:%s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td>%s</td></tr>
@@ -553,7 +553,7 @@ class VocabReport(object):
          s = f.read()
        except:
          s=''
-       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status,foo,foo1, s)
+       zz = eg % (term.id,"Class", term.id, self.vocab.shortName, term.label, term.comment, term.status,foo,foo1, s)
        tl = "%s %s" % (tl, zz)
 
 # properties
@@ -603,7 +603,7 @@ class VocabReport(object):
        except:
          s=''
 
-       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, foo, foo1, s)
+       zz = eg % (term.id, "Property", self.vocab.shortName, term.id, term.label, term.comment, term.status, foo, foo1, s)
        tl = "%s %s" % (tl, zz)
 
     return(tl)
