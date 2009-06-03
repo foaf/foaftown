@@ -73,6 +73,8 @@ ns_list = { "http://www.w3.org/1999/02/22-rdf-syntax-ns#"   : "rdf",
 
 import sys, time, re, urllib, getopt
 import logging
+import os.path
+
 
 bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"vs": VS }
 
@@ -229,10 +231,11 @@ class Class(Term):
 #
 class Vocab(object):
 
-  def __init__(self, f='index.rdf'  ,  uri=None ):
+  def __init__(self, dir, f='index.rdf'  ,  uri=None ):
     self.graph = rdflib.ConjunctiveGraph()
-    self.filename = f
     self._uri = uri
+    self.dir = dir
+    self.filename = os.path.join(dir, f) 
     self.graph.parse(self.filename)
     self.terms = []
     self.uterms = []
@@ -442,7 +445,9 @@ class VocabReport(object):
   template = property(_get_template,_set_template)
 
   def load_template(self):
-    f = open(self.basedir + self.temploc, "r")
+    filename = os.path.join(self.basedir, self.temploc)
+
+    f = open(filename, "r")
     template = f.read()
     return(template)
 
@@ -450,12 +455,11 @@ class VocabReport(object):
     tpl = self.template
     azlist = self.az()
     termlist = self.termlist()
-#    print "RDF is in ", self.vocab.filename
+#   print "RDF is in ", self.vocab.filename
     f = open ( self.vocab.filename, "r")
     rdfdata = f.read()
 #   print "GENERATING >>>>>>>> "
-    tpl = tpl % (azlist, termlist, rdfdata)
-##    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
     return(tpl)
 
 #    u = urllib.urlopen(specloc)
@@ -541,8 +545,9 @@ class VocabReport(object):
        if tt != "":
           foo1 = "%s <td> %s</td></tr> " % (snippet, tt)
 
-       # @@ shouldn't be hardcoded
-       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       dn = os.path.join(self.basedir, "doc") 
+       filename = os.path.join(dn, term.id+".en") 
+       f = open ( filename, "r")
        s = f.read()
        zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status,foo,foo1, s)
        tl = "%s %s" % (tl, zz)
@@ -584,7 +589,9 @@ class VocabReport(object):
        if tt != "":
           foo1 = "%s <td>%s</td>	</tr>" % (sss, tt)
 
-       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       dn = os.path.join(self.basedir, "doc") 
+       filename = os.path.join(dn, term.id+".en") 
+       f = open ( filename, "r")
        s = f.read()
 
        zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, foo, foo1, s)
