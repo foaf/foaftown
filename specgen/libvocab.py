@@ -512,8 +512,8 @@ class VocabReport(object):
 # classes
 
     for term in self.vocab.classes:
-       foo = 'foo: '
-       foo1 = 'foo1: '
+       foo = ''
+       foo1 = ''
 
 #class in domain of
        g = self.vocab.graph
@@ -547,8 +547,12 @@ class VocabReport(object):
 
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
-       f = open ( filename, "r")
-       s = f.read()
+       s = ''
+       try:
+         f = open ( filename, "r")
+         s = f.read()
+       except:
+         s=''
        zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status,foo,foo1, s)
        tl = "%s %s" % (tl, zz)
 
@@ -591,8 +595,13 @@ class VocabReport(object):
 
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
-       f = open ( filename, "r")
-       s = f.read()
+
+       s = ''
+       try:
+         f = open ( filename, "r")
+         s = f.read()
+       except:
+         s=''
 
        zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, foo, foo1, s)
        tl = "%s %s" % (tl, zz)
