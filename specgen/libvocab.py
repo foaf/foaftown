@@ -553,7 +553,7 @@ class VocabReport(object):
          s = f.read()
        except:
          s=''
-       zz = eg % (term.id,"Class", term.id, self.vocab.shortName, term.label, term.comment, term.status,foo,foo1, s)
+       zz = eg % (term.id,"Class", self.vocab.shortName, term.id, term.label, term.comment, term.status,foo,foo1, s)
        tl = "%s %s" % (tl, zz)
 
 # properties
