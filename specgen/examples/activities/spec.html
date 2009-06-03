@@ -1,0 +1,243 @@
+<html>
+ <head>
+  <link type="text/css" rel="stylesheet" href="style/programmes.css">
+ </head>
+ <body>
+<h2 id="glance">AO at a glance</h2>
+
+<div class="azlist">
+<p>Classes: | <a href="#term_Bookmarking">Bookmarking</a> |  <a href="#term_Event">Event</a> |  <a href="#term_Listening">Listening</a> |  <a href="#term_Resource">Resource</a> |  <a href="#term_Tweet">Tweet</a> |  <a href="#term_dateTime">dateTime</a> | 
+</p>
+<p>Properties: | <a href="#term_agent">agent</a> |  <a href="#term_date">date</a> |  <a href="#term_factor">factor</a> |  <a href="#term_product">product</a> | 
+</p>
+</div>
+
+<div class="termlist"><h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />
+
+ <div class="specterm" id="term_Event">
+            <h3>Class: http://purl.org/NET/c4dm/event.owl#:Event</h3> 
+            <em>Event</em> - An arbitrary classification of a space/time region, by a cognitive agent. An event may have actively participating agents, passive factors, products, and a location in space/time. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>stable</td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_agent">agent</a>
+ <a href="#term_date">date</a>
+ <a href="#term_product">product</a>
+ <a href="#term_factor">factor</a>
+ </td></tr>
+            <tr><th>has subclass</th>
+ <td>  <a href="#term_Tweet">Tweet</a>
+ <a href="#term_Listening">Listening</a>
+ <a href="#term_Bookmarking">Bookmarking</a>
+ </td></tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Resource">
+            <h3>Class: rdfs:Resource</h3> 
+            <em>resource</em> - RDFS Resource <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>stable</td></tr>
+            
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_agent">agent</a>
+ <a href="#term_product">product</a>
+ <a href="#term_factor">factor</a>
+</td></tr> 
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Bookmarking">
+            <h3>Class: ao:Bookmarking</h3> 
+            <em>Bookmarking</em> - A bookmarking event. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <a href="#term_Event">Event</a>
+ </td></tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Listening">
+            <h3>Class: ao:Listening</h3> 
+            <em>Listening</em> - A listening event. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <a href="#term_Event">Event</a>
+ </td></tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Tweet">
+            <h3>Class: ao:Tweet</h3> 
+            <em>Tweet</em> - A tweet. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <a href="#term_Event">Event</a>
+ </td></tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_dateTime">
+            <h3>Class: xsd:dateTime</h3> 
+            <em>dateTime</em> - XML Schema datatype dateTime <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>stable</td></tr>
+            
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_date">date</a>
+</td></tr> 
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_date">
+            <h3>Property: ao:date</h3> 
+            <em>date</em> - The date of an event <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            <tr><th>Domain:</th>
+ <td> <a href="#term_Event">Event</a>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <a href="#term_dateTime">dateTime</a>
+</td>	</tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_product">
+            <h3>Property: ao:product</h3> 
+            <em>product</em> - The product of an event. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            <tr><th>Domain:</th>
+ <td> <a href="#term_Event">Event</a>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <a href="#term_resource">resource</a>
+</td>	</tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_agent">
+            <h3>Property: ao:agent</h3> 
+            <em>agent</em> - The agent in an event <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            <tr><th>Domain:</th>
+ <td> <a href="#term_Event">Event</a>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <a href="#term_resource">resource</a>
+</td>	</tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_factor">
+            <h3>Property: ao:factor</h3> 
+            <em>factor</em> - A factor in an event. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td>testing</td></tr>
+            <tr><th>Domain:</th>
+ <td> <a href="#term_Event">Event</a>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <a href="#term_resource">resource</a>
+</td>	</tr>
+            </table>
+            <p></p>
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div>
+
+<!-- first we introduce a number of RDF namespaces we will be using... -->
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:wot="http://xmlns.com/wot/0.1/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:ao="http://purl.org/ontology/ao/"
+
+>
+
+  <rdfs:Class rdf:about="http://purl.org/NET/c4dm/event.owl#Event"
+rdfs:label="Event" rdfs:comment="An arbitrary classification of a space/time region, by a cognitive agent. An event may have actively participating agents, passive factors, products, and a location in space/time." vs:term_status="stable">
+    <rdfs:isDefinedBy rdf:resource="http://motools.sourceforge.net/event/event.html"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.w3.org/2001/XMLSchema#dateTime"
+rdfs:label="dateTime" rdfs:comment="XML Schema datatype dateTime" vs:term_status="stable">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2001/XMLSchema.xsd"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"
+rdfs:label="resource" rdfs:comment="RDFS Resource" vs:term_status="stable">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/TR/rdf-schema/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/ontology/ao/Tweet"
+rdfs:label="Tweet" rdfs:comment="A tweet." vs:term_status="testing">
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/ontology/ao/Bookmarking"
+rdfs:label="Bookmarking" rdfs:comment="A bookmarking event." vs:term_status="testing">
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/ontology/ao/Listening"
+rdfs:label="Listening" rdfs:comment="A listening event." vs:term_status="testing">
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/agent"
+vs:term_status="testing" rdfs:label="agent" rdfs:comment="The agent in an event">
+    <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/product"
+vs:term_status="testing" rdfs:label="product" rdfs:comment="The product of an event.">
+    <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/factor"
+vs:term_status="testing" rdfs:label="factor" rdfs:comment="A factor in an event.">
+    <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/date"
+vs:term_status="testing" rdfs:label="date" rdfs:comment="The date of an event">
+    <rdfs:domain rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/"/>
+  </rdf:Property>
+
+</rdf:RDF>
+
+ </body>
+</html>

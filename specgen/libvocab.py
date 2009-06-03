@@ -55,21 +55,6 @@ SIOCSERVICES = Namespace('http://rdfs.org/sioc/services#')
 #
 # TODO: rationalise these two lists. or at least check they are same.
 
-ns_list = { "http://www.w3.org/1999/02/22-rdf-syntax-ns#"   : "rdf",
-            "http://www.w3.org/2000/01/rdf-schema#"         : "rdfs",
-            "http://www.w3.org/2002/07/owl#"                : "owl",
-            "http://www.w3.org/2001/XMLSchema#"             : "xsd",
-            "http://rdfs.org/sioc/ns#"                      : "sioc",
-            "http://xmlns.com/foaf/0.1/"                    : "foaf", 
-            "http://purl.org/dc/elements/1.1/"              : "dc",
-            "http://purl.org/dc/terms/"                     : "dct",
-            "http://usefulinc.com/ns/doap#"                 : "doap",
-            "http://www.w3.org/2003/06/sw-vocab-status/ns#" : "status",
-            "http://purl.org/rss/1.0/modules/content/"      : "content", 
-            "http://www.w3.org/2003/01/geo/wgs84_pos#"      : "geo",
-            "http://www.w3.org/2004/02/skos/core#"          : "skos"
-          }
-
 
 import sys, time, re, urllib, getopt
 import logging
@@ -220,13 +205,6 @@ class Class(Term):
     return(True)
 
 
-
-
-
-
-
-
-
 # A python class representing (a description of) some RDF vocabulary
 #
 class Vocab(object):
@@ -244,7 +222,27 @@ class Vocab(object):
 
     ##if f != None:    
     ##  self.index()
+    self.ns_list = { "http://www.w3.org/1999/02/22-rdf-syntax-ns#"   : "rdf",
+            "http://www.w3.org/2000/01/rdf-schema#"         : "rdfs",
+            "http://www.w3.org/2002/07/owl#"                : "owl",
+            "http://www.w3.org/2001/XMLSchema#"             : "xsd",
+            "http://rdfs.org/sioc/ns#"                      : "sioc",
+            "http://xmlns.com/foaf/0.1/"                    : "foaf", 
+            "http://purl.org/dc/elements/1.1/"              : "dc",
+            "http://purl.org/dc/terms/"                     : "dct",
+            "http://usefulinc.com/ns/doap#"                 : "doap",
+            "http://www.w3.org/2003/06/sw-vocab-status/ns#" : "status",
+            "http://purl.org/rss/1.0/modules/content/"      : "content", 
+            "http://www.w3.org/2003/01/geo/wgs84_pos#"      : "geo",
+            "http://www.w3.org/2004/02/skos/core#"          : "skos"
+          }
 
+
+
+  def addShortName(self,sn):
+    self.ns_list[self._uri] = sn
+    self.shortName = sn
+    #print self.ns_list
 
   # not currently used
   def unique_terms(self):
@@ -402,12 +400,13 @@ class Vocab(object):
     regexp = re.compile( "^(.*[/#])([^/#]+)$" )
     rez = regexp.search( uri )  
     if rez == None:
-      # print "Failed to niceName. Returning the whole thing."
+      #print "Failed to niceName. Returning the whole thing."
       return(uri)   
     pref = rez.group(1)
+    # print "...",self.ns_list.get(pref, pref),":",rez.group(2)
     # todo: make this work when uri doesn't match the regex --danbri
     # AttributeError: 'NoneType' object has no attribute 'group'
-    return ns_list.get(pref, pref) + ":" + rez.group(2)
+    return self.ns_list.get(pref, pref) + ":" + rez.group(2)
 
 
   # HTML stuff, should be a separate class
@@ -494,7 +493,7 @@ class VocabReport(object):
     tl = """%s<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />\n\n""" % tl
     # first classes, then properties
     eg = """<div class="specterm" id="term_%s">
-            <h3>%s: %s:%s</h3> 
+            <h3>%s: %s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td>%s</td></tr>
@@ -517,7 +516,9 @@ class VocabReport(object):
 
 #class in domain of
        g = self.vocab.graph
+
        q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
+
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
        sss = '<tr><th>in-domain-of:</th>\n'
@@ -545,6 +546,42 @@ class VocabReport(object):
        if tt != "":
           foo1 = "%s <td> %s</td></tr> " % (snippet, tt)
 
+
+# class subclassof
+       foo2 = ''
+ 
+       q = 'SELECT ?sc ?l WHERE {<%s> rdfs:subClassOf ?sc . ?sc rdfs:label ?l } ' % (term.uri)
+
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th>subClassOf</th>\n'
+
+       tt = ''
+       for (subclass, label) in relations:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          foo2 = "%s <td> %s </td></tr>" % (sss, tt)
+
+# class has subclass
+       foo3 = ''
+ 
+       q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
+
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th>has subclass</th>\n'
+
+       tt = ''
+       for (subclass, label) in relations:
+          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          foo3 = "%s <td> %s </td></tr>" % (sss, tt)
+
+
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
        s = ''
@@ -553,7 +590,10 @@ class VocabReport(object):
          s = f.read()
        except:
          s=''
-       zz = eg % (term.id,"Class", self.vocab.shortName, term.id, term.label, term.comment, term.status,foo,foo1, s)
+
+       sn = self.vocab.niceName(term.uri)
+
+       zz = eg % (term.id,"Class", sn, term.label, term.comment, term.status,foo,foo1+foo2+foo3, s)
        tl = "%s %s" % (tl, zz)
 
 # properties
@@ -603,7 +643,9 @@ class VocabReport(object):
        except:
          s=''
 
-       zz = eg % (term.id, "Property", self.vocab.shortName, term.id, term.label, term.comment, term.status, foo, foo1, s)
+       sn = self.vocab.niceName(term.uri)
+
+       zz = eg % (term.id, "Property", sn, term.label, term.comment, term.status, foo, foo1, s)
        tl = "%s %s" % (tl, zz)
 
     return(tl)

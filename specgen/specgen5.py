@@ -55,7 +55,8 @@ import os.path
 def makeSpec(dir, uri):
   spec = Vocab( dir, 'index.rdf')
   spec.uri = uri
-  spec.shortName = shortName
+  spec.addShortName(shortName)
+#  spec.shortName = shortName
   spec.index() # slurp info from sources
 
   out = VocabReport( spec, dir ) 
