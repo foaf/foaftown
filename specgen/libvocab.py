@@ -494,7 +494,7 @@ class VocabReport(object):
 	    <tr><th>Status:</th>
 	    <td>%s</td></tr>
             </table>
-            <p>BLAHBLAH from Agent.en</p>
+            <p>%s</p>
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
@@ -504,7 +504,10 @@ class VocabReport(object):
 # classes
 
     for term in self.vocab.classes:
-       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status)
+       # @@ shouldn't be hardcoded
+       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       s = f.read()
+       zz = eg % (term.id,"Class", term.id, term.label, term.comment, term.status, s)
        tl = "%s %s" % (tl, zz)
 
 #class in domain of
@@ -540,7 +543,10 @@ class VocabReport(object):
 # properties
 
     for term in self.vocab.properties:
-       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status)
+       f = open ( "examples/foaf/doc/"+term.id+".en", "r")
+       s = f.read()
+
+       zz = eg % (term.id, "Property",term.id, term.label, term.comment, term.status, s)
        tl = "%s %s" % (tl, zz)
 
 # domain of properties
