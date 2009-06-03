@@ -47,17 +47,32 @@ from libvocab import Vocab, VocabReport
 from libvocab import Term
 from libvocab import Class
 from libvocab import Property
+import sys
+import os.path
 
 
-# Test FOAF spec
-spec = Vocab( 'examples/foaf/index.rdf' )
-spec.uri = 'http://xmlns.com/foaf.0.1/'
-spec.index() # slurp info from sources
+# Make a spec
+def makeSpec(dir, uri):
+  spec = Vocab( dir, 'index.rdf')
+  spec.uri = uri
+  spec.index() # slurp info from sources
 
-out = VocabReport( spec ) 
-#print spec.unique_terms()
-print out.generate()
+  out = VocabReport( spec, dir ) 
+# print spec.unique_terms()
+# print out.generate()
 
+  filename = os.path.join(dir, "spec.html")
+  print "Printing to ",filename
+
+  f = open(filename,"w")
+  result = out.generate()
+  f.write(result)
+
+# Make FOAF spec
+def makeFoaf():
+  makeSpec("examples/foaf/","http://xmlns.com/foaf/0.1/")
+
+# Spare stuff
 #spec.raw()
 #print spec.report().encode('UTF-8')
 
@@ -69,3 +84,53 @@ print out.generate()
 #  print c.simple_report().encode('UTF-8')
 #
 #print spec.generate()
+
+
+
+def usage():
+  print "Usage:",sys.argv[0],"dir uri"
+  print "e.g. "
+  print sys.argv[0], "examples/foaf/ http://xmlns.com/foaf/0.1/"
+
+if len(sys.argv) < 2:
+  usage()
+  sys.exit(2)   
+else:
+  # check it is a dir and it is readable and writeable
+  dir = sys.argv[1]
+  uri = sys.argv[2]
+
+  if (os.path.isdir(dir)):
+    print "ok"
+  else:
+    print dir,"is not a directory"
+    usage()
+    sys.exit(2)   
+    
+  try:
+    filename = os.path.join(dir, "index.rdf")
+    f = open(filename, "r")
+  except:
+    print "Can't open index.rdf in",dir
+    usage()
+    sys.exit(2)   
+
+  try:
+    filename = os.path.join(dir, "template.html")
+    f = open(filename, "r")
+  except:
+    print "No template.html in",dir
+    usage()
+    sys.exit(2)   
+
+  try:
+    filename = os.path.join(dir, "spec.html")
+    f = open(filename, "w")
+  except:
+    print "Cannot write to spec.html in",dir
+    usage()
+    sys.exit(2)   
+
+  makeSpec(dir,uri)
+  
+
