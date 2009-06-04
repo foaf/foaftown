@@ -56,11 +56,28 @@ class SKOSIndexer
 end
 
 #thes = SKOS.new("http://norman.walsh.name/knows/taxonomy")
-#thes.read("http://www.wasab.dk/morten/blog/archives/author/mortenf/skos.rdf")
 
-thes = SKOS.new("file:samples/nofarsi.xml")
-sx = SKOSIndexer.new(thes)
-sx.index("./tmp")
+#thes = SKOS.new("http://www.wasab.dk/morten/blog/archives/author/mortenf/skos.rdf")
+
+#thes = SKOS.new("file:samples/nofarsi.xml")
+#thes = SKOS.new("file:samples/lcsh.nt")
+thes = SKOS.new("file:samples/ukat/ukatconcepts.rdf")
+
+thes.concepts.each_key do |r|
+  puts "# Concept: #{r}"
+  u = thes.concepts[r]  
+   u.prefLabel.each do |l|
+     puts "# prefLabel: '#{l}' "
+   end
+   u.prop "# altLabel" do |x|
+    puts "\t# alt label "+x
+  end
+  puts "\n"
+end
+
+
+#sx = SKOSIndexer.new(thes)
+#sx.index("./tmp")
 
 
  		                # don't store things like 'pit bull' -> 'american pit bull'
