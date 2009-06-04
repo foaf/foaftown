@@ -1,0 +1,16 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://xmlns.com/foaf/0.1/"
+	 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" >  
+
+  <Person rdf:about="http://localhost/notube/layer1.rdf#alice">
+    <name>Alice</name>
+    <schoolHomepage rdf:resource="http://lookingglass.example.org/" />
+  </Person>  
+
+  <Organization rdf:about="#lcc">
+    <homepage rdf:resource="http://lookingglass.example.org/" />
+    <name>LookingGlass Community College (formerly LookingGlass School)</name>
+    <rdfs:seeAlso rdf:resource="#online_store" />
+    <rdfs:seeAlso rdf:resource="#alumni_directory" />
+  </Organization>
+
+</rdf:RDF>
