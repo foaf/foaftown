@@ -1,0 +1,14 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://xmlns.com/foaf/0.1/">  
+
+  <Person rdf:about="http://localhost/notube/layer1.rdf#alice">
+    <made rdf:resource="layer1.rdf" />
+  </Person>  
+  <Person rdf:about="http://localhost/notube/layer2.rdf#bob">
+    <made rdf:resource="layer2.rdf" />
+  </Person>  
+
+  <Organization rdf:about="http://localhost/notube/layer3.rdf#lcc">
+    <made rdf:resource="layer3.rdf" />
+  </Organization>
+
+</rdf:RDF>
