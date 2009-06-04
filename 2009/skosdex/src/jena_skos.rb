@@ -49,7 +49,6 @@ class SKOS
   end
 
   def read(data = "file:default.rdf")
-    puts("Reading from #{data}")
     puts "Data string is: #{data} "
     m = FileManager.get().loadModel( data ) 
     # puts("Model is #{m}")
@@ -87,6 +86,7 @@ class SKOS
      if (l != nil)
        l = l.getLiteral()
      end
+     puts "New concept: #{c} l: #{l} "
      con = Concept.new(c, l, self)
      self.concepts[ c.to_s ] = con
     end
@@ -119,10 +119,17 @@ class Concept
     rel("broader", &code)
   end
 
+  def prop(propName, &code)
+    rel(propName, &code)
+  end
+
   def rel(rel, &code)
     me = @uri
+    if (!  me.to_s =~ ^http) 
+      puts "WARNING: concept id non-http: #{me.to_s} "
+    end
     qs = "SELECT * WHERE { <#{me}> <http://www.w3.org/2004/02/skos/core#"+rel+"> ?y }"
-#    puts "Query: #{qs} against model: #{@model}"
+    puts "Query: #{qs} against model: #{@model}"
     res = []
     query = QueryFactory.create(qs)
     qexec = QueryExecutionFactory.create(query, @scheme.skosdb)
@@ -137,9 +144,12 @@ class Concept
     if (code != nil)   
       res.each do |y|
 	c = scheme.concepts[y]
-        puts "Concept in scheme #{scheme} is : "+c
+#        print "Concept in scheme #{scheme} for #{y} is : "
+	puts c
 	# todo. we get a nil here sometimes... 
-        code.call(y)
+	if (c != nil)
+	        code.call(y)
+	end
       end
     else
       return res

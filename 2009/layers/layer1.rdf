@@ -1,0 +1,19 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+      xmlns="http://xmlns.com/foaf/0.1/">  
+
+  <Person rdf:about="#alice">
+    <name>Alice</name>
+    <knows>
+      <Person rdf:about="http://localhost/notube/layer1.rdf#bob">
+        <name>Bob</name>
+      </Person>
+    </knows>
+    <schoolHomepage rdf:resource="http://lookingglass.example.org/" />
+  </Person>  
+
+  <Organization>
+    <homepage rdf:resource="http://lookingglass.example.org/" />
+    <name>LookingGlass School</name>
+  </Organization>
+
+</rdf:RDF>
