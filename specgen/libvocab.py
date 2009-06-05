@@ -500,7 +500,7 @@ class VocabReport(object):
             %s
             %s
             </table>
-            <p>%s</p>
+            %s
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
