@@ -492,7 +492,7 @@ class VocabReport(object):
     """Term List for html doc"""
     c_ids, p_ids = self.vocab.azlist()
     tl = """<div class="termlist">"""
-    tl = """%s<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br />\n\n""" % tl
+    tl = """%s<h3>Classes and Properties (full detail)</h3>\n<div class='termdetails'><br />\n\n""" % tl
     # first classes, then properties
     eg = """<div class="specterm" id="term_%s">
             <h3>%s: %s</h3> 
@@ -651,7 +651,7 @@ class VocabReport(object):
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
-    return(tl+"</div>")
+    return(tl+"\n</div>\n</div>")
 
 
   def rdfa(self):
