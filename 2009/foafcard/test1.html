@@ -6,7 +6,9 @@
 </head>
 
 <body>
-<div xmlns:foaf="http://xmlns.com/foaf/0.1/" typeof="foaf:Person">
+
+<div xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:xfn="http://gmpg.org/xfn/11#" typeof="foaf:Person">
+
    <span property="foaf:name">John Smith</span>
    <span property="foaf:nickname">Smithy</span>
    <a rel="foaf:homepage" href="http://www.example.com">www.example.com</a>
@@ -16,8 +18,9 @@
    <span rel="foaf:address">
      <span property="foaf:locality">Albuquerque</span>
    </span>
+
    <span class="foaf:title">Engineer</span>
-   <a href="http://darryl-blog.example.com/" rel="foaf:knows">
+   <a about="" href="http://darryl-blog.example.com/" rel="xfn:friend">
      <span property="foaf:name">Darryl</span></a>
 </div>
 
