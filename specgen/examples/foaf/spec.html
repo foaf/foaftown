@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"        xmlns:foaf="http://xmlns.com/foaf/0.1/"
-  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"  
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+  xmlns:wot="http://xmlns.com/wot/0.1/"
+>
 <head>
   <title>FOAF Vocabulary Specification</title>
   <link href="http://xmlns.com/xmlns-style.css" rel="stylesheet"
@@ -694,15 +701,106 @@ shared by a loosely-coordinated community of developers.
 <div class="termlist"><h3>Classes and Properties (full detail)</h3>
 <div class='termdetails'><br />
 
- <div class="specterm" id="term_OnlineChatAccount">
+ <div class="specterm" id="term_OnlineAccount" about="http://xmlns.com/foaf/0.1/OnlineAccount" typeof="rdfs:Class">
+            <h3>Class: foaf:OnlineAccount</h3> 
+            <em>Online Account</em> - An online account. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_account service homepage">account service homepage</a>
+ <a href="#term_account name">account name</a>
+ </td></tr>
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_holds account">holds account</a>
+</td></tr> <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+ </td></tr><tr><th>has subclass</th>
+ <td>  <a href="#term_Online Chat Account">Online Chat Account</a>
+ <a href="#term_Online Gaming Account">Online Gaming Account</a>
+ <a href="#term_Online E-commerce Account">Online E-commerce Account</a>
+ </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+A <code>foaf:OnlineAccount</code> represents the provision of some form of online 
+service, by some party (indicated indirectly via a 
+<code>foaf:accountServiceHomepage</code>) to some <code>foaf:Agent</code>. The 
+<code>foaf:holdsAccount</code> property of the agent is used to indicate accounts that are 
+associated with the agent.
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> for an example. Other sub-classes include 
+<code>foaf:OnlineEcommerceAccount</code> and <code>foaf:OnlineGamingAccount</code>.
+</p>
+
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_OnlineEcommerceAccount" about="http://xmlns.com/foaf/0.1/OnlineEcommerceAccount" typeof="rdfs:Class">
+            <h3>Class: foaf:OnlineEcommerceAccount</h3> 
+            <em>Online E-commerce Account</em> - An online e-commerce account. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/OnlineAccount"><a href="#term_Online Account">Online Account</a></span>
+ </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+A <code>foaf:OnlineEcommerceAccount</code> is a <code>foaf:OnlineAccount</code> devoted to 
+buying and/or selling of goods, services etc. Examples include <a 
+href="http://www.amazon.com/">Amazon</a>, <a href="http://www.ebay.com/">eBay</a>, <a 
+href="http://www.paypal.com/">PayPal</a>, <a 
+href="http://www.thinkgeek.com/">thinkgeek</a>, etc.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Organization" about="http://xmlns.com/foaf/0.1/Organization" typeof="rdfs:Class">
+            <h3>Class: foaf:Organization</h3> 
+            <em>Organization</em> - An organization. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+ </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+  <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Document" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Person" />
+ 
+            </table>
+            <p>
+The <code>foaf:Organization</code> class represents a kind of <code>foaf:Agent</code> 
+corresponding to social instititutions such as companies, societies etc.
+</p>
+
+<p class="editorial">
+This is a more 'solid' class than <code>foaf:Group</code>, which allows 
+for more ad-hoc collections of individuals. These terms, like the corresponding
+natural language concepts, have some overlap, but different emphasis.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_OnlineChatAccount" about="http://xmlns.com/foaf/0.1/OnlineChatAccount" typeof="rdfs:Class">
             <h3>Class: foaf:OnlineChatAccount</h3> 
             <em>Online Chat Account</em> - An online chat account. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             
             <tr><th>subClassOf</th>
- <td>  <a href="#term_Online Account">Online Account</a>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/OnlineAccount"><a href="#term_Online Account">Online Account</a></span>
  </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 A <code>foaf:OnlineChatAccount</code> is a <code>foaf:OnlineAccount</code> devoted to 
@@ -773,90 +871,246 @@ corresponding to Freenode online accounts.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_PersonalProfileDocument">
-            <h3>Class: foaf:PersonalProfileDocument</h3> 
-            <em>PersonalProfileDocument</em> - A personal profile RDF document. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_OnlineGamingAccount" about="http://xmlns.com/foaf/0.1/OnlineGamingAccount" typeof="rdfs:Class">
+            <h3>Class: foaf:OnlineGamingAccount</h3> 
+            <em>Online Gaming Account</em> - An online gaming account. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             
             <tr><th>subClassOf</th>
- <td>  <a href="#term_Document">Document</a>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/OnlineAccount"><a href="#term_Online Account">Online Account</a></span>
  </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
-The <code>foaf:PersonalProfileDocument</code> class represents those
-things that are a <code>foaf:Document</code>, and that use RDF to
-describe properties of the person who is the <code>foaf:maker</code>
-of the document. There is just one <code>foaf:Person</code> described in
-the document, ie.
-the person who <code>foaf:made</code> it and who will be its
-<code>foaf:primaryTopic</code>.
+A <code>foaf:OnlineGamingAccount</code> is a <code>foaf:OnlineAccount</code> devoted to 
+online gaming.
 </p>
 
 <p>
-The <code>foaf:PersonalProfileDocument</code> class, and FOAF's
-associated conventions for describing it, captures an important
-deployment pattern for the FOAF vocabulary. FOAF is very often used in
-public RDF documents made available through the Web. There is a
-colloquial notion that these "FOAF files" are often <em>somebody's</em>
-FOAF file. Through <code>foaf:PersonalProfileDocument</code> we provide
-a machine-readable expression of this concept, providing a basis for 
-FOAF documents to make claims about their maker and topic.
+Examples might include <a href="http://everquest.station.sony.com/">EverQuest</a>, 
+<a href="http://www.xbox.com/live/">Xbox live</a>, <a 
+href="http://nwn.bioware.com/">Neverwinter Nights</a>, etc., as well as older text-based 
+systems (MOOs, MUDs and suchlike).
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Agent" about="http://xmlns.com/foaf/0.1/Agent" typeof="rdfs:Class">
+            <h3>Class: foaf:Agent</h3> 
+            <em>Agent</em> - An agent (eg. person, group, software or physical artifact). <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_ICQ chat ID">ICQ chat ID</a>
+ <a href="#term_gender">gender</a>
+ <a href="#term_sha1sum of a personal mailbox URI name">sha1sum of a personal mailbox URI name</a>
+ <a href="#term_weblog">weblog</a>
+ <a href="#term_AIM chat ID">AIM chat ID</a>
+ <a href="#term_Yahoo chat ID">Yahoo chat ID</a>
+ <a href="#term_personal mailbox">personal mailbox</a>
+ <a href="#term_holds account">holds account</a>
+ <a href="#term_birthday">birthday</a>
+ <a href="#term_jabber ID">jabber ID</a>
+ <a href="#term_tipjar">tipjar</a>
+ <a href="#term_MSN chat ID">MSN chat ID</a>
+ <a href="#term_made">made</a>
+ </td></tr>
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_member">member</a>
+ <a href="#term_maker">maker</a>
+</td></tr> <tr><th>has subclass</th>
+ <td>  <a href="#term_Person">Person</a>
+ <a href="#term_Group">Group</a>
+ <a href="#term_Organization">Organization</a>
+ </td></tr>
+  <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Document" />
+ 
+            </table>
+            <p>
+The <code>foaf:Agent</code> class is the class of agents; things that do stuff. A well 
+known sub-class is <code>foaf:Person</code>, representing people. Other kinds of agents 
+include <code>foaf:Organization</code> and <code>foaf:Group</code>.
 </p>
 
 <p>
-When describing a <code>foaf:PersonalProfileDocument</code> it is
-typical (and useful) to describe its associated <code>foaf:Person</code>
-using the <code>foaf:maker</code> property. Anything that is a
-<code>foaf:Person</code> and that is the <code>foaf:maker</code> of some
-<code>foaf:Document</code> will be the <code>foaf:primaryTopic</code> of
-that <code>foaf:Document</code>. Although this can be inferred, it is
-helpful to include this information explicitly within the
-<code>foaf:PersonalProfileDocument</code>.
+The <code>foaf:Agent</code> class is useful in a few places in FOAF where 
+<code>foaf:Person</code> would have been overly specific. For example, the IM chat ID 
+properties such as <code>jabberID</code> are typically associated with people, but 
+sometimes belong to software bots.
+</p>
+
+<!-- todo: write rdfs:domain statements for those properties -->
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Document" about="http://xmlns.com/foaf/0.1/Document" typeof="rdfs:Class">
+            <h3>Class: foaf:Document</h3> 
+            <em>Document</em> - A document. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_topic">topic</a>
+ <a href="#term_primary topic">primary topic</a>
+ <a href="#term_sha1sum (hex)">sha1sum (hex)</a>
+ </td></tr>
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_interest">interest</a>
+ <a href="#term_account service homepage">account service homepage</a>
+ <a href="#term_is primary topic of">is primary topic of</a>
+ <a href="#term_publications">publications</a>
+ <a href="#term_weblog">weblog</a>
+ <a href="#term_homepage">homepage</a>
+ <a href="#term_page">page</a>
+ <a href="#term_work info homepage">work info homepage</a>
+ <a href="#term_schoolHomepage">schoolHomepage</a>
+ <a href="#term_workplace homepage">workplace homepage</a>
+ <a href="#term_tipjar">tipjar</a>
+</td></tr> <tr><th>has subclass</th>
+ <td>  <a href="#term_PersonalProfileDocument">PersonalProfileDocument</a>
+ </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+  <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Person" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Project" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Organization" />
+ 
+            </table>
+            <p>
+The <code>foaf:Document</code> class represents those things which are, broadly conceived, 
+'documents'.
 </p>
 
 <p>
-For example, here is a fragment of a personal profile document which
-describes its author explicitly:
-</p>
-<div class="example">
-<pre>
-&lt;foaf:Person rdf:nodeID="p1"&gt;
- &lt;foaf:name&gt;Dan Brickley&lt;/foaf:name&gt;
- &lt;foaf:homepage rdf:resource="http://rdfweb.org/people/danbri/"/&gt;
- &lt;!-- etc... --&gt;
-&lt;/foaf:Person&gt;
-
-&lt;foaf:PersonalProfileDocument rdf:about=""&gt;
-   &lt;foaf:maker rdf:nodeID="p1"/&gt;
-   &lt;foaf:primaryTopic rdf:nodeID="p1"/&gt;
-&lt;/foaf:PersonalProfileDocument&gt;
-</pre>
-</div>
-
-<p>
-Note that a <code>foaf:PersonalProfileDocument</code> will have some
-representation as RDF. Typically this will be in W3C's RDF/XML syntax,
-however we leave open the possibility for the use of other notations, or
-representational conventions including automated transformations from
-HTML (<a href="http://www.w3.org/2004/01/rdxh/spec">GRDDL</a> spec for
-one such technique).
+The <code>foaf:Image</code> class is a sub-class of <code>foaf:Document</code>, since all images 
+are documents.
 </p>
 
+<p class="editorial">
+We do not (currently) distinguish precisely between physical and electronic documents, or 
+between copies of a work and the abstraction those copies embody. The relationship between 
+documents and their byte-stream representation needs clarification (see <code>foaf:sha1</code> 
+for related issues).
+</p>
 
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_Group">
+            </div> <div class="specterm" id="term_Image" about="http://xmlns.com/foaf/0.1/Image" typeof="rdfs:Class">
+            <h3>Class: foaf:Image</h3> 
+            <em>Image</em> - An image. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_thumbnail">thumbnail</a>
+ <a href="#term_depicts">depicts</a>
+ </td></tr>
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_depiction">depiction</a>
+ <a href="#term_thumbnail">thumbnail</a>
+ <a href="#term_image">image</a>
+</td></tr> 
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The class <code>foaf:Image</code> is a sub-class of <code>foaf:Document</code> 
+corresponding to those documents which are images.
+</p>
+
+<p>
+Digital images (such as JPEG, PNG, GIF bitmaps, SVG diagrams etc.) are examples of 
+<code>foaf:Image</code>. 
+</p>
+
+<!-- much more we could/should say here -->
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Person" about="http://xmlns.com/foaf/0.1/Person" typeof="rdfs:Class">
+            <h3>Class: foaf:Person</h3> 
+            <em>Person</em> - A person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            <tr><th>in-domain-of:</th>
+ <td>  <a href="#term_geekcode">geekcode</a>
+ <a href="#term_image">image</a>
+ <a href="#term_interest">interest</a>
+ <a href="#term_plan">plan</a>
+ <a href="#term_publications">publications</a>
+ <a href="#term_past project">past project</a>
+ <a href="#term_family_name">family_name</a>
+ <a href="#term_interest_topic">interest_topic</a>
+ <a href="#term_work info homepage">work info homepage</a>
+ <a href="#term_current project">current project</a>
+ <a href="#term_knows">knows</a>
+ <a href="#term_schoolHomepage">schoolHomepage</a>
+ <a href="#term_workplace homepage">workplace homepage</a>
+ <a href="#term_myersBriggs">myersBriggs</a>
+ <a href="#term_Surname">Surname</a>
+ <a href="#term_firstName">firstName</a>
+ </td></tr>
+            <tr><th>in-range-of:</th>
+ <td>  <a href="#term_knows">knows</a>
+</td></tr> <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+ <span rel="rdfs:subClassOf" href="http://www.w3.org/2000/10/swap/pim/contact#Person"><a href="#term_Person">Person</a></span>
+ <span rel="rdfs:subClassOf" href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"><a href="#term_Spatial Thing">Spatial Thing</a></span>
+ </td></tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+  <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Document" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Project" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Organization" />
+ 
+            </table>
+            <p>
+The <code>foaf:Person</code> class represents people. Something is a 
+<code>foaf:Person</code> if it is a person. We don't nitpic about whether they're 
+alive, dead, real, or imaginary. The <code>foaf:Person</code> class is a sub-class of the 
+<code>foaf:Agent</code> class, since all people are considered 'agents' in FOAF. 
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Project" about="http://xmlns.com/foaf/0.1/Project" typeof="rdfs:Class">
+            <h3>Class: foaf:Project</h3> 
+            <em>Project</em> - A project (a collective endeavour of some kind). <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+  <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Document" />
+ <span rel="owl:disjointWith" href="http://xmlns.com/foaf/0.1/Person" />
+ 
+            </table>
+            <p>
+The <code>foaf:Project</code> class represents the class of things that are 'projects'. These 
+may be formal or informal, collective or individual. It is often useful to indicate the 
+<code>foaf:homepage</code> of a <code>foaf:Project</code>.
+</p>
+
+<p class="editorial">
+Further work is needed to specify the connections between this class and the FOAF properties 
+<code>foaf:currentProject</code> and <code>foaf:pastProject</code>.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Group" about="http://xmlns.com/foaf/0.1/Group" typeof="rdfs:Class">
             <h3>Class: foaf:Group</h3> 
             <em>Group</em> - A class of Agents. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
             <tr><th>in-domain-of:</th>
  <td>  <a href="#term_member">member</a>
  </td></tr>
             <tr><th>subClassOf</th>
- <td>  <a href="#term_Agent">Agent</a>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
  </td></tr>
             </table>
             <p>
@@ -1002,411 +1256,123 @@ is solicited! Should we consider using SPARQL queries instead, for example?
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_Image">
-            <h3>Class: foaf:Image</h3> 
-            <em>Image</em> - An image. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_PersonalProfileDocument" about="http://xmlns.com/foaf/0.1/PersonalProfileDocument" typeof="rdfs:Class">
+            <h3>Class: foaf:PersonalProfileDocument</h3> 
+            <em>PersonalProfileDocument</em> - A personal profile RDF document. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>in-domain-of:</th>
- <td>  <a href="#term_depicts">depicts</a>
- <a href="#term_thumbnail">thumbnail</a>
- </td></tr>
-            <tr><th>in-range-of:</th>
- <td>  <a href="#term_depiction">depiction</a>
- <a href="#term_thumbnail">thumbnail</a>
- <a href="#term_image">image</a>
-</td></tr> 
-            </table>
-            <p>
-The class <code>foaf:Image</code> is a sub-class of <code>foaf:Document</code> 
-corresponding to those documents which are images.
-</p>
-
-<p>
-Digital images (such as JPEG, PNG, GIF bitmaps, SVG diagrams etc.) are examples of 
-<code>foaf:Image</code>. 
-</p>
-
-<!-- much more we could/should say here -->
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_OnlineAccount">
-            <h3>Class: foaf:OnlineAccount</h3> 
-            <em>Online Account</em> - An online account. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            <tr><th>in-domain-of:</th>
- <td>  <a href="#term_account name">account name</a>
- <a href="#term_account service homepage">account service homepage</a>
- </td></tr>
-            <tr><th>in-range-of:</th>
- <td>  <a href="#term_holds account">holds account</a>
-</td></tr> <tr><th>has subclass</th>
- <td>  <a href="#term_Online E-commerce Account">Online E-commerce Account</a>
- <a href="#term_Online Chat Account">Online Chat Account</a>
- <a href="#term_Online Gaming Account">Online Gaming Account</a>
- </td></tr>
-            </table>
-            <p>
-A <code>foaf:OnlineAccount</code> represents the provision of some form of online 
-service, by some party (indicated indirectly via a 
-<code>foaf:accountServiceHomepage</code>) to some <code>foaf:Agent</code>. The 
-<code>foaf:holdsAccount</code> property of the agent is used to indicate accounts that are 
-associated with the agent.
-</p>
-
-<p>
-See <code>foaf:OnlineChatAccount</code> for an example. Other sub-classes include 
-<code>foaf:OnlineEcommerceAccount</code> and <code>foaf:OnlineGamingAccount</code>.
-</p>
-
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_OnlineEcommerceAccount">
-            <h3>Class: foaf:OnlineEcommerceAccount</h3> 
-            <em>Online E-commerce Account</em> - An online e-commerce account. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             
             <tr><th>subClassOf</th>
- <td>  <a href="#term_Online Account">Online Account</a>
+ <td>  <span rel="rdfs:subClassOf" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
  </td></tr>
             </table>
             <p>
-A <code>foaf:OnlineEcommerceAccount</code> is a <code>foaf:OnlineAccount</code> devoted to 
-buying and/or selling of goods, services etc. Examples include <a 
-href="http://www.amazon.com/">Amazon</a>, <a href="http://www.ebay.com/">eBay</a>, <a 
-href="http://www.paypal.com/">PayPal</a>, <a 
-href="http://www.thinkgeek.com/">thinkgeek</a>, etc.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_OnlineGamingAccount">
-            <h3>Class: foaf:OnlineGamingAccount</h3> 
-            <em>Online Gaming Account</em> - An online gaming account. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            <tr><th>subClassOf</th>
- <td>  <a href="#term_Online Account">Online Account</a>
- </td></tr>
-            </table>
-            <p>
-A <code>foaf:OnlineGamingAccount</code> is a <code>foaf:OnlineAccount</code> devoted to 
-online gaming.
+The <code>foaf:PersonalProfileDocument</code> class represents those
+things that are a <code>foaf:Document</code>, and that use RDF to
+describe properties of the person who is the <code>foaf:maker</code>
+of the document. There is just one <code>foaf:Person</code> described in
+the document, ie.
+the person who <code>foaf:made</code> it and who will be its
+<code>foaf:primaryTopic</code>.
 </p>
 
 <p>
-Examples might include <a href="http://everquest.station.sony.com/">EverQuest</a>, 
-<a href="http://www.xbox.com/live/">Xbox live</a>, <a 
-href="http://nwn.bioware.com/">Neverwinter Nights</a>, etc., as well as older text-based 
-systems (MOOs, MUDs and suchlike).
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_Project">
-            <h3>Class: foaf:Project</h3> 
-            <em>Project</em> - A project (a collective endeavour of some kind). <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:Project</code> class represents the class of things that are 'projects'. These 
-may be formal or informal, collective or individual. It is often useful to indicate the 
-<code>foaf:homepage</code> of a <code>foaf:Project</code>.
-</p>
-
-<p class="editorial">
-Further work is needed to specify the connections between this class and the FOAF properties 
-<code>foaf:currentProject</code> and <code>foaf:pastProject</code>.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_Document">
-            <h3>Class: foaf:Document</h3> 
-            <em>Document</em> - A document. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>in-domain-of:</th>
- <td>  <a href="#term_sha1sum (hex)">sha1sum (hex)</a>
- <a href="#term_topic">topic</a>
- <a href="#term_primary topic">primary topic</a>
- </td></tr>
-            <tr><th>in-range-of:</th>
- <td>  <a href="#term_work info homepage">work info homepage</a>
- <a href="#term_weblog">weblog</a>
- <a href="#term_schoolHomepage">schoolHomepage</a>
- <a href="#term_workplace homepage">workplace homepage</a>
- <a href="#term_account service homepage">account service homepage</a>
- <a href="#term_page">page</a>
- <a href="#term_interest">interest</a>
- <a href="#term_publications">publications</a>
- <a href="#term_is primary topic of">is primary topic of</a>
- <a href="#term_homepage">homepage</a>
- <a href="#term_tipjar">tipjar</a>
-</td></tr> <tr><th>has subclass</th>
- <td>  <a href="#term_PersonalProfileDocument">PersonalProfileDocument</a>
- </td></tr>
-            </table>
-            <p>
-The <code>foaf:Document</code> class represents those things which are, broadly conceived, 
-'documents'.
+The <code>foaf:PersonalProfileDocument</code> class, and FOAF's
+associated conventions for describing it, captures an important
+deployment pattern for the FOAF vocabulary. FOAF is very often used in
+public RDF documents made available through the Web. There is a
+colloquial notion that these "FOAF files" are often <em>somebody's</em>
+FOAF file. Through <code>foaf:PersonalProfileDocument</code> we provide
+a machine-readable expression of this concept, providing a basis for 
+FOAF documents to make claims about their maker and topic.
 </p>
 
 <p>
-The <code>foaf:Image</code> class is a sub-class of <code>foaf:Document</code>, since all images 
-are documents.
-</p>
-
-<p class="editorial">
-We do not (currently) distinguish precisely between physical and electronic documents, or 
-between copies of a work and the abstraction those copies embody. The relationship between 
-documents and their byte-stream representation needs clarification (see <code>foaf:sha1</code> 
-for related issues).
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_Organization">
-            <h3>Class: foaf:Organization</h3> 
-            <em>Organization</em> - An organization. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            
-            <tr><th>subClassOf</th>
- <td>  <a href="#term_Agent">Agent</a>
- </td></tr>
-            </table>
-            <p>
-The <code>foaf:Organization</code> class represents a kind of <code>foaf:Agent</code> 
-corresponding to social instititutions such as companies, societies etc.
-</p>
-
-<p class="editorial">
-This is a more 'solid' class than <code>foaf:Group</code>, which allows 
-for more ad-hoc collections of individuals. These terms, like the corresponding
-natural language concepts, have some overlap, but different emphasis.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_Person">
-            <h3>Class: foaf:Person</h3> 
-            <em>Person</em> - A person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            <tr><th>in-domain-of:</th>
- <td>  <a href="#term_geekcode">geekcode</a>
- <a href="#term_workplace homepage">workplace homepage</a>
- <a href="#term_schoolHomepage">schoolHomepage</a>
- <a href="#term_work info homepage">work info homepage</a>
- <a href="#term_knows">knows</a>
- <a href="#term_family_name">family_name</a>
- <a href="#term_current project">current project</a>
- <a href="#term_firstName">firstName</a>
- <a href="#term_myersBriggs">myersBriggs</a>
- <a href="#term_plan">plan</a>
- <a href="#term_Surname">Surname</a>
- <a href="#term_interest">interest</a>
- <a href="#term_publications">publications</a>
- <a href="#term_interest_topic">interest_topic</a>
- <a href="#term_image">image</a>
- <a href="#term_past project">past project</a>
- </td></tr>
-            <tr><th>in-range-of:</th>
- <td>  <a href="#term_knows">knows</a>
-</td></tr> <tr><th>subClassOf</th>
- <td>  <a href="#term_Agent">Agent</a>
- </td></tr>
-            </table>
-            <p>
-The <code>foaf:Person</code> class represents people. Something is a 
-<code>foaf:Person</code> if it is a person. We don't nitpic about whether they're 
-alive, dead, real, or imaginary. The <code>foaf:Person</code> class is a sub-class of the 
-<code>foaf:Agent</code> class, since all people are considered 'agents' in FOAF. 
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_Agent">
-            <h3>Class: foaf:Agent</h3> 
-            <em>Agent</em> - An agent (eg. person, group, software or physical artifact). <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            <tr><th>in-domain-of:</th>
- <td>  <a href="#term_gender">gender</a>
- <a href="#term_made">made</a>
- <a href="#term_MSN chat ID">MSN chat ID</a>
- <a href="#term_weblog">weblog</a>
- <a href="#term_sha1sum of a personal mailbox URI name">sha1sum of a personal mailbox URI name</a>
- <a href="#term_birthday">birthday</a>
- <a href="#term_ICQ chat ID">ICQ chat ID</a>
- <a href="#term_personal mailbox">personal mailbox</a>
- <a href="#term_jabber ID">jabber ID</a>
- <a href="#term_AIM chat ID">AIM chat ID</a>
- <a href="#term_holds account">holds account</a>
- <a href="#term_tipjar">tipjar</a>
- <a href="#term_Yahoo chat ID">Yahoo chat ID</a>
- </td></tr>
-            <tr><th>in-range-of:</th>
- <td>  <a href="#term_member">member</a>
- <a href="#term_maker">maker</a>
-</td></tr> <tr><th>has subclass</th>
- <td>  <a href="#term_Group">Group</a>
- <a href="#term_Person">Person</a>
- <a href="#term_Organization">Organization</a>
- </td></tr>
-            </table>
-            <p>
-The <code>foaf:Agent</code> class is the class of agents; things that do stuff. A well 
-known sub-class is <code>foaf:Person</code>, representing people. Other kinds of agents 
-include <code>foaf:Organization</code> and <code>foaf:Group</code>.
+When describing a <code>foaf:PersonalProfileDocument</code> it is
+typical (and useful) to describe its associated <code>foaf:Person</code>
+using the <code>foaf:maker</code> property. Anything that is a
+<code>foaf:Person</code> and that is the <code>foaf:maker</code> of some
+<code>foaf:Document</code> will be the <code>foaf:primaryTopic</code> of
+that <code>foaf:Document</code>. Although this can be inferred, it is
+helpful to include this information explicitly within the
+<code>foaf:PersonalProfileDocument</code>.
 </p>
 
 <p>
-The <code>foaf:Agent</code> class is useful in a few places in FOAF where 
-<code>foaf:Person</code> would have been overly specific. For example, the IM chat ID 
-properties such as <code>jabberID</code> are typically associated with people, but 
-sometimes belong to software bots.
+For example, here is a fragment of a personal profile document which
+describes its author explicitly:
+</p>
+<div class="example">
+<pre>
+&lt;foaf:Person rdf:nodeID="p1"&gt;
+ &lt;foaf:name&gt;Dan Brickley&lt;/foaf:name&gt;
+ &lt;foaf:homepage rdf:resource="http://rdfweb.org/people/danbri/"/&gt;
+ &lt;!-- etc... --&gt;
+&lt;/foaf:Person&gt;
+
+&lt;foaf:PersonalProfileDocument rdf:about=""&gt;
+   &lt;foaf:maker rdf:nodeID="p1"/&gt;
+   &lt;foaf:primaryTopic rdf:nodeID="p1"/&gt;
+&lt;/foaf:PersonalProfileDocument&gt;
+</pre>
+</div>
+
+<p>
+Note that a <code>foaf:PersonalProfileDocument</code> will have some
+representation as RDF. Typically this will be in W3C's RDF/XML syntax,
+however we leave open the possibility for the use of other notations, or
+representational conventions including automated transformations from
+HTML (<a href="http://www.w3.org/2004/01/rdxh/spec">GRDDL</a> spec for
+one such technique).
 </p>
 
-<!-- todo: write rdfs:domain statements for those properties -->
+
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_firstName">
-            <h3>Property: foaf:firstName</h3> 
-            <em>firstName</em> - The first name of a person. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_workInfoHomepage" about="http://xmlns.com/foaf/0.1/workInfoHomepage" typeof="rdf:Property">
+            <h3>Property: foaf:workInfoHomepage</h3> 
+            <em>work info homepage</em> - A work info homepage of some person; a page about their work for some organization. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
-            
-            </table>
-            
-
-<p>A number of naming constructs are under development to provide
-naming substructure; draft properties include <code>foaf:firstName</code>,
-<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
-stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
-tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
-naming machinery.
-</p>
-
-<p>
-There is also a simple <code>foaf:name</code> property.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_currentProject">
-            <h3>Property: foaf:currentProject</h3> 
-            <em>current project</em> - A current project this person works on. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            
-            </table>
-            <!-- originally contrib'd by Cardinal -->
-
-<p>A <code>foaf:currentProject</code> relates a <code>foaf:Person</code>
-to a <code>foaf:Document</code> indicating some collaborative or
-individual undertaking.  This relationship
-indicates that the <code>foaf:Person</code> has some active role in the
-project, such as development, coordination, or support.</p>
-
-<p>When a <code>foaf:Person</code> is no longer involved with a project, or
-perhaps is inactive for some time, the relationship becomes a
-<code>foaf:pastProject</code>.</p>
-
-<p>
-If the <code>foaf:Person</code> has stopped working on a project because it
-has been completed (successfully or otherwise), <code>foaf:pastProject</code> is
-applicable. In general, <code>foaf:currentProject</code> is used to indicate
-someone's current efforts (and implied interests, concerns etc.), while
-<code>foaf:pastProject</code> describes what they've previously been doing.
-</p>
-
-<!-- 
-<p>Generally speaking, anything that a <code>foaf:Person</code> has
-<code>foaf:made</code> could also qualify as a
-<code>foaf:currentProject</code> or <code>foaf:pastProject</code>.</p>
--->
-
-<p class="editorial">
-Note that this property requires further work. There has been confusion about 
-whether it points to a thing (eg. something you've made; a homepage for a project, 
-ie. a <code>foaf:Document</code> or to instances of the class <code>foaf:Project</code>, 
-which might themselves have a <code>foaf:homepage</code>. In practice, it seems to have been 
-used in a similar way to <code>foaf:interest</code>, referencing homepages of ongoing projects.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_mbox">
-            <h3>Property: foaf:mbox</h3> 
-            <em>personal mailbox</em> - A  personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
-The <code>foaf:mbox</code> property is a relationship between the owner of a mailbox and 
-a mailbox. These are typically identified using the mailto: URI scheme (see <a 
-href="http://ftp.ics.uci.edu/pub/ietf/uri/rfc2368.txt">RFC 2368</a>).
+The <code>foaf:workInfoHomepage</code> of a <code>foaf:Person</code> is a 
+<code>foaf:Document</code> that describes their work. It is generally (but not necessarily) a 
+different document from their <code>foaf:homepage</code>, and from any 
+<code>foaf:workplaceHomepage</code>(s) they may have. 
 </p>
 
 <p>
-Note that there are many mailboxes (eg. shared ones) which are not the 
-<code>foaf:mbox</code> of anyone. Furthermore, a person can have multiple 
-<code>foaf:mbox</code> properties. 
+The purpose of this property is to distinguish those pages you often see, which describe 
+someone's professional role within an organisation or project. These aren't really homepages, 
+although they share some characterstics.
 </p>
 
-<p>
-In FOAF, we often see <code>foaf:mbox</code> used as an indirect way of identifying its 
-owner. This works even if the mailbox is itself out of service (eg. 10 years old), since 
-the property is defined in terms of its primary owner, and doesn't require the mailbox to 
-actually be being used for anything.
-</p>
-
-<p>
-Many people are wary of sharing information about their mailbox addresses in public. To 
-address such concerns whilst continuing the FOAF convention of indirectly identifying 
-people by referring to widely known properties, FOAF also provides the 
-<code>foaf:mbox_sha1sum</code> mechanism, which is a relationship between a person and 
-the value you get from passing a mailbox URI to the SHA1 mathematical function.
-</p>
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_knows">
+            </div> <div class="specterm" id="term_knows" about="http://xmlns.com/foaf/0.1/knows" typeof="rdf:Property">
             <h3>Property: foaf:knows</h3> 
             <em>knows</em> - A person known by this person (indicating some level of reciprocated interaction between the parties). <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Person"<a href="#term_Person">Person</a></span>
 </td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:knows</code> property relates a <code>foaf:Person</code> to another 
@@ -1495,661 +1461,66 @@ a centrally managed directory of FOAF files...
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_topic">
-            <h3>Property: foaf:topic</h3> 
-            <em>topic</em> - A topic of some page or document. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_tipjar" about="http://xmlns.com/foaf/0.1/tipjar" typeof="rdf:Property">
+            <h3>Property: foaf:tipjar</h3> 
+            <em>tipjar</em> - A tipjar document for this agent, describing means for payment and reward. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Document">Document</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:topic</code> property relates a document to a thing that the document is 
-about.
-</p>
-
-<p>
-As such it is an inverse of the <code>foaf:page</code> property, which relates a thing to 
-a document about that thing.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_thumbnail">
-            <h3>Property: foaf:thumbnail</h3> 
-            <em>thumbnail</em> - A derived thumbnail image. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Image">Image</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Image">Image</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
 </td>	</tr>
-            </table>
-            <!-- originally contrib'd by Cardinal; rejiggged a bit by danbri -->
-
-<p>
-The <code>foaf:thumbnail</code> property is a relationship between a 
-full-size <code>foaf:Image</code> and a smaller, representative <code>foaf:Image</code> 
-that has been derrived from it. 
-</p>
-
-<p>
-It is typical in FOAF to express <code>foaf:img</code> and <code>foaf:depiction</code> 
-relationships in terms of the larger, 'main' (in some sense) image, rather than its thumbnail(s). 
-A <code>foaf:thumbnail</code> might be clipped or otherwise reduced such that it does not 
-depict everything that the full image depicts. Therefore FOAF does not specify that a 
-thumbnail <code>foaf:depicts</code> everything that the image it is derrived from depicts.
-However, FOAF does expect that anything depicted in the thumbnail will also be depicted in 
-the source image.
-</p>
-
-<!-- todo: add RDF rules here showing this -->
-
-<p>
-A <code>foaf:thumbnail</code> is typically small enough that it can be
-loaded and viewed quickly before a viewer decides to download the larger
-version. They are often used in online photo gallery applications.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_dnaChecksum">
-            <h3>Property: foaf:dnaChecksum</h3> 
-            <em>DNA checksum</em> - A checksum for the DNA of some thing. Joke. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
-The <code>foaf:dnaChecksum</code> property is mostly a joke, but 
-also a reminder that there will be lots of different identifying 
-properties for people, some of which we might find disturbing. 
+The <code>foaf:tipjar</code> property relates an <code>foaf:Agent</code>
+to a <code>foaf:Document</code> that describes some mechanisms for
+paying or otherwise rewarding that agent.
+</p>
+
+<p>
+The <code>foaf:tipjar</code> property was created following <a
+href="http://rdfweb.org/mt/foaflog/archives/2004/02/12/20.07.32/">discussions</a> 
+about simple, lightweight mechanisms that could be used to encourage 
+rewards and payment for content exchanged online. An agent's
+<code>foaf:tipjar</code> page(s) could describe informal ("Send me a
+postcard!", "here's my book, music and movie wishlist") or formal
+(machine-readable micropayment information) information about how that
+agent can be paid or rewarded. The reward is not associated with any
+particular action or content from the agent concerned. A link to 
+a service such as <a href="http://www.paypal.com/">PayPal</a> is the
+sort of thing we might expect to find in a tipjar document.
+</p>
+
+<p>
+Note that the value of a <code>foaf:tipjar</code> property is just a
+document (which can include anchors into HTML pages). We expect, but 
+do not currently specify, that this will evolve into a hook
+for finding more machine-readable information to support payments,
+rewards. The <code>foaf:OnlineAccount</code> machinery is also relevant,
+although the information requirements for automating payments are not 
+currently clear.
 </p>
 
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_surname">
-            <h3>Property: foaf:surname</h3> 
-            <em>Surname</em> - The surname of some person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            
-            </table>
-            
-
-<p>A number of naming constructs are under development to provide
-naming substructure; draft properties include <code>foaf:firstName</code>,
-<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
-stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
-tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
-naming machinery.
-</p>
-
-<p>
-There is also a simple <code>foaf:name</code> property.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_mbox_sha1sum">
-            <h3>Property: foaf:mbox_sha1sum</h3> 
-            <em>sha1sum of a personal mailbox URI name</em> - The sha1sum of the URI of an Internet mailbox associated with exactly one owner, the  first owner of the mailbox. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-A <code>foaf:mbox_sha1sum</code> of a <code>foaf:Person</code> is a textual representation of 
-the result of applying the SHA1 mathematical functional to a 'mailto:' identifier (URI) for an 
-Internet mailbox that they stand in a <code>foaf:mbox</code> relationship to.
-</p>
-
-<p>
-In other words, if you have a mailbox (<code>foaf:mbox</code>) but don't want to reveal its 
-address, you can take that address and generate a <code>foaf:mbox_sha1sum</code> representation 
-of it. Just as a <code>foaf:mbox</code> can be used as an indirect identifier for its owner, we 
-can do the same with <code>foaf:mbox_sha1sum</code> since there is only one 
-<code>foaf:Person</code> with any particular value for that property.
-</p>
-
-<p>
-Many FOAF tools use <code>foaf:mbox_sha1sum</code> in preference to exposing mailbox 
-information. This is usually for privacy and SPAM-avoidance reasons. Other relevant techniques 
-include the use of PGP encryption (see <a href="http://usefulinc.com/foaf/">Edd Dumbill's 
-documentation</a>) and the use of <a 
-href="http://www.w3.org/2001/12/rubyrdf/util/foafwhite/intro.html">FOAF-based whitelists</a> for 
-mail filtering.
-</p>
-
-<p>
-Code examples for SHA1 in C#, Java, PHP, Perl and Python can be found <a 
-href="http://www.intertwingly.net/blog/1545.html">in Sam Ruby's 
-weblog entry</a>. Remember to include the 'mailto:' prefix, but no trailing 
-whitespace, when computing a <code>foaf:mbox_sha1sum</code> property.
-</p>
-<!-- what about Javascript. move refs to wiki maybe. -->
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_page">
-            <h3>Property: foaf:page</h3> 
-            <em>page</em> - A page or document about this thing. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:page</code> property relates a thing to a document about that thing.
-</p>
-
-<p>
-As such it is an inverse of the <code>foaf:topic</code> property, which relates a document 
-to a thing that the document is about.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_workInfoHomepage">
-            <h3>Property: foaf:workInfoHomepage</h3> 
-            <em>work info homepage</em> - A work info homepage of some person; a page about their work for some organization. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:workInfoHomepage</code> of a <code>foaf:Person</code> is a 
-<code>foaf:Document</code> that describes their work. It is generally (but not necessarily) a 
-different document from their <code>foaf:homepage</code>, and from any 
-<code>foaf:workplaceHomepage</code>(s) they may have. 
-</p>
-
-<p>
-The purpose of this property is to distinguish those pages you often see, which describe 
-someone's professional role within an organisation or project. These aren't really homepages, 
-although they share some characterstics.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_theme">
-            <h3>Property: foaf:theme</h3> 
-            <em>theme</em> - A theme. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:theme</code> property is rarely used and under-specified. The intention was 
-to use it to characterise interest / themes associated with projects and groups. Further 
-work is needed to meet these goals. 
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_interest">
-            <h3>Property: foaf:interest</h3> 
-            <em>interest</em> - A page about a topic of interest to this person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:interest</code> property represents an interest of a 
-<code>foaf:Agent</code>, through 
-indicating a <code>foaf:Document</code> whose <code>foaf:topic</code>(s) broadly 
-characterises that interest.</p>
-
-<p class="example">
-For example, we might claim that a person or group has an interest in RDF by saying they
-stand in a <code>foaf:interest</code> relationship to the <a 
-href="http://www.w3.org/RDF/">RDF</a> home page. Loosly, such RDF would be saying 
-<em>"this agent is interested in the topic of this page"</em>.
-</p>
-
-<p class="example">
-Uses of <code>foaf:interest</code> include a variety of filtering and resource discovery 
-applications. It could be used, for example, to help find answers to questions such as 
-"Find me members of this organisation with an interest in XML who have also contributed to 
-<a href="http://www.cpan.org/">CPAN</a>)". 
-</p>
-
-<p>
-This approach to characterising interests is intended to compliment other mechanisms (such 
-as the use of controlled vocabulary). It allows us to use a widely known set of unique 
-identifiers (Web page URIs) with minimal pre-coordination. Since URIs have a controlled 
-syntax, this makes data merging much easier than the use of free-text characterisations of 
-interest.
-</p>
-
-
-<p>
-Note that interest does not imply expertise, and that this FOAF term provides no support 
-for characterising levels of interest: passing fads and lifelong quests are both examples 
-of someone's <code>foaf:interest</code>. Describing interests in full is a complex 
-undertaking; <code>foaf:interest</code> provides one basic component of FOAF's approach to 
-these problems.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_isPrimaryTopicOf">
-            <h3>Property: foaf:isPrimaryTopicOf</h3> 
-            <em>is primary topic of</em> - A document that this thing is the primary topic of. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:isPrimaryTopicOf</code> property relates something to a document that is 
-mainly about it.
-</p>
-
-
-<p>
-The <code>foaf:isPrimaryTopicOf</code> property is <em>inverse functional</em>: for
-any document that is the value of this property, there is at most one thing in the world
-that is the primary topic of that document. This is useful, as it allows for data 
-merging, as described in the documentation for its inverse, <code>foaf:primaryTopic</code>.
-</p>
-
-<p>
-<code>foaf:page</code> is a super-property of <code>foaf:isPrimaryTopicOf</code>. The change 
-of terminology between the two property names reflects the utility of 'primaryTopic' and its 
-inverse when identifying things. Anything that has an <code>isPrimaryTopicOf</code> relation 
-to some document X, also has a <code>foaf:page</code> relationship to it.
-</p>
-<p>
-Note that <code>foaf:homepage</code>, is a sub-property of both <code>foaf:page</code> and 
-<code>foaf:isPrimarySubjectOf</code>. The awkwardly named 
-<code>foaf:isPrimarySubjectOf</code> is less specific, and can be used with any document 
-that is primarily about the thing of interest (ie. not just on homepages).
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_nick">
-            <h3>Property: foaf:nick</h3> 
-            <em>nickname</em> - A short informal nickname characterising an agent (includes login identifiers, IRC and other chat nicknames). <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:nick</code> property relates a <code>foaf:Person</code> to a short (often 
-abbreviated) nickname, such as those use in IRC chat, online accounts, and computer 
-logins.
-</p>
-
-<p>
-This property is necessarily vague, because it does not indicate any particular naming 
-control authority, and so cannot distinguish a person's login from their (possibly 
-various) IRC nicknames or other similar identifiers. However it has some utility, since 
-many people use the same string (or slight variants) across a variety of such 
-environments.
-</p>
-
-<p>
-For specific controlled sets of names (relating primarily to Instant Messanger accounts), 
-FOAF provides some convenience properties: <code>foaf:jabberID</code>, 
-<code>foaf:aimChatID</code>, <code>foaf:msnChatID</code> and 
-<code>foaf:icqChatID</code>. Beyond this, the problem of representing such accounts is not 
-peculiar to Instant Messanging, and it is not scaleable to attempt to enumerate each 
-naming database as a distinct FOAF property. The <code>foaf:OnlineAccount</code> term (and 
-supporting vocabulary) are provided as a more verbose and more expressive generalisation 
-of these properties.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_homepage">
-            <h3>Property: foaf:homepage</h3> 
-            <em>homepage</em> - A homepage for some thing. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:homepage</code> property relates something to a homepage about it.
-</p>
-
-<p>
-Many kinds of things have homepages. FOAF allows a thing to have multiple homepages, but 
-constrains <code>foaf:homepage</code> so that there can be only one thing that has any 
-particular homepage.
-</p>
-
-<p>
-A 'homepage' in this sense is a public Web document, typically but not necessarily 
-available in HTML format. The page has as a <code>foaf:topic</code> the thing whose 
-homepage it is. The homepage is usually controlled, edited or published by the thing whose 
-homepage it is; as such one might look to a homepage for information on its owner from its 
-owner. This works for people, companies, organisations etc. 
-</p>
-
-<p>
-The <code>foaf:homepage</code> property is a sub-property of the more general 
-<code>foaf:page</code> property for relating a thing to a page about that thing. See also 
-<code>foaf:topic</code>, the inverse of the <code>foaf:page</code> property. 
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_maker">
-            <h3>Property: foaf:maker</h3> 
-            <em>maker</em> - An agent that  made this thing. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            
-            <tr><th>Range:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:maker</code> property relates something to a  
-<code>foaf:Agent</code> that <code>foaf:made</code> it. As such it is an 
-inverse of the <code>foaf:made</code> property.
-</p>
-
-<p>
-The <code>foaf:name</code> (or other <code>rdfs:label</code>) of the 
-<code>foaf:maker</code> of something can be described as the 
-<code>dc:creator</code> of that thing.</p>
-
-<p>
-For example, if the thing named by the URI 
-http://rdfweb.org/people/danbri/ has a 
-<code>foaf:maker</code> that is a <code>foaf:Person</code> whose 
-<code>foaf:name</code> is 'Dan Brickley', we can conclude that 
-http://rdfweb.org/people/danbri/ has a <code>dc:creator</code> of 'Dan 
-Brickley'. 
-</p>
-
-<p>
-FOAF descriptions are encouraged to use <code>dc:creator</code> only for 
-simple textual names, and to use <code>foaf:maker</code> to indicate 
-creators, rather than risk confusing creators with their names. This 
-follows most Dublin Core usage. See <a 
-href="http://rdfweb.org/topic/UsingDublinCoreCreator">UsingDublinCoreCreator</a> 
-for details.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_aimChatID">
-            <h3>Property: foaf:aimChatID</h3> 
-            <em>AIM chat ID</em> - An AIM chat ID <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:aimChatID</code> property relates a <code>foaf:Agent</code> to a textual 
-identifier ('screenname') assigned to them in the AOL Instant Messanger (AIM) system. 
-See AOL's <a href="http://www.aim.com/">AIM</a> site for more details of AIM and AIM 
-screennames. The <a href="http://www.apple.com/macosx/features/ichat/">iChat</a> tools from <a 
-href="http://www.apple.com/">Apple</a> also make use of AIM identifiers. 
-</p>
-
-<p>
-See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
-more general (and verbose) mechanism for describing IM and chat accounts.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_msnChatID">
-            <h3>Property: foaf:msnChatID</h3> 
-            <em>MSN chat ID</em> - An MSN chat ID <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:msnChatID</code> property relates a <code>foaf:Agent</code> to a textual 
-identifier assigned to them in the MSN online Chat system. 
-See Microsoft's the <a href="http://chat.msn.com/">MSN chat</a> site for more details (or for a 
-message saying <em>"MSN Chat is not currently compatible with your Internet browser and/or 
-computer operating system"</em> if your computing platform is deemed unsuitable). 
-</p>
-
-<p class="editorial">
-It is not currently clear how MSN chat IDs relate to the more general Microsoft Passport 
-identifiers.
-</p>
-
-<p>See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a 
-more general (and verbose) mechanism for describing IM and chat accounts. 
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_name">
-            <h3>Property: foaf:name</h3> 
-            <em>name</em> - A name for some thing. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            <p>The <code>foaf:name</code> of something is a simple textual string.</p>
-
-<p>
-XML language tagging may be used to indicate the language of the name. For example:
-</p>
-
-<div class="example">
-<code>
-&lt;foaf:name xml:lang="en"&gt;Dan Brickley&lt;/foaf:name&gt;
-</code>
-</div>
-
-<p>
-FOAF provides some other naming constructs.  While foaf:name does not explicitly represent name substructure (family vs given etc.) it 
-does provide a basic level of interoperability. See the <a 
-href="http://rdfweb.org/topic/IssueTracker">issue tracker</a> for status of work on this issue.
-</p>
-
-<p>
-The <code>foaf:name</code> property, like all RDF properties with a range of rdfs:Literal, may be used with XMLLiteral datatyped 
-values. This usage is, however, not yet widely adopted. Feedback on this aspect of the FOAF design is particularly welcomed.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_schoolHomepage">
-            <h3>Property: foaf:schoolHomepage</h3> 
-            <em>schoolHomepage</em> - A homepage of a school attended by the person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>schoolHomepage</code> property relates a <code>foaf:Person</code> to a 
-<code>foaf:Document</code> that is the <code>foaf:homepage</code> of a School that the 
-person attended.
-</p>
-
-<p>
-FOAF does not (currently) define a class for 'School' (if it did, it would probably be as 
-a sub-class of <code>foaf:Organization</code>). The original application area for 
-<code>foaf:schoolHomepage</code> was for 'schools' in the British-English sense; however 
-American-English usage has dominated, and it is now perfectly reasonable to describe 
-Universities, Colleges and post-graduate study using <code>foaf:schoolHomepage</code>.
-</p>
-
-<p>
-This very basic facility provides a basis for a low-cost, decentralised approach to 
-classmate-reunion and suchlike. Instead of requiring a central database, we can use FOAF 
-to express claims such as 'I studied <em>here</em>' simply by mentioning a 
-school's homepage within FOAF files. Given the homepage of a school, it is easy for 
-FOAF aggregators to lookup this property in search of people who attended that school.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_jabberID">
-            <h3>Property: foaf:jabberID</h3> 
-            <em>jabber ID</em> - A jabber ID for something. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:jabberID</code> property relates a <code>foaf:Agent</code> to a textual 
-identifier assigned to them in the <a href="http://www.jabber.org/">Jabber</a> messaging 
-system. 
-See the <a href="http://www.jabber.org/">Jabber</a> site for more information about the Jabber 
-protocols and tools.
-</p>
-
-<p>
-Jabber, unlike several other online messaging systems, is based on an open, publically 
-documented protocol specification, and has a variety of open source implementations. Jabber IDs 
-can be assigned to a variety of kinds of thing, including software 'bots', chat rooms etc. For 
-the purposes of FOAF, these are all considered to be kinds of <code>foaf:Agent</code> (ie. 
-things that <em>do</em> stuff). The uses of Jabber go beyond simple IM chat applications. The 
-<code>foaf:jabberID</code> property is provided as a basic hook to help support RDF description 
-of Jabber users and services.
-</p>
-
-<p>
-See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
-more general (and verbose) mechanism for describing IM and chat accounts.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_plan">
-            <h3>Property: foaf:plan</h3> 
-            <em>plan</em> - A .plan comment, in the tradition of finger and '.plan' files. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            
-            </table>
-            <!-- orig contrib'd by Cardinal -->
-
-<p>The <code>foaf:plan</code> property provides a space for a
-<code>foaf:Person</code> to hold some arbitrary content that would appear in
-a traditional '.plan' file.  The plan file was stored in a user's home
-directory on a UNIX machine, and displayed to people when the user was
-queried with the finger utility.</p>
-
-<p>A plan file could contain anything.  Typical uses included brief
-comments, thoughts, or remarks on what a person had been doing lately.  Plan
-files were also prone to being witty or simply osbscure.  Others may be more
-creative, writing any number of seemingly random compositions in their plan
-file for people to stumble upon.</p>
-
-<p>
-See <a href="http://www.rajivshah.com/Case_Studies/Finger/Finger.htm">History of the 
-Finger Protocol</a> by Rajiv Shah for more on this piece of Internet history. The 
-<code>foaf:geekcode</code> property may also be of interest.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_membershipClass">
-            <h3>Property: foaf:membershipClass</h3> 
-            <em>membershipClass</em> - Indicates the class of individuals that are a member of a Group <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:membershipClass</code> property relates a <code>foaf:Group</code> to an RDF 
-class representing a sub-class of <code>foaf:Agent</code> whose instances are all the 
-agents that are a <code>foaf:member</code> of the <code>foaf:Group</code>.
-</p>
-
-<p>
-See <code>foaf:Group</code> for details and examples.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_title">
-            <h3>Property: foaf:title</h3> 
-            <em>title</em> - Title (Mr, Mrs, Ms, Dr. etc) <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            <p>
-The approriate values for <code>foaf:title</code> are not formally constrained, and will 
-vary across community and context. Values such as 'Mr', 'Mrs', 'Ms', 'Dr' etc. are 
-expected.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_weblog">
+            </div> <div class="specterm" id="term_weblog" about="http://xmlns.com/foaf/0.1/weblog" typeof="rdf:Property">
             <h3>Property: foaf:weblog</h3> 
             <em>weblog</em> - A weblog of some thing (whether person, group, company etc.). <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
 </td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:weblog</code> property relates a <code>foaf:Agent</code> to a weblog of 
@@ -2158,114 +1529,17 @@ that agent.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_based_near">
-            <h3>Property: foaf:based_near</h3> 
-            <em>based near</em> - A location that something is based near, for some broadly human notion of near. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
-            </table>
-            <!-- note: is this mis-specified? perhaps range ought to also be SpatialThing, so we
-     can have multiple labels on the same point? -->
-
-<p>The <code>foaf:based_near</code> relationship relates two "spatial 
-things"
-(anything that can <em>be somewhere</em>), the latter typically
-described using the geo:lat / geo:long
-<a href="http://www.w3.org/2003/01/geo/wgs84_pos#">geo-positioning vocabulary</a>
-(See <a href="http://esw.w3.org/topic/GeoInfo">GeoInfo</a> in the W3C semweb
-wiki for details). This allows us to say describe the typical latitute and 
-longitude of, say, a Person (people are spatial things - they can be 
-places) without implying that a precise location has been given.
-</p>
-
-<p>We do not say much about what 'near' means in this context; it is a
-'rough and ready' concept. For a more precise treatment, see
-<a href="http://esw.w3.org/topic/GeoOnion">GeoOnion vocab</a> design
-discussions, which are aiming to produce a more sophisticated vocabulary for 
-such purposes.
-</p>
-
-<p> FOAF files often make use of the <code>contact:nearestAirport</code> property. This
-illustrates the distinction between FOAF documents (which may make claims using <em>any</em> RDF
-vocabulary) and the core FOAF vocabulary defined by this specification. For further reading on
-the use of <code>nearestAirport</code> see <a 
-href="http://rdfweb.org/topic/UsingContactNearestAirport">UsingContactNearestAirport</a> in the 
-FOAF wiki.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_member">
-            <h3>Property: foaf:member</h3> 
-            <em>member</em> - Indicates a member of a Group <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Group">Group</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:member</code> property relates a <code>foaf:Group</code> to a 
-<code>foaf:Agent</code> that is a member of that group.
-</p>
-
-<p>
-See <code>foaf:Group</code> for details and examples.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_made">
-            <h3>Property: foaf:made</h3> 
-            <em>made</em> - Something that was made by this agent. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>stable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:made</code> property relates a <code>foaf:Agent</code> 
-to something <code>foaf:made</code> by it. As such it is an 
-inverse of the <code>foaf:maker</code> property, which relates a thing to 
-something that made it. See <code>foaf:made</code> for more details on the 
-relationship between these FOAF terms and related Dublin Core vocabulary.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_phone">
-            <h3>Property: foaf:phone</h3> 
-            <em>phone</em> - A phone,  specified using fully qualified tel: URI scheme (refs: http://www.w3.org/Addressing/schemes.html#tel). <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:phone</code> of something is a phone, typically identified using the tel: URI 
-scheme.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_gender">
+            </div> <div class="specterm" id="term_gender" about="http://xmlns.com/foaf/0.1/gender" typeof="rdf:Property">
             <h3>Property: foaf:gender</h3> 
             <em>gender</em> - The gender of this Agent (typically but not necessarily 'male' or 'female'). <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:gender</code> property relates a <code>foaf:Agent</code> (typically a 
@@ -2323,17 +1597,345 @@ http://216.239.37.104/search?q=cache:Q_P_fH8M0swJ:archives.thedaily.washington.e
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_holdsAccount">
+            </div> <div class="specterm" id="term_publications" about="http://xmlns.com/foaf/0.1/publications" typeof="rdf:Property">
+            <h3>Property: foaf:publications</h3> 
+            <em>publications</em> - A link to the publications of this person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:publications</code> property indicates a <code>foaf:Document</code>
+listing (primarily in human-readable form) some publications associated with the  
+<code>foaf:Person</code>. Such documents are typically published alongside one's 
+<code>foaf:homepage</code>.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_depicts" about="http://xmlns.com/foaf/0.1/depicts" typeof="rdf:Property">
+            <h3>Property: foaf:depicts</h3> 
+            <em>depicts</em> - A thing depicted in this representation. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Image"><a href="#term_Image">Image</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:depicts</code> property is a relationship between a <code>foaf:Image</code> 
+and something that the image depicts. As such it is an inverse of the 
+<code>foaf:depiction</code> relationship. See <code>foaf:depiction</code> for further notes.
+</p>
+
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_based_near" about="http://xmlns.com/foaf/0.1/based_near" typeof="rdf:Property">
+            <h3>Property: foaf:based_near</h3> 
+            <em>based near</em> - A location that something is based near, for some broadly human notion of near. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"><a href="#term_Spatial Thing">Spatial Thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"<a href="#term_Spatial Thing">Spatial Thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <!-- note: is this mis-specified? perhaps range ought to also be SpatialThing, so we
+     can have multiple labels on the same point? -->
+
+<p>The <code>foaf:based_near</code> relationship relates two "spatial 
+things"
+(anything that can <em>be somewhere</em>), the latter typically
+described using the geo:lat / geo:long
+<a href="http://www.w3.org/2003/01/geo/wgs84_pos#">geo-positioning vocabulary</a>
+(See <a href="http://esw.w3.org/topic/GeoInfo">GeoInfo</a> in the W3C semweb
+wiki for details). This allows us to say describe the typical latitute and 
+longitude of, say, a Person (people are spatial things - they can be 
+places) without implying that a precise location has been given.
+</p>
+
+<p>We do not say much about what 'near' means in this context; it is a
+'rough and ready' concept. For a more precise treatment, see
+<a href="http://esw.w3.org/topic/GeoOnion">GeoOnion vocab</a> design
+discussions, which are aiming to produce a more sophisticated vocabulary for 
+such purposes.
+</p>
+
+<p> FOAF files often make use of the <code>contact:nearestAirport</code> property. This
+illustrates the distinction between FOAF documents (which may make claims using <em>any</em> RDF
+vocabulary) and the core FOAF vocabulary defined by this specification. For further reading on
+the use of <code>nearestAirport</code> see <a 
+href="http://rdfweb.org/topic/UsingContactNearestAirport">UsingContactNearestAirport</a> in the 
+FOAF wiki.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_name" about="http://xmlns.com/foaf/0.1/name" typeof="rdf:Property">
+            <h3>Property: foaf:name</h3> 
+            <em>name</em> - A name for some thing. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>The <code>foaf:name</code> of something is a simple textual string.</p>
+
+<p>
+XML language tagging may be used to indicate the language of the name. For example:
+</p>
+
+<div class="example">
+<code>
+&lt;foaf:name xml:lang="en"&gt;Dan Brickley&lt;/foaf:name&gt;
+</code>
+</div>
+
+<p>
+FOAF provides some other naming constructs.  While foaf:name does not explicitly represent name substructure (family vs given etc.) it 
+does provide a basic level of interoperability. See the <a 
+href="http://rdfweb.org/topic/IssueTracker">issue tracker</a> for status of work on this issue.
+</p>
+
+<p>
+The <code>foaf:name</code> property, like all RDF properties with a range of rdfs:Literal, may be used with XMLLiteral datatyped 
+values. This usage is, however, not yet widely adopted. Feedback on this aspect of the FOAF design is particularly welcomed.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_icqChatID" about="http://xmlns.com/foaf/0.1/icqChatID" typeof="rdf:Property">
+            <h3>Property: foaf:icqChatID</h3> 
+            <em>ICQ chat ID</em> - An ICQ chat ID <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:icqChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the ICQ Chat system. 
+See the <a href="http://web.icq.com/icqchat/">icq chat</a> site for more details of the 'icq' 
+service. Their "<a href="http://www.icq.com/products/whatisicq.html">What is ICQ?</a>" document 
+provides a basic overview, while their "<a href="http://company.icq.com/info/">About Us</a> page 
+notes that ICQ has been acquired by AOL. Despite the relationship with AOL, ICQ is at 
+the time of writing maintained as a separate identity from the AIM brand (see 
+<code>foaf:aimChatID</code>).
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_theme" about="http://xmlns.com/foaf/0.1/theme" typeof="rdf:Property">
+            <h3>Property: foaf:theme</h3> 
+            <em>theme</em> - A theme. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:theme</code> property is rarely used and under-specified. The intention was 
+to use it to characterise interest / themes associated with projects and groups. Further 
+work is needed to meet these goals. 
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_aimChatID" about="http://xmlns.com/foaf/0.1/aimChatID" typeof="rdf:Property">
+            <h3>Property: foaf:aimChatID</h3> 
+            <em>AIM chat ID</em> - An AIM chat ID <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:aimChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier ('screenname') assigned to them in the AOL Instant Messanger (AIM) system. 
+See AOL's <a href="http://www.aim.com/">AIM</a> site for more details of AIM and AIM 
+screennames. The <a href="http://www.apple.com/macosx/features/ichat/">iChat</a> tools from <a 
+href="http://www.apple.com/">Apple</a> also make use of AIM identifiers. 
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_nick" about="http://xmlns.com/foaf/0.1/nick" typeof="rdf:Property">
+            <h3>Property: foaf:nick</h3> 
+            <em>nickname</em> - A short informal nickname characterising an agent (includes login identifiers, IRC and other chat nicknames). <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:nick</code> property relates a <code>foaf:Person</code> to a short (often 
+abbreviated) nickname, such as those use in IRC chat, online accounts, and computer 
+logins.
+</p>
+
+<p>
+This property is necessarily vague, because it does not indicate any particular naming 
+control authority, and so cannot distinguish a person's login from their (possibly 
+various) IRC nicknames or other similar identifiers. However it has some utility, since 
+many people use the same string (or slight variants) across a variety of such 
+environments.
+</p>
+
+<p>
+For specific controlled sets of names (relating primarily to Instant Messanger accounts), 
+FOAF provides some convenience properties: <code>foaf:jabberID</code>, 
+<code>foaf:aimChatID</code>, <code>foaf:msnChatID</code> and 
+<code>foaf:icqChatID</code>. Beyond this, the problem of representing such accounts is not 
+peculiar to Instant Messanging, and it is not scaleable to attempt to enumerate each 
+naming database as a distinct FOAF property. The <code>foaf:OnlineAccount</code> term (and 
+supporting vocabulary) are provided as a more verbose and more expressive generalisation 
+of these properties.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_jabberID" about="http://xmlns.com/foaf/0.1/jabberID" typeof="rdf:Property">
+            <h3>Property: foaf:jabberID</h3> 
+            <em>jabber ID</em> - A jabber ID for something. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:jabberID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the <a href="http://www.jabber.org/">Jabber</a> messaging 
+system. 
+See the <a href="http://www.jabber.org/">Jabber</a> site for more information about the Jabber 
+protocols and tools.
+</p>
+
+<p>
+Jabber, unlike several other online messaging systems, is based on an open, publically 
+documented protocol specification, and has a variety of open source implementations. Jabber IDs 
+can be assigned to a variety of kinds of thing, including software 'bots', chat rooms etc. For 
+the purposes of FOAF, these are all considered to be kinds of <code>foaf:Agent</code> (ie. 
+things that <em>do</em> stuff). The uses of Jabber go beyond simple IM chat applications. The 
+<code>foaf:jabberID</code> property is provided as a basic hook to help support RDF description 
+of Jabber users and services.
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_mbox" about="http://xmlns.com/foaf/0.1/mbox" typeof="rdf:Property">
+            <h3>Property: foaf:mbox</h3> 
+            <em>personal mailbox</em> - A  personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:mbox</code> property is a relationship between the owner of a mailbox and 
+a mailbox. These are typically identified using the mailto: URI scheme (see <a 
+href="http://ftp.ics.uci.edu/pub/ietf/uri/rfc2368.txt">RFC 2368</a>).
+</p>
+
+<p>
+Note that there are many mailboxes (eg. shared ones) which are not the 
+<code>foaf:mbox</code> of anyone. Furthermore, a person can have multiple 
+<code>foaf:mbox</code> properties. 
+</p>
+
+<p>
+In FOAF, we often see <code>foaf:mbox</code> used as an indirect way of identifying its 
+owner. This works even if the mailbox is itself out of service (eg. 10 years old), since 
+the property is defined in terms of its primary owner, and doesn't require the mailbox to 
+actually be being used for anything.
+</p>
+
+<p>
+Many people are wary of sharing information about their mailbox addresses in public. To 
+address such concerns whilst continuing the FOAF convention of indirectly identifying 
+people by referring to widely known properties, FOAF also provides the 
+<code>foaf:mbox_sha1sum</code> mechanism, which is a relationship between a person and 
+the value you get from passing a mailbox URI to the SHA1 mathematical function.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_holdsAccount" about="http://xmlns.com/foaf/0.1/holdsAccount" typeof="rdf:Property">
             <h3>Property: foaf:holdsAccount</h3> 
             <em>holds account</em> - Indicates an account held by this agent. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Online Account">Online Account</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/OnlineAccount"<a href="#term_Online Account">Online Account</a></span>
 </td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:holdsAccount</code> property relates a <code>foaf:Agent</code> to an 
@@ -2344,99 +1946,19 @@ The <code>foaf:holdsAccount</code> property relates a <code>foaf:Agent</code> to
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_fundedBy">
-            <h3>Property: foaf:fundedBy</h3> 
-            <em>funded by</em> - An organization funding a project or person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:fundedBy</code> property relates something to something else that has provided 
-funding for it.
-</p>
-
-<p class="editorial">
-This property is under-specified, experimental, and should be considered liable to change.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_accountServiceHomepage">
-            <h3>Property: foaf:accountServiceHomepage</h3> 
-            <em>account service homepage</em> - Indicates a homepage of the service provide for this online account. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Online Account">Online Account</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:accountServiceHomepage</code> property indicates a relationship between a 
-<code>foaf:OnlineAccount</code> and the homepage of the supporting service provider.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_tipjar">
-            <h3>Property: foaf:tipjar</h3> 
-            <em>tipjar</em> - A tipjar document for this agent, describing means for payment and reward. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:tipjar</code> property relates an <code>foaf:Agent</code>
-to a <code>foaf:Document</code> that describes some mechanisms for
-paying or otherwise rewarding that agent.
-</p>
-
-<p>
-The <code>foaf:tipjar</code> property was created following <a
-href="http://rdfweb.org/mt/foaflog/archives/2004/02/12/20.07.32/">discussions</a> 
-about simple, lightweight mechanisms that could be used to encourage 
-rewards and payment for content exchanged online. An agent's
-<code>foaf:tipjar</code> page(s) could describe informal ("Send me a
-postcard!", "here's my book, music and movie wishlist") or formal
-(machine-readable micropayment information) information about how that
-agent can be paid or rewarded. The reward is not associated with any
-particular action or content from the agent concerned. A link to 
-a service such as <a href="http://www.paypal.com/">PayPal</a> is the
-sort of thing we might expect to find in a tipjar document.
-</p>
-
-<p>
-Note that the value of a <code>foaf:tipjar</code> property is just a
-document (which can include anchors into HTML pages). We expect, but 
-do not currently specify, that this will evolve into a hook
-for finding more machine-readable information to support payments,
-rewards. The <code>foaf:OnlineAccount</code> machinery is also relevant,
-although the information requirements for automating payments are not 
-currently clear.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_depiction">
+            </div> <div class="specterm" id="term_depiction" about="http://xmlns.com/foaf/0.1/depiction" typeof="rdf:Property">
             <h3>Property: foaf:depiction</h3> 
             <em>depiction</em> - A depiction of some thing. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Image">Image</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Image"<a href="#term_Image">Image</a></span>
 </td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:depiction</code> property is a relationship between a thing and an 
@@ -2474,41 +1996,122 @@ particularly representative.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_sha1">
-            <h3>Property: foaf:sha1</h3> 
-            <em>sha1sum (hex)</em> - A sha1sum hash, in hex. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_phone" about="http://xmlns.com/foaf/0.1/phone" typeof="rdf:Property">
+            <h3>Property: foaf:phone</h3> 
+            <em>phone</em> - A phone,  specified using fully qualified tel: URI scheme (refs: http://www.w3.org/Addressing/schemes.html#tel). <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Document">Document</a>
-</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
-The <code>foaf:sha1</code> property relates a <code>foaf:Document</code> to the textual form of 
-a SHA1 hash of (some representation of) its contents.
-</p>
-
-<p class="editorial">
-The design for this property is neither complete nor coherent. The <code>foaf:Document</code> 
-class is currently used in a way that allows multiple instances at different URIs to have the 
-'same' contents (and hence hash). If <code>foaf:sha1</code> is an owl:InverseFunctionalProperty, 
-we could deduce that several such documents were the self-same thing. A more careful design is 
-needed, which distinguishes documents in a broad sense from byte sequences.
+The <code>foaf:phone</code> of something is a phone, typically identified using the tel: URI 
+scheme.
 </p>
 
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_birthday">
+            </div> <div class="specterm" id="term_dnaChecksum" about="http://xmlns.com/foaf/0.1/dnaChecksum" typeof="rdf:Property">
+            <h3>Property: foaf:dnaChecksum</h3> 
+            <em>DNA checksum</em> - A checksum for the DNA of some thing. Joke. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:dnaChecksum</code> property is mostly a joke, but 
+also a reminder that there will be lots of different identifying 
+properties for people, some of which we might find disturbing. 
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_isPrimaryTopicOf" about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf" typeof="rdf:Property">
+            <h3>Property: foaf:isPrimaryTopicOf</h3> 
+            <em>is primary topic of</em> - A document that this thing is the primary topic of. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:isPrimaryTopicOf</code> property relates something to a document that is 
+mainly about it.
+</p>
+
+
+<p>
+The <code>foaf:isPrimaryTopicOf</code> property is <em>inverse functional</em>: for
+any document that is the value of this property, there is at most one thing in the world
+that is the primary topic of that document. This is useful, as it allows for data 
+merging, as described in the documentation for its inverse, <code>foaf:primaryTopic</code>.
+</p>
+
+<p>
+<code>foaf:page</code> is a super-property of <code>foaf:isPrimaryTopicOf</code>. The change 
+of terminology between the two property names reflects the utility of 'primaryTopic' and its 
+inverse when identifying things. Anything that has an <code>isPrimaryTopicOf</code> relation 
+to some document X, also has a <code>foaf:page</code> relationship to it.
+</p>
+<p>
+Note that <code>foaf:homepage</code>, is a sub-property of both <code>foaf:page</code> and 
+<code>foaf:isPrimarySubjectOf</code>. The awkwardly named 
+<code>foaf:isPrimarySubjectOf</code> is less specific, and can be used with any document 
+that is primarily about the thing of interest (ie. not just on homepages).
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_topic" about="http://xmlns.com/foaf/0.1/topic" typeof="rdf:Property">
+            <h3>Property: foaf:topic</h3> 
+            <em>topic</em> - A topic of some page or document. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:topic</code> property relates a document to a thing that the document is 
+about.
+</p>
+
+<p>
+As such it is an inverse of the <code>foaf:page</code> property, which relates a thing to 
+a document about that thing.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_birthday" about="http://xmlns.com/foaf/0.1/birthday" typeof="rdf:Property">
             <h3>Property: foaf:birthday</h3> 
             <em>birthday</em> - The birthday of this Agent, represented in mm-dd string form, eg. '12-31'. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:birthday</code> property is a relationship between a <code>foaf:Agent</code> 
@@ -2521,254 +2124,51 @@ be used to describe such things in more flexible ways.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_logo">
-            <h3>Property: foaf:logo</h3> 
-            <em>logo</em> - A logo representing some thing. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_plan" about="http://xmlns.com/foaf/0.1/plan" typeof="rdf:Property">
+            <h3>Property: foaf:plan</h3> 
+            <em>plan</em> - A .plan comment, in the tradition of finger and '.plan' files. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            <p>
-The <code>foaf:logo</code> property is used to indicate a graphical logo of some kind. 
-<em>It is probably underspecified...</em>
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_publications">
-            <h3>Property: foaf:publications</h3> 
-            <em>publications</em> - A link to the publications of this person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:publications</code> property indicates a <code>foaf:Document</code>
-listing (primarily in human-readable form) some publications associated with the  
-<code>foaf:Person</code>. Such documents are typically published alongside one's 
-<code>foaf:homepage</code>.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_givenname">
-            <h3>Property: foaf:givenname</h3> 
-            <em>Given name</em> - The given name of some person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            
-            
-            </table>
-            
-
-<p>A number of naming constructs are under development to provide
-naming substructure; draft properties include <code>foaf:firstName</code>,
-<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
-stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
-tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
-naming machinery.
-</p>
-
-<p>
-There is also a simple <code>foaf:name</code> property.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_accountName">
-            <h3>Property: foaf:accountName</h3> 
-            <em>account name</em> - Indicates the name (identifier) associated with this online account. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>unstable</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Online Account">Online Account</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
-            <p>
-The <code>foaf:accountName</code> property of a <code>foaf:OnlineAccount</code> is a 
-textual representation of the account name (unique ID) associated with that account.
-</p>
+            <!-- orig contrib'd by Cardinal -->
 
+<p>The <code>foaf:plan</code> property provides a space for a
+<code>foaf:Person</code> to hold some arbitrary content that would appear in
+a traditional '.plan' file.  The plan file was stored in a user's home
+directory on a UNIX machine, and displayed to people when the user was
+queried with the finger utility.</p>
 
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_topic_interest">
-            <h3>Property: foaf:topic_interest</h3> 
-            <em>interest_topic</em> - A thing of interest to this person. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            
-            </table>
-            <p class="editorial">
-The <code>foaf:topic_interest</code> property is generally found to be confusing and ill-defined 
-and is a candidate for removal. The goal was to be link a person to some thing that is a topic 
-of their interests (rather than, per <code>foaf:interest</code> to a page that is about such a 
-topic). 
+<p>A plan file could contain anything.  Typical uses included brief
+comments, thoughts, or remarks on what a person had been doing lately.  Plan
+files were also prone to being witty or simply osbscure.  Others may be more
+creative, writing any number of seemingly random compositions in their plan
+file for people to stumble upon.</p>
+
+<p>
+See <a href="http://www.rajivshah.com/Case_Studies/Finger/Finger.htm">History of the 
+Finger Protocol</a> by Rajiv Shah for more on this piece of Internet history. The 
+<code>foaf:geekcode</code> property may also be of interest.
 </p>
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_workplaceHomepage">
-            <h3>Property: foaf:workplaceHomepage</h3> 
-            <em>workplace homepage</em> - A workplace homepage of some person; the homepage of an organization they work for. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
-</td></tr>
-            <tr><th>Range:</th>
- <td> <a href="#term_Document">Document</a>
-</td>	</tr>
-            </table>
-            <p>
-The <code>foaf:workplaceHomepage</code> of a <code>foaf:Person</code> is a 
-<code>foaf:Document</code> that is the <code>foaf:homepage</code> of a 
-<code>foaf:Organization</code> that they work for.
-</p>
-
-<p>
-By directly relating people to the homepages of their workplace, we have a simple convention 
-that takes advantage of a set of widely known identifiers, while taking care not to confuse the 
-things those identifiers identify (ie. organizational homepages) with the actual organizations 
-those homepages describe.
-</p>
-
-<div class="example">
-<p>
-For example, Dan Brickley works at W3C. Dan is a <code>foaf:Person</code> with a 
-<code>foaf:homepage</code> of http://rdfweb.org/people/danbri/; W3C is a 
-<code>foaf:Organization</code> with a <code>foaf:homepage</code> of http://www.w3.org/. This 
-allows us to say that Dan has a <code>foaf:workplaceHomepage</code> of http://www.w3.org/.
-</p>
-
-<pre>
-&lt;foaf:Person&gt;
- &lt;foaf:name>Dan Brickley&lt;/foaf:name&gt;
- &lt;foaf:workplaceHomepage rdf:resource="http://www.w3.org/"/&gt;
-&lt;/foaf:Person&gt;
-</pre>
-</div>
-
-
-<p>
-Note that several other FOAF properties work this way; 
-<code>foaf:schoolHomepage</code> is the most similar. In general, FOAF often indirectly 
-identifies things via Web page identifiers where possible, since these identifiers are widely 
-used and known. FOAF does not currently have a term for the name of the relation (eg. 
-"workplace") that holds 
-between a <code>foaf:Person</code> and an <code>foaf:Organization</code> that they work for.
-</p>
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_depicts">
-            <h3>Property: foaf:depicts</h3> 
-            <em>depicts</em> - A thing depicted in this representation. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Image">Image</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:depicts</code> property is a relationship between a <code>foaf:Image</code> 
-and something that the image depicts. As such it is an inverse of the 
-<code>foaf:depiction</code> relationship. See <code>foaf:depiction</code> for further notes.
-</p>
-
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_primaryTopic">
-            <h3>Property: foaf:primaryTopic</h3> 
-            <em>primary topic</em> - The primary topic of some page or document. <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Document">Document</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:primaryTopic</code> property relates a document to the
-main thing that the document is about.
-</p>
-
-<p>
-The <code>foaf:primaryTopic</code> property is <em>functional</em>: for
-any document it applies to, it can have at most one value. This is
-useful, as it allows for data merging. In many cases it may be difficult
-for third parties to determine the primary topic of a document, but in
-a useful number of cases (eg. descriptions of movies, restaurants,
-politicians, ...) it should be reasonably obvious. Documents are very
-often the most authoritative source of information about their own
-primary topics, although this cannot be guaranteed since documents cannot be
-assumed to be accurate, honest etc.
-</p>
-
-<p>
-It is an inverse of the <code>foaf:isPrimaryTopicOf</code> property, which relates a 
-thing to  a document <em>primarily</em> about that thing. The choice between these two 
-properties is purely pragmatic. When describing documents, we 
-use <code>foaf:primaryTopic</code> former to point to the things they're about. When 
-describing things (people etc.), it is useful to be able to directly cite documents which 
-have those things as their main topic - so we use <code>foaf:isPrimaryTopicOf</code>. In this 
-way, Web sites such as <a href="http://www.wikipedia.org/">Wikipedia</a> or <a 
-href="http://www.nndb.com/">NNDB</a> can provide indirect identification for the things they 
-have descriptions of.
-</p>
-
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_yahooChatID">
-            <h3>Property: foaf:yahooChatID</h3> 
-            <em>Yahoo chat ID</em> - A Yahoo chat ID <br /><table style="th { float: top; }">
-	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
-            <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
-</td></tr>
-            
-            </table>
-            <p>
-The <code>foaf:yahooChatID</code> property relates a <code>foaf:Agent</code> to a textual 
-identifier assigned to them in the Yahoo online Chat system. 
-See Yahoo's the <a href="http://chat.yahoo.com/">Yahoo! Chat</a> site for more details of their 
-service. Yahoo chat IDs are also used across several other Yahoo services, including email and 
-<a href="http://www.yahoogroups.com/">Yahoo! Groups</a>.
-</p>
-
-<p>
-See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
-more general (and verbose) mechanism for describing IM and chat accounts.
-</p>
-
-
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
-            <br/>
-            </div> <div class="specterm" id="term_geekcode">
+            </div> <div class="specterm" id="term_geekcode" about="http://xmlns.com/foaf/0.1/geekcode" typeof="rdf:Property">
             <h3>Property: foaf:geekcode</h3> 
             <em>geekcode</em> - A textual geekcode for this person, see http://www.geekcode.com/geek.html <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:geekcode</code> property is used to represent a 'Geek Code' for some 
@@ -2828,15 +2228,87 @@ There is also a <a href="http://www.ebb.org/ungeek/">Geek Code Decoder Page</a> 
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_family_name">
-            <h3>Property: foaf:family_name</h3> 
-            <em>family_name</em> - The family_name of some person. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_title" about="http://xmlns.com/foaf/0.1/title" typeof="rdf:Property">
+            <h3>Property: foaf:title</h3> 
+            <em>title</em> - Title (Mr, Mrs, Ms, Dr. etc) <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The approriate values for <code>foaf:title</code> are not formally constrained, and will 
+vary across community and context. Values such as 'Mr', 'Mrs', 'Ms', 'Dr' etc. are 
+expected.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_topic_interest" about="http://xmlns.com/foaf/0.1/topic_interest" typeof="rdf:Property">
+            <h3>Property: foaf:topic_interest</h3> 
+            <em>interest_topic</em> - A thing of interest to this person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p class="editorial">
+The <code>foaf:topic_interest</code> property is generally found to be confusing and ill-defined 
+and is a candidate for removal. The goal was to be link a person to some thing that is a topic 
+of their interests (rather than, per <code>foaf:interest</code> to a page that is about such a 
+topic). 
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_sha1" about="http://xmlns.com/foaf/0.1/sha1" typeof="rdf:Property">
+            <h3>Property: foaf:sha1</h3> 
+            <em>sha1sum (hex)</em> - A sha1sum hash, in hex. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:sha1</code> property relates a <code>foaf:Document</code> to the textual form of 
+a SHA1 hash of (some representation of) its contents.
+</p>
+
+<p class="editorial">
+The design for this property is neither complete nor coherent. The <code>foaf:Document</code> 
+class is currently used in a way that allows multiple instances at different URIs to have the 
+'same' contents (and hence hash). If <code>foaf:sha1</code> is an owl:InverseFunctionalProperty, 
+we could deduce that several such documents were the self-same thing. A more careful design is 
+needed, which distinguishes documents in a broad sense from byte sequences.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_surname" about="http://xmlns.com/foaf/0.1/surname" typeof="rdf:Property">
+            <h3>Property: foaf:surname</h3> 
+            <em>Surname</em> - The surname of some person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             
 
@@ -2854,45 +2326,44 @@ There is also a simple <code>foaf:name</code> property.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_icqChatID">
-            <h3>Property: foaf:icqChatID</h3> 
-            <em>ICQ chat ID</em> - An ICQ chat ID <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_member" about="http://xmlns.com/foaf/0.1/member" typeof="rdf:Property">
+            <h3>Property: foaf:member</h3> 
+            <em>member</em> - Indicates a member of a Group <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Agent">Agent</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Group"><a href="#term_Group">Group</a></span>
 </td></tr>
-            
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Agent"<a href="#term_Agent">Agent</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
-The <code>foaf:icqChatID</code> property relates a <code>foaf:Agent</code> to a textual 
-identifier assigned to them in the ICQ Chat system. 
-See the <a href="http://web.icq.com/icqchat/">icq chat</a> site for more details of the 'icq' 
-service. Their "<a href="http://www.icq.com/products/whatisicq.html">What is ICQ?</a>" document 
-provides a basic overview, while their "<a href="http://company.icq.com/info/">About Us</a> page 
-notes that ICQ has been acquired by AOL. Despite the relationship with AOL, ICQ is at 
-the time of writing maintained as a separate identity from the AIM brand (see 
-<code>foaf:aimChatID</code>).
+The <code>foaf:member</code> property relates a <code>foaf:Group</code> to a 
+<code>foaf:Agent</code> that is a member of that group.
 </p>
 
 <p>
-See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
-more general (and verbose) mechanism for describing IM and chat accounts.
+See <code>foaf:Group</code> for details and examples.
 </p>
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_img">
+            </div> <div class="specterm" id="term_img" about="http://xmlns.com/foaf/0.1/img" typeof="rdf:Property">
             <h3>Property: foaf:img</h3> 
             <em>image</em> - An image that can be used to represent some thing (ie. those depictions which are particularly representative of something, eg. one's photo on a homepage). <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <a href="#term_Image">Image</a>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Image"<a href="#term_Image">Image</a></span>
 </td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <p>
 The <code>foaf:img</code> property relates a <code>foaf:Person</code> to a 
@@ -2927,43 +2398,386 @@ it is named by analogy to the HTML IMG element.
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_pastProject">
-            <h3>Property: foaf:pastProject</h3> 
-            <em>past project</em> - A project this person has previously worked on. <br /><table style="th { float: top; }">
+            </div> <div class="specterm" id="term_maker" about="http://xmlns.com/foaf/0.1/maker" typeof="rdf:Property">
+            <h3>Property: foaf:maker</h3> 
+            <em>maker</em> - An agent that  made this thing. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
 </td></tr>
-            
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Agent"<a href="#term_Agent">Agent</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
-            <p>After a <code>foaf:Person</code> is no longer involved with a
-<code>foaf:currentProject</code>, or has been inactive for some time, a
-<code>foaf:pastProject</code> relationship can be used. This indicates that
-the <code>foaf:Person</code> was involved with the described project at one
-point. 
+            <p>
+The <code>foaf:maker</code> property relates something to a  
+<code>foaf:Agent</code> that <code>foaf:made</code> it. As such it is an 
+inverse of the <code>foaf:made</code> property.
 </p>
 
 <p>
-If the <code>foaf:Person</code> has stopped working on a project because it 
-has been completed (successfully or otherwise), <code>foaf:pastProject</code> is 
-applicable. In general, <code>foaf:currentProject</code> is used to indicate 
-someone's current efforts (and implied interests, concerns etc.), while 
-<code>foaf:pastProject</code> describes what they've previously been doing.
+The <code>foaf:name</code> (or other <code>rdfs:label</code>) of the 
+<code>foaf:maker</code> of something can be described as the 
+<code>dc:creator</code> of that thing.</p>
+
+<p>
+For example, if the thing named by the URI 
+http://rdfweb.org/people/danbri/ has a 
+<code>foaf:maker</code> that is a <code>foaf:Person</code> whose 
+<code>foaf:name</code> is 'Dan Brickley', we can conclude that 
+http://rdfweb.org/people/danbri/ has a <code>dc:creator</code> of 'Dan 
+Brickley'. 
+</p>
+
+<p>
+FOAF descriptions are encouraged to use <code>dc:creator</code> only for 
+simple textual names, and to use <code>foaf:maker</code> to indicate 
+creators, rather than risk confusing creators with their names. This 
+follows most Dublin Core usage. See <a 
+href="http://rdfweb.org/topic/UsingDublinCoreCreator">UsingDublinCoreCreator</a> 
+for details.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_firstName" about="http://xmlns.com/foaf/0.1/firstName" typeof="rdf:Property">
+            <h3>Property: foaf:firstName</h3> 
+            <em>firstName</em> - The first name of a person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            
+
+<p>A number of naming constructs are under development to provide
+naming substructure; draft properties include <code>foaf:firstName</code>,
+<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
+stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
+tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
+naming machinery.
+</p>
+
+<p>
+There is also a simple <code>foaf:name</code> property.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_logo" about="http://xmlns.com/foaf/0.1/logo" typeof="rdf:Property">
+            <h3>Property: foaf:logo</h3> 
+            <em>logo</em> - A logo representing some thing. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:logo</code> property is used to indicate a graphical logo of some kind. 
+<em>It is probably underspecified...</em>
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_workplaceHomepage" about="http://xmlns.com/foaf/0.1/workplaceHomepage" typeof="rdf:Property">
+            <h3>Property: foaf:workplaceHomepage</h3> 
+            <em>workplace homepage</em> - A workplace homepage of some person; the homepage of an organization they work for. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:workplaceHomepage</code> of a <code>foaf:Person</code> is a 
+<code>foaf:Document</code> that is the <code>foaf:homepage</code> of a 
+<code>foaf:Organization</code> that they work for.
+</p>
+
+<p>
+By directly relating people to the homepages of their workplace, we have a simple convention 
+that takes advantage of a set of widely known identifiers, while taking care not to confuse the 
+things those identifiers identify (ie. organizational homepages) with the actual organizations 
+those homepages describe.
+</p>
+
+<div class="example">
+<p>
+For example, Dan Brickley works at W3C. Dan is a <code>foaf:Person</code> with a 
+<code>foaf:homepage</code> of http://rdfweb.org/people/danbri/; W3C is a 
+<code>foaf:Organization</code> with a <code>foaf:homepage</code> of http://www.w3.org/. This 
+allows us to say that Dan has a <code>foaf:workplaceHomepage</code> of http://www.w3.org/.
+</p>
+
+<pre>
+&lt;foaf:Person&gt;
+ &lt;foaf:name>Dan Brickley&lt;/foaf:name&gt;
+ &lt;foaf:workplaceHomepage rdf:resource="http://www.w3.org/"/&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</div>
+
+
+<p>
+Note that several other FOAF properties work this way; 
+<code>foaf:schoolHomepage</code> is the most similar. In general, FOAF often indirectly 
+identifies things via Web page identifiers where possible, since these identifiers are widely 
+used and known. FOAF does not currently have a term for the name of the relation (eg. 
+"workplace") that holds 
+between a <code>foaf:Person</code> and an <code>foaf:Organization</code> that they work for.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_family_name" about="http://xmlns.com/foaf/0.1/family_name" typeof="rdf:Property">
+            <h3>Property: foaf:family_name</h3> 
+            <em>family_name</em> - The family_name of some person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            
+
+<p>A number of naming constructs are under development to provide
+naming substructure; draft properties include <code>foaf:firstName</code>,
+<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
+stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
+tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
+naming machinery.
+</p>
+
+<p>
+There is also a simple <code>foaf:name</code> property.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_fundedBy" about="http://xmlns.com/foaf/0.1/fundedBy" typeof="rdf:Property">
+            <h3>Property: foaf:fundedBy</h3> 
+            <em>funded by</em> - An organization funding a project or person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:fundedBy</code> property relates something to something else that has provided 
+funding for it.
+</p>
+
+<p class="editorial">
+This property is under-specified, experimental, and should be considered liable to change.
 </p>
 
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
-            </div> <div class="specterm" id="term_myersBriggs">
+            </div> <div class="specterm" id="term_currentProject" about="http://xmlns.com/foaf/0.1/currentProject" typeof="rdf:Property">
+            <h3>Property: foaf:currentProject</h3> 
+            <em>current project</em> - A current project this person works on. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <!-- originally contrib'd by Cardinal -->
+
+<p>A <code>foaf:currentProject</code> relates a <code>foaf:Person</code>
+to a <code>foaf:Document</code> indicating some collaborative or
+individual undertaking.  This relationship
+indicates that the <code>foaf:Person</code> has some active role in the
+project, such as development, coordination, or support.</p>
+
+<p>When a <code>foaf:Person</code> is no longer involved with a project, or
+perhaps is inactive for some time, the relationship becomes a
+<code>foaf:pastProject</code>.</p>
+
+<p>
+If the <code>foaf:Person</code> has stopped working on a project because it
+has been completed (successfully or otherwise), <code>foaf:pastProject</code> is
+applicable. In general, <code>foaf:currentProject</code> is used to indicate
+someone's current efforts (and implied interests, concerns etc.), while
+<code>foaf:pastProject</code> describes what they've previously been doing.
+</p>
+
+<!-- 
+<p>Generally speaking, anything that a <code>foaf:Person</code> has
+<code>foaf:made</code> could also qualify as a
+<code>foaf:currentProject</code> or <code>foaf:pastProject</code>.</p>
+-->
+
+<p class="editorial">
+Note that this property requires further work. There has been confusion about 
+whether it points to a thing (eg. something you've made; a homepage for a project, 
+ie. a <code>foaf:Document</code> or to instances of the class <code>foaf:Project</code>, 
+which might themselves have a <code>foaf:homepage</code>. In practice, it seems to have been 
+used in a similar way to <code>foaf:interest</code>, referencing homepages of ongoing projects.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_page" about="http://xmlns.com/foaf/0.1/page" typeof="rdf:Property">
+            <h3>Property: foaf:page</h3> 
+            <em>page</em> - A page or document about this thing. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:page</code> property relates a thing to a document about that thing.
+</p>
+
+<p>
+As such it is an inverse of the <code>foaf:topic</code> property, which relates a document 
+to a thing that the document is about.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_membershipClass" about="http://xmlns.com/foaf/0.1/membershipClass" typeof="rdf:Property">
+            <h3>Property: foaf:membershipClass</h3> 
+            <em>membershipClass</em> - Indicates the class of individuals that are a member of a Group <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:membershipClass</code> property relates a <code>foaf:Group</code> to an RDF 
+class representing a sub-class of <code>foaf:Agent</code> whose instances are all the 
+agents that are a <code>foaf:member</code> of the <code>foaf:Group</code>.
+</p>
+
+<p>
+See <code>foaf:Group</code> for details and examples.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_homepage" about="http://xmlns.com/foaf/0.1/homepage" typeof="rdf:Property">
+            <h3>Property: foaf:homepage</h3> 
+            <em>homepage</em> - A homepage for some thing. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://www.w3.org/2002/07/owl#Thing"><a href="#term_A thing">A thing</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:homepage</code> property relates something to a homepage about it.
+</p>
+
+<p>
+Many kinds of things have homepages. FOAF allows a thing to have multiple homepages, but 
+constrains <code>foaf:homepage</code> so that there can be only one thing that has any 
+particular homepage.
+</p>
+
+<p>
+A 'homepage' in this sense is a public Web document, typically but not necessarily 
+available in HTML format. The page has as a <code>foaf:topic</code> the thing whose 
+homepage it is. The homepage is usually controlled, edited or published by the thing whose 
+homepage it is; as such one might look to a homepage for information on its owner from its 
+owner. This works for people, companies, organisations etc. 
+</p>
+
+<p>
+The <code>foaf:homepage</code> property is a sub-property of the more general 
+<code>foaf:page</code> property for relating a thing to a page about that thing. See also 
+<code>foaf:topic</code>, the inverse of the <code>foaf:page</code> property. 
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_yahooChatID" about="http://xmlns.com/foaf/0.1/yahooChatID" typeof="rdf:Property">
+            <h3>Property: foaf:yahooChatID</h3> 
+            <em>Yahoo chat ID</em> - A Yahoo chat ID <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:yahooChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the Yahoo online Chat system. 
+See Yahoo's the <a href="http://chat.yahoo.com/">Yahoo! Chat</a> site for more details of their 
+service. Yahoo chat IDs are also used across several other Yahoo services, including email and 
+<a href="http://www.yahoogroups.com/">Yahoo! Groups</a>.
+</p>
+
+<p>
+See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a
+more general (and verbose) mechanism for describing IM and chat accounts.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_myersBriggs" about="http://xmlns.com/foaf/0.1/myersBriggs" typeof="rdf:Property">
             <h3>Property: foaf:myersBriggs</h3> 
             <em>myersBriggs</em> - A Myers Briggs (MBTI) personality classification. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>testing</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
             <tr><th>Domain:</th>
- <td> <a href="#term_Person">Person</a>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
 </td></tr>
             
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
             </table>
             <!-- todo: expand acronym -->
 
@@ -3021,6 +2835,387 @@ Note: Myers Briggs Type Indicator and MBTI are registered trademarks of Consulti
 Psychologists Press Inc. Oxford Psycholgists Press Ltd has exclusive rights to the 
 trademark in the UK. 
 </p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_schoolHomepage" about="http://xmlns.com/foaf/0.1/schoolHomepage" typeof="rdf:Property">
+            <h3>Property: foaf:schoolHomepage</h3> 
+            <em>schoolHomepage</em> - A homepage of a school attended by the person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>schoolHomepage</code> property relates a <code>foaf:Person</code> to a 
+<code>foaf:Document</code> that is the <code>foaf:homepage</code> of a School that the 
+person attended.
+</p>
+
+<p>
+FOAF does not (currently) define a class for 'School' (if it did, it would probably be as 
+a sub-class of <code>foaf:Organization</code>). The original application area for 
+<code>foaf:schoolHomepage</code> was for 'schools' in the British-English sense; however 
+American-English usage has dominated, and it is now perfectly reasonable to describe 
+Universities, Colleges and post-graduate study using <code>foaf:schoolHomepage</code>.
+</p>
+
+<p>
+This very basic facility provides a basis for a low-cost, decentralised approach to 
+classmate-reunion and suchlike. Instead of requiring a central database, we can use FOAF 
+to express claims such as 'I studied <em>here</em>' simply by mentioning a 
+school's homepage within FOAF files. Given the homepage of a school, it is easy for 
+FOAF aggregators to lookup this property in search of people who attended that school.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_thumbnail" about="http://xmlns.com/foaf/0.1/thumbnail" typeof="rdf:Property">
+            <h3>Property: foaf:thumbnail</h3> 
+            <em>thumbnail</em> - A derived thumbnail image. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Image"><a href="#term_Image">Image</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Image"<a href="#term_Image">Image</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <!-- originally contrib'd by Cardinal; rejiggged a bit by danbri -->
+
+<p>
+The <code>foaf:thumbnail</code> property is a relationship between a 
+full-size <code>foaf:Image</code> and a smaller, representative <code>foaf:Image</code> 
+that has been derrived from it. 
+</p>
+
+<p>
+It is typical in FOAF to express <code>foaf:img</code> and <code>foaf:depiction</code> 
+relationships in terms of the larger, 'main' (in some sense) image, rather than its thumbnail(s). 
+A <code>foaf:thumbnail</code> might be clipped or otherwise reduced such that it does not 
+depict everything that the full image depicts. Therefore FOAF does not specify that a 
+thumbnail <code>foaf:depicts</code> everything that the image it is derrived from depicts.
+However, FOAF does expect that anything depicted in the thumbnail will also be depicted in 
+the source image.
+</p>
+
+<!-- todo: add RDF rules here showing this -->
+
+<p>
+A <code>foaf:thumbnail</code> is typically small enough that it can be
+loaded and viewed quickly before a viewer decides to download the larger
+version. They are often used in online photo gallery applications.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_mbox_sha1sum" about="http://xmlns.com/foaf/0.1/mbox_sha1sum" typeof="rdf:Property">
+            <h3>Property: foaf:mbox_sha1sum</h3> 
+            <em>sha1sum of a personal mailbox URI name</em> - The sha1sum of the URI of an Internet mailbox associated with exactly one owner, the  first owner of the mailbox. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+A <code>foaf:mbox_sha1sum</code> of a <code>foaf:Person</code> is a textual representation of 
+the result of applying the SHA1 mathematical functional to a 'mailto:' identifier (URI) for an 
+Internet mailbox that they stand in a <code>foaf:mbox</code> relationship to.
+</p>
+
+<p>
+In other words, if you have a mailbox (<code>foaf:mbox</code>) but don't want to reveal its 
+address, you can take that address and generate a <code>foaf:mbox_sha1sum</code> representation 
+of it. Just as a <code>foaf:mbox</code> can be used as an indirect identifier for its owner, we 
+can do the same with <code>foaf:mbox_sha1sum</code> since there is only one 
+<code>foaf:Person</code> with any particular value for that property.
+</p>
+
+<p>
+Many FOAF tools use <code>foaf:mbox_sha1sum</code> in preference to exposing mailbox 
+information. This is usually for privacy and SPAM-avoidance reasons. Other relevant techniques 
+include the use of PGP encryption (see <a href="http://usefulinc.com/foaf/">Edd Dumbill's 
+documentation</a>) and the use of <a 
+href="http://www.w3.org/2001/12/rubyrdf/util/foafwhite/intro.html">FOAF-based whitelists</a> for 
+mail filtering.
+</p>
+
+<p>
+Code examples for SHA1 in C#, Java, PHP, Perl and Python can be found <a 
+href="http://www.intertwingly.net/blog/1545.html">in Sam Ruby's 
+weblog entry</a>. Remember to include the 'mailto:' prefix, but no trailing 
+whitespace, when computing a <code>foaf:mbox_sha1sum</code> property.
+</p>
+<!-- what about Javascript. move refs to wiki maybe. -->
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_made" about="http://xmlns.com/foaf/0.1/made" typeof="rdf:Property">
+            <h3>Property: foaf:made</h3> 
+            <em>made</em> - Something that was made by this agent. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#stable">stable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:made</code> property relates a <code>foaf:Agent</code> 
+to something <code>foaf:made</code> by it. As such it is an 
+inverse of the <code>foaf:maker</code> property, which relates a thing to 
+something that made it. See <code>foaf:made</code> for more details on the 
+relationship between these FOAF terms and related Dublin Core vocabulary.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_interest" about="http://xmlns.com/foaf/0.1/interest" typeof="rdf:Property">
+            <h3>Property: foaf:interest</h3> 
+            <em>interest</em> - A page about a topic of interest to this person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:interest</code> property represents an interest of a 
+<code>foaf:Agent</code>, through 
+indicating a <code>foaf:Document</code> whose <code>foaf:topic</code>(s) broadly 
+characterises that interest.</p>
+
+<p class="example">
+For example, we might claim that a person or group has an interest in RDF by saying they
+stand in a <code>foaf:interest</code> relationship to the <a 
+href="http://www.w3.org/RDF/">RDF</a> home page. Loosly, such RDF would be saying 
+<em>"this agent is interested in the topic of this page"</em>.
+</p>
+
+<p class="example">
+Uses of <code>foaf:interest</code> include a variety of filtering and resource discovery 
+applications. It could be used, for example, to help find answers to questions such as 
+"Find me members of this organisation with an interest in XML who have also contributed to 
+<a href="http://www.cpan.org/">CPAN</a>)". 
+</p>
+
+<p>
+This approach to characterising interests is intended to compliment other mechanisms (such 
+as the use of controlled vocabulary). It allows us to use a widely known set of unique 
+identifiers (Web page URIs) with minimal pre-coordination. Since URIs have a controlled 
+syntax, this makes data merging much easier than the use of free-text characterisations of 
+interest.
+</p>
+
+
+<p>
+Note that interest does not imply expertise, and that this FOAF term provides no support 
+for characterising levels of interest: passing fads and lifelong quests are both examples 
+of someone's <code>foaf:interest</code>. Describing interests in full is a complex 
+undertaking; <code>foaf:interest</code> provides one basic component of FOAF's approach to 
+these problems.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_msnChatID" about="http://xmlns.com/foaf/0.1/msnChatID" typeof="rdf:Property">
+            <h3>Property: foaf:msnChatID</h3> 
+            <em>MSN chat ID</em> - An MSN chat ID <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:msnChatID</code> property relates a <code>foaf:Agent</code> to a textual 
+identifier assigned to them in the MSN online Chat system. 
+See Microsoft's the <a href="http://chat.msn.com/">MSN chat</a> site for more details (or for a 
+message saying <em>"MSN Chat is not currently compatible with your Internet browser and/or 
+computer operating system"</em> if your computing platform is deemed unsuitable). 
+</p>
+
+<p class="editorial">
+It is not currently clear how MSN chat IDs relate to the more general Microsoft Passport 
+identifiers.
+</p>
+
+<p>See <code>foaf:OnlineChatAccount</code> (and <code>foaf:OnlineAccount</code>) for a 
+more general (and verbose) mechanism for describing IM and chat accounts. 
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_pastProject" about="http://xmlns.com/foaf/0.1/pastProject" typeof="rdf:Property">
+            <h3>Property: foaf:pastProject</h3> 
+            <em>past project</em> - A project this person has previously worked on. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Person"><a href="#term_Person">Person</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>After a <code>foaf:Person</code> is no longer involved with a
+<code>foaf:currentProject</code>, or has been inactive for some time, a
+<code>foaf:pastProject</code> relationship can be used. This indicates that
+the <code>foaf:Person</code> was involved with the described project at one
+point. 
+</p>
+
+<p>
+If the <code>foaf:Person</code> has stopped working on a project because it 
+has been completed (successfully or otherwise), <code>foaf:pastProject</code> is 
+applicable. In general, <code>foaf:currentProject</code> is used to indicate 
+someone's current efforts (and implied interests, concerns etc.), while 
+<code>foaf:pastProject</code> describes what they've previously been doing.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_givenname" about="http://xmlns.com/foaf/0.1/givenname" typeof="rdf:Property">
+            <h3>Property: foaf:givenname</h3> 
+            <em>Given name</em> - The given name of some person. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            
+
+<p>A number of naming constructs are under development to provide
+naming substructure; draft properties include <code>foaf:firstName</code>,
+<code>foaf:givenname</code>, and <code>foaf:surname</code>. These are not currently 
+stable or consistent; see the <a href="http://rdfweb.org/topic/IssueTracker">issue 
+tracker</a> for design discussions, status and ongoing work on rationalising the FOAF 
+naming machinery.
+</p>
+
+<p>
+There is also a simple <code>foaf:name</code> property.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_accountServiceHomepage" about="http://xmlns.com/foaf/0.1/accountServiceHomepage" typeof="rdf:Property">
+            <h3>Property: foaf:accountServiceHomepage</h3> 
+            <em>account service homepage</em> - Indicates a homepage of the service provide for this online account. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/OnlineAccount"><a href="#term_Online Account">Online Account</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"<a href="#term_Document">Document</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:accountServiceHomepage</code> property indicates a relationship between a 
+<code>foaf:OnlineAccount</code> and the homepage of the supporting service provider.
+</p>
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_accountName" about="http://xmlns.com/foaf/0.1/accountName" typeof="rdf:Property">
+            <h3>Property: foaf:accountName</h3> 
+            <em>account name</em> - Indicates the name (identifier) associated with this online account. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/OnlineAccount"><a href="#term_Online Account">Online Account</a></span>
+</td></tr>
+            
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:accountName</code> property of a <code>foaf:OnlineAccount</code> is a 
+textual representation of the account name (unique ID) associated with that account.
+</p>
+
+
+            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_primaryTopic" about="http://xmlns.com/foaf/0.1/primaryTopic" typeof="rdf:Property">
+            <h3>Property: foaf:primaryTopic</h3> 
+            <em>primary topic</em> - The primary topic of some page or document. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#testing">testing</span></td></tr>
+            <tr><th>Domain:</th>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
+</td></tr>
+            <tr><th>Range:</th>
+ <td> <span rel="rdfs:range" href="http://www.w3.org/2002/07/owl#Thing"<a href="#term_A thing">A thing</a></span>
+</td>	</tr>
+  <span rel="rdfs:isDefinedBy" href="http://xmlns.com/foaf/0.1/" />
+ 
+            </table>
+            <p>
+The <code>foaf:primaryTopic</code> property relates a document to the
+main thing that the document is about.
+</p>
+
+<p>
+The <code>foaf:primaryTopic</code> property is <em>functional</em>: for
+any document it applies to, it can have at most one value. This is
+useful, as it allows for data merging. In many cases it may be difficult
+for third parties to determine the primary topic of a document, but in
+a useful number of cases (eg. descriptions of movies, restaurants,
+politicians, ...) it should be reasonably obvious. Documents are very
+often the most authoritative source of information about their own
+primary topics, although this cannot be guaranteed since documents cannot be
+assumed to be accurate, honest etc.
+</p>
+
+<p>
+It is an inverse of the <code>foaf:isPrimaryTopicOf</code> property, which relates a 
+thing to  a document <em>primarily</em> about that thing. The choice between these two 
+properties is purely pragmatic. When describing documents, we 
+use <code>foaf:primaryTopic</code> former to point to the things they're about. When 
+describing things (people etc.), it is useful to be able to directly cite documents which 
+have those things as their main topic - so we use <code>foaf:isPrimaryTopicOf</code>. In this 
+way, Web sites such as <a href="http://www.wikipedia.org/">Wikipedia</a> or <a 
+href="http://www.nndb.com/">NNDB</a> can provide indirect identification for the things they 
+have descriptions of.
+</p>
+
+
 
             <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
             <br/>
