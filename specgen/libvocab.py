@@ -650,7 +650,8 @@ class VocabReport(object):
        zz = eg % (term.id, "Property", sn, term.label, term.comment, term.status, foo, foo1, s)
        tl = "%s %s" % (tl, zz)
 
-    return(tl)
+    ## ensure termlist tag is closed
+    return(tl+"</div>")
 
 
   def rdfa(self):
