@@ -603,20 +603,20 @@ class VocabReport(object):
 
        foo5 = ''
  
-       q = 'SELECT ?dj WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj  } ' % (term.uri)
+       q = 'SELECT ?dj ?l WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj . ?dj rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '\n'
+       sss = '<tr><th>Disjoint With:</th>\n'
 
        tt = ''
-       for (disjointWith) in relations:
-          ss = """<span rel="owl:disjointWith" href="%s" />\n""" % (disjointWith)
+       for (disjointWith, label) in relations:
+          ss = """<span rel="owl:disjointWith" href="%s"><a href="#term_%s">%s</a></span>\n""" % (disjointWith, label, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo5 = "%s %s " % (sss, tt)
+          foo5 = "%s <td> %s </td></tr>" % (sss, tt)
 
-
+# end
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
        s = ''
@@ -687,6 +687,36 @@ class VocabReport(object):
           foo4 = "%s %s " % (sss, tt)
 
 
+# inverse functional property
+
+       foo5 = ''
+ 
+       q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th colspan="2">Inverse Functional Property</th>\n'
+
+       if (len(relations) > 0):
+          ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span>"""
+          foo5 = "%s <td> %s </td></tr>" % (sss, ss)
+
+# functonal property
+
+# inverse functional property
+
+       foo6 = ''
+ 
+       q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#FunctionalProperty> } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '<tr><th colspan="2">Functional Property</th>\n'
+
+       if (len(relations) > 0):
+          ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span>"""
+          foo6 = "%s <td> %s </td></tr>" % (sss, ss)
+
+# end
+
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
 
@@ -699,7 +729,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4, s)
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, s)
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
