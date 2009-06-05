@@ -1,0 +1,77 @@
+
+The files here show some example queries based around the picture in the JPEG.
+
+For now, the URIs are messed up (localhost is a bad domain name to use for universal identifiers!). But you can get the idea...
+
+Dan
+
+
+LOAD <http://localhost/notube/layer3.rdf>
+
+SELECT * WHERE {  GRAPH ?g { ?s ?p ?o . } }
+
+
+SELECT * WHERE { GRAPH  <http://localhost/notube/layerlist.rdf>{  ?s ?p ?o } }
+
+# ask the layerlist which graph is from alice, then ask that about the school homepage claimed by alice:
+#
+PREFIX : <http://xmlns.com/foaf/0.1/>
+SELECT ?x  WHERE {
+  GRAPH  <http://localhost/notube/layerlist.rdf> { 
+       <http://localhost/notube/layer1.rdf#alice> :made ?byalice .
+    } 
+ GRAPH ?byalice {
+      <http://localhost/notube/layer1.rdf#alice> :schoolHomepage ?x .
+  }
+}
+
+Answer: http://lookingglass.example.org/
+
+
+Who says what about schoolHomepage? 
+
+SELECT * WHERE { GRAPH ?g { ?s <http://xmlns.com/foaf/0.1/schoolHomepage> ?o . } }
+
+According to the layerlist, who made the pages that tell us a schoolHomepage for Alice?
+
+PREFIX : <http://xmlns.com/foaf/0.1/>
+SELECT ?g ?who WHERE {
+  GRAPH  <http://localhost/notube/layerlist.rdf> {  ?who :made ?g . }
+  GRAPH  ?g {    <http://localhost/notube/layer1.rdf#alice> :schoolHomepage  <http://lookingglass.example.org/> .  }
+}
+
+or with names,
+
+PREFIX : <http://xmlns.com/foaf/0.1/>
+SELECT ?g ?who ?n WHERE {
+  GRAPH  <http://localhost/notube/layerlist.rdf> {  ?who :made ?g . }
+  GRAPH  ?g {    <http://localhost/notube/layer1.rdf#alice> :schoolHomepage  <http://lookingglass.example.org/> .  }
+  OPTIONAL { ?who :name ?n }
+
+Note the names here don't include those from Alice and Bob's files, since they are implied.
+
+Let's find out what names there are for the school.
+
+First, from its homepage. So let's ask: what URIs are there for the school whose homepage is Alice's 
+schoolhomepage.
+
+Starting with the school Alice says she goes to, ask what identifiers and names we find for it.
+
+PREFIX : <http://xmlns.com/foaf/0.1/>
+SELECT  *  WHERE {
+  GRAPH  <http://localhost/notube/layer1.rdf> 
+  { 
+   <http://localhost/notube/layer1.rdf#alice> :schoolHomepage  ?x  .
+  }
+  GRAPH ?g 
+  { 
+    ?school :homepage ?x  .
+    ?school :name ?n  .
+  }
+}
+
+
+
+
+
+
