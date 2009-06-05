@@ -458,7 +458,9 @@ class VocabReport(object):
     f = open ( self.vocab.filename, "r")
     rdfdata = f.read()
 #   print "GENERATING >>>>>>>> "
-    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+##havign the rdf in there is making it invalid
+##    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"))
     return(tpl)
 
 #    u = urllib.urlopen(specloc)
