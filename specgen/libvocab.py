@@ -434,6 +434,11 @@ class VocabReport(object):
 
     self._template = "no template loaded"
 
+  # text.gsub(/<code>foaf:(\w+)<\/code>/){ defurl($1) } return "<code><a href=\"#term_#{term}\">foaf:#{term}</a></code>"
+  def codelink(self, s):
+    reg1 = re.compile(r"""<code>foaf:(\w+)<\/code>""")
+    return(re.sub(reg1, r"""<code><a href="#term_\1">foaf:\1</a></code>""", s))	
+  
   def _get_template(self):
         self._template = self.load_template() # should be conditional
         return self._template
@@ -628,7 +633,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s)
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, self.codelink(s))
        tl = "%s %s" % (tl, zz)
 
 # properties
@@ -729,7 +734,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, s)
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, self.codelink(s))
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
