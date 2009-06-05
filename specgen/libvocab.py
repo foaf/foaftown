@@ -494,11 +494,11 @@ class VocabReport(object):
     tl = """<div class="termlist">"""
     tl = """%s<h3>Classes and Properties (full detail)</h3>\n<div class='termdetails'><br />\n\n""" % tl
     # first classes, then properties
-    eg = """<div class="specterm" id="term_%s">
+    eg = """<div class="specterm" id="term_%s" about="%s" typeof="%s">
             <h3>%s: %s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td>%s</td></tr>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#%s">%s</span></td></tr>
             %s
             %s
             </table>
@@ -560,7 +560,7 @@ class VocabReport(object):
 
        tt = ''
        for (subclass, label) in relations:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          ss = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, label, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -570,7 +570,6 @@ class VocabReport(object):
        foo3 = ''
  
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
-
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
        sss = '<tr><th>has subclass</th>\n'
@@ -582,6 +581,40 @@ class VocabReport(object):
 
        if tt != "":
           foo3 = "%s <td> %s </td></tr>" % (sss, tt)
+
+# is defined by
+
+       foo4 = ''
+ 
+       q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '\n'
+
+       tt = ''
+       for (isdefinedby) in relations:
+          ss = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          foo4 = "%s %s " % (sss, tt)
+
+# disjoint with
+
+       foo5 = ''
+ 
+       q = 'SELECT ?dj WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj  } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '\n'
+
+       tt = ''
+       for (disjointWith) in relations:
+          ss = """<span rel="owl:disjointWith" href="%s" />\n""" % (disjointWith)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          foo5 = "%s %s " % (sss, tt)
 
 
        dn = os.path.join(self.basedir, "doc") 
@@ -595,7 +628,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id,"Class", sn, term.label, term.comment, term.status,foo,foo1+foo2+foo3, s)
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s)
        tl = "%s %s" % (tl, zz)
 
 # properties
@@ -614,7 +647,7 @@ class VocabReport(object):
 
        tt = ''
        for (domain, label) in relations:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          ss = """<span rel="rdfs:domain" href="%s"><a href="#term_%s">%s</a></span>\n""" % (domain, label, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -628,12 +661,31 @@ class VocabReport(object):
        sss = '<tr><th>Range:</th>\n'
        tt = ''
        for (range, label) in relations2:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          ss = """<span rel="rdfs:range" href="%s"<a href="#term_%s">%s</a></span>\n""" % (range, label, label)
           tt = "%s %s" % (tt, ss)
 #          print "D ",tt
 
        if tt != "":
           foo1 = "%s <td>%s</td>	</tr>" % (sss, tt)
+
+
+# is defined by
+
+       foo4 = ''
+ 
+       q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
+       query = Parse(q)
+       relations = g.query(query, initNs=bindings)
+       sss = '\n'
+
+       tt = ''
+       for (isdefinedby) in relations:
+          ss = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
+          tt = "%s %s" % (tt, ss)
+
+       if tt != "":
+          foo4 = "%s %s " % (sss, tt)
+
 
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
@@ -647,7 +699,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, "Property", sn, term.label, term.comment, term.status, foo, foo1, s)
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4, s)
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
