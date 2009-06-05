@@ -63,7 +63,7 @@ def makeSpec(dir, uri):
 # print spec.unique_terms()
 # print out.generate()
 
-  filename = os.path.join(dir, "spec.html")
+  filename = os.path.join(dir, "_tmp_spec.html")
   print "Printing to ",filename
 
   f = open(filename,"w")
@@ -127,10 +127,10 @@ else:
     sys.exit(2)   
 
   try:
-    filename = os.path.join(dir, "spec.html")
+    filename = os.path.join(dir, "_tmp_spec.html")
     f = open(filename, "w")
   except:
-    print "Cannot write to spec.html in",dir
+    print "Cannot write to _tmp_spec.html in",dir
     usage()
     sys.exit(2)   
 
