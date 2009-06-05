@@ -1,0 +1,70 @@
+This directory can be used as a wrapper for the live foaf svn, which is held in a different svn server.
+
+It links some files found there so that specgen can be run against this dir using:
+
+		 ./specgen5.py foaf-live/ http://xmlns.com/foaf/0.1/ foaf
+
+If updating the real foaf site, you also need to take care of commiting and checking out appropriately.
+
+The specgen filetree here is mainly for the software...
+
+0.
+
+this directory is specgen/foaf-live
+
+for now, lets set it up such that it points to the svn checkout of the live foaf xmlns site:
+
+ ln -s ~/working/foaf/trunk/xmlns.com/htdocs/foaf/0.1/template.html template.html
+ ln -s ~/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/index.rdf index.rdf
+ ln -s ~/working/foaf/trunk/xmlns.com/htdocs/foaf/doc/ doc
+
+Future revs of specgen.py could allow these pieces to be passed as individual parameters?
+
+We will set it to read from the xmlns svn, generate our candiate spec here, ... and when we are happy with it, 
+we copy files to their final home in the xmlns svn, commit and then refresh the live site.
+
+
+1. make sure css file is in place
+
+ cp style.css ~/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/
+
+
+Test copy of FOAF (for safe experiments) is done this way:
+
+ ./specgen5.py examples/foaf/ http://xmlns.com/foaf/0.1/ foaf
+
+generates examples/foaf/_tmp_spec.html
+
+
+
+
+2. check the archived versions of the last spec are in place (they should be)
+
+this is in the xmlns svn
+
+eg.
+Namespace Document 2 November 2007 - OpenID Edition
+This version:
+   http://xmlns.com/foaf/spec/20071002.html (rdf)
+Latest version:
+   http://xmlns.com/foaf/spec/ (rdf)
+Previous version:
+   http://xmlns.com/foaf/spec/20070524.html (rdf)
+
+3a. update / edit the current live template, such that it has links to these and to its own anticipated 
+permalinks for today's snapshot.
+
+3b. generate a spec locally, using the linked xmlns svn files:
+
+from ..
+
+ ./specgen5.py foaf-live/ http://xmlns.com/foaf/0.1/ foaf
+
+
+
+3c. commit those edits to xmlns svn 
+
+
+4. we will add an update to index.html and index.rdf as well as frozen copies of current version of each, using dated filenames
+
+
