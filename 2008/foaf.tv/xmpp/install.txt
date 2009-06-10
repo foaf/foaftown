@@ -1,0 +1,28 @@
+
+hacking for notube demos
+
+basically, get yourself set up with python xmpp library ...
+
+then send messages thru jabber network. we have two demo accounts to play with...
+
+
+(password is a location in tuscany for now....)
+
+so do this:
+	export NOTUBEPASS=xxxxxxx
+
+cvs -d:pserver:anonymous@xmpppy.cvs.sourceforge.net:/cvsroot/xmpppy login
+[press enter]
+mkdir -p working/notube
+cd notube/
+cvs -d:pserver:anonymous@xmpppy.cvs.sourceforge.net:/cvsroot/xmpppy login
+cvs -z3 -d:pserver:anonymous@xmpppy.cvs.sourceforge.net:/cvsroot/xmpppy co xmpppy
+cd xmpppy/
+python setup.py install
+
+
+also it might be useful to install http://www.dnspython.org/kits/1.6.0/
+
+then mess with the alice and box scripts...
+
+chmod +x alice.py bob.py
