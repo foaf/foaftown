@@ -4,7 +4,6 @@
 
 i=1
 accountName='modanbri'
-accountName='laroyo'
 #accountName='danbri'
 page=1
 size=50
@@ -21,7 +20,7 @@ end
 
 while (true) do
   break() if (i>2000)
-  url = "http://gdata.youtube.com/feeds/api/users/laroyo/favorites?start-index=#{i}&max-results=#{size}"
+  url = "http://gdata.youtube.com/feeds/api/users/"+accountName+"/favorites?start-index=#{i}&max-results=#{size}"
   puts "Page: #{page} i=#{i} url=#{url}"
   fn = "data/_page#{i}.xml"
   `curl --silent '#{url}' > #{fn} `
