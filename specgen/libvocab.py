@@ -59,7 +59,8 @@ SIOCSERVICES = Namespace('http://rdfs.org/sioc/services#')
 import sys, time, re, urllib, getopt
 import logging
 import os.path
-
+import cgi
+import operator
 
 bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"vs": VS }
 
@@ -234,7 +235,8 @@ class Vocab(object):
             "http://www.w3.org/2003/06/sw-vocab-status/ns#" : "status",
             "http://purl.org/rss/1.0/modules/content/"      : "content", 
             "http://www.w3.org/2003/01/geo/wgs84_pos#"      : "geo",
-            "http://www.w3.org/2004/02/skos/core#"          : "skos"
+            "http://www.w3.org/2004/02/skos/core#"          : "skos",
+            "http://purl.org/NET/c4dm/event.owl#"           : "event"
           }
 
 
@@ -308,16 +310,16 @@ class Vocab(object):
           self.classes.append(c)
           tmpclasses.append(str(c))
 
-#    self.terms.sort()
-#    self.classes.sort()
-#    self.properties.sort()
+    self.terms.sort(key=operator.attrgetter('id'))
+    self.classes.sort(key=operator.attrgetter('id'))
+    self.properties.sort(key=operator.attrgetter('id'))
 
     # http://www.w3.org/2003/06/sw-vocab-status/ns#"
     query = Parse('SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }')
     status = g.query(query, initNs=bindings) 
     # print "status results: ",status.__len__()
     for x, vs in status:
-      # print "STATUS: ",vs, " for ",x
+      #print "STATUS: ",vs, " for ",x
       t = self.lookup(x)
       if t != None:
         t.status = vs
@@ -495,6 +497,7 @@ class VocabReport(object):
 
   def termlist(self):
     """Term List for html doc"""
+    queries = ''
     c_ids, p_ids = self.vocab.azlist()
     tl = """<div class="termlist">"""
     tl = """%s<h3>Classes and Properties (full detail)</h3>\n<div class='termdetails'><br />\n\n""" % tl
@@ -508,7 +511,7 @@ class VocabReport(object):
             %s
             </table>
             %s
-            <p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+            <p style="float: right; font-size: small;">[<a href="#term_%s">permalink</a>] [<a href="#queries_%s">validation queries</a>] [<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
 
@@ -516,7 +519,6 @@ class VocabReport(object):
     # todo, push this into an api call (c_ids currently setup by az above)
 
 # classes
-
     for term in self.vocab.classes:
        foo = ''
        foo1 = ''
@@ -532,7 +534,8 @@ class VocabReport(object):
 
        tt = ''
        for (domain, label) in relations:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          dom = Term(domain)
+          ss = """<a href="#term_%s">%s</a>\n""" % (dom.id, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -546,7 +549,8 @@ class VocabReport(object):
        snippet = '<tr><th>in-range-of:</th>\n'
        tt = ''
        for (range, label) in relations2:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          ran = Term(range)
+          ss = """<a href="#term_%s">%s</a>\n""" % (ran.id, label)
           tt = "%s %s" % (tt, ss)
           #print "R ",tt
 
@@ -565,7 +569,8 @@ class VocabReport(object):
 
        tt = ''
        for (subclass, label) in relations:
-          ss = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, label, label)
+          sub = Term(subclass)
+          ss = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, sub.id, label) #
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -581,7 +586,8 @@ class VocabReport(object):
 
        tt = ''
        for (subclass, label) in relations:
-          ss = """<a href="#term_%s">%s</a>\n""" % (label, label)
+          sub = Term(subclass)
+          ss = """<a href="#term_%s">%s</a>\n""" % (sub.id, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -622,6 +628,7 @@ class VocabReport(object):
           foo5 = "%s <td> %s </td></tr>" % (sss, tt)
 
 # end
+
        dn = os.path.join(self.basedir, "doc") 
        filename = os.path.join(dn, term.id+".en") 
        s = ''
@@ -631,14 +638,25 @@ class VocabReport(object):
        except:
          s=''
 
+       #queries
+       filename = os.path.join(dn, term.id+".sparql") 
+       ss = ''
+       try:
+         f = open ( filename, "r")
+         ss = f.read()
+         ss = "<h4><a name=\"queries_"+term.id+"\"></a>"+term.id+" Validation Query</h4><pre>"+cgi.escape(ss)+"</pre>"
+       except:
+         ss=''
+
+       queries = queries +"\n"+ ss
+#       s = s+"\n"+ss
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, self.codelink(s))
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
 # properties
 
-   
     for term in self.vocab.properties:
        foo = ''
        foo1 = ''
@@ -652,7 +670,8 @@ class VocabReport(object):
 
        tt = ''
        for (domain, label) in relations:
-          ss = """<span rel="rdfs:domain" href="%s"><a href="#term_%s">%s</a></span>\n""" % (domain, label, label)
+          dom = Term(domain)
+          ss = """<span rel="rdfs:domain" href="%s"><a href="#term_%s">%s</a></span>\n""" % (domain, dom.id, label)
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
@@ -666,7 +685,8 @@ class VocabReport(object):
        sss = '<tr><th>Range:</th>\n'
        tt = ''
        for (range, label) in relations2:
-          ss = """<span rel="rdfs:range" href="%s"<a href="#term_%s">%s</a></span>\n""" % (range, label, label)
+          ran = Term(range)
+          ss = """<span rel="rdfs:range" href="%s"<a href="#term_%s">%s</a></span>\n""" % (range, ran.id, label)
           tt = "%s %s" % (tt, ss)
 #          print "D ",tt
 
@@ -734,11 +754,11 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, self.codelink(s))
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
-    return(tl+"\n</div>\n</div>")
+    return(tl+"\n"+queries+"</div>\n</div>")
 
 
   def rdfa(self):
