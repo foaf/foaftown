@@ -1,0 +1,70 @@
+div#blq-main {
+ font-size: 1.5em;
+ line-height: 1.5em;
+
+ margin-bottom: 1em;
+}
+
+div#blq-main p {
+  margin-bottom: 1em;
+}
+
+div#blq-main h1 {
+  font-size: 2.0em;
+  line-height: 2.0em;
+}
+
+div#blq-main h2 {
+  clear: both;
+  margin-top: 1em;
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+div#blq-main h3 {
+  margin-top: 1em;
+}
+
+div#blq-main dl dt {
+  width: 20%;
+  float: left;
+}
+
+div#blq-main table {
+  margin-top: 1em;
+}
+div#blq-main tr {
+  border-top: solid 1px ;
+}
+
+div#blq-main td {
+  padding-left: 0.5em;
+}
+div#blq-main td {
+  padding-left: 0.5em;
+}
+
+div#blq-main div#glance ul {
+  margin-top: -1em;
+}
+div#blq-main div#glance li {
+  display: inline;
+  margin-left: 1em;
+}
+
+div.specterm {
+  clear: both;
+  border-top: solid 1px;
+}
+
+div.specterm dl {
+  width: 90%;
+}
+div.specterm dl dt {
+  clear: both;
+  width: 10em;
+  float: left;
+}
+div.specterm dl dd {
+  float: left;
+  margin-left: 0.5em;
+}
