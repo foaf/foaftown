@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:owl="http://www.w3.org/2002/07/owl#"
+        xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:wot="http://xmlns.com/wot/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:ao="http://purl.org/ontology/ao/"
+>
+<head>
+ <head>
+  <link type="text/css" rel="stylesheet" href="style/programmes.css">
+ </head>
+ <body>
+ <h2 id="glance">VU Events at a glance</h2>
+
+ <div class="azlist">
+<p>Classes: | <a href="#term_Actor">Actor</a> |  <a href="#term_ActorType">ActorType</a> |  <a href="#term_Event">Event</a> |  <a href="#term_EventType">EventType</a> |  <a href="#term_Object">Object</a> |  <a href="#term_ObjectType">ObjectType</a> |  <a href="#term_Place">Place</a> |  <a href="#term_PlaceType">PlaceType</a> |  <a href="#term_Role">Role</a> |  <a href="#term_RoleType">RoleType</a> |  <a href="#term_TimeStampedEntity">TimeStampedEntity</a> |  <a href="#term_Type">Type</a> | 
+</p>
+<p>Properties: | <a href="#term_actorType">actorType</a> |  <a href="#term_beginsAt">beginsAt</a> |  <a href="#term_beginsInPlace">beginsInPlace</a> |  <a href="#term_childOfType">childOfType</a> |  <a href="#term_directPartOfEvent">directPartOfEvent</a> |  <a href="#term_directPartOfPlace">directPartOfPlace</a> |  <a href="#term_endsAt">endsAt</a> |  <a href="#term_endsInPlace">endsInPlace</a> |  <a href="#term_eventType">eventType</a> |  <a href="#term_hasPart">hasPart</a> |  <a href="#term_hasRole">hasRole</a> |  <a href="#term_hasType">hasType</a> |  <a href="#term_involvedIn">involvedIn</a> |  <a href="#term_involves">involves</a> |  <a href="#term_objectInPlace">objectInPlace</a> |  <a href="#term_objectType">objectType</a> |  <a href="#term_parentOfType">parentOfType</a> |  <a href="#term_partOf">partOf</a> |  <a href="#term_partOfDirect">partOfDirect</a> |  <a href="#term_partOfEvent">partOfEvent</a> |  <a href="#term_partOfPlace">partOfPlace</a> |  <a href="#term_participatesIn">participatesIn</a> |  <a href="#term_participatesInAsRole">participatesInAsRole</a> |  <a href="#term_placeType">placeType</a> |  <a href="#term_roleInPlace">roleInPlace</a> |  <a href="#term_roleType">roleType</a> |  <a href="#term_takesPlaceIn">takesPlaceIn</a> |  <a href="#term_timeStampedAt">timeStampedAt</a> | 
+</p>
+</div>
+
+ <div class="termlist"><h3>Classes and Properties (full detail)</h3>
+<div class='termdetails'><br />
+
+ <div class="specterm" id="term_Actor" about="http://semanticweb.cs.vu.nl/2009/04/event/Actor" typeof="rdfs:Class">
+            <h3>Class: event:Actor</h3> 
+            <em>Actor</em> - A thing, animate or inanimate, physical or non-physical, that plays a part in an "Event". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity"><a href="#term_TimeStampedEntity">Time-stamped entity</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Actor">permalink</a>] [<a href="#queries_Actor">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_ActorType" about="http://semanticweb.cs.vu.nl/2009/04/event/ActorType" typeof="rdfs:Class">
+            <h3>Class: event:ActorType</h3> 
+            <em>Actor type</em> - an "actorType" is a non-mandatory definition of an intrinsic type, inherent to the "Actor" him/her/itself, and not to his/her/its "Role": an "Actor" can be Caucasian, independently from the role that he or she has in a certain time span of his/her life. Specifying an "ActorType" is not mandatory but recommended.  <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/Type"><a href="#term_Type">Types</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_ActorType">permalink</a>] [<a href="#queries_ActorType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Event" about="http://semanticweb.cs.vu.nl/2009/04/event/Event" typeof="rdfs:Class">
+            <h3>Class: event:Event</h3> 
+            <em>Event</em> - Something significant that happens at a specified place and time; the semantics of what this event is should be defined as an "Event Type", enabling multiple (possibly external) hierarchies of events. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity"><a href="#term_TimeStampedEntity">Time-stamped entity</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Event">permalink</a>] [<a href="#queries_Event">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_EventType" about="http://semanticweb.cs.vu.nl/2009/04/event/EventType" typeof="rdfs:Class">
+            <h3>Class: event:EventType</h3> 
+            <em>Event type</em> - "eventType"s can be the Storming of the Bastille, an auction, a ship entering a harbor or The Birth of Venus. Specifying an "EventType" is not mandatory but recommended. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/Type"><a href="#term_Type">Types</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_EventType">permalink</a>] [<a href="#queries_EventType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Object" about="http://semanticweb.cs.vu.nl/2009/04/event/Object" typeof="rdfs:Class">
+            <h3>Class: event:Object</h3> 
+            <em>Object</em> - A thing, animate or inaminate, that is a relevant instrument of an "Event" but does not play a role per se. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity"><a href="#term_TimeStampedEntity">Time-stamped entity</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Object">permalink</a>] [<a href="#queries_Object">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_ObjectType" about="http://semanticweb.cs.vu.nl/2009/04/event/ObjectType" typeof="rdfs:Class">
+            <h3>Class: event:ObjectType</h3> 
+            <em>Object type</em> - an "ObjectType" can be a crown, a ritual sword, a container ship etc. Specifying an "ObjectType" is not mandatory but recommended. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/Type"><a href="#term_Type">Types</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_ObjectType">permalink</a>] [<a href="#queries_ObjectType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Place" about="http://semanticweb.cs.vu.nl/2009/04/event/Place" typeof="rdfs:Class">
+            <h3>Class: event:Place</h3> 
+            <em>Place</em> - A physical or non-physical (or even mythical) location where "Event"s can take place and where "Role"s can be played. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity"><a href="#term_TimeStampedEntity">Time-stamped entity</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Place">permalink</a>] [<a href="#queries_Place">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_PlaceType" about="http://semanticweb.cs.vu.nl/2009/04/event/PlaceType" typeof="rdfs:Class">
+            <h3>Class: event:PlaceType</h3> 
+            <em>Place type</em> - a "PlaceType" can be a Place of Interest, countries, geo-spatial areas like a forest or points defined by geo-coordinates. Hence, the "PlaceType"s can be defined externally and independently from the Core VUevent Model. Specifying a "PlaceType" is not mandatory but recommended. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/Type"><a href="#term_Type">Types</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_PlaceType">permalink</a>] [<a href="#queries_PlaceType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Role" about="http://semanticweb.cs.vu.nl/2009/04/event/Role" typeof="rdfs:Class">
+            <h3>Class: event:Role</h3> 
+            <em>Role</em> - A "Role" specifies the temporal boundary of an "Actor"'s "RoleType". For example, Napoleon Bonaparte was only Emperor for a specific part of his life.  The specification of a "Role" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity"><a href="#term_TimeStampedEntity">Time-stamped entity</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Role">permalink</a>] [<a href="#queries_Role">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_RoleType" about="http://semanticweb.cs.vu.nl/2009/04/event/RoleType" typeof="rdfs:Class">
+            <h3>Class: event:RoleType</h3> 
+            <em>Role type</em> - The semantic definition of the "Role" that an "Acctor" is plating in a certain "Event": Emperor, King, Pirate, Painter, NGO, Nation etc. Specifying an "RoleType" is not mandatory but recommended. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>subClassOf</th>
+ <td>  <span rel="rdfs:subClassOf" href="http://semanticweb.cs.vu.nl/2009/04/event/Type"><a href="#term_Type">Types</a></span>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_RoleType">permalink</a>] [<a href="#queries_RoleType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_TimeStampedEntity" about="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity" typeof="rdfs:Class">
+            <h3>Class: event:TimeStampedEntity</h3> 
+            <em>Time-stamped entity</em> - This can be anything, physical, or non-physical, an object, or a process, as long as it has a specified time where it exists. Instances of this class have a denotated time. For example, a range of time that "beginsAt" a certain moment and "endsAt" a certain moment. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>has subclass</th>
+ <td>  <a href="#term_Actor">Actor</a>
+ <a href="#term_Place">Place</a>
+ <a href="#term_Event">Event</a>
+ <a href="#term_Object">Object</a>
+ <a href="#term_Role">Role</a>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_TimeStampedEntity">permalink</a>] [<a href="#queries_TimeStampedEntity">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_Type" about="http://semanticweb.cs.vu.nl/2009/04/event/Type" typeof="rdfs:Class">
+            <h3>Class: event:Type</h3> 
+            <em>Types</em> - Non time-stamped specified types of "Event"s, "Actor"s, "Object"s, "Place"s, etc. Specifying a "Type" is not mandatory but recommended. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            <tr><th>has subclass</th>
+ <td>  <a href="#term_ActorType">Actor type</a>
+ <a href="#term_EventType">Event type</a>
+ <a href="#term_ObjectType">Object type</a>
+ <a href="#term_PlaceType">Place type</a>
+ <a href="#term_RoleType">Role type</a>
+ </td></tr>
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_Type">permalink</a>] [<a href="#queries_Type">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_roleInPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/roleInPlace" typeof="rdf:Property">
+            <h3>Property: event:roleInPlace</h3> 
+            <em>Role played in Event in Place</em> - A "Role" can be directly linked to a "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_roleInPlace">permalink</a>] [<a href="#queries_roleInPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_takesPlaceIn" about="http://semanticweb.cs.vu.nl/2009/04/event/takesPlaceIn" typeof="rdf:Property">
+            <h3>Property: event:takesPlaceIn</h3> 
+            <em>takes place in</em> - An "Event" "takesPlaceIn" a "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_takesPlaceIn">permalink</a>] [<a href="#queries_takesPlaceIn">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_childOfType" about="http://semanticweb.cs.vu.nl/2009/04/event/childOfType" typeof="rdf:Property">
+            <h3>Property: event:childOfType</h3> 
+            <em>child of type</em> - The "childOfType" property states that all entities of the child's "Type" are also of this "Type". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_childOfType">permalink</a>] [<a href="#queries_childOfType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_directPartOfPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/directPartOfPlace" typeof="rdf:Property">
+            <h3>Property: event:directPartOfPlace</h3> 
+            <em>direct part of place</em> - "Place"s can be a "directPartOf" an other "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_directPartOfPlace">permalink</a>] [<a href="#queries_directPartOfPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_parentOfType" about="http://semanticweb.cs.vu.nl/2009/04/event/parentOfType" typeof="rdf:Property">
+            <h3>Property: event:parentOfType</h3> 
+            <em>parent of type</em> - The "parentOfType" property states that all entities of that "Type" are also of the parent's "Type". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_parentOfType">permalink</a>] [<a href="#queries_parentOfType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_participatesIn" about="http://semanticweb.cs.vu.nl/2009/04/event/participatesIn" typeof="rdf:Property">
+            <h3>Property: event:participatesIn</h3> 
+            <em>participates in</em> - An "Actor" "participatesIn" an "Event". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_participatesIn">permalink</a>] [<a href="#queries_participatesIn">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_objectType" about="http://semanticweb.cs.vu.nl/2009/04/event/objectType" typeof="rdf:Property">
+            <h3>Property: event:objectType</h3> 
+            <em>has object type</em> - The "Type" of an "Object". For example, "crown", or "book". Specifically, a passive object, not an "Actor". The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_objectType">permalink</a>] [<a href="#queries_objectType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_placeType" about="http://semanticweb.cs.vu.nl/2009/04/event/placeType" typeof="rdf:Property">
+            <h3>Property: event:placeType</h3> 
+            <em>has place type</em> - The "Type" of a "Place". For example, "The Dutch coast"; "A city". The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_placeType">permalink</a>] [<a href="#queries_placeType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_objectInPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/objectInPlace" typeof="rdf:Property">
+            <h3>Property: event:objectInPlace</h3> 
+            <em>Object involved in Event in Place</em> - An "Object" can be directly linked to a "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_objectInPlace">permalink</a>] [<a href="#queries_objectInPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_hasType" about="http://semanticweb.cs.vu.nl/2009/04/event/hasType" typeof="rdf:Property">
+            <h3>Property: event:hasType</h3> 
+            <em>has type</em> - this property enables to make the distinction between a 'global' type, like "Role", and domain-specific types, like Pope, King, Pirate, Painter, NGO etc. For the users who do not wish to make this distinction, the type of the different classes of teh model can be specified directly with the rdf:type property. The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_hasType">permalink</a>] [<a href="#queries_hasType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_partOfEvent" about="http://semanticweb.cs.vu.nl/2009/04/event/partOfEvent" typeof="rdf:Property">
+            <h3>Property: event:partOfEvent</h3> 
+            <em>part of event</em> - "Event"s can be "partOf" an other "Event". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_partOfEvent">permalink</a>] [<a href="#queries_partOfEvent">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_hasRole" about="http://semanticweb.cs.vu.nl/2009/04/event/hasRole" typeof="rdf:Property">
+            <h3>Property: event:hasRole</h3> 
+            <em>has role</em> - An "Actor", "Object" and a "Place" can assume a "Role". It is a recommended practice to specify which "Role" they play when participating in the "Event" . <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_hasRole">permalink</a>] [<a href="#queries_hasRole">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_beginsAt" about="http://semanticweb.cs.vu.nl/2009/04/event/beginsAt" typeof="rdf:Property">
+            <h3>Property: event:beginsAt</h3> 
+            <em>begins at</em> - The moment at which a "TimeStamp" starts. In case of a point in time, the value of this property should be equivalent to the "endsAt" value. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_beginsAt">permalink</a>] [<a href="#queries_beginsAt">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_directPartOfEvent" about="http://semanticweb.cs.vu.nl/2009/04/event/directPartOfEvent" typeof="rdf:Property">
+            <h3>Property: event:directPartOfEvent</h3> 
+            <em>direct part of event</em> - "Event"s can be a "directPartOf" an other "Event". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_directPartOfEvent">permalink</a>] [<a href="#queries_directPartOfEvent">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_beginsInPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/beginsInPlace" typeof="rdf:Property">
+            <h3>Property: event:beginsInPlace</h3> 
+            <em>begins in place</em> - An "Event" starts at a certain "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_beginsInPlace">permalink</a>] [<a href="#queries_beginsInPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_participatesInAsRole" about="http://semanticweb.cs.vu.nl/2009/04/event/participatesInAsRole" typeof="rdf:Property">
+            <h3>Property: event:participatesInAsRole</h3> 
+            <em>participates in as role</em> - An "Actor" "participatesIn" an "Event" within the context of a certain "Role". The specification of a "Role" is not mandatory but a highly recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_participatesInAsRole">permalink</a>] [<a href="#queries_participatesInAsRole">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_partOfDirect" about="http://semanticweb.cs.vu.nl/2009/04/event/partOfDirect" typeof="rdf:Property">
+            <h3>Property: event:partOfDirect</h3> 
+            <em>part of direct</em> - "TimeStampedEntiti"es can be directecly related to others with the "partOf" property. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_partOfDirect">permalink</a>] [<a href="#queries_partOfDirect">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_involvedIn" about="http://semanticweb.cs.vu.nl/2009/04/event/involvedIn" typeof="rdf:Property">
+            <h3>Property: event:involvedIn</h3> 
+            <em>involved in</em> - "Object"s are "involvedIn" an "Event". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_involvedIn">permalink</a>] [<a href="#queries_involvedIn">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_timeStampedAt" about="http://semanticweb.cs.vu.nl/2009/04/event/timeStampedAt" typeof="rdf:Property">
+            <h3>Property: event:timeStampedAt</h3> 
+            <em>time stamped at</em> - A property to specify the time of a TimeStampedEntity. The type of the values is not specified, but could be a TIMEX string. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_timeStampedAt">permalink</a>] [<a href="#queries_timeStampedAt">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_eventType" about="http://semanticweb.cs.vu.nl/2009/04/event/eventType" typeof="rdf:Property">
+            <h3>Property: event:eventType</h3> 
+            <em>has event type</em> - The "Type" of an "Event". For example, "The coronation of Napoleon"; "A ship anchoring"; "A specimen being observed"; or a news event, like "The fall of the Berlin wall". The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_eventType">permalink</a>] [<a href="#queries_eventType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_roleType" about="http://semanticweb.cs.vu.nl/2009/04/event/roleType" typeof="rdf:Property">
+            <h3>Property: event:roleType</h3> 
+            <em>has role type</em> - The "Type" of a "Role". For example, "captain", "painter", or "instigator", "ritual object", "capital" for a city, etc. The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_roleType">permalink</a>] [<a href="#queries_roleType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_partOfPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/partOfPlace" typeof="rdf:Property">
+            <h3>Property: event:partOfPlace</h3> 
+            <em>part of place</em> - "Place"s can be "partOf" an other "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_partOfPlace">permalink</a>] [<a href="#queries_partOfPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_partOf" about="http://semanticweb.cs.vu.nl/2009/04/event/partOf" typeof="rdf:Property">
+            <h3>Property: event:partOf</h3> 
+            <em>part of</em> - "TimeStampedEntities" can be "partOf" an other "TimeStampedEntities". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_partOf">permalink</a>] [<a href="#queries_partOf">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_endsAt" about="http://semanticweb.cs.vu.nl/2009/04/event/endsAt" typeof="rdf:Property">
+            <h3>Property: event:endsAt</h3> 
+            <em>ends at</em> - The moment at which a "TimeStamp" starts. In case of a point in time, the value of this property should be equivalent to the "beginsAt" value. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_endsAt">permalink</a>] [<a href="#queries_endsAt">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_hasPart" about="http://semanticweb.cs.vu.nl/2009/04/event/hasPart" typeof="rdf:Property">
+            <h3>Property: event:hasPart</h3> 
+            <em>has part</em> - An "Event" can "hasPart" another "Event", which defines the second "Event" to be a subprocess of the first. For example, an "Event" can play a part in another "Event" or an "Event" can be seminal to a  "Movement". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_hasPart">permalink</a>] [<a href="#queries_hasPart">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_endsInPlace" about="http://semanticweb.cs.vu.nl/2009/04/event/endsInPlace" typeof="rdf:Property">
+            <h3>Property: event:endsInPlace</h3> 
+            <em>ends in place</em> - An "Event" ends at a certain "Place". <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_endsInPlace">permalink</a>] [<a href="#queries_endsInPlace">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_involves" about="http://semanticweb.cs.vu.nl/2009/04/event/involves" typeof="rdf:Property">
+            <h3>Property: event:involves</h3> 
+            <em>involves</em> - "Event"s can "involves" "Object"(s). <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_involves">permalink</a>] [<a href="#queries_involves">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div> <div class="specterm" id="term_actorType" about="http://semanticweb.cs.vu.nl/2009/04/event/actorType" typeof="rdf:Property">
+            <h3>Property: event:actorType</h3> 
+            <em>has actor type</em> - The "Type" of an "Actor". For example, "Person"; "Organisation". The specification of a "Type" is not mandatory but a recommended practice. <br /><table style="th { float: top; }">
+	    <tr><th>Status:</th>
+	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unknown">unknown</span></td></tr>
+            
+            
+            </table>
+            
+            <p style="float: right; font-size: small;">[<a href="#term_actorType">permalink</a>] [<a href="#queries_actorType">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <br/>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+ </body>
+</html>

@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:wgs84="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:em="http://semanticweb.cs.vu.nl/2009/04/event/">
+	<owl:Ontology rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/">
+		<rdfs:comment>VUevent Model, Vrije Universiteit Amsterdam, version draft 14
+	This model is based on or inspired from (and will asap be linked to) the following models:
+	DOLCE (Descriptive Ontology for Linguistic and Cognitive Engineering, http://www.loa-cnr.it/Ontologies.html) and its related Description and Situation extension (http://www.loa-cnr.it/Papers/ODBASE-CONTEXT.pdf)
+	CIDOC-Conceptual Reference Model (http://cidoc.ics.forth.gr/official_release_cidoc.html)
+	MPEG-7 Semantic DS and the COMM ontology (http://comm.semanticweb.org/)
+	the Event model (http://motools.sourceforge.net/event/event.html)
+	</rdfs:comment>
+	</owl:Ontology>
+	<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Actor">
+		<rdfs:label xml:lang="en">Actor</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A thing, animate or inanimate, physical or non-physical, that plays a part in an "Event".</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity">
+				<rdfs:label xml:lang="en">Time-stamped entity</rdfs:label>
+				<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This can be anything, physical, or non-physical, an object, or a process, as long as it has a specified time where it exists. Instances of this class have a denotated time. For example, a range of time that "beginsAt" a certain moment and "endsAt" a certain moment.</rdfs:comment>
+				<rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+			</owl:Class>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Actor" can only "participateIn" an "Event"</rdfs:comment>
+				<owl:allValuesFrom>
+					<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Event">
+						<rdfs:label xml:lang="en">Event</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Something significant that happens at a specified place and time; the semantics of what this event is should be defined as an "Event Type", enabling multiple (possibly external) hierarchies of events.</rdfs:comment>
+						<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity" />
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>"Event"s can only have "EventType" as "eventType"; "eventType"s can be the Storming of the Bastille, an auction, a ship entering a harbor or The Birth of Venus.</rdfs:comment>
+								<owl:allValuesFrom>
+									<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/EventType">
+										<rdfs:comment>"eventType"s can be the Storming of the Bastille, an auction, a ship entering a harbor or The Birth of Venus. Specifying an "EventType" is not mandatory but recommended.</rdfs:comment>
+										<rdfs:label xml:lang="en">Event type</rdfs:label>
+										<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Type" />
+									</owl:Class>
+								</owl:allValuesFrom>
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/eventType">
+										<rdfs:label xml:lang="en">has event type</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "Type" of an "Event". For example, "The coronation of Napoleon"; "A ship anchoring"; "A specimen being observed"; or a news event, like "The fall of the Berlin wall". The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+										<rdfs:subPropertyOf>
+											<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/hasType">
+												<rdfs:comment>this property enables to make the distinction between a 'global' type, like "Role", and domain-specific types, like Pope, King, Pirate, Painter, NGO etc. For the users who do not wish to make this distinction, the type of the different classes of teh model can be specified directly with the rdf:type property. The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+												<rdfs:label xml:lang="en">has type</rdfs:label>
+												<rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" />
+											</owl:ObjectProperty>
+										</rdfs:subPropertyOf>
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>"Event"s can only "takePlaceIn" "Place"s; "Place"s have "PlaceType"s which can be Places of Interest, countries, geo-spatial areas like a forest or points defined by geo-coordinates. Hence, the "PlaceType"s can be defined externally and independently from the Core VUevent Model.</rdfs:comment>
+								<owl:allValuesFrom>
+									<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Place">
+										<rdfs:label xml:lang="en">Place</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A physical or non-physical (or even mythical) location where "Event"s can take place and where "Role"s can be played.</rdfs:comment>
+										<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity" />
+										<rdfs:subClassOf>
+											<owl:Restriction>
+												<rdfs:comment>a "Place" can only have a "PlaceType" as "placeType"; a "PlaceType" can be a Place of Interest, countries, geo-spatial areas like a forest or points defined by geo-coordinates. Hence, the "PlaceType"s can be defined externally and independently from the Core VUevent Model.</rdfs:comment>
+												<owl:allValuesFrom>
+													<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/PlaceType">
+														<rdfs:comment>a "PlaceType" can be a Place of Interest, countries, geo-spatial areas like a forest or points defined by geo-coordinates. Hence, the "PlaceType"s can be defined externally and independently from the Core VUevent Model. Specifying a "PlaceType" is not mandatory but recommended.</rdfs:comment>
+														<rdfs:label xml:lang="en">Place type</rdfs:label>
+														<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Type" />
+													</owl:Class>
+												</owl:allValuesFrom>
+												<owl:onProperty>
+													<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/placeType">
+														<rdfs:label xml:lang="en">has place type</rdfs:label>
+														<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "Type" of a "Place". For example, "The Dutch coast"; "A city". The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+														<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasType" />
+													</owl:ObjectProperty>
+												</owl:onProperty>
+											</owl:Restriction>
+										</rdfs:subClassOf>
+										<rdfs:subClassOf>
+											<owl:Restriction>
+												<rdfs:comment>a "Place" can only "hasRole" a "Role", this "Role" links a "Place" with the qualification of the "Place" under which the "Event" takes place: for example Amsterdam can have the "Role" CapitalCity, which is valid for a specific time span only. The concept of "Role" enables to define the time-span during which the "RoleType" holds.</rdfs:comment>
+												<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Role" />
+												<owl:onProperty rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasRole" />
+											</owl:Restriction>
+										</rdfs:subClassOf>
+										<rdfs:subClassOf>
+											<owl:Restriction>
+												<rdfs:comment>a "Place" can only have a "Place" as "partOfPlace".</rdfs:comment>
+												<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Place" />
+												<owl:onProperty>
+													<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/partOfPlace">
+														<rdfs:label xml:lang="en">part of place</rdfs:label>
+														<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Place"s can be "partOf" an other "Place".</rdfs:comment>
+														<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/partOf" />
+													</owl:ObjectProperty>
+												</owl:onProperty>
+											</owl:Restriction>
+										</rdfs:subClassOf>
+									</owl:Class>
+								</owl:allValuesFrom>
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/takesPlaceIn">
+										<rdfs:label xml:lang="en">takes place in</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Event" "takesPlaceIn" a "Place".</rdfs:comment>
+										<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>"Event"s can only have "Event"s as "partOfEvent" </rdfs:comment>
+								<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Event" />
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/partOfEvent">
+										<rdfs:label xml:lang="en">part of event</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Event"s can be "partOf" an other "Event".</rdfs:comment>
+										<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/partOf" />
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+					</owl:Class>
+				</owl:allValuesFrom>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/participatesIn">
+						<rdfs:label xml:lang="en">participates in</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Actor" "participatesIn" an "Event".</rdfs:comment>
+						<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Actor" can only "hasRole" a "Role", this "Role" links an "Actor" with the qualification under which he/she/it is "participatingIn" the "Event": for example Joseph Alois Ratzinger can be "participatingIn" an "Event" as a Vatican citizen or as the Pope Benedict XVI, which are both "roleType"s, related to "Role"s that can have an overlapping time span. The concept of "Role" enables to define the time-span during which the "RoleType" holds.</rdfs:comment>
+				<owl:allValuesFrom>
+					<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Role">
+						<rdfs:label xml:lang="en">Role</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A "Role" specifies the temporal boundary of an "Actor"'s "RoleType". For example, Napoleon Bonaparte was only Emperor for a specific part of his life.  The specification of a "Role" is not mandatory but a recommended practice.</rdfs:comment>
+						<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity" />
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>a "Role" can only have "RoleType" as "roleType" .</rdfs:comment>
+								<owl:allValuesFrom>
+									<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/RoleType">
+										<rdfs:comment>The semantic definition of the "Role" that an "Acctor" is plating in a certain "Event": Emperor, King, Pirate, Painter, NGO, Nation etc. Specifying an "RoleType" is not mandatory but recommended.</rdfs:comment>
+										<rdfs:label xml:lang="en">Role type</rdfs:label>
+										<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Type" />
+									</owl:Class>
+								</owl:allValuesFrom>
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/roleType">
+										<rdfs:label xml:lang="en">has role type</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "Type" of a "Role". For example, "captain", "painter", or "instigator", "ritual object", "capital" for a city, etc. The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+										<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasType" />
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>a "Role" can only be "roleInPlace" in a "Place" .</rdfs:comment>
+								<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Place" />
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/roleInPlace">
+										<rdfs:label xml:lang="en">Role played in Event in Place</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A "Role" can be directly linked to a "Place".</rdfs:comment>
+										<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+						<rdfs:subClassOf>
+							<owl:Restriction>
+								<rdfs:comment>a "Role" can only "participatesInAsRole" in an "Event" .</rdfs:comment>
+								<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Event" />
+								<owl:onProperty>
+									<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/participatesInAsRole">
+										<rdfs:label xml:lang="en">participates in as role</rdfs:label>
+										<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Actor" "participatesIn" an "Event" within the context of a certain "Role". The specification of a "Role" is not mandatory but a highly recommended practice.</rdfs:comment>
+										<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+									</owl:ObjectProperty>
+								</owl:onProperty>
+							</owl:Restriction>
+						</rdfs:subClassOf>
+					</owl:Class>
+				</owl:allValuesFrom>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/hasRole">
+						<rdfs:label xml:lang="en">has role</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Actor", "Object" and a "Place" can assume a "Role". It is a recommended practice to specify which "Role" they play when participating in the "Event" .</rdfs:comment>
+						<rdfs:subPropertyOf>
+							<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/related">
+								<rdfs:label xml:lang="en">related to</rdfs:label>
+							</owl:ObjectProperty>
+						</rdfs:subPropertyOf>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Actor" can only have "ActorType" as an "actorType" .</rdfs:comment>
+				<owl:allValuesFrom>
+					<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/ActorType">
+						<rdfs:comment>an "actorType" is a non-mandatory definition of an intrinsic type, inherent to the "Actor" him/her/itself, and not to his/her/its "Role": an "Actor" can be Caucasian, independently from the role that he or she has in a certain time span of his/her life. Specifying an "ActorType" is not mandatory but recommended. </rdfs:comment>
+						<rdfs:label xml:lang="en">Actor type</rdfs:label>
+						<rdfs:subClassOf>
+							<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Type">
+								<rdfs:label xml:lang="en">Types</rdfs:label>
+								<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Non time-stamped specified types of "Event"s, "Actor"s, "Object"s, "Place"s, etc. Specifying a "Type" is not mandatory but recommended.</rdfs:comment>
+							</owl:Class>
+						</rdfs:subClassOf>
+					</owl:Class>
+				</owl:allValuesFrom>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/actorType">
+						<rdfs:label xml:lang="en">has actor type</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "Type" of an "Actor". For example, "Person"; "Organisation". The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+						<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasType" />
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/Object">
+		<rdfs:label xml:lang="en">Object</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A thing, animate or inaminate, that is a relevant instrument of an "Event" but does not play a role per se.</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/TimeStampedEntity" />
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Object" can only be "involvedIn" an "Event".</rdfs:comment>
+				<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Event" />
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/involvedIn">
+						<rdfs:label xml:lang="en">involved in</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Object"s are "involvedIn" an "Event".</rdfs:comment>
+						<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+						<owl:inverseOf>
+							<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/involves">
+								<rdfs:label xml:lang="en">involves</rdfs:label>
+								<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Event"s can "involves" "Object"(s).</rdfs:comment>
+								<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+								<owl:inverseOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/involvedIn" />
+							</owl:ObjectProperty>
+						</owl:inverseOf>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Object" can only be "objectInPlace" a "Place".</rdfs:comment>
+				<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Place" />
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/objectInPlace">
+						<rdfs:label xml:lang="en">Object involved in Event in Place</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Object" can be directly linked to a "Place".</rdfs:comment>
+						<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/related" />
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Object" can only "hasRole" a "Role", this "Role" links an "Object" with the qualification under which he/she/it is "involvedIn" the "Event": for example a sword can be "involvedIn" an "Event" as a ritual object.</rdfs:comment>
+				<owl:allValuesFrom rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Role" />
+				<owl:onProperty rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasRole" />
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>an "Object" can only have an "ObjectType" as "objectType"; an "ObjectType" can be a crown, a ritual sword, a container ship etc. </rdfs:comment>
+				<owl:allValuesFrom>
+					<owl:Class rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/ObjectType">
+						<rdfs:comment>an "ObjectType" can be a crown, a ritual sword, a container ship etc. Specifying an "ObjectType" is not mandatory but recommended.</rdfs:comment>
+						<rdfs:label xml:lang="en">Object type</rdfs:label>
+						<rdfs:subClassOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/Type" />
+					</owl:Class>
+				</owl:allValuesFrom>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/objectType">
+						<rdfs:label xml:lang="en">has object type</rdfs:label>
+						<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "Type" of an "Object". For example, "crown", or "book". Specifically, a passive object, not an "Actor". The specification of a "Type" is not mandatory but a recommended practice.</rdfs:comment>
+						<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasType" />
+					</owl:ObjectProperty>
+				</owl:onProperty>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:DatatypeProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/beginsAt">
+		<rdfs:label xml:lang="en">begins at</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The moment at which a "TimeStamp" starts. In case of a point in time, the value of this property should be equivalent to the "endsAt" value.</rdfs:comment>
+		<rdfs:subPropertyOf>
+			<owl:DatatypeProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/timeStampedAt">
+				<rdfs:label xml:lang="en">time stamped at</rdfs:label>
+				<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A property to specify the time of a TimeStampedEntity. The type of the values is not specified, but could be a TIMEX string.</rdfs:comment>
+			</owl:DatatypeProperty>
+		</rdfs:subPropertyOf>
+	</owl:DatatypeProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/broader">
+		<rdfs:label xml:lang="en">has broader</rdfs:label>
+		<owl:inverseOf>
+			<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/narrower">
+				<rdfs:label xml:lang="en">has narrower</rdfs:label>
+				<owl:inverseOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/broader" />
+			</owl:ObjectProperty>
+		</owl:inverseOf>
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/childOfType">
+		<rdfs:label xml:lang="en">child of type</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "childOfType" property states that all entities of the child's "Type" are also of this "Type".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/broader" />
+		<owl:inverseOf>
+			<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/parentOfType">
+				<rdfs:label xml:lang="en">parent of type</rdfs:label>
+				<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The "parentOfType" property states that all entities of that "Type" are also of the parent's "Type".</rdfs:comment>
+				<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/narrower" />
+				<owl:inverseOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/childOfType" />
+			</owl:ObjectProperty>
+		</owl:inverseOf>
+	</owl:ObjectProperty>
+	<owl:DatatypeProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/endsAt">
+		<rdfs:label xml:lang="en">ends at</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The moment at which a "TimeStamp" starts. In case of a point in time, the value of this property should be equivalent to the "beginsAt" value.</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/timeStampedAt" />
+	</owl:DatatypeProperty>
+	<owl:TransitiveProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/hasPart">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+		<rdfs:label xml:lang="en">has part</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Event" can "hasPart" another "Event", which defines the second "Event" to be a subprocess of the first. For example, an "Event" can play a part in another "Event" or an "Event" can be seminal to a  "Movement".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/narrower" />
+		<owl:inverseOf>
+			<owl:TransitiveProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/partOf">
+				<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+				<rdfs:label xml:lang="en">part of</rdfs:label>
+				<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"TimeStampedEntities" can be "partOf" an other "TimeStampedEntities".</rdfs:comment>
+				<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/broader" />
+				<owl:inverseOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasPart" />
+			</owl:TransitiveProperty>
+		</owl:inverseOf>
+	</owl:TransitiveProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/partOfDirect">
+		<rdfs:label xml:lang="en">part of direct</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"TimeStampedEntiti"es can be directecly related to others with the "partOf" property.</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/partOf" />
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/directPartOfEvent">
+		<rdfs:label xml:lang="en">direct part of event</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Event"s can be a "directPartOf" an other "Event".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/partOfDirect" />
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/directPartOfPlace">
+		<rdfs:label xml:lang="en">direct part of place</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Place"s can be a "directPartOf" an other "Place".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/partOfDirect" />
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/beginsInPlace">
+		<rdfs:label xml:lang="en">begins in place</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Event" starts at a certain "Place".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/takesPlaceIn" />
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/endsInPlace">
+		<rdfs:label xml:lang="en">ends in place</rdfs:label>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An "Event" ends at a certain "Place".</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/takesPlaceIn" />
+	</owl:ObjectProperty>
+	<owl:DatatypeProperty rdf:about="http://semanticweb.cs.vu.nl/2009/04/event/hasCoordinates">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Defines the coordinates of a "TimeStampedEntity".</rdfs:comment>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#alt">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The WGS84 altitude of a SpatialThing (decimal meters above the local reference ellipsoid).</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasCoordinates" />
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The WGS84 latitude of a SpatialThing (decimal degrees).</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasCoordinates" />
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The WGS84 longitude of a SpatialThing (decimal degrees).</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://semanticweb.cs.vu.nl/2009/04/event/hasCoordinates" />
+	</owl:DatatypeProperty>
+</rdf:RDF>
