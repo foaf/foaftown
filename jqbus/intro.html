@@ -8,9 +8,10 @@
 <style>
 .xmppcode {
  margin: 3em; 
- color: green; 
- background: black; 
+ color: black; 
+ background: white;
  padding: 1em; width 60%;
+ border: 1px solid black;
 }
 </style>
 
@@ -19,7 +20,9 @@
 
 <body style="margin: 8em">
 
-  <h1>JQbus - Jabber chat query services</h2>
+  <h1>JQbus - Jabber chat query services</h1>
+
+  <p>For discussion of this and SPARQL/XMPP bindings, please join the <a href="http://lists.foaf-project.org/mailman/listinfo/foaf-protocols">foaf-protocols</a> list...</p>
 
   <p>JQbus uses off-the-shelf Jabber chat services as a generic
   information bus, passing <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a> queries and results via user accounts, encoded as <a href="http://www.xmpp.org/rfcs/rfc3920.html#stanzas-semantics-iq">XMPP IQ</a> messages.</p>
@@ -83,7 +86,7 @@ alongside an XML <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">response form
   data, through which descriptions of photos, audio/video,
   calendars, addressbooks etc might be made available - selectively
   - to friends, colleagues and software working on behalf of those
-Ã  people. JQbus is an experimental toy for exposing desktop data in
+  people. JQbus is an experimental toy for exposing desktop data in
   this fashion, using off-the-shelf Jabber accounts. The other
   services sketched in the diagram are part of a bigger unwritten
   story for how this infrastructure facilitates decentralised
@@ -223,7 +226,7 @@ me for not migrating them.</p>
 
 <p>Read the <a href="README.txt">README.txt</a>, althought it may lag behind the code. Or if you're feeling lucky, try running these scripts:</p>
 
-<pre style="margin: 3em; color: green; background: black; padding: 1em; width 60%">
+<pre class="xmppcode">
 wget -nd http://svn.foaf-project.org/foaftown/downloads/jqbus-latest.tar.gz
 tar -zxvf jqbus-latest.tar.gz 
 cd jqbus/

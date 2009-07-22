@@ -1,2 +1,2 @@
 #!/bin/sh
-ant -Dfoaftown.role=server -Dfoaftown.pwd=$P -Dfoaftown.my_jid=danbri@livejournal.com
+ant -Dfoaftown.role=server -Dfoaftown.pwd=quadst0re -Dfoaftown.my_jid=foaftown@livejournal.com

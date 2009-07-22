@@ -211,7 +211,7 @@ class FoafJabberNode
 	    //server.addFile("c:\\projects\\ldodds-knows.rdf");
 	    server.getModel().read("http://danbri.org/foaf.rdf");
 	    // server.addFile("/home/danbri/semlife/_music.rdf");
-		server.addFile("/Users/danbri/foafns/foaf.rdf"); // priv copy of ns spec
+		server.addFile("/Users/danbri/foaf/beat.rdf"); // priv copy of ns spec
 	}
 
 	public void sparql_client() throws XMPPException
