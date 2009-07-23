@@ -118,24 +118,25 @@ class testSpecgen(unittest.TestCase):
     self.failUnless(c > 50 , "FOAF has more than 50 properties. count: "+str(c))
 
   def testFOAFmaxprops(self):
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     c = len(foaf_spec.properties)
     self.failUnless(c < 100 , "FOAF has less than 100 properties. count: "+str(c))
 
   def testSIOCmaxprops(self):
     """sioc max props: not more than 500 properties in SIOC"""
-    sioc_spec = Vocab('examples/sioc/sioc.rdf')
+    sioc_spec = Vocab(dir='examples/sioc/sioc.rdf')
     sioc_spec.index()
     sioc_spec.uri = str(SIOC)
     c = len(sioc_spec.properties)
-    # print "SIOC property count: ",c
+    #print "SIOC property count: ",c
     self.failUnless(c < 500 , "SIOC has less than 500 properties. count was "+str(c))
 
 
   # work in progress.  
   def testDOAPusingFOAFasExternal(self):
     """when DOAP mentions a FOAF class, the API should let us know it is external"""
-    doap_spec = Vocab('examples/doap/doap.rdf')
+    doap_spec = Vocab(dir='examples/doap/doap.rdf')
     doap_spec.index()
     doap_spec.uri = str(DOAP)
     for t in doap_spec.classes:
@@ -146,7 +147,7 @@ class testSpecgen(unittest.TestCase):
   # work in progress.  
   def testFOAFusingDCasExternal(self):
     """FOAF using external vocabs"""
-    foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT)
     foaf_spec.index()
     foaf_spec.uri = str(FOAF)
     for t in foaf_spec.terms:
@@ -155,7 +156,7 @@ class testSpecgen(unittest.TestCase):
 
   def testniceName_1foafmyprop(self):
     """simple test of nicename for a known namespace (FOAF), unknown property"""
-    foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT)
     u = 'http://xmlns.com/foaf/0.1/myprop'
     nn = foaf_spec.niceName(u)
     # print "nicename for ",u," is: ",nn
@@ -166,6 +167,7 @@ class testSpecgen(unittest.TestCase):
   def testniceName_2foafhomepage(self):
     """simple test of nicename for a known namespace (FOAF), known property."""
     foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec.index()
     u = 'http://xmlns.com/foaf/0.1/homepage'
     nn = foaf_spec.niceName(u)
     # print "nicename for ",u," is: ",nn
@@ -174,6 +176,7 @@ class testSpecgen(unittest.TestCase):
   def testniceName_3mystery(self):
     """simple test of nicename for an unknown namespace"""
     foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec.index()
     u = 'http:/example.com/mysteryns/myprop'
     nn = foaf_spec.niceName(u)
     # print "nicename for ",u," is: ",nn
@@ -182,6 +185,7 @@ class testSpecgen(unittest.TestCase):
   def testniceName_3baduri(self):
     """niceName should return same string if passed a non-URI (but log a warning?)"""
     foaf_spec = Vocab(FOAFSNAPSHOT)
+    foaf_spec.index()
     u = 'thisisnotauri'
     nn = foaf_spec.niceName(u)
     #  print "nicename for ",u," is: ",nn
@@ -191,18 +195,21 @@ class testSpecgen(unittest.TestCase):
     """v = Vocab( uri=something ) can be used to set the Vocab's URI. """
     u = 'http://example.com/test_set_uri_in_constructor'
     foaf_spec = Vocab(FOAFSNAPSHOT,uri=u)
+    foaf_spec.index()
     self.failUnless( foaf_spec.uri == u, "Vocab's URI was supposed to be "+u+" but was "+foaf_spec.uri)
 
   def test_set_bad_uri_in_constructor(self):
     """v = Vocab( uri=something ) can be used to set the Vocab's URI to a bad URI (but should warn). """
     u = 'notauri'
     foaf_spec = Vocab(FOAFSNAPSHOT,uri=u)
+    foaf_spec.index()
     self.failUnless( foaf_spec.uri == u, "Vocab's URI was supposed to be "+u+" but was "+foaf_spec.uri)
 
 
   def test_getset_uri(self):
     """getting and setting a Vocab uri property"""
     foaf_spec = Vocab(FOAFSNAPSHOT,uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec.index()
     u = 'http://foaf.tv/example#'
     # print "a) foaf_spec.uri is: ", foaf_spec.uri 
     foaf_spec.uri = u
@@ -218,47 +225,54 @@ class testSpecgen(unittest.TestCase):
  
   def test_lookup_Person(self):
     """find a term given it's uri"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
+    foaf_spec.index()
     p = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person')
     # print "lookup for Person: ",p
     self.assertNotEqual(p.uri,  None, "Couldn't find person class in FOAF")
 
   def test_lookup_Wombat(self):
     """fail to a bogus term given it's uri"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/') 
+    foaf_spec.index()
     p = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Wombat') # No Wombats in FOAF yet.
     self.assertEqual(p,  None, "lookup for Wombat should return None")
 
   def test_label_for_foaf_Person(self):
     """check we can get the label for foaf's Person class"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec.index()
     l = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person').label
     # print "Label for foaf Person is "+l
     self.assertEqual(l,"Person")
 
   def test_label_for_sioc_Community(self):
     """check we can get the label for sioc's Community class"""
-    sioc_spec = Vocab(f=SIOCSNAPSHOT, uri=SIOC)
+    sioc_spec = Vocab(dir=SIOCSNAPSHOT, uri=SIOC)
+    sioc_spec.index()
     l = sioc_spec.lookup(SIOC+'Community').label
     self.assertEqual(l,"Community")
 
   def test_label_for_foaf_workplaceHomepage(self):
     """check we can get the label for foaf's workplaceHomepage property"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec.index()
     l = foaf_spec.lookup('http://xmlns.com/foaf/0.1/workplaceHomepage').label
     # print "Label for foaf workplaceHomepage is "+l
     self.assertEqual(l,"workplace homepage")
 
   def test_status_for_foaf_Person(self):
     """check we can get the status for foaf's Person class"""
-    foaf_spec = Vocab(f=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri='http://xmlns.com/foaf/0.1/')
+    foaf_spec.index()
     s = foaf_spec.lookup('http://xmlns.com/foaf/0.1/Person').status
     self.assertEqual(s,"stable")
 
   # http://usefulinc.com/ns/doap#Repository
   def test_status_for_doap_Repository(self):
     """check we can get the computed 'unknown' status for doap's Repository class"""
-    doap_spec = Vocab(f=DOAPSNAPSHOT, uri='http://usefulinc.com/ns/doap#')
+    doap_spec = Vocab(dir=DOAPSNAPSHOT, uri='http://usefulinc.com/ns/doap#')
+    doap_spec.index()
     s = doap_spec.lookup('http://usefulinc.com/ns/doap#Repository').status
     self.assertEqual(s,"unknown", "if vs:term_status isn't used, we set t.status to 'unknown'")
 
@@ -266,12 +280,12 @@ class testSpecgen(unittest.TestCase):
     "Indexing on construction and then a couple more times shouldn't affect property count."
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
     foaf_spec.index()
-    foaf_spec.index()
     c = len(foaf_spec.properties)
     self.failUnless(c < 100 , "After indexing 3 times, foaf property count should still be < 100: "+str(c))
 
   def test_got_sioc(self):
     sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    sioc_spec.index()
     cr =  sioc_spec.lookup('http://rdfs.org/sioc/ns#creator_of')
     # print("Looked up creator_of in sioc. result: "+cr)
     # print("Looked up creator_of comment: "+cr.comment)
@@ -288,39 +302,45 @@ class testSpecgen(unittest.TestCase):
 
   def testSIOCminprops_v2(self):
     """Check we found at least 10 SIOC properties."""
-    sioc_spec = Vocab(f='examples/sioc/sioc.rdf', uri = SIOC)
+    sioc_spec = Vocab(dir='examples/sioc/sioc.rdf', uri = SIOC)
+    sioc_spec.index()
     c = len(sioc_spec.properties)
     self.failUnless(c > 10 , "SIOC has more than 10 properties. count was "+str(c))
 
   def testSIOCminprops_v3(self):
     """Check we found at least 5 SIOC properties."""
-    # sioc_spec = Vocab(f='examples/sioc/sioc.rdf', uri = SIOC)
-    sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    # sioc_spec = Vocab(dir='examples/sioc/sioc.rdf', uri = SIOC)
+    sioc_spec = Vocab(dir=SIOCSNAPSHOT, uri = SIOC)
+    sioc_spec.index()
     c = len(sioc_spec.properties)
     self.failUnless(c > 5 , "SIOC has more than 10 properties. count was "+str(c))
 
   def testSIOCmin_classes(self):
     """Check we found at least 5 SIOC classes."""
-    sioc_spec = Vocab(SIOCSNAPSHOT, uri = SIOC)
+    sioc_spec = Vocab(dir=SIOCSNAPSHOT, uri = SIOC)
+    sioc_spec.index()
     c = len(sioc_spec.classes)
     self.failUnless(c > 5 , "SIOC has more than 10 classes. count was "+str(c))
 
   def testFOAFmin_classes(self):
     """Check we found at least 5 FOAF classes."""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     c = len(foaf_spec.classes)
     self.failUnless(c > 5 , "FOAF has more than 10 classes. count was "+str(c))
 
   def testHTMLazlistExists(self):
     """Check we have some kind of azlist. Note that this shouldn't really be HTML from Vocab API ultimately."""
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     az = foaf_spec.azlist()   
 #    print "AZ list is ", az
     self.assertNotEqual (az != None, "We should have an azlist.")
 
   def testOutputHTML(self):
     """Check HTML output formatter does something"""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec)
     az = page.az()
     self.failUnless(az)
@@ -328,7 +348,8 @@ class testSpecgen(unittest.TestCase):
 
   def testGotRDFa(self):
     """Check HTML output formatter rdfa method returns some text"""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec)
     rdfa = page.rdfa()
     self.failUnless(rdfa)
@@ -344,7 +365,8 @@ class testSpecgen(unittest.TestCase):
 
   def testTemplateLoader2(self):
     """Check we can load a template file thru constructors."""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
     tpl = page.template
     # print "Page template is: ", tpl
@@ -353,6 +375,7 @@ class testSpecgen(unittest.TestCase):
   def testTemplateLoader3(self):
     """Check loaded template isn't default string."""
     foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
     tpl = page.template
     self.assertNotEqual(tpl, "no template loaded")
@@ -369,7 +392,8 @@ class testSpecgen(unittest.TestCase):
 
   def testGenerateReport(self):
     """Use the template to generate our report page."""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
     tpl = page.template
     final = page.generate()
@@ -379,7 +403,8 @@ class testSpecgen(unittest.TestCase):
 
   def testSimpleReport(self):
     """Use the template to generate a simple test report in txt."""
-    foaf_spec = Vocab(FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec = Vocab(dir=FOAFSNAPSHOT, uri = FOAF)
+    foaf_spec.index()
     page = VocabReport(foaf_spec, basedir='./examples/', temploc='template.html')
  
     simple = page.report()
