@@ -104,6 +104,7 @@ class testSpecgen(unittest.TestCase):
   def testCanUseNonStrURI(self):
     """If some fancy object used with a string-oriented setter, we just take the string."""
     doap_spec = Vocab('examples/doap/doap-en.rdf')
+    print "[1]"
     doap_spec.index()
     doap_spec.uri = Namespace('http://usefulinc.com/ns/doap#')  # likely a common mistake
     self.assertEqual(doap_spec.uri, 'http://usefulinc.com/ns/doap#')
