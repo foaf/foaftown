@@ -214,7 +214,10 @@ class Vocab(object):
     self.graph = rdflib.ConjunctiveGraph()
     self._uri = uri
     self.dir = dir
-    self.filename = os.path.join(dir, f) 
+    if not dir: 
+      self.filename = os.path.join(dir, f) 
+    else:
+      self.filename = dir
     self.graph.parse(self.filename)
     self.terms = []
     self.uterms = []
