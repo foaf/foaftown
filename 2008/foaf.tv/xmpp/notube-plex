@@ -1,0 +1,3 @@
+#!/bin/sh
+open /Applications/Plex.app/
+cd $HOME/working/foaftown/2008/foaf.tv/xmpp; NOTUBEPASS=xxxx python ./alice.py
