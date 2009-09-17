@@ -21,8 +21,11 @@ except(Exception):
     print "No password found"
     sys.exit(1)  
 
+# Plex is as xbmc but on 3000, see Prefs > Network for settings
+
 def toggleBoxeePlayer():
-    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()"
+#    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()"
+    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=Pause()"
     import urllib2
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
@@ -31,12 +34,36 @@ def toggleBoxeePlayer():
     print boxee_toggle
     print "Result of fetching url is ...."
     print data
+    notify("Buttons: Pause toggled")
+
+
+# 32400 port for 
+
+def boxee_GetCurrentlyPlaying():
+#    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
+    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
+    import urllib2
+    usock = urllib2.urlopen(boxee_toggle)
+    data = usock.read()
+    usock.close()
+    print "calling GetCurrentlyPlaying api "
+    print boxee_toggle
+    print "Result of fetching url is ...."
+    print data
+    return(data)
+
+def notify(str):
+   # danbri@zojandan:~/working/mumbles/mumbles0.4-branch/src$ ./mumbles-send "Buttons - Pause toggle"
+    mumbles = "working/mumbles/mumbles0.4-branch/src/mumbles-send"
+#   os.system( os.getenv("HOME") + '/' +  mumbles + ' \"' + str +  '\"' )
+
 
 def presenceHandler(conn,presence_node):
     """ Handler for playing a sound when particular contact became online """
     targetJID='bob.notube@gmail.com'
     if presence_node.getFrom().bareMatch(targetJID):
         pass
+
 def iqHandler(conn,iq_node):
     """ Handler for processing some "get" query from custom namespace"""
     print "Got an IQ query:"
@@ -45,12 +72,20 @@ def iqHandler(conn,iq_node):
     reply=iq_node.buildReply('result')
     conn.send(reply) # ... put some content into reply node
     raise NodeProcessed  # This stanza is fully processed
+
 def messageHandler(conn,mess_node): 
     print "In message handler with message: "
     print mess_node
     pass
     print "toggling local boxee player (if we have one!)"
     toggleBoxeePlayer()    
+#    reply=mess_node.buildReply('toggled!')
+
+    txt = boxee_GetCurrentlyPlaying()
+    conn.send(Message(mess_node.getFrom(),txt, "chat" ))
+    print "!!! replied to " + str( mess_node.getFrom() )
+    # conn.send(reply) 
+
 
 cl = Client(server='gmail.com', debug=[]) 
 conn = cl.connect(server=('talk.google.com', 5222)) 
@@ -70,8 +105,9 @@ cl.RegisterHandler('iq',iqHandler)
 cl.RegisterHandler('message',messageHandler)
 cl.sendInitPresence()
 cl.Process(1)
+
 if not cl.isConnected(): cl.reconnectAndReauth()		# ...if connection is brocken - restore it
-cl.send(Message('bob.notube@gmail.com','Test message from Alice notube script!')) # ...send an ASCII message
+cl.send(Message('buttons@foaf.tv', 'Hello Buttons! --alice mediacentre', "chat")) # ...send an ASCII message
 while 1:
   cl.Process(1)
 
