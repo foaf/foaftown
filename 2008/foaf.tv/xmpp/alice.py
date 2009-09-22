@@ -12,8 +12,8 @@
 
 import os
 import sys 
+import re
 from xmpp import *
-
 
 try:
   secret=os.environ["NOTUBEPASS"]
@@ -24,8 +24,8 @@ except(Exception):
 # Plex is as xbmc but on 3000, see Prefs > Network for settings
 
 def toggleBoxeePlayer():
-#    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()"
-    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=Pause()"
+    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()" # plex
+#    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=Pause()" # boxee
     import urllib2
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
@@ -40,8 +40,8 @@ def toggleBoxeePlayer():
 # 32400 port for 
 
 def boxee_GetCurrentlyPlaying():
-#    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
-    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
+    boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
+#    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
     import urllib2
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
@@ -49,6 +49,8 @@ def boxee_GetCurrentlyPlaying():
     print "calling GetCurrentlyPlaying api "
     print boxee_toggle
     print "Result of fetching url is ...."
+    p = re.compile(":([^@]*)@")
+    data = p.sub(':xxxxx@',data)
     print data
     return(data)
 
