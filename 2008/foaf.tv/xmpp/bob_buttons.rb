@@ -7,7 +7,7 @@ include Jabber
 
 begin
   jid = JID::new('bob.notube@gmail.com/itunes')
-  password = 'gargonza' 
+  password = 'gxxxxxxxxa' 
   cl = Client::new(jid)
   cl.connect
   cl.auth(password)
