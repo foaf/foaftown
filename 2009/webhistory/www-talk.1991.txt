@@ -1,0 +1,1641 @@
+Date: Mon, 28 Oct 91 14:34:12 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9110281334.AA06863@ nxoc01.cern.ch>
+Received: by NeXT Mailer (1.62)
+To: www-talk
+Subject: test again!
+
+If you get this, delete it. - Sorry!
+
+
+From timbl  Mon Oct 28 16:33:14 1991
+Date: Mon, 28 Oct 91 16:33:14 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9110281533.AA06989@ nxoc01.cern.ch >
+To: www-interest@nxoc01.cern.ch
+Subject: WorldWideWeb mailing list:  Introduction
+
+We have (at last!) started the www-interest mailing list. Your name is, for one reason or another, on it. 
+The list is a list for announcements about the World Wide Web (W3) distributed information system, mainly about
+
+           o    New online information available
+
+           o    New W3 software releases
+
+If you do not want to be on this list, please accept our apologies and mail listserv@info.cern.ch with the message body 
+
+        
+        delete www-interest
+
+If others wish to subscribe to this list, they should mail listserv@info.cern.ch with the message body
+
+        add www-interest
+
+There is a similar list, called www-talk, for developers of W3 software. Members of www-talk get www-interest automatically.
+
+If you have any queries for a human response, mail www-interest-request@info.cern.ch.
+
+        Tim BL
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+From timbl  Tue Oct 29 10:03:11 1991
+Date: Tue, 29 Oct 91 10:03:11 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9110290903.AA07413@ nxoc01.cern.ch >
+To: connolly@pixel.convex.com, www-talk
+Subject: Re: status. Re: X11 BROWSER for WWW 
+
+Dan,
+
+> I've made some tangible progress on the X11 browser, so I though 
+> I'd let you know.
+> ...
+> This code is not in any shape to distribute, or even show anybody.
+> But it works, and it's pretty speedy. That's enough to encourage me to polish it off.
+
+Sounds like great progress! The TCL sounds interesting -- where did you get it? 
+
+> [If you wan't my stuff, you'll have to be C++ capable. I can't
+> think in C any more. :-]
+
+Don't worry - we can handle C++, although for the line mode browser we wanted portability into places where C++ could not reach. That's  
+why the common code (in WWW/Implementation) is all in C. Believe me, after writing the NeXT browser in Objective-C it was a wrench to  
+conclude that it would have to be deobjectified.
+
+> If you could round up some info on exactly what I can expect to see in an HTML file, and some idea of how you want it formatted [I have  
+> the HTML doc and the LineMode browser, but if you've got time to give me a little more info...] I'll be ready to tackle that pretty soon.
+
+You ask for info on exactly what you can expect to find in an HTML file, but you've read the two HTML files about HTML. What is missing from there?
+
+Here is some discussion about the tags -- where it's not in http://info.cern.ch/hypertext/WWW/MarkUp/Tags.html I have updated that document now.
+
+Most of the tags are just style tags: this goes for the headings H1 to H6, the lists UL and OL with list elements LI, the glossary DL  
+with elements DT and DD.
+
+<TITLE> ..<TITLE> is designed to be used for putting in the top banner of a window, or using as the window  name. It also is what you  
+would use in a history list. It shouldn't be displayed in the text itself, as usually there is a <H1> heading atteh top of the text  
+anyway. A difference is that thet title is designed to make sense out of context, whereas the heading is within context. For example,
+a title might be "Formatting Characters for Printf -- C reference manual" whereas the heading may just be "Formatting characters".
+
+The base address tag is not used, nor is highlighting HP1 etc.
+
+Anchors are used!  The REL attribute is NOT used.
+
+<ISINDEX> is sent by servers to indicate that they will accept a search given this document name plus keywords. It turns on a search  
+panel when the document is the main window.  An even better implementation would have a keyword field at the bottom of the text  
+window if the document is a searchable index.  That would make the document more self-contained as an item in the user's eyes, and  
+reduce screen clutter.
+
+<NEXTID> can be ignored by browsers, only needed for editors.
+
+<XMP> and <LISTING> are used to indicate inserted literal text. To make life easier for those writing documents (and because we don't  
+have entities in the code yet) they are special in that EVERYTHING is litteral text until the closing tag - so one can use XMP for giving
+examples of HTML for example.  (We really need an escaping method - the next parser will have simpl entities like "&lt." for "<".)
+Within XMP or LISTING, newlines are significant (and mean "new line"!)
+
+<PLAINTEXT> is used to indicate that the rest of the file is in fact just ASCII. It turns off SGML parsing completely. It's a fudge for
+the moment, until we have the document format negociation.
+
+______________________________________
+
+        Structure of documents:
+
+In writing a new generic parser, I wondered whether your text object will store the nested structure of a document. At the moment, the  
+document is a linear sequence of styles: you can't have lists within lists, etc. Ideally, it would be able to handle this - although its  
+more difficult for a human writer to handle when formatting the document. I would in fact prefer, instead of <H1>, <H2> etc for  
+headings [those come from the AAP DTD] to have a nestable <SECTION>..</SECTION> element, and a generic <H>..</H> which at any  
+level within the sections would produce the required level of heading.
+
+For a browser, it is quite satisfactory to flatten the structure back into a sequence of styles, but for an editor it isn't. Are you going  
+to go for editing capability?
+
+Tim
+
+PS: Shall I put you on the www-talk list?
+
+From timbl  Wed Oct 30 15:33:16 1991
+Date: Wed, 30 Oct 91 15:33:16 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9110301433.AA08339@ nxoc01.cern.ch >
+To: www-interest
+Subject: Telnet access to W3 information server
+
+
+                        TELNET ACCESS to W3
+
+You can new telnet to our information server. 
+
+
+                Telnet to:      info.cern.ch
+                User name:      www
+                (no password)
+
+You will be presented with the home page which is used at CERN on the central machines. From there, you can follow links whatever documents  
+and indexes we know about at CERN or elsewhere in the world of online information. You will be using the line mode brower, which assumes  
+nothing about your terminal capabilities.
+
+This trial service is provided for those who want to try out the software, or who need information and are away from home. If you use  
+this service frequently, it is much more efficient and faster for you to install the browser locally.
+
+You can of course get help, including installation instructions, by following the "Help" link from the home page.
+
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+
+From timbl  Thu Oct 31 11:49:15 1991
+Date: Thu, 31 Oct 91 11:49:15 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9110311049.AA09130@ nxoc01.cern.ch >
+To: Edward Vielmetti <emv@ox.com>
+Subject: Re: Home page design, WAIS gateway bug, MSEN
+Cc: www-talk
+
+Ed, you asked:
+
+>> Any chance that you could put the "home page" from CERN and some other sample good pages up for anonymous FTP? <<
+
+Done for the CERN home page: //info.cern.ch/pub/WWWLineModeDefaults.tar.Z
+
+> I'd be interested to hear any thoughts you have on what it takes to make a good home page.  I suppose you want to be sure that a user
+> doesn't get so completely lost that they can't find their way out,  enough local information that people feel more or less at home.
+> hm hm hm.
+
+Yes, Good home page design is an art -- like the cover of a magazine, or a quick-reference card. Of course it depends on the readership.  
+The CERN home page has to start with the CERN things to minimise the number of keystokes/clicks for the largest number of users. At the  
+same time, it needs pointers for someone with a broader interest to rapidly find a wider topic, and it has to suggest to people what is  
+behind it so that later they will use it again on another topic. The competition for the first 24 lines is hot! I have thought of  
+having a "Latest additions" link, so that people who though they know the web can check for new bits.
+
+There is also the question of whether to make the layout really open (lots of white space), with 5 well-explained links on each page, or  
+to cram in as much as possible. I feel one should start with something very open and obvious, but then get more compact once the  
+reader is into something he is interested in and has got the hang of the program. Having a fast scollbar make it much easier to cope with  
+lots of open text. People must have done their PhDs on this sort of thing...
+
+I suspect one should have, for each site/organisation, a public home page for those from outside, as well as a private one for those who  
+will underderstand terms differently. For example, a link to the CERN phone book from outside could mention that the numbers need to be  
+prefixed with +41(22)767!
+
+Also, both pages should be linked to some list of other sites.  Perhaps a tree of pages which emulate the domain/x500 naming scheme a  
+little would be useful because people are used to browsing that way, and will be able to once x500 is part of the web. This is only one  
+structure which is useful, though. A tree by subject a la Dewey  decimal system would be another - hypertext would get over the tree  
+restriction which limits Dewey's usefulness. In fact, making hypertext overviews and making indexes of third party data should be  
+"value added services" which anyone - library, or company like yourselves, should be able to do on top of existing data. Making  
+sense of the morass of data (as you have been doing for years) is a very valuable contribution to the world of knowledge. Such ordered  
+overview or review information is likely to be much more widely read than the underlying documents.  The best reviews will be most quoted,  
+and hence most read, so survival of the fittest will ensure that most people don't spend their time reading junk.
+
+> By the way, it's possible to build a Sun 3 client with no problem
+> at all - just make a "sun3" directory, copy in the Sun 4 makefile, and make.
+
+Thanks - I don't have sun3 to test on, but I'll make the directory any copy the makefile: thanks!
+
+> "Document address invalid or access not authorised" on 
+
+ 'http://info.cern.ch./hypertext/Products/WAIS/NewsGroupRelated.html'
+> could you check on it?)
+
+Oops .. [Long story: The default home page in the last release has a pointer to a file ...Products/WAIS/Sources.html which had just been  
+renamed  ...Products/WAIS/Sources/Overview.html. When you read it, there was a soft link from the old to the new so you read the new  
+file but with the client thinking it was at the old address. This worked until I put in the new relative link to your list. Then, the  
+relative link was parsed relative to the old address, generating the bad adderss above]. It should be ok now. 
+
+___________________________________________________________________
+
+>> I figured out how to store a WAIS query.  For your "What is MSEN" pointer,  something like
+<A HREF=http://info.cern.ch:8001/quake.think.com:210/wais-discussion-archives?msen> will work just fine. <<
+
+Well done! .. I've linked "MSEN" in your list to you main document.
+
+By the way, I want to make that address wais:/quake.think.com:210/wais-discussion-archives?msen
+
+but first I have to put into the client a table of gateway addresses for protocols the client doesn't know himself.
+
+>> I hacked the line mode client so that "RECALL" and "LIST" spit things out in a format that's ready to cut and paste into a source  
+document; that was the easiest way to get documents of my own going quickly. <<
+
+Ok...I wondered whether a command "Append a reference to this node in HTML to file xxx" would be useful. It would allow people to keep  
+lists of interesting nodes in their own space. It's in the Line Mode bug list now.
+
+________________________________
+
+>> WAIS database names can include / in them, which gums up your heuristics for figuring out how to parse them. <<
+
+Yes -- that's true.  I should escape them or something...
+
+Thanks for all your feedback, Ed.  MSEN sound like something heading in the right direction.  By the way, do your [prospective] clients  
+have workstations in general, or is it all MDOS? Do they dial in, or have leased lines?
+
+I wish I could have gone to the IETF to meet a few people in person, yourself included, but Robert Cauilliau and I are going to HyperText   91 (Dec 15-18 in San Antonio TX), and that blows my US Travel quota.  
+
+Will you be at HT91 by any chance?
+
+Tim BL
+
+
+From jkp@sauna.cs.hut.fi  Sun Nov  3 08:19:02 1991
+Date: Sun, 3 Nov 1991 09:15:13 +0200
+Message-Id: <199111030715.AA25310@sauna.cs.hut.fi>
+From: Jyrki Kuoppala <jkp@cs.hut.fi>
+Sender: jkp@sauna.cs.hut.fi
+To: www-talk@nxoc01.cern.ch
+Subject: www server at tky.hut.fi
+Return-Receipt-To: jkp@cs.hut.fi
+Organization: Helsinki University of Technology, Finland.
+
+OK, now there is quite a lot of stuff added into the www server at otax.tky.hut.fi - though it's not a web, but a tree.  The html files
+for directories are automatically created by a simple shell script from the normal Unix-style directory tree, and the text files itselves
+are normal ascii to which links are created in the html files.
+
+There's one problem: the otax files have tab characters in them and the server or the line mode client seems to mostly convert them to line breaks.
+
+//Jyrki
+
+From timbl  Fri Nov  8 10:00:33 1991
+Date: Fri, 8 Nov 91 10:00:33 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111080900.AA04556@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: www-talk
+Subject: WWW and prospero
+
+Begin forwarded message:
+
+To: rusty@mail.cornell.edu
+Cc: tbl@cernvax.cern.ch, bcn@june.cs.washington.edu
+Subject: WWW and prospero
+Date: Thu, 07 Nov 91 19:36:05 -0500
+From: Edward Vielmetti <emv@ox.com>
+
+   Does anyone know about WWW (World Wide Web) and Prospero, and how I can find
+   out more information about them? Thanks!
+
+Prospero is a remote file system.  If you have an archie client (like the archie clients at ftp.cs.widener.edu:/pub/archie/) you'll be
+using the Prospero protocol to send queries to the servers.  You can pick up the server at june.cs.washington.edu:/pub/prospero.tar.Z, and
+look at the documentation in june.cs.washington.edu:/pub/pfs/doc/.
+
+WWW is an interesting hypertext system from CERN.  You can try it out by telnetting to info.cern.ch (login: www) or by ftp'ing the clients
+or servers from that site.  What's particularly neat is that you can embed references in a WWW document which point to WAIS servers (as
+well as to other WWW documents or files on anonymous FTP) - that makes it quite straightforward to build on-line systems with a mix of structured menus and searching stuff.
+
+I'd compare WWW with "gopher" from U of Minnesota (see boombox.micro.umn.edu:/pub/gopher/); both of them would be suitable
+for building a campus-wide information system with.  WWW is much more of a web with links sending you off hither and yon; selections on
+gopher menus can set you talking to servers a long distance away, but it seems from what I've looked at to be much more of a hierarchical
+approach.  WWW also lets users design their own menus.  You can test out gopher by telnetting to consultant.micro.umn.edu, login gopher.
+
+Both WWW and gopher offer snappy user interfaces for NeXT machines.
+
+   Aaron (Rusty) Lloyd                  Cornell Information Technologies
+   rusty@mail.cornell.edu                       SCAdian, and proud of it!
+
+As an aside, it would be really nice if WWW could be taught the Prospero protocol like it knows WAIS....
+
+-- 
+
+Edward Vielmetti, vice president for research, MSEN Inc. emv@msen.com
+       MSEN, Inc. 628 Brooks Ann Arbor MI 48103 +1 313 741 1120
+
+
+
+From timbl  Fri Nov  8 11:17:05 1991
+Date: Fri, 8 Nov 91 11:17:05 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111081017.AA04649@ nxoc01.cern.ch >
+To: www-interest@nxoc01.cern.ch
+Subject: WWW-WAIS Gateway
+
+(Now its been running for some time, I guess I should announce it!) 
+
+                World-Wide Web <-> WAIS Gateway Running
+
+A gateway running on info.cern.ch provides access by any WWW browser to the world of information provided by "WAIS" servers. WAIS servers  
+are full-text search servers using software from Thinking Machines Corporation. There's more infomation about WAIS and the gateway in  
+the web.
+
+[By the way, if you have an old WWW default page which may not have links to everything of interest, you can pick up by ftp (or link to)  
+a new one from file://info.cern.ch/pub/default.html]
+
+HYPERTEXT GUIDE
+
+You can find WAIS indexes by browsing a hypertext guide to WAIS (linked from our default page), and/or doing an index search on the  
+WAIS index of indexes. 
+
+The guide starts at http://info.cern.ch/hypertext/Products/WAIS/Sources/Overview.html
+Here is an sample of what there is: 
+
+Biochemistry     The EC enzyme database of Amos Bairoch , REBASE restriction enzymes , the annotation of the GenBank(R) DNA sequence database (Bacterial Division), the Peter Karps CompoundKB database of 981 metabolic intermediate compounds ,  periodical references to journals in the area of molecular biology , BIOSCI mailing lists and newsgroup archives
+
+Geography        Asia Pacific region: Curriculum Resources & Course outlines;  India: Miscellaneous information 
+
+Humanities       Discussion, Poetry 
+
+Meterology       The weather (around MIT)
+
+Music            MIDI interfacing ,  Song lyrics ,
+
+Religion         The Bible (King James version) , The Holy Qur'an 
+
+
+Computing & Networking:
+
+        AARNet   Australian Academic and Research Network Resources Guide
+
+        Fidonet  List of nodes
+
+        Usenet   FAQ, cookbook, science
+
+        Internet RFCs, resource guide, etc etc (etc etc)
+
+                        By Organsiation
+
+ E.F.F.         Electronic Frontier Foundation: Documents, discussion
+
+ N.S.F.         National Science Foundation: bulletins
+
+ M.I.T.         Algorithms book: Bugs , excercises , suggestions  for the book, 'Introduction to Algorithms' by Tom Cormen, 
+               Charles Leiserson, and Ron Rivest, all members of Theory of Computation Group, Laboratory for Computer Science.  Weather .
+
+ University of Noth Carolina     Phone book 
+
+ University of North Texas       Documents 
+
+ Univ. Oslo                     Publications bibliography 
+
+Mail me with any problems/questions/suggestions.
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+
+
+From jfg@bernd.cern.ch  Fri Nov  8 12:20:51 1991
+Date: Sat, 9 Nov 91 12:13:19 +0100
+From: jfg@bernd.cern.ch (Jean-Francois Groff)
+Message-Id: <9111091113.AA11283@bernd.cern.ch>
+To: Edward Vielmetti <emv@ox.com>
+Cc: bcn@june.cs.washington.edu, www-talk@nxoc01.cern.ch, rusty@mail.cornell.edu
+Subject: Re: WWW and prospero
+References: <9111080900.AA04556@ nxoc01.cern.ch >
+
+> As an aside, it would be really nice if WWW could be taught the Prospero protocol like it knows WAIS....
+
+This has a high priority in our wish-list, but we are very busy preparing a new kernel for WWW (you can call it WOW if you can't
+pronounce that !), which features multiple TYPED links from/to each anchor, so you can write knowbots for instance, and fast (we hope)
+format negotiation between clients and servers.
+
+The availability of this will be announced on the www-interest mailing list. To register on that, send a mail to listserv@info.cern.ch with
+body text "add www-interest". Your mail address will be extracted from the From: field.
+
+Sorry, no firm dates yet, but expect it by the end of the year.
+
+----
+        Jean-Francois Groff (jfg@cernvax.cern.ch)
+        World-Wide Web project
+        CERN, ECP division
+        CH-1211 Geneva 23, Switzerland
+        Phone: +41 22 767 3755
+        Fax:   +41 22 767 7155
+----
+
+From timbl  Fri Nov  8 13:35:26 1991
+Date: Fri, 8 Nov 91 13:35:26 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111081235.AA04757@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: connolly@pixel.convex.com
+Subject: Re: Motif browser status
+Cc: kharris@pixel.convex.com, www-talk
+
+Dan,
+
+Thanks for your message.  Obviously you know what you are doing with X11 browsers - we are impressed by what you have done to date. I was  
+interested to hear that you are working on AVS - I have had some contact with AVS people at UNC.
+
+You make a good point that the world has been waiting for a good formatted text widget under Motif. One exists under NeXTStep, Robert  
+Cailliau is just adapting one for the Mac for hypertext, but under Motif it has been lacking.  Of course, hundreds of people have  
+written them: all the word processors have them in, and products like dynaText, etc. However, there is none in the public domain.
+
+CERN like Convex has a copyright on all code, but we are doing our best to release W3 code as widely as possible, and possibly overcome  
+this limitation. Why?
+
+The concept of the web is of universal readership. If you publish a document on the web, it is important that anyone who has access to it  
+can read it and link to it. In order to make this possible, we don't need very new technology -- what we do need is
+
+        1.      A common open naming/addressing format
+        2.      Sufficiently powerful underlying protocols
+        3.      Sufficiently powerful data formats
+        4.      Some free implementations
+
+Now we have defined the (1), which did not exist before. We have supplemented the (2), where some protocols do exist. We have added a  
+little to (3) though we will use all existing and new formats. We have written some code.
+
+You say your work would be of considerable valuer to convex. Yes, that is true. You must ask yourself whether it would be of more value  
+to convex if kept private or released for general consumption. If you release it,
+
+  -     Convex gets the credit and a higher profile, (as Thinking Machines has with WAIS indexers for example).
+  -     Anyone in the world can read the information you supply with the same tool as they use for other information.
+  -     You get a lot of useful feedback from users on the network
+  -     A lot of people would be able to profit from what you have
+         done
+
+You have to compare this scenario with that if you keep the code private. You will be able to use it internally. Would convex be able  
+to profit from by selling it? If so, how many people would actually buy it? Will the AVS project benefit from a closed private documentation scheme?
+
+On these grounds alone, you may conclude that it is in Convex's interest to release the code. Still, you ask what we can "put on the table".  If it would make it easier to justify the release of code, we would be happy to make all CERN-developed W3 code officially  
+available to Convex under a more or less formal joint project agreement. Note that we are producing a parallel set of parsers and  
+access mechanisms for HTML, newgroups, WAIS, prospero, etc. We have gateways, and other browsers. The line-mode browser you know, the Mac  
+one is coming along, we may have a full-screen character grid browser too. We are currently unifying the browser architecture so that all  
+access mechanisms can be used by all browsers. I'm not sure that either of our sides would want to be contractually bound to produce  
+or maintain anything - the agreement would be just as-is code sharing of what exists when it exists, no strings.
+
+You ask about graphics. That cannot be our next priority, as we need to get the new architecure and general format negociation worked out.  
+In many cases, we find that there are GIF/TIFF viewers on various platforms, and one can link in to them. We don't want to make a new  
+graphics file format a la Mac/PICT, but we are intrerested in conversion code. Have you heard of editable Postscript? That might be  
+what you are looking for. (See http://info.cern.ch/hypertext/Standards/PostScript/IPF.html)
+
+I don't know whether your company has a mechanism for allowing code to be released into the public domain (or General Public License). If  
+it is politically impossible, then that's a pity.  (We do have a group of students in Finland working on an X implementation, and if  
+that doesn't work out we could write it ourselves. It may also be that more that one implementation with a different style will be  
+interesting. Obviously it would be rather a duplication of effort, though we are under a lot of pressure from our management and users  
+to put this at the top of the agenda.)
+
+I hope I have clarified the W3 team's philosophy, and perhaps convinced you to contribute, to our mutual (and the world's) benefit.
+
+        Tim
+
+PS: Yes, I think you ought to be on www-talk, Dan. I'll put you on.  The traffic is not too high.
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+
+From emv@cato.aa.ox.com  Mon Nov 11 11:52:03 1991
+Return-Path: <emv@cato.aa.ox.com>
+Message-Id: <m0kgVyd-000Bt4C@cato.aa.ox.com>
+To: www-interest@nxoc01.cern.ch
+Cc: archive-index@cs.toronto.edu, emv@msen.com
+Subject: some of the stuff on ftp.cs.toronto.edu:/pub/emv/ is in WWW format
+Date: Mon, 11 Nov 91 02:22:35 -0500
+From: Edward Vielmetti <emv@ox.com>
+
+I'm slowly but surely converting the files on ftp.cs.toronto.edu:/pub/emv to be in the WWW format.  Right now the stuff in news-archives.README is referred to that way, and some of the rest of the things in news-archives too.
+
+I'm going out on a limb a tiny bit and writing references to things that none of the clients know how to deal with yet, in the expectation that useful data will inspire code.  In particular, I have some references that look like
+
+<a name=1 href=aftp://anonymous@ftp.cs.toronto.edu:/pub/emv/news-archives.README></a>
+
+This aftp: tag is new.  I'm not completely happy with the use of the file: tag to refer to remote files, since it can lead to situations
+where references are ambiguous depending on whether you're dealing with a file on the local system or that same file accessed via anonymous FTP on the local system.  Adding an aftp: tag should help that.  The format //user@host:/filename/ is quite similar to that used by ange-ftp, so these references are immediately quite usable by existing code. There's also the hope that if the aftp: thing gets to be popular it'll be easier to pick out references to files from usenet postings, distinguishing them from references to ftp (the protocol or the program).
+
+It's useful (even necessary) to include the anonymous@ bit; there are some sites (lib.stat.cmu.edu and research.att.com) with two parallel
+"anonymous FTP" trees that have different user names to get to them; a reference to <a href=aftp://netlib@research.att.com:/> </a>
+is quite different than <a href=aftp://anonymous@research.att.com:/> </a>
+
+comments etc welcomed.
+
+at some point this archive is going to migrate back to ftp.msen.com, but I'm waiting there on getting equipment a little more suitable to
+the task.  
+
+Tim, feel free to glue these into the web as best you see fit; I have to go back and stick in all of the WAIS newsgroup mappings that
+I collected before.
+I'm also using  <a href=wais://wais.domain.org:210/database?> in anticipation of that tag being supported, it should be a matter of
+a simple sed or perl script to convert those tags to their current preferred format.
+
+--Ed
+
+
+
+From jfg@bernd.cern.ch  Tue Nov 12 16:44:43 1991
+Return-Path: <jfg@bernd.cern.ch>
+Date: Tue, 12 Nov 91 16:36:46 -2300
+From: jfg@bernd.cern.ch (Jean-Francois Groff)
+Message-Id: <9111131536.AA05532@bernd.cern.ch>
+To: Edward Vielmetti <emv@ox.com>
+Cc: www-interest@nxoc01.cern.ch
+Subject: Re: some of the stuff on ftp.cs.toronto.edu:/pub/emv/ is in WWW format
+References: <m0kgVyd-000Bt4C@cato.aa.ox.com>
+
+>>>>> On Mon, 11 Nov 91 02:22:35 -0500, Edward Vielmetti <emv@ox.com> said:
+
+Ed> I'm slowly but surely converting the files on ftp.cs.toronto.edu:/pub/emv
+Ed> to be in the WWW format.  Right now the stuff in news-archives.README is
+Ed> referred to that way, and some of the rest of the things in news-archives too.
+
+I just tried to read your news-archives.README with the line-mode browser through the traditional file: access. First-minute comments :
+
+- Currently, any file retrieved through the file: access, local or remote, is considered a plain text file unless its name ends with `.html'. As a consequence, the anchors that you have inserted in news-archives.README are not interpreted by the browser, so they
+cannot be jumped to, except by cutting the reference and pasting it to another www command line. Moreover, the text is just echoed in its
+original format, which sadly happens to be double-spaced (CR-LF ?).
+
+The easy fix is to append `.html' to the name of any file that contains HTML tags, but I understand that it will bother people who look at your files without www. The upcoming format negociation could help with this, especially in the case of a dedicated www server that
+could pass and possibly negotiate the document type. For anonymous ftp, the browser should run simple heuristics to try and guess the type of the file from its name.extension. We'll think about it.
+
+Ed> This aftp: tag is new.  I'm not completely happy with the use of
+Ed> the file: tag to refer to remote files, since it can lead to
+Ed> situations where references are ambiguous depending on whether
+Ed> you're dealing with a file on the local system or that same file
+Ed> accessed via anonymous FTP on the local system.  Adding an aftp:
+Ed> tag should help that.
+
+- We agree that the current syntax can be ambiguous, but we want to keep references to local and remote files in the same format, because
+the very notion of a `remote' file should disappear with wide-area hypertext (remember the new WAN cliche: the network IS the computer).
+A less philosophical reason for that is to avoid referring to a particular retrieval protocol : the reference to the file should be
+the same regardless of whether it is retrieved through anonymous ftp or through the Andrew file system, for instance. Of course, we would
+like to introduce X.500 naming in the (more or less) long term.
+
+Ed> It's useful (even necessary) to include the anonymous@ bit; there are some
+Ed> sites (lib.stat.cmu.edu and research.att.com) with two parallel
+Ed> "anonymous FTP" trees that have different user names to get to them;
+Ed> a reference to
+Ed>     <a href=aftp://netlib@research.att.com:/> </a>
+Ed> is quite different than
+Ed>     <a href=aftp://anonymous@research.att.com:/> </a>
+
+So we want to keep `file:' for both local and remote file, but we must take into account your other suggestion : allowing for a different user name. I suggest the following :
+
+        * allow an optional `user@' part before a host name.
+        * if the user is not specified, make it the current user name
+          if the host is the local machine, and `anonymous' otherwise.
+          (this avoids the ambiguity that you mentioned)
+
+Examples :
+        file://ftp.cs.toronto.edu/pub/emv/news-archives.README.html
+        file://netlib@research.att.com/
+
+Ed> The format //user@host:/filename/ is quite similar to that used by
+Ed> ange-ftp, so these references are immediately quite usable by
+Ed> existing code.
+
+- Currently, a colon after the host name is used to specify an alternate TCP port number, but a good browser should ignore it if no number is present. In this way, www can be compatible with ange-ftp syntax.
+
+- Your examples make me think of another feature we should add for the browsers to support them : the ability to display a directory as a list of references, with maybe the README file (if any) prepended as introductory text. Currently, on your reference to
+        file://pit-manager.mit.edu/pub/usenet/
+the browser would try to `get' the directory through ftp and fail. So I'll add this to the wish-list for the `file:' access method :
+
+        * if the address ends with a `/', try `ls' instead of `get'.
+        * try to get an appropriate README file. Try those in order :
+          README.html, *README*.html, README, *README*, *readme*
+        * Display that file if found, then build a list of references
+          for all the files contained in the directory.
+
+Note that if you supply both a README.html and a traditional README, you won't have to apologize about `all those funky angle brackets' !
+
+- From your news-archives.README :
+
+  blah blah blah. Check out <a href=aftp://anonymous@pit-manager.mit.edu:/pub/usenet/> </a>  for lots more information.
+
+With the line-mode browser, this will look fine :
+
+  blah blah blah. Check out [1] for lots more information.
+
+But with any mouse-driven browser (NeXT, X-Windows, emacs, Mac), the anchor should sit on a piece of text that will serve as a button. With your current example, your reader would only see :
+
+  blah blah blah. Check out for lots more information.
+
+with possibly a tiny highlighted space between `out' and `for'. Some human-readable description of what the anchor points to will do fine.
+For instance :
+
+  blah blah blah. Check out the <a href=file://pit-manager.mit.edu/pub/usenet/>MIT usenet archives</a> for lots more information.
+
+would yield
+
+  Check out the MIT usenet archives[1] for lots more information.
+
+or a highlighted `MIT usenet archives' on a mouse-driven browser. Before that in your README, it would be nice to have an anchor
+associated with the `List of periodic informational postings' and to the archive that you mention. Same for the `news.answers' group (the
+`news:' access is implemented in the new architecture. Use this simple syntax : `<a href=news:news.answers> news.answers </a>'.)
+
+- As an aside, the `name=' part of the anchor tag is not necessary in your context : it is needed if someone wants to make a link TO that particular anchor, not to the whole document.
+
+Ed> I'm also using
+Ed>     <a href=wais://wais.domain.org:210/database?>
+Ed> in anticipation of that tag being supported, it should be a matter of
+Ed> a simple sed or perl script to convert those tags to their current
+Ed> preferred format.
+
+- Agreed. OK for the `wais:' access.
+
+Thank you for all your suggestions. Please continue to provide feedback as you write more html. We're looking forward to read your data seamlessly and pave the way for other ftp site managers.
+
+--- Jean-Francois
+
+
+From emv@shelley.aa.ox.com  Wed Nov 13 01:11:01 1991
+Return-Path: <emv@shelley.aa.ox.com>
+Message-Id: <m0kh855-000Ds7C@shelley.aa.ox.com>
+To: jfg@bernd.cern.ch (Jean-Francois Groff)
+Cc: www-interest@nxoc01.cern.ch
+Subject: Re: some of the stuff on ftp.cs.toronto.edu:/pub/emv/ is in WWW format 
+In-Reply-To: Your message of Tue, 12 Nov 91 16:36:46.
+             <9111131536.AA05532@bernd.cern.ch> 
+Date: Tue, 12 Nov 91 19:03:47 -0500
+From: Edward Vielmetti <emv@ox.com>
+X-Mts: smtp
+
+>> I just tried to read your news-archives.README with the line-mode browser through the traditional file: access. First-minute comments :
+
+Thanks for the comments.  I realize this is just a first pass for some of this -- I'm hand editing the files for now, but before too long I really want to start generating stuff more automatically, best to get the formats down pat before writing code.
+
+>> The easy fix is to append `.html' to the name of any file that contains HTML tags, but I understand that it will bother people who look at your files without www. 
+
+I'm expecting to generate two (or three, or n) different files eventually from an SGML source; one will be relatively flat ASCII that people can read real easily, another will be nice pretty postscript suitable for paper, and the third the HTML for the browser.  I'm
+pretty sure that the available SGML tools (either now or within the year) will make this reasonable to do, one way or the other.
+
+>> - We agree that the current syntax can be ambiguous, but we want to keep references to local and remote files in the same format, because
+>> the very notion of a `remote' file should disappear with wide-area hypertext (remember the new WAN cliche: the network IS the computer).
+
+I guess the only problem here is that the frame of reference (or the top level directory) may change depending on your access mode;
+anonymous FTP shows that tendency, and AFS seems to as well.  I've abandoned the aftp: bit as I rewrite things, they're just file: now.
+
+>> - Currently, a colon after the host name is used to specify an alternate TCP port number, but a good browser should ignore it if no number is present. In this way, www can be compatible with ange-ftp syntax.
+
+Thanks.  I think it's important -- ange-ftp users includes me, and since I don't have a real super WWW browser other than line mode I need to be sure that I don't have to rewrite stuff.  I don't think it would be to hard to cons up a similar setup to 
+
+>> I'll add this to the wish-list for the `file:' access method :
+>> 
+>>      * if the address ends with a `/', try `ls' instead of `get'.
+>>      * try to get an appropriate README file. Try those in order :
+>>        README.html, *README*.html, README, *README*, *readme*
+>>      * Display that file if found, then build a list of references
+>>        for all the files contained in the directory.
+
+There's work going in the IETF Anonymous FTP working group (headed up by Alan Emtage and Peter Deutsch of archie fame) to work on improving
+access to anonymous FTP areas.  A standard for directory description is sorely lacking, and I think (cross fingers) than an SGML approach
+like WWW would have as good a chance as any to get acceptance That's especially true, *if* can be generated with minimal or no effort by a
+site admin.  I'm inclined to called the file archie.html just to steal their good name :-) and make it clear that the file is
+designed to be scooped up and processed by other things (future archies, WWW, WAIS, other hypertext browsers, other indexes).
+
+A first pass would be to take a big archive that you're familiar with and that is already reasonably well indexed (say the index files from
+one of the NeXT archives, or maybe simtel20, or something like that) and convert the indexes into WWW format.  
+
+>> With the line-mode browser, this will look fine :
+>> 
+>>   blah blah blah. Check out [1] for lots more information.
+
+Fixed (more or less)in the stuff that I'm going back over.  I don't have a formatter just yet that will display things as they will show
+on-screen, & there are style and design conventions involved which I'd really rather steal from someone than do myself.  A style guide for
+html (and a dtd, if you can manage one, so that these things can be munged with sgml tools) would be great to have.
+
+>> Thank you for all your suggestions. Please continue to provide feedback as you write more html. We're looking forward to read your data seamlessly and pave the way for other ftp site managers.
+
+Happy to be of help, thanks for the comments.  It's a big enough job to try to map out what's out there on the net, I'd just as soon let someone else write the nice GUI so I don't have to.
+
+-- 
+Edward Vielmetti, vice president for research, MSEN Inc. emv@msen.com
+       MSEN, Inc. 628 Brooks Ann Arbor MI 48103 +1 313 741 1120
+
+
+
+From emv@crane.aa.ox.com  Wed Nov 13 05:18:38 1991
+Return-Path: <emv@crane.aa.ox.com>
+Message-Id: <m0khBzh-00081pC@crane.aa.ox.com>
+To: www-interest@nxoc01.cern.ch
+Subject: references in the web to paper documents.
+Date: Tue, 12 Nov 91 23:14:28 -0500
+From: Edward Vielmetti <emv@ox.com>
+
+I will be using the format
+
+<a href=isbn:0-13-484080-1> Carl Malamud's "Stacks" </a>
+
+to handle references to books.  The hope (such as it is) is that a browser will be able to take the isbn magic cookie and feed it into a library on-line catalog and get a meaningful result back.
+
+If there has been an SGML coding proposed or in use for MARC format records that would be the appropriate way to return the results. I don't have MARC details on-line, but that's OK since most library on-line catalogs don't yet give you access to raw cards.
+
+Until there's an isbn-to-www gateway they're still quite useful as absolute reference markers, easy to get the full cataloging information that way.
+
+Similar treatment is expected for issn (serials) numbers.  In some distant far-off future electronic serials and electronic documents
+will get card catalog entries for them if they're suitably permanent and distinctive to warrant them.  Until then there are plenty of books out there that I'd like to have pointers to.
+
+Bonus points if you can deliver fully formed hypertext to the desktop based on the isbn number :-)
+
+--Ed
+
+From emv@heifetz.msen.com  Wed Nov 20 10:30:27 1991
+Message-Id: <m0kjoAF-000HftC@heifetz.msen.com>
+To: www-talk@nxoc01.cern.ch
+Cc: archie-maint@cc.mcgill.ca, prospero@isi.edu
+Subject: prototype of www-prospero-archie interface
+Date: Wed, 20 Nov 91 04:24:09 -0500
+From: Edward Vielmetti <emv@msen.com>
+
+What I say prototype, I mean just a little teeny tiny idea turned into a few lines of code.
+
+This is a piece of perl that is a gateway between archie and WWW.  It should be set up to run as a server under inetd.  It takes incoming requests of the form  GET /nic.funet.fi/exact?wais and returns HTML formatted archie results back.  It depends on the
+C language Prospero archie client that you can get from (e.g.) ftp.cs.widener.edu.
+
+My HTML is really bad but you get the idea, it should look somehow somewhat reasonable and something you can click on.
+
+With a little bit of work any dbm file looks like it can be turned into a WWW queryable server along the same lines.
+
+Take note that you are inviting truly perverse packet transport, with a query from one site resutling in hundreds of packets being shuttled all around the world ....
+
+--Ed
+
+#!/usr/local/bin/perl
+
+# gateway from www to archie
+# this is the "brute force" kind of approach; a tidier solution
+# would speak the prospero protocols directly.
+
+while (<>) {
+        if (m,^GET /(.*)/(.*)\?(.*)$,) {
+                $archie = $1;
+                $type = $2;
+                $query = $3;
+        } else {
+                exit 0; # XXX 
+        }
+#       print "$node $database $query \n";
+        if ($type eq 'exact') {
+                $arg = " -e ";
+        } else {
+                $arg = " -s ";
+        }
+        $archcmd = "archie -l -t " . $arg . " -h " . $archie . " " . $query ;
+        print "<title>archie $type search for $query on $archie </title>\n";
+        @result = `$archcmd`;
+        foreach (@result) {
+                ($time, $size, $host, $file) = split;
+                print "<a href=file://anonymous@$host:$file>\n";
+                print "$_</a>\n";
+        }
+}
+
+
+From timbl  Thu Nov 21 17:51:35 1991
+Date: Thu, 21 Nov 91 17:51:35 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111211651.AA11536@ nxoc01.cern.ch >
+To: Anders Gillner <awg@sunic.sunet.se>
+Subject: Re: Internet-gopher , WWW, WAIS, etc
+Cc: NIR, www-talk
+
+Anders,
+
+>> systems within systems within systems!
+
+> [expletive deleted] mess !!. I have written to Joyce R. and said that we need some kind of structure and a worldwide cooperation about   datastructure.
+
+There two areas -- orgainzing the data structure itself, and  coordinating addressing/protocols/formats. Both are in embryonic stages at the moment so a few concurrent ideas must be useful to the world. Both can also, to a certain extent, be resolved by a "survival of the fittest" principle (as Brewster argues in [1]): Those reviews, overviews and indexes which have the best coverage, signal to noise  
+ratio and good links will be read most, and quoted most. It would save time, though, if all the projects pooled resources a bit more.  
+Some unaligned funding would help of course...
+
+Various people (CC'd on this mail) are talking about putting together a mailing list about resolving technical issues. Personally,  
+I don't mind where the list is -- it sounds like a good idea. The problem seems to be working out the overlap with lists such as  
+www-talk, wais-talk, archie-people, the anon. ftp IETF WG., various public lists [2], etc etc.  Perhaps someobody could try to make a "state of the nation(?)" list of who's doing what now.
+
+        Tim
+
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+References:
+
+[1]Brewster Kahle on WAIS concepts (much applies to other systems  
+too)
+ www file://quake.think.com//pub/wais/doc/wais-concepts.txt
+[2] List of some lists involved in NIR:
+www http://info.cern.ch:8001/wais.cic.net:210/lists network  
+information retrieval
+
+
+From timbl  Mon Nov 25 09:48:57 1991
+Return-Path: <timbl>
+Received: by  nxoc01.cern.ch  (NeXT-1.0 (From Sendmail 5.52)/NeXT-2.0)
+        id AA13665; Mon, 25 Nov 91 09:48:57 GMT+0100
+Date: Mon, 25 Nov 91 09:48:57 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111250848.AA13665@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: connolly@pixel.convex.com
+Subject: Re: X/motif browser status
+Cc: www-talk
+
+Dan,
+
+> The AVS help system is all but finished.
+
+> I went back tonight and tried browsing WWW files. My html2rtf converter is still a little rusty, but other than that, it works well.
+
+Thanks for the pearl script. It prompted us to bring perl up on some machines we didn't previously have it on.
+
+> Features I've implemented since I last wrote you:
+>
+>       * multiple fonts (with menu options for changing them)
+>       * colored text
+>       * full color raster images
+>
+> I've been considering the idea of building this thing on a Sparc
+> and sending you the binary for evaluation. I _might_ have time
+> before the end of the year. Would you have time to look at it?
+> Is it worth bothering, considering we don't have an agreement
+> about the source?
+
+Certainly we we would have time, and we'd be interested to compare the user interfaces.  It's a pity you can't release the source, but to to see the look and feel would be intresing all the same.
+
+> I used to keep up on the hypertext newsgroups, WWW, and WAIS mailing lists, but for about two months now, I've been too busy. The AVS project is winding down. I should be able to start thinking about using WWW or WAIS technology (or both) some time soon.
+
+Good. We are still (with many distraction) working toward getting the new browser out. That'll be able to have WAIS and WWW in the same package, fairly seamless  [Have you tried browsing through the WAIS gateway with your WWW browser?]
+
+Keep up the good work
+
+Tim
+
+From timbl  Thu Nov 28 08:57:45 1991
+Date: Thu, 28 Nov 91 08:57:45 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111280757.AA16501@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: www-talk
+Subject: Document identifiers
+
+[from clifford lynch via brewster kahle]
+
+The Coalition for Networked Information Architectures & Standards Working Group
+
+Workshop on ID and Reference Structures for Networked Information
+
+There is an increasingly urgent need to develop working standards for referencing networked information objects. This has a wide range of applications, including links from MARC records to source material, references from courseware to published material in electronic form, networked hypertext pointers, and digital document IDs of the sort used in the Wide Area Information Server (WAIS) system.
+
+Many projects underway today need these types of identifiers, and a number of efforts have developed ad-hoc solutions so that they can progress. Unfortunately, the proliferation of these ad-hoc solutions is a major barrier to interoperability.
+
+Responding to this need, the Coalition for Networked Information's Architectures and Standards Working Group is initiating an effort to develop such a working standard, or agreement. One outcome of this work may be a draft specification that is forwarded to standards-making bodies such as the National Information Standards Organization for consideration as the basis of an actual standard. In addition, the resulting specification may be submitted to the Internet Engineering Task Force for consideration as a draft Request for Comment (RFC).
+
+I propose the following process to reach agreement. I am distributing this announcement, which includes a number of assumptions towards such a specification; redistribution is encouraged. Discussion can be carried out electronically on the new LISTSERV mailing list that has been set up for the Architectures and Standards Working Group, which you can subscribe to by sending a mail message in the form
+
+SUB CNI-ARCH yourname
+
+to
+
+LISTSERV@UCCVMA.BITNET
+
+Barring the unlikely event that rapid and full agreement on the specification is reached through electronic discussion, CNI will sponsor a one-day invitational meeting in early November (date and place to be determined). If you have a strong interest in this topic and feel you should attend the meeting, contact me either by electronic mail (CALUR@UCCMVSA.BITNET or CALUR@UCCMVSA.UCOP.EDU) or by
+telephone (510) 987-0522 to have your name added to the invitation list.
+
+Aspects of the problem that need to be addressed include those below, which I have listed along with some assumptions (all subject to question) to provide a starting point for our discussions. I do not claim that this list is complete; look for areas overlooked as well as react to those mentioned. Many people have contributed ideas that appear in the list below, but I must make special note of the contributions of Brewster Kahle of Thinking Machines and his excellent document "Document Identifiers, or International Standard Book Numbers for the Electronic Age" (5/9/90).
+
+1. The need for identifiers, as distinct from location information. This is best handled by a number (much like an ISSN or ISBN), but the system must accomodate multiple number-assigning agencies. Thus, the identifier is proposed as <numbering-authority>,<identifier> where numbering authorities are registered.
+
+2. The pointers must be representable as an ASCII string to facilitate inclusion in a wide range of material, including documents and electronic mail.
+
+3. Location information must support multiple Locations for the document, including the "location of record" and one or more redistribution centers, local caches, etc. The means of specifying a location should be sufficiently general to span at least the set of networks covered under the Internet Domain Naming system (DNS).
+
+4. Objects may be retrieved by a variety of access mechanisms from servers, including FTP, LISTSERV, Z39.50, and perhaps FTAM and SQL-based database access, as well as requests for paper copies. The location information should be sufficiently general to include information about these different types of access techniques, and extensible to include new access methods that may develop in future.
+
+5. Perhaps the location identifier should include some information about the format and size of the object; on the other hand, perhaps it should not. Discussion?
+
+6. It should be possible to further qualify a reference to a "sublocation" within an object (which would have meaning only to the server that houses it). This is needed, for example, for hypertext-type links.  Such a sublocation might be the 25th paragraph of a text, for a hypertext-type pointer.
+
+7. Indirection should be supported. In other words, one should be able to format the location as the name of a server that can be passed the identifier and which would return location information. The protocol mechanism(s) for doing this need to be specified as well.
+
+8. While full rights and permissions data would seem to be outside the scope of such a pointer, it might be useful to include at least some basic information. This might be an indication that the object is not copyrighted and can be freely distributed, that it is copyrighted but can be freely distributed, that it can be redistributed for noncommercial use, or that restrictions apply to redistribution. Also, it might make sense to include a pointer of some sort (an e-mail address? a host address?) for further information about rights.
+
+9. Perhaps there might be some type of checksum that can be calculated on the retrieved object to ensure that the pointer and the object have not gotten out of synch?
+
+
+From timbl  Thu Nov 28 11:32:02 1991
+Date: Thu, 28 Nov 91 11:32:02 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9111281032.AA16716@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: www-talk@nxoc01.cern.ch
+Subject: misc. architecture notes
+
+Begin forwarded message:
+
+To: timbl@nxoc01.cern.ch
+Subject: misc. architecture notes
+Date: Wed, 27 Nov 91 15:06:02 CST
+From: connolly@pixel.convex.com
+
+[Any minute now, my ride to Kansas City for the holidy will arrive. In the mean time, here are some ideas.]
+
+WAIS
+
+It's beginning to look like you should try to fit WWW inside WAIS, rather than the other way around. You need to talk with those guys about format negotiation and document representation, and both groups need to combine WAIS docid's and WWW anchor addresses.
+
+In other words, I think the WWW browser should be a WAIS client. But come to think of it, there's no reason a browser can't be a WAIS client, a HTTP client, an FTP client, and an ARCHIE client all at the same time.
+
+For example, I used to compile WWW support into my browser. Lately, I changed my mind. Now I compile a separate programe that supports
+WWW access. I invoke
+        htaccess HTML_ADDRESS
+and the stdout of that process is the HTML content of the node.
+
+I pipe that through html2rtf.pl, and display the output. The user clicks on anchors, and the whole process repeats.
+
+I could, however, use waisq, or an archie client, or an nntp client, or an ftp client in place of htaccess, write a few more foo2rtf converters, and support all this stuff. Hmmm... lots to think about.
+
+TEXT OBJECT
+
+I've been reading some of the design notes in your web, and I was particularly interested in your ideas for a portable text
+object. My software uses many of these concepts. I gave up editing capabilities to simplify the design and make it doable
+in two months.
+
+I think you would be crazy to try to do the text object without C++. Perhaps you could provide a C interface and a sample implementation
+in C that doesn't have all the features. But for WYSIWYG displays, the problem is just too complex to maintain in C.
+
+You should take a close look at TMLib. Some of the implementation needs rework, but the architecture fits your needs pretty well.
+I'm not using any of that code, but I'm using lots of their ideas, e.g. the model-format-view architecture.
+
+HTML
+
+You need a DTD. Have you seen the SGMLS tools? They parse SGML and write a line-oriented representation as output. This would be ideal
+for format negociation. You could support plaintext and cerainly RTF, and probably make stabs at TROFF, TeX, and perhaps PostScript.
+
+Have you considered how to embed links in other formats? Please let me know how you decide to do it in RTF. My idea is to translate:
+
+        <A HREF=foo>text</A>
+                to
+        {\field{\fldinst HREF=foo}{\fldrslt text}}
+
+[for implementation reasons, I'm currently putting the \fldinst group after the \fldrslt group, but that's a minor detail.]
+
+The resulting files still work when loaded into MS Word, though if you saved them again I doubt the HREF would still be there.
+
+[my ride is here. more later]
+
+Dan
+
+
+
+From jfg@bernd.cern.ch  Mon Dec  2 10:07:44 1991
+Return-Path: <jfg@bernd.cern.ch>
+Date: Mon, 2 Dec 91 10:08:04 -2300
+From: jfg@bernd.cern.ch (Jean-Francois Groff)
+Message-Id: <9112030908.AA14185@bernd.cern.ch>
+To: www-talk@nxoc01.cern.ch
+Subject: forwarded message from connolly@pixel.convex.com
+
+WWW folks may like to comment on this, posted to wais-talk and cni-arch... Sorry if you've already read it there !
+
+-- Jean-Francois
+
+------- Start of forwarded message -------
+
+From: connolly@pixel.convex.com
+To: wais-talk@Think.COM
+Cc: cni-arch@uccvma.BITNET
+Subject: Re: Document identifiers 
+Date: Mon, 02 Dec 91 01:32:36 CST
+
+>The Coalition for Networked Information Architectures & Standards Working Group
+
+I don't like the direction this technology is headed.
+
+What is the desired functionality of these identifiers?
+
+If you want an identifier that uniquely identifies a file, why not use a checksum, such as returned by the unix sum command?
+
+Let's see how a checksum solves these issues, and then see what functionality I'd like to see in stead.
+
+> 1. The need for identifiers, as distinct from location information. This is best handled by a number (much like an
+> ISSN or ISBN), but the system must accomodate multiple number-assigning agencies. Thus, the identifier is proposed
+> as <numbering-authority>,<identifier> where numbering authorities are registered.
+ 
+There's no location info in a checksum. Done deal.
+
+> 2. The pointers must be representable as an ASCII string to facilitate inclusion in a wide range of material, including
+> documents and electronic mail.
+
+Check.
+
+> 3. Location information must support multiple Locations for the document, including the "location of record" and one or
+> more redistribution centers, local caches, etc. The means of specifying a location should be sufficiently general to span
+> at least the set of networks covered under the Internet Domain Naming system (DNS).
+
+Ah! Now we want to be able to get location info out of the identifier. Checksums don't help. Well, in fact, they help
+no more or less than <numbering authority>-<id> helps, unless a numbering authority implies a location. I'm not clear on this at all.
+
+> 4. Objects may be retrieved by a variety of access mechanisms from servers, including FTP, LISTSERV, Z39.50,
+> and perhaps FTAM and SQL-based database access, as well as  requests for paper copies. The location information should
+> be sufficiently general to include information about these different types of access techniques, and extensible to
+> include new access methods that may develop in future.
+
+Hmmm... now it looks like the doc id should tell how to get the document... but not exactly. What we're relly looking for is some client software that interprets these numbers and queries servers. Checksums look as good as anything again.
+
+> 5. Perhaps the location identifier should include some information about the format and size of the object; on the
+> other hand, perhaps it should not. Discussion?
+
+Checksums do not contain type/size info. If that's what we want, the checksum idea is no good.
+
+> 6. It should be possible to further qualify a reference to a "sublocation" within an object (which would have meaning
+> only to the server that houses it). This is needed, for example, for hypertext-type links.  Such a sublocation might
+> be the 25th paragraph of a text, for a hypertext-type pointer.
+
+
+Now we raise the question: just what does a document identifier identify? Until this item, it appeared that a document was
+a file. Now it's not so clear. Perhaps a document should be anything from a single character to a paragraph to a file to a chapter to
+a book to an encyclopedia to a library. That would be a good trick. Is that what we're after?
+
+> 7. Indirection should be supported. In other words, one should be able to format the location as the name of a
+> server that can be passed the identifier and which would return location information. The protocol mechanism(s) for
+> doing this need to be specified as well.
+
+Ah. Now the objectives of the location info become more clear. Sounds to me like the location is a TCP connection, or enough information on how to establish one.
+
+> 8. While full rights and permissions data would seem to be outside the scope of such a pointer, it might be useful to
+> include at least some basic information. This might be an indication that the object is not copyrighted and can be
+> freely distributed, that it is copyrighted but can be freely distributed, that it can be redistributed for noncommercial
+> use, or that restrictions apply to redistribution. Also, it might make sense to include a pointer of some sort (an
+> e-mail address? a host address?) for further information about rights.
+
+Ack! This stuff seems totally orthogonal to the rest of the stuff, but in practice, this looks like a crucial issue. I don't have any good ideas here.
+
+> 9. Perhaps there might be some type of checksum that can be calculated on the retrieved object to ensure that the pointer and the object have not gotten out of synch?
+
+This is what sparked the checksum idea.
+
+My response to all this:
+
+I don't think we need [yet another] document identifier format. If you want location info, use an internet address; if you want data integrity, use a checksum; if you want format, we are lacking a standard here; if you want copyright info, ditto;
+
+What we need is some nifty client software to glue all the parts together. I guess there is some room for standardization, but please:
+
+        LET'S LEVERAGE EXISTING SYSTEMS!
+
+Where these systems are robust, I think we should support them. I'd also like to see support for ad-hoc document identifiers. Here's
+an example to clarify:
+
+I'm browsing some email, netnews, or a README file from somewhere. 
+
+I see a reference to more info:
+
+        A full discussion of the BLURF protocol is available via
+        anonymous FTP from frob.mit.edu as blurf-proto.tex
+        in the directory /pub/protos.
+
+I select some or all of that text, and I click one of the buttons in my document retrieval tool:
+
+        make ftp id --  extract the relevant information and display
+                        a well-formed identifier acceptable to some
+                        existing FTP client (I've heard of something
+                        called ange FTP. Another idea is to make
+                        a shell script that would do the retrieval:
+
+ftp frob.mit.edu
+cd /pub/protos
+get blurf-proto.tex
+                        )
+
+        make wais id -- get enough info to make a WAIS doc ID
+                        [scrap this unless it stabilizes]
+        make WWW id --  same thing for World Wide Web HTTP addresses.
+        make NNTP id -- same thing for USENET news message id's.
+        make LISTSERV id --     you get the idea
+                        Rather than making up a new format, these id's
+                        are instructions to EXISTING clients to retrieve
+                        a document.
+
+        verify id --    connect to the necessary server(s) and verify
+                        that the id references an existing document.
+                        Append to the id a "verification date," which
+                        is the last time a server acknowledged the
+                        existence of the document.
+
+        get id info --  connect to the necessary server(s) and get about
+                        1K of miscellaneous info: document size in bytes,
+                        date of last modification, available formats,
+                        short summary, etc.
+
+        retrieve raw -- connect and retrieve the document in whatever
+                        format is convenient to the server, e.g.
+                        a compressed tar archive of C and troff sources.
+
+        retrieve text --        connect and retrieve the document as
+                        plain text [defined, e.g. as the body of an 
+                        RFC-822 mail message]
+
+        retrieve... --  the user or the supporting client software
+                        specifies the supported information formats,
+                        (compression schemes, archiving formats,
+                        image file formats, typesetting languages)
+                        the client and the server hash over their options,
+                        [perhaps with user intervention]
+                        and the server sends the most desireable version
+                        of the document it has available.
+
+If we add a few buttons, we begin to encompass the scope of many existing systems:
+
+        expand --       change the doc id to reference the "document"
+                        containing it. In the ftp example, rather than
+                        "get blurf.tex," it would have "ls."
+                        Click again and get "cd ..; ls."
+                        Obviously, this operation depends on the access
+                        mechanism. For WAIS documents, the expansion of
+                        a document is the source that contains it.
+
+        select --       narrow the document to some of its parts. For a
+                        text file, select some of the characters/paragraphs
+                        for a WAIS source, select some of the documents.
+                        For a WWW node, select a neighboring node. For
+                        a directory, select some files.
+
+I guess my point is, let's think about how folks are going to use this document referencing technology, and let's see how well existing systems meet these needs.
+
+I guess some groups have come to the conclusion that the existing systems don't cut it. I'm beginning to agree.
+
+I guess we'd all agree that we should decide how we're going to use these doc id's and let that drive the design of the format. i.e. Let's decide on the methods of this object before we decide on its representation.
+
+[an idea: for syntax, the WAIS folks chose LISP. What about using something akin to RFC-822 syntax? I think it works well: define a bunch
+of standard headers; require some, allow some, disregard others; allow free-form text in the body. examples:
+
+ISBN: 0-13-590126-X
+        or
+MESSAGE-ID: usenet-thing
+        or
+FTP-HOST:  frob.mit.edu
+USER:   anonymous
+        or
+WAIS-PORT:      8001@think.com
+
+
+This would allow us to leverage all the email technology out there, plus the emerging multi-part mail format.
+
+(and it would allow me to use PERL on these beasties! :-)
+]
+
+Another thing I hope folks are keeping in mind: I don't think any one client can meet the information-retrieval needs of everybody. We need to support multiple platforms, for one thing. But I hope other folks are considering using mulitple clients at the same time! I'd like to use one slick X-windows front end to the whole ball of wax, in some ways like emacs does for programming, and in some ways like the mac GUI does for office-productivity applications. But I'm going to be using POST mail servers, NNTP servers, WAIS servers, FTP servers, etc, and I don't expect one client to do it all. The crucial trick is to make all this intuitive and interactive, i.e. to support hypertext browsing, fulltext retrieval, USENET news reading, and maybe email correspondence, all in one environment. Let's get started!
+
+Dan
+
+
+------- End of forwarded message -------
+
+From connolly@pixel.convex.com  Thu Dec  5 19:25:22 1991
+Return-Path: <connolly@pixel.convex.com>
+Message-Id: <9112051816.AA29899@pixel.convex.com>
+To: wais-talk@think.com
+Cc: tcl@allspice.berkeley.edu, www-talk@nxoc01.cern.ch
+Subject: documents, files, types, and access methods
+Date: Thu, 05 Dec 91 12:16:11 CST
+From: connolly@pixel.convex.com
+
+Someone mentioned that WAIS should obviate the need for FTP. I disagree. I think that the WAIS protocol is good for finding documents, but not necesarily for transferring or displaying them.
+
+There are two scenarios that WAIS is good for:
+
+A. The database is built for wais. For example, DowQuest. That database is stored so that it can be efficiently acessed and delivered through WAIS.
+
+In this case, it makes sense to transfer the contents of the documents through WAIS and to use the nifty chunking ideas.
+
+B. The database is built for system X, and somebody sicked waisindex on it. 
+
+This is currently, by far the most common case. Look at all the USENET archives, biology databases, library catalogs, etc. that weren't designed for use with WAIS, but they work pretty well.
+
+In this case, it makes more sense to me to transfer and/or present the documents using the clients that the database was designed for. The WAIS server should send enough information to retrieve and/or display the document using the other client.
+
+Example: the archie database. As a user, I want to query the archie database using WAIS's fulltext and relevance feedback queries, but I want to retrieve the documents with FTP, and I may want to "present" them with uncompress and tar, or lpr, or ghostscript, etc.
+
+Example: USENET news. I want to query using WAIS, but read it with my news reader.
+
+Example: my mail box. Query with wais, display with Xmh, Elm, mh, emacs, etc.
+
+Retrieving the whole document with WAIS and saving it to a file is no good in this day and age of client-server computing. The WAIS client may be on a machine with no disk space to spare. And I may want to use the file on a different host.
+
+So we see that the WAIS client needs to hand off documents to other clients. This raises the question: what information should the WAIS search client pass to the retrieval/display slave clients, and how?
+
+The CNI-ARCH folks are discussing a standard for document identifiers. I think this is definitely one of the things that WAIS should pass, but it's not the only thing.
+
+I'm beginning to look at documents sort of like records in a relational database. The WAIS client should negociate with the slave client what fields they have or are interested in. An obvious representation for these records is the RFC-822 mail message format.
+
+Example: the archie database.
+
+I use my xwais client to query archie.src on "vgrind." My xwais client gets a list of docids from the WAIS server. These docids contain at least the score and the CNI-ARCH style docid, which in this case would be enough info to construct a prospero file handle [I'm not sure there is such a thing as a prospero file handle, but play along anyway...].
+
+I play gui-games with xwais until I get the list of documents that I like. Then, using some mechanism like the X selection mechanism or drag-and-drop (combined with SMTP, perhaps), I select a document and give it to my xftp application. The xwais client and the xftp client agreed earlier that they would send messages like:
+
+From:           xwais@x.server.host
+To:             xftp@x.server.host
+CNI-ARCH-ID:    <12345@prospero:quiche.cs.mcgill.ca>
+SIZE-IN-BYTES:  120034
+FTP-HOST:       export.lcs.mit.edu
+FTP-USER:       anonymous
+FTP-CD:         pub/util
+FTP-GET:        vgrind.tar.Z
+
+blah blah blah about vgrind, perhaps explaining what query found this file, or perhaps some stuff from the README in vgrind.tar.Z.
+
+I have already played gui-games with xftp to tell it where to put the files it retrieves. When it gets this message, it does the HOST, USER, CD, and GET commands, and presto! I've got my document.
+
+I think if we had a suite of these gui tools talking SMTP to each other, they could get a lot of work done. More examples:
+
+To:     xtar@x.server.host
+fopen:  /home/connolly/vgrind.tar
+        or perhaps
+popen:  zcat /home/connolly/vgrind.tar.Z
+
+        xtar has a gui for selecting a place to extract the archive
+
+To:     xlpr@x.server.host
+fopen:  /home/connolly/vgrind-2.1/manual.ps
+        or
+popen:  zcat /home/connolly/vgrind-2.1/manul.ps.Z |
+
+        xlpr selects destination printer, copies, etc.
+
+
+Most tools fit in naturally. The $PAGER and $EDITOR, and perhaps $SHELL tools could be MUCH more powerful if they could interoperate this way. [Has anybody used mx and tx from John Osterhout(sp?) ? Those and the Tk toolkit allow X applications to send commands back and forth.]
+
+For example, the World-Wide-Web browser would fit the role of $PAGER in this environment. It would receive messages to display WWW nodes, containing their HTTP address (or NNTP, FTP, etc.). It would then display the node and allow the user to scroll around and choose anchors etc. It could handle most anchors by itself, but it might want to let the user select a region of text and send it to the WAIS client.
+
+I don't think there's an $EDITOR that fits very well, though emacs is always a contender, and you have to have vi.
+[I think the mouse support in emacs needs a LOT of work, but I probably haven't seen the latest and greatest stuff.]
+
+I'm not sure how $SHELL fits into all this but, for example, folks send shell commands in mail messages to each other all the time. You could just select the shell command in your mail $PAGER, and drag it to your $SHELL x-client for invocation.
+
+I hope I get time to try to implement a couple of these ideas. Then we can all see whether they're worth persuing.
+
+Dan
+
+From emv@shelley.aa.ox.com  Fri Dec  6 01:33:36 1991
+Return-Path: <emv@shelley.aa.ox.com>
+Message-Id: <m0kpTDB-000Ds7C@shelley.aa.ox.com>
+To: connolly@pixel.convex.com
+Cc: wais-talk@think.com, tcl@allspice.berkeley.edu, www-talk@nxoc01.cern.ch
+Subject: Re: documents, files, types, and access methods 
+In-Reply-To: Your message of Thu, 05 Dec 91 12:16:11 -0600.
+             <9112051816.AA29899@pixel.convex.com> 
+Date: Thu, 05 Dec 91 19:14:37 -0500
+From: Edward Vielmetti <emv@ox.com>
+
+data, data, data, data, data.
+
+if you have good ideas about document structure and ways to send messages around that have magic cookies in them, that's good.  but in order to convince anyone to do anything substantial in terms of software development you need to provide data.
+
+get 100 entries describing 100 things that are useful, add enough structure that a motivated party can pull your database apart and create something new from it, and people will start to write code. (honest.)  produce another 10 entries a month for a year and more
+people will write code or bend their existing code to work with your system.
+
+Don't wait for an all-singing, all-dancing standard before you start to collect information.  If you gather enough stuff and organize it well, other people will do the work of bringing it up to what is considered standard (if and when that happens).  You do need to be
+thorough in making sure that whatever you do is consistent and regular enough to be worth retrofitting.
+
+-- 
+Edward Vielmetti, vice president for research, MSEN Inc. emv@msen.com
+       MSEN, Inc. 628 Brooks Ann Arbor MI 48103 +1 313 741 1120
+
+
+From rusty@groan.berkeley.edu  Fri Dec  6 02:18:12 1991
+Return-Path: <rusty@groan.berkeley.edu>
+Date: Thu, 5 Dec 91 17:13:22 -0800
+From: rusty@groan.berkeley.edu (Rusty Wright)
+Message-Id: <9112060113.AA26777@groan.Berkeley.EDU>
+To: emv@ox.com
+Cc: connolly@pixel.convex.com, wais-talk@think.com, tcl@allspice.berkeley.edu,
+        www-talk@nxoc01.cern.ch
+In-Reply-To: <m0kpTDB-000Ds7C@shelley.aa.ox.com> "emv@ox.com"
+Subject: documents, files, types, and access methods 
+
+I don't understand what this all has to do with tcl.
+
+
+From vanandel@rsf.atd.ucar.edu  Fri Dec  6 17:52:35 1991
+Return-Path: <vanandel@rsf.atd.ucar.edu>
+Message-Id: <9112061544.AA04345@rsf.atd.ucar.EDU>
+Received: from wabbit4.atd.ucar.edu by rsf.atd.ucar.EDU (5.65/ NCAR Mail Server 04/10/90)
+        id AA04345; Fri, 6 Dec 91 08:44:01 MST
+To: wais-talk@think.com, www-talk@nxoc01.cern.ch
+Cc: tcl@allspice.berkeley.edu
+Subject: What's "wais" and "wwv" ?
+In-Reply-To: Your message of Thu, 05 Dec 91 19:14:37 -0500.
+             <m0kpTDB-000Ds7C@shelley.aa.ox.com> 
+Date: Fri, 06 Dec 91 08:43:57 -0700
+From: vanandel@rsf.atd.ucar.edu
+
+
+Some of us on the tcl mailing list feel like we came in on the middle of a discussion and don't know the context.  Since there are apparently mailing lists for 'wais' and 'wwv',could someone give a general description of what "wais" and "wwv" are?
+
+Thanks much!
+
+        Joe VanAndel            Internet:vanandel@ncar.ucar.edu
+        NCAR / RSF                      
+        P.O Box 3000            Fax:     303-497-2044
+        Boulder, CO 80307-3000  Voice:   303-497-2071 
+
+From welch@parc.xerox.com  Fri Dec  6 18:56:17 1991
+Return-Path: <welch@parc.xerox.com>
+Message-Id: <IdDvRfgB0bE_87aBRm@corvina.parc.xerox.com>
+Date:   Fri, 6 Dec 1991 09:46:19 PST
+Sender: Brent Welch <welch@parc.xerox.com>
+From: Brent Welch <welch@parc.xerox.com>
+To: connolly@pixel.convex.com
+Subject: Re: documents, files, types, and access methods
+Cc: wais-talk@think.com, www-talk@nxoc01.cern.ch, tcl@allspice.berkeley.edu
+In-Reply-To: <9112051816.AA29899@pixel.convex.com>
+References: <9112051816.AA29899@pixel.convex.com>
+
+The model that TCL has it that each tool has an embedded TCL interpreter, and tools can issue commands to each other in the TCL language.  TCL is designed to be simple for simple things, and it is fully programmable.  TCL provides basic language features, and the application that embeds an interpreter can define new commands, either as C procedures or as TCL command procedures (scripts).  For example,
+the Tk X toolkit defines a number of TCL commands to create widgets, so it is possible to write window programs with a script.  Since each window (ideally) has a TCL interpreter behind it, you can control your tools by sending around TCL commands.  This is a more powerful
+alternative to using mail header formats for messages. You can send whole programs, not just commands.  The way I use this currently is to
+couple a control panel with a shell window.  The control panel is put together as a TCL/Tk script that uses the Tk toolkit to display buttons, etc.  Clicking on buttons in the control panel can cause messages to be sent to the terminal emulator (tx).  One very useful command passes a string along to the shell running in the terminal emulator.  In this way I can create buttons that run commonly used programs.  Other commands control the terminal emulator itself, such as its size and placement on the screen, the message in its status line, etc.  The whole model of a bunch of tools that have a common language and can fire off commands to each other is very powerful.
+
+        Brent Welch
+
+
+From timbl  Mon Dec  9 15:33:46 1991
+Return-Path: <timbl>
+Date: Mon, 9 Dec 91 15:33:46 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9112091433.AA06290@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: wei@xcf.berkeley.edu (Pei Y. Wei)
+Subject: Re: SGML/HTML docs, X Browser
+Cc: www-talk
+
+Pei,
+
+I have added you to www-talk as requested.
+
+> I'm now browsing through parts of the WWW distribution, and I'm  seeing lots of potential in it. It seems that the only browser is for the NeXT, a platform most people don't have access to, which is a shame. 
+
+> I'm now seriously considering writing an X11 browser for HTML files by extending a program I've been working on (called VIOLA, a  
+program  somewhat like HyperCard)...
+
+Ok.. sounds like a good idea.  Dan Conolly (Convex Inc) has put together a W3 browser for X but could not release the code.  A group  
+of students in Finland were also going to do this for a project -- I don't know the status of that work.  Anyone who makes a good X11 W3 browser will be very popular.
+
+Now we have just got a new architecure for the browser code, with a generic (simple!) SGML parser, and basically all the browser code common (networking, name resulution, parsing) between different browsers. The new line mode browser is under test - it has NNTP access to news built in as well as HTTp and FTP access to indexes and files.
+
+> I'm wondering if you could give me some pointers to the standards SGML and HTML (which seems to be the HyperText extention of SGML?).
+
+SGML is very general. HTML is a specific application of the SGML basic syntax applied to hypertext documents with simple structure.  
+The HTML tags used are in our documentation. (If you browse to our test document, it has a link to its own source which you can take as  
+an example.) Type
+
+www http://info.cern.ch/hypertext/WWW/Test/test_source.html
+
+and follow the first link to see the source.  Our code therefore has a simple generic SGML parser engine which handles nested tags and  
+feeds a HTML parser which has hypertext-specific code in it.  That feeds a stream of style-changes and text and anchor start/end points  into a hypertext object which is what we don't have under X.
+
+> Anymore relevant documentation on SGML/HTML, tips, and whatever you 
+
+> think may help me in my task, would be gratfully accepted.
+
+I could make up a tar file of our alpha-test code, including the HTML SGML parser. Any pointers to SGML I have are in the web - not much  
+public stuff. Two books are "SGML Handbook" by Charles Goldfarb, and "Practical SGML" by Eric van Herwijnen.
+
+> Pei Y. Wei (wei@scam.Berkeley.EDU)
+> Experimental Computing Facility, 
+> University of California @ Berkeley
+
+Thanks for your interest, welcome to the list.
+
+        Tim
+
+__________________________________________________________
+Tim Berners-Lee                       timbl@info.cern.ch
+World Wide Web project                (NeXTMail is ok)  
+CERN                                  Tel: +41(22)767 3755
+1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+
+
+
+
+From timbl  Mon Dec  9 17:31:23 1991
+Return-Path: <timbl>
+Received: by  nxoc01.cern.ch  (NeXT-1.0 (From Sendmail 5.52)/NeXT-2.0)
+        id AA06470; Mon, 9 Dec 91 17:31:23 GMT+0100
+Date: Mon, 9 Dec 91 17:31:23 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9112091631.AA06470@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: Daniel J. Oberst <oberst@hitam.princeton.edu>
+Subject: Re: WWW implementation of PNN
+Cc: www-talk, Howard@pucc.princeton.edu, fuchs@tsar.princeton.edu
+
+> From: Daniel J. Oberst <oberst@hitam.princeton.edu>
+> Cc: Howard@pucc.princeton.edu, fuchs@tsar.princeton.edu
+>
+> Tim,
+> 
+
+> Our group has been working with WWW and looking at implementing our locally-developed PNN (Princeton News Network) Campus Wide  
+> Information Service.  Howard Strauss, who designed PNN, has written an EXEC that takes the PNN "menu" files and converts them into WWW  
+> html documents.  We're working on setting up the files and finding a place for them so that they can be accessed from WWW.  One nice  
+> by-product is that we will now have a line-mode access to the information in PNN, something that had been requested before (PNN  
+> only works in 3270 mode on our 3090, VT100 or curses mode on our unix implementation, and with Hypercard on a Mac).
+- - - - -
+> Parenthetically, I thought I had seen something about a 3270 implementation of WWW, but can't seem to locate it (*even* with WWW!). 
+> Is there a 3270 implementation different from the line-mode version?
+
+   No, it's just the line mode version, with a few clear screen
+   calls. As the v1.0 line mdoe browser can scroll backward, we
+   should be able to link the PF keys to the browser's commands
+   while in WWW. There's no "move-cursor-hit-enter" functionality.
+
+ - - - - - -
+> I asssume that the best way to make these available is via HHTP?  
+> The PNN files here are NFS exported to all machines on campus, so our first implementation just used local file hypertext pointers.  
+> I assume to make these available, we'd need to use the hhtp tags on the  
+> file references. Is this what you have done at CERN with your WWW? We'll
+>  try and get a hhtp server up and running on a test machine and try it out
+
+    Great.  If you have a set of html files, an HTTP server (The
+    distributed daemon) gives faster access than using anonymous FTP.
+    The documentation about setting up the daemon should be complete
+    on the web -- if there are holes in it just let me know.
+    We use the daemon (httpd) to publish our own documentation on W3,
+    but the documenattion comming from VM is actually transcibed
+    into html on the fly by a custom server. [The regular daemon
+    runs in a service machine, calls an EXEC which leaves the
+    html on the stack for the daemon to read off. I  could send you
+    C code if you like]. This has the advantage that it takes the
+    data right from the source -- it's only stored in one place --
+    but the disadvantage for me that a server has to be maintained on
+    the strange IBM machine ;-).
+
+> We'll keep you posted on our progress.
+
+   Thanks.
+
+> One side benefit could be that other sites running the PNN code could use the same tools to make their info WWW-able!!
+
+    How many other sites are running PNN? It would be great to see
+    some more CWISs coming onto the web.
+
+
+> FYI - I've included below a sample file and conversion that was created.
+
+    Looks good. [You could chop the leading spaces on the heading, as
+    w3 will center it anyway. Also, the line "
+    "Move the cursor to any topic below and press Enter"
+    is a little misleading for www users - you might want to
+    "hand-craft" just the top level menu page to remove that,
+    and possibly put links to other CWISs, etc.]
+
+
+> Daniel J. Oberst
+> Director, Advanced Technology and Applications
+> Computing and Information Technology
+> Princeton University
+> 116 Prospect Avenue
+> Princeton, NJ 08544-2089
+
+    Tim Berners-Lee                       timbl@info.cern.ch
+    World Wide Web project                (NeXTMail is ok)      
+    CERN                                  Tel: +41(22)767 3755
+    1211 Geneva 23, Switzerland           Fax: +41(22)767 7155
+
+
+
+_________________________________________________________________
+- - - - -
+FILE: pnn.mainmenu
+
+@T@          PNN - The Princeton News Network
+@M@            Click ONCE on any topic below
+@M@
+@T@   Move the cursor to any topic below and press Enter
+@T@
+help dialog*@D@HELP
+@A@
+index node@N@Index to Information in PNN
+new node@N@What's New on PNN
+@A@
+about inter@I@About PNN
+events inter@I@Calendars and Events
+org inter@I@Campus Organizations
+gphone dialog*@E@Campus Phone Book@GETPHONE
+service inter@I@Campus Services & Facilities
+computr inter@I@Computing Resources
+course inter@I@Curriculum & Course Information
+@*@                                Column 2 starts here
+@C@
+@E@Dial-a-Fortune@FORTUNE
+facstaff inter@I@Faculty & Staff Activities
+library inter@I@Library Information
+misc inter@I@Potpourri
+police inter@I@Safety Information
+student inter@I@Student & Grad Student Activities
+transpor inter@I@Travel & Visitor Information
+uemploy inter@I@University Employment Information
+policy inter@I@University Policies & Procedures
+whoswho inter@I@University Who's Who
+weather node@N@Weather Forecast
+----------------------------
+SCREEN: PNN main menu:
+
+           PNN - The Princeton News Network
+    Move the cursor to any topic below and press Enter
+
+HELP                                   Dial-a-Fortune
+                                       Faculty & Staff Activities
+Index to Information in PNN            Library Information
+What's New on PNN                      Potpourri
+                                       Safety Information
+About PNN                              Student&GradStudent Activities
+Calendars and Events                   Travel & Visitor Information
+Campus Organizations                   University Employment Info
+Campus Phone Book                      University Policies&Procedures
+Campus Services & Facilities           University Who's Who
+Computing Resources                    Weather Forecast
+Curriculum & Course Information        Exit PNN
+
+----------------------------
+FILE: pnn.html
+
+<H1>          PNN - The Princeton News Network</H1>
+<H2>   Move the cursor to any topic below and press Enter</H2>
+<H3></H3>
+<UL>
+<LI><A HREF=help.dialogww>HELP</A>
+<LI><A HREF=index.node>Index to Information in PNN</A>
+<LI><A HREF=new.node>What's New on PNN</A>
+<LI><A HREF=about.html>About PNN</A>
+<LI><A HREF=events.html>Calendars and Events</A>
+<LI><A HREF=org.html>Campus Organizations</A>
+<LI><A HREF=service.html>Campus Services & Facilities</A>
+<LI><A HREF=computr.html>Computing Resources</A>
+<LI><A HREF=course.html>Curriculum & Course Information</A>
+<LI><A HREF=facstaff.html>Faculty & Staff Activities</A>
+<LI><A HREF=library.html>Library Information</A>
+<LI><A HREF=misc.html>Potpourri</A>
+<LI><A HREF=police.html>Safety Information</A>
+<LI><A HREF=student.html>Student & Grad Student Activities</A>
+<LI><A HREF=transpor.html>Travel & Visitor Information</A>
+<LI><A HREF=uemploy.html>University Employment Information</A>
+<LI><A HREF=policy.html>University Policies & Procedures</A>
+<LI><A HREF=whoswho.html>University Who's Who</A>
+<LI><A HREF=weather.node>Weather Forecast</A>
+</UL>
+
+
+
+From timbl  Fri Dec 13 17:55:53 1991
+Date: Fri, 13 Dec 91 17:55:53 GMT+0100
+From: timbl (Tim Berners-Lee)
+Message-Id: <9112131655.AA11835@ nxoc01.cern.ch >
+Received: by NeXT Mailer (1.62)
+To: www-interest, www-talk
+Subject: WWW to SPIRES on SLACVM - Experimental
+Cc: pfkeb@kaon.slac.stanford.edu (Paul Kunz)
+
+There is an experimental W3 server for the SPIRES High energy Physics preprint database, thanks to Terry Hung, Paul Kunz and Louise Addis of SLAC.  It's only just been put up, so don't expect perfection.   With the w3 line mode browser, follow a  
+link to it from our home page, then type for example
+
+        K FIND AUTHOR KUNZ
+
+the "FIND" is necessary at the moment, though it may change later.
+
+        - Tim
+
+Paul Kunz wrote a few days ago:-
+
+   "The SLAC Library maintainer of SPIRES databases, Louise Addis, is absolutely delighted.   She will ask for a permanent VM service machine and finish off the polishing.   Things are really moving now."
+
+   "By the way, we certainly have the impression that accessing SPIRES from www on a UNIX machine is faster than using a terminal logged into SLACVM.   Even a real 3278 terminal is not as fast.   Actually, accessing CERNVM FIND via www seems faster than logging into cernvm and doing the same command as well."
+
+From wei@xcf.berkeley.edu  Fri Dec 13 20:53:09 1991
+Return-Path: <wei@xcf.berkeley.edu>
+Date: Fri, 13 Dec 91 11:45:05 -0800
+From: wei@xcf.berkeley.edu (Pei Y. Wei)
+Message-Id: <9112131945.AA25342@swindle.berkeley.edu>
+To: www-talk@nxoc01.cern.ch
+Subject: X Browser
+
+Forgot to CC...
+
+>To: timbl@nxoc01.cern.ch
+>Subject: X Browser
+
+Hi, Tim.
+
+Thanks for most helpful information for my research on SGML.
+
+> Now we have just got a new architecure for the browser code, with a generic (simple!) SGML parser, and basically all the browser code
+> common (networking, name resulution, parsing) between different browsers. The new line mode browser is under test - it has NNTP
+> access to news built in as well as HTTp and FTP access to indexes and files.
+> I could make up a tar file of our alpha-test code, including the HTML SGML parser.
+
+Yes, I'm very interested in using that code, and do the testing... Regarding the X browser, I was able to rig up an X11 W3 browser by 
+using viola as the front end to www (I only had to make very few and  minor changes to www.c). It's not very sophisticated at this point
+(a one nite hack...), and does not much more than display the output of www in a scrollable text field, highlite the reference numbers for
+visibility, make references and commands (Back, Help...) clickable or keyable, and has a few buttons corresponding to the www commands.
+
+One thing I'd like to do soon, if I have time, is to teach the parser about viola object descriptions, and basically embed viola objects
+(GUIs & programmability) into html files.
+
+Thanks.
+
+-Pei
+
