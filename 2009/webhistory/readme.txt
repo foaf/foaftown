@@ -20,5 +20,8 @@ Current main online versions of this material are
 http://lists.w3.org/Archives/Public/www-talk/
 http://1997.webhistory.org/www.lists/
 
+OK ... update ... i ran txt2html over my slightly-tidied text, to give:
+http://svn.foaf-project.org/foaftown/2009/webhistory/txt2html-www-talk.1991.html
+
 
 Dan Brickley <danbri@danbri.org>
