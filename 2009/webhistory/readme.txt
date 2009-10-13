@@ -15,4 +15,10 @@ or editing textual content), but make it more readable than the original plain t
 In plain text form, this is hard to read due to fixed width issues. I'm not yet sure
 how best to convert to html ... by hand or with some tool or scripting...
 
+Current main online versions of this material are
+
+http://lists.w3.org/Archives/Public/www-talk/
+http://1997.webhistory.org/www.lists/
+
+
 Dan Brickley <danbri@danbri.org>
