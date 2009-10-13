@@ -12,4 +12,7 @@ tricky.
 The intent here is to be respectful of what people originally said (I'm not fixing typos
 or editing textual content), but make it more readable than the original plain text dumps. 
 
+In plain text form, this is hard to read due to fixed width issues. I'm not yet sure
+how best to convert to html ... by hand or with some tool or scripting...
+
 Dan Brickley <danbri@danbri.org>
