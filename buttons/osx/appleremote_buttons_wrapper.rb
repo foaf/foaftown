@@ -23,17 +23,9 @@ APIR= { '0x1d' 		=> 'PLUS', 	# up 	(immediate events)
 	'0x15'		=> 'PLPZ', 	# fire (play/pause)
 	'0x14'		=> 'MENU' } 	# menu
 
-def eventLoop
-  f = IO.popen( IR + " 2>&1 ","r") do |pipe|
-    pipe.each do |line|
-      sleep 0.1
-      relay(line)
-    end
-  end
-end
 
 class ButtonEvent
-  attr_accessor :name
+  attr_accessor :name, :event
   def initialize(name = "NOPE")
     @name = name
   end
@@ -43,15 +35,26 @@ class ButtonEvent
 end
 
 class ButtonDownEvent < ButtonEvent
-  def initialise
-    puts "in button down init"
+  def initialise(event="DOWN")
     super
+    @event=event
   end
 end
 
 class ButtonUpEvent < ButtonEvent
-  def initialise
-    super
+  def initialise(event="UP")
+    super(event=event)
+  end
+end
+
+
+
+def eventLoop
+  f = IO.popen( IR + " 2>&1 ","r") do |pipe|
+    pipe.each do |line|
+      sleep 0.1
+      relay(line)
+    end
   end
 end
 
@@ -76,7 +79,7 @@ def relay(line)
 end
 
 def event(e)
-  puts "EVENT: #{e.label} code: #{e.name}"
+  puts "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
 end
 
 print "starting event loop.\n\n"
