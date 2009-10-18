@@ -194,7 +194,8 @@ QueueCallbackFunction(void *target, IOReturn result, void *refcon, void *sender)
             printf("<%s>", (event.value == 0) ? "depressed" : "pressed");
             printf("%#lx", (UInt32)event.elementCookie );
             printf("</%s>\n", (event.value == 0) ? "depressed" : "pressed");
-            printf("\n");
+//            printf("\n");
+            fflush(stdout); // danbri
  
 
             if (event.value && driveKeynote) {
