@@ -23,7 +23,6 @@ APIR= { '0x1d' 		=> 'PLUS', 	# up 	(immediate events)
 	'0x15'		=> 'PLPZ', 	# fire (play/pause)
 	'0x14'		=> 'MENU' } 	# menu
 
-
 class ButtonEvent
   attr_accessor :name, :event
   def initialize(name = "NOPE")
@@ -35,15 +34,16 @@ class ButtonEvent
 end
 
 class ButtonDownEvent < ButtonEvent
-  def initialise(event="DOWN")
-    super
-    @event=event
+  def initialize(i)
+    @event='DOWN'
+    super(i)
   end
 end
 
 class ButtonUpEvent < ButtonEvent
-  def initialise(event="UP")
-    super(event=event)
+  def initialize(i)
+    @event='UP'
+    super(i)
   end
 end
 
@@ -67,18 +67,17 @@ def relay(line)
 
   if line =~ /<pressed>([^<]+)<\/pressed>/
     ev = ButtonDownEvent.new($1) 
-    event(ev)
+    bubbleEvent(ev)
 
   elsif line =~ /<depressed>([^<]+)<\/depressed>/
     ev = ButtonUpEvent.new($1) 
-    event(ev)
+    bubbleEvent(ev)
   elsif
-    puts "UNKNOWN; ignoring" # distinguish newlines from markup
-    # event($1)
+    puts "UNKNOWN; ignoring" 
   end
 end
 
-def event(e)
+def bubbleEvent(e)
   puts "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
 end
 
