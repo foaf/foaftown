@@ -10,9 +10,9 @@
 #
 # 
 #
-# External program to monitor:
+#  External program to monitor:
+
 IR="./iremoted_buttons" 	# you can compile this with gcc -Wall -o iremoted_buttons iremoted_buttons.c -framework IOKit -framework Carbon
-#
 
 # Local (non-standard) nicknames for the 6 USB codes:
 #
@@ -21,7 +21,7 @@ APIR= { '0x1d' 		=> 'PLUS', 	# up 	(immediate events)
        	'0x17' 		=> 'LEFT', 	# left  (buffered events, all other buttons)
 	'0x16'		=> 'RIGH', 	# right
 	'0x15'		=> 'PLPZ', 	# fire (play/pause)
-	'0x14'		=> 'MENU' } 	# menu
+	'0x14'		=> 'MENU' } 	# menu
 
 class ButtonEvent
   attr_accessor :name, :event
