@@ -80,9 +80,23 @@ def relay(line,sb)
 end
 
 def bubbleEvent(e,sb)
-  puts "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
-  puts "TODO: send it to switchboard #{sb}"
-    # TODO: we need to have a connection to XMPP network, and send events out to remote listeners, ...
+  msg = "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
+  puts msg
+  # Switchboard is essentially a wrapper around xmpp4r, so `switchboard.client` will give you access to a `Jabber::Client`
+  # object.  Docs for that are here: http://home.gna.org/xmpp4r/rdoc/
+  # http://home.gna.org/xmpp4r/rdoc/classes/Jabber/Client.html
+  # http://devblog.famundo.com/articles/2006/10/14/ruby-and-xmpp-jabber-part-2-logging-in-and-sending-simple-messages
+  to = "alice.notube@gmail.com"
+  subject = "Apple Remote Event"
+
+    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
+
+  begin 
+    switchboard.client.connect
+    switchboard.client.send(m)
+  rescue Exception=>e
+    puts "Rescued: #{e}"
+  end
 end
 
 
