@@ -51,3 +51,5 @@ experiment at using the tilt sensor (which can also detect screen knocks) as ui 
 4. jabutton.rb
 
 switchboard ruby/xmpp script
+
+although @aconbere recommends http://github.com/julien51/babylon/
