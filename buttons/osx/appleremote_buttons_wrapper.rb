@@ -80,7 +80,7 @@ end
 def bubbleEvent(e)
   puts "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
   
-  # TODO: we need to have a connection to XMPP network, and send events out to 
+  # TODO: we need to have a connection to XMPP network, and send events out to 
   # remote listeners, ...
 
 end
