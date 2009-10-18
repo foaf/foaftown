@@ -43,3 +43,11 @@ EVENT: MENU code: 0x14 event type: UP
  - to upload
 
 
+3. buttons_tilt.pl
+
+experiment at using the tilt sensor (which can also detect screen knocks) as ui input.
+ - we might use this to allow a full screen galllery / epg to have "left' and 'right' be taps on side of monitor.
+
+4. jabutton.rb
+
+switchboard ruby/xmpp script
