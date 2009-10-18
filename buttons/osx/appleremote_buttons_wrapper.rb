@@ -4,7 +4,7 @@
 # a commandline C program for output, and relaying that to the wider 'net via XMPP.
 # Well, I've not done the XMPP bit yet. 
 # 
-# This is a contribution to the Buttons project, initiated as part of the NoTube EU project.
+#  This is a contribution to the FOAF Buttons project, and was initiated as part of the NoTube EU project, www.notube.tv
 # 
 # Dan Brickley <danbri@danbri.org>
 #
