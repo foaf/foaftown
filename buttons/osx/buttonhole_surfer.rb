@@ -7,7 +7,8 @@ include Jabber
 # This Ruby script runs on OSX, and links the output of ./iremoted_buttons to the XMPP/Jabber network, streaming Apple Remote events.
 # 
 # See blog post: http://danbri.org/words/2009/10/19/483
-#
+# see also: http://www.bbc.co.uk/music/artists/2339bc21-aa92-4850-86f0-4bb9433910c8.rdf
+# 
 # Author: Dan Brickley <danbri@danbri.org>
 #
 # License: 
