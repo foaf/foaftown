@@ -62,20 +62,14 @@ end
 
 def relay(line,sb)
   line.gsub!(/\s*/,"")
-  if line.equal?("")
-    puts "NOTHING"
-    return
-  end
-
   if line =~ /<pressed>([^<]+)<\/pressed>/
     ev = ButtonDownEvent.new($1) 
     bubbleEvent(ev,sb)
-
   elsif line =~ /<depressed>([^<]+)<\/depressed>/
     ev = ButtonUpEvent.new($1) 
     bubbleEvent(ev,sb)
   elsif
-    puts "UNKNOWN; ignoring" 
+    # puts "UNKNOWN event, ignoring." 
   end
 end
 
