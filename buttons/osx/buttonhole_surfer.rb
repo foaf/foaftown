@@ -69,7 +69,7 @@ def relay(line,sb)
     ev = ButtonUpEvent.new($1) 
     bubbleEvent(ev,sb)
   elsif
-    # puts "UNKNOWN event, ignoring." 
+    puts "UNKNOWN event, ignoring." 
   end
 end
 
@@ -96,16 +96,16 @@ end
 # Main:
 
 switchboard = Switchboard::Client.new
-switchboard.plug!(AutoAcceptJack, NotifyJack)
+switchboard.plug!(AutoAcceptJack, NotifyJack) # sample addons
 
 t1 = Thread.new {
 
 begin
     switchboard.on_message do |message|
       txt = message.body.to_s
-      puts "Message body was: '#{txt}'"
+      puts "Message body was: '#{txt}'" # handles replies
       if (txt =~ /pause/)
-        puts "replied with pause toggle."
+        puts "replied with pause toggle." # useless here, but for example
         stream.send("toggled pause")
       else
         stream.send(message.answer)
