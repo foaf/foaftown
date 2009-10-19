@@ -4,12 +4,12 @@ require 'switchboard'
 require 'xmpp4r/client'
 include Jabber
 
-# This Ruby script runs on OSX, and links the output of ./iremoted_buttons to the XMPP/Jabber network, streaming Apple Remote events.
+# This Ruby script runs on OSX, and links the output of ./iremoted_buttons to the XMPP/Jabber network, streaming Apple Remote events.
 # 
-# See blog post: http://danbri.org/words/2009/10/19/483
-# 
-# Author: Dan Brickley <danbri@danbri.org>
-# 
+# See blog post: http://danbri.org/words/2009/10/19/483
+#
+# Author: Dan Brickley <danbri@danbri.org>
+#
 # License: 
 # Do what you like but don't blame me. Acks by link appreciated. Note that the real OSX smarts are in iremoted which I didn't write.
 #
