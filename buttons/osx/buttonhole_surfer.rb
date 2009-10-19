@@ -41,14 +41,12 @@ end
 
 class ButtonDownEvent < ButtonEvent
   def initialize(i)
-    @event='DOWN'
     super(i)
   end
 end
 
 class ButtonUpEvent < ButtonEvent
   def initialize(i)
-    @event='UP'
     super(i)
   end
 end
@@ -81,12 +79,13 @@ def relay(line,sb)
   end
 end
 
-  # Switchboard is essentially a wrapper around xmpp4r, so `switchboard.client` will give you access to a `Jabber::Client`
-  # object.  Docs for that are here: http://home.gna.org/xmpp4r/rdoc/  http://home.gna.org/xmpp4r/rdoc/classes/Jabber/Client.html
-  # http://devblog.famundo.com/articles/2006/10/14/ruby-and-xmpp-jabber-part-2-logging-in-and-sending-simple-messages
+
+# Switchboard is essentially a wrapper around xmpp4r, so `switchboard.client` will give you access to a `Jabber::Client`
+# Docs for that are here: http://home.gna.org/xmpp4r/rdoc/  http://home.gna.org/xmpp4r/rdoc/classes/Jabber/Client.html
+# http://devblog.famundo.com/articles/2006/10/14/ruby-and-xmpp-jabber-part-2-logging-in-and-sending-simple-messages
 
 def bubbleEvent(e,sb)
-  msg = "Button #{e.event} event: #{e.label} (#{e.name})"
+  msg = "#{e.class}: #{e.label} (#{e.name})"
   puts msg
   to = "alice.notube@gmail.com"
   subject = "Apple Remote Event"
