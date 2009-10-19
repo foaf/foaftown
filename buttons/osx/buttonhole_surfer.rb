@@ -80,21 +80,25 @@ def relay(line,sb)
 end
 
 def bubbleEvent(e,sb)
-  msg = "EVENT: #{e.label} code: #{e.name} event type: #{e.event}"
-  puts msg
+  
+
   # Switchboard is essentially a wrapper around xmpp4r, so `switchboard.client` will give you access to a `Jabber::Client`
   # object.  Docs for that are here: http://home.gna.org/xmpp4r/rdoc/
   # http://home.gna.org/xmpp4r/rdoc/classes/Jabber/Client.html
   # http://devblog.famundo.com/articles/2006/10/14/ruby-and-xmpp-jabber-part-2-logging-in-and-sending-simple-messages
+
+  require 'xmpp4r/client'
+  include Jabber # Makes using it a bit easier as we don't need to prepend Jabber:: to everything
+ 
+  msg = "Button #{e.event} event: #{e.label} (#{e.name})"
+  puts msg
+
   to = "alice.notube@gmail.com"
   subject = "Apple Remote Event"
-
-    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
-
   begin 
-    switchboard.client.connect
-    switchboard.client.send(m)
-  rescue Exception=>e
+    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
+    sb.client.send(m)
+  rescue Exception => e
     puts "Rescued: #{e}"
   end
 end
@@ -108,21 +112,26 @@ switchboard.plug!(AutoAcceptJack, NotifyJack)
 
 
 t1 = Thread.new {
-  switchboard.on_message do |message|
-    txt = message.body.to_s
-    puts "Message body was: '#{txt}'"
-    if (txt =~ /pause/)
-      puts "replied with pause toggle."
-      stream.send("toggled pause")
-    else
-      stream.send(message.answer)
+
+begin
+    switchboard.on_message do |message|
+      txt = message.body.to_s
+      puts "Message body was: '#{txt}'"
+      if (txt =~ /pause/)
+        puts "replied with pause toggle."
+        stream.send("toggled pause")
+      else
+        stream.send(message.answer)
+      end
     end
+    switchboard.on_iq do |message|
+      p "Got message iq: "
+      p message
+    end
+    switchboard.run!
+  rescue Exception => e
+    put "Exception: #{e} in our Switchboard thread"
   end
-  switchboard.on_iq do |message|
-    p "Got message iq: "
-    p message
-  end
-  switchboard.run!
 } 
 
 print "starting event loop.\n\n"
