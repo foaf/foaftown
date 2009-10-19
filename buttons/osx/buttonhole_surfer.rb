@@ -11,7 +11,7 @@ include Jabber
 # Author: Dan Brickley <danbri@danbri.org>
 # 
 # License: 
-# do what you like but don't blame me. Acks by link appreciated. Note that the real OSX smarts are in iremoted which I didn't write.
+# Do what you like but don't blame me. Acks by link appreciated. Note that the real OSX smarts are in iremoted which I didn't write.
 #
 # This is a contribution to the FOAF Buttons project and was initiated as part of the NoTube EU project (http://www.notube.tv/)
 
