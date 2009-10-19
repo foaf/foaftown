@@ -54,7 +54,7 @@ end
 def eventLoop(sb=nil)
   f = IO.popen( IR + " 2>&1 ","r") do |pipe|
     pipe.each do |line|
-      sleep 0.1
+      sleep 0.01
       relay(line, sb)
     end
   end
