@@ -14,14 +14,6 @@ include Jabber
 # do what you like but don't blame me. Acks by link appreciated. Note that the real OSX smarts are in iremoted which I didn't write.
 #
 # This is a contribution to the FOAF Buttons project and was initiated as part of the NoTube EU project (http://www.notube.tv/)
-#
-# This script works with the Apple Remote IR controller, monitoring a commandline C program for output, relaying that via XMPP.
-# Well, I've not done the XMPP bit yet. 
-# 
-#  This is a contribution to the FOAF Buttons project, and was initiated as part of the NoTube EU project, www.notube.tv
-# 
-# Dan Brickley <danbri@danbri.org>
-#
 
 #  External program to monitor:
 
