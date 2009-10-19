@@ -4,23 +4,31 @@ require 'switchboard'
 require 'xmpp4r/client'
 include Jabber
 
-# this variant includes a connection to XMPP via switchboard library, but doesn't yet send anything
-
-# This script works with the Apple Remote IR controller, monitoring 
-# a commandline C program for output, and relaying that to the wider 'net via XMPP.
+# This Ruby script runs on OSX, and links the output of ./iremoted_buttons to the XMPP/Jabber network, streaming Apple Remote events.
+# 
+# See blog post: http://danbri.org/words/2009/10/19/483
+# 
+# Author: Dan Brickley <danbri@danbri.org>
+# 
+# License: 
+# do what you like but don't blame me. Acks by link appreciated. Note that the real OSX smarts are in iremoted which I didn't write.
+#
+# This is a contribution to the FOAF Buttons project and was initiated as part of the NoTube EU project (http://www.notube.tv/)
+#
+# This script works with the Apple Remote IR controller, monitoring a commandline C program for output, relaying that via XMPP.
 # Well, I've not done the XMPP bit yet. 
 # 
 #  This is a contribution to the FOAF Buttons project, and was initiated as part of the NoTube EU project, www.notube.tv
 # 
 # Dan Brickley <danbri@danbri.org>
 #
-# 
-#
+
 #  External program to monitor:
 
-IR="./iremoted_buttons" 	# you can compile this with gcc -Wall -o iremoted_buttons iremoted_buttons.c -framework IOKit -framework Carbon
+IR="./iremoted_buttons" # you can compile this with gcc -Wall -o iremoted_buttons iremoted_buttons.c -framework IOKit -framework Carbon
 
 # Local (non-standard) nicknames for the 6 USB codes:
+
 APIR= { '0x1d' 		=> 'PLUS', 	# up 	(immediate events)
         '0x1e'	 	=> 'MINU', 	# down  (immediate events)
        	'0x17' 		=> 'LEFT', 	# left  (buffered events, all other buttons)
