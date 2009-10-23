@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Remote Remote test</title>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js'></script>
+<script type='text/javascript'  src='strophe.js'></script>
+<script type='text/javascript'  src='b64.js'></script>
+<script type='text/javascript'  src='md5.js'></script>
+<script type='text/javascript'  src='sha1.js'></script>
+<script type="text/css">body { background-image:url(images/notube-bg.png);  }</script>
+</head>
+
+<body>
+<h1>Remote Remote test</h1>
+
+<script type="text/javascript">
+
+jid='buttons@foaf.tv';
+
+password='xxxxxxx'; // temporarily nonsecret, but how to deal with this long term?
+
+URL = 'http://foaf.tv/http-bind/'
+var connection = new Strophe.Connection(URL);
+
+function linked(status) {
+   out("connection status: "+status );
+    if (status == Strophe.Status.CONNECTED) { 
+    out("connected");
+    var stanza = new Strophe.Builder( "message", {"to": "alice.notube@gmail.com", 
+         "type": "chat"} ).c("body").t("hey alice! this is buttons in strophe js");
+    connection.send($pres());
+    connection.send(stanza);
+    } 
+}
+
+function on_message(msg) { 
+    event = Strophe.serialize(msg);
+    log(event);
+    var dir = "NONE";
+    var button = "NONE";
+    // text protocol for now; IQ as yet undefined.
+    if (event.match( new RegExp( /ButtonUpEvent/) )) {  dir = "UP"  }
+    if (event.match( new RegExp( /ButtonDownEvent/) )) {  dir = "DOWN"  }
+    if (event.match( new RegExp( /PLUS/) )) {  button = "PLUS"  }
+    if (event.match( new RegExp( /MINU/) )) {  button = "MINU"  }
+    if (event.match( new RegExp( /LEFT/) )) {  button = "LEFT"  }
+    if (event.match( new RegExp( /RIGH/) )) {  button = "RIGH"  }
+    if (event.match( new RegExp( /PLPZ/) )) {  button = "PLPZ"  }
+    if (event.match( new RegExp( /MENU/) )) {  button = "MENU"  }
+    if (dir != "NONE" & button != "NONE") { display(dir, button); }
+    return true; 
+}
+
+function display(dir, button) {
+  img = "images/" + dir  +"_" + button +".jpg";
+  tv.innerHTML = "<img  width=\"109\" src='"+img+"' />";
+}
+
+function out(msg) {
+  var tv = document.getElementById('tv');
+  tv.innerHTML = msg;
+}
+function log(msg) {
+  var log = document.getElementById('log');
+  log.innerHTML = msg;
+}
+
+connection.addHandler(     on_message,     null,     "message",    "chat");
+connection.connect(    jid,     password, linked);
+</script>
+
+<h2 id="tv">Linked TV</h2>
+
+<!--
+        ERROR: 0,
+        CONNECTING: 1,
+        CONNFAIL: 2,
+        AUTHENTICATING: 3,
+        AUTHFAIL: 4,
+        CONNECTED: 5,
+        DISCONNECTED: 6,
+        DISCONNECTING: 7
+-->
+
+<h3 id="log">...</h2>
+
+</body>
+</html>

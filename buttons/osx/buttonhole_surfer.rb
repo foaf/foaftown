@@ -8,6 +8,7 @@ include Jabber
 # 
 # See blog post: http://danbri.org/words/2009/10/19/483
 # see also: http://www.bbc.co.uk/music/artists/2339bc21-aa92-4850-86f0-4bb9433910c8.rdf
+#   http://www.rubycocoa.com/appleremote/1
 # 
 # Author: Dan Brickley <danbri@danbri.org>
 #
