@@ -1,12 +1,23 @@
 <html>
 <head>
+
 <title>Remote Remote test</title>
+
 <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js'></script>
 <script type='text/javascript'  src='strophe.js'></script>
 <script type='text/javascript'  src='b64.js'></script>
 <script type='text/javascript'  src='md5.js'></script>
 <script type='text/javascript'  src='sha1.js'></script>
-<script type="text/css">body { background-image:url(images/notube-bg.png);  }</script>
+<style type="text/css">
+h1 {color: blue; font-weight: bold}
+body { 
+background-image: url(http://foaf.tv/notube/webclient/images/notube-bg.png) ;  
+}
+#demo { background-color: #EEEEEE; width: 220px;  height: 300px;   border: 2px solid black; padding: 5px; }
+åp {color: gray}
+</style>
+
+
 </head>
 
 <body>
@@ -16,7 +27,7 @@
 
 jid='buttons@foaf.tv';
 
-password='xxxxxxx'; // temporarily nonsecret, but how to deal with this long term?
+password='xxxxxx'; // temporarily nonsecret, but how to deal with this long term?
 
 URL = 'http://foaf.tv/http-bind/'
 var connection = new Strophe.Connection(URL);
@@ -52,7 +63,8 @@ function on_message(msg) {
 
 function display(dir, button) {
   img = "images/" + dir  +"_" + button +".jpg";
-  tv.innerHTML = "<img  width=\"109\" src='"+img+"' />";
+  var tv = document.getElementById('tv');
+  tv.innerHTML = "<img  width=\"109\" height=\"279\" src='"+img+"' />";
 }
 
 function out(msg) {
@@ -68,8 +80,14 @@ connection.addHandler(     on_message,     null,     "message",    "chat");
 connection.connect(    jid,     password, linked);
 </script>
 
+<div id="demo">
 <h2 id="tv">Linked TV</h2>
+<h3 id="log">...</h2>
+</div>
 
+<p>
+<small>[<a href="http://svn.foaf-project.org/foaftown/buttons/osx/webclient/remote.html">src</a>]</small>
+</p>
 <!--
         ERROR: 0,
         CONNECTING: 1,
@@ -80,8 +98,6 @@ connection.connect(    jid,     password, linked);
         DISCONNECTED: 6,
         DISCONNECTING: 7
 -->
-
-<h3 id="log">...</h2>
 
 </body>
 </html>
