@@ -82,10 +82,12 @@ end
 def bubbleEvent(e,sb)
   msg = "#{e.class}: #{e.label} (#{e.name})"
   puts msg
-  to = "alice.notube@gmail.com"
+#  to = "alice.notube@gmail.com"
+  to = "buttons@foaf.tv"
   subject = "Apple Remote Event"
   begin 
-    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
+#    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
+    m = Message::new(to, msg).set_type(:chat).set_id('1').set_subject(subject)
     sb.client.send(m)
   rescue Exception => e
     puts "Rescued: #{e}"
