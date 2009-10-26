@@ -25,9 +25,36 @@
 # verb: likes		title:  Hyperland		uri: http://www.imdb.com/title/tt0188677
 
 
+require 'optparse'
 require 'rss'
 require 'open-uri'
-rss_feed = "http://twitter.com/statuses/user_timeline/85093859.rss" # bandriball
+
+options = {}
+optparse = OptionParser.new do|opts|
+  opts.banner = "Usage: boxee_twitter2activities.rb [options]"
+  options[:verbose] = false
+  opts.on( '-v', '--verbose', 'Output more information' ) do
+    options[:verbose] = true
+  end
+  options[:user] = nil
+  opts.on( '-u', '--user USER', 'Username on microblogging site.' ) do|u|
+    options[:user] = u
+  end
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+  # could add identi.ca or statusnet in general if supported by boxee or twitter
+end
+optparse.parse!
+
+userid = 'bandriball' # default for testing, also try with: -u libbyboxee
+if options[:user]
+  userid = options[:user]
+end
+puts "USER: #{userid}"
+rss_feed = "http://twitter.com/statuses/user_timeline/"+userid+".rss"
+# rss_feed = "http://twitter.com/statuses/user_timeline/85093859.rss" # bandriball
 
 def deBitly(id = 'NIL')
   require 'net/http'
@@ -52,6 +79,10 @@ def parseBoxee(str)
   # puts "GOT: #{str}"
   str =~ /([^:]+):\s*(likes|recommended|listening to|watching)(.*) on Boxee\. .* at (.*)/
   user,verb,title,uri = $1, $2, $3, $4
+  if (uri == nil)
+     # puts "No URI; skipping..."
+     return;
+  end
   uri = deBitly(uri)
   puts "verb: #{verb}\t\ttitle: #{title}\t\turi: #{uri}\n"
 end

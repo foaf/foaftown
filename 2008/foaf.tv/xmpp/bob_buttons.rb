@@ -7,7 +7,7 @@ include Jabber
 
 begin
   jid = JID::new('bob.notube@gmail.com/itunes')
-  password = 'gxxxxxxxxa' 
+  password = 'gargonza' 
   cl = Client::new(jid)
   cl.connect
   cl.auth(password)
@@ -29,6 +29,6 @@ begin
   body = "Currently playing #{ track.name } by #{ track.artist }, duration: #{  track.duration } "
   m = Message::new(to, body).set_type(:normal).set_id('1').set_subject(subject)
   cl.send m
-rescue
-  puts "Ooopsie with iTunes link"
+rescue => e
+  puts "Ooopsie with iTunes link: #{e}"
 end
