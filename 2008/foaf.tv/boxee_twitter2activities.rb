@@ -52,7 +52,6 @@ userid = 'bandriball' # default for testing, also try with: -u libbyboxee
 if options[:user]
   userid = options[:user]
 end
-puts "USER: #{userid}"
 rss_feed = "http://twitter.com/statuses/user_timeline/"+userid+".rss"
 # rss_feed = "http://twitter.com/statuses/user_timeline/85093859.rss" # bandriball
 
@@ -74,6 +73,13 @@ def deBitly(id = 'NIL')
   return uu.gsub(/&amp;/, '&')
 end
 
+def deIplayer(u)
+  if (u =~ /http:\/\/www.bbc.co.uk\/iplayer\/episode\/(\w*)\//)
+     return ("http://www.bbc.co.uk/programmes/#{$1}")
+  end
+  return u
+end
+
 # GOT: bandriball: watching Hyperland on Boxee. check it out at http://bit.ly/3Gp4Z2
 def parseBoxee(str) 
   # puts "GOT: #{str}"
@@ -84,6 +90,7 @@ def parseBoxee(str)
      return;
   end
   uri = deBitly(uri)
+  uri = deIplayer(uri)
   puts "verb: #{verb}\t\ttitle: #{title}\t\turi: #{uri}\n"
 end
 
