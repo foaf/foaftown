@@ -27,7 +27,21 @@ require 'open-uri'
 rss_feed = "http://twitter.com/statuses/user_timeline/85093859.rss" # bandriball
 
 def deBitly(id = 'NIL')
-  return id # todo: http deref
+  require 'net/http'
+  require 'uri'
+  url = URI.parse(id)
+  uu = nil
+  if url.path.size > 0
+    req = Net::HTTP::Get.new(url.path)
+    begin
+    res = Net::HTTP.new(url.host, url.port).start {|http| http.request(req) }
+    case res
+    when Net::HTTPRedirection
+     uu = res['Location']
+    end
+   end
+  end
+  return uu
 end
 
 # GOT: bandriball: watching Hyperland on Boxee. check it out at http://bit.ly/3Gp4Z2
