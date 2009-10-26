@@ -7,17 +7,22 @@
 # Opensource, do what you like but don't blame me.
 # 
 # Sample output:
-# User: bandriball		verb: likes		title:  36 Crazy Fists		uri: http://www.joost.com/33i7he9
-# User: bandriball		verb: likes		title:  Carl Sagan - 'A Glorious Dawn'  ft Stephen Hawking (Cosmos Remixed)		uri: http://www.youtube.com/watch?v=zSgiXGELjbc&amp;feature=youtube_gdata&amp;fmt=18
-# User: bandriball		verb: recommended		title:  DigitalP: 19 Oct 09		uri: http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/digitalp_20091020-1032a.mp3
-# User: bandriball		verb: likes		title:  DigitalP: 19 Oct 09		uri: http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/digitalp_20091020-1032a.mp3
-# User: bandriball		verb: likes		title:  DocArchive: Iran and the West - part three		uri: http://downloads.bbc.co.uk/podcasts/worldservice/docarchive/docarchive_20090803-1017a.mp3
-# User: bandriball		verb: recommended		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
-# User: bandriball		verb: listening to		title:  Frédéric Chopin on lastfm		uri: http://www.last.fm/listen/artist/Frédéric Chopin/fans
-# User: bandriball		verb: likes		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
-# User: bandriball		verb: watching		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
-# User: bandriball		verb: watching		title:  Hyperland		uri: http://www.imdb.com/title/tt0188677
-# User: bandriball		verb: likes		title:  Hyperland		uri: http://www.imdb.com/title/tt0188677
+# Cornercase:foaf.tv danbri$ ./boxee_twitter2activities.rb 
+# Boxee Activities: Twitter / bandriball
+# Total entries: 13
+# verb: likes		title:  DocArchive: John Simpson Returns to 1989		uri: http://downloads.bbc.co.uk/podcasts/worldservice/docarchive/docarchive_20091015-1428a.mp3
+# verb: likes		title:  October 15, 2009 - Guest: Jennifer Burns		uri: http://www.thedailyshow.com/full-episodes/252488/thu-october-15-2009-jennifer-burns
+# verb: likes		title:  36 Crazy Fists		uri: http://www.joost.com/33i7he9
+# verb: likes		title:  Carl Sagan - 'A Glorious Dawn'  ft Stephen Hawking (Cosmos Remixed)		uri: http://www.youtube.com/watch?v=zSgiXGELjbc&feature=youtube_gdata&fmt=18
+# verb: recommended		title:  DigitalP: 19 Oct 09		uri: http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/digitalp_20091020-1032a.mp3
+# verb: likes		title:  DigitalP: 19 Oct 09		uri: http://downloads.bbc.co.uk/podcasts/worldservice/digitalp/digitalp_20091020-1032a.mp3
+# verb: likes		title:  DocArchive: Iran and the West - part three		uri: http://downloads.bbc.co.uk/podcasts/worldservice/docarchive/docarchive_20090803-1017a.mp3
+# verb: recommended		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
+# verb: listening to		title:  Frédéric Chopin on lastfm		uri: http://www.last.fm/listen/artist/Frédéric Chopin/fans
+# verb: likes		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
+# verb: watching		title:  Le mystère Picasso		uri: http://www.imdb.com/title/tt0049531
+# verb: watching		title:  Hyperland		uri: http://www.imdb.com/title/tt0188677
+# verb: likes		title:  Hyperland		uri: http://www.imdb.com/title/tt0188677
 
 
 require 'rss'
@@ -39,7 +44,7 @@ def deBitly(id = 'NIL')
     end
    end
   end
-  return uu
+  return uu.gsub(/&amp;/, '&')
 end
 
 # GOT: bandriball: watching Hyperland on Boxee. check it out at http://bit.ly/3Gp4Z2
@@ -48,7 +53,7 @@ def parseBoxee(str)
   str =~ /([^:]+):\s*(likes|recommended|listening to|watching)(.*) on Boxee\. .* at (.*)/
   user,verb,title,uri = $1, $2, $3, $4
   uri = deBitly(uri)
-  puts "User: #{user}\t\tverb: #{verb}\t\ttitle: #{title}\t\turi: #{uri}\n"
+  puts "verb: #{verb}\t\ttitle: #{title}\t\turi: #{uri}\n"
 end
 
 
@@ -59,7 +64,7 @@ open(rss_feed) do |f|
 end
 rss = RSS::Parser.parse(rss_content, false)
 
-#puts "Title: #{rss.channel.title}"
+puts "Boxee Activities: #{rss.channel.title}"
 #puts "RSS URL: #{rss.channel.link}"
 puts "Total entries: #{rss.items.size}"
 rss.items.each do |item|
