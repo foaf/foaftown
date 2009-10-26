@@ -47,8 +47,8 @@ open(rss_feed) do |f|
 end
 rss = RSS::Parser.parse(rss_content, false)
 
-puts "Title: #{rss.channel.title}"
-puts "RSS URL: #{rss.channel.link}"
+#puts "Title: #{rss.channel.title}"
+#puts "RSS URL: #{rss.channel.link}"
 puts "Total entries: #{rss.items.size}"
 rss.items.each do |item|
 #   puts "<a href='#{item.link}'>#{item.title}</a>"
