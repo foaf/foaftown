@@ -4,6 +4,23 @@
 # Dan Brickley <danbri@danbri.org>
 #  
 # Written as part of the NoTube project - http://www.notube.tv/
+# Opensource, do what you like but don't blame me.
+# 
+# Sample output:
+# User: bandriball		verb: likes		title:  DocArchive: John Simpson Returns to 1989		uri: http://bit.ly/1fqbmD
+# User: bandriball		verb: likes		title:  October 15, 2009 - Guest: Jennifer Burns		uri: http://bit.ly/3nCXKK
+# User: bandriball		verb: likes		title:  36 Crazy Fists		uri: http://bit.ly/supxQ
+# User: bandriball		verb: likes		title:  Carl Sagan - 'A Glorious Dawn'  ft Stephen Hawking (Cosmos Remixed)		uri: http://bit.ly/uaJeZ
+# User: bandriball		verb: recommended		title:  DigitalP: 19 Oct 09		uri: http://bit.ly/nTpY5
+# User: bandriball		verb: likes		title:  DigitalP: 19 Oct 09		uri: http://bit.ly/nTpY5
+# User: bandriball		verb: likes		title:  DocArchive: Iran and the West - part three		uri: http://bit.ly/4Cl9UA
+# User: bandriball		verb: recommended		title:  Le mystère Picasso		uri: http://bit.ly/19vN4g
+# User: bandriball		verb: listening to		title:  Frédéric Chopin on lastfm		uri: http://bit.ly/1oojaX
+# User: bandriball		verb: likes		title:  Le mystère Picasso		uri: http://bit.ly/19vN4g
+# User: bandriball		verb: watching		title:  Le mystère Picasso		uri: http://bit.ly/19vN4g
+# User: bandriball		verb: watching		title:  Hyperland		uri: http://bit.ly/3Gp4Z2
+# User: bandriball		verb: likes		title:  Hyperland		uri: http://bit.ly/3Gp4Z2
+
 
 require 'rss'
 require 'open-uri'
