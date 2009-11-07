@@ -10,6 +10,9 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = B66EABF010A56AD20037F743 /* Gumbovi1 */;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Gumbovi1 */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
+		);
 		codeSenseManager = B66EABF710A56AD50037F743 /* Code sense */;
 		executables = (
 			B66EABF010A56AD20037F743 /* Gumbovi1 */,
@@ -20,9 +23,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					461,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
