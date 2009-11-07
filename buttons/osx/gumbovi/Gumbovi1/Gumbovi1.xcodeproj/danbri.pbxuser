@@ -37,11 +37,19 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 279276242;
-			PBXWorkspaceStateSaveDate = 279276242;
+			PBXPerProjectTemplateStateSaveDate = 279278962;
+			PBXWorkspaceStateSaveDate = 279278962;
 		};
 		sourceControlManager = B66EABF610A56AD50037F743 /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {768, 614}}";
+			sepNavSelRange = "{95, 0}";
+			sepNavVisRange = "{0, 322}";
+			sepNavWindowFrame = "{{60, 131}, {827, 742}}";
 		};
 	};
 	B66EABF010A56AD20037F743 /* Gumbovi1 */ = {
@@ -51,12 +59,13 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 		};
 		customDataFormattersEnabled = 1;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -64,6 +73,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = Gumbovi1;
+		savedGlobals = {
+		};
 		sourceDirectories = (
 		);
 	};
@@ -72,6 +83,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = foaftown;
 		};
 	};
 	B66EABF710A56AD50037F743 /* Code sense */ = {
