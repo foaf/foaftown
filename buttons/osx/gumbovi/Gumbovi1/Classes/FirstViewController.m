@@ -20,6 +20,9 @@
 @synthesize plpz;
 @synthesize menu;
 @synthesize output;
+@synthesize appdel;
+
+
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -82,21 +85,28 @@
 	NSLog(@" buttonDone called: %@", sender);
     if (sender == self.plus) {
 		NSLog(@"PLUS");
+		[self.appdel sendPLUS:sender];
 	} 
 	else if (sender == self.left) {
 		NSLog(@"LEFT");
+		[self.appdel sendLEFT:sender];
 	} 
 	else if (sender == self.minu) {
 		NSLog(@"MINU");
+		[self.appdel sendMINU:sender];
 	} 
 	else if (sender == self.righ) {
 		NSLog(@"RIGH");
+		[self.appdel sendRIGH:sender];
 	}
 	else if (sender == self.plpz) {
 		NSLog(@"PLPZ");
+		NSLog(@"TODO send play-pause via xmpp.");
+		[self.appdel sendPLPZ:sender];
 	}
 	else if (sender == self.menu) {
 	    NSLog(@"MENU");	
+		[self.appdel sendMENU:sender];
 	}
 	else {
 		NSLog(@"Unrecognised buttonDown UI action: %@", sender);
