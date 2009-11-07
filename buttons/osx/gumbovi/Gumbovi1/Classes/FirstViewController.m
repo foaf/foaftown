@@ -11,6 +11,15 @@
 
 @implementation FirstViewController
 
+@synthesize userid;
+@synthesize password;
+@synthesize plus;
+@synthesize minu;
+@synthesize left;
+@synthesize righ;
+@synthesize plpz;
+@synthesize menu;
+@synthesize output;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -58,6 +67,41 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+
+- (void) updateText:(id)sender {
+   
+	NSLog(@" updatedText called ");
+
+    return;
+}
+
+- (void) buttonDone:(id)sender {
+	
+	NSLog(@" buttonDone called: %@", sender);
+    if (sender == self.plus) {
+		NSLog(@"PLUS");
+	} 
+	else if (sender == self.left) {
+		NSLog(@"LEFT");
+	} 
+	else if (sender == self.minu) {
+		NSLog(@"MINU");
+	} 
+	else if (sender == self.righ) {
+		NSLog(@"RIGH");
+	}
+	else if (sender == self.plpz) {
+		NSLog(@"PLPZ");
+	}
+	else if (sender == self.menu) {
+	    NSLog(@"MENU");	
+	}
+	else {
+		NSLog(@"Unrecognised buttonDown UI action: %@", sender);
+	}
+    return;
 }
 
 @end
