@@ -216,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B622B79710A60684007E8F37</string>
+						<string>B622B7A110A60925007E8F37</string>
 						<key>history</key>
 						<array>
-							<string>B622B77610A60340007E8F37</string>
+							<string>B622B7A010A60925007E8F37</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -236,46 +236,6 @@
 				<false/>
 				<key>RubberWindowFrame</key>
 				<string>430 192 827 686 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>B622B78310A6045F007E8F37</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>Gumbovi1AppDelegate.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>B622B78410A6045F007E8F37</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>Gumbovi1AppDelegate.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>B622B79810A60684007E8F37</string>
-						<key>history</key>
-						<array>
-							<string>B622B77E10A60408007E8F37</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {827, 645}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>604 121 827 686 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -354,13 +314,14 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>B67CC39D10A5763F00511209</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>12</integer>
+									<integer>13</integer>
 									<integer>9</integer>
 									<integer>0</integer>
 								</array>
@@ -415,7 +376,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B622B79610A60684007E8F37</string>
+										<string>B622B79F10A60925007E8F37</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43710A57B0600511209</string>
@@ -654,15 +615,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B622B79910A60684007E8F37</string>
+		<string>B622B7A210A60925007E8F37</string>
 		<string>B622B71010A5FB54007E8F37</string>
 		<string>B622B71110A5FB54007E8F37</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>B67CC44310A57B0600511209</string>
-		<string>/Users/danbri/Documents/Xcode/checkout/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
-		<string>B622B78310A6045F007E8F37</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>/Users/danbri/Documents/Xcode/checkout/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 		<string>B622B73910A5FE52007E8F37</string>
 	</array>
 	<key>WindowString</key>
