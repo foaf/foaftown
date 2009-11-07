@@ -443,9 +443,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"";
 				OTHER_LDFLAGS = (
 					"-lidn",
 					"-lxml2",
@@ -464,9 +462,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"",
-				);
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"";
 				OTHER_LDFLAGS = (
 					"-lidn",
 					"-lxml2",
