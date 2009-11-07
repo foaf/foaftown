@@ -10,9 +10,9 @@
 	};
 	1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {894, 2856}}";
-			sepNavSelRange = "{2017, 0}";
-			sepNavVisRange = "{1421, 1073}";
+			sepNavIntBoundsRect = "{{0, 0}, {894, 2674}}";
+			sepNavSelRange = "{2062, 0}";
+			sepNavVisRange = "{1457, 1087}";
 			sepNavWindowFrame = "{{83, 110}, {827, 742}}";
 		};
 	};
@@ -189,6 +189,9 @@
 			B622B79610A60684007E8F37 /* PBXTextBookmark */ = B622B79610A60684007E8F37 /* PBXTextBookmark */;
 			B622B79710A60684007E8F37 /* PBXTextBookmark */ = B622B79710A60684007E8F37 /* PBXTextBookmark */;
 			B622B79810A60684007E8F37 /* PBXTextBookmark */ = B622B79810A60684007E8F37 /* PBXTextBookmark */;
+			B622B79F10A60925007E8F37 /* PBXTextBookmark */ = B622B79F10A60925007E8F37 /* PBXTextBookmark */;
+			B622B7A010A60925007E8F37 /* PBXTextBookmark */ = B622B7A010A60925007E8F37 /* PBXTextBookmark */;
+			B622B7A110A60925007E8F37 /* PBXTextBookmark */ = B622B7A110A60925007E8F37 /* PBXTextBookmark */;
 			B67CC43710A57B0600511209 = B67CC43710A57B0600511209 /* PBXTextBookmark */;
 			B67CC43910A57B0600511209 = B67CC43910A57B0600511209 /* PBXTextBookmark */;
 			B67CC43B10A57B0600511209 = B67CC43B10A57B0600511209 /* PBXTextBookmark */;
@@ -1299,6 +1302,36 @@
 		rType = 0;
 		vrLen = 624;
 		vrLoc = 0;
+	};
+	B622B79F10A60925007E8F37 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */;
+		name = "Gumbovi1AppDelegate.m: 75";
+		rLen = 1;
+		rLoc = 1688;
+		rType = 0;
+		vrLen = 359;
+		vrLoc = 1535;
+	};
+	B622B7A010A60925007E8F37 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */;
+		name = "Gumbovi1AppDelegate.m: 86";
+		rLen = 0;
+		rLoc = 2017;
+		rType = 0;
+		vrLen = 1841;
+		vrLoc = 4039;
+	};
+	B622B7A110A60925007E8F37 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */;
+		name = "Gumbovi1AppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 2062;
+		rType = 0;
+		vrLen = 1087;
+		vrLoc = 1457;
 	};
 	B66EABF010A56AD20037F743 /* Gumbovi1 */ = {
 		isa = PBXExecutable;
