@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class XMPPClient;
+
+
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+	XMPPClient *xmppClient;
     UIWindow *window;
     UITabBarController *tabBarController;
 }
