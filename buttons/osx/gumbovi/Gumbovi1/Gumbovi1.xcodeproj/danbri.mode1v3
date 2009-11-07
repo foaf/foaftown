@@ -202,6 +202,46 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
+				<string>B622B6CB10A5F5A1007E8F37</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Gumbovi1AppDelegate.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>B622B6CC10A5F5A1007E8F37</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Gumbovi1AppDelegate.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>B622B6CD10A5F5A1007E8F37</string>
+						<key>history</key>
+						<array>
+							<string>B622B6C510A5F505007E8F37</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {827, 645}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>83 166 827 686 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
 				<string>B622B69910A5F1E7007E8F37</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>FirstViewController.m</string>
@@ -216,10 +256,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B622B69C10A5F1E7007E8F37</string>
+						<string>B622B6CE10A5F5A1007E8F37</string>
 						<key>history</key>
 						<array>
-							<string>B622B69B10A5F1E7007E8F37</string>
+							<string>B622B6BE10A5F3C2007E8F37</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -236,86 +276,6 @@
 				<false/>
 				<key>RubberWindowFrame</key>
 				<string>534 160 827 686 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>B622B69D10A5F1E7007E8F37</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>FirstViewController.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>B622B69E10A5F1E7007E8F37</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>FirstViewController.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>B622B69F10A5F1E7007E8F37</string>
-						<key>history</key>
-						<array>
-							<string>B622B68410A5F1D9007E8F37</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {458, 649}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>129 120 458 690 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
-				<string>B622B63210A5BAAC007E8F37</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>Gumbovi1AppDelegate.h</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>B622B63310A5BAAC007E8F37</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>Gumbovi1AppDelegate.h</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>B622B6A010A5F1E7007E8F37</string>
-						<key>history</key>
-						<array>
-							<string>B622B66110A5C089007E8F37</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {827, 645}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>604 121 827 686 0 0 1440 878 </string>
 			</dict>
 		</dict>
 	</array>
@@ -400,7 +360,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>13</integer>
 									<integer>9</integer>
 									<integer>0</integer>
 								</array>
@@ -443,7 +403,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Gumbovi1AppDelegate.m</string>
+								<string>FirstViewController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -451,11 +411,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Gumbovi1AppDelegate.m</string>
+										<string>FirstViewController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B622B69810A5F1E7007E8F37</string>
+										<string>B622B6CA10A5F5A1007E8F37</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43710A57B0600511209</string>
@@ -464,9 +424,9 @@
 											<string>B622B53910A5812C007E8F37</string>
 											<string>B622B58610A586EA007E8F37</string>
 											<string>B622B68710A5F1E7007E8F37</string>
+											<string>B622B6AD10A5F2AF007E8F37</string>
+											<string>B622B6C810A5F5A1007E8F37</string>
 											<string>B622B68810A5F1E7007E8F37</string>
-											<string>B622B68910A5F1E7007E8F37</string>
-											<string>B622B68A10A5F1E7007E8F37</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -490,6 +450,8 @@
 											<string>B622B69510A5F1E7007E8F37</string>
 											<string>B622B69610A5F1E7007E8F37</string>
 											<string>B622B69710A5F1E7007E8F37</string>
+											<string>B622B6AE10A5F2AF007E8F37</string>
+											<string>B622B6C910A5F5A1007E8F37</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -687,12 +649,12 @@
 		<string>B622B62610A5B9D4007E8F37</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>B622B63210A5BAAC007E8F37</string>
 		<string>B67CC44310A57B0600511209</string>
-		<string>/Users/danbri/Documents/Xcode/checkout/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
-		<string>B622B69D10A5F1E7007E8F37</string>
 		<string>B622B69910A5F1E7007E8F37</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>B622B6CB10A5F5A1007E8F37</string>
+		<string>B622B6AA10A5F28D007E8F37</string>
+		<string>/Users/danbri/Documents/Xcode/checkout/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>466 187 908 600 0 0 1440 878 </string>
@@ -711,12 +673,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>FirstViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -733,8 +697,6 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1041,7 +1003,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1181, 255}}</string>
 								<key>RubberWindowFrame</key>
-								<string>59 86 1181 296 0 0 1440 878 </string>
+								<string>71 102 1181 296 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -1070,29 +1032,47 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>59 86 1181 296 0 0 1440 878 </string>
+			<string>71 102 1181 296 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
 			<true/>
 		</dict>
 		<dict>
+			<key>FirstTimeWindowDisplayed</key>
+			<false/>
 			<key>Identifier</key>
 			<string>windowTool.snapshots</string>
+			<key>IsVertical</key>
+			<true/>
 			<key>Layout</key>
 			<array>
 				<dict>
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>ContentConfiguration</key>
+							<dict>
+								<key>PBXProjectModuleGUID</key>
+								<string>B622B6A910A5F28D007E8F37</string>
+								<key>PBXProjectModuleLabel</key>
+								<string>Snapshots</string>
+							</dict>
+							<key>GeometryConfiguration</key>
+							<dict>
+								<key>Frame</key>
+								<string>{{0, 0}, {300, 509}}</string>
+								<key>RubberWindowFrame</key>
+								<string>555 273 300 550 0 0 1440 878 </string>
+							</dict>
 							<key>Module</key>
 							<string>XCSnapshotModule</string>
 							<key>Proportion</key>
-							<string>100%</string>
+							<string>509pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>100%</string>
+					<string>509pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -1102,13 +1082,21 @@
 				<string>XCSnapshotModule</string>
 			</array>
 			<key>StatusbarIsVisible</key>
-			<string>Yes</string>
+			<true/>
+			<key>TableOfContents</key>
+			<array>
+				<string>B622B6AA10A5F28D007E8F37</string>
+				<string>B622B6AB10A5F28D007E8F37</string>
+				<string>B622B6A910A5F28D007E8F37</string>
+			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.snapshots</string>
 			<key>WindowString</key>
-			<string>315 824 300 550 0 0 1440 878 </string>
+			<string>555 273 300 550 0 0 1440 878 </string>
+			<key>WindowToolGUID</key>
+			<string>B622B6AA10A5F28D007E8F37</string>
 			<key>WindowToolIsVisible</key>
-			<string>Yes</string>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

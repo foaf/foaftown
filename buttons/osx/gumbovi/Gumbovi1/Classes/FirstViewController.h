@@ -19,9 +19,9 @@
 	IBOutlet UIButton *left;
 	IBOutlet UIButton *righ;
 	IBOutlet UIButton *plpz;
-	IBOutlet UIButton *men;
+	IBOutlet UIButton *menu;
 
-	IBOutlet UITextField *output;
+	IBOutlet UITextView *output;
 	
 }
 
@@ -40,5 +40,7 @@
 	
 
 	- (IBAction) updateText:(id) sender;
+	- (IBAction) buttonDone:(id) sender;
+
 
 @end
