@@ -1,0 +1,96 @@
+// !$*UTF8*$!
+{
+	1D6058900D05DD3D006BFB54 /* Gumbovi1 */ = {
+		activeExec = 0;
+		executables = (
+			B66EABF010A56AD20037F743 /* Gumbovi1 */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = B66EABF010A56AD20037F743 /* Gumbovi1 */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* Gumbovi1 */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
+		);
+		codeSenseManager = B66EABF710A56AD50037F743 /* Code sense */;
+		executables = (
+			B66EABF010A56AD20037F743 /* Gumbovi1 */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					461,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 279278962;
+			PBXWorkspaceStateSaveDate = 279278962;
+		};
+		sourceControlManager = B66EABF610A56AD50037F743 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {768, 614}}";
+			sepNavSelRange = "{95, 0}";
+			sepNavVisRange = "{0, 322}";
+			sepNavWindowFrame = "{{60, 131}, {827, 742}}";
+		};
+	};
+	B66EABF010A56AD20037F743 /* Gumbovi1 */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Gumbovi1;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	B66EABF610A56AD50037F743 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryName = foaftown;
+		};
+	};
+	B66EABF710A56AD50037F743 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
