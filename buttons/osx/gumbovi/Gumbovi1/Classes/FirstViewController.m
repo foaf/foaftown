@@ -101,7 +101,6 @@
 	}
 	else if (sender == self.plpz) {
 		NSLog(@"PLPZ");
-		NSLog(@"TODO send play-pause via xmpp.");
 		[self.appdel sendPLPZ:sender];
 	}
 	else if (sender == self.menu) {

@@ -202,46 +202,6 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>B622B74410A5FE52007E8F37</string>
-				<key>PBXProjectModuleLabel</key>
-				<string>FirstViewController.m</string>
-				<key>PBXSplitModuleInNavigatorKey</key>
-				<dict>
-					<key>Split0</key>
-					<dict>
-						<key>PBXProjectModuleGUID</key>
-						<string>B622B74510A5FE52007E8F37</string>
-						<key>PBXProjectModuleLabel</key>
-						<string>FirstViewController.m</string>
-						<key>_historyCapacity</key>
-						<integer>0</integer>
-						<key>bookmark</key>
-						<string>B622B76810A6015C007E8F37</string>
-						<key>history</key>
-						<array>
-							<string>B622B74610A5FE52007E8F37</string>
-						</array>
-					</dict>
-					<key>SplitCount</key>
-					<string>1</string>
-				</dict>
-				<key>StatusBarVisibility</key>
-				<true/>
-			</dict>
-			<key>Geometry</key>
-			<dict>
-				<key>Frame</key>
-				<string>{{0, 20}, {827, 645}}</string>
-				<key>PBXModuleWindowStatusBarHidden2</key>
-				<false/>
-				<key>RubberWindowFrame</key>
-				<string>534 160 827 686 0 0 1440 878 </string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Content</key>
-			<dict>
-				<key>PBXProjectModuleGUID</key>
 				<string>B622B73910A5FE52007E8F37</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>Gumbovi1AppDelegate.m</string>
@@ -256,10 +216,10 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B622B76910A6015C007E8F37</string>
+						<string>B622B79710A60684007E8F37</string>
 						<key>history</key>
 						<array>
-							<string>B622B73B10A5FE52007E8F37</string>
+							<string>B622B77610A60340007E8F37</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -282,7 +242,7 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>B622B73D10A5FE52007E8F37</string>
+				<string>B622B78310A6045F007E8F37</string>
 				<key>PBXProjectModuleLabel</key>
 				<string>Gumbovi1AppDelegate.h</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
@@ -290,16 +250,16 @@
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>B622B73E10A5FE52007E8F37</string>
+						<string>B622B78410A6045F007E8F37</string>
 						<key>PBXProjectModuleLabel</key>
 						<string>Gumbovi1AppDelegate.h</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B622B76A10A6015C007E8F37</string>
+						<string>B622B79810A60684007E8F37</string>
 						<key>history</key>
 						<array>
-							<string>B622B75110A5FF5E007E8F37</string>
+							<string>B622B77E10A60408007E8F37</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -352,6 +312,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -398,7 +360,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
+									<integer>12</integer>
 									<integer>9</integer>
 									<integer>0</integer>
 								</array>
@@ -436,8 +398,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -455,7 +415,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B622B76710A6015C007E8F37</string>
+										<string>B622B79610A60684007E8F37</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43710A57B0600511209</string>
@@ -467,7 +427,7 @@
 											<string>B622B73210A5FE52007E8F37</string>
 											<string>B622B76110A6015C007E8F37</string>
 											<string>B622B76210A6015C007E8F37</string>
-											<string>B622B76310A6015C007E8F37</string>
+											<string>B622B77410A60340007E8F37</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -694,17 +654,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B622B76B10A6015C007E8F37</string>
+		<string>B622B79910A60684007E8F37</string>
 		<string>B622B71010A5FB54007E8F37</string>
 		<string>B622B71110A5FB54007E8F37</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>B67CC44310A57B0600511209</string>
-		<string>B622B73D10A5FE52007E8F37</string>
-		<string>B622B73910A5FE52007E8F37</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>B622B74410A5FE52007E8F37</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>B622B78310A6045F007E8F37</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>B622B73910A5FE52007E8F37</string>
 	</array>
 	<key>WindowString</key>
 	<string>466 187 908 600 0 0 1440 878 </string>

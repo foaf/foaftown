@@ -15,7 +15,6 @@
 @synthesize window;
 @synthesize tabBarController;
 
-
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
     // Add the tab bar controller's current view as a subview of the window
@@ -80,6 +79,15 @@
 - (void)sendPLPZ:(NSObject *)button
 {
 	NSLog(@"SENDING PLPZ %@", button);
+//	- (void)sendMessage:(NSString *)message toJID:(XMPPJID *)jid;
+    // create msg and aJid
+
+	NSString *msg = @"Hello alice, we got a PLPZ event.";
+    XMPPJID *aJid = [XMPPJID jidWithString:@"alice.notube@gmail.com"];
+	[ self.xmppclient sendMessage:msg toJID:aJid ] ;
+	NSLog(@"Sent msg %@", msg);
+	NSLog(@"To jid %@", aJid);
+
 }
 
 - (void)sendMENU:(NSObject *)button
