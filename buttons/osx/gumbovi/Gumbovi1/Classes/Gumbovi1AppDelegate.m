@@ -11,6 +11,7 @@
 
 @implementation Gumbovi1AppDelegate
 
+@synthesize xmppclient;
 @synthesize window;
 @synthesize tabBarController;
 
@@ -56,7 +57,35 @@
 }
 
 
+- (void)sendPLUS:(NSObject *)button
+{
+	NSLog(@"SENDING PLUS%@", button);
+}
 
+- (void)sendLEFT:(NSObject *)button
+{
+	NSLog(@"SENDING LEFT %@", button);
+}
+
+- (void)sendRIGH:(NSObject *)button
+{
+	NSLog(@"SENDING RIGH %@", button);
+}
+
+- (void)sendMINU:(NSObject *)button
+{
+	NSLog(@"SENDING MINU %@", button);
+}
+
+- (void)sendPLPZ:(NSObject *)button
+{
+	NSLog(@"SENDING PLPZ %@", button);
+}
+
+- (void)sendMENU:(NSObject *)button
+{
+	NSLog(@"SENDING MENU %@", button);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:

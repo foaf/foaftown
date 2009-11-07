@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface FirstViewController : UIViewController {
 
 	IBOutlet UITextField *userid;
@@ -22,8 +21,13 @@
 	IBOutlet UIButton *menu;
 
 	IBOutlet UITextView *output;
-	
+
+	IBOutlet NSObject *appdel; // to get our xmpp session!
+								// todo, find out how to use XMPPClient class here
+								// do we import FirstViewController.h ? didnt work.
 }
+
+	@property (nonatomic, retain) IBOutlet NSObject *appdel;
 
 	@property (nonatomic, retain) IBOutlet UITextField *userid;
 	@property (nonatomic, retain) IBOutlet UITextField *password;
@@ -38,9 +42,7 @@
 	//
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 	
-
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;
-
 
 @end

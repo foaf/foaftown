@@ -19,22 +19,8 @@
 
 }
 
-
-//@property (nonatomic, retain) IBOutlet UITextField *userid;
-//@property (nonatomic, retain) IBOutlet UITextField *password;
-
-// remote tab
-//@property (nonatomic, retain) IBOutlet UIButton *plus;
-//@property (nonatomic, retain) IBOutlet UIButton *minu;
-//@property (nonatomic, retain) IBOutlet UIButton *left;
-//@property (nonatomic, retain) IBOutlet UIButton *righ;
-//@property (nonatomic, retain) IBOutlet UIButton *plpz;
-//@property (nonatomic, retain) IBOutlet UIButton *menu;
-//
-//@property (nonatomic, retain) IBOutlet UITextView *output;
-
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-
+@property (nonatomic, retain) IBOutlet XMPPClient *xmppclient; // how to make accessible elsewhere?
 
 @end
