@@ -12,6 +12,15 @@
 // I suspect I'd hook most of what you've talked about up in firstviewcontroller
 
 
+// Status: we can connect to XMPP and route events between iphone UI and remote JIDs
+// we don't load our username and password from the UI fields yet
+// - when keyboard is used on phone, it won't go away
+// - there is no protocol design
+// - for now, simply sending physical-style messages (ie. which key pressed)
+// - should impl some services, eg. list videos
+
+
+
 #import "XMPP.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
