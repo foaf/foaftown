@@ -8,20 +8,24 @@
 # jid: buttons@foaf.tv
 # password: xxxxxxx
 
+# see also  ../../2008/foaf.tv/xmpp/itunes.rb 
+# for osx things to connect to
 
 require 'switchboard'
 
 switchboard = Switchboard::Client.new
-switchboard.plug!(AutoAcceptJack, NotifyJack)
+#switchboard.plug!(AutoAcceptJack, NotifyJack)
+switchboard.plug!(AutoAcceptJack)
 
 switchboard.on_message do |message|
   txt = message.body.to_s
   puts "Message body was: '#{txt}'"
+
   if (txt =~ /pause/)
     puts "replied with pause toggle."
     stream.send("toggled pause")
   else
-    stream.send(message.answer)
+   #  stream.send(message.answer)
   end
 end
 
