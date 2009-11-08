@@ -25,9 +25,9 @@ p {color: gray}
 
 <script type="text/javascript">
 
-jid='buttons@foaf.tv';
+jid='buttons@foaf.tv/gumboviListener';
 
-password='xxxxxx'; // temporarily nonsecret, but how to deal with this long term?
+password='gargonza'; // temporarily nonsecret, but how to deal with this long term?
 
 URL = 'http://foaf.tv/http-bind/'
 var connection = new Strophe.Connection(URL);
@@ -37,7 +37,7 @@ function linked(status) {
     if (status == Strophe.Status.CONNECTED) { 
     out("connected");
     var stanza = new Strophe.Builder( "message", {"to": "alice.notube@gmail.com", 
-         "type": "chat"} ).c("body").t("hey alice! this is buttons in strophe js");
+         "type": "chat"} ).c("body").t("hello! this is a buttons client in strophe js");
     connection.send($pres());
     connection.send(stanza);
     } 
@@ -46,7 +46,7 @@ function linked(status) {
 function on_message(msg) { 
     event = Strophe.serialize(msg);
     log(event);
-    var dir = "NONE";
+    var dir = "UP"; // default
     var button = "NONE";
     // text protocol for now; IQ as yet undefined.
     if (event.match( new RegExp( /ButtonUpEvent/) )) {  dir = "UP"  }
