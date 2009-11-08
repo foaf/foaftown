@@ -23,9 +23,17 @@ $(document).ready(function() {
 		$('.volumestop').click(function() {
 		avElement.volume=0;
 	});
+
 	$('.playatTime').click(function() {
 		avElement.currentTime= 35;
 		avElement.play();
+	});			
+
+	$('.goRight').click(function() {
+          ix = ix + 1;
+          if (ix > ( trailers.length -1) ) { ix = 0;}
+	  play(ix);
+	  alert("You clicked right");
 	});			
 });
 
