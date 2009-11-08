@@ -25,6 +25,9 @@ hide { display: none; }
 
 
 <body>
+
+<h3 id="msg">...</h2>
+
 <video src="http://video.lynxeye.de/src/terminator4_hd.ogg" height="333" width="800" id="content" controls="true" >
 	ATTENTION: This demo uses HTML5 features, and requires Ogg-capable player (Safari needs an addon from Xiph).
 </video>
@@ -48,11 +51,15 @@ var trailers = [ 	{
 
 			"title": "Zwei Donuts und NOCH ein Todesfall (Two donuts and a Funeral)",
 			"file": "http://video.lynxeye.de/src/Donuts2_sd.ogg" 
-		}
+		},
 		] ;
 
 // skip (and play) with:	avElement.currentTime= 35;
 
+//		{ 
+//			"title": "U.S. House Floor Footage for 2009-11-06.",
+//			"file": "http://www.archive.org/download/mv_house_proceeding_11-06-09/mv_house_proceeding_11-06-09.ogv", 
+//		} , 
 
 
 jid='buttons@foaf.tv/gumboviListener';
@@ -63,15 +70,26 @@ URL = 'http://foaf.tv/http-bind/'
 var connection = new Strophe.Connection(URL);
 
 function linked(status) {
-   out("connection status: "+status );
-    if (status == Strophe.Status.CONNECTED) { 
+  out("connection status: "+status );
+  if (status == Strophe.Status.CONNECTED) { 
     out("connected");
-    var stanza = new Strophe.Builder( "message", {"to": "alice.notube@gmail.com", 
-         "type": "chat"} ).c("body").t("hello! this is a buttons client in strophe js");
-    connection.send($pres());
-    connection.send(stanza);
-    } 
+    xmppSend( 'buttons@foaf.tv', 'alice.notube@gmail.com', 'TESTER!', connection);
+  }
 }
+
+
+function xmppSend(from, to, text, conn) {
+	// normally we are buttons, sending to alice
+
+             var stanza = new Strophe.Builder(
+                "message", {"to": to, "type": "chat"}
+                        ).c("body").t(text);
+            
+//       alert(stanza);
+            conn.send($pres());
+            conn.send(stanza);
+}
+
 
 function on_message(msg) { 
     event = Strophe.serialize(msg);
@@ -109,29 +127,33 @@ function on_message(msg) {
           ix = ix + 1;
           if (ix > ( trailers.length -1) ) { ix = 0;}
             play(ix);
+           xmppSend( 'buttons@foaf.tv', 'alice.notube@gmail.com', 'SKIPPED RIGHT TO PLAY'+trailers[ix]['title'], connection);
          }
   }
 
     if (event.match( new RegExp( /PLPZ/) )) {  
        button = "PLPZ"; 
-       // if pause, play and vice-versa
+       if (avElement.paused) {
+         // We are Paused and we got a Play so ...
+         if (dir=="UP") {   avElement.play();   }
 
-     if (avElement.paused) {
+         xmppSend( 'buttons@foaf.tv', 'alice.notube@gmail.com', 'PLPZ-PLAYING!', connection);
 
-        if (dir=="UP") {
-          avElement.play(); } else { avElement.pause() ; } 
-        }
-     }
+       }
+         // We were playing and we got a pause so 
+       else { 
+           if (dir=="UP") {   avElement.pause();  }
+       } 
+    }
 
     if (event.match( new RegExp( /MENU/) )) {  
        button = "MENU";  
        if (dir == "UP") {
-//		alert("MENU: trailer is "+ trailers[ix]['title']);
-             var stanza = new Strophe.Builder( 
-		"message", {"to": "alice@gmail.com/gumboviTest", "type": "chat"} 
-			).c("body").t("Strophe player, current video? " + trailers[ix]['title'] );
-             connection.send($pres());
-             connection.send(stanza);
+       now = "Unknown.";
+       now =  trailers[ix]['title'];
+//       alert("MENU: trailer is "+now);
+           xmppSend( 'buttons@foaf.tv', 'alice.notube@gmail.com', 'Menu for '+now, connection);
+
        }
      }
 
@@ -143,7 +165,17 @@ function on_message(msg) {
 function play(i) {
   var avElement =	document.getElementById('content');
   var msgElement =	document.getElementById('msg');
-  msgElement.innerHTML=("Playing: "+ i+ " ix: "+trailers[ix]['title'] );
+
+  var nowplaying = "<p>Current: "+ trailers[ix]['title']+" <br />\n";
+  var links = ""
+  if (trailers[ix]['imdb'] != null) {
+    links = links + "<a href='" + trailers[ix]['imdb'] +"'>IMDB</a> <br />"
+    links = links + "<a href='" + trailers[ix]['dbpedia'] +"'>DBPedia</a> <br />"
+    //alertalert(links);
+  }
+  nowplaying = nowplaying + links + "</p>"
+  msgElement.innerHTML = nowplaying;
+
   avElement.src = trailers[ix]['file'];
   avElement.load(); /// thx gsnedders
   avElement.play();
@@ -171,7 +203,6 @@ connection.connect(    jid,     password, linked);
 <div id="demo">
 <h2 id="tv">Linked TV</h2>
 <h3 id="log">...</h2>
-<h3 id="msg">...</h2>
 </div>
 
 
