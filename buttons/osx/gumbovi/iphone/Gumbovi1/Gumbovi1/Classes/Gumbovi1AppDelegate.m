@@ -3,13 +3,17 @@
 //  Gumbovi1
 //
 //  Created by Dan Brickley on 11/7/09.
-
+//  This code - license: MIT, Share-and-Enjoy.
+//  See embedded XMPP, KissXML and IDN libs for their distribution terms.
+//  (c) Dan Brickley <danbri@danbri.org> & VU University Amsterdam
 //
-// thanks to Jens Finkhäuser and Daniel Salber for Obj-C advice
-// XMPP smarts live in this zone...
-
+//  Thanks to Chris van Aart, Jens Finkhäuser, and Daniel Salber for Xcode & Obj-C advice.
+//
+// xcode 101 notes:
 // jens: well, the idea is that firstviewcontroller controls the tab contents, app delegate controls tabs.
 // I suspect I'd hook most of what you've talked about up in firstviewcontroller
+//
+// daniel: the easy way to get hold of the app delegate is: [[UIApplication sharedApplication] delegate]
 
 
 // Status: we can connect to XMPP and route events between iphone UI and remote JIDs
@@ -20,18 +24,19 @@
 // - should impl some services, eg. list videos
 
 
-
 #import "XMPP.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
+#import "XMPPJID.h"
 
-#import <Foundation/NSString.h>
+//#import <Foundation/NSString.h>
 
 @implementation Gumbovi1AppDelegate
 
 @synthesize xmppClient;
 @synthesize window;
 @synthesize tabBarController;
+@synthesize toJid;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -42,25 +47,33 @@
     xmppClient = [[XMPPClient alloc] init];
 	[xmppClient addDelegate:self];
 	
+	
+	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+//	fvc.output.text =  @"Connecting to NoTube Network...";
+//  can we get username / password this way? is it ready yet
+	NSLog(@"Userid: %@", fvc.userid);
+	NSLog(@"Passwd: %@", fvc.password);
+	
+	// Connect to XMPP
+	[xmppClient setPort:5222];	
+
 	// connect as buttons 
 //	[xmppClient setDomain:@"foaf.tv"];
-//	[xmppClient setPort:5222];	
-//	[xmppClient setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/iPhoneTest"]];
-//	[xmppClient setPassword:@"gargonza"];	
-	
-	
-	// or connect as bob?
 	[xmppClient setDomain:@"talk.google.com"];
-	[xmppClient setPort:5222];	
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"bob.notube@gmail.com/iPhoneTest"]];
-	[xmppClient setPassword:@"gargonza"];	
+//	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com/gumboviTest"]];
+	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
+	[xmppClient setPassword:@"gargonza"];
+
 	
+	[xmppClient setDomain:@"foaf.tv"];
+	[xmppClient setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/gumboviTest"]];
+
+	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 	[xmppClient setAutoLogin:YES];
 	[xmppClient setAllowsPlaintextAuth:NO];
 	[xmppClient setAutoPresence:YES];
 	[xmppClient setAutoRoster:YES];
 	[xmppClient connect];
-	
 	
 }
 
@@ -89,32 +102,28 @@
 {
 	NSLog(@"SENDING PLUS%@", button);
 	NSString *msg = @"PLUS event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLEFT:(NSObject *)button
 {
 	NSLog(@"SENDING LEFT %@", button);
 	NSString *msg = @"LEFT event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendRIGH:(NSObject *)button
 {
 	NSLog(@"SENDING RIGH %@", button);
 	NSString *msg = @"RIGH event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendMINU:(NSObject *)button
 {
 	NSLog(@"SENDING MINU %@", button);
 	NSString *msg = @"MINU event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendPLPZ:(NSObject *)button
@@ -122,11 +131,11 @@
 	NSLog(@"SENDING PLPZ %@", button);
     //	- (void)sendMessage:(NSString *)message toJID:(XMPPJID *)jid;
 	NSString *msg = @"PLPZ event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 	NSLog(@"Sent msg %@", msg);
-	NSLog(@"To jid %@", aJid);
+	NSLog(@"To jid %@", self.toJid);
 	NSLog(@" XMPP CLient: %@", self.xmppClient );
+	//NSLog(@" XMPP CLient connected?: %@", self.xmppClient.isConnected );
 
 }
 
@@ -134,8 +143,10 @@
 {
 	NSLog(@"SENDING MENU %@", button);
 	NSString *msg = @"MENU event.";
-    XMPPJID *aJid = [XMPPJID jidWithString:@"buttons@foaf.tv"];
-	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+
+//    XMPPJID *aJid = [XMPPJID jidWithString:@"alice.notube@gmail.com"];
+//	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

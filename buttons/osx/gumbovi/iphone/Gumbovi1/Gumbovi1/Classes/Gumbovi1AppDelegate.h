@@ -8,25 +8,34 @@
 
 #import <UIKit/UIKit.h>
 #import "FirstViewController.h"
+#import "XMPPJID.h"
 
 @class XMPPClient;
+
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 	XMPPClient *xmppClient;
     UIWindow *window;
     UITabBarController *tabBarController;
-//FirstViewController *fvc;
+    XMPPJID *toJid;
+	
+	//FirstViewController *fvc;
 
+	
 }
 //@property (nonatomic, retain) IBOutlet FirstViewController *fvc;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; // how to make accessible elsewhere?
+@property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; 
+@property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 
-	- (IBAction) sendMENU:(id) button;
+- (IBAction) sendMENU:(id) button;
 	- (IBAction) sendPLPZ:(id) button;
 	- (IBAction) sendPLUS:(id) button;
 	- (IBAction) sendMINU:(id) button;
 	- (IBAction) sendLEFT:(id) button;
 	- (IBAction) sendRIGH:(id) button;
+
+//	- (IBAction) setTargetJID:(XMPPJID) jid;
+
 
 @end
