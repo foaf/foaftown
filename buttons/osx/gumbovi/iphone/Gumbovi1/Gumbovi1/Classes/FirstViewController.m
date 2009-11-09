@@ -50,6 +50,19 @@
 */
 
 
+- (BOOL)textFieldShouldReturn: (UITextField *)textField {
+	NSLog(@"textFieldShouldReturn");
+	[textField resignFirstResponder];
+	return YES;
+}
+
+
+// todo make an action: textFieldShouldReturn
+// http://www.platinumball.net/blog/2009/03/03/iphone-newbie-view-coords-uitextfield/
+// Finally, the keyboard won’t ever go away unless you write more code to dismiss it. You must make your view controller the 
+// text control’s delegate and write a textFieldShouldReturn: method so you can do something with the Enter key and tell 
+// the keyboard to go away. Six new methods later, your quest is at an end. Until the next time you need a UITextField.
+
 
 // or did it? why nothing in logs?
 - (void)viewDidAppear:(BOOL)animated{
@@ -96,7 +109,8 @@
 
 - (void) connectionSetup:(id)sender {
 	NSLog(@"connection setup ... switch moved so restarting xmpp");
-	// [[[UIApplication sharedApplication] delegate] initXMPP];
+
+    NSLog(@"SWITCH state: %@", sender);	
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 
     if (self.userid.text != NULL) {
