@@ -241,22 +241,19 @@
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveMessage: %@", message);
 	NSLog(@"==============================================================");
-	/// tabBarDelegate window.output.text = @"Got message!" ;
 	//tabBarController.selectedViewController.output.text = @"Got message!";
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-    NSString *m = [ message elementForName:@"body"  ] ;
-	//NSString *firstString = (NSString *)m.description, *finalString;
-	
+    NSString *m = (NSString *) [  message elementForName:@"body"  ] ;	
+
+	// fvc.output.text = m.description;  // trying to strip out <body> and <body/> below gives trouble
+
 	NSString *log = m.description;
 	log = [[log stringByReplacingOccurrencesOfString:@"<body>" withString:@""] stringByReplacingOccurrencesOfString:@"</body>" withString:@""];
 	[log retain];
-	
-	
-//	finalString = [[firstString stringByReplacingOccurancesOfString:@"<body>" withString:@""] stringByReplacingOccurancesOfString:@"</body>" withString:@""];
-	//finalString = [firstString stringByReplacingOccurancesOfString:@"<body>" withString:@""];	
-	fvc.output.text = log; //  m.description;
-	//fvc.output.text =  finalString;
-
+	  // @"......"; m.description;  //log ;			//+ [NSString log]; //  m.description;
+    
+	//fvc.output.text = log; // problem?
+    NSLog(log);
 }
 
 
