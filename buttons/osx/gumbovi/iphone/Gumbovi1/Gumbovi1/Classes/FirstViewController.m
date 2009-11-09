@@ -7,6 +7,10 @@
 //
 
 #import "FirstViewController.h"
+#import "Gumbovi1AppDelegate.h"
+#import "XMPP.h"
+#import "XMPPClient.h"
+
 
 @implementation FirstViewController
 
@@ -45,6 +49,25 @@
 }
 */
 
+
+
+// or did it? why nothing in logs?
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+	NSLog(@"TIMER viewDidAppear!");
+	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+    if (! gad.xmppClient.isConnected ) {
+	  	NSLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
+        [gad initXMPP];
+	} else {
+		NSLog(@"We seem to be connected %@",gad.xmppClient);
+	}
+		
+	NSLog(@"XMPP now: %@",gad.xmppClient);
+
+//	NSLog(@"Got app delgate %@", gad.xmppClient  );
+}
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -70,6 +93,24 @@
     [super dealloc];
 }
 
+
+- (void) connectionSetup:(id)sender {
+	NSLog(@"connection setup ... switch moved so restarting xmpp");
+	// [[[UIApplication sharedApplication] delegate] initXMPP];
+	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+
+    if (self.userid.text != NULL) {
+		NSLog(@"User wasn't null so setting userid to be it: ");	
+		[gad.xmppClient setMyJID:[XMPPJID jidWithString:self.userid.text]];
+	}
+    if (self.password.text != NULL) {
+		NSLog(@"Pass wasn't null so setting userid to be it...");	
+		[gad.xmppClient setPassword:self.password.text];
+	}
+	[gad.xmppClient disconnect];
+	[gad.xmppClient connect];
+
+}
 
 - (void) updateText:(id)sender {
    
