@@ -45,5 +45,9 @@
 	
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;
+	- (IBAction) connectionSetup:(id)sender;
+    - (IBAction) textFieldShouldReturnUITextField:(id)sender;
+
+
 
 @end

@@ -41,34 +41,40 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
+	
+	NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
+
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 	
+	NSLog(@"TIMER: connecting to XMPP");
+
+}
+
+//- (void)initXMPP: (NSObject *)config  {
+- (void)initXMPP  {
+
+	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+    NSLog(@"TIMER: Initialising XMPP");
     xmppClient = [[XMPPClient alloc] init];
 	[xmppClient addDelegate:self];
-	
-	
-	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-//	fvc.output.text =  @"Connecting to NoTube Network...";
-//  can we get username / password this way? is it ready yet
-	NSLog(@"Userid: %@", fvc.userid);
-	NSLog(@"Passwd: %@", fvc.password);
-	
-	// Connect to XMPP
 	[xmppClient setPort:5222];	
-
-	// connect as buttons 
-//	[xmppClient setDomain:@"foaf.tv"];
-	[xmppClient setDomain:@"talk.google.com"];
-//	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com/gumboviTest"]];
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
-	[xmppClient setPassword:@"gargonza"];
-
-	
-	[xmppClient setDomain:@"foaf.tv"];
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/gumboviTest"]];
+	NSLog(@"Userid: %@", fvc.userid.text);
+	NSLog(@"Passwd: %@", fvc.password.text);
+	[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
+	// [xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
+    if (fvc.userid.text != NULL) {
+		NSLog(@"User wasn't null so setting userid to be it: ");	
+		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
+	}
+    if (fvc.password.text != NULL) {
+		NSLog(@"Pass wasn't null so setting userid to be it...");	
+		[xmppClient setPassword:fvc.password.text];
+	}
+	NSLog(@"XMPP DEBUG: u: %@ p: %@", xmppClient.myJID, xmppClient.password);
 
 	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
+
 	[xmppClient setAutoLogin:YES];
 	[xmppClient setAllowsPlaintextAuth:NO];
 	[xmppClient setAutoPresence:YES];
@@ -84,11 +90,11 @@
 }
 */
 
-/*
 // Optional UITabBarControllerDelegate method
 - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
+	NSLog(@"TIMER: app delegate didEndCustomizingViewControllers");
 }
-*/
+
 
 
 - (void)dealloc {
@@ -239,7 +245,17 @@
 	//tabBarController.selectedViewController.output.text = @"Got message!";
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
     NSString *m = [ message elementForName:@"body"  ] ;
-	fvc.output.text =  m.description;
+	//NSString *firstString = (NSString *)m.description, *finalString;
+	
+	NSString *log = m.description;
+	log = [[log stringByReplacingOccurrencesOfString:@"<body>" withString:@""] stringByReplacingOccurrencesOfString:@"</body>" withString:@""];
+	[log retain];
+	
+	
+//	finalString = [[firstString stringByReplacingOccurancesOfString:@"<body>" withString:@""] stringByReplacingOccurancesOfString:@"</body>" withString:@""];
+	//finalString = [firstString stringByReplacingOccurancesOfString:@"<body>" withString:@""];	
+	fvc.output.text = log; //  m.description;
+	//fvc.output.text =  finalString;
 
 }
 

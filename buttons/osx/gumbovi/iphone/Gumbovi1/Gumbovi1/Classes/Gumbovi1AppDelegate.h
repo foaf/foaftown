@@ -29,11 +29,13 @@
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 
 - (IBAction) sendMENU:(id) button;
-	- (IBAction) sendPLPZ:(id) button;
-	- (IBAction) sendPLUS:(id) button;
-	- (IBAction) sendMINU:(id) button;
-	- (IBAction) sendLEFT:(id) button;
-	- (IBAction) sendRIGH:(id) button;
+- (IBAction) sendPLPZ:(id) button;
+- (IBAction) sendPLUS:(id) button;
+- (IBAction) sendMINU:(id) button;
+- (IBAction) sendLEFT:(id) button;
+- (IBAction) sendRIGH:(id) button;
+- (void) initXMPP: (id) config;
+- (void) initXMPP;
 
 //	- (IBAction) setTargetJID:(XMPPJID) jid;
 
