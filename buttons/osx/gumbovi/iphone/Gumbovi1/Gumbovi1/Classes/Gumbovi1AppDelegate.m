@@ -242,7 +242,9 @@
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveMessage: %@", message);
 	NSLog(@"==============================================================");
 	//tabBarController.selectedViewController.output.text = @"Got message!";
-	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+
+	
+	// FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
     NSString *m = (NSString *) [  message elementForName:@"body"  ] ;	
 
 	// fvc.output.text = m.description;  // trying to strip out <body> and <body/> below gives trouble
