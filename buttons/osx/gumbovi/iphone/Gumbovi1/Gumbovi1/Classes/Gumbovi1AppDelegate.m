@@ -64,14 +64,14 @@
 	[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	// [xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
     if (fvc.userid.text != NULL) {
-		NSLog(@"User wasn't null so setting userid to be it: ");	
+		NSLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
 	}
     if (fvc.password.text != NULL) {
-		NSLog(@"Pass wasn't null so setting userid to be it...");	
+		NSLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
 		[xmppClient setPassword:fvc.password.text];
 	}
-	NSLog(@"XMPP DEBUG: u: %@ p: %@", xmppClient.myJID, xmppClient.password);
+	NSLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@", xmppClient.myJID, xmppClient.password);
 
 	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
