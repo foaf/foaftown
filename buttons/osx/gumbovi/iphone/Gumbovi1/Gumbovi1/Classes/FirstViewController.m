@@ -113,12 +113,14 @@
     NSLog(@"SWITCH state: %@", sender);	
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    if (self.userid.text != NULL) {
-		NSLog(@"User wasn't null so setting userid to be it: ");	
+
+    
+	if (self.userid.text != NULL) {
+		NSLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
 		[gad.xmppClient setMyJID:[XMPPJID jidWithString:self.userid.text]];
 	}
     if (self.password.text != NULL) {
-		NSLog(@"Pass wasn't null so setting userid to be it...");	
+		NSLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
 		[gad.xmppClient setPassword:self.password.text];
 	}
 	[gad.xmppClient disconnect];
