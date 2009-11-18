@@ -1,0 +1,31 @@
+{
+    "Rows": [
+        {
+            "Title": "Item 1",
+            "Children": [
+                {
+                    "Title": "Screen A",
+                    "View": "1" 
+                } 
+            ] 
+        } ,
+        {
+            "Title": "Item 2",
+            "Children": [
+                {
+                    "Title": "Screen B",
+                    "View": "1" 
+                } 
+            ] 
+        } ,
+        {
+            "Title": "Item 3",
+            "Children": [
+                {
+                    "Title": "Screen C",
+                    "View": "1" 
+                } 
+            ] 
+        } 
+    ]
+}
