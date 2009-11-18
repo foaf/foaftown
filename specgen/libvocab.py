@@ -511,10 +511,12 @@ class VocabReport(object):
             %s
             </table>
             %s
-            <p style="float: right; font-size: small;">[<a href="#term_%s">permalink</a>] [<a href="#queries_%s">validation queries</a>] [<a href="#glance">back to top</a>]</p>
+            <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] [<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
 
+# replace this if you want validation queries:
+#            <p style="float: right; font-size: small;">[<a href="#term_%s">permalink</a>] [<a href="#queries_%s">validation queries</a>] [<a href="#glance">back to top</a>]</p>
 
     # todo, push this into an api call (c_ids currently setup by az above)
 
