@@ -60,3 +60,5 @@ lrwxrwxrwx  1 danbri  staff      72 Nov 14 13:23 template.html -> /Users/danbri/
 23:19 danbri: that matches             <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] <!-- %s --> [<a href="#glance">back to top</a>]</p>
 23:20 danbri: i left in <!-- %s --> for now, so i didn't have to think too har
 23:20 danbri: d
+23:20 libby:       filename = os.path.join(dn, term.id+".sparql")
+23:20 libby: is the sprql bit
