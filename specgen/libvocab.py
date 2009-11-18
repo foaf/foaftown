@@ -511,11 +511,11 @@ class VocabReport(object):
             %s
             </table>
             %s
-            <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] [<a href="#glance">back to top</a>]</p>
+            <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] <!-- %s --> [<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
 
-# replace this if you want validation queries:
+# replace this if you want validation queries: xxx danbri
 #            <p style="float: right; font-size: small;">[<a href="#term_%s">permalink</a>] [<a href="#queries_%s">validation queries</a>] [<a href="#glance">back to top</a>]</p>
 
     # todo, push this into an api call (c_ids currently setup by az above)
@@ -654,6 +654,10 @@ class VocabReport(object):
 #       s = s+"\n"+ss
        sn = self.vocab.niceName(term.uri)
 
+
+# trying to figure out how libby's improvements work. Assuming 'foo' is the validation queries, which i'm turning off for now. Sorry Lib!
+# danbri todoxxx
+#       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
        zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
