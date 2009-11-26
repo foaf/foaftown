@@ -52,18 +52,15 @@ import getopt
 
 
 # Make a spec
-def makeSpec(dir, uri, shortName):
-  spec = Vocab( dir, 'index.rdf')
+def makeSpec(indir, uri, shortName,outdir,outfile, template):
+  spec = Vocab( indir, 'index.rdf')
   spec.uri = uri
   spec.addShortName(shortName)
-#  spec.shortName = shortName
   spec.index() # slurp info from sources
 
-  out = VocabReport( spec, dir ) 
-# print spec.unique_terms()
-# print out.generate()
+  out = VocabReport( spec, indir, template ) 
 
-  filename = os.path.join(dir, "_tmp_spec.html")
+  filename = os.path.join(outdir, outfile)
   print "Printing to ",filename
 
   f = open(filename,"w")
@@ -72,27 +69,15 @@ def makeSpec(dir, uri, shortName):
 
 # Make FOAF spec
 def makeFoaf():
-  makeSpec("examples/foaf/","http://xmlns.com/foaf/0.1/")
-
-# Spare stuff
-#spec.raw()
-#print spec.report().encode('UTF-8')
-
-#for p in spec.properties:
-#  print "Got a property: " + p
-#  print p.simple_report().encode('UTF-8')
-#for c in spec.classes:
-#  print "Got a class: " + c
-#  print c.simple_report().encode('UTF-8')
-#
-#print spec.generate()
-
+  makeSpec("examples/foaf/","http://xmlns.com/foaf/0.1/","foaf","examples/foaf/","_tmp_spec.html","template.html")
 
 
 def usage():
-  print "Usage:",sys.argv[0],"--indir=dir --ns=uri --prefix=prefix"
+  print "Usage:",sys.argv[0],"--indir=dir --ns=uri --prefix=prefix [--outdir=outdir] [--outfile=outfile]"
   print "e.g. "
-  print sys.argv[0], "./specgen5.py --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf"
+  print sys.argv[0], " --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf"
+  print "or "
+  print sys.argv[0], " --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf --outdir=. --outfile=spec.html"
 
 
 def main():
@@ -100,10 +85,11 @@ def main():
 
   try:
         opts, args = getopt.getopt(sys.argv[1:], None, ["outdir=", "outfile=", "indir=", "ns=", "prefix="])
-        # print opts
+        #print opts
   except getopt.GetoptError, err:
         # print help information and exit:
         print str(err) # will print something like "option -a not recognized"
+        print "something went wrong"
         usage()
         sys.exit(2)
 
@@ -115,6 +101,7 @@ def main():
 
 
   if len(opts) ==0:
+      print "No arguments found"
       usage()
       sys.exit(2)   
   
@@ -204,7 +191,7 @@ def main():
     usage()
     sys.exit(2)   
 
-  makeSpec(indir,uri,shortName)
+  makeSpec(indir,uri,shortName,outdir,outfile,"template.html")
   
 
 if __name__ == "__main__":
