@@ -40,7 +40,6 @@
 # THE SOFTWARE.
 
 
-__all__ = [ 'main' ]
 
 import libvocab
 from libvocab import Vocab, VocabReport
@@ -49,10 +48,11 @@ from libvocab import Class
 from libvocab import Property
 import sys
 import os.path
+import getopt
 
 
 # Make a spec
-def makeSpec(dir, uri):
+def makeSpec(dir, uri, shortName):
   spec = Vocab( dir, 'index.rdf')
   spec.uri = uri
   spec.addShortName(shortName)
@@ -90,50 +90,123 @@ def makeFoaf():
 
 
 def usage():
-  print "Usage:",sys.argv[0],"dir uri shortName"
+  print "Usage:",sys.argv[0],"--indir=dir --ns=uri --prefix=prefix"
   print "e.g. "
-  print sys.argv[0], "examples/foaf/ http://xmlns.com/foaf/0.1/ foaf"
+  print sys.argv[0], "./specgen5.py --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf"
 
-if len(sys.argv) < 4:
-  usage()
-  sys.exit(2)   
-else:
-  # check it is a dir and it is readable and writeable
-  dir = sys.argv[1]
-  uri = sys.argv[2]
-  shortName = sys.argv[3]
 
-  if (os.path.isdir(dir)):
-    print "ok"
+def main():
+  ##looking for outdir, outfile, indir, namespace, shortns
+
+  try:
+        opts, args = getopt.getopt(sys.argv[1:], None, ["outdir=", "outfile=", "indir=", "ns=", "prefix="])
+        # print opts
+  except getopt.GetoptError, err:
+        # print help information and exit:
+        print str(err) # will print something like "option -a not recognized"
+        usage()
+        sys.exit(2)
+
+  indir = None #indir
+  uri = None #ns
+  shortName = None #prefix
+  outdir = None 
+  outfile = None
+
+
+  if len(opts) ==0:
+      usage()
+      sys.exit(2)   
+  
+
+  for o, a in opts:
+      if o == "--indir":
+            indir = a
+      elif o == "--ns":
+            uri = a
+      elif o == "--prefix":
+            shortName = a
+      elif o == "--outdir":
+            outdir = a
+      elif o == "--outfile":
+            outfile = a
+
+#first check all the essentials are there
+
+  # check we have been given a indir
+  if indir == None or len(indir) ==0:
+      print "No in directory given"
+      usage()
+      sys.exit(2)   
+
+  # check we have been given a namespace url
+  if (uri == None or len(uri)==0):
+      print "No namespace uri given"
+      usage()
+      sys.exit(2)   
+
+  # check we have a prefix
+  if (shortName == None or len(shortName)==0):
+      print "No prefix given"
+      usage()
+      sys.exit(2)   
+
+  # check outdir
+  if (outdir == None or len(outdir)==0):
+      outdir = indir
+      print "No outdir, using indir ",indir
+  
+  if (outfile == None or len(outfile)==0):
+      outfile = "_tmp_spec.html"
+      print "No outfile, using ",outfile
+
+# now do some more checking
+  # check indir is a dir and it is readable and writeable
+  if (os.path.isdir(indir)):
+      print "In directory is ok ",indir
   else:
-    print dir,"is not a directory"
-    usage()
-    sys.exit(2)   
-    
+      print indir,"is not a directory"
+      usage()
+      sys.exit(2)   
+
+  # check outdir is a dir and it is readable and writeable
+  if (os.path.isdir(outdir)):
+      print "Out directory is ok ",outdir
+  else:
+      print outdir,"is not a directory"
+      usage()
+      sys.exit(2)   
+
+  #check we can read infile    
   try:
-    filename = os.path.join(dir, "index.rdf")
+    filename = os.path.join(indir, "index.rdf")
     f = open(filename, "r")
   except:
-    print "Can't open index.rdf in",dir
+    print "Can't open index.rdf in",indir
     usage()
     sys.exit(2)   
 
+  #look for the template file
   try:
-    filename = os.path.join(dir, "template.html")
+    filename = os.path.join(indir, "template.html")
     f = open(filename, "r")
   except:
-    print "No template.html in",dir
+    print "No template.html in ",indir
     usage()
     sys.exit(2)   
 
+  # check we can write to outfile
   try:
-    filename = os.path.join(dir, "_tmp_spec.html")
+    filename = os.path.join(outdir, outfile)
     f = open(filename, "w")
   except:
-    print "Cannot write to _tmp_spec.html in",dir
+    print "Cannot write to ",outfile," in",outdir
     usage()
     sys.exit(2)   
 
-  makeSpec(dir,uri)
+  makeSpec(indir,uri,shortName)
   
+
+if __name__ == "__main__":
+    main()
 
