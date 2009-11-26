@@ -637,18 +637,17 @@ class VocabReport(object):
        except:
          s=''
 
-       #queries
+       # if we want validation queries this is where it looks for them.
        filename = os.path.join(dn, term.id+".sparql") 
-       ss = ''
+       fileStr = ''
        try:
          f = open ( filename, "r")
-         ss = f.read()
-         ss = "<h4><a name=\"queries_"+term.id+"\"></a>"+term.id+" Validation Query</h4><pre>"+cgi.escape(ss)+"</pre>"
+         fileStr = f.read()
+         fileStr = "<h4><a name=\"queries_"+term.id+"\"></a>"+term.id+" Validation Query</h4><pre>"+cgi.escape(ss)+"</pre>"
        except:
-         ss=''
+         fileStr=''
 
-       queries = queries +"\n"+ ss
-#       s = s+"\n"+ss
+       queries = queries +"\n"+ fileStr
        sn = self.vocab.niceName(term.uri)
 
 
