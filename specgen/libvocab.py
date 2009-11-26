@@ -462,20 +462,15 @@ class VocabReport(object):
     tpl = self.template
     azlist = self.az()
     termlist = self.termlist()
-#   print "RDF is in ", self.vocab.filename
+
     f = open ( self.vocab.filename, "r")
     rdfdata = f.read()
 #   print "GENERATING >>>>>>>> "
-##havign the rdf in there is making it invalid
-##    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+## having the rdf in there was making it invalid
+## removed in favour of RDFa
+##  tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
     tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"))
     return(tpl)
-
-#    u = urllib.urlopen(specloc)
-#    rdfdata = u.read()
-#    rdfdata = re.sub(r"(<\?xml version.*\?>)", "", rdfdata)
-#    rdfdata = re.sub(r"(<!DOCTYPE[^]]*]>)", "", rdfdata)
-#    rdfdata.replace("""<?xml version="1.0"?>""", "")
 
   def az(self):
     """AZ List for html doc"""
@@ -523,6 +518,7 @@ class VocabReport(object):
 
 # classes
     for term in self.vocab.classes:
+       # strings to use later
        domainsOfClass = '' 
        rangesOfClass = ''
 
@@ -533,32 +529,32 @@ class VocabReport(object):
 
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>in-domain-of:</th>\n'
+       startStr = '<tr><th>in-domain-of:</th>\n'
 
-       tt = ''
+       contentStr = ''
        for (domain, label) in relations:
           dom = Term(domain)
-          ss = """<a href="#term_%s">%s</a>\n""" % (dom.id, label)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<a href="#term_%s">%s</a>\n""" % (dom.id, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          domainsOfClass = "%s <td> %s </td></tr>" % (sss, tt)#[1]
+       if contentStr != "":
+          domainsOfClass = "%s <td> %s </td></tr>" % (startStr, contentStr)
 
 
 # class in range of
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
        query2 = Parse(q2)
        relations2 = g.query(query2, initNs=bindings)
-       snippet = '<tr><th>in-range-of:</th>\n'
-       tt = ''
+       startStr = '<tr><th>in-range-of:</th>\n'
+
+       contentStr = ''
        for (range, label) in relations2:
           ran = Term(range)
-          ss = """<a href="#term_%s">%s</a>\n""" % (ran.id, label)
-          tt = "%s %s" % (tt, ss)
-          #print "R ",tt
+          termStr = """<a href="#term_%s">%s</a>\n""" % (ran.id, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          rangesOfClass = "%s <td> %s</td></tr> " % (snippet, tt)
+       if contentStr != "":
+          rangesOfClass = "%s <td> %s</td></tr> " % (startStr, contentStr)
 
 
 # class subclassof
@@ -568,16 +564,16 @@ class VocabReport(object):
 
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>subClassOf</th>\n'
+       startStr = '<tr><th>subClassOf</th>\n'
 
-       tt = ''
+       contentStr = ''
        for (subclass, label) in relations:
           sub = Term(subclass)
-          ss = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, sub.id, label) #
-          tt = "%s %s" % (tt, ss)
+          termStr = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, sub.id, label) #
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          subClassOf = "%s <td> %s </td></tr>" % (sss, tt)
+       if contentStr != "":
+          subClassOf = "%s <td> %s </td></tr>" % (startStr, contentStr)
 
 # class has subclass
        hasSubClass = ''
@@ -585,16 +581,16 @@ class VocabReport(object):
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>has subclass</th>\n'
+       startStr = '<tr><th>has subclass</th>\n'
 
-       tt = ''
+       contentStr = ''
        for (subclass, label) in relations:
           sub = Term(subclass)
-          ss = """<a href="#term_%s">%s</a>\n""" % (sub.id, label)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<a href="#term_%s">%s</a>\n""" % (sub.id, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          hasSubClass = "%s <td> %s </td></tr>" % (sss, tt)
+       if contentStr != "":
+          hasSubClass = "%s <td> %s </td></tr>" % (startStr, contentStr)
 
 # is defined by
 
@@ -603,15 +599,15 @@ class VocabReport(object):
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '\n'
+       startStr	 = '\n'
 
-       tt = ''
+       contentStr = ''
        for (isdefinedby) in relations:
-          ss = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          classIsDefinedBy = "%s %s " % (sss, tt)
+       if contentStr != "":
+          classIsDefinedBy = "%s %s " % (startStr, contentStr)
 
 # disjoint with
 
@@ -620,15 +616,15 @@ class VocabReport(object):
        q = 'SELECT ?dj ?l WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj . ?dj rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>Disjoint With:</th>\n'
+       startStr = '<tr><th>Disjoint With:</th>\n'
 
-       tt = ''
+       contentStr = ''
        for (disjointWith, label) in relations:
-          ss = """<span rel="owl:disjointWith" href="%s"><a href="#term_%s">%s</a></span>\n""" % (disjointWith, label, label)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<span rel="owl:disjointWith" href="%s"><a href="#term_%s">%s</a></span>\n""" % (disjointWith, label, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          isDisjointWith = "%s <td> %s </td></tr>" % (sss, tt)
+       if contentStr != "":
+          isDisjointWith = "%s <td> %s </td></tr>" % (startStr, contentStr)
 
 # end
 
@@ -671,32 +667,31 @@ class VocabReport(object):
        q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th>Domain:</th>\n'
+       startStr = '<tr><th>Domain:</th>\n'
 
-       tt = ''
+       contentStr = ''
        for (domain, label) in relations:
           dom = Term(domain)
-          ss = """<span rel="rdfs:domain" href="%s"><a href="#term_%s">%s</a></span>\n""" % (domain, dom.id, label)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<span rel="rdfs:domain" href="%s"><a href="#term_%s">%s</a></span>\n""" % (domain, dom.id, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          domainsOfProperty = "%s <td>%s</td></tr>" % (sss, tt)
+       if contentStr != "":
+          domainsOfProperty = "%s <td>%s</td></tr>" % (startStr, contentStr)
 
 
 # range of properties
        q2 = 'SELECT ?d ?l WHERE {<%s> rdfs:range ?d . ?d rdfs:label ?l } ' % (term.uri)
        query2 = Parse(q2)
        relations2 = g.query(query2, initNs=bindings)
-       sss = '<tr><th>Range:</th>\n'
-       tt = ''
+       startStr = '<tr><th>Range:</th>\n'
+       contentStr = ''
        for (range, label) in relations2:
           ran = Term(range)
-          ss = """<span rel="rdfs:range" href="%s"><a href="#term_%s">%s</a></span>\n""" % (range, ran.id, label)
-          tt = "%s %s" % (tt, ss)
-#          print "D ",tt
+          termStr = """<span rel="rdfs:range" href="%s"><a href="#term_%s">%s</a></span>\n""" % (range, ran.id, label)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          rangesOfProperty = "%s <td>%s</td>	</tr>" % (sss, tt)
+       if contentStr != "":
+          rangesOfProperty = "%s <td>%s</td>	</tr>" % (startStr, contentStr)
 
 
 # is defined by
@@ -706,15 +701,15 @@ class VocabReport(object):
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '\n'
+       startStr = '\n'
 
-       tt = ''
+       contentStr = ''
        for (isdefinedby) in relations:
-          ss = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
-          tt = "%s %s" % (tt, ss)
+          termStr = """<span rel="rdfs:isDefinedBy" href="%s" />\n""" % (isdefinedby)
+          contentStr = "%s %s" % (contentStr, termStr)
 
-       if tt != "":
-          propertyIsDefinedBy = "%s %s " % (sss, tt)
+       if contentStr != "":
+          propertyIsDefinedBy = "%s %s " % (startStr, contentStr)
 
 
 # inverse functional property
@@ -724,11 +719,11 @@ class VocabReport(object):
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th colspan="2">Inverse Functional Property</th>\n'
+       startStr = '<tr><th colspan="2">Inverse Functional Property</th>\n'
 
        if (len(relations) > 0):
-          ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span>"""
-          ifp = "%s <td> %s </td></tr>" % (sss, ss)
+          termStr = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span>"""
+          ifp = "%s <td> %s </td></tr>" % (startStr, termStr)
 
 # functonal property
 
@@ -737,11 +732,11 @@ class VocabReport(object):
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#FunctionalProperty> } ' % (term.uri)
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       sss = '<tr><th colspan="2">Functional Property</th>\n'
+       startStr = '<tr><th colspan="2">Functional Property</th>\n'
 
        if (len(relations) > 0):
-          ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span>"""
-          fp = "%s <td> %s </td></tr>" % (sss, ss)
+          termStr = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span>"""
+          fp = "%s <td> %s </td></tr>" % (startStr, termStr)
 
 # end
 
