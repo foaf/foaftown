@@ -523,8 +523,8 @@ class VocabReport(object):
 
 # classes
     for term in self.vocab.classes:
-       domains = '' #[1]
-       foo1 = ''
+       domainsOfClass = '' 
+       rangesOfClass = ''
 
 #class in domain of
        g = self.vocab.graph
@@ -542,7 +542,7 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          domains = "%s <td> %s </td></tr>" % (sss, tt)#[1]
+          domainsOfClass = "%s <td> %s </td></tr>" % (sss, tt)#[1]
 
 
 # class in range of
@@ -558,11 +558,11 @@ class VocabReport(object):
           #print "R ",tt
 
        if tt != "":
-          foo1 = "%s <td> %s</td></tr> " % (snippet, tt)
+          rangesOfClass = "%s <td> %s</td></tr> " % (snippet, tt)
 
 
 # class subclassof
-       foo2 = ''
+       subClassOf = ''
  
        q = 'SELECT ?sc ?l WHERE {<%s> rdfs:subClassOf ?sc . ?sc rdfs:label ?l } ' % (term.uri)
 
@@ -577,10 +577,10 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo2 = "%s <td> %s </td></tr>" % (sss, tt)
+          subClassOf = "%s <td> %s </td></tr>" % (sss, tt)
 
 # class has subclass
-       foo3 = ''
+       hasSubClass = ''
  
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
@@ -594,11 +594,11 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo3 = "%s <td> %s </td></tr>" % (sss, tt)
+          hasSubClass = "%s <td> %s </td></tr>" % (sss, tt)
 
 # is defined by
 
-       foo4 = ''
+       classIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
        query = Parse(q)
@@ -611,11 +611,11 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo4 = "%s %s " % (sss, tt)
+          classIsDefinedBy = "%s %s " % (sss, tt)
 
 # disjoint with
 
-       foo5 = ''
+       isDisjointWith = ''
  
        q = 'SELECT ?dj ?l WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj . ?dj rdfs:label ?l } ' % (term.uri)
        query = Parse(q)
@@ -628,7 +628,7 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo5 = "%s <td> %s </td></tr>" % (sss, tt)
+          isDisjointWith = "%s <td> %s </td></tr>" % (sss, tt)
 
 # end
 
@@ -656,17 +656,15 @@ class VocabReport(object):
        sn = self.vocab.niceName(term.uri)
 
 
-# trying to figure out how libby's improvements work. Assuming 'foo' is the validation queries, which i'm turning off for now. Sorry Lib!
-# danbri todoxxx
-#       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domains,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id)
+
        tl = "%s %s" % (tl, zz)
 
 # properties
 
     for term in self.vocab.properties:
-       domains = ''
-       foo1 = ''
+       domainsOfProperty = ''
+       rangesOfProperty = ''
 
 # domain of properties
        g = self.vocab.graph
@@ -682,7 +680,7 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          domains = "%s <td>%s</td></tr>" % (sss, tt)
+          domainsOfProperty = "%s <td>%s</td></tr>" % (sss, tt)
 
 
 # range of properties
@@ -698,12 +696,12 @@ class VocabReport(object):
 #          print "D ",tt
 
        if tt != "":
-          foo1 = "%s <td>%s</td>	</tr>" % (sss, tt)
+          rangesOfProperty = "%s <td>%s</td>	</tr>" % (sss, tt)
 
 
 # is defined by
 
-       foo4 = ''
+       propertyIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
        query = Parse(q)
@@ -716,12 +714,12 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo4 = "%s %s " % (sss, tt)
+          propertyIsDefinedBy = "%s %s " % (sss, tt)
 
 
 # inverse functional property
 
-       foo5 = ''
+       ifp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> } ' % (term.uri)
        query = Parse(q)
@@ -730,13 +728,11 @@ class VocabReport(object):
 
        if (len(relations) > 0):
           ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span>"""
-          foo5 = "%s <td> %s </td></tr>" % (sss, ss)
+          ifp = "%s <td> %s </td></tr>" % (sss, ss)
 
 # functonal property
 
-# inverse functional property
-
-       foo6 = ''
+       fp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#FunctionalProperty> } ' % (term.uri)
        query = Parse(q)
@@ -745,7 +741,7 @@ class VocabReport(object):
 
        if (len(relations) > 0):
           ss = """<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span>"""
-          foo6 = "%s <td> %s </td></tr>" % (sss, ss)
+          fp = "%s <td> %s </td></tr>" % (sss, ss)
 
 # end
 
@@ -761,7 +757,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, domains, foo1+foo4+foo5+foo6, s,term.id, term.id)
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
