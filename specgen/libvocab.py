@@ -69,6 +69,10 @@ bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"vs": VS }
 def speclog(str):
   sys.stderr.write("LOG: "+str+"\n")
 
+# todo: shouldn't be foaf specific
+def termlink(text):
+  result = re.sub( r"<code>foaf:(\w+)<\/code>", r"<code><a href='#term_\g<1>'>\g<1></a></code>", text )
+  return result
 
 # a Term has... (intrinsically and via it's RDFS/OWL description)
 # uri - a (primary) URI, eg. 'http://xmlns.com/foaf/0.1/workplaceHomepage'
@@ -649,6 +653,7 @@ class VocabReport(object):
 
        queries = queries +"\n"+ fileStr
        sn = self.vocab.niceName(term.uri)
+       s = termlink(s)
 
 
        zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id)
@@ -750,7 +755,8 @@ class VocabReport(object):
          s=''
 
        sn = self.vocab.niceName(term.uri)
-
+       s = termlink(s)
+       
        zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
