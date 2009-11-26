@@ -68,3 +68,27 @@ from ..
 4. we will add an update to index.html and index.rdf as well as frozen copies of current version of each, using dated filenames
 
 
+
+
+
+WITHOUT SYMLINKS VERSION
+________________________
+
+Alternatively, we can set this up without symlinks. This assumes template.html is in the FOAF spec main dir.
+
+TODO: (This is OK but we should probably exclude it from robots.txt or hide with .htaccess?)
+
+
+TellyClub:foaf-live danbri$ ../specgen5.py ~/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/ http://xmlns.com/foaf/0.1/ foaf 
+ok
+No template.html in /Users/danbri/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/
+Usage: ../specgen5.py dir uri shortName
+e.g. 
+../specgen5.py examples/foaf/ http://xmlns.com/foaf/0.1/ foaf
+TellyClub:foaf-live danbri$ ../specgen5.py ~/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/ http://xmlns.com/foaf/0.1/ foaf 
+ok
+/Library/Python/2.5/site-packages/rdflib-2.4.2-py2.5-macosx-10.5-i386.egg/rdflib/sparql/bison/SPARQLEvaluate.py:273: DeprecationWarning: There is the possibility of __repr__ being deprecated in python3K
+  for expr in reducedFilter]))
+Printing to  /Users/danbri/working/foaf/trunk/xmlns.com/htdocs/foaf/spec/_tmp_spec.html
+
+
