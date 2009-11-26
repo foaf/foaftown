@@ -692,7 +692,7 @@ class VocabReport(object):
        tt = ''
        for (range, label) in relations2:
           ran = Term(range)
-          ss = """<span rel="rdfs:range" href="%s"<a href="#term_%s">%s</a></span>\n""" % (range, ran.id, label)
+          ss = """<span rel="rdfs:range" href="%s"><a href="#term_%s">%s</a></span>\n""" % (range, ran.id, label)
           tt = "%s %s" % (tt, ss)
 #          print "D ",tt
 
