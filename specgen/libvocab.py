@@ -429,10 +429,11 @@ class Vocab(object):
 
 class VocabReport(object):
 
-  def __init__(self, vocab, basedir='./examples/', temploc='template.html'):
+  def __init__(self, vocab, basedir='./examples/', temploc='template.html',templatedir='./examples/'):
     self.vocab = vocab
     self.basedir = basedir
     self.temploc = temploc
+    self.templatedir = templatedir
 
     self._template = "no template loaded"
 
@@ -451,7 +452,7 @@ class VocabReport(object):
   template = property(_get_template,_set_template)
 
   def load_template(self):
-    filename = os.path.join(self.basedir, self.temploc)
+    filename = os.path.join(self.templatedir, self.temploc)
 
     f = open(filename, "r")
     template = f.read()
@@ -522,7 +523,7 @@ class VocabReport(object):
 
 # classes
     for term in self.vocab.classes:
-       foo = ''
+       domains = '' #[1]
        foo1 = ''
 
 #class in domain of
@@ -541,7 +542,7 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo = "%s <td> %s </td></tr>" % (sss, tt)
+          domains = "%s <td> %s </td></tr>" % (sss, tt)#[1]
 
 
 # class in range of
@@ -658,13 +659,13 @@ class VocabReport(object):
 # trying to figure out how libby's improvements work. Assuming 'foo' is the validation queries, which i'm turning off for now. Sorry Lib!
 # danbri todoxxx
 #       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,foo,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domains,foo1+foo2+foo3+foo4+foo5, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
 # properties
 
     for term in self.vocab.properties:
-       foo = ''
+       domains = ''
        foo1 = ''
 
 # domain of properties
@@ -681,7 +682,7 @@ class VocabReport(object):
           tt = "%s %s" % (tt, ss)
 
        if tt != "":
-          foo = "%s <td>%s</td></tr>" % (sss, tt)
+          domains = "%s <td>%s</td></tr>" % (sss, tt)
 
 
 # range of properties
@@ -760,7 +761,7 @@ class VocabReport(object):
 
        sn = self.vocab.niceName(term.uri)
 
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, foo, foo1+foo4+foo5+foo6, s,term.id, term.id)
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status, domains, foo1+foo4+foo5+foo6, s,term.id, term.id)
        tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed

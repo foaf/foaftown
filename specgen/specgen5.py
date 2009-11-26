@@ -52,13 +52,13 @@ import getopt
 
 
 # Make a spec
-def makeSpec(indir, uri, shortName,outdir,outfile, template):
-  spec = Vocab( indir, 'index.rdf')
+def makeSpec(indir, uri, shortName,outdir,outfile, template, templatedir,indexrdfdir):
+  spec = Vocab( indexrdfdir, 'index.rdf')
   spec.uri = uri
   spec.addShortName(shortName)
   spec.index() # slurp info from sources
 
-  out = VocabReport( spec, indir, template ) 
+  out = VocabReport( spec, indir, template, templatedir ) 
 
   filename = os.path.join(outdir, outfile)
   print "Printing to ",filename
@@ -69,22 +69,21 @@ def makeSpec(indir, uri, shortName,outdir,outfile, template):
 
 # Make FOAF spec
 def makeFoaf():
-  makeSpec("examples/foaf/","http://xmlns.com/foaf/0.1/","foaf","examples/foaf/","_tmp_spec.html","template.html")
+  makeSpec("examples/foaf/","http://xmlns.com/foaf/0.1/","foaf","examples/foaf/","_tmp_spec.html","template.html","examples/foaf/","examples/foaf/")
 
 
 def usage():
-  print "Usage:",sys.argv[0],"--indir=dir --ns=uri --prefix=prefix [--outdir=outdir] [--outfile=outfile]"
+  print "Usage:",sys.argv[0],"--indir=dir --ns=uri --prefix=prefix [--outdir=outdir] [--outfile=outfile] [--templatedir=templatedir] [--indexrdf=indexrdf]"
   print "e.g. "
   print sys.argv[0], " --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf"
   print "or "
-  print sys.argv[0], " --indir=examples/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf --outdir=. --outfile=spec.html"
-
+  print sys.argv[0], " --indir=../../xmlns.com/htdocs/foaf/ --ns=http://xmlns.com/foaf/0.1/ --prefix=foaf --templatedir=../../xmlns.com/htdocs/foaf/spec/ --indexrdfdir=../../xmlns.com/htdocs/foaf/spec/ --outdir=../../xmlns.com/htdocs/foaf/spec/"
 
 def main():
   ##looking for outdir, outfile, indir, namespace, shortns
 
   try:
-        opts, args = getopt.getopt(sys.argv[1:], None, ["outdir=", "outfile=", "indir=", "ns=", "prefix="])
+        opts, args = getopt.getopt(sys.argv[1:], None, ["outdir=", "outfile=", "indir=", "ns=", "prefix=", "templatedir=", "indexrdfdir="])
         #print opts
   except getopt.GetoptError, err:
         # print help information and exit:
@@ -98,7 +97,8 @@ def main():
   shortName = None #prefix
   outdir = None 
   outfile = None
-
+  templatedir = None
+  indexrdfdir = None
 
   if len(opts) ==0:
       print "No arguments found"
@@ -117,6 +117,10 @@ def main():
             outdir = a
       elif o == "--outfile":
             outfile = a
+      elif o == "--templatedir":
+            templatedir = a
+      elif o == "--indexrdfdir":
+            indexrdfdir = a
 
 #first check all the essentials are there
 
@@ -147,12 +151,38 @@ def main():
       outfile = "_tmp_spec.html"
       print "No outfile, using ",outfile
 
+  if (templatedir == None or len(templatedir)==0):
+      templatedir = indir
+      print "No templatedir, using ",templatedir
+
+  if (indexrdfdir == None or len(indexrdfdir)==0):
+      indexrdfdir = indir
+      print "No indexrdfdir, using ",indexrdfdir
+
 # now do some more checking
   # check indir is a dir and it is readable and writeable
   if (os.path.isdir(indir)):
       print "In directory is ok ",indir
   else:
       print indir,"is not a directory"
+      usage()
+      sys.exit(2)   
+
+
+  # check templatedir is a dir and it is readable and writeable
+  if (os.path.isdir(templatedir)):
+      print "Template directory is ok ",templatedir
+  else:
+      print templatedir,"is not a directory"
+      usage()
+      sys.exit(2)   
+
+
+  # check indexrdfdir is a dir and it is readable and writeable
+  if (os.path.isdir(indexrdfdir)):
+      print "indexrdfdir directory is ok ",indexrdfdir
+  else:
+      print indexrdfdir,"is not a directory"
       usage()
       sys.exit(2)   
 
@@ -166,19 +196,19 @@ def main():
 
   #check we can read infile    
   try:
-    filename = os.path.join(indir, "index.rdf")
+    filename = os.path.join(indexrdfdir, "index.rdf")
     f = open(filename, "r")
   except:
-    print "Can't open index.rdf in",indir
+    print "Can't open index.rdf in",indexrdfdir
     usage()
     sys.exit(2)   
 
   #look for the template file
   try:
-    filename = os.path.join(indir, "template.html")
+    filename = os.path.join(templatedir, "template.html")
     f = open(filename, "r")
   except:
-    print "No template.html in ",indir
+    print "No template.html in ",templatedir
     usage()
     sys.exit(2)   
 
@@ -191,7 +221,7 @@ def main():
     usage()
     sys.exit(2)   
 
-  makeSpec(indir,uri,shortName,outdir,outfile,"template.html")
+  makeSpec(indir,uri,shortName,outdir,outfile,"template.html",templatedir,indexrdfdir)
   
 
 if __name__ == "__main__":
