@@ -573,7 +573,7 @@ class VocabReport(object):
        contentStr = ''
        for (subclass, label) in relations:
           sub = Term(subclass)
-          termStr = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, sub.id, label) #
+          termStr = """<span rel="rdfs:subClassOf" href="%s"><a href="#term_%s">%s</a></span>\n""" % (subclass, sub.id, label) 
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
@@ -611,7 +611,7 @@ class VocabReport(object):
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
-          classIsDefinedBy = "%s %s " % (startStr, contentStr)
+          classIsDefinedBy = "%s <tr><td> %s </td></tr>" % (startStr, contentStr)
 
 # disjoint with
 
@@ -713,7 +713,7 @@ class VocabReport(object):
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
-          propertyIsDefinedBy = "%s %s " % (startStr, contentStr)
+          propertyIsDefinedBy = "%s <tr><td> %s </td></tr>" % (startStr, contentStr)
 
 
 # inverse functional property
