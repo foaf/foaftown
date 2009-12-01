@@ -15,6 +15,8 @@ import sys
 import re
 from xmpp import *
 
+server = "http://localhost:8800/xbmcCmds/xbmcHttp"
+
 try:
   secret=os.environ["NOTUBEPASS"]
 except(Exception):
@@ -27,6 +29,7 @@ def toggleBoxeePlayer():
     boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()" # plex
 #    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=Pause()" # boxee
     import urllib2
+    print "Calling toggle url: "+boxee_toggle
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
     usock.close()
@@ -41,7 +44,7 @@ def toggleBoxeePlayer():
 
 def boxee_GetCurrentlyPlaying():
     boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
-#    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
+#   3000 for plex default
     import urllib2
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
@@ -60,6 +63,26 @@ def notify(str):
    #   os.system( os.getenv("HOME") + '/' +  mumbles + ' \"' + str +  '\"' )
 
 
+# http://www.xbmc.org/trac/browser/branches/linuxport/XBMC/guilib/Key.h?rev=17732
+# http://xbmc.org/wiki/?title=WebServerHTTP-API
+# http://xbox/xbmcCmds/xbmcHttp?command=Action(4)
+# define ACTION_PLAYER_FORWARD        77  // FF in current file played. global action, can be used anywhere
+def got_righ():
+    url = server +"?command=Action(77)"
+    import urllib2
+    usock = urllib2.urlopen(url)
+    data = usock.read()
+    usock.close()
+    print "Gone FF"
+
+def got_left():
+    url = server +"?command=Action(78)"
+    import urllib2
+    usock = urllib2.urlopen(url)
+    data = usock.read()
+    usock.close()
+    print "Gone RW"
+
 def presenceHandler(conn,presence_node):
     """ Handler for playing a sound when particular contact became online """
     targetJID='bob.notube@gmail.com'
@@ -76,18 +99,27 @@ def iqHandler(conn,iq_node):
     raise NodeProcessed  # This stanza is fully processed
 
 def messageHandler(conn,mess_node): 
-    print "In message handler with message: "
-    print mess_node
-    pass
-    print "toggling local boxee player (if we have one!)"
-    toggleBoxeePlayer()    
+    value = str(mess_node.getBody())
+    value = value.replace(" event.","")
+    print "GOT msg: "+value
+    if value == 'PLPZ':
+      toggleBoxeePlayer()
+    elif value == 'LEFT':
+      got_left()
+    elif value == 'RIGH':
+      got_righ() 
+    elif value == 'PLUS':
+      got_plus() 
+    elif value == 'MINU':
+      got_minu() 
+    elif value == 'MENU':
+      got_menu() 
+  
+#    toggleBoxeePlayer()    
 #    reply=mess_node.buildReply('toggled!')
-
     txt = boxee_GetCurrentlyPlaying()
     conn.send(Message(mess_node.getFrom(),txt, "chat" ))
     print "!!! replied to " + str( mess_node.getFrom() )
-    # conn.send(reply) 
-
 
 cl = Client(server='foaf.tv', debug=[]) 
 conn = cl.connect(server=('foaf.tv', 5222)) 
