@@ -56,8 +56,8 @@ def boxee_GetCurrentlyPlaying():
 
 def notify(str):
    # danbri@zojandan:~/working/mumbles/mumbles0.4-branch/src$ ./mumbles-send "Buttons - Pause toggle"
-    mumbles = "working/mumbles/mumbles0.4-branch/src/mumbles-send"
-#   os.system( os.getenv("HOME") + '/' +  mumbles + ' \"' + str +  '\"' )
+   mumbles = "working/mumbles/mumbles0.4-branch/src/mumbles-send"
+   #   os.system( os.getenv("HOME") + '/' +  mumbles + ' \"' + str +  '\"' )
 
 
 def presenceHandler(conn,presence_node):

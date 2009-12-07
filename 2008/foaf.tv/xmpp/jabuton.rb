@@ -1,4 +1,4 @@
-1#!/usr/bin/env ruby -rubygems
+#!/usr/bin/env ruby -rubygems
 
 require 'switchboard'
 

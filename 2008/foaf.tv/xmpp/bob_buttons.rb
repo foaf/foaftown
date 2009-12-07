@@ -32,3 +32,6 @@ begin
 rescue => e
   puts "Ooopsie with iTunes link: #{e}"
 end
+
+switchboard.run!
+
