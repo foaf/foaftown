@@ -28,6 +28,7 @@
 require 'optparse'
 require 'rss'
 require 'open-uri'
+require 'iconv' 
 
 options = {}
 optparse = OptionParser.new do|opts|
@@ -91,7 +92,15 @@ def parseBoxee(str)
   end
   uri = deBitly(uri)
   uri = deIplayer(uri)
-  puts "verb: #{verb}\t\ttitle: #{title}\t\turi: #{uri}\n"
+
+
+  # http://po-ru.com/diary/fixing-invalid-utf-8-in-ruby-revisited/
+  ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+  verb_u8 = ic.iconv(verb + ' ')[0..-2]
+  title_u8 = ic.iconv(title + ' ')[0..-2]
+  uri_u8 = ic.iconv(uri + ' ')[0..-2]
+
+  puts "verb: #{verb_u8}\t\ttitle: #{title_u8}\t\turi: #{uri_u8}\n"
 end
 
 

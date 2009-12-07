@@ -75,6 +75,15 @@ def got_righ():
     usock.close()
     print "Gone FF"
 
+def got_plus():
+  return
+
+def got_minu():
+  return 
+
+def got_menu():
+  return 
+
 def got_left():
     url = server +"?command=Action(78)"
     import urllib2
@@ -85,7 +94,7 @@ def got_left():
 
 def presenceHandler(conn,presence_node):
     """ Handler for playing a sound when particular contact became online """
-    targetJID='bob.notube@gmail.com'
+    targetJID='alice.notube@gmail.com'
     if presence_node.getFrom().bareMatch(targetJID):
         pass
 
@@ -121,14 +130,24 @@ def messageHandler(conn,mess_node):
     conn.send(Message(mess_node.getFrom(),txt, "chat" ))
     print "!!! replied to " + str( mess_node.getFrom() )
 
-cl = Client(server='foaf.tv', debug=[]) 
-conn = cl.connect(server=('foaf.tv', 5222)) 
+#cl = Client(server='foaf.tv', debug=[]) 
+#conn = cl.connect(server=('foaf.tv', 5222)) 
+
+# google:
+cl = Client(server='gmail.com', debug=[]) 
+conn = cl.connect(server=('talk.google.com', 5222)) 
+
+
 if not conn: 
   print "Unable to connect to server." 
   sys.exit(1) 
 
 print "Connected: %s" % conn 
-auth = cl.auth(user='buttons', password=secret, resource='foo') 
+#auth = cl.auth(user='buttons', password=secret, resource='foo') 
+
+# use gmail account:
+auth = cl.auth(user='bob.notube', password=secret, resource='foo') 
+
 if not auth: 
   print "Unable to authorize - check login/password." 
   sys.exit(1) 
@@ -141,7 +160,7 @@ cl.sendInitPresence()
 cl.Process(1)
 
 if not cl.isConnected(): cl.reconnectAndReauth()		# ...if connection is brocken - restore it
-cl.send(Message('alice.notube@gmail.com', 'Hello Alice! -- buttons', "chat")) # ...send an ASCII message
+#cl.send(Message('alice.notube@gmail.com', 'Hello Alice! -- buttons', "chat")) # ...send an ASCII message
 while 1:
   cl.Process(1)
 
