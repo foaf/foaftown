@@ -13,7 +13,10 @@
 import os
 import sys 
 import re
+import urllib2
+import urllib, simplejson
 from xmpp import *
+from datetime import datetime
 
 server = "http://localhost:8800/xbmcCmds/xbmcHttp"
 
@@ -25,10 +28,16 @@ except(Exception):
 
 # Plex is as xbmc but on 3000, see Prefs > Network for settings
 
+def imdbFromTitle(str):
+  title = "The Fog of War: Eleven Lessons from the Life of Robert S. McNamara" 
+  title = "Bitka na Neretvi"
+  result = simplejson.load(urllib.urlopen("http://ajax.googleapis.com/ajax/services/search/web?%s" % urllib.urlencode({'v': "1.0", 'q': title + " site:imdb.com" })))
+  return result['responseData']['results'][0]['url']
+
+
 def toggleBoxeePlayer():
     boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=Pause()" # plex
 #    boxee_toggle = "http://localhost:3000/xbmcCmds/xbmcHttp?command=Pause()" # boxee
-    import urllib2
     print "Calling toggle url: "+boxee_toggle
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
@@ -45,16 +54,15 @@ def toggleBoxeePlayer():
 def boxee_GetCurrentlyPlaying():
     boxee_toggle = "http://localhost:8800/xbmcCmds/xbmcHttp?command=GetCurrentlyPlaying()"
 #   3000 for plex default
-    import urllib2
     usock = urllib2.urlopen(boxee_toggle)
     data = usock.read()
     usock.close()
     print "calling GetCurrentlyPlaying api "
     print boxee_toggle
-    print "Result of fetching url is ...."
+#    print "Result of fetching url is ...."
     p = re.compile(":([^@]*)@")
     data = p.sub(':xxxxx@',data)
-    print data
+#    print data
     return(data)
 
 def notify(str):
@@ -69,7 +77,6 @@ def notify(str):
 # define ACTION_PLAYER_FORWARD        77  // FF in current file played. global action, can be used anywhere
 def got_righ():
     url = server +"?command=Action(77)"
-    import urllib2
     usock = urllib2.urlopen(url)
     data = usock.read()
     usock.close()
@@ -81,12 +88,51 @@ def got_plus():
 def got_minu():
   return 
 
+def runCmd(command):
+    child = os.popen(command)
+    data = child.read()
+    err = child.close()
+    if err:
+        raise RuntimeError, '%s failed w/ exit code %d' % (command, err)
+    return data
+
+
+def getImdb(fn):
+  r = runCmd("echo 'select * from video_files where strPath=\"" + fn + "\";' | sqlite3 ~/Library/Application\ Support/BOXEE/UserData/Database/boxee_media.db")
+  arr = r.split("|")
+  return arr[12]
+
+def got_like():
+  st =  boxee_GetCurrentlyPlaying()
+  # f       = 'smb://BLACKBOOK/south/Found/FoundFilm/Dark City/dark_city.avi'
+  # Filename:smb://BLACKBOOK/south/Found/FoundFilm/Dark City/dark_city.avi 
+  regexp = re.compile( "<li>Filename:(.*)\n" )
+  rez = regexp.search(st)
+  if rez == None:
+    print "Couldn't find current status."
+  else:
+    fn = rez.group(1)
+    print "GOT fn: " + fn
+    imdb = 'http://www.imdb.com/title/'+getImdb(fn)
+    print "LIKED IMDB: " + imdb
+    # report this to DB:
+    userid='fakeuser'
+    regexp = re.compile( "<li>Title:(.*)\n" )
+    rez = regexp.search(st)
+    title = rez.group(1)
+    dt = datetime.now().ctime() 
+    url = imdb
+    comments="liked"
+    u  = "http://services.notube.tv/notube/zapper/boxeelog.php%s" % urllib.urlencode({'action': "insert", 'username': userid, 'title': title, 'when': dt, 'url': url, 'comments': comments })
+    print "Using URL for NoTube Network activity log: "+u
+    urllib2.urlopen(u)
+    # Hey, we should also store the offset in time, and make a screenshot, store that too? :)
+
 def got_menu():
   return 
 
 def got_left():
     url = server +"?command=Action(78)"
-    import urllib2
     usock = urllib2.urlopen(url)
     data = usock.read()
     usock.close()
@@ -121,6 +167,8 @@ def messageHandler(conn,mess_node):
       got_plus() 
     elif value == 'MINU':
       got_minu() 
+    elif value == 'LIKE':
+      got_like() 
     elif value == 'MENU':
       got_menu() 
   
