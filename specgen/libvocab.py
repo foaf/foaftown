@@ -533,7 +533,7 @@ class VocabReport(object):
 
        query = Parse(q)
        relations = g.query(query, initNs=bindings)
-       startStr = '<tr><th>in-domain-of:</th>\n'
+       startStr = '<tr><th>May be the object of:</th>\n'
 
        contentStr = ''
        for (domain, label) in relations:
@@ -549,7 +549,7 @@ class VocabReport(object):
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
        query2 = Parse(q2)
        relations2 = g.query(query2, initNs=bindings)
-       startStr = '<tr><th>in-range-of:</th>\n'
+       startStr = '<tr><th>May have properties:</th>\n'
 
        contentStr = ''
        for (range, label) in relations2:
