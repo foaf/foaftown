@@ -73,8 +73,11 @@
 	}
 	NSLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@", xmppClient.myJID, xmppClient.password);
 
-	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
+//	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
+	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
+
+	
 	[xmppClient setAutoLogin:YES];
 	[xmppClient setAllowsPlaintextAuth:NO];
 	[xmppClient setAutoPresence:YES];
@@ -154,6 +157,14 @@
 //    XMPPJID *aJid = [XMPPJID jidWithString:@"alice.notube@gmail.com"];
 //	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
 }
+
+- (void)sendLIKE:(NSObject *)button
+{
+	NSLog(@"SENDING LIKE %@", button);
+	NSString *msg = @"LIKE event.";
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:

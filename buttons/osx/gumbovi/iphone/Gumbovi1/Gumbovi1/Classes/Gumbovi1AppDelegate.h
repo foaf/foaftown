@@ -29,6 +29,7 @@
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 
 - (IBAction) sendMENU:(id) button;
+- (IBAction) sendLIKE:(id) button;
 - (IBAction) sendPLPZ:(id) button;
 - (IBAction) sendPLUS:(id) button;
 - (IBAction) sendMINU:(id) button;

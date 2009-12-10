@@ -34,6 +34,8 @@
 		B656AA5610ADDD590089D78F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4E10ADDD590089D78F /* SBJsonBase.m */; };
 		B656AA5710ADDD590089D78F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5010ADDD590089D78F /* SBJsonParser.m */; };
 		B656AA5810ADDD590089D78F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5210ADDD590089D78F /* SBJsonWriter.m */; };
+		B668E56F10D0F67500EDD38D /* heartbuttons4-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */; };
+		B668E57010D0F67500EDD38D /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
 		B67CC39910A5763500511209 /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
 		B67CC39A10A5763500511209 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39610A5763500511209 /* Icon.png */; };
 		B67CC39B10A5763500511209 /* beancounter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39710A5763500511209 /* beancounter.jpg */; };
@@ -112,6 +114,8 @@
 		B656AA5010ADDD590089D78F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		B656AA5110ADDD590089D78F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		B656AA5210ADDD590089D78F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-100x.png"; sourceTree = "<group>"; };
+		B668E56E10D0F67500EDD38D /* heartbuttons4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartbuttons4.png; sourceTree = "<group>"; };
 		B67CC39510A5763500511209 /* foaflets-12pt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foaflets-12pt.jpg"; sourceTree = "<group>"; };
 		B67CC39610A5763500511209 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B67CC39710A5763500511209 /* beancounter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beancounter.jpg; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				B67CC39510A5763500511209 /* foaflets-12pt.jpg */,
 				B67CC39610A5763500511209 /* Icon.png */,
 				B67CC39710A5763500511209 /* beancounter.jpg */,
+				B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */,
+				B668E56E10D0F67500EDD38D /* heartbuttons4.png */,
 				B67CC39810A5763500511209 /* buttons.png */,
 				8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */,
 			);
@@ -451,6 +457,8 @@
 				B656AA3F10ADDCBD0089D78F /* ImageView.xib in Resources */,
 				B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */,
 				B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */,
+				B668E56F10D0F67500EDD38D /* heartbuttons4-100x.png in Resources */,
+				B668E57010D0F67500EDD38D /* heartbuttons4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
