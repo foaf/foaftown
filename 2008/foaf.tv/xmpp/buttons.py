@@ -122,7 +122,7 @@ def got_like():
     title = rez.group(1)
     dt = datetime.now().ctime() 
     url = imdb
-    comments="liked"
+    comments="likes"
     u  = "http://services.notube.tv/notube/zapper/boxeelog.php%s" % urllib.urlencode({'action': "insert", 'username': userid, 'title': title, 'when': dt, 'url': url, 'comments': comments })
     print "Using URL for NoTube Network activity log: "+u
     urllib2.urlopen(u)
