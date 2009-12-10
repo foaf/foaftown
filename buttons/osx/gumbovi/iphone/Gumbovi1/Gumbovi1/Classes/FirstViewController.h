@@ -40,7 +40,7 @@
 	@property (nonatomic, retain) IBOutlet UIButton *righ;
 	@property (nonatomic, retain) IBOutlet UIButton *plpz;
 	@property (nonatomic, retain) IBOutlet UIButton *menu;
-	//
+    @property (nonatomic, retain) IBOutlet UIButton *like;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 	
 	- (IBAction) updateText:(id) sender;

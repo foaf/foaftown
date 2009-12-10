@@ -22,6 +22,7 @@
 @synthesize righ;
 @synthesize plpz;
 @synthesize menu;
+@synthesize like;
 @synthesize output;
 @synthesize appdel;
 
@@ -169,6 +170,11 @@
 	    NSLog(@"MENU");	
 		[self.appdel sendMENU:sender];
 		self.output.text = @"Menu";
+	}
+	else if (sender == self.like) {
+	    NSLog(@"LIKE");	
+		[self.appdel sendLIKE:sender];
+		self.output.text = @"Like";
 	}
 	else {
 		NSLog(@"Unrecognised buttonDown UI action: %@", sender);
