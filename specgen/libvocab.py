@@ -497,6 +497,11 @@ class VocabReport(object):
 
   def termlist(self):
     """Term List for html doc"""
+    stableTxt = ''
+    unstableTxt = ''
+    testingTxt = ''
+    archaicTxt = ''
+
     queries = ''
     c_ids, p_ids = self.vocab.azlist()
     tl = """<div class="termlist">"""
@@ -658,9 +663,28 @@ class VocabReport(object):
 
        zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id)
 
-       tl = "%s %s" % (tl, zz)
+## we add to the relevant string - stable, unstable, testing or archaic
+       if(term.status == "stable"):
+          stableTxt = stableTxt + zz
+       if(term.status == "unstable"):
+          unstableTxt = unstableTxt + zz
+       if(term.status == "testing"):
+          testingTxt = testingTxt + zz
+       if(term.status == "archaic"):
+          archaicTxt = archaicTxt + zz
+
+## then add the whole thing to the main tl string
+
+    tl = tl+"<h2>Classes</h2>\n"
+    tl = "%s %s" % (tl, stableTxt+"\n"+unstableTxt+"\n"+testingTxt+"\n"+archaicTxt)
+    tl = tl+"<h2>Properties</h2>\n"
 
 # properties
+
+    stableTxt = ''
+    unstableTxt = ''
+    testingTxt = ''
+    archaicTxt = ''
 
     for term in self.vocab.properties:
        domainsOfProperty = ''
@@ -758,7 +782,23 @@ class VocabReport(object):
        s = termlink(s)
        
        zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id)
-       tl = "%s %s" % (tl, zz)
+
+## we add to the relevant string - stable, unstable, testing or archaic
+       if(term.status == "stable"):
+          stableTxt = stableTxt + zz
+       if(term.status == "unstable"):
+          unstableTxt = unstableTxt + zz
+       if(term.status == "testing"):
+          testingTxt = testingTxt + zz
+       if(term.status == "archaic"):
+          archaicTxt = archaicTxt + zz
+
+## then add the whole thing to the main tl string
+
+    tl = "%s %s" % (tl, stableTxt+"\n"+unstableTxt+"\n"+testingTxt+"\n"+archaicTxt)
+
+
+##    tl = "%s %s" % (tl, zz)
 
     ## ensure termlist tag is closed
     return(tl+"\n"+queries+"</div>\n</div>")
