@@ -498,8 +498,8 @@ class VocabReport(object):
   def termlist(self):
     """Term List for html doc"""
     stableTxt = ''
-    unstableTxt = ''
     testingTxt = ''
+    unstableTxt = ''
     archaicTxt = ''
 
     queries = ''
@@ -666,24 +666,24 @@ class VocabReport(object):
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
           stableTxt = stableTxt + zz
-       if(term.status == "unstable"):
-          unstableTxt = unstableTxt + zz
        if(term.status == "testing"):
           testingTxt = testingTxt + zz
+       if(term.status == "unstable"):
+          unstableTxt = unstableTxt + zz
        if(term.status == "archaic"):
           archaicTxt = archaicTxt + zz
 
 ## then add the whole thing to the main tl string
 
     tl = tl+"<h2>Classes</h2>\n"
-    tl = "%s %s" % (tl, stableTxt+"\n"+unstableTxt+"\n"+testingTxt+"\n"+archaicTxt)
+    tl = "%s %s" % (tl, stableTxt+"\n"+testingTxt+"\n"+unstableTxt+"\n"+archaicTxt)
     tl = tl+"<h2>Properties</h2>\n"
 
 # properties
 
     stableTxt = ''
-    unstableTxt = ''
     testingTxt = ''
+    unstableTxt = ''
     archaicTxt = ''
 
     for term in self.vocab.properties:
@@ -786,16 +786,16 @@ class VocabReport(object):
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
           stableTxt = stableTxt + zz
-       if(term.status == "unstable"):
-          unstableTxt = unstableTxt + zz
        if(term.status == "testing"):
           testingTxt = testingTxt + zz
+       if(term.status == "unstable"):
+          unstableTxt = unstableTxt + zz
        if(term.status == "archaic"):
           archaicTxt = archaicTxt + zz
 
 ## then add the whole thing to the main tl string
 
-    tl = "%s %s" % (tl, stableTxt+"\n"+unstableTxt+"\n"+testingTxt+"\n"+archaicTxt)
+    tl = "%s %s" % (tl, stableTxt+"\n"+testingTxt+"\n"+unstableTxt+"\n"+archaicTxt)
 
 
 ##    tl = "%s %s" % (tl, zz)
