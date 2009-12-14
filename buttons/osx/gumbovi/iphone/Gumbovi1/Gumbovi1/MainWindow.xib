@@ -74,7 +74,6 @@
 											<double key="NSSize">1.500000e+01</double>
 											<int key="NSfFlags">16</int>
 										</object>
-										<int key="IBUIButtonType">1</int>
 										<string type="base64-UTF8" key="IBUINormalTitle">PA</string>
 										<object class="NSColor" key="IBUIHighlightedTitleColor" id="1025548576">
 											<int key="NSColorSpace">3</int>
@@ -88,11 +87,15 @@
 											<int key="NSColorSpace">3</int>
 											<bytes key="NSWhite">MC41AA</bytes>
 										</object>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">heartbuttons4-left-100x.png</string>
+										</object>
 									</object>
 									<object class="IBUIButton" id="556206856">
 										<reference key="NSNextResponder" ref="712750041"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{106, 100}, {112, 108}}</string>
+										<string key="NSFrame">{{117, 117}, {90, 89}}</string>
 										<reference key="NSSuperview" ref="712750041"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -114,29 +117,28 @@
 									<object class="IBUIButton" id="372045043">
 										<reference key="NSNextResponder" ref="712750041"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{197, 294}, {71, 68}}</string>
+										<string key="NSFrame">{{197, 313}, {49, 49}}</string>
 										<reference key="NSSuperview" ref="712750041"/>
 										<object class="NSColor" key="IBUIBackgroundColor">
 											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC44NjA5NjU0OSAwLjkwMzIyNTc4IDAuNjc1MDc3ODYgMAA</bytes>
+											<bytes key="NSRGB">MC4xODczMzM1NSAwLjE4NTg0OTU5IDAuMTkzNTQ4MzggMAA</bytes>
 										</object>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
-										<object class="NSFont" key="IBUIFont">
-											<string key="NSName">Helvetica-BoldOblique</string>
-											<double key="NSSize">1.500000e+01</double>
-											<int key="NSfFlags">16</int>
-										</object>
+										<reference key="IBUIFont" ref="198973076"/>
 										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">^</string>
 										<reference key="IBUIHighlightedTitleColor" ref="1025548576"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="620024477"/>
+										<object class="NSCustomResource" key="IBUINormalImage" id="327744667">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">foaflets-12pt.jpg</string>
+										</object>
 									</object>
 									<object class="IBUIButton" id="859249277">
 										<reference key="NSNextResponder" ref="712750041"/>
@@ -148,7 +150,6 @@
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<reference key="IBUIFont" ref="198973076"/>
-										<int key="IBUIButtonType">1</int>
 										<string key="IBUINormalTitle">-</string>
 										<reference key="IBUIHighlightedTitleColor" ref="1025548576"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
@@ -156,6 +157,10 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="620024477"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">heartbuttons4-down-100x.png</string>
+										</object>
 									</object>
 									<object class="IBUIButton" id="734444638">
 										<reference key="NSNextResponder" ref="712750041"/>
@@ -167,7 +172,6 @@
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<reference key="IBUIFont" ref="198973076"/>
-										<int key="IBUIButtonType">1</int>
 										<string type="base64-UTF8" key="IBUINormalTitle">Pg</string>
 										<reference key="IBUIHighlightedTitleColor" ref="1025548576"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
@@ -175,6 +179,10 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="620024477"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">heartbuttons4-righ-100x.png</string>
+										</object>
 									</object>
 									<object class="IBUIButton" id="398583727">
 										<reference key="NSNextResponder" ref="712750041"/>
@@ -186,7 +194,6 @@
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
 										<reference key="IBUIFont" ref="198973076"/>
-										<int key="IBUIButtonType">1</int>
 										<string key="IBUINormalTitle">+</string>
 										<reference key="IBUIHighlightedTitleColor" ref="1025548576"/>
 										<object class="NSColor" key="IBUINormalTitleColor">
@@ -194,6 +201,10 @@
 											<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 										</object>
 										<reference key="IBUINormalTitleShadowColor" ref="620024477"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">heartbuttons4-up-100x.png</string>
+										</object>
 									</object>
 									<object class="IBUIButton" id="635956657">
 										<reference key="NSNextResponder" ref="712750041"/>
@@ -450,10 +461,7 @@
 									<bool key="IBUIClipsSubviews">YES</bool>
 									<int key="IBUIContentMode">4</int>
 									<bool key="IBUIMultipleTouchEnabled">YES</bool>
-									<object class="NSCustomResource" key="IBUIImage">
-										<string key="NSClassName">NSImage</string>
-										<string key="NSResourceName">foaflets-12pt.jpg</string>
-									</object>
+									<reference key="IBUIImage" ref="327744667"/>
 								</object>
 								<object class="IBUILabel" id="473871627">
 									<reference key="NSNextResponder" ref="161669108"/>
@@ -801,13 +809,13 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="398583727"/>
-							<reference ref="556206856"/>
 							<reference ref="859249277"/>
 							<reference ref="734444638"/>
 							<reference ref="372045043"/>
 							<reference ref="574668113"/>
 							<reference ref="635956657"/>
 							<reference ref="129176268"/>
+							<reference ref="556206856"/>
 						</object>
 						<reference key="parent" ref="800745284"/>
 					</object>
