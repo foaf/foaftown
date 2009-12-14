@@ -17,6 +17,14 @@
 		28AD73880D9D96C1002E5188 /* MainWindow-orig.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow-orig.xib */; };
 		B622B62910A5B9E8007E8F37 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62710A5B9E8007E8F37 /* SecondView.xib */; };
 		B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
+		B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
+		B648FE9A10D1A3040068001F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
+		B648FE9B10D1A3040068001F /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
+		B648FE9C10D1A3040068001F /* heartbuttons4-left.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9410D1A3040068001F /* heartbuttons4-left.png */; };
+		B648FE9D10D1A3040068001F /* heartbuttons4-righ-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */; };
+		B648FE9E10D1A3040068001F /* heartbuttons4-righ.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9610D1A3040068001F /* heartbuttons4-righ.png */; };
+		B648FE9F10D1A3040068001F /* heartbuttons4-up-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */; };
+		B648FEA010D1A3040068001F /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
 		B656AA2B10ADDC800089D78F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2410ADDC800089D78F /* RootViewController.m */; };
 		B656AA2C10ADDC800089D78F /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */; };
 		B656AA2D10ADDC800089D78F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2810ADDC800089D78F /* DetailViewController.m */; };
@@ -86,6 +94,14 @@
 		8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B622B62710A5B9E8007E8F37 /* SecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down-100x.png"; sourceTree = "<group>"; };
+		B648FE9210D1A3040068001F /* heartbuttons4-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down.png"; sourceTree = "<group>"; };
+		B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-left-100x.png"; sourceTree = "<group>"; };
+		B648FE9410D1A3040068001F /* heartbuttons4-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-left.png"; sourceTree = "<group>"; };
+		B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-righ-100x.png"; sourceTree = "<group>"; };
+		B648FE9610D1A3040068001F /* heartbuttons4-righ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-righ.png"; sourceTree = "<group>"; };
+		B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up-100x.png"; sourceTree = "<group>"; };
+		B648FE9810D1A3040068001F /* heartbuttons4-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up.png"; sourceTree = "<group>"; };
 		B656AA2310ADDC800089D78F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		B656AA2410ADDC800089D78F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		B656AA2510ADDC800089D78F /* DrillDownAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrillDownAppAppDelegate.h; sourceTree = "<group>"; };
@@ -307,6 +323,7 @@
 				B67CC39510A5763500511209 /* foaflets-12pt.jpg */,
 				B67CC39610A5763500511209 /* Icon.png */,
 				B67CC39710A5763500511209 /* beancounter.jpg */,
+				B648FE9010D1A3040068001F /* buttons */,
 				B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */,
 				B668E56E10D0F67500EDD38D /* heartbuttons4.png */,
 				B67CC39810A5763500511209 /* buttons.png */,
@@ -323,6 +340,21 @@
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B648FE9010D1A3040068001F /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */,
+				B648FE9210D1A3040068001F /* heartbuttons4-down.png */,
+				B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */,
+				B648FE9410D1A3040068001F /* heartbuttons4-left.png */,
+				B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */,
+				B648FE9610D1A3040068001F /* heartbuttons4-righ.png */,
+				B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */,
+				B648FE9810D1A3040068001F /* heartbuttons4-up.png */,
+			);
+			path = buttons;
 			sourceTree = "<group>";
 		};
 		B656AA4510ADDD590089D78F /* JSON */ = {
@@ -459,6 +491,14 @@
 				B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */,
 				B668E56F10D0F67500EDD38D /* heartbuttons4-100x.png in Resources */,
 				B668E57010D0F67500EDD38D /* heartbuttons4.png in Resources */,
+				B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */,
+				B648FE9A10D1A3040068001F /* heartbuttons4-down.png in Resources */,
+				B648FE9B10D1A3040068001F /* heartbuttons4-left-100x.png in Resources */,
+				B648FE9C10D1A3040068001F /* heartbuttons4-left.png in Resources */,
+				B648FE9D10D1A3040068001F /* heartbuttons4-righ-100x.png in Resources */,
+				B648FE9E10D1A3040068001F /* heartbuttons4-righ.png in Resources */,
+				B648FE9F10D1A3040068001F /* heartbuttons4-up-100x.png in Resources */,
+				B648FEA010D1A3040068001F /* heartbuttons4-up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
