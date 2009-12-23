@@ -1,0 +1,26 @@
+digraph Summary_Graph {
+ratio=0.7
+"wi:DocumentsAndConcepts" [label="wi:DocumentsAndConcepts"]
+"xsd:int" [label="xsd:int"]
+"geo:SpatialThing" [label="geo:SpatialThing"]
+"wi:WeightedInterest" [label="wi:WeightedInterest"]
+"foaf:Agent" [label="foaf:Agent"]
+"wi:TimeIntervalsAndInstants" [label="wi:TimeIntervalsAndInstants"]
+"xsd:string" [label="xsd:string"]
+"foaf:Document" [label="foaf:Document"]
+"wi:Context" [label="wi:Context"]
+"skos:Concept" [label="skos:Concept"]
+"foaf:Agent"->"wi:WeightedInterest" [label="wi:preference"]
+"foaf:Agent"->"wi:DocumentsAndConcepts" [label="wi:notInterestedIn"]
+"wi:Context"->"foaf:Document" [label="wi:evidence"]
+"wi:WeightedInterest"->"wi:Context" [label="wi:hasContext"]
+"wi:WeightedInterest"->"wi:DocumentsAndConcepts" [label="wi:topic"]
+"wi:Context"->"geo:SpatialThing" [label="wi:location"]
+"wi:Context"->"foaf:Document" [label="wi:device"]
+"wi:Context"->"wi:TimeIntervalsAndInstants" [label="wi:timePeriod"]
+"wi:WeightedInterest"->"xsd:int" [label="wi:weight"]
+"wi:WeightedInterest"->"xsd:string" [label="wi:scale"]
+"wi:DocumentsAndConcepts"->"foaf:Document" [label="owl:unionOf"]
+"wi:DocumentsAndConcepts"->"skos:Concept" [label="owl:unionOf"]
+
+}

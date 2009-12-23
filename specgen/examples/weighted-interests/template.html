@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+xmlns:event="http://purl.org/NET/c4dn/event.owl#"
+xmlns:foaf="http://xmlns.com/foaf/0.1/"
+xmlns:status="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+xmlns:owl="http://www.w3.org/2002/07/owl#"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+xmlns:vann="http://purl.org/vocab/vann/"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+xmlns:wi="http://example.com/wi#"
+xmlns:days="http://ontologi.es/days#"
+xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+<head>
+ <head>
+  <link type="text/css" rel="stylesheet" href="style/style.css">
+  <link rel="alternate" href="schema.dot"/>
+  <link rel="alternate" href="schema.ttl"/>
+  <link rel="alternate" href="index.rdf"/>
+ </head>
+ <body>
+
+
+ <h2 id="glance">Weighted Interest at a glance</h2>
+
+
+<!-- summary a-z -->
+%s
+
+ <img src="schema.png" alt="image of the schema"/>
+  
+
+ <h3>Other versions:</h3>
+ <ul>
+   <li>
+    <a href="index.rdf">RDF/XML version of the schema</a>
+   </li>
+   <li>
+    <a href="schema.dot">Graphviz dot file</a>
+   </li>
+ </ul>
+
+
+<h2>Introduction</h2>
+
+<p>The weighted interests vocabulary allows you to describe groups of 
+ordered preferences, i.e. to describe that an agent prefers one thing to 
+another. It can also be used to say that an agent is not interested in 
+something. </p>
+
+
+<p>Here's an example in words:</p>
+
+<pre>
+I prefer radio 4 over radio 5 when I am working at home (which is every weekday between 8am and 7pm).
+</pre>
+
+<p>and the same example using the vocabulary:</p>
+
+<pre>
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix wi: &lt;http://example.com/weighted_topics#> .
+@prefix days: &lt;http://ontologi.es/days#&gt; .
+@prefix tl: &lt;http://perl.org/NET/c4dm/timeline.owl#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@base &lt;http://example.org/weighted_topics#&gt; .
+    &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
+    a foaf:Person;
+    foaf:name "Libby Miller";
+    wi:preference [
+      a wi:WeightedInterest;
+      wi:topic &lt;http://www.bbc.co.uk/5live#service&gt;;
+      wi:weight "3";
+      wi:scale "0..9";
+      wi:context &lt;#working&gt;
+      ] ;
+    wi:preference [
+      a wi:WeightedInterest;
+      wi:topic &lt;http://www.bbc.co.uk/radio4#service&gt;;
+      wi:weight "7";
+      wi:scale "0..9";
+      wi:context &lt;#working&gt; .
+      ] .
+   &lt;#working&gt; a wi:Context;
+       wi:timePeriod [
+          a days:WeekdayInterval;
+          tl:at "08:00:00"^^xsd:time ;
+          tl:end "19:00:00"^^xsd:time .
+       ] .
+</pre>
+
+
+<p>Another example:</p>
+
+<pre>
+I hate the X-Factor
+</pre>
+
+<p>In the vocabulary:</p>
+
+<pre>
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix wi: &lt;http://example.com/weighted_topics#&gt; .
+    &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
+    a foaf:Person;
+    foaf:name "Libby Miller";
+    wi:notInterestedIn &lt;http://en.wikipedia.org/wiki/The_X_Factor_(UK)&gt; .
+
+</pre>
+
+<h3>Aims</h3>
+
+<p>The aim of this experimental vocabulary to provide filtering services 
+with a summary of a user's preferences when they are in different 
+environments. It can be combined or used instead of straightforward foaf 
+interest profiles, and be combined with and used instead of information 
+traditionally used to make recommendations to users, in particular age, 
+gender, location. </p>
+
+<p>For example:</p>
+
+<pre>
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix progs: &lt;http://purl.org/ontology/po/&gt; .
+@prefix geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+
+    &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
+    a foaf:Person;
+    foaf:name "Libby Miller";
+    foaf:gender "female";
+    foaf:based_near [ geo:lat 48.402495; geo:long 2.692646 ];
+    foaf:interest &lt;http://dbpedia.org/resource/Stephen_Fry&gt;;
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/b006qpmv#programme&gt;;
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/b00lvdrj#programme&gt;; 
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/b00hg8dq#programme&gt;;
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/b006qykl#programme&gt;;
+    foaf:interest &lt;http://www.bbc.co.uk/5live#service&gt;;
+    foaf:interest &lt;http://www.bbc.co.uk/radio4#service&gt; ;
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/genres/factual&gt; ;
+    foaf:interest &lt;http://www.bbc.co.uk/programmes/genres/factual/artscultureandthemedia&gt; ;
+    foaf:interest &lt;http://dbpedia.org/resource/1980s_in_music&gt; .
+    
+   &lt;http://dbpedia.org/resource/Stephen_Fry&gt; a foaf:Person .
+   &lt;http://www.bbc.co.uk/programmes/b006qpmv#programme&gt; a progs:Brand .
+   &lt;http://www.bbc.co.uk/programmes/b00lvdrj#programme&gt; a progs:Brand . 
+   &lt;http://www.bbc.co.uk/programmes/b00hg8dq#programme&gt; a progs:Brand .
+   &lt;http://www.bbc.co.uk/programmes/b006qykl#programme>&gt; a progs:Brand .
+   &lt;http://www.bbc.co.uk/5live#service&gt; a progs:Service .
+   &lt;http://www.bbc.co.uk/radio4#service&gt; a progs:Service .
+   &lt;http://www.bbc.co.uk/programmes/genres/factual&gt; a progs:Genre .
+   &lt;http://www.bbc.co.uk/programmes/genres/factual/artscultureandthemedia&gt; a progs:Genre .
+   &lt;http://dbpedia.org/resource/1980s_in_music&gt; a skos:Concept .
+</pre>
+
+<h3>Modelling technique</h3>
+
+<h4>Comparisons</h4>
+
+<ul>
+<li>weights and comparisons need things to weigh against and compare against 
+</li>
+<li>weights may change with context changes (such as location, time, activity, device), so we make the comparison group the context
+(e.g: 'Libby prefers 80s rock to classical genres of music' is true only if Libby is going running; 'libby prefers radio4 to radio7' is true only if it's before 11 or after 13 on a weekday)</li>
+<li>context evidence link - which may give you a more detailed breakdown of the data</li>
+<li>weights are numeric, as this maps quite nicely to star ratings. Weights are not comparable over contexts but are within them</li>
+</ul>
+
+<h4>Contexts</h4>
+
+<ul>
+<li>can have device, timeperiod, location, as these are measuarable proxies for activities</li>
+<li>timeperiods relate to repeating periods of time such as every weekend, every week day, every friday between 2 and 4. It uses Toby's 'days of the week' ontology</li>
+<li>locations are spatialThings</li>
+<li>devices are urls of documents describing the device</li>
+</ul> 
+
+<h2>Classes and Properties (summary)</h2>
+
+<!-- this is the a-z listing -->
+%s
+
+  
+<!-- and this is the bulk of the vocab descriptions -->
+%s
+
+<h2> Validation query</h2>
+
+<pre>
+ PREFIX xsd:  &lt;http://www.w3.org/2001/XMLSchema#&gt;
+ PREFIX rdfs:   &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+ PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+ PREFIX foaf:   &lt;http://xmlns.com/foaf/0.1/&gt;
+ PREFIX activ:  &lt;http://www.bbc.co.uk/ontologies/activity/&gt;
+ PREFIX wi: &lt;http://example.com/wi#&gt;
+ PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
+ PREFIX days: &lt;http://ontologi.es/days#&gt;
+ PREFIX geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
+
+ ASK {
+   ?agent rdf:type foaf:agent .
+   ?agent wi:preference ?wi
+
+   ?wi rdf:type wi:WeightedInterest .
+   ?wi wi:topic ?topic .
+
+   OPTIONAL {?topic rdf:type foaf:Document .}
+   OPTIONAL {?topic rdf:type skos:Concept .}
+
+   ?wi wi:hasContext ?context .
+
+   OPTIONAL {?context wi:timePeriod ?period . }
+   OPTIONAL {?context wi:location ?location . ?location rdf:type geo:spatialThing .}
+   OPTIONAL {?context wi:device ?device . ?device rdf:type foaf:Document .}
+
+   FILTER ( bound(?period) || bound(?location) || bound(?device))
+
+   OPTIONAL {?wi wi:evidence ?evidence . ?evidence rdf:type foaf:Document .}
+  
+   ?wi wi:weight ?weight .
+   ?wi wi:scale ?scale .
+
+   FILTER (datatype(?scale) = xsd:string) .
+   FILTER (datatype(?weight) = xsd:int) .
+ }
+
+</pre>
+
+ </body>
+</html>
+

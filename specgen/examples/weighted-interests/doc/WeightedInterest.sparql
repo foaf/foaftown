@@ -1,0 +1,39 @@
+#weighted interest
+ PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+ PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+ PREFIX activ:  <http://www.bbc.co.uk/ontologies/activity/>
+ PREFIX wi: <http://example.com/wi#>
+ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+ PREFIX days: <http://ontologi.es/days#>
+ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+ ASK {
+   ?agent rdf:type foaf:agent .
+   ?agent wi:preference ?wi
+
+   ?wi rdf:type wi:WeightedInterest .
+   ?wi wi:topic ?topic .
+
+   OPTIONAL {?topic rdf:type foaf:Document .}
+   OPTIONAL {?topic rdf:type skos:Concept .}
+
+   ?wi wi:hasContext ?context .
+
+   OPTIONAL {?context wi:timePeriod ?period . }
+   OPTIONAL {?context wi:location ?location . ?location rdf:type geo:spatialThing .}
+   OPTIONAL {?context wi:device ?device . ?device rdf:type foaf:Document .}
+
+   FILTER ( bound(?period) || bound(?location) || bound(?device))
+
+   OPTIONAL {?wi wi:evidence ?evidence . ?evidence rdf:type foaf:Document .}
+  
+   ?wi wi:weight ?weight .
+   ?wi wi:scale ?scale .
+
+   FILTER (datatype(?scale) = xsd:string) .
+   FILTER (datatype(?weight) = xsd:int) .
+
+ }
+
