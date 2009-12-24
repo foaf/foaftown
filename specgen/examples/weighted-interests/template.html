@@ -11,7 +11,7 @@ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 xmlns:vann="http://purl.org/vocab/vann/"
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-xmlns:wi="http://example.com/wi#"
+xmlns:wi="http://xmlns.com/wi#"
 xmlns:days="http://ontologi.es/days#"
 xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
 >
@@ -25,10 +25,40 @@ xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
  <body>
 
 
- <h2 id="glance">Weighted Interest at a glance</h2>
+ <h2 id="glance">Weighted Interest Vocabulary</h2>
 
-<p>This is a draft vocabulary for describing preferences within 
-contexts, developed for the NoTube project.</p>
+<p>This is an experimental vocabulary for describing preferences within 
+contexts, initially developed at <a 
+href="http://vocamp.org/wiki/VoCampBristol2009">VoCamp Bristol 2009</a> 
+to meet requirements coming from the NoTube project.</p>
+
+  <h2>Namespace Document 24 December 2009 - <em>first draft</em></h2>
+    
+  <dl>
+        
+    <dt>This version (latest):</dt>
+
+    <dd><a href="http://xmlns.com/wi#spec/20091224.html">http://xmlns
+.com/wi/spec/20091224.html</a></dd>
+    
+    <dt>Namespace:</dt>
+    <dd>http://xmlns.com/wi#</dd>
+    
+    <dt>Authors:</dt>
+    <dd>
+    <a href="mailto:libby@nicecupoftea.org">Libby Miller</a>,
+    <a href="mailto:danbri@danbri.org">Dan Brickley</a>, Dave Reynolds, Toby Inkster.
+    </dd>
+
+    <dt>Contributors:</dt>
+
+    <dd>Members of the NoTube Project (<a href=
+    "http://notube.tv/">NoTube</a>)
+    and the wider <a href="http://www.w3.org/2001/sw/interest/">RDF
+    and SemWeb developer community</a>. See <a href=
+    "#sec-ack">acknowledgements</a>.</dd>
+  </dl>
+
 
 <!-- summary a-z -->
 %s
@@ -46,6 +76,18 @@ contexts, developed for the NoTube project.</p>
    </li>
  </ul>
 
+  <!-- Creative Commons License -->
+   <a href="http://creativecommons.org/licenses/by/1.0/"><img 
+alt="Creative Commons License" style="border: 0; float: right; padding: 
+10px;" src="somerights.gif" /></a> This work is licensed under a <a 
+href="http://creativecommons.org/licenses/by/1.0/">Creative Commons 
+Attribution License</a>. This copyright applies to the <em>Weighted 
+Interests RDF Vocabulary Specification</em> and accompanying 
+documentation in RDF. This uses W3C's <a 
+href="http://www.w3.org/RDF/">RDF</a> technology, an open Web standard 
+that can be freely used by anyone.</p>
+
+  <hr />
 
 <h2>Introduction</h2>
 
@@ -65,11 +107,11 @@ I prefer radio 4 over radio 5 when I am working at home (which is every weekday 
 
 <pre>
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix wi: &lt;http://example.com/weighted_topics#> .
+@prefix wi: &lt;http://xmlns.com/wi#> .
 @prefix days: &lt;http://ontologi.es/days#&gt; .
 @prefix tl: &lt;http://perl.org/NET/c4dm/timeline.owl#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@base &lt;http://example.org/weighted_topics#&gt; .
+@base &lt;http://xmlns.com/wi#&gt; .
     &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
     a foaf:Person;
     foaf:name "Libby Miller";
@@ -106,7 +148,7 @@ I hate the X-Factor
 
 <pre>
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix wi: &lt;http://example.com/weighted_topics#&gt; .
+@prefix wi: &lt;http://xmlns.com/wi#&gt; .
     &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
     a foaf:Person;
     foaf:name "Libby Miller";
@@ -198,7 +240,7 @@ gender, location. </p>
  PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
  PREFIX foaf:   &lt;http://xmlns.com/foaf/0.1/&gt;
  PREFIX activ:  &lt;http://www.bbc.co.uk/ontologies/activity/&gt;
- PREFIX wi: &lt;http://example.com/wi#&gt;
+ PREFIX wi: &lt;http://xmlns.com/wi#&gt;
  PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
  PREFIX days: &lt;http://ontologi.es/days#&gt;
  PREFIX geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;

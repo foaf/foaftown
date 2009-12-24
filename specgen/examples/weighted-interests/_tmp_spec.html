@@ -11,7 +11,7 @@ xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 xmlns:vann="http://purl.org/vocab/vann/"
 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-xmlns:wi="http://example.com/wi#"
+xmlns:wi="http://xmlns.com/wi#"
 xmlns:days="http://ontologi.es/days#"
 xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
 >
@@ -25,10 +25,40 @@ xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
  <body>
 
 
- <h2 id="glance">Weighted Interest at a glance</h2>
+ <h2 id="glance">Weighted Interest Vocabulary</h2>
 
-<p>This is a draft vocabulary for describing preferences within 
-contexts, developed for the NoTube project.</p>
+<p>This is an experimental vocabulary for describing preferences within 
+contexts, initially developed at <a 
+href="http://vocamp.org/wiki/VoCampBristol2009">VoCamp Bristol 2009</a> 
+to meet requirements coming from the NoTube project.</p>
+
+  <h2>Namespace Document 24 December 2009 - <em>first draft</em></h2>
+    
+  <dl>
+        
+    <dt>This version (latest):</dt>
+
+    <dd><a href="http://xmlns.com/wi#spec/20091224.html">http://xmlns
+.com/wi/spec/20091224.html</a></dd>
+    
+    <dt>Namespace:</dt>
+    <dd>http://xmlns.com/wi#</dd>
+    
+    <dt>Authors:</dt>
+    <dd>
+    <a href="mailto:libby@nicecupoftea.org">Libby Miller</a>,
+    <a href="mailto:danbri@danbri.org">Dan Brickley</a>, Dave Reynolds, Toby Inkster.
+    </dd>
+
+    <dt>Contributors:</dt>
+
+    <dd>Members of the NoTube Project (<a href=
+    "http://notube.tv/">NoTube</a>)
+    and the wider <a href="http://www.w3.org/2001/sw/interest/">RDF
+    and SemWeb developer community</a>. See <a href=
+    "#sec-ack">acknowledgements</a>.</dd>
+  </dl>
+
 
 <!-- summary a-z -->
 <div class="azlist">
@@ -51,6 +81,18 @@ contexts, developed for the NoTube project.</p>
    </li>
  </ul>
 
+  <!-- Creative Commons License -->
+   <a href="http://creativecommons.org/licenses/by/1.0/"><img 
+alt="Creative Commons License" style="border: 0; float: right; padding: 
+10px;" src="somerights.gif" /></a> This work is licensed under a <a 
+href="http://creativecommons.org/licenses/by/1.0/">Creative Commons 
+Attribution License</a>. This copyright applies to the <em>Weighted 
+Interests RDF Vocabulary Specification</em> and accompanying 
+documentation in RDF. This uses W3C's <a 
+href="http://www.w3.org/RDF/">RDF</a> technology, an open Web standard 
+that can be freely used by anyone.</p>
+
+  <hr />
 
 <h2>Introduction</h2>
 
@@ -70,11 +112,11 @@ I prefer radio 4 over radio 5 when I am working at home (which is every weekday 
 
 <pre>
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix wi: &lt;http://example.com/weighted_topics#> .
+@prefix wi: &lt;http://xmlns.com/wi#> .
 @prefix days: &lt;http://ontologi.es/days#&gt; .
 @prefix tl: &lt;http://perl.org/NET/c4dm/timeline.owl#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@base &lt;http://example.org/weighted_topics#&gt; .
+@base &lt;http://xmlns.com/wi#&gt; .
     &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
     a foaf:Person;
     foaf:name "Libby Miller";
@@ -111,7 +153,7 @@ I hate the X-Factor
 
 <pre>
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix wi: &lt;http://example.com/weighted_topics#&gt; .
+@prefix wi: &lt;http://xmlns.com/wi#&gt; .
     &lt;http://swordfish.rdfweb.org/people/libby/rdfweb/webwho.xrdf#me&gt;
     a foaf:Person;
     foaf:name "Libby Miller";
@@ -204,16 +246,16 @@ gender, location. </p>
 <h2>Classes</h2>
  
 
-<div class="specterm" id="term_Context" about="http://example.com/wi#Context" typeof="rdfs:Class">
+<div class="specterm" id="term_Context" about="http://xmlns.com/wi#Context" typeof="rdfs:Class">
             <h3>Class: wi:Context</h3> 
             <em>A Context object</em> - A context object <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>May be the object of:</th>
  <td>  <a href="#term_location">A location</a>
+ <a href="#term_timePeriod">A time period</a>
  <a href="#term_evidence">Evidence</a>
  <a href="#term_device">A device</a>
- <a href="#term_timePeriod">A time period</a>
  </td></tr>
             <tr><th>May have properties:</th>
  <td>  <a href="#term_hasContext">A context</a>
@@ -222,21 +264,21 @@ gender, location. </p>
             
             <p style="float: right; font-size: small;">[<a href="#term_Context">#</a>] <!-- Context --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_DocumentsAndConcepts" about="http://example.com/wi#DocumentsAndConcepts" typeof="rdfs:Class">
+            </div><div class="specterm" id="term_DocumentsAndConcepts" about="http://xmlns.com/wi#DocumentsAndConcepts" typeof="rdfs:Class">
             <h3>Class: wi:DocumentsAndConcepts</h3> 
             <em>Documents and concepts</em> - The union of documents and concepts <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             
             <tr><th>May have properties:</th>
- <td>  <a href="#term_notInterestedIn">Something of no interest</a>
- <a href="#term_topic">A topic</a>
+ <td>  <a href="#term_topic">A topic</a>
+ <a href="#term_notInterestedIn">Something of no interest</a>
 </td></tr> 
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_DocumentsAndConcepts">#</a>] <!-- DocumentsAndConcepts --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_TimeIntervalsAndInstants" about="http://example.com/wi#TimeIntervalsAndInstants" typeof="rdfs:Class">
+            </div><div class="specterm" id="term_TimeIntervalsAndInstants" about="http://xmlns.com/wi#TimeIntervalsAndInstants" typeof="rdfs:Class">
             <h3>Class: wi:TimeIntervalsAndInstants</h3> 
             <em>Intervals and instants</em> - The union of all days intervals and instants <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
@@ -249,16 +291,16 @@ gender, location. </p>
             
             <p style="float: right; font-size: small;">[<a href="#term_TimeIntervalsAndInstants">#</a>] <!-- TimeIntervalsAndInstants --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_WeightedInterest" about="http://example.com/wi#WeightedInterest" typeof="rdfs:Class">
+            </div><div class="specterm" id="term_WeightedInterest" about="http://xmlns.com/wi#WeightedInterest" typeof="rdfs:Class">
             <h3>Class: wi:WeightedInterest</h3> 
             <em>A Weighted Interest</em> - A weighted interest object <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>May be the object of:</th>
- <td>  <a href="#term_weight">Weight</a>
- <a href="#term_hasContext">A context</a>
- <a href="#term_topic">A topic</a>
+ <td>  <a href="#term_topic">A topic</a>
  <a href="#term_scale">Scale</a>
+ <a href="#term_weight">Weight</a>
+ <a href="#term_hasContext">A context</a>
  </td></tr>
             <tr><th>May have properties:</th>
  <td>  <a href="#term_preference">A preference</a>
@@ -273,13 +315,13 @@ using a context, and ordered within the context using the weight and scale.
 <h2>Properties</h2>
  
 
-<div class="specterm" id="term_device" about="http://example.com/wi#device" typeof="rdf:Property">
+<div class="specterm" id="term_device" about="http://xmlns.com/wi#device" typeof="rdf:Property">
             <h3>Property: wi:device</h3> 
             <em>A device</em> - A document describing a device <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#Context"><a href="#term_Context">A Context object</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#Context"><a href="#term_Context">A Context object</a></span>
 </td></tr>
             <tr><th>Range:</th>
  <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
@@ -288,13 +330,13 @@ using a context, and ordered within the context using the weight and scale.
             
             <p style="float: right; font-size: small;">[<a href="#term_device">#</a>] <!-- device --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_evidence" about="http://example.com/wi#evidence" typeof="rdf:Property">
+            </div><div class="specterm" id="term_evidence" about="http://xmlns.com/wi#evidence" typeof="rdf:Property">
             <h3>Property: wi:evidence</h3> 
             <em>Evidence</em> - A link between a context and evidence supporting the interpretation fo preferences in a context <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#Context"><a href="#term_Context">A Context object</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#Context"><a href="#term_Context">A Context object</a></span>
 </td></tr>
             <tr><th>Range:</th>
  <td> <span rel="rdfs:range" href="http://xmlns.com/foaf/0.1/Document"><a href="#term_Document">Document</a></span>
@@ -306,35 +348,35 @@ from the evidence.
 
             <p style="float: right; font-size: small;">[<a href="#term_evidence">#</a>] <!-- evidence --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_hasContext" about="http://example.com/wi#hasContext" typeof="rdf:Property">
+            </div><div class="specterm" id="term_hasContext" about="http://xmlns.com/wi#hasContext" typeof="rdf:Property">
             <h3>Property: wi:hasContext</h3> 
             <em>A context</em> - A link between a WeightedInterest and Context <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <span rel="rdfs:range" href="http://example.com/wi#Context"><a href="#term_Context">A Context object</a></span>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/wi#Context"><a href="#term_Context">A Context object</a></span>
 </td>	</tr>
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_hasContext">#</a>] <!-- hasContext --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_location" about="http://example.com/wi#location" typeof="rdf:Property">
+            </div><div class="specterm" id="term_location" about="http://xmlns.com/wi#location" typeof="rdf:Property">
             <h3>Property: wi:location</h3> 
             <em>A location</em> - A context location <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#Context"><a href="#term_Context">A Context object</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#Context"><a href="#term_Context">A Context object</a></span>
 </td></tr>
             
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_location">#</a>] <!-- location --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_notInterestedIn" about="http://example.com/wi#notInterestedIn" typeof="rdf:Property">
+            </div><div class="specterm" id="term_notInterestedIn" about="http://xmlns.com/wi#notInterestedIn" typeof="rdf:Property">
             <h3>Property: wi:notInterestedIn</h3> 
             <em>Something of no interest</em> - A link between an agent and a topic of no interest to them <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
@@ -343,13 +385,13 @@ from the evidence.
  <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <span rel="rdfs:range" href="http://example.com/wi#DocumentsAndConcepts"><a href="#term_DocumentsAndConcepts">Documents and concepts</a></span>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/wi#DocumentsAndConcepts"><a href="#term_DocumentsAndConcepts">Documents and concepts</a></span>
 </td>	</tr>
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_notInterestedIn">#</a>] <!-- notInterestedIn --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_preference" about="http://example.com/wi#preference" typeof="rdf:Property">
+            </div><div class="specterm" id="term_preference" about="http://xmlns.com/wi#preference" typeof="rdf:Property">
             <h3>Property: wi:preference</h3> 
             <em>A preference</em> - A link between an agent and a weighted interest <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
@@ -358,20 +400,20 @@ from the evidence.
  <td> <span rel="rdfs:domain" href="http://xmlns.com/foaf/0.1/Agent"><a href="#term_Agent">Agent</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <span rel="rdfs:range" href="http://example.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
 </td>	</tr>
             </table>
             Preference points to a WeightedInterest object. 
 
             <p style="float: right; font-size: small;">[<a href="#term_preference">#</a>] <!-- preference --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_scale" about="http://example.com/wi#scale" typeof="rdf:Property">
+            </div><div class="specterm" id="term_scale" about="http://xmlns.com/wi#scale" typeof="rdf:Property">
             <h3>Property: wi:scale</h3> 
             <em>Scale</em> - The scale with respect to the weight - of the form 0..9. Scale can be any range of integers. <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
 </td></tr>
             <tr><th>Range:</th>
  <td> <span rel="rdfs:range" href="http://www.w3.org/2001/XMLSchema#string"><a href="#term_string">String</a></span>
@@ -380,43 +422,43 @@ from the evidence.
             
             <p style="float: right; font-size: small;">[<a href="#term_scale">#</a>] <!-- scale --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_timePeriod" about="http://example.com/wi#timePeriod" typeof="rdf:Property">
+            </div><div class="specterm" id="term_timePeriod" about="http://xmlns.com/wi#timePeriod" typeof="rdf:Property">
             <h3>Property: wi:timePeriod</h3> 
             <em>A time period</em> - A time period of a context <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#Context"><a href="#term_Context">A Context object</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#Context"><a href="#term_Context">A Context object</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <span rel="rdfs:range" href="http://example.com/wi#TimeIntervalsAndInstants"><a href="#term_TimeIntervalsAndInstants">Intervals and instants</a></span>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/wi#TimeIntervalsAndInstants"><a href="#term_TimeIntervalsAndInstants">Intervals and instants</a></span>
 </td>	</tr>
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_timePeriod">#</a>] <!-- timePeriod --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_topic" about="http://example.com/wi#topic" typeof="rdf:Property">
+            </div><div class="specterm" id="term_topic" about="http://xmlns.com/wi#topic" typeof="rdf:Property">
             <h3>Property: wi:topic</h3> 
             <em>A topic</em> - A topic of the weighted interest <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
 </td></tr>
             <tr><th>Range:</th>
- <td> <span rel="rdfs:range" href="http://example.com/wi#DocumentsAndConcepts"><a href="#term_DocumentsAndConcepts">Documents and concepts</a></span>
+ <td> <span rel="rdfs:range" href="http://xmlns.com/wi#DocumentsAndConcepts"><a href="#term_DocumentsAndConcepts">Documents and concepts</a></span>
 </td>	</tr>
             </table>
             
             <p style="float: right; font-size: small;">[<a href="#term_topic">#</a>] <!-- topic --> [<a href="#glance">back to top</a>]</p>
             <br/>
-            </div><div class="specterm" id="term_weight" about="http://example.com/wi#weight" typeof="rdf:Property">
+            </div><div class="specterm" id="term_weight" about="http://xmlns.com/wi#weight" typeof="rdf:Property">
             <h3>Property: wi:weight</h3> 
             <em>Weight</em> - The weight on the topic <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
 	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#unstable">unstable</span></td></tr>
             <tr><th>Domain:</th>
- <td> <span rel="rdfs:domain" href="http://example.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
+ <td> <span rel="rdfs:domain" href="http://xmlns.com/wi#WeightedInterest"><a href="#term_WeightedInterest">A Weighted Interest</a></span>
 </td></tr>
             <tr><th>Range:</th>
  <td> <span rel="rdfs:range" href="http://www.w3.org/2001/XMLSchema#int"><a href="#term_int">Integer</a></span>
@@ -442,7 +484,7 @@ from the evidence.
  PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
  PREFIX foaf:   &lt;http://xmlns.com/foaf/0.1/&gt;
  PREFIX activ:  &lt;http://www.bbc.co.uk/ontologies/activity/&gt;
- PREFIX wi: &lt;http://example.com/wi#&gt;
+ PREFIX wi: &lt;http://xmlns.com/wi#&gt;
  PREFIX skos: &lt;http://www.w3.org/2004/02/skos/core#&gt;
  PREFIX days: &lt;http://ontologi.es/days#&gt;
  PREFIX geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
