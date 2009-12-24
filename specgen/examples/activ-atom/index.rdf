@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:event="http://purl.org/NET/c4dn/event.owl#" 
+xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+xmlns:status="http://www.w3.org/2003/06/sw-vocab-status/ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:dc="http://purl.org/dc/elements/1.1/" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:vann="http://purl.org/vocab/vann/" 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:skos="http://www.w3.org/2004/02/skos/core#" 
+xmlns:days="http://ontologi.es/days#" 
+xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" 
+xmlns:aas="http://xmlns.com/aas#">
+
+	<owl:Ontology rdf:about="http://xmlns.com/aas#">
+		<vann:preferredNamespaceUri>http://xmlns.com/aas#</vann:preferredNamespaceUri>
+		<vann:preferredNamespacePrefix>aas</vann:preferredNamespacePrefix>
+		<dc:title>A mapping of Atom Activity Streams to RDF</dc:title>
+		<rdfs:comment>Draft vocabulary for mapping the Atom Activity streams work to RDF.</rdfs:comment>
+		<foaf:maker rdf:resource="http://it.linkedin.com/in/micheleminno"/>
+		<foaf:maker rdf:resource="http://identi.ca/user/30610"/>
+	</owl:Ontology>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Activity">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Activity</rdfs:label>
+		<rdfs:comment>A generic activity an agent performs on the web.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Actor">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Actor</rdfs:label>
+		<rdfs:comment>The agent who performs the activity, modelled as atom:author</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Annotation">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Annotation</rdfs:label>
+		<rdfs:comment>an extra text-based note added to an activity by the user.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Application">
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Actor"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Application</rdfs:label>
+		<rdfs:comment>An actor that is also an application @@can't find this in the spec@@.</rdfs:comment>
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Article">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>Article</rdfs:label>
+		<rdfs:comment>Articles generally consist of paragraphs of text, in some cases incorporating embedded media such as photos and inline hyperlinks to other resources.</rdfs:comment>
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Audio">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Article"/>
+		<rdfs:label>Audio</rdfs:label>
+		<rdfs:comment>audio content.</rdfs:comment>
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Bookmark">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>Bookmark</rdfs:label>
+		<rdfs:comment>pointer to some URL -- typically a web page.</rdfs:comment>
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Comment">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>Comment</rdfs:label>
+		<rdfs:comment>a textual response to another object. The comment object type MUST NOT be used for other kinds of replies, such as video replies or reviews. If an object has no explicit type but the object element has a thr:in-reply-to element a consumer SHOULD consider that object to be a comment.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Context">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Context</rdfs:label>
+		<rdfs:comment>describes the context of an activity.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Event">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+                <owl:sameAs rdf:resource="http://purl.org/dc/dcmitype/Event"/>
+		<rdfs:label>Event</rdfs:label>
+		<rdfs:comment>an event that occurs in a certain place during a particular interval of time.</rdfs:comment>
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://xmlns.com/aas#File">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>File</rdfs:label>
+		<rdfs:comment>some document or other file with no additional machine-readable semantics.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Group">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+                <owl:sameAs rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+		<rdfs:label>Group</rdfs:label>
+		<rdfs:comment>a collection of people which people can join and leave. </rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#GroupOfUsers">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Actor"/>
+		<rdfs:label>GroupOfUsers</rdfs:label>
+		<rdfs:comment>An actor that is also a group of users. @@eh? and where's this from?@@</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Join">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>Join</rdfs:label>
+		<rdfs:comment>the Actor has become a member of the Object. This specification only defines the meaning of this Verb when its Object is a group.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Located">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>Located</rdfs:label>
+		<rdfs:comment>the Actor is located in the Object.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Location">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Context"/>
+                <owl:sameAs rdf:resource="http://purl.org/dc/dcmitype/Location"/>
+		<rdfs:label>Location</rdfs:label>
+		<rdfs:comment>the location where the user was at the time the activity was performed. This may be an accurate geographic coordinate, a street address, a free-form location name or a combination of these.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#MediaCollection">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>MediaCollection</rdfs:label>
+		<rdfs:comment>Generic collection of media items.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#MediaContent">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>MediaContent</rdfs:label>
+		<rdfs:comment>a media item.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#MakeFriend">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>MakeFriend</rdfs:label>
+		<rdfs:comment>the Actor sets the creation of a friendship that is reciprocated by the object.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#MarkAsFavorite">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>MarkAsFavorite</rdfs:label>
+		<rdfs:comment>the Actor marked the Object as an item of special interest.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Mood">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Context"/>
+		<rdfs:label>Mood</rdfs:label>
+		<rdfs:comment>the mood of the user when the activity was performed. This is usually collected via an extra field in the user interface used to perform the activity. For the purpose of this schema, a mood is a freeform, short mood keyword or phrase along with an optional mood icon image.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Note">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>Note</rdfs:label>
+		<rdfs:comment>is intended for use in "micro-blogging" and in systems where users are invited to publish a timestamped "status".</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Object">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>Object</rdfs:label>
+		<rdfs:comment>the generic object of the activity.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Person">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+                <owl:sameAs rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+		<rdfs:label>Person</rdfs:label>
+		<rdfs:comment>a user account. This is often a person, but might also be a company or ficticious character that is being represented by a user account.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Photo">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#MediaContent"/>
+                <owl:sameAs rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+		<rdfs:label>Photo</rdfs:label>
+		<rdfs:comment>a graphical still image.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#PhotoAlbum">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#MediaCollection"/>
+		<rdfs:label>PhotoAlbum</rdfs:label>
+		<rdfs:comment>a collection of images.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Place">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+                <owl:sameAs rdf:resource="http://purl.org/dc/dcmitype/Location"/>
+		<rdfs:label>Place</rdfs:label>
+		<rdfs:comment>a location on Earth. @@can this be same as Location if Location is also?@@</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Playlist">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#MediaCollection"/>
+		<rdfs:label>Playlist</rdfs:label>
+		<rdfs:comment>an ordered list of time-based media items, such as video and audio objects.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Post">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>describes the act of posting or publishing an Object on the web. The implication is that before this Activity occurred the Object was not posted, and after the Activity has occurred it is posted or published.</rdfs:label>
+		<rdfs:comment>@@sameAs sioc something?@@</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Replies">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Context"/>
+		<rdfs:label>Replies</rdfs:label>
+		<rdfs:comment>Most social applications have a concept of "comments", "replies" or "responses" to social Objects. In many cases these are simple text messages, but any Object can in practice be a reply. A text-only reply SHOULD be represented using the comment object type. Replies of other types MUST carry the appropriate type and MUST NOT carry the comment object type. Replies, regardless of object type, SHOULD be represented using the thr:in-reply-to element. The act of posting a reply is represented by the post Verb as with "top-level" Objects.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#RSVP">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>RSVP</rdfs:label>
+		<rdfs:comment>indicates that the actor has made a RSVP ("Répondez s'il vous plaît") for the object, that is, he/she replied to an invite. This specification only defines the meaning of this verb when its object is an event. The use of this Verb is only appropriate when the RSVP was created by an explicit action by the actor. It is not appropriate to use this verb when a user has been added as an attendee by an event organiser or administrator.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Save">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>Save</rdfs:label>
+		<rdfs:comment>the Actor has called out the Object as being of interest primarily to him- or herself. Though this action MAY be shared publicly, the implication is that the Object has been saved primarily for the actor's own benefit rather than to show it to others as would be indicated by the "share" Verb .</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Service">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Context"/>
+		<rdfs:label>Service</rdfs:label>
+		<rdfs:comment>the Web Service where the activity is performed by the Actor.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Share">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>Share</rdfs:label>
+		<rdfs:comment>the Actor has called out the Object to readers. In most cases, the actor did not create the Object being shared, but is instead drawing attention to it.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Song">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:label>Song</rdfs:label>
+		<rdfs:comment>a song or a recording of a song. Objects of type Song might contain information about the song or recording, or they might contain some representation of the recording itself. In the latter case, the song SHOULD also be annotated with the "audio" object type and use its properties. Type "song" SHOULD only be used when the publisher can guarantee that the object is a song rather than merely a generic audio stream.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#StartFollowing">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>StartFollowing</rdfs:label>
+		<rdfs:comment>the Actor began following the activity of the Object. In most cases, the Object of this Verb will be a user, but it can potentially be of any type that can sensibly generate activity.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Tag">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Verb"/>
+		<rdfs:label>Tag</rdfs:label>
+		<rdfs:comment>the Actor has identified the presence of a Target inside an Object. The target of the "tag" verb gives the object in which the tag has been added. For example, if a user appears in a photo, the activity:object is the user and the activity:target is the photo.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Time">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Context"/>
+		<rdfs:label>Time</rdfs:label>
+		<rdfs:comment>contextual information about time</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#User">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#Actor"/>
+		<rdfs:label>User</rdfs:label>
+		<rdfs:comment>A user involved in an activity</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Verb">
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>verb</rdfs:label>
+		<rdfs:comment>a generic verb of an activity.</rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:about="http://xmlns.com/aas#Video">
+		<status:term_status>unstable</status:term_status>
+                <rdfs:subClassOf rdf:resource="http://xmlns.com/aas#MediaContent"/>
+                <owl:sameAs rdf:resource="http://purl.org/dc/dcmitype/MovingImage"/>
+		<rdfs:label>Video</rdfs:label>
+		<rdfs:comment>video content, which usually consists of a motion picture track and an audio track.</rdfs:comment>
+	</rdfs:Class>
+
+<!-- properties -->
+	<owl:ObjectProperty rdf:about="http://xmlns.com/aas#activityActor">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>activityActor</rdfs:label>
+		<rdfs:comment>relates the activity to its actor.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Activity"/>
+		<rdfs:range rdf:resource="http://xmlns.com/aas#Actor"/>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="http://xmlns.com/aas#activityContext">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>activityContext</rdfs:label>
+		<rdfs:comment>relates the activity to its context.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Activity"/>
+		<rdfs:range rdf:resource="http://xmlns.com/aas#Context"/>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="http://xmlns.com/aas#activityObject">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>activityObject</rdfs:label>
+		<rdfs:comment>relates the activity to its object.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Activity"/>
+		<rdfs:range rdf:resource="http://xmlns.com/aas#Verb"/>
+	</owl:ObjectProperty>
+
+	<owl:ObjectProperty rdf:about="http://xmlns.com/aas#activityVerb">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>activityVerb</rdfs:label>
+		<rdfs:comment>relates the activity to its verb.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Activity"/>
+		<rdfs:range rdf:resource="http://xmlns.com/aas#Verb"/>
+	</owl:ObjectProperty>
+
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#audioStream">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>audioStream</rdfs:label>
+		<rdfs:comment>he URL and metadata for the audio content itself. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type that matches audio/*.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Audio"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#avatar">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>avatar</rdfs:label>
+		<rdfs:comment>the URL and metadata for an image that represents the user or the group. The URL is represented as the value of the href attribute on an atom:link element with rel avatar and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked image. Processors MAY ignore avatars that are of an inappropriate size for their user interface. Publishers MAY include several images of different sizes.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Person"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Group"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#commenter">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>commenter</rdfs:label>
+		<rdfs:comment>who wrote the comment. Included as the content of the atom:title element. Many systems do not have the concept of a title or Actor for a comment; such systems MUST include an atom:title element with no text content. Processors SHOULD refer to such comments as simply being "a comment", with appropriate localization, if they are to be described in a sentence.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Comment"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/dcmitype/creator"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#content">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>content</rdfs:label>
+		<rdfs:comment>contains the content of atom:content element, either contains or links to the content of the entry.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Article"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Comment"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Note"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Photo"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Video"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#date">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>date</rdfs:label>
+		<rdfs:comment>the dateTime @@?@@</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Time"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#description">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>description</rdfs:label>
+		<rdfs:comment>The description or long caption assigned by the author. Included as the content of the media:description element (optional).</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Object"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#endDate">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>endDate</rdfs:label>
+		<rdfs:comment>the date and time that the event ends. Included via a cal:dtend element as defined in xCal.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Event"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#email">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>email</rdfs:label>
+		<rdfs:comment>the actor email.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Actor"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#fileUrl">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>fileUrl</rdfs:label>
+		<rdfs:comment>the value of the href attribute on an atom:link element with rel enclosure. Should there be multiple links with rel enclosure with different type attribute value, they are considered to be alternate representations of the file.</rdfs:comment>
+		<rdfs:domain rdf:resource="ttp://xmlns.com/aas#File"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#uri"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#geographicCoordinates">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>geographicCoordinates</rdfs:label>
+		<rdfs:comment>@@sameas w3c geo? @@ the latitude and longitude of the place as a point on Earth. Included via the geo:point element, i.e.: 45.256 -71.92.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Place"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#largerImage">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>largerImage</rdfs:label>
+		<rdfs:comment>The URL and metadata for a larger, ideally full-size version of the photo intended for standalone viewing. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked image. </rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Photo"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#name">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>name</rdfs:label>
+		<rdfs:comment>contains the content of atom:title element, set by the creator for Group, by the organizer for Event.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Object"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Service"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#playerApplet">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>playerApplet</rdfs:label>
+		<rdfs:comment>the URL and metadata for some kind of applet that will allow a user to view the video. The URL is represented as the value of the href attribute on an atom:link element with rel alternate and an appropriate type. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the ideal dimensions of the linked applet.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Video"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#RSVPConnotation">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>RSVPConnotation</rdfs:label>
+		<rdfs:comment>the connotation of the RSVP </rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#RSVP"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#serviceUrl">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>serviceUrl</rdfs:label>
+		<rdfs:comment></rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#ServiceUrl"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#url"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#summary">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>summary</rdfs:label>
+		<rdfs:comment>an introduction to or a summary of the full content (optional) for Article, a short description as provided by its organiser for Event, included as the content of the atom:summary element.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Article"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Event"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#startDateAndTime">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>startDateAndTime</rdfs:label>
+		<rdfs:comment>the date and time that the event begins. Included via a cal:dtstart element as defined in xCal.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Event"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#targetName">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>targetName</rdfs:label>
+		<rdfs:comment>the name of the item that is the target of the bookmark. Represented as the value of the title attribute on the atom:link element from which the target URL was obtained. </rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Bookmark"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#targetUrl">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>targetUrl</rdfs:label>
+		<rdfs:comment>the URL of the item that is the target of the bookmark. Represented as the value of the href attribute on an atom:link element with rel "related".</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Bookmark"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#url"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#thumbnail">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>thumbnail</rdfs:label>
+		<rdfs:comment>@@not sure this is really a literal@@ the URL and metadata for a thumbnail version of the item. The URL is represented as the value of the href attribute on an atom:link element with rel preview and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked item.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Bookmark"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#MediaCollection"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Photo"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Video"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#url">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>url</rdfs:label>
+		<rdfs:comment>he value of the href attribute on an atom:link element with a rel value of alternate and a type value of text/html.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Actor"/>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Object"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#url"/>
+	</owl:DatatypeProperty>
+	<owl:DatatypeProperty rdf:about="http://xmlns.com/aas#videoStream">
+                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+		<status:term_status>unstable</status:term_status>
+		<rdfs:label>videoStream</rdfs:label>
+		<rdfs:comment>@@not really a literal@@ the URL and metadata for the video content itself. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type that matches video/*.</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/aas#Video"/>
+                <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+
+<!-- other classes referred to but not defined here -->
+<!-- the labels are required in order for some of the queries to work propertly-->
+
+
+       <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Group">
+         <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+         <rdfs:label>Group</rdfs:label>
+       </rdfs:Class>
+       <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Person">
+         <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+         <rdfs:label>Person</rdfs:label>
+       </rdfs:Class>
+       <rdfs:Class rdf:about="http://purl.org/dc/dcmitype/Event">
+         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
+         <rdfs:label>Event</rdfs:label>
+       </rdfs:Class>
+       <rdfs:Class rdf:about="http://purl.org/dc/dcmitype/Location">
+         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
+         <rdfs:label>Location</rdfs:label>
+       </rdfs:Class>
+       <rdfs:Class rdf:about="http://purl.org/dc/dcmitype/StillImage">
+         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
+         <rdfs:label>StillImage</rdfs:label>
+       </rdfs:Class>
+       <rdfs:Class rdf:about="http://purl.org/dc/dcmitype/MovingImage">
+         <rdfs:isDefinedBy rdf:resource="http://purl.org/dc/dcmitype/"/>
+         <rdfs:label>MovingImage</rdfs:label>
+       </rdfs:Class>
+
+
+       <rdfs:Class rdf:about="http://www.w3.org/2001/XMLSchema#int">
+         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2001/XMLSchema#"/>
+         <rdfs:label>Integer</rdfs:label>
+       </rdfs:Class>
+
+       <rdfs:Class rdf:about="http://www.w3.org/2001/XMLSchema#string">
+         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2001/XMLSchema#"/>
+         <rdfs:label>String</rdfs:label>
+       </rdfs:Class>
+
+       <rdfs:Class rdf:about="http://www.w3.org/2001/XMLSchema#dateTime">
+         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2001/XMLSchema#"/>
+         <rdfs:label>String</rdfs:label>
+       </rdfs:Class>
+
+       <rdfs:Class rdf:about="http://www.w3.org/2001/XMLSchema#url">
+         <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2001/XMLSchema#"/>
+         <rdfs:label>String</rdfs:label>
+       </rdfs:Class>
+
+</rdf:RDF>

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <title>Activity Streams Ontology Specification</title>
+  <link href="http://xmlns.com/xmlns-style.css" rel="stylesheet"
+  type="text/css" />
+  <link href="http://xmlns.com/foaf/spec/index.rdf" rel="alternate"
+  type="application/rdf+xml" />
+  <link href="style.css" rel="stylesheet"
+  type="text/css" />
+</head>
+
+<body>
+  <h1>Atom Activity Streams RDF mapping</h1>
+
+  <h2>Namespace Document 21 September 2009 - <em>first draft</em></h2>
+
+  <dl>
+
+    <dt>This version (latest):</dt>
+
+    <dd><a href="20091224.html">20091224.html</a></dd>
+
+    <dt>Namespace:</dt>
+    <dd>http://xmlns.com/aas#</dd>
+
+    <dt>Previous version:</dt>
+
+    <dd><a href="activity_streams_ontology.html">activity_streams_ontology.html</a></dd>
+   
+    <dt>Authors:</dt>
+    <dd><a href="mailto:micheleminno@asemantics.com">Michele Minno</a>,
+    <a href="mailto:davide@asemantics.com">Davide Palmisano</a>
+    </dd>
+    
+
+    <dt>Contributors:</dt>
+
+    <dd>
+    <a href="mailto:libby@nicecupoftea.org">Libby Miller</a> and other 
+members of the NoTube Project (<a href=
+    "http://notube.tv/">NoTube</a>)
+    and the wider <a href="http://www.w3.org/2001/sw/interest/">RDF
+    and SemWeb developer community</a>. See <a href=
+    "#sec-ack">acknowledgements</a>.</dd>
+  </dl>
+
+  <p class="copyright">Copyright &copy; 2000-2007 NoTube Project EU FP7<br />
+  <br />
+
+  <!-- Creative Commons License -->
+   <a href="http://creativecommons.org/licenses/by/1.0/"><img 
+alt="Creative Commons License" style="border: 0; float: right; padding: 
+10px;" src="somerights.gif" /></a> This work is licensed under a <a 
+href="http://creativecommons.org/licenses/by/1.0/">Creative Commons 
+Attribution License</a>. This copyright applies to the <em>Atom Activity 
+Streams RDF mapping Vocabulary Specification</em> and accompanying 
+documentation in RDF. Atom Activity Streams RDF Mapping uses W3C's <a 
+href="http://www.w3.org/RDF/">RDF</a> technology, an open Web standard 
+that can be freely used by anyone.</p>
+
+  <hr />
+
+
+<h2 id="sec-status">Abstract</h2>
+
+<p> This specification describes the Atom Activity Streams Vocabulary 
+(AAS), defined as a dictionary of named properties and classes using 
+W3C's RDF technology, and specifically a mapping of the Atom Activity 
+Streams work to RDF. </p>
+
+  <div class="status">
+    <h2>Status of This Document</h2>
+
+    <p>This document is the second draft, and the first draft to have an RDF version</p>
+    <p>
+    See the <a href="#sec-changes">changes</a> section for details of the changes in this version of the specification.
+    </p>
+
+<h3>
+Notational Conventions</h3>
+
+<p>In this document, the following namespace prefixes are used for the
+      given namespace URI from the referenced specification:
+</p><table class="full" align="center" border="0" cellpadding="2" cellspacing="2">
+<col align="left"><col align="left"><col align="left">
+<tr><th align="left">Alias</th><th align="left">Namespace URI</th><th align="left">Specification</th></tr>
+
+<tr>
+<td align="left"><tt>aas:</tt>&nbsp;</td>
+<td align="left"><tt>http://xmlns.com/aas#</tt>&nbsp;</td>
+<td align="left">Atom Activity Streams Vocabulary</td>
+</tr>
+
+<tr>
+<td align="left"><tt>foaf:</tt>&nbsp;</td>
+<td align="left"><tt>http://xmlns.com/foaf/0.1/</tt>&nbsp;</td>
+<td align="left"><a class='info' href='http://xmlns.com/foaf/spec/'>Friend-of-a-friend ontology<span> </span></a> </td>
+</tr>
+
+<tr>
+<td align="left"><tt>dcterms:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/dc/terms/</tt>&nbsp;</td>
+<td align="left"><a class='info' href='http://dublincore.org/documents/dcmi-terms/'>DCMI Metadata Terms<span> </span></a> </td>
+</tr>
+
+
+<tr>
+<td align="left"><tt>atom:</tt>&nbsp;</td>
+<td align="left"><tt>http://www.w3.org/2005/Atom</tt>&nbsp;</td>
+<td align="left"><a class='info' href='#RFC4287'>The Atom Syndication Format<span> (</span><span class='info'>, &ldquo;The Atom Syndication Format,&rdquo; .</span><span>)</span></a> [RFC4287]</td>
+</tr>
+<tr>
+<td align="left"><tt>thr:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/syndication/thread/1.0</tt>&nbsp;</td>
+<td align="left"><a class='info' href='#RFC4685'>Atom Threading Extensions<span> (</span><span class='info'>Snell, J., &ldquo;Atom Threading Extensions,&rdquo; September&nbsp;2006.</span><span>)</span></a> [RFC4685]</td>
+</tr>
+<tr>
+<td align="left"><tt>activity:</tt>&nbsp;</td>
+<td align="left"><tt>http://activitystrea.ms/spec/1.0/</tt>&nbsp;</td>
+<td align="left"><a href="http://martin.atkins.me.uk/specs/activitystreams/atomactivity">Atom Activity Extensions</a></td>
+</tr>
+<tr>
+<td align="left"><tt>media:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/syndication/atommedia</tt>&nbsp;</td>
+<td align="left">Atom Media Extensions</td>
+</tr>
+<tr>
+<td align="left"><tt>cal:</tt>&nbsp;</td>
+<td align="left"><tt>urn:ietf:params:xml:ns:xcal</tt>&nbsp;</td>
+<td align="left">xCal</td>
+</tr>
+<tr>
+<td align="left"><tt>pc:</tt>&nbsp;</td>
+<td align="left"><tt>http://portablecontacts.net/schema/1.0</tt>&nbsp;</td>
+<td align="left">PortableContacts</td>
+</tr>
+<tr>
+<td align="left"><tt>geo:</tt>&nbsp;</td>
+<td align="left"><tt>http://www.georss.org/georss</tt>&nbsp;</td>
+<td align="left">GeoRSS</td>
+</tr>
+</table>
+<br clear="all" />
+
+<p>The choices of namespace prefix are arbitrary and not semantically
+      significant.
+</p>
+
+<h2 id="sec-toc">Table of Contents</h2>
+
+  <ul>
+    <li><a href="#sec-act">Atom Activity Streams</a></li>
+    <li><a href="#sec-glance">Atom Activity Streams Vocabulary at a glance</a></li>
+   
+    <li><a href="#sec-crossref">AAS cross-reference: Listing FOAF Classes and Properties</a></li>
+    <li><a href="#sec-ack">Acknowledgments</a></li>
+    <li><a href="#sec-changes">Recent Changes</a></li>
+  </ul>
+
+
+   <h2 id="sec-act">Activity Streams</h2>
+
+   <p><a href="http://activitystrea.ms/">The Activity Streams Atom 
+extensions format</a> is work to create extensions to Atom to represent 
+the kinds of activities that occur in social networking sites and 
+applications such as Facebook and MySpace. This document is a mapping 
+from that work to RDF and will follow it closely as it develops.</p>
+
+   <p> Here is an example of an Atom feed entry describing an activity 
+stream. Most of the content within the <entry> tag is traditional Atom, 
+and is the material that all popular Atom readers like Google 
+Reader and NewzCrawler use to render the content. The <activity:verb> 
+and <activity:object> tags are drawn from the Activity Streams 
+specification, and are the portions of the entry that applications 
+should program against.</p>
+ 
+  <div style="background-color: #feb; border: 1px solid #fd8; font-family: Monaco,monospace; padding: 5px; line-height: 1.3em; white-space:pre">&lt;entry&gt;
+  &lt;title&gt;Snapshot Smith uploaded a photo.&lt;/title&gt;
+  &lt;id&gt;http://www.facebook.com/album.php?aid=6&amp;id=499225643&amp;ref=at&lt;/id&gt;
+  &lt;link href=&quot;http://www.facebook.com/album.php?aid=6&amp;id=499225643&amp;ref=at&quot; /&gt;
+  &lt;published&gt;2009-04-06T21:23:00-07:00&lt;/published&gt;
+  &lt;updated&gt;2009-04-06T21:23:00-07:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Snapshot Smith&lt;/name&gt;
+    &lt;uri&gt;http://www.facebook.com/people/Snapshot-Smith/499225643&lt;/uri&gt; 
+  &lt;/author&gt;
+  &lt;category term=&quot;Upload Photos&quot; label=&quot;Upload Photos&quot; /&gt;
+  &lt;activity:verb&gt;
+    http://activitystrea.ms/schema/1.0/post/
+  &lt;/activity:verb&gt;
+  &lt;activity:object&gt;
+    &lt;id&gt;http://www.facebook.com/photo.php?pid=28&amp;id=499225643&amp;ref=at&lt;/id&gt;
+    &lt;thumbnail&gt;http://photos-e.ak.fbcdn.net/photos-ak-snc1/v2692/195/117/499225643/s499225643_28_6861716.jpg&lt;/thumbnail&gt; 
+    &lt;caption&gt;A very attractive wall, indeed.&lt;/caption&gt;
+    &lt;published&gt;2009-04-06T21:23:00-07:00&lt;/published&gt;
+    &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;http://www.facebook.com/photo.php?pid=28&amp;id=499225643&amp;ref=at&quot; /&gt;
+    &lt;activity:object-type&gt;
+      http://activitystrea.ms/schema/1.0/photo/
+    &lt;/activity:object-type&gt;
+  &lt;/activity:object&gt;
+&lt;/entry&gt; </div>
+ <h2 id="sec-glance">Atom Activity Streams Vocabulary (AAS) at a glance</h2>
+ 
+ <img src="activity_stream_UML.png" alt="image of the schema"/>
+
+ <p>An a-z index of AAS terms, by class (categories or types) and
+  by property.</p>
+
+
+<!-- summary a-z -->
+%s
+
+
+    <p>AAS terms, grouped in broad categories.</p>
+
+    <div class="rdf-proplist">
+      <h3>Actor types</h3>
+
+      <ul>
+        <li><a href="#term_Appication">Application</a></li>
+		<li><a href="#term_GroupOfUsers">GroupOfUsers</a></li>
+		<li><a href="#term_User">User</a></li>
+	  </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Object types</h3>
+
+      <ul>
+        <li><a href="#term_Article">Article</a></li>
+		<li><a href="#term_Audio">Audio</a></li>
+        <li><a href="#term_BlogEntry">BlogEntry</a></li>
+		<li><a href="#term_Bookmark">Bookmark</a></li>
+        <li><a href="#term_Comment">Comment</a></li>
+        <li><a href="#term_Event">Event</a></li>
+	    <li><a href="#term_File">File</a></li>
+        <li><a href="#term_Group">Group</a></li>
+		<li><a href="#term_MediaCollection">MediaCollection</a></li>
+		<li><a href="#term_MediaContent">MediaContent</a></li>
+		<li><a href="#term_Note">Note</a></li>
+		<li><a href="#term_Person">Person</a></li>
+		<li><a href="#term_Photo">Photo</a></li>
+		<li><a href="#term_PhotoAlbum">PhotoAlbum</a></li>
+		<li><a href="#term_Place">Place</a></li>
+		<li><a href="#term_Playlist">Playlist</a></li>
+		<li><a href="#term_Song">Song</a></li>
+		<li><a href="#term_Time">Time</a></li>
+		<li><a href="#term_Verb">Verb</a></li>
+		<li><a href="#term_Video">Video</a></li>
+      </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Verb types</h3>
+
+      <ul>
+		<li><a href="#term_Located">Located</a></li>
+        <li><a href="#term_Join">Join</a></li>
+		<li><a href="#term_MakeFriend">MakeFriend</a></li>
+		<li><a href="#term_MarkAsFavorite">MarkAsFavorite</a></li>
+		<li><a href="#term_Play">Play</a></li>
+		<li><a href="#term_Post">Post</a></li>
+		<li><a href="#term_RSVP">RSVP</a></li>
+		<li><a href="#term_Save">Save</a></li>
+		<li><a href="#term_Share">Share</a></li>
+		<li><a href="#term_StartFollowing">StartFollowing</a></li>
+		<li><a href="#term_Tag">Tag</a></li>
+	  </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Context types</h3>
+
+      <ul>
+		<li><a href="#term_Annotation">Annotation</a></li>
+		<li><a href="#term_Location">Location</a></li> 
+		<li><a href="#term_Mood">Mood</a></li>
+		<li><a href="#term_Replies">Replies</a></li>
+		<li><a href="#term_Service">Service</a></li>
+      </ul>
+    </div>
+    <div style="clear: left;"></div>
+
+  
+  <div style="clear: left;"></div>
+
+    <h2 id="sec-crossref">AAS cross-reference: Listing AAS Classes and
+  Properties</h2>
+
+  <p>AAS introduces the following classes and properties. The RDF/XML version is linked from the top of this document.</p>
+
+  <!-- the following is the script-generated list of classes and properties -->
+
+<!-- this is the a-z listing -->
+%s
+
+ 
+<!-- and this is the bulk of the vocab descriptions -->
+%s
+  
+<h2>Validation queries</h2>
+
+
+<h2 id="sec-changes">Recent Changes</h2>
+
+<ul>
+<li>Reworded slightly to change emphasis from ontology to a mapping of an existing vocabulary (the Atom Activity Streams format) to RDF. In consequence, changed the namespace.</li>
+<li>Created RDF/XML version of spec.</li>
+<li>Marked everything as unstable for now.</li>
+<li>Changed literals to xsd:Strings</li>
+</ul>
+
+<h3>Previous Changes</h3>
+   
+</body>
+</html>

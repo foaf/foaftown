@@ -1,0 +1,1889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+  <title>Activity Streams Ontology Specification</title>
+  <link href="http://xmlns.com/xmlns-style.css" rel="stylesheet"
+  type="text/css" />
+  <link href="http://xmlns.com/foaf/spec/index.rdf" rel="alternate"
+  type="application/rdf+xml" />
+<style type="text/css">
+/*<![CDATA[*/
+
+body {
+
+ margin-left: 4em;
+ margin-right: 9em;
+ text-align: justify;
+}
+
+.termdetails {
+}
+
+div.specterm {
+
+        border: 1px solid black;
+  	background: 	#F0F0F0  ;
+	  padding: 1em;
+}
+
+
+div.rdf-proplist {
+        background-color: #ddf;
+        border: 1px solid black;
+        float: left;
+/*        width: 26%; */
+        margin: 0.3em 1%; 
+}
+img { border: 0 } 
+
+.example {
+        border: 1px solid black;
+        background-color: #D9E3E9; 
+	padding: 5px;
+	width: 100%;
+}
+
+ .editorial {
+        border: 2px solid green;
+        padding: 5px;
+}
+
+div.rdf-classlist {
+        background-color: #eef;
+        border: 1px solid black;
+        float: left;
+        margin: 0.3em 1%;
+        width: 26%;
+}
+
+div.rdf-proplist h3 {
+        background-color: #bbf;
+        font-size: 100%;
+        margin: 0;
+        padding: 5px;
+}
+
+div.rdf-classlist h3 {
+        background-color: #ccf;
+        font-size: 100%;
+        margin: 0;
+        padding: 5px;
+}
+
+specterm.h3 {
+/*      foreground-color: #000; */
+        background-color: #bbf;
+        font-size: 100%;
+        margin: 0;
+        padding: 3px;
+}
+
+
+/*]]>*/
+</style>
+</head>
+
+<body>
+  <h1>Activity Streams Ontology Specification 0.1<br /></h1>
+
+  <h2>Namespace Document 21 September 2009 - <em>first draft</em></h2>
+
+  <dl>
+
+    <dt>This version:</dt>
+
+    <dd><a href=
+    "http://spqr.asemantics.com/~mminno/activity_streams_ontology.html">activity_streams_ontology.html</a> (in rdf soon)</dd>
+
+	<dt>Namespace:</dt>
+    <dd>http://xmlns.com/aso/0.1/</dd>
+    <dt>Latest version:</dt>
+   
+    <dt>Previous version:</dt>
+   
+    <dt>Authors:</dt>
+    <dd><a href="mailto:micheleminno@asemantics.com">Michele Minno</a>,
+    <a href="mailto:davide@asemantics.com">Davide Palmisano</a></dd>
+
+    <dt>Contributors:</dt>
+
+    <dd>Members of the NoTube Project (<a href=
+    "http://notube.tv/">NoTube</a>)
+    and the wider <a href="http://www.w3.org/2001/sw/interest/">RDF
+    and SemWeb developer community</a>. See <a href=
+    "#sec-ack">acknowledgements</a>.</dd>
+  </dl>
+
+  <p class="copyright">Copyright &copy; 2000-2007 NoTube Project EU FP7<br />
+  <br />
+
+  <!-- Creative Commons License -->
+   <a href="http://creativecommons.org/licenses/by/1.0/"><img alt=
+  "Creative Commons License" style="border: 0; float: right; padding: 10px;" src=
+  "somerights.gif" /></a> This work is licensed under a <a href=
+  "http://creativecommons.org/licenses/by/1.0/">Creative Commons
+  Attribution License</a>. This copyright applies to the <em>Activity Streams
+  Vocabulary Specification</em> and accompanying documentation in RDF.
+ Regarding underlying technology, Activity Streams uses W3C's <a href="http://www.w3.org/RDF/">RDF</a> technology, an
+  open Web standard that can be freely used by anyone.</p>
+
+  <hr />
+
+
+<h2 id="sec-status">Abstract</h2>
+<p>
+This specification describes the Activity Streams Ontology (ASO), defined as a dictionary of named 
+properties and classes using W3C's RDF technology.
+</p>
+
+  <div class="status">
+    <h2>Status of This Document</h2>
+
+    <p>
+		This document is in a initial and draft status.
+	</p>
+<p>
+As usual, see the <a href="#sec-changes">changes</a> section for details of the changes in this version of the specification.
+</p>
+
+
+  
+
+
+<h3>
+Notational Conventions</h3>
+
+<p>In this document, the following namespace prefixes are used for the
+      given namespace URI from the referenced specification:
+</p><table class="full" align="center" border="0" cellpadding="2" cellspacing="2">
+<col align="left"><col align="left"><col align="left">
+<tr><th align="left">Alias</th><th align="left">Namespace URI</th><th align="left">Specification</th></tr>
+
+<tr>
+<td align="left"><tt>aso:</tt>&nbsp;</td>
+<td align="left"><tt>http://xmlns.com/aso/0.1/</tt>&nbsp;</td>
+<td align="left">Activity Streams Ontology</td>
+</tr>
+
+<tr>
+<td align="left"><tt>foaf:</tt>&nbsp;</td>
+<td align="left"><tt>http://xmlns.com/foaf/0.1/</tt>&nbsp;</td>
+<td align="left"><a class='info' href='http://xmlns.com/foaf/spec/'>Friend-of-a-friend ontology<span> </span></a> </td>
+</tr>
+
+<tr>
+<td align="left"><tt>dcterms:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/dc/terms/</tt>&nbsp;</td>
+<td align="left"><a class='info' href='http://dublincore.org/documents/dcmi-terms/'>DCMI Metadata Terms<span> </span></a> </td>
+</tr>
+
+
+<tr>
+<td align="left"><tt>atom:</tt>&nbsp;</td>
+<td align="left"><tt>http://www.w3.org/2005/Atom</tt>&nbsp;</td>
+<td align="left"><a class='info' href='#RFC4287'>The Atom Syndication Format<span> (</span><span class='info'>, &ldquo;The Atom Syndication Format,&rdquo; .</span><span>)</span></a> [RFC4287]</td>
+</tr>
+<tr>
+<td align="left"><tt>thr:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/syndication/thread/1.0</tt>&nbsp;</td>
+<td align="left"><a class='info' href='#RFC4685'>Atom Threading Extensions<span> (</span><span class='info'>Snell, J., &ldquo;Atom Threading Extensions,&rdquo; September&nbsp;2006.</span><span>)</span></a> [RFC4685]</td>
+</tr>
+<tr>
+<td align="left"><tt>activity:</tt>&nbsp;</td>
+<td align="left"><tt>http://activitystrea.ms/spec/1.0/</tt>&nbsp;</td>
+<td align="left">Atom Activity Extensions</td>
+</tr>
+<tr>
+<td align="left"><tt>media:</tt>&nbsp;</td>
+<td align="left"><tt>http://purl.org/syndication/atommedia</tt>&nbsp;</td>
+<td align="left">Atom Media Extensions</td>
+</tr>
+<tr>
+<td align="left"><tt>cal:</tt>&nbsp;</td>
+<td align="left"><tt>urn:ietf:params:xml:ns:xcal</tt>&nbsp;</td>
+<td align="left">xCal</td>
+</tr>
+<tr>
+<td align="left"><tt>pc:</tt>&nbsp;</td>
+<td align="left"><tt>http://portablecontacts.net/schema/1.0</tt>&nbsp;</td>
+<td align="left">PortableContacts</td>
+</tr>
+<tr>
+<td align="left"><tt>geo:</tt>&nbsp;</td>
+<td align="left"><tt>http://www.georss.org/georss</tt>&nbsp;</td>
+<td align="left">GeoRSS</td>
+</tr>
+</table>
+<br clear="all" />
+
+<p>The choices of namespace prefix are arbitrary and not semantically
+      significant.
+</p>
+
+<h2 id="sec-toc">Table of Contents</h2>
+
+  <ul>
+	<li><a href="#sec-act">Activity Streams</a></li>
+    <li><a href="#sec-glance">Activity Streams Ontologty at a glance</a></li>
+   
+    <li><a href="#sec-crossref">ASO cross-reference: Listing FOAF Classes and Properties</a></li>
+    <li><a href="#sec-ack">Acknowledgments</a></li>
+    <li><a href="#sec-changes">Recent Changes</a></li>
+  </ul>
+
+
+   <h2 id="sec-act">Activity Streams</h2>
+
+   <p> Here follows an example of feed entry describing an activity stream. Most of the content within the <entry> tag is traditional Atom, and is the very material that all popular Atom readers like Google Reader and NewzCrawler use to render the content. The <activity:verb> and <activity:object> tags are drawn from the Activity Streams specification, and are the portions of the entry that applications should program against.</p>
+ 
+  <div style="background-color: #feb; border: 1px solid #fd8; font-family: Monaco,monospace; padding: 5px; line-height: 1.3em; white-space:pre">&lt;entry&gt;
+  &lt;title&gt;Snapshot Smith uploaded a photo.&lt;/title&gt;
+  &lt;id&gt;http://www.facebook.com/album.php?aid=6&amp;id=499225643&amp;ref=at&lt;/id&gt;
+  &lt;link href=&quot;http://www.facebook.com/album.php?aid=6&amp;id=499225643&amp;ref=at&quot; /&gt;
+  &lt;published&gt;2009-04-06T21:23:00-07:00&lt;/published&gt;
+  &lt;updated&gt;2009-04-06T21:23:00-07:00&lt;/updated&gt;
+  &lt;author&gt;
+    &lt;name&gt;Snapshot Smith&lt;/name&gt;
+    &lt;uri&gt;http://www.facebook.com/people/Snapshot-Smith/499225643&lt;/uri&gt; 
+  &lt;/author&gt;
+  &lt;category term=&quot;Upload Photos&quot; label=&quot;Upload Photos&quot; /&gt;
+  &lt;activity:verb&gt;
+    http://activitystrea.ms/schema/1.0/post/
+  &lt;/activity:verb&gt;
+  &lt;activity:object&gt;
+    &lt;id&gt;http://www.facebook.com/photo.php?pid=28&amp;id=499225643&amp;ref=at&lt;/id&gt;
+    &lt;thumbnail&gt;http://photos-e.ak.fbcdn.net/photos-ak-snc1/v2692/195/117/499225643/s499225643_28_6861716.jpg&lt;/thumbnail&gt; 
+    &lt;caption&gt;A very attractive wall, indeed.&lt;/caption&gt;
+    &lt;published&gt;2009-04-06T21:23:00-07:00&lt;/published&gt;
+    &lt;link rel=&quot;alternate&quot; type=&quot;text/html&quot; href=&quot;http://www.facebook.com/photo.php?pid=28&amp;id=499225643&amp;ref=at&quot; /&gt;
+    &lt;activity:object-type&gt;
+      http://activitystrea.ms/schema/1.0/photo/
+    &lt;/activity:object-type&gt;
+  &lt;/activity:object&gt;
+&lt;/entry&gt; </div>
+ <h2 id="sec-glance">Activity Streams Ontology (ASO) at a glance</h2>
+ 
+ <img src="activity_stream_UML.png" alt="image of the schema"/>
+
+ <p>An a-z index of ASO terms, by class (categories or types) and
+  by property.</p>
+
+
+<div style="padding: 5px; border: solid; background-color: #ddd;">
+<p>Classes: <a href="#term_Activity">Activity</a> | <a href="#term_Actor">Actor</a> |  <a href="#term_Annotation">Annotation</a> |  <a href="#term_Application">Application</a> | <a href="#term_Article">Article</a> |  <a href="#term_Audio">Audio</a> |  <a href="#term_BlogEntry">BlogEntry</a> | <a href="#term_Bookmark">Bookmark</a> | <a href="#term_Comment">Comment</a>  |  <a href="#term_Context">Context</a> |  <a href="#term_Event">Event</a> |  <a href="#term_File">File</a> |  <a href="#term_Group">Group</a>  |  <a href="#term_GroupOfUsers">GroupOfUsers</a> | <a href="#term_Join">Join</a> |  <a href="#term_Location">Location</a> |  <a href="#term_MediaCollection">MediaCollection</a> | <a href="#term_MediaContent">MediaContent</a>  |  <a href="#term_MakeFriend">MakeFriend</a>  |  <a href="#term_MarkAsFavorite">MarkAsFavorite</a>|  <a href="#term_Mood">Mood</a> | <a href="#term_Note">Note</a>  |  <a href="#term_Object">Object</a> | <a href="#term_Person">Person</a> |  <a href="#term_Photo">Photo</a>  |  <a href="#term_PhotoAlbum">PhotoAlbum</a> |  <a href="#term_Place">Place</a>  |  <a href="#term_Play">Play</a> |  <a href="#term_Playlist">Playlist</a> |  <a href="#term_Post">Post</a> |  <a href="#term_Replies">Replies</a> |  <a href="#term_RSVP">RSVP</a> |  <a href="#term_Save">Save</a> |  <a href="#term_Service">Service</a> |  <a href="#term_Share">Share</a> |  <a href="#term_Song">Song</a> |  <a href="#term_StartFollowing">StartFollowing</a>  |  <a href="#term_Tag">Tag</a>       |  <a href="#term_Time">Time</a>       |  <a href="#term_User">User</a> | <a href="#term_Verb">Verb</a>   |  <a href="#term_Video">Video</a>
+</p>
+<p>Properties: <a href="#term_activityActor">activityActor</a>  | <a href="#term_activityContext">activityContext</a>  | <a href="#term_activityObject">activityObject</a> | <a href="#term_activityVerb">activityVerb</a> | 
+
+<a href="#term_actorUrl">actorUrl</a> |
+<a href="#term_audioStream">audioStream</a> |
+<a href="#term_avatar">avatar</a> |
+<a href="#term_commenter">commenter</a> |
+<a href="#term_content">content</a> |
+<a href="#term_description">date</a> |
+<a href="#term_description">description</a> |
+<a href="#term_email">email</a> |
+<a href="#term_endDateAndTime">endDateAndTime</a> |
+<a href="#term_fileUrl">fileUrl</a> |
+<a href="#term_geographicCoordinates">geographicCoordinates</a> |
+<a href="#term_largerImage">largerImage</a> |
+<a href="#term_name">name</a> |
+<a href="#term_playerApplet">playerApplet</a> |
+<a href="#term_RSVPConnotation">RSVPConnotation</a> |
+<a href="#term_serviceUrl">serviceUrl</a> |
+<a href="#term_summary">summary</a> |
+<a href="#term_startDateAndTime">startDateAndTime</a> |
+<a href="#term_targetName">targetName</a> |
+<a href="#term_targetUrl">targetUrl</a> |
+<a href="#term_thumbnail">thumbnail</a> |
+<a href="#term_url">url</a> |
+<a href="#term_videoStream">videoStream</a>
+
+
+
+
+                    
+</p>
+</div>
+
+
+
+    <p>ASO terms, grouped in broad categories.</p>
+
+    <div class="rdf-proplist">
+      <h3>Actor types</h3>
+
+      <ul>
+        <li><a href="#term_Appication">Application</a></li>
+		<li><a href="#term_GroupOfUsers">GroupOfUsers</a></li>
+		<li><a href="#term_User">User</a></li>
+	  </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Object types</h3>
+
+      <ul>
+        <li><a href="#term_Article">Article</a></li>
+		<li><a href="#term_Audio">Audio</a></li>
+        <li><a href="#term_BlogEntry">BlogEntry</a></li>
+		<li><a href="#term_Bookmark">Bookmark</a></li>
+        <li><a href="#term_Comment">Comment</a></li>
+        <li><a href="#term_Event">Event</a></li>
+	    <li><a href="#term_File">File</a></li>
+        <li><a href="#term_Group">Group</a></li>
+		<li><a href="#term_MediaCollection">MediaCollection</a></li>
+		<li><a href="#term_MediaContent">MediaContent</a></li>
+		<li><a href="#term_Note">Note</a></li>
+		<li><a href="#term_Person">Person</a></li>
+		<li><a href="#term_Photo">Photo</a></li>
+		<li><a href="#term_PhotoAlbum">PhotoAlbum</a></li>
+		<li><a href="#term_Place">Place</a></li>
+		<li><a href="#term_Playlist">Playlist</a></li>
+		<li><a href="#term_Song">Song</a></li>
+		<li><a href="#term_Time">Time</a></li>
+		<li><a href="#term_Verb">Verb</a></li>
+		<li><a href="#term_Video">Video</a></li>
+      </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Verb types</h3>
+
+      <ul>
+		<li><a href="#term_Located">Located</a></li>
+        <li><a href="#term_Join">Join</a></li>
+		<li><a href="#term_MakeFriend">MakeFriend</a></li>
+		<li><a href="#term_MarkAsFavorite">MarkAsFavorite</a></li>
+		<li><a href="#term_Play">Play</a></li>
+		<li><a href="#term_Post">Post</a></li>
+		<li><a href="#term_RSVP">RSVP</a></li>
+		<li><a href="#term_Save">Save</a></li>
+		<li><a href="#term_Share">Share</a></li>
+		<li><a href="#term_StartFollowing">StartFollowing</a></li>
+		<li><a href="#term_Tag">Tag</a></li>
+	  </ul>
+    </div>
+
+    <div class="rdf-proplist">
+      <h3>Context types</h3>
+
+      <ul>
+		<li><a href="#term_Annotation">Annotation</a></li>
+		<li><a href="#term_Location">Location</a></li> 
+		<li><a href="#term_Mood">Mood</a></li>
+		<li><a href="#term_Replies">Replies</a></li>
+		<li><a href="#term_Service">Service</a></li>
+      </ul>
+    </div>
+    <div style="clear: left;"></div>
+
+  
+  <div style="clear: left;"></div>
+
+    <h2 id="sec-crossref">ASO cross-reference: Listing ASO Classes and
+  Properties</h2>
+
+  <p>ASO introduces the following classes and properties. View
+  this document's source markup to see the RDF/XML version.</p>
+  <!-- the following is the script-generated list of classes and properties -->
+  
+<h3>Classes and Properties (full detail)</h3><div class='termdetails'><br /><div class="specterm" id="term_Agent">
+
+
+<div id="term_Activity">
+<h3>Class: aso:Activity</h3>
+<em>Activity</em> - A generic activity people performs on the web. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td> </td></tr><tr><th>in-domain-of:</th><td> <a href="#term_activityActor">activityActor</a>  | <a href="#term_activityContext">activityContext</a>  | <a href="#term_activityObject">activityObject</a> | <a href="#term_activityVerb">activityVerb</a> </td></tr></table>
+</div>
+
+
+<div id="term_Actor">
+<h3>Class: aso:Actor</h3>
+<em>Actor</em> - Who performs the activity, modelled as atom:author <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td><a href="#term_activityActor">activityActor</a></td></tr><tr><th>in-domain-of:</th><td><a href="#term_name">name</a> | <a href="#term_url">url</a> | <a href="#term_email">email</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://rdfs.org/sioc/spec/#term_User">sioc:User</a></td></tr>
+</table>
+</div
+
+
+<div id="term_Annotation">
+<h3>Class: aso:Annotation</h3>
+<em>Annotation</em> - an extra text-based note added to an activity by the user. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr></table>
+</div>
+
+
+<div id="term_Application">
+<h3>Class: aso:Application</h3>
+<em>Application</em> - An actor performed by an application. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Actor">Actor</a></td></tr></table>
+</div>
+
+
+<div id="term_Article">
+<h3>Class: aso:Article</h3>
+<em>Article</em> - Articles generally consist of paragraphs of text, in some cases incorporating embedded media such as photos and inline hyperlinks to other resources. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr>
+<tr><th>in-domain-of:</th><td> <a href="#term_name">name</a> | <a href="#term_summary">summary</a> | <a href="#term_content">content</a> </td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+<div id="term_Audio">
+<h3>Class: aso:Audio</h3>
+<em>Article</em> - audio content. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td><a href="#term_audioStream">audioStream</a> | <a href="#term_playerApplet">playerApplet</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_MediaContent">MediaContent</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-Sound">dcterms:Sound</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_BlogEntry">
+<h3>Class: aso:BlogEntry</h3>
+<em>BlogEntry</em> - BlogEntry is a specialization of the "article" object type, so publishers SHOULD also include the object type URL for the "article" object type when publishing object entries of this type. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Article">Article</a></td></tr></table>
+</div>
+
+
+<div id="term_Bookmark">
+<h3>Class: aso:Bookmark</h3>
+<em>Bookmark</em> - a pointer to some URL -- typically a web page. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a>
+| <a href="#term_targetUrl">targetUrl</a>
+| <a href="#term_targetName">targetName</a>
+| <a href="#term_thumbnail">thumbnail</a>
+| <a href="#term_description">description</a>
+| <a href="#term_content">content</a>
+
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+
+<div id="term_Comment">
+<h3>Class: aso:Comment</h3>
+<em>Comment</em> - a textual response to another object. The comment object type MUST NOT be used for other kinds of replies, such as video replies or reviews.
+If an object has no explicit type but the object element has a thr:in-reply-to element a consumer SHOULD consider that object to be a comment.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+
+<a href="#term_commenter">commenter</a>
+| <a href="#term_content">content</a>
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+
+
+<div id="term_Context">
+<h3>Class: aso:Context</h3>
+<em>Context</em> - describes the context of an activity. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td><a href="#term_activityContext">activityContext</a></td></tr><tr><th>in-domain-of:</th><td></td></tr></table>
+</div>
+
+
+<div id="term_Event">
+<h3>Class: aso:Event</h3>
+<em>Event</em> - an event that occurs in a certain place during a particular interval of time. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a>
+| <a href="#term_startDateAndTime">startDateAndTime</a>
+| <a href="#term_endDateAndTime">endDateAndTime</a>
+| <a href="#term_summary">summary</a>
+
+
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-Event">dcterms:Event</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_File">
+<h3>Class: aso:File</h3>
+<em>File</em> - some document or other file with no additional machine-readable semantics. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td><a href="#term_fileUrl">fileUrl</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+<div id="term_Group">
+<h3>Class: aso:Group</h3>
+<em>Group</em> - a collection of people which people can join and leave. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td><a href="#term_name">name</a> | <a href="#term_avatar">avatar</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://rdfs.org/sioc/spec/#term_Group">foaf:Group</a></td></tr>
+
+</table>
+</div>
+
+
+<div id="term_GroupOfUsers">
+<h3>Class: aso:GroupOfUsers</h3>
+<em>GroupOfUsers</em> - An actor performed by a group of users. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Actor">Actor</a></td></tr></table>
+</div>
+
+
+<div id="term_Join">
+<h3>Class: aso:Join</h3>
+<em>Join</em> - the Actor has become a member of the Object. This specification only defines the meaning of this Verb when its Object is a group. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+<div id="term_Located">
+<h3>Class: aso:Located</h3>
+<em>Located</em> - the Actor is located in Object.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+
+<div id="term_Location">
+<h3>Class: aso:Location</h3>
+<em>Location</em> - the location where the user was at the time the activity was performed. This may be an accurate geographic coordinate, a street address, a free-form location name or a combination of these.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-Location">dcterms:Location</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_MediaCollection">
+<h3>Class: aso:MediaCollection</h3>
+<em>MediaCollection</em> - Generic collection of media items. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a> |
+<a href="#term_description">description</a> | 
+<a href="#term_thumbnail">thumbnail</a> 
+
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+
+<div id="term_MediaContent">
+<h3>Class: aso:MediaContent</h3>
+<em>MediaContent</em> - a media item. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a> |
+<a href="#term_description">description</a> 
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+
+<div id="term_MakeFriend">
+<h3>Class: aso:MakeFriend</h3>
+<em>MakeFriend</em> - the Actor sets the creation of a friendship that is reciprocated by the object. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+<div id="term_MarkAsFavorite">
+<h3>Class: aso:MarkAsFavorite</h3>
+<em>MarkAsFavorite</em> - the Actor marked the Object as an item of special interest. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+
+<div id="term_Mood">
+<h3>Class: aso:Mood</h3>
+<em>Mood</em> - the mood of the user when the activity was performed. This is usually collected via an extra field in the user interface used to perform the activity. For the purpose of this schema, a mood is a freeform, short mood keyword or phrase along with an optional mood icon image. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr></table>
+</div>
+
+
+<div id="term_Note">
+<h3>Class: aso:Note</h3>
+<em>Note</em> - is intended for use in "micro-blogging" and in systems where users are invited to publish a timestamped "status".<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_content">content</a> 
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+
+<div id="term_Object">
+<h3>Class: aso:Object</h3>
+<em>Object</em> - the generic object of the activity.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td><a href="#term_activityObject">activityObject</a></td></tr><tr><th>in-domain-of:</th><td><a href="#term_name">name</a> | <a href="#term_description">description</a> | <a href="#term_url">url</a></td></tr></table>
+</div>
+
+<div id="term_Person">
+<h3>Class: aso:Person</h3>
+<em>Person</em> - a user account. This is often a person, but might also be a company or ficticious character that is being represented by a user account.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_avatar">avatar</a>
+
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://rdfs.org/sioc/spec/#term_Person">foaf:Person</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_Photo">
+<h3>Class: aso:Photo</h3>
+<em>Photo</em> - a graphical still image.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_largerImage">largerImage</a> |
+<a href="#term_content">content</a> | 
+<a href="#term_thumbnail">thumbnail</a> 
+
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_MediaContent">MediaContent</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-StillImage">dcterms:StillImage</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_PhotoAlbum">
+<h3>Class: aso:PhotoAlbum</h3>
+<em>PhotoAlbum</em> - a collection of images.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_MediaCollection">MediaCollection</a></td></tr></table>
+</div>
+
+
+<div id="term_Place">
+<h3>Class: aso:Place</h3>
+<em>Place</em> - a location on Earth.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a> |
+<a href="#term_geographicCoordinates">geographicCoordinates</a>
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-Location">dcterms:Location</a></td></tr>
+</table>
+</div>
+
+
+
+
+<div id="term_Playlist">
+<h3>Class: aso:Playlist</h3>
+<em>Playlist</em> - an ordered list of time-based media items, such as video and audio objects.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_MediaCollection">MediaCollection</a></td></tr></table>
+</div>
+
+
+<div id="term_Post">
+<h3>Class: aso:Post</h3>
+<em>Post</em> - describes the act of posting or publishing an Object on the web. The implication is that before this Activity occurred the Object was not posted, and after the Activity has occurred it is posted or published.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr>
+</table>
+</div>
+
+
+<div id="term_Replies">
+<h3>Class: aso:Replies</h3>
+<em>Replies</em> - Most social applications have a concept of "comments", "replies" or "responses" to social Objects. In many cases these are simple text messages, but any Object can in practice be a reply.
+
+A text-only reply SHOULD be represented using the comment object type. Replies of other types MUST carry the appropriate type and MUST NOT carry the comment object type.
+
+Replies, regardless of object type, SHOULD be represented using the thr:in-reply-to element.
+The act of posting a reply is represented by the post Verb as with "top-level" Objects.
+<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr></table>
+</div>
+
+
+<div id="term_RSVP">
+<h3>Class: aso:RSVP</h3>
+<em>RSVP</em> - indicates that the actor has made a RSVP ("Répondez s'il vous plaît") for the object, that is, he/she replied to an invite. This specification only defines the meaning of this verb when its object is an event. The use of this Verb is only appropriate when the RSVP was created by an explicit action by the actor. It is not appropriate to use this verb when a user has been added as an attendee by an event organiser or administrator.
+.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+
+<div id="term_Save">
+<h3>Class: aso:Save</h3>
+<em>Save</em> - the Actor has called out the Object as being of interest primarily to him- or herself. Though this action MAY be shared publicly, the implication is that the Object has been saved primarily for the actor's own benefit rather than to show it to others as would be indicated by the "share" Verb .<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+<div id="term_Service">
+<h3>Class: aso:Service</h3>
+<em>Service</em> - the Web Service where the activity is performed by the Actor.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td><a href="#term_name">name</a> | <a href="#term_serviceUrl">serviceUrl</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr></table>
+</div>
+
+<div id="term_Share">
+<h3>Class: aso:Share</h3>
+<em>Share</em> - the Actor has called out the Object to readers. In most cases, the actor did not create the Object being shared, but is instead drawing attention to it.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+<div id="term_Song">
+<h3>Class: aso:Song</h3>
+<em>Song</em> - a song or a recording of a song.
+Objects of type Song might contain information about the song or recording, or they might contain some representation of the recording itself. In the latter case, the song SHOULD also be annotated with the "audio" object type and use its properties. Type "song" SHOULD only be used when the publisher can guarantee that the object is a song rather than merely a generic audio stream.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+<a href="#term_name">name</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Object">Object</a></td></tr></table>
+</div>
+
+<div id="term_StartFollowing">
+<h3>Class: aso:StartFollowing</h3>
+<em>StartFollowing</em> -  the Actor began following the activity of the Object. In most cases, the Object of this Verb will be a user, but it can potentially be of any type that can sensibly generate activity.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+
+<div id="term_Tag">
+<h3>Class: aso:Tag</h3>
+<em>Tag</em> - the Actor has identified the presence of a Target inside an Object. The target of the "tag" verb gives the object in which the tag has been added. For example, if a user appears in a photo, the activity:object is the user and the activity:target is the photo.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Verb">Verb</a></td></tr></table>
+</div>
+
+<div id="term_Time">
+<h3>Class: aso:Time</h3>
+<em>Time</em> - contextual information about time<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td><a href="#term_date">date</a></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Context">Context</a></td></tr></table>
+</div>
+
+
+<div id="term_User">
+<h3>Class: aso:User</h3>
+<em>User</em> - An actor performed by a user. <br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td></td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_Actor">Actor</a></td></tr></table>
+</div>
+
+
+<div id="term_Verb">
+<h3>Class: aso:Verb</h3>
+<em>Verb</em> - a generic verb of an activity.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td><a href="#term_activityVerb">activityVerb</a></td></tr><tr><th>in-domain-of:</th><td></td></tr></table>
+</div>
+
+
+<div id="term_Video">
+<h3>Class: aso:Video</h3>
+<em>Video</em> - video content, which usually consists of a motion picture track and an audio track.<br /><table>
+	<tr><th>Status:</th>
+	<td>stable</td></tr>
+<tr><th>in-range-of:</th><td></td></tr><tr><th>in-domain-of:</th><td>
+
+<a href="#term_videoStream">videoStream</a> |
+<a href="#term_playerApplet">playerApplet</a> |
+<a href="#term_content">content</a> | 
+<a href="#term_thumbnail">thumbnail</a> 
+</td></tr>
+<tr><th>sub-class-of:</th><td><a href="#term_MediaContent">MediaContent</a></td></tr>
+<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#dcmitype-MovingImage">dcterms:MovingImage</a></td></tr>
+
+</table>
+</div>
+
+
+
+<!-- todo: write rdfs:domain statements for those properties -->
+<p style="float: right; font-size: small;">[<a href="#term_Agent">#</a>]</p>
+
+<p style="float: right; font-size: small;">[<a href="#glance">back to top</a>]</p>
+
+
+<br/>
+</div>
+
+<br />
+
+
+
+
+
+
+
+<br />
+
+
+
+<div class="specterm" id="term_activityActor">
+<h3>Property: aso:activityActor</h3>
+<em>activityActor</em> - relates the activity to its actor. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Activity">aso:Activity</a></td></tr>
+	<tr><th>Range:</th>
+	<td><a href="#term_Actor">aso:Actor</a> </td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_activityContext">
+<h3>Property: aso:activityContext</h3>
+<em>activityContext</em> - relates the activity to its context. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Activity">aso:Activity</a></td></tr>
+	<tr><th>Range:</th>
+	<td><a href="#term_Context">aso:Context</a> </td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_activityObject">
+<h3>Property: aso:activityObject</h3>
+<em>activityObject</em> - relates the activity to its object. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Activity">aso:Activity</a></td></tr>
+	<tr><th>Range:</th>
+	<td><a href="#term_Object">aso:Object</a> </td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_activityVerb">
+<h3>Property: aso:activityVerb</h3>
+<em>activityVerb</em> - relates the activity to its verb. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Activity">aso:Activity</a></td></tr>
+	<tr><th>Range:</th>
+	<td><a href="#term_Verb">aso:Verb</a> </td></tr>
+</table>
+</div>
+
+<br/>
+
+
+
+<div class="specterm" id="term_audioStream">
+<h3>Property: aso:audioStream</h3>
+<em>audioStream</em> - the URL and metadata for the audio content itself. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type that matches audio/*.
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Audio">aso:Audio</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_avatar">
+<h3>Property: aso:avatar</h3>
+<em>avatar</em> - the URL and metadata for an image that represents the user or the group. The URL is represented as the value of the href attribute on an atom:link element with rel avatar and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked image. Processors MAY ignore avatars that are of an inappropriate size for their user interface. Publishers MAY include several images of different sizes.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Person">aso:Person</a> | <a href="#term_Group">aso:Group</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_commenter">
+<h3>Property: aso:commenter</h3>
+<em>commenter</em> - who wrote the comment. Included as the content of the atom:title element. Many systems do not have the concept of a title or Actor for a comment; such systems MUST include an atom:title element with no text content. Processors SHOULD refer to such comments as simply being "a comment", with appropriate localization, if they are to be described in a sentence.
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Comment">aso:Comment</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+	<tr><th>sub-property-of:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#elements-creator">dcterms:creator</a></td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_content">
+<h3>Property: aso:content</h3>
+<em>content</em> - contains the content of atom:content element, either contains or links to the content of the entry. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Article">aso:Article</a> | <a href="#term_Note">aso:Comment</a> | <a href="#term_Note">aso:Note</a> | <a href="#term_Note">aso:Photo</a> | <a href="#term_Note">aso:Video</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_date">
+<h3>Property: aso:date</h3>
+<em>date</em> - the time date. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Time">aso:Time</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_description">
+<h3>Property: aso:description</h3>
+<em>description</em> - The description or long caption assigned by the author. Included as the content of the media:description element (optional).
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Object">aso:Object</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+	<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#elements-description">dcterms:description</a></td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_endDate">
+<h3>Property: aso:endDate</h3>
+<em>endDate</em> - the date and time that the event ends. Included via a cal:dtend element as defined in xCal.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Event">aso:Event</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_email">
+<h3>Property: aso:email</h3>
+<em>email</em> - the actor email.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Actor">aso:Actor</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_fileUrl">
+<h3>Property: aso:fileUrl</h3>
+<em>fileUrl</em> - the value of the href attribute on an atom:link element with rel enclosure. Should there be multiple links with rel enclosure with different type attribute value, they are considered to be alternate representations of the file.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_File">aso:File</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_geographicCoordinates">
+<h3>Property: aso:geographicCoordinates</h3>
+<em>geographicCoordinates</em> - the latitude and longitude of the place as a point on Earth. Included via the geo:point element, i.e.: <georss:point>45.256 -71.92</georss:point>.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Place">aso:Place</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_largerImage">
+<h3>Property: aso:largerImage</h3>
+<em>largerImage</em> - The URL and metadata for a larger, ideally full-size version of the photo intended for standalone viewing. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked image.
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Photo">aso:Photo</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_name">
+<h3>Property: aso:name</h3>
+<em>name</em> - contains the content of atom:title element, set by the creator for Group, by the organizer for Event.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Object">aso:Object</a> | <a href="#term_Service">aso:Service</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+	<tr><th>same-as:</th><td><a href="http://dublincore.org/documents/dcmi-terms/#elements-title">dcterms:title</a></td></tr>
+</table>
+</div>
+
+<br/>
+
+
+
+
+<div class="specterm" id="term_playerApplet">
+<h3>Property: aso:playerApplet</h3>
+<em>playerApplet</em> - the URL and metadata for some kind of applet that will allow a user to view the video. The URL is represented as the value of the href attribute on an atom:link element with rel alternate and an appropriate type. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the ideal dimensions of the linked applet. 
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Video">aso:Video</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_RSVPConnotation">
+<h3>Property: aso:RSVPConnotation</h3>
+<em>RSVPConnotation</em> - the connotation of the RSVP
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_RSVP">aso:RSVP</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+
+<div class="specterm" id="term_serviceUrl">
+<h3>Property: aso:serviceUrl</h3>
+<em>serviceUrl</em> - the url of the Web Service in the contextual information.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Service">aso:Service</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+
+
+<div class="specterm" id="term_summary">
+<h3>Property: aso:summary</h3>
+<em>summary</em> - an introduction to or a summary of the full content (optional) for Article, a short description as provided by its organiser for Event, included as the content of the atom:summary element.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Article">aso:Article</a> | <a href="#term_Event">aso:Event</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_startDateAndTime">
+<h3>Property: aso:startDateAndTime</h3>
+<em>startDate</em> - the date and time that the event begins. Included via a cal:dtstart element as defined in xCal.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Event">aso:Event</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+<div class="specterm" id="term_targetName">
+<h3>Property: aso:targetName</h3>
+<em>targetName</em> - the name of the item that is the target of the bookmark. Represented as the value of the title attribute on the atom:link element from which the target URL was obtained.
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Bookmark">aso:Bookmark</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_targetUrl">
+<h3>Property: aso:targetUrl</h3>
+<em>targetUrl</em> - the URL of the item that is the target of the bookmark. Represented as the value of the href attribute on an atom:link element with rel "related".<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Bookmark">aso:Bookmark</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_thumbnail">
+<h3>Property: aso:thumbnail</h3>
+<em>thumbnail</em> - the URL and metadata for a thumbnail version of the item. The URL is represented as the value of the href attribute on an atom:link element with rel preview and a type of either image/jpeg, image/png or image/gif. Publishers SHOULD include media:width and media:height attributes on the atom:link element describing the dimensions of the linked item.<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Bookmark">aso:Bookmark</a> | <a href="#term_MediaCollection">aso:MediaCollection</a> | <a href="#term_Photo">aso:Photo</a> | <a href="#term_Video">aso:Video</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_url">
+<h3>Property: aso:url</h3>
+<em>url</em> - the value of the href attribute on an atom:link element with a rel value of alternate and a type value of text/html. <br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Actor">aso:Actor</a> | <a href="#term_Object">aso:Object</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+<div class="specterm" id="term_videoStream">
+<h3>Property: aso:videoStream</h3>
+<em>videoStream</em> - the URL and metadata for the video content itself. The URL is represented as the value of the href attribute on an atom:link element with rel enclosure and a type that matches video/*. 
+<br /><table>
+	<tr><th>Status:</th>
+	<td>unstable</td></tr>
+	<tr><th>Domain:</th>
+	<td><a href="#term_Video">aso:Video</a></td></tr>
+	<tr><th>Range:</th>
+	<td>http://www.w3.org/2000/01/rdf-schema#Literal</td></tr>
+</table>
+</div>
+
+<br/>
+
+
+
+
+
+<!-- end of termlist -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h3 id="sec-ack">Acknowledgments</h3>
+
+  This work is based on the hard work done here: <br/><br/><a href="http://martin.atkins.me.uk/specs/activitystreams/activityschema">Activity Streams Schema</a>
+<!-- This is the FOAF formal vocabulary description, expressed using W3C RDFS and OWL markup. -->
+<!-- For more information about FOAF:                                            -->
+<!--   see the FOAF project homepage, http://www.foaf-project.org/               -->
+<!--   FOAF specification, http://xmlns.com/foaf/spec/                             -->
+<!--                                                                             -->
+<!-- first we introduce a number of RDF namespaces we will be using... -->
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#" 
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:wot="http://xmlns.com/wot/0.1/" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- Here we describe general characteristics of the FOAF vocabulary ('ontology'). -->
+  <owl:Ontology rdf:about="http://xmlns.com/foaf/0.1/" dc:title="Friend of a Friend (FOAF) vocabulary" dc:description="The Friend of a Friend (FOAF) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language." dc:date="$Date$">
+
+<!-- outdated    <rdfs:seeAlso rdf:resource="http://www.w3.org/2001/08/rdfweb/foaf"/> -->
+<!-- unfashionable, removing...
+	    	<owl:imports rdf:resource="http://www.w3.org/2000/01/rdf-schema"/>
+    		<owl:imports rdf:resource="http://www.w3.org/2002/07/owl"/> 		-->
+
+    <wot:assurance rdf:resource="../foafsig"/>
+    <wot:src_assurance rdf:resource="../htmlfoafsig"/>
+  </owl:Ontology>
+
+
+  <!-- OWL/RDF interop section - geeks only -->
+  <!--  most folk can ignore this lot. the game here is to make FOAF
+  	work with vanilla RDF/RDFS tools, and with the stricter OWL DL 
+	profile of OWL. At the moment we're in the OWL Full flavour of OWL. 
+	The following are tricks to try have the spec live in both worlds
+	at once. See
+		http://phoebus.cs.man.ac.uk:9999/OWL/Validator
+		http://www.mindswap.org/2003/pellet/demo.shtml
+	...for some tools that help. 					-->
+  <owl:AnnotationProperty rdf:about="http://xmlns.com/wot/0.1/assurance"/>
+  <owl:AnnotationProperty rdf:about="http://xmlns.com/wot/0.1/src_assurance"/>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+  <!--  DC terms are NOT annotation properties in general, so we consider the following 
+	claims scoped to this document. They may be removed in future revisions if
+	OWL tools become more flexible. -->
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+  <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+  <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Class"/>
+
+<!--  <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Literal"/> -->
+  <!-- end of OWL/RDF interop voodoo. mostly. -->
+
+  
+<!-- FOAF classes (types) are listed first. -->
+
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Person" rdfs:label="Person" rdfs:comment="A person." vs:term_status="stable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Person"/></rdfs:subClassOf>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent"/></rdfs:subClassOf>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Agent"/></rdfs:subClassOf>
+    <rdfs:subClassOf><owl:Class rdf:about="http://www.w3.org/2000/10/swap/pim/contact#Person"/></rdfs:subClassOf>
+    <rdfs:subClassOf><owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/></rdfs:subClassOf>
+    <!-- aside: 
+	are spatial things always spatially located? 
+	Person includes imaginary people... discuss... -->
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Document" rdfs:label="Document" rdfs:comment="A document." vs:term_status="testing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Project"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Organization" rdfs:label="Organization" rdfs:comment="An organization." vs:term_status="stable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Organization"/></rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Group" vs:term_status="stable" rdfs:label="Group" rdfs:comment="A class of Agents.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Agent" vs:term_status="stable" rdfs:label="Agent" rdfs:comment="An agent (eg. person, group, software or physical artifact).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Agent-3"/></rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Project" vs:term_status="unstable" rdfs:label="Project" rdfs:comment="A project (a collective endeavour of some kind).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Project"/></rdfs:subClassOf>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <owl:disjointWith rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+<!-- arguably a subclass of Agent; to be discussed -->
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Image" vs:term_status="testing" rdfs:label="Image" rdfs:comment="An image.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf><owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Document"/></rdfs:subClassOf>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/PersonalProfileDocument" rdfs:label="PersonalProfileDocument" rdfs:comment="A personal profile RDF document." vs:term_status="testing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Class>
+	
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount" vs:term_status="unstable" rdfs:label="Online Account" rdfs:comment="An online account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/OnlineGamingAccount" vs:term_status="unstable" rdfs:label="Online Gaming Account" rdfs:comment="An online gaming account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/OnlineEcommerceAccount" vs:term_status="unstable" rdfs:label="Online E-commerce Account" rdfs:comment="An online e-commerce account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/OnlineChatAccount" vs:term_status="unstable" rdfs:label="Online Chat Account" rdfs:comment="An online chat account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdfs:Class>
+<!-- FOAF properties (ie. relationships). -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/mbox" vs:term_status="stable" rdfs:label="personal mailbox" rdfs:comment="A 
+personal mailbox, ie. an Internet mailbox associated with exactly one owner, the first owner of this mailbox. This is a 'static inverse functional property', in that  there is (across time and change) at most one individual that ever has any particular value for foaf:mbox.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/mbox_sha1sum" vs:term_status="testing" rdfs:label="sha1sum of a personal mailbox URI name" rdfs:comment="The sha1sum of the URI of an Internet mailbox associated with exactly one owner, the  first owner of the mailbox.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+
+<!--
+put it back in again 2006-01-29 - see 
+http://chatlogs.planetrdf.com/swig/2006-01-29.html#T21-12-35
+I have mailed rdfweb-dev@vapours.rdfweb.org for discussion.
+Libby
+
+Commenting out as a kindness to OWL DL users. The semantics didn't quite cover
+our usage anyway, since (a) we want static-across-time, which is so beyond OWL as 
+to be from another planet (b) we want identity reasoning invariant across xml:lang 
+tagging. FOAF code will know what to do. OWL folks note, this assertion might return. 
+
+danbri
+-->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/gender" vs:term_status="testing" 
+rdfs:label="gender" 
+rdfs:comment="The gender of this Agent (typically but not necessarily 'male' or 'female').">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <!-- whatever one's gender is, and we are liberal in leaving room for more options 
+    than 'male' and 'female', we model this so that an agent has only one gender. -->
+  </rdf:Property>
+
+
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/geekcode" vs:term_status="testing" rdfs:label="geekcode" rdfs:comment="A textual geekcode for this person, see http://www.geekcode.com/geek.html">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/dnaChecksum" vs:term_status="unstable" rdfs:label="DNA checksum" rdfs:comment="A checksum for the DNA of some thing. Joke.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/sha1" vs:term_status="unstable" rdfs:label="sha1sum (hex)" rdfs:comment="A sha1sum hash, in hex.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+<!-- rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty" -->
+<!-- IFP under discussion -->
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/based_near" vs:term_status="unstable" rdfs:label="based near" rdfs:comment="A location that something is based near, for some broadly human notion of near.">
+<!-- see http://esw.w3.org/topic/GeoOnion for extension  ideas -->
+<!-- this was ranged as Agent... hmm -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+<!-- FOAF naming properties -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/title" vs:term_status="testing" rdfs:label="title" rdfs:comment="Title (Mr, Mrs, Ms, Dr. etc)">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/nick" vs:term_status="testing" rdfs:label="nickname" rdfs:comment="A short informal nickname characterising an agent (includes login identifiers, IRC and other chat nicknames).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+<!-- ......................... chat IDs ........................... -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/jabberID" vs:term_status="testing" rdfs:label="jabber ID" rdfs:comment="A jabber ID for something.">
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+<!--
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+...different to the other IM IDs, as Jabber has wider usage, so 
+we don't want the implied rdfs:domain here.
+
+-->
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <!-- there is a case for using resources/URIs here, ... -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/aimChatID" vs:term_status="testing" rdfs:label="AIM chat ID" rdfs:comment="An AIM chat ID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Property>
+<!-- http://www.stud.uni-karlsruhe.de/~uck4/ICQ/Packet-112.html -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/icqChatID" vs:term_status="testing" rdfs:label="ICQ chat ID" rdfs:comment="An ICQ chat ID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/yahooChatID" vs:term_status="testing" rdfs:label="Yahoo chat ID" rdfs:comment="A Yahoo chat ID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/msnChatID" vs:term_status="testing" rdfs:label="MSN chat ID" rdfs:comment="An MSN chat ID">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/nick"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </rdf:Property>
+<!-- ....................................................... -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/name" vs:term_status="testing" rdfs:label="name" rdfs:comment="A name for some thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/firstName" vs:term_status="testing" rdfs:label="firstName" rdfs:comment="The first name of a person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/givenname" vs:term_status="testing" rdfs:label="Given name" rdfs:comment="The given name of some person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/surname" vs:term_status="testing" rdfs:label="Surname" rdfs:comment="The surname of some person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/family_name" vs:term_status="testing" rdfs:label="family_name" rdfs:comment="The family_name of some person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+<!-- end of naming properties. See http://rdfweb.org/issues/show_bug.cgi?id=7
+	   for open issue / re-design discussions.
+	-->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/phone" vs:term_status="testing" rdfs:label="phone" rdfs:comment="A phone,  specified using fully qualified tel: URI scheme (refs: http://www.w3.org/Addressing/schemes.html#tel).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/homepage" vs:term_status="stable" rdfs:label="homepage" rdfs:comment="A homepage for some thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/isPrimaryTopicOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <!--  previously: rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent" -->
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/weblog" vs:term_status="testing" rdfs:label="weblog" rdfs:comment="A weblog of some thing (whether person, group, company etc.).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/openid" vs:term_status="unstable" rdfs:label="openid" rdfs:comment="An OpenID 
+for an Agent.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/isPrimaryTopicOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/tipjar" vs:term_status="testing" rdfs:label="tipjar" rdfs:comment="A tipjar document for this agent, describing means for payment and reward.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/plan" vs:term_status="testing" rdfs:label="plan" rdfs:comment="A .plan comment, in the tradition of finger and '.plan' files.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/made" vs:term_status="stable" rdfs:label="made" rdfs:comment="Something that was made by this agent.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/maker"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/maker"  vs:term_status="stable" rdfs:label="maker" rdfs:comment="An agent that 
+made this thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/made"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/img" vs:term_status="testing" rdfs:label="image" rdfs:comment="An image that can be used to represent some thing (ie. those depictions which are particularly representative of something, eg. one's photo on a homepage).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/depiction" vs:term_status="testing" rdfs:label="depiction" rdfs:comment="A depiction of some thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/depicts"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/depicts" vs:term_status="testing" rdfs:label="depicts" rdfs:comment="A thing depicted in this representation.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/thumbnail" vs:term_status="testing" rdfs:label="thumbnail" rdfs:comment="A derived thumbnail image.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/myersBriggs" vs:term_status="testing" rdfs:label="myersBriggs" rdfs:comment="A Myers Briggs (MBTI) personality classification.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/workplaceHomepage" vs:term_status="testing" rdfs:label="workplace homepage" rdfs:comment="A workplace homepage of some person; the homepage of an organization they work for.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/workInfoHomepage" vs:term_status="testing" rdfs:label="work info homepage" rdfs:comment="A work info homepage of some person; a page about their work for some organization.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/schoolHomepage" vs:term_status="testing" rdfs:label="schoolHomepage" rdfs:comment="A homepage of a school attended by the person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/knows" vs:term_status="testing" rdfs:label="knows" rdfs:comment="A person known by this person (indicating some level of reciprocated interaction between the parties).">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/interest" vs:term_status="testing" rdfs:label="interest" rdfs:comment="A page about a topic of interest to this person.">
+<!-- we should distinguish the page from the topic more carefully. danbri 2002-07-08 -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/topic_interest" vs:term_status="testing" rdfs:label="interest_topic" rdfs:comment="A thing of interest to this person.">
+<!-- we should distinguish the page from the topic more carefully. danbri 2002-07-08 -->
+<!--    foaf:interest_topic(P,R) 
+		always true whenever
+		foaf:interest(P,D), foaf:topic(D,R) 
+		ie. a person has a foaf:topic_interest in all things 
+		that are the foaf:topic of pages they have a foaf:interest in. 
+		hmm, does this mean i'm forced to be interested in all the things that are the 
+		topic of a page i'm interested in. thats a strong restriction on foaf:topic's utility.	-->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/publications" vs:term_status="unstable" rdfs:label="publications" rdfs:comment="A link to the publications of this person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+<!-- by libby for ILRT mappings 2001-10-31 -->
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/currentProject" vs:term_status="testing" rdfs:label="current project" rdfs:comment="A current project this person works on.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/pastProject" vs:term_status="testing" rdfs:label="past project" rdfs:comment="A project this person has previously worked on.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/fundedBy" vs:term_status="unstable" rdfs:label="funded by" rdfs:comment="An organization funding a project or person.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/logo" vs:term_status="testing" rdfs:label="logo" rdfs:comment="A logo representing some thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/topic" vs:term_status="testing" rdfs:label="topic" rdfs:comment="A topic of some page or document.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/primaryTopic"
+ vs:term_status="testing" rdfs:label="primary topic" rdfs:comment="The primary topic of some page or document.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/isPrimaryTopicOf"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/isPrimaryTopicOf"
+ vs:term_status="testing" rdfs:label="is primary topic of" rdfs:comment="A document that this thing is the primary topic of.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/primaryTopic"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/page" vs:term_status="testing" rdfs:label="page" rdfs:comment="A page or document about this thing.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/topic"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/theme" vs:term_status="unstable" rdfs:label="theme" rdfs:comment="A theme.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/holdsAccount" vs:term_status="unstable" rdfs:label="holds account" rdfs:comment="Indicates an account held by this agent.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/accountServiceHomepage" vs:term_status="unstable" rdfs:label="account service homepage" rdfs:comment="Indicates a homepage of the service provide for this online account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/accountName" vs:term_status="unstable" rdfs:label="account name" rdfs:comment="Indicates the name (identifier) associated with this online account.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/member" vs:term_status="stable" rdfs:label="member" rdfs:comment="Indicates a member of a Group">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/membershipClass" vs:term_status="unstable" rdfs:label="membershipClass" rdfs:comment="Indicates the class of individuals that are a member of a Group">
+    <!-- maybe we should just use SPARQL or Rules, instead of trying to use OWL here -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <!-- Added to keep OWL DL from bluescreening. DON'T CROSS THE STREAMERS, etc. -->
+    <!-- This may get dropped if it means non-DL tools don't expose it as a real property.
+	 Should be fine though; I think only OWL stuff cares about AnnotationProperty.
+	 Dan									 -->
+
+<!--    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Group"/> prose only for now...-->
+<!--    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/> -->
+<!--    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Class"/> -->
+
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+
+  <rdf:Property rdf:about="http://xmlns.com/foaf/0.1/birthday" vs:term_status="unstable" rdfs:label="birthday" rdfs:comment="The birthday of this Agent, represented in mm-dd string form, eg. '12-31'.">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+  </rdf:Property>
+
+
+</rdf:RDF>
+
+
+
+    <h2 id="sec-changes">Recent Changes</h2>
+
+
+<h3>Previous Changes</h3>
+   
+</body>
+</html>
