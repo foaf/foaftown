@@ -1,0 +1,4190 @@
+AUTHOR: danbri
+TITLE: A FOAF weblog
+BASENAME: a_foaf_weblog
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+DATE: 12/12/2002 01:49:47 AM
+-----
+BODY:
+As if the HTML website, Wiki, IRC logs, IRC chump and email list weren't enough, here's an experimental FOAF blog, managed using Movable Type. I'm hoping it'll be easier to keep up to date with than editing the homepage HTML by hand.
+
+Today's cool link: <a href="http://foafnaut.org/">FOAFNaut</a>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAFBot lives!
+BASENAME: foafbot_lives
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 1
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/19/2003 12:13:58 PM
+-----
+BODY:
+<a href="http://usefulinc.com/foaf/foafbot">FOAFBot</a>, Edd Dumbill's RDF-based IRC bot, is <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/003046.html">back</a>!. Not content with writing <a href="http://www-106.ibm.com/developerworks/xml/library/x-foaf.html">readable introductions</a> to FOAF (also in <a href="http://www-6.ibm.com/jp/developerworks/xml/020906/j_x-foaf.html">Japanese</a>, <a href="http://www-900.ibm.com/developerWorks/cn/xml/x-watch/part3/index.shtml">Chinese</a>), Edd created one of the most interesting tools that consume FOAF. FOAFBot hangs out in an IRC channel and answers questions about people based on data it found by indexing the Web of interlinked FOAF documents.
+-----
+EXTENDED BODY:
+FOAFBot is particularly interesting because it keeps track of 'who said what' in the RDF data it collects, even using <a href="http://usefulinc.com/foaf/signingFoafFiles">PGP signatures</a> of the data files where available. This also explains why FOAFBot was offline for a while. Edd's <a href="http://www-106.ibm.com/developerworks/xml/library/x-foaf2.html">second article</a> on FOAF explained the way in which the original FOAFBot kept track of this 'provenance' or 'attribution' metadata. FOAFBot is written in Python, on top of Dave Beckett's <a href="http://www.redland.opensource.ac.uk/">Redland</a> RDF toolkit. 
+
+Since FOAFBot was created, Redland and its parser, Raptor, has improved in many ways; in particular Dave added native support for provenance-tracking, via a 'contexts' mechanism. This allows each RDF statement in a database to be tagged with its origins, and allowed Edd to rewrite FOAFBot in a faster and sleeker form. Nice work all round :)
+
+Furthermore, since FOAFBot's data-structures now use Redland's built-in way of representing contexts, FOAFBot databases can now be accessed from all languages that Redland has bindings to (Python, Java, Perl, Ruby, ...). This means that a developer can install Redland and FOAFBot, create an index of FOAF data by running FOAFBot as a harvester ('scutter'), and then access that database from, say, Perl to create alternate views of the data, eg in HTML or SVG.
+
+You can read more on Edd's <a href="http://usefulinc.com/foaf/foafbot">FOAFBot page</a> or stop by the <a href="irc://irc.freenode.net/foaf">#foaf</a> IRC channel to see it in action (or talk to other FOAF folk if the bot is offline).
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF and weblogs
+BASENAME: foaf_and_weblogs
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 04/27/2003 11:22:59 PM
+-----
+BODY:
+Three things about FOAF and weblogs! Firstly, Ben Hammersley has written a <a href="http://www.guardian.co.uk/online/news/0,12597,942024,00.html">piece for the Guardian</a> on the latest project of the <a href="http://www.sixapart.com/">Six Apart</a> folks behind the <a href="http://www.moveabletype.com/">Moveable Type</a> weblog publishing system. They're launching a new service, <a href="http://www.typepad.com/">TypePad</a> providing what looks to be a very full-featured hosting service. While MT is pretty easy to install, TypePad looks pretty cool. As well as rumoured FOAF support, it has a built-in photo album facility. The combination of those two could be quite interesting...
+-----
+EXTENDED BODY:
+Oh, the other two FOAF/weblog things: I wanted to announce the existence of the    <code>foaf:weblog</code> property a bit more widely. FOAF now has the ability to represent the address of your weblog, clearing the way for FOAF aggregators to support queries like "Find me weblogs of people who... (work for / live in / etc...)", matching against any of the other FOAF properties listed. 
+
+Finally, it's time to finish setting up the weblog we're running at <a href="http://rdfweb.org/">http://rdfweb.org/</a> for FOAF and related projects. This mostly involves tweaking our MT installation and adding back the navigation and suchlike...
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Danny
+EMAIL: danny666@virgilio.it
+IP: 213.45.118.123
+URL: http://dannyayers.com
+DATE: 04/28/2003 04:40:23 PM
+foaf:weblog - great!
+
+But what do you think the best way to point to the RSS 1.0 feed of the blog?
+
+rdf:seeAlso seems to be in common use to point to other RDF files, but how best to combine this with foaf:weblog? Three alternatives spring to mind:
+
+two statements (simple)
+
+rdf:seeAlso -> <a href="http://example.com/feed.xml"><a href="http://example.com/feed.xml">http://example.com/feed.xml</a></a>
+foaf:weblog -> <a href="http://example.com/feed.xml"><a href="http://example.com/feed.xml">http://example.com/feed.xml</a></a>
+
+using blank node :
+
+rdf:seeAlso -> bNode -> foaf:weblog -> <a href="http://example.com/feed.xml"><a href="http://example.com/feed.xml">http://example.com/feed.xml</a></a>
+
+I'm not sure what was planned for foaf:Document, how about
+
+rdf:seeAlso -> foaf:Document -> foaf:weblog -> <a href="http://example.com/feed.xml"><a href="http://example.com/feed.xml">http://example.com/feed.xml</a></a>
+-----
+
+COMMENT:
+AUTHOR: Masahide Kanzaki
+EMAIL: webmaster@kanzaki.com
+IP: 211.10.174.106
+URL: http://kanzaki.com/
+DATE: 06/02/2003 03:48:27 AM
+How about this ?
+
+ &lt;foaf:weblog&gt;
+  &lt;foaf:Document rdf:about=&quot;<a href="http://example.org/weblog/&quot;&gt;"><a href="http://example.org/weblog/&quot;&gt;">http://example.org/weblog/&quot;&gt;</a></a>
+   &lt;rdfs:seeAlso rdf:resource=&quot;<a href="http://example.com/feed.xml&quot;/&gt;"><a href="http://example.com/feed.xml&quot;/&gt;">http://example.com/feed.xml&quot;/&gt;</a></a>
+  &lt;/foaf:Document&gt;
+ &lt;/foaf:weblog&gt;
+-----
+
+
+-----
+--------
+AUTHOR: libby
+TITLE: A few new foaf things
+BASENAME: a_few_new_foaf_things
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 03/15/2003 04:48:24 PM
+-----
+BODY:
+From a <a href="http://penderel.state51.co.uk/~jo/foaf/2003-03-14.html#T11-04-14">chat on #foaf yesterday</a>: photo RDF, codepiction changes, foaffinger and meeting Eikeon; foaf and web view stats and for CVS; a new design for foafnaut homepage by ephi :)
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Wobbly
+BASENAME: wobbly
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 02/13/2003 10:41:06 PM
+-----
+BODY:
+The front page of rdfweb.org is somewhat wobbly this week. I'm in the middle of moving it across to use the Movable Type weblog, instead of hand-coded HTML. Sorry things are a bit rough. We're getting there slowly!
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: New RDFWeb server
+BASENAME: new_rdfweb_server
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 01/26/2003 10:39:11 PM
+-----
+BODY:
+If all goes well, this post will show up on the new Web server.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Web passwords in FOAF?
+BASENAME: web_passwords_in_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 12/30/2002 01:19:17 AM
+-----
+BODY:
+Here's a quick scribbled description of an application of FOAF I've been thinking about lately. I am forever forgetting the passwords for various Web sites; usually those of my friends (photos etc), rather than huge dot-com sites. I'd like to make it easy for such sites to offer password-protected access to their content, without my having to remember loads of different passwords.
+
+So I'm wondering how feasible it would be to do something like the following: in my FOAF file, or another RDF/XML document linked from it, list a bunch of 'account descriptions' giving my username and (in some cases) crypted passwords. Some of these could be generic accounts, eg 'generic friends photo login'. FOAF-aware sites could use this if they want to give me access but defer password management to external systems. I'd update/edit/delete account descriptions, including passwords, and sites would read my FOAF file regularly to keep up to date.
+
+The bare bones of this could be implemented with relatively little scripting, but it raises some issues that need careful thought. First up, it isn't super-wise to have a single username/password used on loads of sites, especially if it is sent in cleartext HTTP, or if you're not careful about which sites you send it to. Secondly,we'd need to use something like PGP's identity-assurance mechanisms, otherwise my friends might accidentally use evil-danbri-impersonator.rdf to check passwords, and allow the wrong users to see their content. So I might PGP-sign a chunk of RDF that says 'this is danbri@rdfweb.org's low-security photo-website generic account'. 
+
+There's more to think and write and test on all this, but I just wanted to scribble the basic idea. I suspect the next step is a prototype...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF Myers Briggs addition
+BASENAME: foaf_myers_briggs_addition
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Vocabulary
+CATEGORY: Vocabulary
+DATE: 12/17/2002 12:20:37 AM
+-----
+BODY:
+So after discussions sprawling across IRC, <a href="http://groups.yahoo.com/group/rdfweb-dev/message/516" title="rdfweb-dev discussion; watch out for the yahoo adverts...">email</a> and various weblogs, we are going ahead with adding a property called foaf:myersBriggs to the FOAF vocabulary. This property takes as its values the 16 codes (INTP, ENFP etc.) used in the Myers Briggs Type Indicator (MBTI) personality description scheme.
+
+Example FOAF snippet:
+<blockquote> &lt;foaf:Person&gt;
+  &lt;foaf:name>Dan Brickley&lt;/foaf:name&gt;
+ &lt;foaf:mbox rdf:resource="mailto:danbri@rdfweb.org"/ &gt;
+  &lt;foaf:myersBriggs&gt;INTP&lt;/foaf:myersBriggs&gt;
+ &lt;/foaf:Person&gt;</blockquote>
+
+Adding such markup will make it possible to browse, search and filter FOAF-related data using the MBTI classifications. For example, you might use it to search for weblogs created by people with some specified Myers Briggs entry (perhaps to check out to see if they fit the expected stereotype...? ;-).
+-----
+EXTENDED BODY:
+There are a bunch of MBTI-related web sites out there; the <a href="http://directory.google.com/Top/Science/Social_Sciences/Psychology/Personality/Myers-Briggs_and_Keirsey/">Open Directory listing</a> gives some reasonable starting points. The <a href="http://www.humanmetrics.com/cgi-win/JTypes1.htm">HumanMetrics</a>  site has an online version, which is probably what you're after if you just want a four letter code to paste into your FOAF description. For those taking this more seriously, the <a href="http://www.personalitypage.com/">Personality Page</a> has commentary and characterisation of the various distinctions emphasised in the MBTI. 
+
+For what it's worth I don't take MBTI too seriously as a piece of science, but it's interesting to see how people fit (or don't fit) into their scheme, and (like all of FOAF) it is entirely optional. Only publish a foaf:myersBriggs classification if you're happy making such information public. Same goes for your foaf:geekCode or foaf:schoolHomepage.
+
+More detailed exploration of RDF/XML vocabulary for this sort of thing will probably happen in other vocabularies than FOAF, for example in Bill Kearney's <a href="http://www.ideaspace.net/users/wkearney/schema/mbti/0.1/" >draft MBTI  namespace</a>. There are of course dozens of other similar schemes and online questionnaires that we could hook up to FOAF, but this should make for an interesting  toe in the water. 
+
+Unless anyone finds some huge flaw or better idea in the next week, we'll add this to the FOAF vocabulary documentation later this month.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: kensin noh
+EMAIL: nohks@eslab.inha.ac.kr
+IP: 165.246.31.121
+URL: http://eslab.inha.ac.kr
+DATE: 03/13/2003 02:42:23 PM
+Hi...
+
+I studing RDF and mail filtering
+
+^^; But I don't know that there is any mechanism
+in FAOF...
+
+Just Merging some information?
+
+Um... is there any paper or treatise?
+
+If you are... Please give me ^^a
+
+Good night! bye
+-----
+
+COMMENT:
+AUTHOR: Chad Manney
+EMAIL: chad@infobeing.net
+IP: 66.135.144.9
+URL: http://www.infobeing.net
+DATE: 03/27/2003 09:21:10 PM
+The Myers-Briggs addition is a mistake.  It is only one way to label people and it ultimately tells you nothing about how people relate to others.  The test is only helpful for team-building...to help team members understand the tendencies of others as they are collaborating on a project.  This is an inherently flawed approach.
+-----
+
+COMMENT:
+AUTHOR: Richard Soderberg
+EMAIL: blog@crystalflame.net
+IP: 207.189.151.226
+URL: http://www.crystalflame.net/
+DATE: 05/05/2003 10:47:49 PM
+I've now got INFP in my FOAF, but that's results from a couple years ago.  Is there any good place to retest?
+
+This stuff could come in handy for the epersonality matching aspect of the personals-seeking robot dog.
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Learning the ropes
+BASENAME: learning_the_ropes
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 12/13/2002 07:25:50 PM
+-----
+BODY:
+So I'm getting to grips with the Movable Type system. I've seen some nice templates on other sites that display blockquotes nicely. This is a test entry to see how blockquote looks.
+
+<blockquote>Some stuff here.</blockquote>
+
+Wonder how to quote markup...? eg. for XML/RDF examples...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Minh Nguy&#x1ec5;n
+EMAIL: lspohio@netscape.net
+IP: 216.68.172.80
+URL: http://mxn.netfirms.com/index.html
+DATE: 01/17/2003 07:41:34 PM
+To quote markup, you can use the &lt;code&gt; tag, I suppose.
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: All Your FOAF
+BASENAME: all_your_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Programming
+CATEGORY: Applications
+CATEGORY: Programming
+DATE: 12/12/2002 01:54:55 PM
+-----
+BODY:
+The <a href="http://rdfweb.org/2002/09/ayf/ayf-intro.html">All Your FOAF</a> toy indexing tool has been rewritten in Ruby. The original was a standalone short Perl script that showed how a Web of RDF documents can be explored using pretty simple code. The Ruby re-write uses the <a href="http://rdfweb.org/2001/12/rubyrdf/intro.html">RubyRDF</a> library, and has a nicer architecture. 
+
+See <a href="http://rdfweb.org/2002/09/ayf/ayf.rb">ayf.rb</a> for the main code, <a href="http://rdfweb.org/2002/09/ayf/myScutter.rb">myScutter.rb</a> for an example crawler that uses it, and <a href="http://rdfweb.org/2002/09/ayf/who.rb">who.rb</a> for a 25 line demo script that shows a custom crawler-based app (<a href="http://rdfweb.org/2002/09/ayf/_who_sample.txt">sample output</a>).
+-----
+EXTENDED BODY:
+This shows one of the attractions of Ruby as a scripting language. You can have  one page hacks (like my original Perl script, <a href="http://rdfweb.org/2002/09/ayf/ayf.pl">ayf.pl</a>) and migrate them smoothly into more reasonable chunks of OO-ish code. The result of rewriting this in Ruby (and using a proper RDF library) is that scripts such as <a href="http://rdfweb.org/2002/09/ayf/who.rb">who.rb</a> are easier to create and extend, since all you have to do is write a snippet of code that gets called when each RDF document has been parsed.
+
+This is of course still pretty basic.  A better RDF Web indexer would need better facilities for controlling link-following behaviour, caching etc., and needs to be hooked up to persistent RDF storage systems. But hopefully it'll show the fundamental simplicity behind some of this stuff...
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: rdfweb-dev mailing list moved!
+BASENAME: rdfweb-dev_mailing_list_moved
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 01/30/2003 04:28:23 PM
+-----
+BODY:
+The rdfweb-dev / FOAF mailing list has a <a href="http://rdfweb.org/mailman/listinfo/rdfweb-dev">new home on rdfweb.org</a>.  We have moved across the old archives from YahooGroups, but you will need to <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-January/000855.html">resubscribe</a> by hand.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: test
+BASENAME: test
+STATUS: Draft
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+DATE: 06/21/2003 04:33:44 PM
+-----
+BODY:
+<img alt="danbri-cam.jpg" src="http://rdfweb.org/mt/foaflog/archives/danbri-cam.jpg" width="352" height="288" border="0" />
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF MT plugin(s)
+BASENAME: foaf_mt_plugins
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/21/2003 11:41:31 PM
+-----
+BODY:
+<img alt="lib-foaf-flag-small.jpg"  align="right"  src="http://rdfweb.org/mt/foaflog/archives/lib-foaf-flag-small.jpg" width="200" height="167" border="0" />
+
+I'm experimenting with Eric Sigler's 
+<a href="http://esigler.2nw.net/software/">FOAF plugin software</a> for use with <a href="http://www.sixapart.com/">Six Apart's</a> <a href="http://www.movabletype.org/">Movable Type</a>. In passing, I've upgraded the rdfweb.org MT installation and installed Ben Trott's <a href="http://www.stupidfool.org/perl/openpgp/">OpenPGP</a> and <a href="http://www.sixapart.com/log/2003/01/fun_with_foaf.shtml">XML::FOAF</a> Perl modules from <a href="http://www.cpan.org/">CPAN</a>. This in turn uses 
+ Ginger Alliance's <a href="http://search.cpan.org/author/DPOKORNY/RDF-Core-0.20/">RDF::Core</a> module (which in turn uses XML::Parser, Expat etc...). 
+
+So after installing this stack of interesting software on rdfweb.org, I'm back reading the manual for Movable Type and musing on how the FOAF MT plugin relates to MT's commenting system and ideas for using <a href="http://rdfweb.org/mt/foaflog/archives/000005.html"> FOAF for login information</a>, distributed identity description and suchlike. And also, to be honest, geting used to the fact that there's a Perl module for FOAF now. Interesting times...
+
+So anyway, I'll be fiddling around with the comments system on this site, Advance apologies if I break anything. At this point, all I've done is install the software, I'll be experimenting with it in my spare time over the next week or few.
+
+Nearby in the Web: efforts to use MT plugins and <a href="http://playainfo.igargoyle.com/archives/000160.html">FOAF at Burning Man</a>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/21/2003 11:54:40 PM
+This is a pretty generic comment. I guess I didn't edit the right MT template yet. 
+
+One question: is it reasonable to expect people to enter their FOAF URLs here, or better to figure it out from knowing their homepage and/or email address and assuming they are linked from somewhere, perhaps  
+'link rel' markup in their homepage?
+
+The cost of adoption should be kept low. Why have to know homepage URL as well as FOAF URL? Have most/all people who have FOAF URLs also got homepages? weblogs? Need to investigate...
+-----
+
+COMMENT:
+AUTHOR: Mark
+EMAIL: a@b.com
+IP: 24.211.176.220
+URL: http://diveintomark.org/
+DATE: 06/22/2003 03:46:19 AM
+A common pattern I have seen on many FOAF-enabled weblogs/websites is this "auto-discovery" link in the HEAD element:
+
+[link rel="meta" type="application/rdf+xml" title="FOAF" href="/url/to/foaf/file" /]
+
+It's not an official standard or anything (I think it's more like "Aaron Swartz got drunk on root beer one night and thought this was a neat idea"), but lots of people seem to use it, and I haven't heard any better ideas.
+-----
+
+COMMENT:
+AUTHOR: Mark
+EMAIL: a@b.com
+IP: 24.211.176.220
+URL: http://diveintomark.org/
+DATE: 06/22/2003 03:51:14 AM
+All of which is to say that a home page URL should be sufficient, no need to bother the user with a separate FOAF URL.
+
+We do the same thing with RSS; in fact, your home page has an auto-discovery LINK element that points to your RSS 1.0 feed.  Comes standard in Movable Type.
+
+I've heard crazy rumors that upcoming versions of Movable Type will have support for FOAF.  Don't know what that means exactly, but if Movable Type is generating FOAF files by default, Ben will probably include an auto-discovery link in the main index template as well.
+-----
+
+
+PING:
+TITLE: Getting Attention
+URL: http://playainfo.igargoyle.com/archives/000194.html
+IP: 198.78.66.122
+BLOG NAME: PlayaInfo Development
+DATE: 06/25/2003 06:02:09 AM
+My earlier post, FOAF at Burning Man has been blogged about at http://rdfweb.org/ by danbri. Wish I had TrackBack turned on earlier, as Movable Type would have realised I'd been blogged already....
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF introduction in Japanese
+BASENAME: foaf_introduction_in_japanese
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 06/19/2003 02:42:59 PM
+-----
+BODY:
+Masahide Kanzaki has <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/003024.html">announced</a> a new <a href="http://kanzaki.com/docs/sw/foaf.html">introduction to FOAF</a>, written in Japanese. It is quite detailed, and illustrated with examples,  and figures, covering recent additions to the <a href="http://xmlns.com/foaf/0.1/">FOAF vocabulary</a>. And, like the rest of his Semantic Web and RDF <a href="http://kanzaki.com/docs/sw">site</a>, it looks glorious. I only wish I could read Japanese; the <a href="http://babelfish.altavista.com/babelfish/urltrurl?url=http://kanzaki.com/docs/sw/foaf.html;lp=ja_en">babelfish  translation</a> is a poor substitute.  FOAF may now be better documented in Japanese than it is in English!
+-----
+EXTENDED BODY:
+<a href="http://kanzaki.com/info/webwho.rdf">Masahide Kanzaki's FOAF document</a> is also of technical interest, since it references an XSLT transformation which, in modern Web browsers, generates an XHTML page. (IE5/mac viewers should be warned that it crashed my browser; Mozilla seems happy, by contrast). 
+
+Japanese readers may also find these <a href="http://rdfweb.org/pipermail/rdfweb-dev/2002-September/002236.html">other RDF-related links</a> useful.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Foaf-a-matic, translated
+BASENAME: foaf-a-matic_translated
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Creation Tools
+CATEGORY: Creation Tools
+DATE: 06/19/2003 12:31:45 PM
+-----
+BODY:
+<a href="http://www.ldodds.com/foaf/foaf-a-matic">Foaf-a-matic</a>, Leigh Dodd's popular Javascript FOAF creation tool, is now available in multiple languages. 
+
+Current offerings include <a href="http://www.ldodds.com/foaf/foaf-a-matic.ja.html">Japanese</a>, <a href="http://www.ldodds.com/foaf/foaf-a-matic.fr.html">French</a>, <a href="http://www.ldodds.com/foaf/foaf-a-matic.es.html">Spanish</a>, <a href="http://www.ldodds.com/foaf/foaf-a-matic.da.html">Danish</a>, and <a href="http://www.ldodds.com/foaf/foaf-a-matic.sv.html">Swedish</a>.  See <a href="http://www.ldodds.com/blog/archives/000040.html">Leigh's 'translating the foaf-a-matic'</a> article for more details, and the lengthy list of credits to all those who have helped with this. Many thanks to everyone who contributed :)
+-----
+EXTENDED BODY:
+Nearby in the Web, Leigh reports on his <a href="http://www.ldodds.com/blog/archives/000038.html">progress towards foaf-a-matic version 2</a>, which is a rewrite in Java.  Incidentally, the main <a href="http://www.ldodds.com/foaf/foaf-a-matic">foaf-a-matic</a> page is made available using HTTP language negotiation, so for users whose browser is set to a language that there's a translation for, you should automatically see the appropriate version.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Leigh Dodds
+EMAIL: leigh@ldodds.com
+IP: 193.63.84.129
+URL: http://www.ldodds.com/blog/
+DATE: 06/24/2003 04:04:50 PM
+I've just uploaded two additional translations: Greek (thanks to Manos Batsis) and German (thanks to Christof Hoeke).
+
+Content negotiation is available for both, or visit:
+
+<a href="http://www.ldodds.com/foaf/foaf-a-matic.el.html"><a href="http://www.ldodds.com/foaf/foaf-a-matic.el.html">http://www.ldodds.com/foaf/foaf-a-matic.el.html</a></a>
+<a href="http://www.ldodds.com/foaf/foaf-a-matic.de.html"><a href="http://www.ldodds.com/foaf/foaf-a-matic.de.html">http://www.ldodds.com/foaf/foaf-a-matic.de.html</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.24
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/24/2003 09:48:00 PM
+This is excellent :)
+
+Would now be a good time to mention there's a typo in several of these? (Ben's surname...)
+-----
+
+COMMENT:
+AUTHOR: Tom
+EMAIL: tom@secureconcept.de
+IP: 217.83.84.13
+URL: http://www.secureconcept.de
+DATE: 11/27/2003 02:48:41 PM
+german is also avaible!
+-----
+
+COMMENT:
+AUTHOR: Diana, translator
+EMAIL: gref102@yaho.com
+IP: 81.25.34.237
+URL: http://www.all-translations.com/services/italian-translation.html
+DATE: 08/26/2004 08:57:13 PM
+<a href="http://www.ldodds.com/foaf/foaf-a-matic.it.html"><a href="http://www.ldodds.com/foaf/foaf-a-matic.it.html">http://www.ldodds.com/foaf/foaf-a-matic.it.html</a></a>
+Italian is also available
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF 4 IndyMedia
+BASENAME: foaf_4_indymedia
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/22/2003 01:00:23 AM
+-----
+BODY:
+<a href="http://www.indymedia.org/">IndyMedia</a> is a project well worth supporting. The mainstream media industry is great and all, but after a while, it gets boring being lied to. IndyMedia is a brave effort towards a more inclusive approach to media access, although currently it lacks much by way of trust and 'provenance' infrastructure. <a href="http://www.slashdot.org/">Slashdot</a>, the geek news site, has more filtering and trust machinery than most current IndyMedia sites.  IndyMedia risks being drowned out by noise and spam...
+
+So I've been experimenting with a proposal for <a href="http://rdfweb.org/topic/MirFoafRss">FOAF augmented RSS feeds</a> in the     <a href="http://mir.indymedia.org">Mir</a> content management system which now powers the <a href="http://www.indymedia.org.uk/">UK IMC</a>. It raises issues about privacy, identity, and (most immediately) technical concerns about the proper use of 'dc:creator' in RSS 1.0 feeds.This is a modest step towards some machinery for filtering IndyMedia news through 'web of trust' machinery. Not censorship, just a way of keeping track of who said what, and what other things those sayers have said...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: A purpose of FOAF
+BASENAME: a_purpose_of_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 06/22/2003 12:41:14 AM
+-----
+BODY:
+...is to engineer more coincidences in the world. There are several reasons for FOAF, and this is one that hasn't yet been documented. After my mostly unexpected  involvement in the <a href=" http://www.w3c.rl.ac.uk/FutureEvents/sw_tour/London_event_announce.html">W3C Semantic Web Tour</a> as it hit London, I was chatting to <a href="http://www.picdiary.com/cv.html">Matt Biddulph</a> about FOAF and the 'vapourware for the masses' thing, and it occured to me that I'd never written this up. FOAF was designed as technology to encourage coincidence. You're walking past a pub... you go to a conference... you're standing at the barracades... or sitting in an interview... and the last thing you'd expect... a friend of a friend. Everything's connected. Who'd have thought it?
+
+To pull this off, we need to ground FOAF in the real word. <a href="http://rdfweb.org/people/damian/foaffinger/">Foaffinger</a> (a wireless / rendevous FOAF detector), <a href="http://esw.w3.org/topic/GeoInfo">RDF  GeoInfo</a>, Bluetooth and more are all part of the picture.  Every new gadget, every new dataset, makes the unexpected more expected.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Marc Canter
+EMAIL: marc@broadbandmechanics.com
+IP: 168.103.209.109
+URL: http://blogs.it/0100198
+DATE: 06/26/2003 08:42:38 AM
+Hey  I've been wondering the same issues.  How 'bout starting off with somebody getting FOAF.org and start there.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/26/2003 09:39:21 AM
+rdfweb.org _is_ the 'foaf.org' you keep mentioning, with xmlns.com for the XML vocabularies that support FOAF (ie. FOAF, WOT, Wordnet).
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/26/2003 09:41:45 AM
+ie. welcome aboard! If you're interested in the future of FOAF, do please join the mailing list (rdfweb-dev@vapours.rdfweb.org) and join the discussions...
+-----
+
+COMMENT:
+AUTHOR: Jim Hughes
+EMAIL: jim@feetup.org
+IP: 80.234.128.135
+URL: http://www.feetup.org/blogger.html
+DATE: 07/09/2003 04:48:10 PM
+The Bluetooth and FoaF combination sounds very interesting, would you suggest I put the Bluetooth id of my phone in my FoaF? I'd guess it would be best as a hash.
+-----
+
+
+PING:
+TITLE: A purpose of FOAF
+URL: http://dannyayers.com/archives/001413.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 06/22/2003 09:40:35 PM
+A purpose of FOAF...is to engineer more coincidences in the world. Nice line from danbri. Shade of the Philip...
+-----
+
+PING:
+TITLE: [etech] FOAF
+URL: http://www.hyperorg.com/blogger/mtarchive/002423.html
+IP: 209.61.216.22
+BLOG NAME: Joho the Blog
+DATE: 02/12/2004 01:21:55 AM
+Dan Brickley is explaining Friend of a Friend. (I had a chance to talk with him about this yesterday in a hallway.) It's an XML standard that allows people to express information about themselves...the sorts of things you might say on your homepage. T...
+-----
+
+PING:
+TITLE: More FOAF coverage from Etech
+URL: http://blogs.it/0100198/2004/02/13.html#a2271
+IP: 67.100.91.193
+BLOG NAME: Marc's Voice
+DATE: 04/04/2004 11:06:42 AM
+[etech] FOAF .
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: More Japanese FOAF
+BASENAME: more_japanese_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/23/2003 01:54:33 PM
+-----
+BODY:
+Some interesting work with FOAF and XSLT  documented in a <a href="http://www.megaegg.ne.jp/~tirukuru/diary/2003_06_2.html">Japanese weblog</a>. The links to <a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.xml">foaf.xml</a>, <a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foafstyle.xsl">foafstyle.xsl</a> and <a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.html">foaf.html</a> show the generation of an HTML Web page from RDF/XML source using an <a href="http://www.w3.org/TR/xslt">XSLT</a> transformation.  The article also references another <a href="http://www.ne.jp/asahi/books/inugami/foaf.xsl">foaf.xsl</a>, <a href="http://anoh.s10.xrea.com/03-06.php#d2003-06-20c1">another Weblog post about FOAF</a> and  a Japanese <a href="http://antipop.zapto.org/wiki/?The%20%27friend%20of%20a%20friend%27%20project%20-%20FOAF">Wiki  page</a> about FOAF. So the relatively new <a href="http://rdfweb.org/mt/foaflog/archives/000014.html">foaf:weblog</a> property seem to be <a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.xml">catching on</a>, presumably since it was covered in  Masahide Kanzaki's <a href="http://kanzaki.com/docs/sw/foaf.html">Introduction to FOAF</a>. 
+
+Apologies for the shallow writeup, I wish I could read these pages! I couldn't even manage copy a foaf:name my browser into this weblog entry... Feel free to add more details using the 'comments' feature if you can read Japanese.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 03:31:34 PM
+I just found this FOAF profile (in HTML). nice layout, plus icons for FOAFNaut, FOAF Web View, FOAF Explorer etc.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 03:37:11 PM
+
+Oops, MT stripped the HTML link. Here it is:
+
+<a href="http://www.remus.dti.ne.jp/~a-satomi/profiles/foaf.html"><a href="http://www.remus.dti.ne.jp/~a-satomi/profiles/foaf.html">http://www.remus.dti.ne.jp/~a-satomi/profiles/foaf.html</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 03:56:31 PM
+More links I can't read (help translating, anyone?)...
+
+On 'foaf:name' (and i18n I expect):
+<a href="http://dac.lolipop.jp/tdiary/?date=20030621#p05"><a href="http://dac.lolipop.jp/tdiary/?date=20030621#p05">http://dac.lolipop.jp/tdiary/?date=20030621#p05</a></a>
+<a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2003/06c.html#d22n03"><a href="http://www.remus.dti.ne.jp/~a-satomi/nikki/2003/06c.html#d22n03">http://www.remus.dti.ne.jp/~a-satomi/nikki/2003/06c.html#d22n03</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 03:59:24 PM
+Also <a href="http://anoh.s10.xrea.com/foaf.php"><a href="http://anoh.s10.xrea.com/foaf.php">http://anoh.s10.xrea.com/foaf.php</a></a> (PHP view of <a href="http://anoh.s10.xrea.com/foaf.rdf)."><a href="http://anoh.s10.xrea.com/foaf.rdf).">http://anoh.s10.xrea.com/foaf.rdf).</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 04:03:33 PM
+[xml-users] discussion thread re FOAF, RSS:
+<a href="http://www2.xml.gr.jp/log.html?MLID=xmlusers&N=8357"><a href="http://www2.xml.gr.jp/log.html?MLID=xmlusers&N=8357">http://www2.xml.gr.jp/log.html?MLID=xmlusers&N=8357</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 05:01:40 PM
+OK, I'm trying to sort out my character-encoding confusion. I parsed <a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.xml"><a href="http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.xml">http://www.megaegg.ne.jp/~tirukuru/aboutme/foaf.xml</a></a> with an RDF parser (Raptor) and got this name/value:
+
+foaf:name="\u3061\u308B\u304F\u308B" 
+
+So my dumb question: how do we encode that in XML? I tried using &amp;#...; but doesn't seem to work: &#3061; &#308B; &#304F; &#308B;
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: 
+DATE: 06/23/2003 05:24:15 PM
+Ah, it is &amp;#x...;, I missed off the 'x'. So maybe this will work:  &#x3061;&#x308B;&#x304F;&#x308B;
+
+Yup. Finally :)
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/23/2003 07:58:52 PM
+See also previous discussion of foaf:name in Japanese and FOAFNaut I18N issues from the FOAF developers list (rdfweb-dev):
+
+<a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/003024.html"><a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/003024.html">http://rdfweb.org/pipermail/rdfweb-dev/2003-June/003024.html</a></a>
+-----
+
+COMMENT:
+AUTHOR: Masahide Kanzaki
+EMAIL: webmaster@kanzaki.com
+IP: 218.225.112.52
+URL: http://kanzaki.com/info/webwho.rdf
+DATE: 06/24/2003 03:07:47 AM
+Well, many people find FOAF interesting, and start publishing :-) They tipically enjoy crafting their own XSLT, and are excited about 'known by' and 'interest' links shown in the FOAF: Web view.
+
+A problem is the character encoding (or charset). Sometimes, they provide their FOAF as utf-8 while servers send iso-8859-1 charset param for .rdf or .xml files by default. And some people even use Shift_JIS (legacy, but most popular Japanese encoding) in their XSLT... In my environment, all browsers work fine with these tricky encodings, but might cause trouble for non-Japanese readeres.
+-----
+
+COMMENT:
+AUTHOR: dac
+EMAIL: dac_cot@yahoo.co.jp
+IP: 218.229.196.49
+URL: http://dac.lolipop.jp/bookmarks/foaf.rdf
+DATE: 07/04/2003 03:18:02 PM
+Although it became late,I noticed your comment about foafnaut and font issues shown in <a href="http://dac.lolipop.jp/pic/foafnauts.PNG,"><a href="http://dac.lolipop.jp/pic/foafnauts.PNG,">http://dac.lolipop.jp/pic/foafnauts.PNG,</a></a> a little while ago.Then,I found some improvements in <a href="http://jibbering.com/foaf/foafnaut.templates.svg?email=inugami@wolf.email.ne.jp&template=alternate.template."><a href="http://jibbering.com/foaf/foafnaut.templates.svg?email=inugami@wolf.email.ne.jp&template=alternate.template.">http://jibbering.com/foaf/foafnaut.templates.svg?email=inugami@wolf.email.ne.jp&template=alternate.template.</a></a>
+Almost all font can be read!Only Images's comment(it may be foaf:nick) has had font issue,yet.
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: New version of XML::FOAF in CPAN
+BASENAME: new_version_of_xmlfoaf_in_cpan
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Programming
+CATEGORY: Programming
+DATE: 06/25/2003 11:22:11 AM
+-----
+BODY:
+<p>
+<a href="http://www.stupidfool.org/">Ben Trott</a> has uploaded version 0.02 of <a href="http://search.cpan.org/author/BTROTT/XML-FOAF-0.02/">XML::FOAF</a> to CPAN. This is a Perl module designed to make it easier for programmers to work with FOAF documents. It builds upon the <a href="http://search.cpan.org/author/DPOKORNY/RDF-Core-0.30/">RDF::Core</a> module from <a href="http://www.gingerall.com">Ginger Alliance</a> and can use <a href="http://search.cpan.org/author/BTROTT/Crypt-OpenPGP-1.03/">Crypt::OpenPGP</a> to check digitally signed FOAF files. Version 0.02 of XML::FOAF <a href="http://search.cpan.org/src/BTROTT/XML-FOAF-0.02/Changes">adds</a>  autodiscovery support. The <a href="http://search.cpan.org/author/BTROTT/XML-FOAF-0.02/lib/XML/FOAF.pm">documentation</a> shows how to load FOAF from a URI, which can either be a directly named FOAF file, or an HTML page which references a FOAF file using the following markup:
+</p>
+<blockquote>
+&lt;link rel="meta" type="application/rdf+xml" title="FOAF"  href="http://foo.com/my.foaf" /&gt;
+</blockquote>
+
+See Ben's earlier <a href="http://www.sixapart.com/log/2003/01/fun_with_foaf.shtml">Fun with FOAF</a> article for more examples of usage and potential applications.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Danny
+EMAIL: danny666@virgilio.it
+IP: 80.182.204.200
+URL: http://dannyayers.com
+DATE: 06/28/2003 01:05:20 AM
+Just saw your comment over at Jay's* - the shopping basket idea sounds great, although I bet you'll get a few 100MB FOAF files around (I know everyone!)
+
+* <a href="http://icite.net/blog/200306/foaf_discovery.html"><a href="http://icite.net/blog/200306/foaf_discovery.html">http://icite.net/blog/200306/foaf_discovery.html</a></a>
+-----
+
+
+PING:
+TITLE: In brief, anal sex edition
+URL: http://diveintomark.org/archives/2003/06/26/in_brief_anal_sex_edition.html
+IP: 209.61.183.90
+BLOG NAME: dive into mark
+DATE: 06/26/2003 09:25:19 PM
+The Supreme Court upholds the right to have anal sex.  Also, some other less important news.
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF Checker utility for PGP-signed FOAF profiles
+BASENAME: foaf_checker_utility_for_pgp-signed_foaf_profiles
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/24/2003 06:37:43 PM
+-----
+BODY:
+<p>
+Ken MacLeod has <a href="http://bitsko.slc.ut.us/blog/2003/06/24/foaf-check">announced</a> a new tool, 'FOAF Check', which reads a FOAF file, checks its <a href="http://usefulinc.com/foaf/signingFoafFiles">PGP signature</a> and extracts portions of the RDF, eg. for inclusion in weblog comments (via. Movable Type cookies etc.). 
+</p>
+<p>
+This approach provides a way to avoid re-entering the same data over and again across multiple sites - you just point them at your FOAF document and let them read what you've already said about yourself. Ken's <a href="http://bitsko.slc.ut.us/blog/2003/06/24/foaf-check">writeup</a> points to previous work on FOAF/PGP-based decentralised profiles. 
+</p>
+-----
+EXTENDED BODY:
+<p>
+This is really cool, basically. Looking at the detail it does suggest we need to do a little more work on the FOAF vocabulary for clarifying which of several people mentioned in any given FOAF file is <em>the</em> topic of that file. There are currently several ways we could indicate this; one needs to be picked and documented more clearly in the <a href="http://xmlns.com/foaf/0.1/">FOAF spec</a>. It also isn't immediately clear (to me!) how we get from knowing that a FOAF file validates against some PGP key to knowing that the PGP identity is the one that our application wants it to be. But it's a step in the right direction...
+</p>
+<p>
+Also the combination of <a href="http://usefulinc.com/foaf/foafbot">foafbot</a> and tools like <a href="http://bitsko.slc.ut.us/blog/2003/06/24/foaf-check">foaf-check</a> provide good reason for people to actually start using PGP (or <a href="http://www.gnupg.org/">GNU Privacy Guard (GPG)</a>, the Free GNU version),  That can only be a good thing.
+</p>
+<p>
+One other topic this throws up: is it reasonable to expect people to remember and quote their FOAF URLs? Or should we ask for their homepage, and look for a LINK REL in their homepage markup pointing to their FOAF data?
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/24/2003 09:11:51 PM
+See also Ken's notes in the FOAF wiki, <a href="http://rdfweb.org/topic/FoafIdentityAssurance"><a href="http://rdfweb.org/topic/FoafIdentityAssurance">http://rdfweb.org/topic/FoafIdentityAssurance</a></a> for more details on how this might be used for a challenge/response style of authentication.
+
+Nearby, FOAF's wiki homepage (recently tidied up somewhat), <a href="http://rdfweb.org/topic/FoafProject"><a href="http://rdfweb.org/topic/FoafProject">http://rdfweb.org/topic/FoafProject</a></a>
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Spring v1.3.1: a MacOS X desktop tool with FOAF support
+BASENAME: spring_v131_a_macos_x_desktop_tool_with_foaf_support
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/24/2003 01:10:16 PM
+-----
+BODY:
+<a href="http://usercreations.com/spring/SpringContent.html"><img alt="groupevite.jpg" src="http://rdfweb.org/mt/foaflog/archives/groupevite.jpg" width="160" height="97" align="right" border="0" /></a>
+
+<p>
+<a href="http://www.usercreations.com/">UserCreations</a> have just <a href="http://www.usercreations.com/weblog/2003/06/23.html">announced</a> the release of <a href="http://usercreations.com/spring/">Spring</a> v1.3.1 for MacOS X.  
+</p>
+<p>
+Spring provides a  canvas-style desktop interface, replacing the ageing 'documents and folders' metaphor with a UI based on several <a href="http://usercreations.com/spring/SpringContent.html">content types</a> (people, places, products, books, music, ...), with appropriate kinds of action associated with each type of thing. So you might invite a person to an event, draw a map of a location, etc.
+</p>
+<p>
+Version 1.3 <a href="http://www.usercreations.com/weblog/2003/05/19.html#a223">added</a>   'drag and drop' FOAF support:
+</p>
+<blockquote>
+Friend of a Friend (FOAF) format is an increasingly common web format for people. If you see a FOAF button on a web page, drag it in to Spring
+</blockquote>
+<p>
+This support is improved in v1.3.1: a  <em>"Refesh From Web"</em> feature allowing FOAF-derived person entries in Spring  to pick up the changes from remote FOAF files.
+</p>
+-----
+EXTENDED BODY:
+<p>
+So needless to say, I've been experimenting with Spring on my Mac laptop, and it looks pretty interesting and a hint at what desktops might evolve into. I really like the way it associates actions with entity-types in a way that takes advantage of remote Web services. That, coupled with the "refresh from Web" approach to using remote RDF/XML descriptions (FOAF etc.) is quite a compelling combination. 
+</p>
+<p>
+So in practice, I found the FOAF support worked with some but not all FOAF files from the public <a href="http://rdfweb.org/topic/FOAFBulletinBoard">FOAFBulletinBoard</a>. I'm not sure what the issue is, perhaps something to do with the mime-types these documents are served up as, or perhaps Spring has certain expectations for the syntactic form of a FOAF document. If others are trying out the FOAF support, perhaps leave comments here or at the <a href="http://www.usercreations.com/weblog/2003/06/23.html">UserCreations article</a>, perhaps we can figure out how to help.
+</p>
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/24/2003 01:47:01 PM
+There is more technical detail on the Spring FOAF implementation in their earlier article (<a href="http://www.usercreations.com/weblog/2003/05/19.html#a2232"><a href="http://www.usercreations.com/weblog/2003/05/19.html#a2232">http://www.usercreations.com/weblog/2003/05/19.html#a2232</a></a>
+):
+
+If the web server is serving up FOAF with application/rdf+xml, then we transparently do the transformation. Otherwise, the user needs to choose "Person (FOAF)" in the sheet that appears.
+
+The FOAF data is apparently imported using an XSLT:
+
+<a href="http://www.usercreations.com/spring/objects/people/Person%20(FOAF).xsl"><a href="http://www.usercreations.com/spring/objects/people/Person%20(FOAF).xsl">http://www.usercreations.com/spring/objects/people/Person%20(FOAF).xsl</a></a>
+
+A number of other projects have used XSLT with FOAF, although it isn't a perfect match since the RDF representation allows for a few different encodings. Perhaps we should be clearer in the FOAF spec about some conventions for writing FOAF in XML, even though most current FOAF tools only care about the RDF 'view' of the data. 
+
+Morten's FOAF explorer (<a href="http://xml.mfd-consult.dk/foaf/explorer/)"><a href="http://xml.mfd-consult.dk/foaf/explorer/)">http://xml.mfd-consult.dk/foaf/explorer/)</a></a> is also XSLT-based. A compare/contrast of the different XSLTs might be useful...
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 06/24/2003 02:48:50 PM
+As a followup, I've started a thread on the FOAF development list, <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/011267.html"><a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-June/011267.html">http://rdfweb.org/pipermail/rdfweb-dev/2003-June/011267.html</a></a>  to investigate ways of making it easier for FOAF to be processed using XSLT tools.
+-----
+
+COMMENT:
+AUTHOR: Robb Beal
+EMAIL: robb@usercreations.com
+IP: 68.100.140.124
+URL: 
+DATE: 06/24/2003 06:31:50 PM
+Dan.
+
+Appreciate the link and kudos!
+
+We upgraded the FOAF stylesheet in Spring 1.3.1, but didn't update the remote file. (The stylesheet is local. The remote file was for illustration.) I'll update it with a note that it's illustrative.
+
+The actions file (actions.xml) that defines the behavior is remote and is in the same directory.
+
+I'll follow-up on the mail list.
+
+Robb
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: 3 degrees
+BASENAME: 3_degrees
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/23/2003 07:25:19 PM
+-----
+BODY:
+From the oops-I-forgot-to-post-this drafts folder: Microsoft have a new thing called <a href="http://www.threedegrees.com/">three degrees</a> that may be of interest to FOAF developers and others working on standards-based collaborative tools. Does anyone know whether it's a closed box, or whether there is some prospect of interop with other systems?
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Using foaf:weblog in your FOAF file
+BASENAME: using_foafweblog_in_your_foaf_file
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 06/25/2003 11:48:09 AM
+-----
+BODY:
+<p>
+Here's how to add a foaf:weblog property to a FOAF document.
+</p>
+<p>
+Anywhere there is an element describing a Person (or for that matter a company, group etc), you can include a sub-element that mentions their weblog(s):
+</p>
+
+<p>So, if you start out with markup like this:</p>
+
+<p>(Nicole just asked me how to do this, so she gets to be the example...)</p>
+
+<blockquote>
+
+<pre>
+&lt;foaf:Person&gt;
+  &lt;foaf:name&gt;Nicole Sullivan&lt;/foaf:name&gt;
+  &lt;foaf:homepage rdf:resource="http://www.apocalypse.org/~nicole/"/&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</blockquote>
+
+<p>
+...and add a weblog property of the Person described, it should look like this:
+</p>
+
+<blockquote>
+<pre>
+&lt;foaf:Person&gt;
+  &lt;foaf:name&gt;Nicole Sullivan&lt;/foaf:name&gt;
+  &lt;foaf:homepage rdf:resource="http://www.apocalypse.org/~nicole/"/&gt;
+  &lt;foaf:weblog rdf:resource="http://www.stubbornella.org/"/&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</blockquote>
+
+<p>It doesn't matter exactly where you put the foaf:weblog entry, so long as it is immediately 'inside' the foaf:Person element. You can have the foaf:homepage bit first, or foaf:img, foaf:workplaceHomepage etc. there too., all alongside each other in any order.</p>
+
+<p>
+This same technique works if you are describing your friends and collaborators in a FOAF file; just add in a foaf:weblog property inside the foaf:Person section that describes them.
+</p>
+
+<p>
+That's all there is to it. Your FOAF file now describes the address of your weblog, making it easier to find for FOAF and other Semantic Web tools.
+</p>
+<p>Note that If you have multiple weblogs, list them each separately, 
+one after another. Note also that each foaf:weblog described in FOAF has to be the weblog of one 'thing' (whether Person, Company or whatever). So describing collaboratively edited weblogs is a topic I'll come back to in a future article.
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: FOAF Project revamp
+URL: http://dannyayers.com/archives/001430.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 06/26/2003 09:55:11 AM
+Dan Brickley's had a good clear up on the rdfweb site (the home of FOAF). The front page is now...
+-----
+
+PING:
+TITLE: Synthetic RSS Feeds and FOAF
+URL: http://www.ldodds.com/blog/archives/000046.html
+IP: 80.87.131.124
+BLOG NAME: Lost Boy
+DATE: 06/30/2003 05:34:00 PM
+Sean McGrath was recently looking for a tool that would "coalesce various standalone feeds into, aggregated feeds so that my
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Weblog discovery and filtering with RDF - CPAN demo
+BASENAME: weblog_discovery_and_filtering_with_rdf_-_cpan_demo
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 06/23/2003 02:21:31 PM
+-----
+BODY:
+<p>
+This is a quick writeup of an application of RDF query tools to the problems of weblog discovery and filtering. It shows off RDF's ability to merge XML-encoded  data from multiple sources, answering queries which couldn't be answered by considering each source separately.
+</p>
+
+<p>
+Imagine you are looking for Weblog URLs (and perhaps their associated RSS feeds) of people who have written Perl software that is in <a href="http://www.cpan.org/">CPAN</a>. At our disposal are two data sources: a <a href="http://rdfweb.org/2003/06/cpan/01mailrc.foaf.rdf">data dump</a> listing the SHA1 hashes of CPAN author email addresses. For each author, we have an @cpan address, plus one of their normal addresses (<a href="http://rdfweb.org/2003/06/cpan/cpan2foaf.pl">cpan2foaf.pl</a>). A second RDF/XML source of FOAF data is a <a href="http://rdfweb.org/2003/06/cpan/perl-blog-dir.rdf">document</a> listing other information about several people who happen to write for CPAN. That file is a stand-in for their real FOAF files, which would typically be collected from each of their sites individually. For simplicity, we show that data as a single document.
+</p>
+<p>
+The first datasource mentions several hundred people who contribute to CPAN, and enough information to identify them (by hash of email address). The second datasource contains some of the same identifiers (their hashed home email address) plus, more interestingly, information about their names, homepages, weblogs and suchlike. How can we get answers to questions like "find me weblog addresses for CPAN contributors?".
+</p>
+-----
+EXTENDED BODY:
+<p>
+So... we load the RDF up into an (SQL-backed) RDF database, make sure to merge the data (more on which another time), and it is available for query. 
+</p>
+<p>
+Here's the <a href="http://swordfish.rdfweb.org/rdfquery/squish-bnf.html">SquishSQL</a> query we send to the RDF software: 
+</p>
+
+<blockquote>
+<pre>
+SELECT ?name, ?homepage, ?weblog, ?x, ?feed, 
+WHERE  (foaf::name ?x ?name)
+               (dc::contributor ?x http://www.cpan.org/)
+               (foaf::homepage ?x ?homepage)
+               (foaf::weblog ?x ?weblog)
+               (foaf::rssfeed ?weblog ?feed)
+USING 	dc for http://purl.org/dc/elements/1.1/
+               foaf for http://xmlns.com/foaf/0.1/
+</pre>
+</blockquote>
+
+<p>
+This RDF query language is called Squish as it is loosly SQL-ish in the way it is used. We send the database a question asking for a selection of fields, and we get back a table of results. Here are name/homepage/weblog 'hits' corresponding to the rows returned by the query system:
+</p>
+
+<blockquote>
+<pre>
+Earle Martin (http://downlode.org/ weblog: http://downlode.org/blog.pl)
+Jo Walsh (http://www.zooleika.org.uk weblog: http://www.zooleika.org.uk/blog.html)
+Norm Walsh (http://nwalsh.com/ weblog: http://norman.walsh.name/)
+</pre>
+</blockquote>
+
+<p>
+Here is a <a href="http://rdfweb.org/2003/06/cpan/lookups.rb">simple Ruby lookup script</a> which extracts the tabular <a href="http://rdfweb.org/2003/06/cpan/weblogs.txt">result set</a> from the database. The query extracts information (in this case weblog address etc) about people who contribute to CPAN and are known to the database.
+</p>
+
+<p>
+Bugs and disclaimers: 
+</p>
+<p>
+I used the dc:contributor property incorrectly in this demo. It should relate a document to one of its contributors. I used it backwards, and slightly incorrectly, by relating a person to a homepage of a project they contribute to. I should use foaf:project instead.
+</p>
+
+<p>
+The demo links are also a bit inconsistent, in that I added in a clause to the query which also asks for the RSS feed of a weblog, but didn't commit the new resultset output to the website yet. I'll try to get that fixed.
+</p>
+
+<p>
+This brief writeup assumes perhaps a bit too much background knowledge for those new to RDF to follow in detail, also things like SHA1 'hashing' could do with elaboration. Still I hope the basic approach is clear: RDF allows us to merge disparate datasources and get back answers that depend on their combination. And that we can use that for filtering and discovery of weblogs, given a description of some weblogs and their authors.
+</p>
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Identifying things in FOAF
+BASENAME: identifying_things_in_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/10/2003 12:05:33 PM
+-----
+BODY:
+There is growing interest in FOAF and its relationship to various approaches to "identity management" on the Internet. The FOAF approach to all this is distinctly pluralistic, to the extent that you might not even notice that there is a FOAF way of dealing with identity. There aren't, for example, 'FOAF identifiers' as such, although there is certainly a FOAF approach to identifying things. So this is a first cut at writing up some of the as-yet-unarticulated design assumptions behind FOAF. A more user-friendly version would have examples, those will have to come later.
+
+So here's the basic story. FOAF is built on top of W3C's Resource Description Framework (RDF), which itself uses XML and Unicode as file format standards. All FOAF documents are RDF documents, and any RDF application vocabularies (such as Dublin Core, RSS 1.0 core + extensions, MusicBrainz, Wordnet etc.) can be used within FOAF documents. FOAF shares with RDF a concern to use standard Web identifiers (URIs) wherever possible.  The URI specification (<a href="http://www.faqs.org/rfcs/rfc2396.html">RFC 2396</a>) provides a common syntax for naming things on the Web, providing an umbrella concept which covers both 'URLs' and 'URNs'. 
+
+To the extent that everything we want to talk about has a well known URI, this solves all our problems. Lots and lots of things that we want to talk about do have URIs. There are URIs for Web pages, for mailboxes, for Java classes, for telephones, for ISBN-registered publications, and so on. This is great - when you want to talk about one of these things in a FOAF file, you just mention its URI. Simple, decentralised, standard.
+
+However our story doesn't end here, FOAF needs to play in a world where we don't all have total knowledge of every relevant fact. Sometimes a thing might 'have' a URI (in some pedantic sense) yet 99% of parties on the Web might not know what that URI <em>is</em>. Or, closer to my main theme, we might want to talk in our FOAF files about things that it has proved peculiarly difficult to get agreement about  identifying. People, for example.
+
+Just try setting up a planet-wide system for identifying people and you'll see my point. There is significant resistence to the idea of creating a single set of identifiers used to 'tag' everyone. To put it mildly. So... where does this leave FOAF? FOAF documents are scattered around the Web, and each document makes a unique contribution to a bigger picture which can only be seen when those documents are merged together. In FOAF, we need to identify people, without there being agreement on person-identifiers. Tricky!
+-----
+EXTENDED BODY:
+So here is the good news. RDF was designed for generic, cross-domain data merging. Imagine taking two arbitrary SQL databases and merging them, so that your new database could answer questions which required knowledge of things which were previously described partially in one dataset, and partially in another. That sort of operation is hard to do, because SQL wasn't designed in a way that makes this easy. Neither was XML. But RDF was, and FOAF is built as an RDF application. In RDF, there are off the shelf software tools which can take RDF documents, 'parse' them into a set of simple 3-part statements (triples) which make claims about the world, and store those statements alongside others in a merged RDF database. To the extent that both datasets use the exact same identifiers when mentioning things they describe, you get a rather handy data-merge effect. 
+
+So here is the (not very) bad news.  If two different RDF files (eg. FOAF documents) are talking about the same thing but don't use exactly the same URI when mentioning that thing, how are our poor stupid computers supposed to be able to understand? In the real world, we want to write RDF documents (eg. for FOAF) about things that we've not yet agreed on common identifiers for. This is one of the core problems we've had to address in FOAF. 
+
+Basically, off the shelf RDF tools can still do a lot to help us, but we have to help them. FOAF, as an application that focusses on the distributed, decentralised, <em>almost</em> out of control use of RDF 'in the wild', ran into this problem after we had about half a dozen FOAF files. There are now hundreds, soon thousands, of FOAF documents. Most of them talk about people, quite successfully, despite the absence of a global person-id registry. This sounds like a recipe for chaos, yet somehow many of our FOAF aggregation tools are quite happy with this situation. They can often figure out when two files are about the self-same thing, without much help from the authors of those documents. We do this using what might be called "reference by description". Instead of saying, "this page was created by urn:global-person-registry:person-n22314151", we say "this page was created by the peson whose (some-property...) is (some-value...)", taking care to use an unambiguous property such as foaf:homepage or foaf:mbox_sha1sum.
+
+Here's how it works. Recall that FOAF is built on top of RDF, and so every FOAF document boils down to nothing more than a set of 3-part statements which relate two things together via terms such as 'workplaceHomepage', 'homepage', 'mbox'.
+
+I am related to those things that are my homepages; FOAF's name for that relationship is 'foaf:homepage'.
+
+I am related to those things that are my personal mailboxes by a relationship FOAF calls 'foaf:mbox'.
+
+I am related to the strings that you get from feeding my mailbox identifiers to the SHA1 mathematical function by a relationship FOAF calls 'foaf:mbox_sha1sum'.
+
+I am related to a myers briggs personality classification, FOAF calls that relationship 'foaf:myersBriggs'.
+
+I am related to my workplace homepage (http://www.w3.org/) by a relationship called -- you guessed it -- 'foaf:workplaceHomepage'.
+
+I am related to my name, 'Dan Brickley' by the 'foaf:name' relationship.
+
+I am related to my AIM chat identifier by a relationship FOAF calls 'foaf:aimChatID'.
+
+And so on. Other RDF vocabularies can define additional relationships (see the <a href="http://rdfweb.org/topic/FoafVocab">FoafVocab</a> entry in our wiki for pointers). They all relate things to other things in named ways. A FOAF document, like any RDF document, is simply a collection of these simple claims about how things in the world relate.
+
+But look again.There is a hidden pattern here. Some of these relationships are special.
+
+foaf:homepage foaf:mbox foaf:mbox_sha1sum foaf:aimChatID fall in one category.
+
+foaf:workplaceHomepage, foaf:myersBriggs, foaf:name fall in another.
+
+Here's the difference. The former kinds of relationship (or 'property' in RDF-talk) have a special characteristic. They have been defined such that there is <em>at most one thing in the world</em> that has any particular value for that property.
+
+There is... at most one thing in the world with any given foaf:homepage. Or foaf:mbox, or foaf:mbox_sha1sum, or foaf:aimChatID. By contrast, there may well be multiple things in the world with the same foaf:workplaceHomepage, or foaf:myersBriggs, or even (it's a big world) foaf:name. Apparently there's another Dan Brickley out there. And lots of my colleagues share my workplace homepage. And there are a lot of people who myers brigg surveys classify as 'INTP' . But there is nobody else at all who has the same foaf:homepage as me, or the same foaf:mbox. Or foaf:aimChatID.
+
+This is one of the design principles underlying FOAF (and for that matter the entire Semantic Web effort): a pragmatic, pluralistic approach to resource description and identification. Rather than building big, centralised registries of people (or companies, or physical things) we look for cheaper, more lightweight shared strategies for identification. In FOAF, we do this by making sure there are multiple ways we can identify things.
+
+So one FOAF file might mention 'here is a photo; it depicts the person whose mailbox is danbri@rdfweb.org'. Another FOAF file might say 'here is a weblog entry written by the person whose homepage is http://rdfweb.org/people/danbri/', a 3rd FOAF file might say, 'here is a chat transcript by the person whose foaf:aimChatID is danbri_2002'. To the extent that there is publically readable RDF in the Web that makes all these claims, <em>and</em> that there is, perhaps scattered around, enough information to deduce that these all describe the same people, RDF /FOAF tools can 'smush' it all together. They could 'realise' that the photo and the weblog and the chat log were all associated with the self-same thing, ie me. 
+
+To do that, we need certain pieces of information. We need to know which, of all the kinds of relationship there are, are the uniquely identifying ones. In RDF terminology we call these <em>unambiguous</em> (or more technically, <em>inverse-functional</em>) properties. When RDF software reads the <a href="http://xmlns.com/foaf/0.1/">FOAF spec</a> it can determine this from markup embedded in the document itself. So machines can find out quite easily which properties are ones which uniquely identify people. They can do this for the FOAF spec, and for any other RDF vocabulary that is used alongside FOAF.
+
+The other bit of information needed is that somewhere in the Web, it would need to be claimed that there is a person who has a mailbox of ... and a homepage of ... and an aimChatID of ...
+
+If that information is available, then FOAF tools are all set to do the data merge, even though there is no planet-wide unified identification system for people. We don't use anything else except off the shelf standards: URIs plus W3C RDF and OWL technology.
+
+If you find the data merging potential creepy, you are not alone. This kind of technology is not going away, but there are steps you can take. A full discussion of the privacy aspect isn't possible here, but the basic idea is (i) be aware -- scattered information can easily be merged (ii) keep things as secret as they need to be. Don't tell the world (in your FOAF file or elsewhere) all the chat IDs and homepages and mailboxes that you use, then act suprised when people and machines piece together your scattered contributions to the Web. Reading up on PGP might be a good idea. 
+
+We don't need to  wait for a global identity management system before privacy and data merging becomes an issue. FOAF is intended to explore these issues, and to provide some advance warning for the way certain aspects of semantic web technology may affect our lives. Just as the world has had to adapt to the notion of 'being Googled' and having things that once seemed obscure now all to easily found, the rise of semantic web technology needs to be accompanied by an understanding of the risks and opportunities that 'being identified' presents.
+
+Finally... a couple of points of further reading on the technical rather than social side of this problem. A couple of years ago I wrote a <a href="http://rdfweb.org/2001/01/design/smush.html">brief note on aggregation strategies</a> which describes the 'smushing' problem. A more recent <a href="http://www.hackdiary.com/archives/000021.html">writeup by Matt Biddulph</a> describing his Java implementation  is worth a read too, as are many of the <a href="http://tap.stanford.edu/tap/papers.html">documents</a> from the <a href="http://tap.stanford.edu/">TAP project</a>, which share FOAF's concern for reference-by-description. Guha and Rob's <a href="http://tap.stanford.edu/sw002.html">overview paper</a> sets out the issues very clearly.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 07/10/2003 01:36:56 PM
+Short version: 
+
+In FOAF, we use URIs to identify things while describing them.
+
+When we don't have URIs handy, we take care to use identifying properties in our descriptions.
+
+We don't care which properties we use, so long as they are unambiguous. The more that get into general use, the easier it becomes to figure out when two documents are describing the same entity.
+-----
+
+COMMENT:
+AUTHOR: Marc Canter
+EMAIL: marc@broadbandmechanics.com
+IP: 168.103.209.109
+URL: http://blogs.it/0100198
+DATE: 07/10/2003 04:12:08 PM
+Coolio dude - thanks for this.  But the process of smushing is kind of 'challenging' when the end-user holds onto their own foaf.rdf file.
+
+So we have this idea of: a) hosting a database of foaf.rdf files that get 'shared' for FOAFster-type funtionality (if end-users don't care) and b) if they DO care about holding onto their own foaf.rdf files - then we assume that their file is the master, and we'll set up a mirroring process - where any changes to the master - is uploaded to the 'shared' database.
+
+How does that sound?
+-----
+
+COMMENT:
+AUTHOR: Danny
+EMAIL: danny666@virgilio.it
+IP: 80.182.210.119
+URL: http://dannyayers.com
+DATE: 07/11/2003 01:17:31 AM
+danbri, nice work.
+
+Marc, I'm not sure the users holding their own files is likely to be such an issue. But to do stuff with the data you'll have to read it into your own system anyway. You could just store the URIs and poll them whenever needed, but it would probably make sense in terms of performance to keep a version in your DB as a cache. This should also lend itself to pretty simple load distribution - it doesn't really matter where the FOAF statements are held. So I think what you're suggesting probably would be a good approach, but for a slightly different reason ;-)
+
+I know there's plenty of work being done with the query languages, but maybe systems like this call for a very simple standardised subset plus some system-level comms. i.e. just two or three fairly FOAF-specific queries (e.g. give me all your Persons with any of these properties) combined with URIs for the stores. Make it easy a possible to implement, but allow sync and the forwarding of queries between DBs (that may even have completely different purposes, but still expose the same mini-interface).
+-----
+
+COMMENT:
+AUTHOR: Jay Fienberg
+EMAIL: siteinfo@icite.net
+IP: 68.120.137.66
+URL: http://icite.net/blog/
+DATE: 07/13/2003 12:02:57 AM
+Great, and really illustrative example, Dan.
+
+Marc and Danny: I am thinking about similar things, which I see as:
+
+1. another level of DNS-like mapping to specific documents that gives those documents non-volitile identifiers
+
+2. document stores that automatically plug-in to that DNS-like mapping, and provide interfaces exposing the stored documents to queries
+
+3. tools for querying, caching, and syncing document data across different document stores
+
+(4. safe and easy to integrate with existing/other tools, like websites, blogs, wikis, and email, and with other standards like N/echo and RSS!)
+-----
+
+
+PING:
+TITLE: Identifying things in FOAF
+URL: http://www.bernhardseefeld.ch/archives/000027.html
+IP: 195.226.6.14
+BLOG NAME: Bernhard Seefeld's Blog
+DATE: 07/10/2003 02:24:31 PM
+Dan Brickley writes about identifying things in FOAF. This explains nicely what I wanted to know, when I asked how a FOAF navigator would handle FOAF files coming from an by-default anonymous community....
+-----
+
+PING:
+TITLE: Identifying things in FOAF
+URL: http://dannyayers.com/archives/001530.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 07/11/2003 12:56:41 AM
+danbri : Identifying things in FOAF Longish piece starting with "identity management" Short version: In FOAF, we use URIs to...
+-----
+
+PING:
+TITLE: Identifying in and around FOAF
+URL: http://icite.net/blog/200307/foaf_identity.html
+IP: 68.120.137.66
+BLOG NAME: the iCite net development blog
+DATE: 07/13/2003 12:23:27 AM
+Dan Brickley posted a great entry on the FOAF weblog on Identifying things in FOAF. I think this might be one of the most down-to-earth illustrations of the Semantic Web I have read.
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Weekly round-up
+BASENAME: weekly_round-up
+STATUS: Draft
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/06/2003 03:41:18 PM
+-----
+BODY:
+
+-----
+EXTENDED BODY:
+http://www.bigredswitch.com/blog/archives/2002/10/22/000060.html#000060 FOAFmixer 2000 
+http://bigredswitch.com/foafmixer.cgi
+FOAFmixer is written using the Perl wrapping of Redland,
+Oct 2002
+Brandon Lee
+
+http://playainfo.igargoyle.com/ http://igargoyle.com/bmfoaf/
+
+http://simonstl.com/projects/foaf-xml/
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Back to the MOO
+BASENAME: back_to_the_moo
+STATUS: Draft
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Programming
+CATEGORY: Programming
+DATE: 06/25/2003 10:33:26 PM
+-----
+BODY:
+MOOs are object-oriented, immersive, collaborative text based environments that allow users to extend the objects and behaviour of the database they inhabit (eg. see moo.mud.org). It turns out that MOOs are built around a rather RDF-like information model. Everything is an object in a class hierarchy; objects have flat text properties (color, size, description) and relationships to other uniquely identified objects. Behaviour (verbs) is implemented by attaching MOO scripts to objects, where these scripts are akin to simple javascript plus conventions for navigating the objects/properties/relationships that constitute the MOO.
+
+Based on earlier <a href="http://ilrt.org/discovery/2001/03/rdf-moo/index.html">notes I made while at ILRT</a>.
+-----
+EXTENDED BODY:
+The rest of this note compares the RDF and MOO modeling systems, and describes how MOO behaviours might have equivalents in some lightweight fictional RDFScript.
+
+
+RDF/MOO Data Model Comparison
+
+
+MOOs (using the LambdaMOO engine) use local identifiers (eg. #221) instead of Web-wide URI identifiers. The MOO type system conflates the 'sub-class' and 'type' relationships. Apart from this, the models are much the same.
+
+
+For example:
+
+<blockquote>
+<pre>
+MOO:
+#221 (danbri) -- moo:parent --> #100 (programmer) -- moo:parent --> #20 (person)
+
+RDF:
+[danbri] -- rdf:type --> [programmer] -- rdfs:subClassOf --> [person]
+</pre>
+</blockquote>
+
+Behaviour / stylesheets: This is what got me interested. In RDF, we have no consensus or conventions for lightweight scripting and 'style sheet' applications. This proves annoying in Web collaboration applications where we want to visualise our squiggly RDF graphs. In a MOO context, UI for MOO data graphs is achieved through the pragmatic hack of associated little script fragments with the data.
+
+MOO scripting example:
+
+Here is a MOO script fragment that creates an object and gives it behaviour (a flushable toilet).
+
+<blockquote>
+<pre>
+@create $thing named loo
+@property loo.lastUser
+@verb loo:flush this
+@program loo:flush
+
+ Now programming loo:flush(1).
+ [Type lines of input; use `.' to end or `@abort' to abort the command.]
+        player:tell("You flush the loo. The last player to do this was ",
+        this.lastUser.name, ".");
+        this.lastUser=player;
+        .
+ 0 errors.
+ Verb programmed.
+</pre>
+</blockquote>
+
+Explanation: We create a new 'thing' and attach a verb 'flush' to it. We have a property of the thing ('loo', which is english for toilet) named 'lastUser' which always points to a thing of type player. The MOO context ensures that the method/verb invocation provides a context for current player ID, allowing us to call the 'tell' method on the object invoking the 'flush' method/verb.
+
+
+<blockquote>
+<pre>
+RDF version:
+[toilet_3] --rdf:type--> [XYZ:Toilet] --rdf:subClassOf--> [moo:Thing]
+[toilet_4] --XYZ:lastUser--> [person_44]
+
+[XYZ:Toilet] --XYZ:flush-->
+        '
+        player:tell("You flush the toilet. The last player to do this was ",
+        this.XYZ:lastUser.vcard:name, ".");
+        this.XYZ:lastUser=player;
+        '
+</pre>
+</blockquote>
+
+ Concrete scenario for WWW collaboration application: 
+
+If MOOs were re-implemented over the RDF data model, including some version of an RDFScript such as that above, behaviours/methods previously implemented in MOO script would need to be migrated to an RDF scripting environment such as that hinted above. Real world organisational models (white page data, todo lists, calendars, document descriptions, ratings) could be poured into the collaborative environment. Users could create scripted views into this data by writing simple code fragments attached to objects and classes.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: mobile meta?
+BASENAME: mobile_meta
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Creation Tools
+CATEGORY: Creation Tools
+DATE: 06/26/2003 11:21:57 PM
+-----
+BODY:
+<img alt="35PG0105.jpg" src="http://rdfweb.org/mt/foaflog/archives/35PG0105.jpg" width="640" height="480" border="0" />
+
+if the photo software in this p800 camera-phone  knew how to talk to a bluetooth GPS, ...
+
+someday... foaf + location + photos ... 
+
+not yet... when?
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: jouno
+EMAIL: jouno2002@yahoo.co.jp
+IP: 133.9.4.12
+URL: 
+DATE: 06/30/2003 07:01:46 PM
+<a href="http://kota.s12.xrea.com/vocab/uranai/start.xht"><a href="http://kota.s12.xrea.com/vocab/uranai/start.xht">http://kota.s12.xrea.com/vocab/uranai/start.xht</a></a>
+I found a Japanese who made FOAF fortune-telling vocabulary.
+-----
+
+COMMENT:
+AUTHOR: urs
+EMAIL: urs@circle.ch
+IP: 80.218.118.34
+URL: http://circle.ch
+DATE: 07/18/2003 12:17:06 PM
+hi dan
+
+i like that idea. but there is maybe a way around a GPS, if you do not really need such a good resolution. our telcos deliver a braodcast message with the position of the closest antenna or at least the one, with the best signal as far as i know. some of my thought here:
+
+- <a href="http://www.circle.ch/blog/p970.html"><a href="http://www.circle.ch/blog/p970.html">http://www.circle.ch/blog/p970.html</a></a>
+- <a href="http://www.circle.ch/blog/p974.html"><a href="http://www.circle.ch/blog/p974.html">http://www.circle.ch/blog/p974.html</a></a>
+
+-urs
+-----
+
+
+PING:
+TITLE: Phone GPS
+URL: http://www.pmbrowser.info/hublog/archives/000387.html
+IP: 212.227.127.11
+BLOG NAME: HubLog
+DATE: 06/30/2003 09:48:00 AM
+Dan Brickley: FOAF + location + photos... How about mobile phone + camera + GPS + RDFmap + ordnance survey data?...
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF Contradictions
+BASENAME: foaf_contradictions
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/13/2003 03:16:33 AM
+-----
+BODY:
+Q: If I can say what I like in a FOAF file, even say nothing, and if I can use any semantic web vocabularies at all, all mixed together, how can we ever know if a FOAF file is 'wrong' (broken, in error)?
+
+A: Which answer do you want...? ;)
+
+One part of the answer relates to the detection of inconsistencies in FOAF data. 
+In particular, checking for documents that contradict themselves is becoming possible, thanks to our use of W3C's <a href="http://www.w3.org/2001/sw/WebOnt">Web Ontology language</a> (OWL). 
+
+So I wrote a bit about this in the <a href="http://rdfweb.org/topic/FoafProject">FOAF  wiki</a>, see the <a href="http://rdfweb.org/topic/FoafContradictions">FoafContradictions</a> article there. I hope to expand on it with more examples and detail about how OWL works, so am writing in wiki rather than weblog mode this time. It should be readable and hopefully useful now.
+
+A natural topic for further attention would be the discovery of <em>disagreements</em> between documents. That's a rich area to explore, as it combines a variety of techniques, eg. logical (people only have one foaf:dateOfBirth) and statistical (20% of FOAF files think my surname is 'Brinkley', maybe they're right...). This is an important topic as it relates to trust strategies, to dealing with stale / dated information, and to the practical problems inherent in any 'semantic web search engine' efforts. But I didn't write about it yet. Take a look at the <a href="http://rdfweb.org/topic/FoafContradictions">FoafContradictions</a> piece and let me know if that's a useful level of detail to attempt...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAFbot and Gnome Dashboard
+BASENAME: foafbot_and_gnome_dashboard
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 07/13/2003 02:38:54 PM
+-----
+BODY:
+<p>
+<a href="http://usefulinc.com/edd/blog/contents/2003/07/dashfoafphone.png"><img alt="dashfoafphone-thumb.png" src="http://rdfweb.org/mt/foaflog/archives/dashfoafphone-thumb.png" width="160" height="149" border="0"  align="right"/></a>
+Edd Dumbill <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-July/011354.html">writes</a> with news of his latest work on <a href="http://usefulinc.com/foaf/foafbot">FOAFbot</a>, the chat-based FOAF aggregator. 
+</p>
+<p>
+FOAFbot is now based on the 'twisted' framework, opening up possibilities for various new interfaces to the data beyond the current IRC one. This is interesting as it makes it easier for people to adapt FOAFbot, eg. for instance messenger or HTTP interfaces, or to hook it up to alternate front-ends such as <a href="http://www.foafnaut.org/">foafnaut</a>. Edd's weblog provides more details on all this, including links to source code and a teaser screenshot of FOAFbot data showing up in <a href="http://www.nat.org/dashboard">Gnome Dashboard</a>. Nice work! :) 
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: Nat's Dashboard
+URL: http://www.al3x.net/mt/archives/000205.html
+IP: 203.194.209.161
+BLOG NAME: Alexander Payne
+DATE: 07/13/2003 05:54:43 PM
+Nat's we-can-do-it-before-Microsoft dashboard for GNOME (and theoretically anything else you can write an interface for) is pretty cool. It's the first thing I've seen in a while that made me think, "huh, but we don't have that OS X..." Basically,...
+-----
+
+PING:
+TITLE: FOAF User Site
+URL: http://dannyayers.com/archives/001568.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 07/17/2003 08:31:54 AM
+Attractive, though still rather technical FOAF blog from Nicole. Foaf Project...
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: nearestAirport documentation in Japanese
+BASENAME: nearestairport_documentation_in_japanese
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/13/2003 11:54:58 AM
+-----
+BODY:
+From <a href="http://d.hatena.ne.jp/kotastyle/">kota's weblog</a>, <a href="http://d.hatena.ne.jp/kotastyle/20030707#p2">details on using 'nearestAirport' in FOAF files</a>. Thanks kota!
+
+The 'contact:nearestAirport' property is a way of indicating very broadly which part(s) of the world you're from, without needing to know exact coordinates or giving away too much detail. It isn't part of the FOAF vocabulary, but can be included as an extension in any FOAF file. A few 'nearestAirport' links: <a href="http://www.perceive.net/pages/page/articles/year/2002/month/12#9">pixel's writeup</a>, <a href="http://www.w3.org/2001/sw/Europe/200303/geo/intro.html">swad-e developer map</a>, <a href="http://www.jibbering.com/2002/8/foaf-people-map.svg">FOAF people map</a>
+
+See also <a href="http://www.kanzaki.com/docs/sw/foaf.html">FOAF overview in Japanese</a>, <a href="http://antipop.zapto.org/wiki/?The%20%27friend%20of%20a%20friend%27%20project%20-%20FOAF">Japanese  FOAF wiki</a>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: SemaView, Social Networking and FOAF
+BASENAME: semaview_social_networking_and_foaf
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/13/2003 10:56:35 AM
+-----
+BODY:
+<p><img alt="semafoaf.jpg" src="http://rdfweb.org/mt/foaflog/archives/semafoaf.jpg" width="332" height="247" border="0" align="right"  />
+SemaView have a nice writeup of their work with RDF, Semantic Web and FOAF: <a href="http://www.semaview.com/c/socialnetworking.html">Social Networking utilizing the Intelligent Internet </a> 
+</p>
+<p>
+Actually it was published back in March, but I missed the chance to write about it then. Better late than never. The article introduces the basic concepts of the Semantic Web and RDF using their <a href="http://www.semaview.com/foafwalk/viewer.html?q=http://www.semaview.com/foaf/chris.rdf">FOAF browser</a>,  built using Java and PHP. The article goes on to talk about the potential business value of such work, giving a brief case study of the <a href="http://www.ecademy.com/">Ecademy</a> networking site. 
+</p>
+<p>
+The <a href="http://www.semaview.com/c/publications.html">other publications</a> on <a href="http://www.semaview.com/">SemaView's site</a> are worth a read too. They've made an effort to provide a friendly overview of Semantic Web technologies, and to provide a business-oriented perspective as well as a technical one. 
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Updated Autocreation tool from digiboy
+BASENAME: updated_autocreation_tool_from_digiboy
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Creation Tools
+CATEGORY: Creation Tools
+DATE: 07/13/2003 10:16:38 AM
+-----
+BODY:
+<p>Marcus Campbell <a href="http://www.tecknik.net/digiboy/2003/07/index.php#post000891">has updated</a> his <a href="http://www.tecknik.net/autofoaf/">FOAF Autocreation</a>  tool. 
+</p>
+<p>
+The FOAF autocreation script takes two links - one to your current FOAF file and one to your OPML blogroll - and produces a brand new FOAF file for you by attempting FOAF autodiscovery on every site your OPML file mentions. See the <a href="http://www.tecknik.net/autofoaf/#questions">autofoaf</a> page for more details on this tool. 
+</p>
+<p>
+So this is yet more reason to take a few seconds to make an <em>auto-discovery</em> link to your FOAF file in from the &lt;head&gt; of your Web page, to give software tools a hint about how to find it. This <em>auto-discovery</em> syntax is detailed in the <a href="http://xmlns.com/foaf/0.1/">FOAF spec</a>, but here it is once more as a reminder:
+</p>
+<blockquote>
+<pre>
+ &lt;link rel="meta" type="application/rdf+xml" title="FOAF" href="<strong>foaf.rdf</strong>" /&gt;
+</pre>
+</blockquote>
+
+
+<p>
+...where "<strong>foaf.rdf</strong>" is a relative link to your FOAF file, with the name changed appropriately.
+</p>
+<p>
+The upcoming <a href="http://www.typepad.com/">TypePad</a> weblog hosting service from <a href="http://www.sixapart.com/">Six Apart</a> also makes use of this auto-discovery markup, as does the <a href="http://rdfweb.org/mt/foaflog/archives/000033.html">XML::FOAF</a> Perl software library, so it is increasingly worthwhile adding in the FOAF autodiscovery link.
+</p>
+<p>
+The basic idea for FOAF auto-discovery is to remove the need to remember (and type in) a separate URL for your FOAF file. Instead of remembering both your homepage and FOAF address, just know the former and make sure it references your FOAF file in a way that software tools can follow. Less work for humans, more work for machines, just as it should be. 
+</p>
+
+<p>
+Further reading: <a href="http://rdfweb.org/topic/Autodiscovery">Autodiscovery page</a> in the <a href="http://rdfweb.org/topic/FoafProject">FoafProject wiki</a>.
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 07/13/2003 11:02:58 PM
+
+More details on the updated version are at...
+<a href="http://www.tecknik.net/digiboy/2003/07/index.php#post000891"><a href="http://www.tecknik.net/digiboy/2003/07/index.php#post000891">http://www.tecknik.net/digiboy/2003/07/index.php#post000891</a></a>
+
+    *  My FOAF file has no knows.
+
+    * How does it smell?
+
+    * Terrible.
+
+:)
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Missing isn't broken: data validation and freedom on the Semantic Web
+BASENAME: missing_isnt_broken_data_validation_and_freedom_on_the_semantic_web
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/24/2003 12:22:48 PM
+-----
+BODY:
+Developers who come to the Semantic Web effort via XML technology often make an understandable mistake. They assume that <em>missing is broken</em> when it comes to the contents of RDF/XML documents, that if you omit some piece of information from an RDF file, you have in some formal, technical sense 'done something wrong' and should be punished.
+
+RDF doesn't work like that. <em>Missing isn't broken</em>. In the general case, you are free to say as much, or as little, in your RDF document as you like.  RDF vocabularies such as <a href="http://xmlns.com/foaf/0.1/">FOAF</a>, <a href="http://purl.org/dc/elements/1.1/">Dublin Core</a>, <a href="http://www.musicbrainz.org/MM/">MusicBrainz</a>, <a href="http://xmlns.com/2001/08/wordnet/">RDF-Wordnet</a> don't get to tell you what to do, what to write, what to say. Instead, they serve as an interconnected dictionary documenting the meaning of the terms you're using in your RDF  documents.
+
+This article walks through some example FOAF, showing (hopefully!) how the ability to omit and add data is an essential part of the freedom RDF provides. It follows from the recent articles I wrote on <a href="http://rdfweb.org/mt/foaflog/archives/000040.html">contradictions in FOAF</a> and on <a href="http://rdfweb.org/mt/foaflog/archives/000039.html">identification strategies</a>. Like those articles, it is written mostly for developers who are coming to RDF and Semantic Web from a different background, and tries to make explicit some of the design assumptions behind FOAF which haven't yet been made clear.
+-----
+EXTENDED BODY:
+To take an example from FOAF, the <code>foaf:workplaceHomepage</code> property relates a person to a document that is the homepage of their workplace. The <a href="http://xmlns.com/foaf/0.1/">FOAF vocabulary</a> contains markup that explains the basics of this to machines.
+
+<em>"The <code>foaf:workplaceHomepage</code> property has an <code>rdfs:domain</code> of <code>foaf:Person</code> and an <code>rdfs:range</code> of <code>foaf:Document</code>."</em>
+
+What does this mean?!  Just that whenever you see an RDF description saying that something has a <code>foaf:workplaceHomepage</code> of something else, you know, by virtue of the meaning of that property, that the first 'something' is expected to be a Person, and the second expected to be a Document. You know that because  <code>foaf:workplaceHomepage</code> is a relationship between people and documents.  Note that these are expectations about the <em>world</em> and not about XML documents. For it to be true that something is the <code>foaf:workplaceHomepage</code> of someone, it will have to be something that is a document. That's a constraint on the world, not on XML tag structures.
+
+What doesn't it mean? It <em>doesn't</em> mean that all RDF documents which use this property have to spell out explicitly the type of the things the property is relating. RDF leaves a lot of freedom, and doesn't punish document authors for the sin of omission. Often enough, the stuff you miss out could be infered from the things you wrote anyway, so why force document authors to needlessly pad out their RDF.
+
+Another example. The <code>foaf:knows</code> relation is defined as one that relates a <code>foaf:Person</code> to another <code>foaf:Person</code>. 
+
+A typical usage would be:
+
+<blockquote>
+<pre>
+&lt;foaf:Person foaf:name="Dan Brickley"&gt;
+  &lt;foaf:knows&gt;
+     &lt;foaf:Person foaf:name="Edd Dumbill" /&gt;
+  &lt;/foaf:knows&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</blockquote>
+
+This basically is RDF's way of saying 'there is something that is a foaf:Person and that has a foaf:name of 'Dan Brickley' and that stands in a foaf:knows relationship to something that is a foaf:Person and that has a foaf:name of 'Edd Dumbill'.
+
+It is important to understand that we can omit pieces of this information, without this RDF/XML being 'broken' (invalid etc.) in any formal sense. Or, perhaps more interestingly, we could add information. From RDF's perspective, you are free to choose. It is not up to the creators of FOAF (or MusicBrainz, or Dublin Core) to dictate to you which things you should or should not mention in your RDF documents. 
+
+So, we could write this:
+
+<blockquote>
+<pre>
+&lt;foaf:Person foaf:name="Dan Brickley"&gt;
+  &lt;foaf:knows&gt;
+     &lt;foaf:Person/&gt;
+  &lt;/foaf:knows&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</blockquote>
+
+...ie. 'Dan knows someone'. Hardly very informative. Probably somewhat annoying,   but entirely perfectly correct RDF. Nothing in that markup violates any rules associated with the FOAF vocabulary. Similarly, we could write:
+
+<blockquote>
+<pre>
+&lt;rdf:Description foaf:name="Dan Brickley"&gt;
+  &lt;foaf:knows&gt;
+     &lt;rdf:Description  foaf:name="Edd Dumbill" /&gt;
+  &lt;/foaf:knows&gt;
+&lt;/rdf:Description&gt;
+</pre>
+</blockquote>
+
+...and it is still just fine. The markup 'rdf:Description' is what RDF uses when you mention something but don't happen to mention it's type. So here, we are just saying 'there is something with a foaf:name 'Dan Brickley' that foaf:knows something else with a foaf:name 'Edd Dumbill'. Again, true, but slightly less informative. We didn't mention that these things were people.  Although that information could be deduced because we know that foaf:knows relates a foaf:Person to a foaf:Person, it is sometimes helpful to be explicit.
+
+The criticial thing to remember: don't assume it is broken because you don't see 'foaf:Person' in the markup. That's a feature not a bug, as it lies at the heart of RDF's free-form extensibility. Since we want FOAF to be easily extended by independent parties, without breaking the core interop provided by RDF and the basic FOAF vocabulary, this is a freedom to be valued.
+
+Here is another example:
+
+<blockquote>
+<pre>
+&lt;foaf:Person foaf:name="Dan Brickley"&gt;
+  &lt;foaf:knows&gt;
+     &lt;wordnet:Programmer foaf:name="Edd Dumbill" /&gt;
+  &lt;/foaf:knows&gt;
+&lt;/foaf:Person&gt;
+</pre>
+</blockquote>
+
+Here we give a more detailed type than foaf:Person. You can look up <a href="http://xmlns.com/wordnet/1.6/Programmer">wordnet:Programmer</a> in the Web for its RDF definition, which tells us amongst other things that a programmer is <em>"a person who designs and writes and tests computer programs</em>". 
+
+So in addition to being able to deduce from the <code>foaf:knows</code> relationship that Edd is a <code>foaf:Person</code>, the markup tells us that his skills include programming. Unlike in a strictly typed OO programming environment, however, Edd can have lots of independently defined 'types', and FOAF files can mention any or none of these according to need and circumstance. 
+
+Just as missing out information isn't wrong, nor is adding more information. From an XML perspective, it is both tempting and natural to see this as a too liberal and free-form. XML encourages us to think about this problem in terms of tags: "what tags can appear inside a foaf:knows? is foaf:Person allowed? what about wordnet:Programmer?". Unfortunately that doesn't scale well, since it requires a painful amount of coordination amongst the parties defining these vocabularies.
+
+RDF was designed to expect the unexpected. You don't need anyone's permission to invent new tags, or to have your tags 'go inside' their tags or vice versa. This is hugely liberating, particularly for FOAF because so many problem domains overlap in this space, and life is too short to spend in standardisation committees arguing about XML schemas for dictating whose XML tags enclose whose.
+
+The wordnet vocab wasn't designed to be used inside foaf:knows, and the foaf:knows property wasn't design to have wordnet:Programmer inside it. They were both designed to work within the Resource Description Framework (RDF), an approach to XML data mixing which allows such vocabularies to be freely mixed and combined without having everybody agree 1:1 how their vocabularies may or may not be combined.
+
+So... missing isn't broken.
+
+But it isn't always polite, either. With freedom comes responsibility. RDF and the Semantic Web provide a platform for exchanging XML documents that encode somewhat freeform claims about the world. FOAF was created to help explore practical deployment issues for 'RDF in the wild', and one issue we're currently working on is this balance between freedom and expectations. It is all well and good having a super-flexible way of saying anything-about-anything in FOAF RDF files, but where does that leave us poor developers?
+
+If the stark notion of 'valid -vs- invalid' document checking doesn't make sense in the decentralised Semantic Web environment, how can we make things easier for developers who are trying to work with this free-flowing mix of RDF markup? If nothing is mandatory, then how can they write code that <em>knows what to expect</em>?.
+
+There are several answers here. The first is that, if we want this to scale to the planet, we have to accept that one size won't fit all, that different parties will want to say quite varying things in their FOAF documents, and that our ability to impose our views on their documents is limited. 
+
+What can developers take for granted when reading a FOAF file? This is the key question...
+
+They should be able to assume it is wellformed XML+Namespaces, and that it is structured according to the RDF syntax specification. And that it probably makes use of the FOAF vocabulary, typically alongside others such as DC, RSS1, Wordnet...
+
+Beyond that, what should we strive for?  Here we move into the world of best practice, etiquette, user guidelines and other forms of 'soft' documentation. In the FOAF world, these are only now beginning to take shape (<a href="http://rdfweb.org/topic/FoafProject">in the wiki</a>, on rdfweb-dev and in this weblog). For FOAF, this sort of documentation is more important than schema-based validation. In FOAF, you can't get it <em>technically wrong</em> by missing out information, but you can make a nuisance of yourself by writing un-necessarily obscure FOAF.
+
+We are discussing (on the FOAF list, rdfweb-dev) possible 'common subset' properties which it might be reasonable to assume people will use in their FOAF files. These can't be mandatory, but may (alongside tools such as foaf-a-matic) help guide people into using some common core properties.
+
+But even choosing those properties is tricky! How do we name people? (it turned out that in Japan, many users prefer to use an informal foaf:nick, and omit their foaf:name property). How do we identify people? By foaf:mbox, foaf:mbox_sha1sum, foaf:homepage, or an Instant Messenger chatID? The answer  seems to be "one or more of the above...".
+
+So the conclusion here is not to look to the evolving <a href="http://xmlns.com/foaf/0.1/">FOAF specification</a> for black/white answers about what a FOAF file 'should' contain. The FOAF spec is like a dictionary, specifying the meaning of the things you use in your FOAF, but leaving it up to you and to <a href="http://rdfweb.org/topic/FoafProject">emerging best practice</a> as to what exactly you write. 
+
+In other words, RDF gives us the freedom to say whatever we like in our FOAF files, and we need to compliment the formality of the RDF Schema and Web Ontology language definitions for FOAF (<a href="http://xmlns.com/foaf/0.1/index.rdf">see schema</a>) with better documentation for users and developers helping them make their way in this strange new world...
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: libby
+EMAIL: libby.miller@bristol.ac.uk
+IP: 10.0.2.20
+URL: http://ilrt.org/people/libby/
+DATE: 07/24/2003 04:45:13 PM
+Practically, the issue is whether you can get all the information that you need from the data you have. Often if you are using some form of RDF query over this data, properties will be more important than classes. In the case of foaf Person and knows, we can ask (in Squish): find me the names of people who know me:
+
+select ?person, ?name where 
+(foaf:knows ?person ?me)
+(foaf:mbox ?me mailto:libby.miller@bristol.ac.uk) 
+(foaf:name ?person ?name) 
+using foaf for <a href="http://xmlns.com/foaf/0.1/"><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></a>
+
+adding a clause (rdf:type ?person foaf:Person) won't add anything to this particular query, because we know from the schema that we will get a foaf:Person at each end of a foaf:knows property.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 07/24/2003 07:21:24 PM
+
+Some of this conversation is continuing on the FOAF list, see my reply in this thread with Julian Bond
+
+<a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-July/011457.html"><a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-July/011457.html">http://rdfweb.org/pipermail/rdfweb-dev/2003-July/011457.html</a></a>
+-----
+
+COMMENT:
+AUTHOR: Graham Klyne
+EMAIL: gk-rdfweb@ninebynine.org
+IP: 62.53.48.3
+URL: http://www.ninebynine.org/
+DATE: 07/25/2003 09:50:41 AM
+I've formed a view that poses the question "what is useful" rather than "what is valid".  So I guess I'd say "useful" where you say "polite".  The thing about claiming "useful" is that it immediately begs the question "for what purpose?".  Very sparse data may be useful for a smaller range of purposes than more comprehensive data:  it's the creator's call how useful they want their data to be.  And of course, other folks may add to sparse data in ways that make it useful for a wider range of purposes.
+
+Monotonicity helps us here, too:  adding extra information never detracts from utility that may already be present.
+-----
+
+COMMENT:
+AUTHOR: Victor Lindesay
+EMAIL: victor@vicsoft.co.uk
+IP: 213.122.21.90
+URL: http://www.vicsoft.co.uk
+DATE: 07/26/2003 10:27:09 AM
+Thanks Dan for this clarification. My ranty dig at Libby's FOAF was based on the false assumption that RDF schemas were explicit rather than implicit definitions. I stand corrected and will amend the post with a link to this informative article.
+-----
+
+
+PING:
+TITLE: Talking past each other?
+URL: http://www.ideaspace.net/users/wkearney/archives/entries/000402.html
+IP: 208.171.83.32
+BLOG NAME: Bill Kearney
+DATE: 07/25/2003 11:02:04 PM
+Dan Brickley's on a roll lately. His posts into the rdfweb-dev mailing list regarding Julian's inquiries about FoaF have been...
+-----
+
+PING:
+TITLE: Missing isn't broken
+URL: http://www.picklematrix.net/archives/000265.html
+IP: 207.44.132.72
+BLOG NAME: True Web Services
+DATE: 07/28/2003 08:42:37 PM
+RDFWeb and Friend of a Friend (FOAF): Missing isn't broken: data validation and freedom on the Semantic Web Developers who...
+-----
+
+PING:
+TITLE: online poker
+URL: http://online-poker.ws-op.com/
+IP: 200.67.149.183
+BLOG NAME: online poker
+DATE: 03/25/2005 03:40:23 AM
+Please check some relevant pages about <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: blackjack
+URL: http://free-no-download-slots.win-2005.com/
+IP: 213.208.67.82
+BLOG NAME: blackjack
+DATE: 03/26/2005 09:22:15 AM
+Please check the sites in the field of <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 211.185.42.253
+BLOG NAME: payday loan
+DATE: 03/27/2005 02:17:27 PM
+You can also check out some helpful info about <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Fear of a FOAF Planet
+BASENAME: fear_of_a_foaf_planet
+STATUS: Draft
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/20/2003 11:51:02 AM
+-----
+BODY:
+About time I wrote this.
+-----
+EXTENDED BODY:
+http://www.shirky.com/writings/group_enemy.html
+http://www.hyperorg.com/backissues/joho-jul17-03.html#unspoken
+http://www.cardhouse.com/heath/2003_07_27_archive.html#105951222669140996
+http://www.zephoria.org/snt/archives/000613.html
+http://www.v-2.org/displayArticle.php?article_num=514
+http://www.corante.com/many/20030701.shtml#46846
+http://weblog.burningbird.net/fires/001381.htm
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Handshake for OSX design notes
+BASENAME: handshake_for_osx_design_notes
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Creation Tools
+CATEGORY: Creation Tools
+DATE: 07/13/2003 11:59:43 PM
+-----
+BODY:
+Dan Hon is <a href="http://danhon.com/ec/mtarchives/000573.shtml#000573">working on a Java/Cocoa based MacOS X desktop tool</a> using FOAF, called 'Handshake'. He's posted some draft user interface screens, all of which looks very promising. I look forward to trying it...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: texas hold em
+URL: http://texas-hold-em.ws-op.com/
+IP: 211.185.42.253
+BLOG NAME: texas hold em
+DATE: 03/25/2005 03:09:15 AM
+You are invited to check some information about <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: roulette
+URL: http://roulette.win-2005.com/
+IP: 211.184.27.161
+BLOG NAME: roulette
+DATE: 03/26/2005 08:57:17 AM
+You may find it interesting to check out the sites about <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 211.184.37.2
+BLOG NAME: payday loan
+DATE: 03/27/2005 01:50:20 PM
+In your free time, check the sites about <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Getting started with FOAF
+BASENAME: getting_started_with_foaf
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/28/2003 12:46:56 PM
+-----
+BODY:
+<p>
+A new FOAF homepage and user site is on its way... (and a new spec!).</p>
+<p>
+The FOAF Project homepage is now at <a href="http://www.foaf-project.org/">http://www.foaf-project.org/</a>.
+</p>
+
+<p>
+There is plenty of work to do on the new site, but now seems as good a time as any to cut across to the new version. The old FOAF homepage had a (somewhat random) collection of links and information on FOAF. A version of that is included in this 'getting started' article; for more comprehensive links to FOAF-related materials, see the collaboratively maintained <a href="http://rdfweb.org/topic/FoafProject">FoafProject wiki site</a>.
+</p>
+<p>
+The current www.foaf-project.org site is pretty minimalistic. Nicole Sullivan has been <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-July/011395.html">working</a> on some ideas for a <a href="http://www.apocalypse.org/~nicole/FOAF/foaf-website2/index.html">more complete FOAF site</a>. One of the things we need to figure out before doing that is a sensible balance between fairly accessible end-user materials (www.foaf-project.org) and the more obscure technical and developer content familiar from rdfweb.org.
+</p>
+-----
+EXTENDED BODY:
+<p>
+The basic recipe for getting started with FOAF is as follows. First, you'll need a basic idea of what FOAF is, and is for. Short version: <em>FOAF is all about creating and using machine-readable homepages that describe people, the links between them and the things they create and do</em>. 
+</p>
+
+<p>
+For a more in depth version, the evolving <a href="http://xmlns.com/foaf/0.1/">FOAF Specification</a> should be the authoritative reference, accompanied by less technical documents such as <a href="http://www-106.ibm.com/developerworks/xml/library/x-foaf.html">Edd Dumbill's FOAF intro article</a>. The <a href="http://rdfweb.org/topic/FAQ">FOAF FAQ</a> has links to some other media articles, including '<a href="http://hotwired.lycos.com/webmonkey/03/24/index0a.html?tw=e-business">Metadata Mark II</a>' in Web Monkey Magazine which describes FOAF alongside some related efforts.
+</p>
+
+<p>
+If you're still interested, the best thing to do next is to make yourself a FOAF file. For this, most people use Leigh Dodd's handy <a href="http://www.ldodds.com/foaf/foaf-a-matic">foaf-a-matic</a> tool, which is now available in eight (8!) languages. So make yourself a FOAF file, save it online somewhere, and add an auto-discovery link to it from your homepage so that machines have an easy way to find it. If you mess about with the FOAF markup, eg. to add your own extensions, the <a href="http://www.w3.org/RDF/Validator">W3C RDF Validator</a> is a useful tool for checking the file is still in legal RDF/XML format. 
+</p>
+
+<p>
+Then what? Well hopefully your data will start to show up in the various FOAF navigators and aggregators, some links to which are included in this article...
+</p>
+
+<p>
+Here are a few useful links relating to FOAF: <a 
+href="http://foafnaut.org/">FOAFNaut</a> (and SVG-based navigator), <a href="http://xml.mfd-consult.dk/foaf/explorer/">FOAF Explorer</a> (server-based navigator using XSLT <a href="http://www.ldodds.com/blog/archives/000026.html">bookmarklet</a>), <a href="http://eikeon.com/foaf/">eikeon.com FOAF Web View</a> (another server-based navigator, written in Python), <a href="http://dougal.gunters.org/jabfoaf/">JabFOAF</a> (utilities for integrating FOAF and Jabber).
+</p>
+
+<P>Some more Links and background... this list is not complete, but repeated here so I can reference it from the new more minimalist FOAF site.</p>
+
+<ul>
+      <li>the FOAF <a href="http://xmlns.com/foaf/0.1/">namespace
+      document</a> (technical)</li>
+<li>add <a
+href="http://www.perceive.net/pages/page/articles/year/2002/month/12#9">nearestAirport</a>
+or <a href="http://rdfweb.org/mt/foaflog/archives/000004.html">myersBriggs</a>
+data to your FOAF file</li>
+
+<li>Ian Davis has drafted some <a 
+href="http://internetalchemy.org/foaf/">FOAF icons</a> for linking to 
+your FOAF files (with SVG versions thanks to Jim Ley).</li>
+
+      <li><a
+      href="http://www-106.ibm.com/developerworks/xml/library/x-foaf.html">
+      Finding friends with XML and RDF</a>, IBM developerWorks
+      article, Edd Dumbill (good general introduction)</li>
+
+      <li>see also: <a
+      href="http://www-6.ibm.com/jp/developerworks/xml/020906/j_x-foaf.html">
+
+      Japanese</a> and <a
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-watch/part3/index.shtml">
+      Chinese</a> versions; and <a
+      href="http://groups.yahoo.com/group/rdfweb-dev/message/307">more
+      Japanese RDF links</a>).</li>
+
+      <li><a href="http://purl.org/net/inkel/2003/01/27/foaf.html">FOAF: 
+el proyecto 'friend of a friend' (amigo de un amigo)</a>, Leandro Mariano; see also   <a href="http://esw.w3.org/t/view/ESW/SemWebSpain">SemWebSpain wiki</a>)
+
+</li>
+
+      <li><a href="http://rdfweb.org/2000/08/why/">An Introduction
+      to RDFWeb and FOAF</a> by Dan Brickley and Libby Miller (the
+      original intro, incomplete, but has reasonable summary of our
+      goals)</li>
+
+      <li><a href="http://rdfweb.org/2002/01/photo/">codepiction
+      writeup</a>, <a
+      href="http://swordfish.rdfweb.org/discovery/2001/08/codepict/">
+      codepiction demo</a> and <a
+      href="http://swordfish.rdfweb.org/discovery/2002/02/paths/allabout.jsp">
+
+      codepiction paths demo</a> and <a
+      href="http://rdfweb.org/people/damian/2002/02/foafnation/">paths
+      writeup</a></li>
+
+      <li><a
+      href="http://rdfweb.org/rweb/wiki/wiki?RDFWebWiki">RDFWeb
+      Wiki</a></li>
+
+      <li><a
+      href="http://www.ldodds.com/foaf/foaf-a-matic.html">FOAF-a-matic</a></li>
+
+      <li><a
+      href="http://www.ldodds.com/foaf/bulletin-board.html">FOAF
+      bulletin board</a> <a
+      href="http://rdfweb.org/rweb/wiki/wiki.pl?FOAFBulletinBoard">wiki
+      page</a> ( <a
+      href="http://www.w3.org/2000/06/webdata/xslt?xslfile=http://www.ldodds.com/foaf/bulletin.xsl&amp;xmlfile=http://cgi.w3.org/cgi-bin/tidy?docAddr=http%3A%2F%2Frdfweb.org%2Frweb%2Fwiki%2Fwiki.pl%3FFOAFBulletinBoard">
+      rdf version</a>).</li>
+
+      <li>FOAF's first <a
+      href="http://groups.yahoo.com/group/rdfweb-dev/message/289">15
+      minutes of weblog fame</a></li>
+
+      <li>Jim Ley's <a
+      href="http://www.jibbering.com/svg/AnnotateImage.html">SVG
+      image annotation tool</a> supports RDF, FOAF and
+      co-depiction; you can search on <a
+      href="http://www.jibbering.com/rdf/foafwho.html">Jim' person
+      search</a> and <a
+      href="http://www.jibbering.com/svg/AnnotateImage.html">object
+      search</a> pages, or use the <a
+      href="http://swordfish.rdfweb.org/discovery/2001/08/codepict/">
+      rdfweb.org codepiction search</a></li>
+
+      <li><a href="http://usefulinc.com/foaf/">usefulinc.com</a>
+      FOAF pages (including <a
+      href="http://usefulinc.com/foaf/foafbot">foafbot</a>, <a
+      href="http://usefulinc.com/foaf/signingFoafFiles">PGP signing
+      howto</a> and <a
+      href="http://usefulinc.com/foaf/addingPeople">seeAlso
+      linking</a>).</li>
+
+      <li><a href="http://rdfweb.org/foafcorp/">FOAFCorp!</a> (including <a
+      href="http://rdfweb.org/foafcorp/data/java/intro.html">software</a>)</li>
+
+    </ul>
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Mr. Darl McBride
+EMAIL: darl@sco.com
+IP: 64.81.147.195
+URL: http://www.sco.com
+DATE: 11/12/2003 04:05:01 AM
+Well, this is all very good and such, but I don't see why Movable Type Bloggers would worry about getting more FOAF. Isn't being a Mac user supposed to protect you from this sort of acronym?
+
+I mean, correct me if I'm wrong because I'm still heterosexual and haven't made "the switch."
+-----
+
+COMMENT:
+AUTHOR: Rahul Bahuguna
+EMAIL: rahul_bahuguna@yahoo.co.uk
+IP: 61.11.32.132
+URL: 
+DATE: 11/12/2003 06:45:51 PM
+Cant make a head or tail about FOAF , can some one help!!!!!!!!!!
+
+Rgds
+
+RAhul
+-----
+
+COMMENT:
+AUTHOR: Isidore Ducasse
+EMAIL: iducasse@yahoo.fr
+IP: 200.40.206.118
+URL: http://maldoror.org
+DATE: 12/21/2003 11:51:11 PM
+I don't want friends.
+Friends always hurt you in the end.
+The human race is flawed from its very inception.
+Nobody is really able to love unselfishly.
+Everybody is cursed with the dark design of evolution, masterful yet cruel oeuvre of God.
+-----
+
+COMMENT:
+AUTHOR: bulat
+EMAIL: root@bulat.f0.ru
+IP: 212.22.75.6
+URL: http://www.bulat.f0.ru/
+DATE: 01/14/2004 02:54:20 PM
+H|!
+Here's a small tutorial on FOAF for beginners:  <a href="http://www.bulat.f0.ru/tutorials/FOAFtut/eng/"><a href="http://www.bulat.f0.ru/tutorials/FOAFtut/eng/">http://www.bulat.f0.ru/tutorials/FOAFtut/eng/</a></a>
+-----
+
+COMMENT:
+AUTHOR: George
+EMAIL: aaiowon12@yahoo.com
+IP: 80.51.10.2
+URL: http://www.feetfactory.com
+DATE: 01/14/2004 09:14:51 PM
+Great idea, i will work on my new site to fit it into FOAF!
+-----
+
+COMMENT:
+AUTHOR: edward miller
+EMAIL: foaf@edwardmiller.org
+IP: 66.243.52.126
+URL: http://edwardmiller.org
+DATE: 01/20/2004 11:23:07 PM
+very interesting concept.  too bad about the comment spammers.
+-----
+
+COMMENT:
+AUTHOR: Steve Sloan
+EMAIL: ssj@edwardmiller.org
+IP: 66.243.52.126
+URL: http://sloanreview.com
+DATE: 01/20/2004 11:24:22 PM
+Awesome!  This is much smarter than Friendster.
+-----
+
+COMMENT:
+AUTHOR: libby
+EMAIL: libby.miller@bristol.ac.uk
+IP: 10.0.2.20
+URL: http://planb.nicecupoftea.org
+DATE: 03/19/2004 09:14:56 PM
+I've deleted the comment spam I could find.
+-----
+
+
+PING:
+TITLE: Raptor RDF Parser Toolkit, RDF/FoaF links
+URL: http://www.hebig.org/blogs/archives/main/001101.php
+IP: 212.227.118.7
+BLOG NAME: hebig.org/blog
+DATE: 07/31/2003 12:20:15 PM
+"Raptor is a Open Source C library for parsing RDF syntaxes into RDF triples. It supports the latest revision of...
+-----
+
+PING:
+TITLE: Some uncommented RDF/FoaF links
+URL: http://www.hebig.org/blogs/archives/main/001102.php
+IP: 212.227.118.7
+BLOG NAME: hebig.org/blog
+DATE: 07/31/2003 12:23:22 PM
+REFERENCE SITES Dave Beckett's RDF Resource Guide W3 RDF Website RDFWeb including the rdfweb-dev list and the FoaF Wiki foaf-project.org...
+-----
+
+PING:
+TITLE: foaf links
+URL: http://love-productions.com/lovelinks/mt/oldlinks/008270.php
+IP: 63.247.131.132
+BLOG NAME: lovelinks
+DATE: 08/05/2003 03:48:01 AM
+Getting started with FOAF...
+-----
+
+PING:
+TITLE: FOAF
+URL: http://www.wilddog.com/mt/archives/000245.html
+IP: 63.251.213.27
+BLOG NAME: Jim Mangan's Weblog
+DATE: 08/12/2003 04:10:56 PM
+RDFWeb and Friend of a Friend (FOAF): Getting started with FOAF The basic recipe for getting started with FOAF is...
+-----
+
+PING:
+TITLE: FOAF
+URL: http://www.armswiper.co.uk/blog/view/17
+IP: 64.106.149.70
+BLOG NAME: Armswiper's Blog
+DATE: 08/01/2004 02:21:36 PM
+<p>or "Friend Of A Friend" - The idea is that everyone puts a page on their site describing who they know and where you can find them (and yourselves). A nice idea. I got most of the information from this </p>
+-----
+
+PING:
+TITLE: FOAF - Friend Of A Friend
+URL: http://www.thinkinghomebusiness.com/blog/_archives/2005/3/20/455756.html
+IP: 216.40.34.105
+BLOG NAME: Thinking Home Business
+DATE: 03/20/2005 02:37:09 AM
+When I set up my BlogHarbor account I noticed in 'my profile' section of the administrative section something called a FOAF file. I had no idea what it was but today decided to do some online searching to get some idea. As a non-technical person seekin...
+-----
+
+PING:
+TITLE: texas hold em
+URL: http://texas-hold-em.ws-op.com/
+IP: 211.185.42.253
+BLOG NAME: texas hold em
+DATE: 03/25/2005 02:58:34 AM
+Please check some information in the field of <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 202.88.149.72
+BLOG NAME: payday loan
+DATE: 03/27/2005 01:41:25 PM
+You can also visit the pages in the field of <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Pages about people
+BASENAME: pages_about_people
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 07/28/2003 11:59:57 PM
+-----
+BODY:
+<p>
+A few people have asked how we can use FOAF to express that a page is about a person, or whether there is a way within FOAF to write testimonials about other people (presumably along the lines of various popular dating sites).
+</p>
+<p>
+The former is easy; the latter isn't something the FOAF vocabulary currently supports. Not because it would have been hard to add, but because it would have opened a can of worms that is best left to ripen a little while longer.
+</p>
+<p>
+But FOAF does have a way of describing the topics of pages, which is a way of providing similar functionality.
+</p>
+<p>
+So, let's imagine you've written a whole HTML page all about one of your bestest friends, and you want to share that fact with your world by adding something to your FOAF file. How to do that?
+</p>
+-----
+EXTENDED BODY:
+<p>
+The basic idea is one that recurs throughout FOAF. We use the foaf:topic property, which is a relationship between a Document and something that the document is <em>about</em>. In your FOAF file, you can mention that you know someone, and at same time mention that there's a page you made that's about them. Here's some example markup:
+</p>
+
+<div class="code">
+<pre>
+
+&lt;!-- imagine you're Alice and this is the markup in your FOAF about you --&gt;
+&lt;foaf:Person&gt;
+  &lt;foaf:nick&gt;Alice&lt;/foaf:nick&gt;  
+  &lt;foaf:knows rdf:nodeID="bob"/&gt; &lt;!-- a pointer to the 'bob' entry below --&gt;
+  &lt;foaf:made rdf:resource=""/&gt;       &lt;!-- this says: I made this FOAF file --&gt;
+  &lt;foaf:made rdf:resource="http://alice.example.com/why-bob-is-great.html"/&gt;       
+&lt;/foaf:Person&gt;
+
+&lt;!-- some markup describing a document, and its topic --&gt;
+&lt;foaf:Document rdf:about="http://alice.example.com/why-bob-is-great.html"&gt;
+  &lt;dc:title&gt;A page all about Bob, by Alice&lt;/dc:title&gt;
+  &lt;foaf:topic&gt;  
+    &lt;!-- here is a chunk of data about bob --&gt;
+    &lt;foaf:Person rdf:nodeID="bob"&gt;
+      &lt;foaf:nick&gt;Bob&lt;/foaf:nick&gt; 
+      &lt;!-- other stuff about bob could go here --&gt;
+    &lt;/foaf:Person&gt;
+  &lt;/foaf:topic&gt;
+&lt;/foaf:Document&gt;
+
+</pre>
+</div>
+
+<p>
+What this basically says is <em>"There is a Person whose nick is 'Alice' and who made this current FOAF document and who knows a Person whose nick is 'Bob'; there also is a Document whose title is 'A page all about Bob, by Alice' that Alice made and that is about Bob."</em>
+</p>
+
+<p>So one question facing us in the FOAF design is finding a trade-off between simplicity and expressiveness. It is possible to use FOAF to say some fairly complex things, but we have our work cut out to improve the tools and tutorials that explain how to create FOAF files that say what we want them to say.
+</p>
+
+<p>Here's a diagram of the above example markup, generated by the W3C <a href="http://www.w3.org/RDF/Validator">RDF validator</a>. It may be useful for illustrating the underlying pattern of relationships we're trying to describe in the FOAF markup...</p>
+
+<img alt="alice-bob.png" src="http://rdfweb.org/mt/foaflog/archives/alice-bob.png" width="1710" height="396" border="0" />
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Joe Germuska
+EMAIL: joe@germuska.com
+IP: 205.162.11.3
+URL: http://blog.germuska.com
+DATE: 08/12/2003 11:40:07 PM
+What I'm really looking for is a concise way to tag a name as a person in the midst of another document (presumably XHTML).  People conventionally use a link to a home page, or perhaps a google search, but wouldn't it be better to use a logical tag, and then let tools do with it what they need?
+
+I'm reacting right now to Stefano Mazzocchi's "Semanticsheets" post (<a href="http://www.betaversion.org/~stefano/linotype/news/26/)."><a href="http://www.betaversion.org/~stefano/linotype/news/26/).">http://www.betaversion.org/~stefano/linotype/news/26/).</a></a>  His examples look weird to me because ultimately they are still using "a href" to tag his identity. 
+
+He suggests &lt;a href="<a href="http://www.betaversion.org/~stefano/"><a href="http://www.betaversion.org/~stefano/">http://www.betaversion.org/~stefano/"</a></a> class="identify"&gt;Stefano&lt;/a&gt;
+
+But i have a hunch that better would be:
+&lt;foaf:Person&gt;Stefano&lt;/foaf:Person&gt;, except that I'm not sure what attribute you'd add to the tag to tie it to him.
+
+I have some sense that I should be able to sneak in his mbox, or ths mbox_sha1sum, but then I start thinking that I need to next some other tags, and suddenly it's too much hassle.
+
+If it were as easy to tag people, places, and things in web pages with unique IDs in some controlled vocabulary as it is to link them to a google search on that name, the amount of useful metadata on the web would quickly explode.  
+
+(I guess the urn:isbn syntax was going to try to do this for one well-known controlled vocab about books, but that doesn't seem to be going anywhere -- so maybe it's another chicken-and-egg problem.)
+-----
+
+
+PING:
+TITLE: And now more FOAF
+URL: http://rdf.burningbird.net/archives/001384.htm
+IP: 69.10.138.64
+BLOG NAME: Practical RDF
+DATE: 07/30/2003 04:42:45 PM
+I'm not going to turn this into a mirror for all things FOAF, but I did want to point out an excellent article by Dan Brickley about pages about people. I'm glad that Dan made the point about "not wanting to go there" when it comes to writing testimoni...
+-----
+
+PING:
+TITLE: FOAF Pages About People
+URL: http://www.opportunityservices.com/blog/archives/000076.html
+IP: 209.151.81.1
+BLOG NAME: OSG Blog
+DATE: 08/03/2003 03:28:42 PM
+RDFWeb and Friend of a Friend (FOAF): Pages about people
+-----
+
+PING:
+TITLE: texas hold em
+URL: http://texas-hold-em.ws-op.com/
+IP: 200.242.249.70
+BLOG NAME: texas hold em
+DATE: 03/25/2005 03:43:49 AM
+Please check the sites in the field of <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Why FOAF has foaf:knows rather than foaf:friend...
+BASENAME: why_foaf_has_foafknows_rather_than_foaffriend
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 08/04/2003 01:23:34 AM
+-----
+BODY:
+<p style="float: right" >
+<a href="http://rdfweb.org/people/danbri/media/2003/07/1/344I0196.jpg"><img src="http://rdfweb.org/people/danbri/media/2003/07/1/images/thumbs/344I0196.jpg" alt="xbox screenshot - 'you do not have any friends. continue...'" width="150" height="113" border="0" /></a>
+</p>
+<p style="clear: left;">In brief, foaf:knows was designed to be relatively harmless. It's use (and non-use) should be inoffensive. We dropped foaf:friend and foaf:knowsWell a year or two ago as they proved undeployably awkward, both when used and more interestingly, when not used.
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 11:08:22 AM
+
+Oopsie, as Dave pointed out in #foaf (<a href="http://ilrt.org/discovery/chatlogs/foaf/2003-08-04#T10-06-11)"><a href="http://ilrt.org/discovery/chatlogs/foaf/2003-08-04#T10-06-11)">http://ilrt.org/discovery/chatlogs/foaf/2003-08-04#T10-06-11)</a></a> I originally wrote 'we dropped foaf:knows' when I meant to write 'we dropped foaf:friend'. I've edited the article directly, but leaving a papertrail here just in case Mark Pilgrim's blog-diff gadget is watching. FWIW I often make a few tweaks to articles here within the first minute or hour of posting, rarely change things after that. If I'm writing something that is likely to be volatile, it goes in the wiki (<a href="http://rdfweb.org/topic/FoafProject)"><a href="http://rdfweb.org/topic/FoafProject)">http://rdfweb.org/topic/FoafProject)</a></a> instead.
+-----
+
+COMMENT:
+AUTHOR: Ben Meadowcroft
+EMAIL: cee.plus@virgin.net
+IP: 195.92.168.164
+URL: http://www.benmeadowcroft.com/
+DATE: 08/04/2003 12:55:40 PM
+Is there any notes on what the difficulties caused were? You can't drop in a line like "and more interestingly, when not used." and not give a link to the more intrestingly bit! :-)
+-----
+
+COMMENT:
+AUTHOR: Mark
+EMAIL: a@b.com
+IP: 24.211.176.220
+URL: http://diveintomark.org/
+DATE: 08/04/2003 02:53:41 PM
+Ahem.  I only watch myself now.  In other news, I also only talk to myself, eat by myself, and have sex with myself.  Welcome to married life...
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 04:43:57 PM
+Ben, the basic issue was w.r.t. expected reciprocation. Because the concepts of 'knowing', 'knowing well', 'friend' etc. are both slippery and because people vary (personality, use of language etc.) in how they're comfortable using those concepts, you get into situations such as X's foaf file says that X has friends Y, and Z whereas Y's foaf says X is 'just' a knows or knowsWell (knowsWell being particularly awkward as it suggests significant familiarity without affection, ie. no "would like to know better" wiggleroom). Z's foaf might list neither as friends, and risk being taken (despite ommission not implying negation in RDF or FOAF) as suggesting that Z doesn't consider either X or Y to be friends. Although Z might protest that the absence of a claim from a FOAF file is consistent with it still being true, X and Y could fairly counter-protest that Z could have made the effort to mention them since they made the effort to mention him/her. And so on...
+
+You see similar economies of expected reciprocation in closed-world systems like Friendster or LinkedIn, especially where they offer endorsement and commenting facilities. Not something to blunder into with FOAF without some careful thought, so we retreated to the safer ground of 'foaf:knows'.
+-----
+
+COMMENT:
+AUTHOR: Jon Hanna
+EMAIL: jon@hackcraft.net
+IP: 213.94.193.50
+URL: http://www.hackcraft.net/
+DATE: 01/15/2004 03:38:32 PM
+There's still a lack of clarity about how well you need to know someone to foaf:know them.
+-----
+
+
+PING:
+TITLE: FOAF:knows a clarification
+URL: http://rdf.burningbird.net/archives/001416.htm
+IP: 69.10.138.64
+BLOG NAME: Practical RDF
+DATE: 08/05/2003 01:29:03 AM
+Dan Brickley just came out with a why there's a foaf:knows but not a foaf:friend. The better explanation occurs in the comments: Because the concepts of 'knowing', 'knowing well', 'friend' etc. are both slippery and because people vary (personality, us...
+-----
+
+PING:
+TITLE: Why FOAF:knows ?
+URL: http://WWW.betaroad.COM/weblog/archives/000337.html
+IP: 217.163.9.25
+BLOG NAME: Broadband and Me
+DATE: 08/05/2003 09:52:03 PM
+Practical RDF: FOAF:knows a clarification Dan Brickley just came out with a why there's a foaf:knows but not a foaf:friend. Ahh! Well that helps, and makes sense. However there is still a lot to examine and consider with FOAF....
+-----
+
+PING:
+TITLE: party poker
+URL: http://party-poker.zindagi.us/
+IP: 160.109.67.43
+BLOG NAME: party poker
+DATE: 03/25/2005 02:48:02 AM
+In your free time, check the sites about <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 80.191.104.10
+BLOG NAME: payday loan
+DATE: 03/27/2005 01:31:27 PM
+Please check the pages in the field of <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Spiders, scutters, harvesters, indexers, aggregators...
+BASENAME: spiders_scutters_harvesters_indexers_aggregators
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 08/04/2003 01:44:08 AM
+-----
+BODY:
+...whatever we call them, FOAF and RDF/XML developers who write Web robots that traverse the Web of inter-linked FOAF files should stick to the rules. Julian Bond has written a <a href="http://www.voidstar.com/node.php?id=1474">very handy overview</a> of the things that need to be taken into account. These include general HTTP and Web indexing stuff like robots.txt, Etags, last-modified headers, HTTP response codes etc. In addition, there are many lessons from the RSS experience which folk writing scutters (FOAF harvesters) should be aware of.
+
+Related reading, see the (not yet a) <a href="http://rdfweb.org/topic/ScutterSpec">ScutterSpec</a> in the FOAF wiki, as well as the <a href="http://rdfweb.org/topic/Scutter">Scutter</a> entry.
+
+And this is all without (yet) going into the various responsibilities associated with the fact that these systems aren't just aggregating random Web page content or weblog entries, but data about people...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: Spiders, scutters, harvesters, indexers, aggregators...
+URL: http://f14web.com.ar/inkel/blog/archive/2003_08_01_archive.html#106000191562895708
+IP: 24.232.160.47
+BLOG NAME: inkelog
+DATE: 08/04/2003 01:58:50 PM
+None
+-----
+
+PING:
+TITLE: FOAF at 23Pools
+URL: http://www.23pools.com/~CarlGarland?topic_id=00005x
+IP: 216.151.233.9
+BLOG NAME: Never Give Up
+DATE: 08/24/2003 05:56:59 AM
+Just an announcement that as of today 23Pools supports FOAF profiles for 23 Pools Users. Just go to your Blog Settings and click on the Setup FOAF Profile. Then you should see a link/icon for FOAF on the left side of blog and your FOAF file will be acc...
+-----
+
+PING:
+TITLE: It's my 40th Birthday Today!
+URL: http://dannyayers.com/archives/002176.html
+IP: 66.70.189.63
+BLOG NAME: Raw
+DATE: 01/14/2004 04:46:29 PM
+Bob asked for more metadata on my earlier post. Hopefully the &lt;title&gt; of this post is explicit enough. I've not...
+-----
+
+PING:
+TITLE: Hapy Birthday to Danny
+URL: http://blogs.it/0100198/2004/01/15.html#a2159
+IP: 67.100.91.193
+BLOG NAME: Marc's Voice
+DATE: 04/04/2004 11:05:22 AM
+It's my 40th Birthday Today! .
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF 'vs' Introvertster
+BASENAME: foaf_vs_introvertster
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 08/04/2003 02:58:12 PM
+-----
+BODY:
+<p>
+Things are heating up in the battle for the hearts, minds and contact lists of introverted Web geeks. While an <a href="http://www.gregstorey.com/airbag/introvertster/">Introvertster</a> craze sweeps through workplaces and homes, FOAF's under-used  <code>foaf:myersBriggs</code> <a href="http://rdfweb.org/mt/foaflog/archives/000004.html">support</a> seems to be slowly catching on, revealing a disturbing trend. According to members of the Myers Briggs personality classification cult, individuals branded as IN** (ie INTJ, INFJ,INTP,INFP) should <a href="http://www.geocities.com/lifexplore/stats.htm ">number</a> no more than about 4 or 5% of the population. Yet a recent sampling by RDFWeb's FOAF <a href="http://rdfweb.org/topic/Scutter">scutter</a> shows an alarming outburst of introversion amongst FOAF early adopters...
+</p>
+-----
+EXTENDED BODY:
+<p>
+(I'm mostly serious...;-)
+</p>
+<p>
+While I generally find MBTI a bit contentious, including <code>foaf:myersBriggs</code> has been an interesting exercise and even from the rather small dataset we have currently, there appear to be a distinct leaning towards the IN** side of things.
+</p>
+
+<p>
+Dusting off my sociologists hat, there are various hypotheses we could investigate. Maybe FOAF's current audience is mainly geeky early adopters, people who show up as IN** when they go through the annoying-but-probing online questionnaires which try to approximate a full (tm)-compatible MBTI analysis. Maybe the <a href="http://www.intp.org/intprofile.html">character summaries</a> for INTP are more flattering and ego-stroking than for other 'types' (or at least, more flattering to the kinds of people who show up as INTP in the surveys). Or at least, more likely to evoke a 'heheh, yeah that is sorta like me'  reaction. Maybe INTP's like FOAF as  a non-extraverted way of describing what they're like, and perhaps this extends to attaching a 'beware I'm an INTP / introverted freak, don't expect me to talk to you' health warning to their machine-readable homepage. Maybe INTP-ish people are the only ones obsessive and nit-picky enough to deal with RDF and XML syntax, while other types have malformed FOAF files which don't get past the RDF parser?  Maybe the survey sample is too statistically insignificant to tell us anything. 
+</p>
+
+<p>
+Enough armchair sociologising about how 4% turned into 50%+, where's the data? 
+</p>
+
+<p>
+The results mentioned above come from an incomplete (but 24hrs+) run of my FOAF harvester ('scutter') from a couple days ago, ie. are based on a bunch of source-attributed RDF statements stored in a PostgreSQL database. I'll give the code example first, then the results, summarising all the foaf:myersBriggs properties that the database knows about. It uses my rough-n-ready <a href="http://www.w3.org/2001/12/rubyrdf/intro.html">RubyRdf library</a>, and might some day be nicely packaged for others to use. In the meantime, here's the rough idea...
+</p>
+
+
+<p>The <code>mbti.rb</code> script:</p>
+
+<pre class="code">
+#!/usr/bin/env ruby
+#
+# Quick script to query RDF store for Myers Briggs data
+$LOAD_PATH.unshift '../lib/'
+$LOAD_PATH.unshift '../../lib/'
+
+require 'basicrdf'
+require 'squish'
+require 'dbi'
+
+query = SquishQuery.new.parseFromText &lt;&lt;EOQ;
+    SELECT ?x, ?n, ?mb,
+    WHERE
+        (foaf::name ?x ?n)
+        (foaf::myersBriggs ?x ?mb)
+    USING
+      foaf for http://xmlns.com/foaf/0.1/
+EOQ
+
+seen=Hash.new(false)
+stats=Hash.new(0)
+log=''
+DBI.connect('DBI:Pg:scutter1','danbri','') do |connection|
+  connection.select_all(query.toSQLQuery) do |row|
+    if !seen[row['x']]
+      log += "foaf:name='#{row['n']}' foaf:myersBriggs='#{row['mb']}'\n"
+      seen[row['x']]=true
+      stats[row['mb']]=stats[row['mb']]+1
+    end
+  end
+end
+puts "Statistics:"
+stats.each_key do |type| puts "mbti type: #{type} count:#{stats[type]}\n" end
+puts "Details:\n"+log
+</pre>
+
+<p>
+And here's the results of running it just now:
+</p>
+
+<pre class="code">
+./mbti.rb
+Stats:
+mbti type: .... count:1
+mbti type: ENFP count:1
+mbti type: INTP count:11
+mbti type: ENTJ count:1
+mbti type: ISFJ count:1
+mbti type: INFP count:2
+mbti type: INTJ count:3
+mbti type: ISTP count:1
+mbti type: ISFP/ISFJ count:1
+mbti type: ENTP count:1
+mbti type: ISFP count:1
+Details:
+foaf:name='Michael Hanscom' foaf:myersBriggs='ISFP'
+foaf:name='Bill Bradford' foaf:myersBriggs='ISFJ'
+foaf:name='Jay Fienberg' foaf:myersBriggs='INTP'
+foaf:name='Hiroki Ono' foaf:myersBriggs='INTP'
+foaf:name='Eric Wahlforss' foaf:myersBriggs='ENTP'
+foaf:name='Margaret Hart' foaf:myersBriggs='....'
+foaf:name='Adam Gessaman' foaf:myersBriggs='INTP'
+foaf:name='Simon' foaf:myersBriggs='INTP'
+foaf:name='Jack Letourneau' foaf:myersBriggs='INTJ'
+foaf:name='Earle Martin' foaf:myersBriggs='INFP'
+foaf:name='Atsushi Suzuki' foaf:myersBriggs='INTP'
+foaf:name='Evan Williams' foaf:myersBriggs='INTP'
+foaf:name='Amy van der Hiel' foaf:myersBriggs='INTJ'
+foaf:name='Dave Seidel' foaf:myersBriggs='ISFP/ISFJ'
+foaf:name='\343\201\221\343\202\223\343\201\237\343\202\215' foaf:myersBriggs='INTP'
+foaf:name='Nicole Sullivan' foaf:myersBriggs='INFP'
+foaf:name='Bounty Hunters Guild' foaf:myersBriggs='INTP'
+foaf:name='Chun-shek Chan' foaf:myersBriggs='ENFP'
+foaf:name='Amy Alford' foaf:myersBriggs='INTJ'
+foaf:name='Mark Pilgrim' foaf:myersBriggs='ISTP'
+foaf:name='Jim Ley' foaf:myersBriggs='INTP'
+foaf:name='Manuel Gonz\303\241lez Mart\303\255nez' foaf:myersBriggs='INTP'
+foaf:name='Justin Knol' foaf:myersBriggs='INTP'
+foaf:name='Masahide Kanzaki' foaf:myersBriggs='ENTJ'
+</pre>
+
+
+<p>
+Not much more to add really, thought this might be a fun mini-tutorial on RDF query. But I would be interested in pointers to other statistical analysis of MBTI data. In particular I reckon it would be worthwhile to feed the <em>raw</em> answers to the online quizes to statisticians, to see if the 16 types proposed by MBTI-advocates actually reflect clusterings within the data...
+</p>
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 08:07:01 PM
+Odd, my entry didn't show up. I'm INTP, fwiw.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 08:16:22 PM
+OK, trying to debug my RDF query gadget. Here is a raw SQL query see PostgreSQL schema is at <a href="http://www.w3.org/2001/12/rubyrdf/db/initdb-pg.sql"><a href="http://www.w3.org/2001/12/rubyrdf/db/initdb-pg.sql">http://www.w3.org/2001/12/rubyrdf/db/initdb-pg.sql</a></a>
+
+Note that writing this raw SQL is no fun, so normally we write RDF queries instead (see mbti.rb) and translate them into enormous self-joins of dubious efficiency.
+
+
+
+scutter1=> select distinct s1.o, s2.o  from simple s1, simple s2 where s1.p='<a href="http://xmlns.com/foaf/0.1/myersBriggs'"><a href="http://xmlns.com/foaf/0.1/myersBriggs'">http://xmlns.com/foaf/0.1/myersBriggs'</a></a> AND s2.p='<a href="http://xmlns.com/foaf/0.1/name'"><a href="http://xmlns.com/foaf/0.1/name'">http://xmlns.com/foaf/0.1/name'</a></a> AND s1.o='INTP' AND s2.s=s1.s;
+
+  o   |                        o
+------+--------------------------------------------------
+ INTP | Adam Gessaman
+ INTP | Atsushi Suzuki
+ INTP | Bounty Hunters Guild
+ INTP | Dan Brickley
+ INTP | Dan Brickley
+ INTP | Evan Williams
+ INTP | Hiroki Ono
+ INTP | Jay Fienberg
+ INTP | Jim Ley
+ INTP | Jim ley
+ INTP | Justin Knol
+ INTP | Manuel Gonz\303\241lez Mart\303\255nez
+ INTP | Manuel Gonzalez Martinez
+ INTP | Simon
+ INTP | Simon St. Laurent
+ INTP | Simon St.Laurent
+ INTP | \343\201\221\343\202\223\343\201\237\343\202\215
+ INTP | danbri
+ INTP | kentaro"-en
+(19 rows)
+
+...so according to this my data is in there. I dunno what's up... Should've added an extra hypothesis in the speculations about -- dodgy software!
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 08:21:05 PM
+OK, narrowing it down. There is a clash of internal-IDs in the database:
+
+Seen _:bnodeid:82389582 name was Bounty HuntersGuild
+Skipping _:bnodeid:82389582 name was Dan Brickley
+Skipping _:bnodeid:82389582 name was Dan Brickley
+
+Not sure what's up with that, but the basic stats don't change much because of this. Investigating...
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/04/2003 08:33:33 PM
+Talking to myself now ;)
+
+select distinct o,p,assertid from simple,triples where simple.s='_:bnodeid:82389582' and triples.subject=simple.scode order by o;
+
+...flushes out every property/value the database attributes to _me_ as well as the src RDF file. It seems to have merged my entry w/ someone mentioned in the <a href="http://blogs.thebhg.org/BHGFOAF.php?id=57"><a href="http://blogs.thebhg.org/BHGFOAF.php?id=57">http://blogs.thebhg.org/BHGFOAF.php?id=57</a></a> etc site, not yet sure why. Could be bug in bnode random generator, or property-to-int hashing being too small a space, or bad data from BHG.
+-----
+
+COMMENT:
+AUTHOR: Julian Bond
+EMAIL: julian_bond@voidstar.com
+IP: 81.98.121.2
+URL: http://www.voidstar.com
+DATE: 08/04/2003 08:34:30 PM
+Well there's a surprise. I'm also INTP. But I choose not to put it in my FOAF.
+-----
+
+COMMENT:
+AUTHOR: Amy van der Hiel
+EMAIL: amy@w3.org
+IP: 18.29.0.245
+URL: http://people.w3.org/amy/
+DATE: 08/04/2003 11:39:30 PM
+Here are some statistics from '98: <a href="http://www.infj.org/typestats.html"><a href="http://www.infj.org/typestats.html">http://www.infj.org/typestats.html</a></a>
+-----
+
+COMMENT:
+AUTHOR: Dean (INTJ) Jackson
+EMAIL: dean@w3.org
+IP: 203.51.33.218
+URL: 
+DATE: 08/05/2003 03:01:26 PM
+> Odd, my entry didn't show up. I'm INTP, fwiw
+
+FREAK!
+-----
+
+COMMENT:
+AUTHOR: Sami Haahtinen
+EMAIL: ressu@ressukka.net
+IP: 212.182.193.154
+URL: http://www.ressukka.net/
+DATE: 08/16/2003 04:11:58 PM
+Another alternative for the increase in INTP (or even IN??) entries might be due to the fact that most computer enthusiasts fit to the INT? profile, although i think that some of the INTP's are just those that took a look at the profile text just pick  it by the characteristics they want to see..
+
+(yes, i'm a INTP too ;)
+-----
+
+COMMENT:
+AUTHOR: Danny
+EMAIL: danny666@virgilio.it
+IP: 80.182.204.5
+URL: http://dannyayers.com
+DATE: 08/17/2003 11:17:03 AM
+I wonder if there would be a skew towards
+&lt;handedness&gt;left&lt;/handedness&lt;?
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.24
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/17/2003 11:25:55 AM
+Re handedness, interesting question. FOAF may be more suited to being a platform for creating dodgy Internet fads than for 'proper' science, but it'd be interesting to find out.
+
+Fancy creating a namespace / property for this somewhere? 
+
+Actually there's a whole load of vaguely interesting, vaguely frivolous stuff I'd like to put into FOAF files, but not sure whether putting into the main FOAF namespace would drown out the more widely useful things. So I've been wondering about a FOAF "Platinum Plus Gold Extras" or somesuch companion namespace for such things.
+
+Anyway fwiw I'm left handed...
+
+(Am I normal? :)
+-----
+
+
+PING:
+TITLE: Myers Briggs
+URL: http://dannyayers.com/archives/001733.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 08/16/2003 12:39:51 PM
+After reading danbri's notes relating to this personality test my curiosity finally got the better off me (I don't usually...
+-----
+
+PING:
+TITLE: We respectfully request a recount
+URL: http://jcwinnie.us/MT/archives/000090.html
+IP: 216.67.245.138
+BLOG NAME: Your Guess Is As Good As Mine
+DATE: 09/02/2003 11:09:49 PM
+A possible conclusion is that Introverted Intuitive types are drawn to blogging
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Updated FOAF specification
+BASENAME: updated_foaf_specification
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 08/19/2003 11:37:47 PM
+-----
+BODY:
+We've just <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-August/011788.html">shipped</a> a major update to the <a href="http://xmlns.com/foaf/0.1/">FOAF Specification</a>. The spec now provides a lot more detail on the terms ("classes" and "properties") which make up the FOAF vocabulary. There's plenty more work to do, of course, but this is an healthy step in the creeping professionalisation of our documentation. Uniquely identifying properties in FOAF are indicated using W3C's OWL language, making it possible for generic Semantic Web tools to easily merge together scattered, decentralised collections of FOAF descriptions.
+
+The spec includes detailed and cross-referenced documentation for each term, as well as information about its status ('unstable','testing','stable'). The FOAF specification is presented to humans in XHTML form, but is also <a href="http://xmlns.com/foaf/0.1/index.rdf">available</a> in RDF form for machines, drawing upon W3C's RDF Schema and Web Ontology (OWL) languages.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/19/2003 11:42:54 PM
+No entry found for professionalisation.
+
+Did you mean professionalization?
+
+heh. no.
+-----
+
+COMMENT:
+AUTHOR: Ernesto Krsulovic
+EMAIL: ekrsulov@yahoo.com
+IP: 200.86.156.132
+URL: http://purl.org/net/ekrsulov
+DATE: 08/20/2003 05:08:14 AM
+bug report:
+this is not a valid xml file, note the double ?xml processing instruction (lines 1 and 3566).
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/20/2003 08:28:59 PM
+Ernesto, thanks for the bug report. There was an error in the software that generates the spec from its source files, should be fixed now. Cheers!
+-----
+
+COMMENT:
+AUTHOR: Richard Vdovjak
+EMAIL: richardv@win.tue.nl
+IP: 131.155.70.16
+URL: http://131.155.70.16/eros/
+DATE: 10/01/2003 03:57:28 PM
+Just in case somebody would like to see the foaf schema in a human readable form :)
+-----
+
+COMMENT:
+AUTHOR: Richard Vdovjak
+EMAIL: richardv@win.tue.nl
+IP: 131.155.70.16
+URL: 
+DATE: 10/01/2003 04:01:15 PM
+Just in case somebody would like to see/browse the foaf schema in a human readable form. 
+
+<a href="http://131.155.70.16/eros/"><a href="http://131.155.70.16/eros/">http://131.155.70.16/eros/</a></a>
+-----
+
+COMMENT:
+AUTHOR: libby
+EMAIL: libby.miller@bristol.ac.uk
+IP: 10.0.2.20
+URL: http://planb.nicecupoftea.org
+DATE: 01/16/2004 11:48:58 PM
+Richard, I nearly deleted your comment as spam! What's the origin of the name 'eros'?
+-----
+
+COMMENT:
+AUTHOR: Alex Cozzi
+EMAIL: cozzi@almaden.ibm.com
+IP: 198.4.83.52
+URL: 
+DATE: 02/12/2004 07:40:35 PM
+Are the scripts to generate the foaf spec in human readable form from the schema available?
+Thanks
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: W3C OWL language now a Candidate Recommendation
+BASENAME: w3c_owl_language_now_a_candidate_recommendation
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 08/19/2003 11:52:46 PM
+-----
+BODY:
+W3C's OWL language has just <a href="http://www.w3.org/News/2003#item138">advanced</a> to 'Candidate Recommendation' stage. OWL is used to publish and share sets of terms called ontologies; FOAF is one such ontology, as it uses OWL  to <a href="http://xmlns.com/foaf/0.1/">define</a> its terms in a machine-processable way.
+
+The <a href="http://www.foaf-project.org/">FOAF project</a> relies on a number of W3C standards, including <a href="http://www.w3.org/XML/">XML</a>, <a href="http://www.w3.org/RDF/">RDF</a> and the <a href="http://www.w3.org/2001/sw/WebOnt/">Web Ontology</a> language, OWL. As OWL stabilises, we should benefit from an increasing number of tools that exploit the ability to reason about OWL-based vocabularies such as FOAF.
+
+FOAF makes use of OWL in particular for describing when a certain kind of property (eg. 'homepage', 'mbox', 'dnaChecksum', 'mbox_sha1sum', 'jabberID' etc.) is uniquely identifying. This mechanism underpins the working of many FOAF aggregators and toolkits. FOAF benefits from W3C's work on OWL, since it allows us to adopt standard conventions shared across the Semantic Web community, rather than invent conventions that would only be understood by FOAF tools. Consequently FOAF implementations can make more use of generic RDF-based software, allowing FOAF developers to concentrate on FOAF-related functionality rather than on basic data-merging and storage techniques. This is particularly important to us as FOAF is designed to be freely mixed with other Semantic Web data (eg. geographic, calendar, taxonomy, bibliographic etc.).
+
+See the <a href="http://www.w3.org/News/2003#item138">W3C news item</a>, <a href="http://www.w3.org/2003/08/owl-pressrelease">press release</a> and <a href="http://www.w3.org/2003/08/owlfaq">FAQ</a> for more information on OWL and its relationship to other W3C technologies.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/20/2003 12:11:08 AM
+See [<a href="http://rdfig.xmlhack.com/2003/08/19/2003-08-19.html#1061318502.410256|RDFIG"><a href="http://rdfig.xmlhack.com/2003/08/19/2003-08-19.html#1061318502.410256|RDFIG">http://rdfig.xmlhack.com/2003/08/19/2003-08-19.html#1061318502.410256|RDFIG</a></a>  IRC weblog] for more pointers to articles and further info.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.24
+URL: http://rdfweb.org/people/danbri/
+DATE: 08/20/2003 12:56:27 AM
+ps. for a bit more technical detail on how we can make use of OWL in FOAF applications, see my article on FOAF contradictions, <a href="http://rdfweb.org/mt/foaflog/archives/000040.html"><a href="http://rdfweb.org/mt/foaflog/archives/000040.html">http://rdfweb.org/mt/foaflog/archives/000040.html</a></a>
+-----
+
+
+PING:
+TITLE: W3C OWL language now a Candidate Recommendation
+URL: http://dannyayers.com/archives/001748.html
+IP: 66.70.189.63
+BLOG NAME: Raw Blog
+DATE: 08/20/2003 10:34:41 AM
+W3C's OWL language has just advanced to 'Candidate Recommendation' stage. RDFWeb and Friend of a Friend (FOAF): W3C OWL language...
+-----
+
+PING:
+TITLE: casinos
+URL: http://casinos.vinhas.net/
+IP: 211.184.27.161
+BLOG NAME: casinos
+DATE: 03/26/2005 08:58:08 AM
+Please visit some helpful info dedicated to <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Addition of foaf:gender to spec
+BASENAME: addition_of_foafgender_to_spec
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Vocabulary
+CATEGORY: Vocabulary
+DATE: 09/11/2003 11:39:00 PM
+-----
+BODY:
+<p>
+The FOAF specification now includes a new (and long anticipated) property, <a href="http://xmlns.com/foaf/0.1/#term_gender">foaf:gender</a>. Like all FOAF properties, 'gender' is optional - nobody is required to describe themselves in any more detail than they choose to, and the new text in the spec goes to some lengths to stress this, amongst other concerns. I <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-September/011917.html">announced</a> it to the FOAF mailing list (<a href="http://rdfweb.org/mailman/listinfo/rdfweb-dev">rdfweb-dev</a>) earlier today following <a href="http://ilrt.org/discovery/chatlogs/foaf/2003-09-11#T09-47-59">editorial discussions</a> in #foaf, our <a href="http://rdfweb.org/irc/">IRC</a> channel.
+</p>
+
+<p>
+Typical values for foaf:gender are 'female' and 'male', which can be added to most FOAF files simply by including an element such as <code>&lt;foaf:gender&gt;male&lt;/foaf:gender&gt;</code> inside any foaf:Person element(s) in the document. See the <a href="http://ilrt.org/discovery/chatlogs/foaf/2003-09-11#T09-47-59">foaf:gender definition</a> for details and accompanying documentation. Feedback on the design and documentation is welcome, either through weblog comments or <a href="mailto:rdfweb-dev@vapours.rdfweb.org">by email</a>. 
+</p>
+-----
+EXTENDED BODY:
+<p>
+The addition of a 'gender' property to FOAF is obvious, but also not something to do lightly. I have tried in the <a href="http://xmlns.com/foaf/0.1/#term_gender">documentation</a> to highlight a few issues that users and developers should be aware of. FOAF is often compared to centralised databases such as <a href="http://www.sixdegrees.com/">Six Degrees</a> (the old pre-crash version; the domain name seems to have been recycled) or <a href="http://www.friendster.com/">Friendster</a>. However, the FOAF "data set" (ie. the collection of all Web documents and services which use FOAF vocabulary) is highly distributed, ie. not under central control. FOAF is being put to uses that are literally out of control; there is no "FOAF sysadmin" who can delete, edit or update all FOAF profiles. The data is scattered throughout the Web, under the control of the people who publish it.
+</p>
+<p>
+ Consequently we need to proceed with a certain amount of caution when increasing the expressiveness of FOAF. Adding gender information to FOAF means that whenever someone is looking for a way to describe a person's gender in an RDF/XML document, there is a simple piece of FOAF markup that will do the job. We can't control what other information this will be mixed with, whether the information  is accurate, or the uses to which it will be put. An obvious application people have been discussing is 'dating', and doubtless we'll see additional vocabularies to accompany FOAF which will go into more detail on that topic than FOAF itself will ever attempt. Other application areas include the (again long-awaited) treatment of 'family tree' data within FOAF, where foaf:gender could be used to help define other concepts, like 'brother', 'aunt', etc.
+</p>
+<p>
+It's also worth noting that this addition to FOAF has been defined in general terms so that it is very widely applicable. We can talk about the foaf:gender of things that aren't human, eg. other animals. This is a good example of unexpected re-use, something often seen with RDF-based data formats such as FOAF. By adding the foaf:gender property, and combining FOAF with other vocabulary such as <a href="http://rdfweb.org/topic/WhyWordnetIsCool">Wordnet</a>, we could for example use FOAF and RDF to catalogue digital photos and say things like "this is a photo of a female Anteater". A random example, but one that illustrates the variety of unexpected uses that a single addition to an RDF vocabulary can facilitate. It will be interesting to see how foaf:gender gets used...
+</p>
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.16
+URL: http://rdfweb.org/people/danbri/
+DATE: 09/12/2003 12:56:52 AM
+I'm tired and hit 'publish' too soon! I also meant to mention the fact that within a couple of hours we had Japanese documentation for foaf:gender thanks to Masahide Kanzaki: see <a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-September/011918.html"><a href="http://rdfweb.org/pipermail/rdfweb-dev/2003-September/011918.html">http://rdfweb.org/pipermail/rdfweb-dev/2003-September/011918.html</a></a> and his excellent overview of FOAF in Japanese, <a href="http://kanzaki.com/docs/sw/foaf.html"><a href="http://kanzaki.com/docs/sw/foaf.html">http://kanzaki.com/docs/sw/foaf.html</a></a>
+
+Thanks :)
+-----
+
+COMMENT:
+AUTHOR: Amy van der Hiel
+EMAIL: amy@w3.org
+IP: 18.29.0.245
+URL: 
+DATE: 09/12/2003 04:24:02 PM
+The question of the gender of things which are not human reminds me of a David Sedaris' quote about learning French in _Me Talk Pretty One Day_.  "I find it ridiculous to assign a gender to an inanimate object incapable of disrobing and making an occasional fool of itself."
+
+While his is probably not the best reasoning upon which to base a spec, it does touch upon gender assignment in non-English languages.  This line of thought might be interesting.
+-----
+
+COMMENT:
+AUTHOR: Marc Canter
+EMAIL: marc@broadbandmechanics.com
+IP: 68.166.219.38
+URL: http://blogs.it/0100198
+DATE: 09/13/2003 12:34:58 AM
+Thank you for gender.  How about "usage ability level"?  There are such a wide range of end-users - from xenophobic beginners - to nerds like us.  I suggest at least three distainct levels: beginner, average, advanced.
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@rdfweb.org
+IP: 10.0.2.20
+URL: http://rdfweb.org/people/danbri/
+DATE: 09/13/2003 12:42:11 AM
+hi Marc. Yes, some way of characterise expertise would definitely be interesting, but I feel we'd need to characterise the domain of expertise somehow rather than just say someone is just plain 'beginner'. Do you mean ability level w.r.t. the Web, internet stuff etc? With XML/RDF/FOAF/RSS, or with computing in general? 
+
+There was some previous discussion of this on rdfweb-dev in context of Jobs, CVs etc., though I don't have a pointer handy...
+-----
+
+COMMENT:
+AUTHOR: Jim Ley
+EMAIL: mailto:jim@jibbering.com
+IP: 217.155.143.66
+URL: http://jibbering.com
+DATE: 09/13/2003 05:07:47 PM
+Expertise in being a foaf:gender "male"...   I think that's one of the things foaf:gender "female" people should be saying about me, of course only after having done a thing of rdf:type foaf:rudeThing 
+
+but I might be getting the wrong end of the stick here...
+-----
+
+COMMENT:
+AUTHOR: Jim Hughes
+EMAIL: jim@feetup.org
+IP: 80.234.128.135
+URL: http://feetup.org/blog
+DATE: 09/15/2003 10:55:18 AM
+Eric Vitiello's trust module for FoaF - <a href="http://www.perceive.net/schemas/trust/"><a href="http://www.perceive.net/schemas/trust/">http://www.perceive.net/schemas/trust/</a></a> can be used to describe levels of expertise.
+
+And for Jim I guess it could be abused to say stuff like:
+
+&lt;trust:trustsHighly&gt;
+ &lt;foaf:Person rdf:about="#jibberJim"&gt;
+  &lt;rdfs:subject rdf:resource="<a href="http://dmoz.org/SexualMatters/CarnalProwess/WithLadies/"><a href="http://dmoz.org/SexualMatters/CarnalProwess/WithLadies/">http://dmoz.org/SexualMatters/CarnalProwess/WithLadies/"</a></a> /&gt;
+ &lt;/foaf:Person&gt;
+&lt;/trust:trustsHighly&gt;
+-----
+
+COMMENT:
+AUTHOR: Steve
+EMAIL: steve@blog4free.com
+IP: 68.40.27.68
+URL: http://steve.blog4free.com
+DATE: 12/09/2003 11:31:22 AM
+Based on those last posts it seems the FOAF concept needs to be applied to create a trust relationship with who should be allowed to submit posts to weblogs...
+-----
+
+COMMENT:
+AUTHOR: libby
+EMAIL: libby.miller@bristol.ac.uk
+IP: 10.0.2.20
+URL: http://planb.nicecupoftea.org
+DATE: 03/19/2004 09:09:40 PM
+I've removed all the spam I can find from the site.
+-----
+
+
+PING:
+TITLE: roulette
+URL: http://roulette.win-2005.com/
+IP: 62.48.242.2
+BLOG NAME: roulette
+DATE: 03/26/2005 08:44:10 AM
+In your free time, visit the sites dedicated to <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 211.185.42.253
+BLOG NAME: payday loan
+DATE: 03/27/2005 01:33:14 PM
+You may find it interesting to visit the sites about <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF 2004
+BASENAME: foaf_2004
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 01/01/2004 03:23:38 PM
+-----
+BODY:
+<img src="http://rdfweb.org/images/foafgirl2.png" alt="foafgirl"/>
+
+Welcome to 2004...
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Marc Canter
+EMAIL: marc@broadbandmechanics.com
+IP: 67.100.91.193
+URL: http://blogs.it/0100198
+DATE: 01/02/2004 06:52:36 AM
+Right on brother - to you too!  See you in San Diego!
+
+- Marc
+-----
+
+COMMENT:
+AUTHOR: pepe
+EMAIL: pepe172@yahoo.com
+IP: 195.202.55.20
+URL: http://edu-versionen.blogspot.com/
+DATE: 01/27/2004 09:57:06 PM
+oh jep  - FOAF 2004
+-----
+
+
+PING:
+TITLE: FOAF just grew up
+URL: http://dannyayers.com/archives/002156.html
+IP: 66.70.189.63
+BLOG NAME: Raw
+DATE: 01/01/2004 04:35:47 PM
+danbri posts the new mascot... RDFWeb and Friend of a Friend (FOAF): FOAF 2004...
+-----
+
+PING:
+TITLE: Gay Porn
+URL: http://gaykarma.kyed.com/
+IP: 68.85.227.201
+BLOG NAME: Free Gay Porn
+DATE: 03/25/2005 11:52:40 AM
+<a href="http://gaykarma.kyed.com/"><b>GAY SEX</b></a> - <a href="http://gaykarma.kyed.com/1.html"><b>Gay Porn</b></a> -  <a href="http://gaykarma.kyed.com/2.html"><b>Gay Men</b></a> -  <a href="http://gaykarma.kyed.com/3.html"><b>Gay Boys</b></a> -  ...
+-----
+
+PING:
+TITLE: blackjack
+URL: http://free-no-download-slots.win-2005.com/
+IP: 211.184.37.2
+BLOG NAME: blackjack
+DATE: 03/26/2005 09:08:11 AM
+You are invited to check out the sites in the field of <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: cash advance
+URL: http://cash-advance.conjuratia.com/
+IP: 211.185.42.253
+BLOG NAME: cash advance
+DATE: 03/27/2005 02:01:34 PM
+Please check the pages in the field of <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Testing NetNewsWire
+BASENAME: testing_netnewswire
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+DATE: 11/26/2003 04:47:14 PM
+-----
+BODY:
+<p>OK, I'm trying NetNewsWire as a way of writing here while offline... Let's see if it works.</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: casinos
+URL: http://casinos.vinhas.net/
+IP: 195.229.241.183
+BLOG NAME: casinos
+DATE: 03/26/2005 09:16:35 AM
+Please visit some information about <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+-----
+--------
+AUTHOR: libby
+TITLE: Codepiction
+BASENAME: codepiction
+STATUS: Draft
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Applications
+CATEGORY: Applications
+DATE: 10/09/2003 07:10:59 PM
+-----
+BODY:
+<a href="http://rdfweb.org/2002/01/photo/">Codepiction</a>
+-----
+EXTENDED BODY:
+when is codepiction really useful?
+
+- for picking between people with the same or similar names, like in joi
+ito's post, oh! _that_ josh!; and for cataloguing
+
+- for finding pics of specific people for a purpose - introducing
+someone to someone else, looks for pics for leaving dos, to tease them etc
+
+- it's one of the ways to pick apart the mess that's my memory, at
+least - to have a go at making the vague more specific. An aide-memoire
+for things like
+
+* "we had that meeting and it was at the begining of last year, no, in
+about February and Matt was definitely there, and it was in London, and
+we went to that pub" Q: which pub exactly and when was the meeting?
+
+it's like those chains of reasoning you (and I) sometimes do about
+people and films -
+
+"it's that bloke!" and he's in that other film that's a bit like the one
+with the aliens and the soldiers. And that one with whatsit off the
+telly"
+
+if you can just pin down one definite name or description in this
+morass then you can usually pin down the others.
+
+There are all these different routes into the memory of an events, and
+when one fails another can help. Codepictions - or the broader
+annotation of photos are a part of that because they are in a way
+physical evidence of an event that you (or someone else) wants to
+remember, and video will be too I guess soon.
+
+So if I know the date then I can find what I was doing via my dated
+directories (I've tracked down an expenses problem that way). If I know
+who else was there, I might be able to look for photos by them or
+annotated by them, or of them. If I know where, I can search that way.
+
+So, we have - aide memoire; reuse (the web as clip art, as you've said
+before). Neither of these really talk about why it's useful to know who
+was in the picture. It sems fun and natural, but is it really useful...?
+
+I think the online intros is one thing. Not some cheesy, networking
+thing, but a natural and obvious fact about a person is the way they
+look.  The way the look is a semantic mess - their age,
+health, gender, attractiveness, self-image, even wealth and job-type
+might be wrapped up in that. But - it's a useful social tool. Here's
+so-and-so. When you meet them you don't need to carry a furled copy of
+the Times.
+
+The other thing is tracing networks of people...who has actually met
+who. For statistical purposes the sampling will be no good, but it would
+still be an interesting dataset, for example for displaying networks of
+people.
+
+Sometimes a query for 'who was at event X' might actually be more
+interesting. But sometimes it's about the people. X met Y but they claim
+never to have met. X met Y and it was not widely reported because it was
+not of itself interesting, but might be when connected with other
+supporting data (X also met Z; Y's company competed for a contract for
+Z and Y won @@better e.g@@). Some of these meetings might but be
+private but they are not exactly public either.
+
+Codepiction would be particularly nice for illustrating foafcorp-type
+relations I think, or foafpolitics-foafcorp relations. Or
+foafcorp-foafmasons...
+
+Codepiction is one way we can mark information for future reference, so
+we can find it again, whether it's our own personal network of
+information or information about others. Some information will be
+in document form, some in picture form, some video. Annotation of this
+sort of information could be a political act, but not annotating it is a
+political act too: some information is hidden by obscurity.
+...
+
+His and hers life annotations. Not what they were going, but what they
+were seeing. Plus what others were seeing while they were near them.
+
+Anyway....
+
+This raises some obvious privacy issues, and also licensing issues.
+
+Privacy
+
+We've got by with a combination of good manners and related easy-going
+manner so far.
+
+Misidentification malicious or otherwise has not been an issue
+
+people who do not like being photographed or do not wish to be
+photographed here, now, has not really been an issue
+
+People do not seem to mind display of their photos on other sites (or
+perhaps they don't know..).
+
+note:
+with RDF you can say anthing about anything, including bad things about
+people
+
+with html you can also say anything bout anything including bad things
+about people
+
+truthfulness is not a solved probem on the web, but signing pages and
+referencing pages are good ways for people to find evidence about the
+factual information or not.
+
+Privacy is not a solved issue either.
+
+[govt?]
+
+Licensing is something that people who put their pictures on the web
+should probably do.
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: Consolidating issue tracking (Bugzilla to Wiki migration)
+BASENAME: consolidating_issue_tracking_bugzilla_to_wiki_migration
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+DATE: 01/15/2004 07:12:14 PM
+-----
+BODY:
+<p>The FOAF developer site (<a href="http://rdfweb.org/">rdfweb.org</a>) has a number of useful, but overlapping facilities to support the development of FOAF and related projects. In fact, there are too many. We use IRC chat, weblogs, Wiki and email for communication; each has its value, but it is sometimes not clear where to look to figure out what's going on. One tool we have used  in a half-hearted way, but which hasn't really caught on, is Bugzilla. We're therefore in process of shutting down our Bugzilla database and migrating the content across into the Wiki.</p>
+
+<p>Bugzilla is great for large, collaborative software projects such as Mozilla. For the FOAF spec, it was overkill. and discouraging since it required you to set up and remember a password before scribbling notes in the issue-tracking system.</p>
+
+<p>I've started a page in the Wiki as a replacement <a href="http://rdfweb.org/topic/IssueTracker">IssueTracker</a>. The content isn't fully migrated out of the Bugzilla system yet, and the template/layout/etc may change.  But hopefully this gives us one less place for information to hide away, and better integration with the other FOAF documentation that lives in the FOAF wiki.</p>
+
+<p>
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: party poker
+URL: http://party-poker.zindagi.us/
+IP: 211.184.27.161
+BLOG NAME: party poker
+DATE: 03/25/2005 03:06:07 AM
+You can also check out the sites dedicated to <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: slot machines
+URL: http://slot-machines.vinhas.net/
+IP: 211.184.27.161
+BLOG NAME: slot machines
+DATE: 03/26/2005 08:55:25 AM
+In your free time, check out the sites dedicated to <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: new FOAF intro article
+BASENAME: new_foaf_intro_article
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 02/06/2004 01:07:57 AM
+-----
+BODY:
+<p>Leigh Dodds has written an excellent <a href="http://www.xml.com/pub/a/2004/02/04/foaf.html">Introduction to FOAF</a> for <a href="http://www.xml.com/">XML.com</a>. It gives a good technical overview of the whole project, working through some examples on data-merging and relationship typing. Thanks Leigh!
+</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: 7 levels of relationship - with FOAF
+URL: http://blogs.it/0100198/2004/02/06.html#a2238
+IP: 67.100.91.193
+BLOG NAME: Marc's Voice
+DATE: 04/04/2004 11:04:41 AM
+new FOAF intro article .
+-----
+
+PING:
+TITLE: texas hold em
+URL: http://texas-hold-em.ws-op.com/
+IP: 211.185.42.253
+BLOG NAME: texas hold em
+DATE: 03/25/2005 03:35:33 AM
+Please visit some relevant pages about <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: blackjack
+URL: http://free-no-download-slots.win-2005.com/
+IP: 211.185.42.253
+BLOG NAME: blackjack
+DATE: 03/26/2005 09:19:11 AM
+Please check the sites about <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 211.185.42.253
+BLOG NAME: payday loan
+DATE: 03/27/2005 02:13:16 PM
+You may find it interesting to check the sites dedicated to <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: danbri
+TITLE: foaf:tipjar, Creative Commons and MusicBrainz
+BASENAME: foaftipjar_creative_commons_and_musicbrainz
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: 0
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Vocabulary
+CATEGORY: Vocabulary
+DATE: 02/12/2004 08:07:32 PM
+-----
+BODY:
+<p>I've been talking with <a href="http://creativecommons.org/learn/aboutus/people#21">Mike Linksvayer</a> of <a href="http://creativecommons.org/">Creative Commons</a> and <a href="http://www.mayhem-chaos.net/">Robert Kaye</a> of <a href="http://www.musicbrainz.org/">MusicBrainz</a> about the idea of a foaf:tipjar property that relates an 'agent' to a 'document'  which serves as some form of 'tip jar' page, so that artists, content creators etc could use RDF to make statements that help them get rewarded for works they make available online. This initially wouldn't be very machine-readable, just a normal human-oriented Web page perhaps pointing to PayPal or Amazon wishlist pages. We can start simple and get fancy later.</p>
+
+<p>The details need further discussion, but I like this idea a lot. It brings together concerns from the FOAF, CreativeCommons and MusicBrainz communities, and -- from a technical perspective -- allows us to explore the use of RDF to combine information expressed using the FOAF, Creative Commons and MusicBrainz datasets. One way to implement this would be to have a common notion of 'agent' shared across the three datasets/vocabularies. Leigh Dodds has been working on the RDF schema for MusicBrainz; we could define MM:Artist as a sub-class of foaf:Agent, so that FOAF tools would have some partial understanding of the MusicBrainz dataset. Mike also mentioned some discussions within CC of having an RDF representation of the notion of an agent.</p>
+
+<p>How might this work in practice? One idea was for tools which generate CreativeCommons markup describing online content to have an option to include a declaration of the creating agent's FOAF description, including a link to a foaf:tipjar page. From a MusicBrainz perspective we could try to associate tipjar information with as many artists as possible, ideally alongside their homepage URLs and other handy metadata (photos, weblogs, ...).  This would hopefully assist users of content in finding  their way to a page that explains how to reward the content-creator (with online payments, Amazon gifts, etc.). </p>
+
+<p>Feedback welcomed...</p>
+
+<p>(update: Mar 18 2004 - <a href="http://xmlns.com/foaf/0.1/#term_tipjar">foaf:tipjar</a> has been added to the spec.)</p>
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+COMMENT:
+AUTHOR: Mike Linksvayer
+EMAIL: ml@creativecommons.org
+IP: 12.105.236.37
+URL: http://gondwanaland.com/ml/
+DATE: 02/12/2004 11:32:47 PM
+CC does have a RDF representation of an agent (little used and under-defined), see <a href="http://web.resource.org/cc/"><a href="http://web.resource.org/cc/">http://web.resource.org/cc/</a></a> 
+
+I'm looking to replace this with foaf:Agent, see <a href="http://lists.ibiblio.org/pipermail/cc-metadata/2004-January/000269.html"><a href="http://lists.ibiblio.org/pipermail/cc-metadata/2004-January/000269.html">http://lists.ibiblio.org/pipermail/cc-metadata/2004-January/000269.html</a></a> for the beginning of a brief thread on this.
+
+Regarding tipjar , the CC license chooser <a href="http://creativecommons.org/license/"><a href="http://creativecommons.org/license/">http://creativecommons.org/license/</a></a> could easily ask for a tipjar URL and provide the appropriate RDF and HTML in the case a tipjar URL is provided.
+-----
+
+COMMENT:
+AUTHOR: Marc Canter
+EMAIL: marc@broadbandmechanics.com
+IP: 12.105.236.37
+URL: http://blogs.it/0100198
+DATE: 02/13/2004 12:50:43 AM
+Coolio - can we have it start a song: "Brother, can you spare a dime?"  Maybe a driving techno version?
+-----
+
+COMMENT:
+AUTHOR: Danny
+EMAIL: danny666@virgilio.it
+IP: 62.11.122.203
+URL: http://dannyayers.com
+DATE: 02/13/2004 03:47:03 PM
+Great idea. Strap on the accordion!
+-----
+
+COMMENT:
+AUTHOR: Dan Brickley
+EMAIL: danbri@w3.org
+IP: 193.35.129.161
+URL: 
+DATE: 02/13/2004 04:16:17 PM
+I just bought Apple's GarageBand app. Unless my tipjar starts filling fast, I'll flood the 'net with bad FOAF jingles... ;)
+-----
+
+COMMENT:
+AUTHOR: George Hotelling
+EMAIL: george@hotelling.net
+IP: 68.40.192.208
+URL: http://george.hotelling.net/
+DATE: 02/25/2004 04:37:46 AM
+I am actually posting FOAF with MusicBrainz data integrated at <a href="http://www.songbuddy.com/"><a href="http://www.songbuddy.com/">http://www.songbuddy.com/</a></a> - My FOAF for example is at <a href="http://www.songbuddy.com/lc/users/foaf/george"><a href="http://www.songbuddy.com/lc/users/foaf/george">http://www.songbuddy.com/lc/users/foaf/george</a></a>
+
+The application I'm using it for is to provide music recommendations based on social networks.  Since I'm publishing all data as FOAF/RDF under a CC license, it should be trivial for someone to build tools to play these playlists in $MEDIA_PLAYER, which is the application I see for them.
+
+(Also, someone should go through and clean up the comment spam, <a href="http://rdfweb.org/mt/foaflog/archives/000051.html"><a href="http://rdfweb.org/mt/foaflog/archives/000051.html">http://rdfweb.org/mt/foaflog/archives/000051.html</a></a> for example)
+-----
+
+COMMENT:
+AUTHOR: B.K. DeLong
+EMAIL: bkdelong@pobox.com
+IP: 24.128.187.213
+URL: 
+DATE: 04/06/2004 02:27:16 AM
+So how would I link in my Amazon Wishlist or my Paypal account? According to the FOAF Spec it's undergoing "testing".
+
+Or here's a challenge. My first son is about to join the world....how would I include his Baby Registry in FOAF? Would I create his FOAF and link it via the bio ns (<a href="http://purl.org/vocab/bio/0.1/)"><a href="http://purl.org/vocab/bio/0.1/)">http://purl.org/vocab/bio/0.1/)</a></a> using event > birth? Or would I create him as a representation of the relationship ns (<a href="http://purl.org/vocab/relationship)"><a href="http://purl.org/vocab/relationship)">http://purl.org/vocab/relationship)</a></a> via childOf and put the registry under SeeAlso?
+
+Hmmmmm. ;)
+-----
+
+COMMENT:
+AUTHOR: B.K. DeLong
+EMAIL: bkdelong@pobox.com
+IP: 24.128.187.213
+URL: 
+DATE: 04/06/2004 02:51:14 AM
+Here's an interesting proposed use of tipjar:
+<a href="http://kasei.us/archives/2004/02/12/tipjar"><a href="http://kasei.us/archives/2004/02/12/tipjar">http://kasei.us/archives/2004/02/12/tipjar</a></a>
+
+"If the proposed foaf:tipjar becomes a reality, I want to have artists' foaf information embedded in ID3 tags, so that iTunes could give me a 'Donate to this Artist' button.
+
+Perhaps this is where MusicBrainz + FOAF comes in?
+-----
+
+
+PING:
+TITLE: RDF Music
+URL: http://kasei.us/archives/2004/02/12/tipjar
+IP: 38.118.152.153
+BLOG NAME: Life on Mars
+DATE: 02/13/2004 05:40:52 AM
+foaf:tipjar has been proposed, and I think it could work nicely with some new ontologies and media player support.
+-----
+
+PING:
+TITLE: foaf:tipjar
+URL: http://mayhem-chaos.net/blog/archives/000479.html
+IP: 63.194.101.14
+BLOG NAME: Mayhem & Chaos Blog
+DATE: 02/25/2004 07:58:20 PM
+Dan Brickley, the creator of FOAF has written up a quick blog entry proposing to add foaf:tipjar to the FAOF specification. I'm a big fan of this proposal -- when I revamped my site and created this blog I setup my contribution box. But, I think the t...
+-----
+
+PING:
+TITLE: FOAF:TipJar
+URL: http://blogs.it/0100198/2004/02/13.html#a2273
+IP: 67.100.91.193
+BLOG NAME: Marc's Voice
+DATE: 04/04/2004 11:05:25 AM
+foaf:tipjar, Creative Commons and MusicBrainz .
+-----
+
+PING:
+TITLE: party poker
+URL: http://party-poker.zindagi.us/
+IP: 216.37.138.189
+BLOG NAME: party poker
+DATE: 03/25/2005 03:50:25 AM
+Please check out some information in the field of <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: craps
+URL: http://craps.jusx.com
+IP: 66.160.92.90
+BLOG NAME: craps
+DATE: 03/25/2005 03:53:40 PM
+Please check:  <a href='http://slots.jusx.com'>slots</a> <a href='http://www.a-poker.us'>online poker</a> <a href='http://www.casino-net.us'>online casino</a> <a href='http://craps.jusx.com'>craps</a>.
+-----
+
+PING:
+TITLE: casinos
+URL: http://casinos.vinhas.net/
+IP: 217.139.2.165
+BLOG NAME: casinos
+DATE: 03/26/2005 09:28:04 AM
+In your free time, check some information about <a href="http://roulette.win-2005.com/">roulette</a> <a href="http://free-no-download-slots.win-2005.com/">blackjack</a> <a href="http://casinos.vinhas.net/">casinos</a>
+-----
+
+PING:
+TITLE: credit card
+URL: http://credit-card.conjuratia.com/
+IP: 211.185.42.253
+BLOG NAME: credit card
+DATE: 03/27/2005 02:23:25 PM
+You may find it interesting to visit the sites dedicated to <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: libby
+TITLE: Explaining FOAF
+BASENAME: explaining_foaf
+STATUS: Draft
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Documentation
+CATEGORY: Documentation
+DATE: 04/13/2004 08:58:03 PM
+-----
+BODY:
+This is a talk I never gave at the first London WTF!? the slides are <a href="http://swordfish.rdfweb.org/discovery/2004/03/foaftalk/">here</a>. I'm writing it up here because I'm sort of pleased with the result.....
+
+The aim of the FOAF project is to improve the chances of happy accidents
+
+by describing the connections between people (and things, and documents and places)
+
+How do we find things?
+
+We use google. We ask our friends. We ask our brains. We often do something like the following:
+
+Finding by association
+
+I know there's a nice pub near Tottenham Court Road, but I've forgotten its name. It's...
+
+a pub in London
+...near Goodge St tube
+...it's a Sam Smith's pub
+...and you can sit outside
+we had a FOAF meet there, remember?
+
+The Semantic Web is a web of associations
+
+A network of descriptions by many people of real and digital things
+
+Connecting what I know to what you know
+
+How do we build a communal web of associations like this?
+
+    * define, use and mix together many different 'vocabularies'
+    * reuse and link these vocabularies
+    * identify things in a particular way
+    * make the data public
+
+
+A Semantic Web vocabulary for people
+
+FOAF is a way of describing people:
+
+    * who they are: foaf:name, foaf:mboox, foaf:nick
+    * who they know: foaf:knows
+    * what they are interested in: foaf:interest
+    * pictures of them: foaf:img, foaf:depiction 
+
+The sorts of information you might put on a homepage
+
+Combining FOAF and other vocabularies
+
+FOAF can be used with other Semantic Web vocabularies to talk about other aspects of people, for example
+
+    * their calendars ical:Vcalendar, ical:Vevent
+    * their articles, blogs dc:creator, dc:description, rss:title
+    * the things they have around them: wordnet:Dog, wordnet:House
+    * the pubs that they really like... chefmoz:Restaurant
+
+FOAF in the wild
+
+Many people create their own FOAF files (e.g. using foaf-a-matic)
+
+Many sites export FOAF: Ecademy, Live Journal, Dean for America, Typepad, Meinbild...
+
+We think there are several million FOAF files out there on the web
+demo: Foafnaut by Jim Ley and Liz Turner
+
+demo: Codepiction
+Its fun but also...
+
+FOAF is political. It's about
+
+    * making unexpected connections between people
+    * controlling our personal data - 'we want our data back!'
+    * uncontrolled annotation of physical and digital objects
+
+Join us :)
+
+FOAF is a community of developers and users
+
+    * IRC: irc.freenode.net #foaf
+    * mailing list: rdfweb-dev@vapours.rdfweb.org
+    * homepage: http://www.foaf-project.org
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
+AUTHOR: danbri
+TITLE: FOAF happenings!
+BASENAME: foaf_happenings
+STATUS: Publish
+ALLOW COMMENTS: 1
+CONVERT BREAKS: __default__
+ALLOW PINGS: 1
+PRIMARY CATEGORY: Events
+CATEGORY: Events
+DATE: 07/05/2004 11:49:19 AM
+-----
+BODY:
+There are a  couple of FOAF-related events coming up in Europe. Hope to see you there!
+
+<a href="http://foafcamp.asemantics.org/">FOAF Camp</a>, 19-20 August 2004, Campus UTwente, The Netherlands. 
+
+<a href="http://www.w3.org/2001/sw/Europe/events/foaf-galway/">1st Workshop on Friend of a Friend, Social Networking and the Semantic Web</a>, 1-2nd September 2004, Galway, Ireland.
+
+FOAFCamp will be hacker-oriented and relatively freeform, while the Galway event invites paper and demo submissions (get writing!) and will have more structure. Loosly, the former is a gathering of the kinds of folk who find FOAF interesting, while the latter meeting is more explicitly about FOAF and social network technology. The two meetings, although particularly the latter, will help establish a roadmap for the future of FOAF over the next year or so. Both should be fun :)
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+PING:
+TITLE: FOAF workshop and camp
+URL: http://www.we-make-money-not-art.com/archives/001567.php
+IP: 81.29.194.138
+BLOG NAME: we make money not art
+DATE: 07/05/2004 01:47:56 PM
+The first "Workshop on Friend of a Friend, Social Networking and the Semantic Web" will take place in Galway, Ireland, on 1-2 September 2004. They are looking for position statements and demonstration descriptions (to be submitted no later than 22nd...
+-----
+
+PING:
+TITLE: Mining Passive Social Networks
+URL: http://rdf.burningbird.net/archives/2004/07/functional-observation-of-anothers-federations/
+IP: 63.247.132.12
+BLOG NAME: Practical RDF
+DATE: 07/19/2004 05:54:05 PM
+Marc Canter pointed to an upcoming conference, the 1st Workshop on Friend of a Friend, Social Networking, and the Semantic Web (also mentioned at RDFWeb and Danny Ayers). I wasn't sure about a conference focusing primarily on Friend of a Friend, but l...
+-----
+
+PING:
+TITLE: texas hold em
+URL: http://texas-hold-em.ws-op.com/
+IP: 81.72.70.148
+BLOG NAME: texas hold em
+DATE: 03/25/2005 03:38:34 AM
+You may find it interesting to check some relevant pages dedicated to <a href="http://texas-hold-em.ws-op.com/">texas hold em</a> <a href="http://online-poker.ws-op.com/">online poker</a> <a href="http://party-poker.zindagi.us/">party poker</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 213.208.67.82
+BLOG NAME: payday loan
+DATE: 03/27/2005 02:16:32 PM
+You can also check some information dedicated to <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+PING:
+TITLE: payday loan
+URL: http://payday-loan.conjuratia.com/
+IP: 211.184.37.2
+BLOG NAME: payday loan
+DATE: 03/27/2005 02:16:45 PM
+You can also check some information dedicated to <a href="http://payday-loan.conjuratia.com/">payday loan</a> <a href="http://cash-advance.conjuratia.com/">cash advance</a> <a href="http://credit-card.conjuratia.com/">credit card</a>
+-----
+
+-----
+--------
+AUTHOR: libby
+TITLE: FOAF events update
+BASENAME: foaf_events_update
+STATUS: Publish
+ALLOW COMMENTS: 2
+CONVERT BREAKS: __default__
+ALLOW PINGS: 0
+PRIMARY CATEGORY: Events
+CATEGORY: Events
+DATE: 07/21/2004 01:40:56 PM
+-----
+BODY:
+Today is the last day for preliminary <a href="http://foafcamp.asemantics.org/#registration">FOAFCamp registration</a> (although you can register until 1 Aug, places may run out), and tomorrow is the deadline for one or two-page position papers for the <a href="http://www.w3.org/2001/sw/Europe/events/foaf-galway/">FOAF-Galway workshop</a> (<a href="http://sw.deri.ie/~jbreslin/foaf-galway/registration.html">registration</a> for that is open until 12th August).
+
+FOAFCamp costs 100 Euros, and is an informal meeting in a small conference centre on a University campus in a wood in the Netherlands. FOAF-Galway is free (though we're trying to persuade people to come to a dinner and you have to pay 40 Euros for that, sorry), and should be an interesting mix of academics and commercial people from many different countries, judging by the papers and registrations we've recieved so far.
+
+Do come along if you can.
+-----
+EXTENDED BODY:
+
+-----
+EXCERPT:
+
+-----
+KEYWORDS:
+
+-----
+
+
+-----
+--------
