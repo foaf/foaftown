@@ -28,7 +28,9 @@ Author URI: http://danbri.org/
 
 function f2f_openid_list_rdfa() {
   $req = $_SERVER['REQUEST_URI'];
+
   $f2f_path = '\/network'; // regex path to trigger addition of markup
+
 				// todo, make an option. see also http://wordpress.org/extend/plugins/exclude-pages/
   $ret = "";
 
@@ -97,36 +99,5 @@ add_action('wp_footer', 'f2f_main');
  
  add_action('admin_init', 'eg_settings_api_init');
  
-  
- // ------------------------------------------------------------------
- // Settings section callback function
- // ------------------------------------------------------------------
- //
- // This function is needed if we added a new section. This function 
- // will be run at the start of our section
- //
- 
- function eg_setting_section_callback_function() {
-     echo '<p>Intro text for our settings section</p>';
- }
- 
- // ------------------------------------------------------------------
- // Callback function for our example setting
- // ------------------------------------------------------------------
- //
- // creates a checkbox true/false option. Other types are surely possible
- //
- 
- function eg_setting_callback_function() {
-     $checked = "\";
-     
-     // Mark our checkbox as checked if the setting is already true
-     if (get_option('eg_setting_name')) 
-         $checked = \" checked='checked' \";
- 
-     echo \"<input {$checked} name='eg_setting_name' id='gv_thumbnails_insert_into_excerpt' type='checkbox'
- value='eg_setting_name' class='code' /> Explanation text\";
- } // eg_setting_callback_function()
-
 
 ?>
