@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+
+>
+  <foaf:Group rdf:about="http://danbri.org/words/network#!aCommentApprovedTrustGroup">
+    <foaf:member>
+      <foaf:Agent rdf:about="http://danbri.org/words/network#!ah_88c1753a449bd4b7f81074bbd21efcca35642806">
+        <foaf:openid rdf:resource="http://www.kjetil.kjernsmo.net/index.en.html"/>
+        <foaf:account rdf:resource="http://www.kjetil.kjernsmo.net/index.en.html"/>
+      </foaf:Agent>
+    </foaf:member>
+    <foaf:member>
+      <foaf:Agent rdf:about="http://danbri.org/words/network#!ah_e2a09d0724c86b20397961bc3f6ab52c0bd596d1">
+        <foaf:openid rdf:resource="http://openid.sun.com/bblfish"/>
+        <foaf:account rdf:resource="http://openid.sun.com/bblfish"/>
+      </foaf:Agent>
+    </foaf:member>
+    <foaf:member>
+      <foaf:Agent rdf:about="http://danbri.org/words/network#!ah_fce2b532d7377dd8a4f3d5a352d82af776092cba">
+        <foaf:openid rdf:resource="http://melvster.com/"/>
+        <foaf:account rdf:resource="http://melvster.com/"/>
+      </foaf:Agent>
+    </foaf:member>
+    <foaf:member>
+      <foaf:Agent rdf:about="http://danbri.org/words/network#!ah_e48ea71f02d656f9c324d412d1c00907e63cf6f2">
+        <foaf:openid rdf:resource="http://www.w3.org/People/Connolly/"/>
+        <foaf:account rdf:resource="http://www.w3.org/People/Connolly/"/>
+      </foaf:Agent>
+    </foaf:member>
+    <foaf:maker>
+      <foaf:Agent>
+        <foaf:account rdf:resource="http://danbri.org/words/"/>
+        <foaf:weblog rdf:resource="http://danbri.org/words/"/>
+      </foaf:Agent>
+    </foaf:maker>
+  </foaf:Group>
+
+</rdf:RDF>
+
+
