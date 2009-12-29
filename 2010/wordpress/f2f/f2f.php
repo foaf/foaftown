@@ -7,9 +7,10 @@
 /*
 Plugin Name: F2F
 Plugin URI: http://danbri.org/2010/f2f/
-Description: This plugin experimentally exposes a list of trusted OpenIDs. Requires the OpenID plugin. Assumes RDFa and xmlns:foaf are set up in your theme. In my blog it generates a page at http://danbri.org/words/network ... in yours it may delete everything and leak anything private it forgot to delete. Use with care.
-See announcement  http://lists.foaf-project.org/pipermail/foaf-dev/2009-December/009963.html
-
+Description: F2F generates an XHTML/RDFa page giving a list of all OpenIDs associated with approved comments on this site.
+This plugin experimentally exposes a list of trusted OpenIDs. Requires the OpenID plugin. Assumes RDFa and xmlns:foaf are set up in your theme. 
+In my blog it generates a page at http://danbri.org/words/network ... in yours it may delete everything and leak anything private it forgot to delete. Use with care.
+Announcement:  http://lists.foaf-project.org/pipermail/foaf-dev/2009-December/009963.html
 Available by public SVN: svn co http://svn.foaf-project.org/foaftown/2010/wordpress/f2f/
 
 Author: Dan Brickley
@@ -73,4 +74,20 @@ function f2f_main() {
 }
 
 add_action('wp_footer', 'f2f_main');
+
+
+
+add_action('admin_menu', 'my_plugin_menu');
+
+function my_plugin_menu() {
+  add_options_page('My Plugin Options', 'f2f', 'capability_required', 'f2f', 'my_plugin_options');
+}
+
+function my_plugin_options() {
+  echo '<div class="wrap">';
+  echo '<p>Here is where the form would go if I actually had options.</p>';
+  echo '</div>';
+}
+
+
 ?>
