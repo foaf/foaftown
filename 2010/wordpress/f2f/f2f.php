@@ -28,7 +28,7 @@ function f2f_openid_list_rdfa() {
     $urls = $wpdb->get_results($q);
     $blogurl = get_bloginfo('url'); // http://codex.wordpress.org/Function_Reference/get_bloginfo
     $blogname = get_bloginfo('name');
-    $ret .= "<span rel='foaf:maker'>Comment acccept list for <a typeof='foaf:Agent' rel='foaf:weblog foaf:account' href='".$blogurl."/'>".$blogurl."</a></span>";
+    $ret .= "<span rel='foaf:maker'>Comment accept list for <a typeof='foaf:Agent' rel='foaf:weblog foaf:account' href='".$blogurl."/'>".$blogurl."</a></span>";
     $ret .=  "<ul style='". $css . "'>\n";
     foreach($urls as $openid) {
       $o = $openid->url;
