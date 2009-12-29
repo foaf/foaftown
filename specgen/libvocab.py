@@ -32,13 +32,10 @@
 # We define basics, Vocab, Term, Property, Class
 # and populate them with data from RDF schemas, OWL, translations ... and nearby html files.
 
-import rdflib
-from rdflib import Namespace
-from rdflib.Graph import Graph
-from rdflib.Graph import ConjunctiveGraph
+from rdflib.namespace import Namespace
+from rdflib.graph import Graph, ConjunctiveGraph
 from rdflib.sparql.sparqlGraph  import SPARQLGraph
 from rdflib.sparql.graphPattern import GraphPattern
-from rdflib.sparql.bison import Parse 
 from rdflib.sparql import Query 
 
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
@@ -215,7 +212,7 @@ class Class(Term):
 class Vocab(object):
 
   def __init__(self, dir, f='index.rdf', uri=None ):
-    self.graph = rdflib.ConjunctiveGraph()
+    self.graph = ConjunctiveGraph()
     self._uri = uri
     self.dir = dir
     self.filename = os.path.join(dir, f) 
@@ -289,7 +286,7 @@ class Vocab(object):
 
     g = self.graph
 
-    query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property } ')
+    query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property }'
 
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
@@ -302,7 +299,7 @@ class Vocab(object):
           tmpproperties.append(str(p))
           self.properties.append(p)
 
-    query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type  FILTER (?type = <http://www.w3.org/2002/07/owl#Class> || ?type = <http://www.w3.org/2000/01/rdf-schema#Class> ) }')
+    query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type  FILTER (?type = <http://www.w3.org/2002/07/owl#Class> || ?type = <http://www.w3.org/2000/01/rdf-schema#Class> ) }'
     relations = g.query(query, initNs=bindings)
     for (term, label, comment) in relations:
         c = Class(term)
@@ -319,7 +316,7 @@ class Vocab(object):
     self.properties.sort(key=operator.attrgetter('id'))
 
     # http://www.w3.org/2003/06/sw-vocab-status/ns#"
-    query = Parse('SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }')
+    query = 'SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }'
     status = g.query(query, initNs=bindings) 
     # print "status results: ",status.__len__()
     for x, vs in status:
@@ -335,8 +332,7 @@ class Vocab(object):
     q= 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type .  FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty>)}'
     q= 'SELECT distinct ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type . FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty> || ?type = <http://www.w3.org/2002/07/owl#DatatypeProperty> || ?type = <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> || ?type = <http://www.w3.org/2002/07/owl#FunctionalProperty> || ?type = <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>) } '
 
-    query = Parse(q)
-    relations = g.query(query, initNs=bindings)
+    relations = g.query(q, initNs=bindings)
     for (term, label, comment) in relations:
         p = Property(str(term))
         got = self.lookup( str(term) )
@@ -370,7 +366,7 @@ class Vocab(object):
   # print a raw debug summary, direct from the RDF
   def raw(self):
     g = self.graph
-    query = Parse('SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c  } ')
+    query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c  } '
     relations = g.query(query, initNs=bindings)
     print "Properties and Classes (%d terms)" % len(relations) 
     print 40*"-"
@@ -472,8 +468,9 @@ class VocabReport(object):
 #   print "GENERATING >>>>>>>> "
 ## having the rdf in there was making it invalid
 ## removed in favour of RDFa
-##  tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
+##    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"), rdfdata)
     tpl = tpl % (azlist.encode("utf-8"), azlist.encode("utf-8"), termlist.encode("utf-8"))
+#    tpl = tpl % (azlist.encode("utf-8"), termlist.encode("utf-8"))
     return(tpl)
 
   def az(self):
@@ -536,8 +533,7 @@ class VocabReport(object):
 
        q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
 
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th>May be the object of:</th>\n'
 
        contentStr = ''
@@ -552,8 +548,7 @@ class VocabReport(object):
 
 # class in range of
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
-       query2 = Parse(q2)
-       relations2 = g.query(query2, initNs=bindings)
+       relations2 = g.query(q2, initNs=bindings)
        startStr = '<tr><th>May have properties:</th>\n'
 
        contentStr = ''
@@ -571,8 +566,7 @@ class VocabReport(object):
  
        q = 'SELECT ?sc ?l WHERE {<%s> rdfs:subClassOf ?sc . ?sc rdfs:label ?l } ' % (term.uri)
 
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th>subClassOf</th>\n'
 
        contentStr = ''
@@ -588,8 +582,7 @@ class VocabReport(object):
        hasSubClass = ''
  
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th>has subclass</th>\n'
 
        contentStr = ''
@@ -606,8 +599,7 @@ class VocabReport(object):
        classIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr	 = '\n'
 
        contentStr = ''
@@ -623,8 +615,7 @@ class VocabReport(object):
        isDisjointWith = ''
  
        q = 'SELECT ?dj ?l WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj . ?dj rdfs:label ?l } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th>Disjoint With:</th>\n'
 
        contentStr = ''
@@ -693,8 +684,7 @@ class VocabReport(object):
 # domain of properties
        g = self.vocab.graph
        q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th>Domain:</th>\n'
 
        contentStr = ''
@@ -709,8 +699,7 @@ class VocabReport(object):
 
 # range of properties
        q2 = 'SELECT ?d ?l WHERE {<%s> rdfs:range ?d . ?d rdfs:label ?l } ' % (term.uri)
-       query2 = Parse(q2)
-       relations2 = g.query(query2, initNs=bindings)
+       relations2 = g.query(q2, initNs=bindings)
        startStr = '<tr><th>Range:</th>\n'
        contentStr = ''
        for (range, label) in relations2:
@@ -727,8 +716,7 @@ class VocabReport(object):
        propertyIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '\n'
 
        contentStr = ''
@@ -745,8 +733,7 @@ class VocabReport(object):
        ifp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th colspan="2">Inverse Functional Property</th>\n'
 
        if (len(relations) > 0):
@@ -758,8 +745,7 @@ class VocabReport(object):
        fp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#FunctionalProperty> } ' % (term.uri)
-       query = Parse(q)
-       relations = g.query(query, initNs=bindings)
+       relations = g.query(q, initNs=bindings)
        startStr = '<tr><th colspan="2">Functional Property</th>\n'
 
        if (len(relations) > 0):

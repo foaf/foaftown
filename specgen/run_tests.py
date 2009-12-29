@@ -61,13 +61,9 @@ from libvocab import XFN
 bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"owl": OWL, u"doap": DOAP, u"sioc": SIOC, u"foaf": FOAF }
 
 import rdflib
-from rdflib import Namespace
-from rdflib.Graph import Graph
-from rdflib.Graph import ConjunctiveGraph
-from rdflib.sparql.sparqlGraph  import SPARQLGraph
-from rdflib.sparql.graphPattern import GraphPattern
-from rdflib.sparql.bison import Parse 
-from rdflib.sparql import Query 
+from rdflib.namespace import Namespace
+from rdflib.graph import Graph
+from rdflib.graph import ConjunctiveGraph
 
 import unittest
 
