@@ -23,7 +23,7 @@ Author URI: http://danbri.org/
 function f2f_openid_list_rdfa() {
   global $wpdb; 
   $ret = "<div about='#!aCommentApprovedTrustGroup' typeof='foaf:Group' xmlns:foaf='http://xmlns.com/foaf/0.1/'>\n";
-  if (class_exists('WordpressOpenID')) {
+//  if (class_exists('WordpressOpenID')) {
     $q = "SELECT distinct url FROM wp_comments, wp_openid_identities WHERE wp_openid_identities.user_id=wp_comments.user_id AND comment_approved='1' ORDER BY url;";
     $urls = $wpdb->get_results($q);
     $blogurl = get_bloginfo('url'); // http://codex.wordpress.org/Function_Reference/get_bloginfo
@@ -36,7 +36,7 @@ function f2f_openid_list_rdfa() {
       $ret .= "<span rel='foaf:member'><li typeof='foaf:Agent' about='".$s."'><a rel='foaf:openid foaf:account' href='" . $o . "'>" . $o . "</a></li></span>\n";
     }
     $ret .= "</ul>\n";
-  }
+  //}
   $ret .= "</div>\n\n";
   return $ret;
 }
