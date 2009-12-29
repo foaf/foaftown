@@ -31,7 +31,7 @@ function f2f_openid_list_rdfa() {
    $ret = "<!-- Page is $req  -->";
    $q = "SELECT distinct url FROM wp_comments, wp_openid_identities WHERE wp_openid_identities.user_id=wp_comments.user_id AND comment_approved='1' ORDER BY url;";
    $urls = $wpdb->get_results($q);
-   $ret .= "<div about='#!aCommentApprovedTrustGroup' typeof='foaf:Group'>\n";
+   $ret .= "<div about='#!aCommentApprovedTrustGroup' typeof='foaf:Group' xmlns:foaf='http://xmlns.com/foaf/0.1/'>\n";
    $blogurl = get_bloginfo('url'); // http://codex.wordpress.org/Function_Reference/get_bloginfo
    $blogname = get_bloginfo('name');
    $ret .= "<span rel='foaf:maker'>Comment acccept list for <a typeof='foaf:Agent' rel='foaf:weblog foaf:account' href='".$blogurl."/'>".$blogurl."</a></span>";
