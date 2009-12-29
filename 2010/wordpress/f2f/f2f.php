@@ -77,17 +77,56 @@ add_action('wp_footer', 'f2f_main');
 
 
 
-add_action('admin_menu', 'my_plugin_menu');
 
-function my_plugin_menu() {
-  add_options_page('My Plugin Options', 'f2f', 'capability_required', 'f2f', 'my_plugin_options');
-}
 
-function my_plugin_options() {
-  echo '<div class="wrap">';
-  echo '<p>Here is where the form would go if I actually had options.</p>';
-  echo '</div>';
-}
+ // ------------------------------------------------------------------
+ // Add all your sections, fields and settings during admin_init
+ // ------------------------------------------------------------------
+ //
+ 
+ function eg_settings_api_init() {
+     // Add the section to reading settings so we can add our fields to it
+     add_settings_section('eg_setting_section', 'Example settings section in reading', 'eg_setting_section_callback_function', 'reading');
+     
+     // Add the field with the names and function to use for our new settings, put it in our new section
+     add_settings_field('eg_setting_name', 'Example setting Name', 'eg_setting_callback_function', 'reading', 'eg_setting_section');
+     
+     // Register our setting so that $_POST handling is done for us and our callback function just has to echo the <input>
+     register_setting('reading','eg_setting_name');
+ }// eg_settings_api_init()
+ 
+ add_action('admin_init', 'eg_settings_api_init');
+ 
+  
+ // ------------------------------------------------------------------
+ // Settings section callback function
+ // ------------------------------------------------------------------
+ //
+ // This function is needed if we added a new section. This function 
+ // will be run at the start of our section
+ //
+ 
+ function eg_setting_section_callback_function() {
+     echo '<p>Intro text for our settings section</p>';
+ }
+ 
+ // ------------------------------------------------------------------
+ // Callback function for our example setting
+ // ------------------------------------------------------------------
+ //
+ // creates a checkbox true/false option. Other types are surely possible
+ //
+ 
+ function eg_setting_callback_function() {
+     $checked = "\";
+     
+     // Mark our checkbox as checked if the setting is already true
+     if (get_option('eg_setting_name')) 
+         $checked = \" checked='checked' \";
+ 
+     echo \"<input {$checked} name='eg_setting_name' id='gv_thumbnails_insert_into_excerpt' type='checkbox'
+ value='eg_setting_name' class='code' /> Explanation text\";
+ } // eg_setting_callback_function()
 
 
 ?>
