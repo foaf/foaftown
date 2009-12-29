@@ -2,7 +2,7 @@
 /**
  * @package F2F
  * @author Dan Brickley
- * @version 0.2
+ * @version 0.3
  */
 /*
 Plugin Name: F2F
@@ -10,9 +10,9 @@ Plugin URI: http://wiki.foaf-project.org/w/F2FPlugin
 Description: F2F generates an XHTML/RDFa page giving a list of all OpenIDs associated with approved comments on this site.
 This plugin experimentally exposes a list of trusted OpenIDs. Requires the OpenID plugin. Assumes RDFa and xmlns:foaf are set up in your theme. 
 In my blog it generates a page at http://danbri.org/words/network ... in yours it may delete everything and leak anything private it forgot to delete. Use with care.
-
+See wiki documentation for installation instructions and more details about the project.
 Author: Dan Brickley
-Version: 0.2
+Version: 0.3
 Author URI: http://danbri.org/
 */
 
