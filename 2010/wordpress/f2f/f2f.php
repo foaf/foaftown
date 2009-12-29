@@ -9,6 +9,9 @@ Plugin Name: F2F
 Plugin URI: http://danbri.org/2010/f2f/
 Description: This plugin experimentally exposes a list of trusted OpenIDs. Requires the OpenID plugin. Assumes RDFa and xmlns:foaf are set up in your theme. In my blog it generates a page at http://danbri.org/words/network ... in yours it may delete everything and leak anything private it forgot to delete. Use with care.
 See announcement  http://lists.foaf-project.org/pipermail/foaf-dev/2009-December/009963.html
+
+Available by public SVN: svn co http://svn.foaf-project.org/foaftown/2010/wordpress/f2f/
+
 Author: Dan Brickley
 Version: 0.1
 Author URI: http://danbri.org/
