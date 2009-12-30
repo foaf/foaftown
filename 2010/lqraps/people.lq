@@ -1,0 +1,12 @@
+#!/usr/bin/env lqraps
+# PREFIX : <http://xmlns.com/foaf/0.1/>
+# PREFIX u: <http://kota.s12.xrea.com/vocab/uranai>
+# CONSTRUCT { [ a :Person; :name ?n; :homepage ?hp; u:bloodtype ?bt ] }
+# LQRAPS ?n	?hp	?bt
+#
+Dan Brickley	http://danbri.org/	A+
+John Doe	http://spares.example.com/	A+
+Alice Exemplar	http://example.org/alice/	O
+Libby Miller	http://nicecupoftea.org/	A
+
+
