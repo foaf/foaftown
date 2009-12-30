@@ -1,0 +1,190 @@
+
+# Vars: ?NAMELAST	?NAMEFIRST	?NAMEMID	?UIN	?BDGNBR	?ACCESS_TYPE	?TOA	?POA	?TOD	?POD	?APPT_MADE_DATE	?APPT_START_DATE	?APPT_END_DATE	?APPT_CANCEL_DATE	?Total_People	?LAST_UPDATEDBY	?POST	?LastEntryDate	?TERMINAL_SUFFIX	?visitee_namelast	?visitee_namefirst	?MEETING_LOC	?MEETING_ROOM	?CALLER_NAME_LAST	?CALLER_NAME_FIRST	?CALLER_ROOM	?description	?RELEASE_DATE
+
+  [ a :Person; :firstName "JOHNSON"; :lastName "JERRIN" ] :knows [ a :Person; :firstName "JAN" ; :lastName "BERGLIN" ]  .
+
+  [ a :Person; :firstName "AARON"; :lastName "PATRICIA" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "ABDULLAH"; :lastName "BILAL" ] :knows [ a :Person; :firstName "KATHLEEN" ; :lastName "WINTERS" ]  .
+
+  [ a :Person; :firstName "ABRAHAM"; :lastName "LINDA" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "ABRAMS"; :lastName "ELIZABETH" ] :knows [ a :Person; :firstName "LATINA" ; :lastName "THOMAS" ]  .
+
+  [ a :Person; :firstName "ABRAMS"; :lastName "ELIZABETH" ] :knows [ a :Person; :firstName "LATINA" ; :lastName "THOMAS" ]  .
+
+  [ a :Person; :firstName "ABREU"; :lastName "MICHAEL" ] :knows [ a :Person; :firstName "DONNA" ; :lastName "COLEMAN" ]  .
+
+  [ a :Person; :firstName "ABREU"; :lastName "MICHAEL" ] :knows [ a :Person; :firstName "SHEILA" ; :lastName "LEWIS" ]  .
+
+  [ a :Person; :firstName "ABREU"; :lastName "MICHAEL" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "QUINLAN" ]  .
+
+  [ a :Person; :firstName "ABT"; :lastName "THOMAS" ] :knows [ a :Person; :firstName "KIM" ; :lastName "JOHNSON" ]  .
+
+  [ a :Person; :firstName "ADAMS"; :lastName "AARON" ] :knows [ a :Person; :firstName "JAMES" ; :lastName "MURPHY" ]  .
+
+  [ a :Person; :firstName "ADAMS"; :lastName "JOHN" ] :knows [ a :Person; :firstName "ROBERT" ; :lastName "ALDERFER" ]  .
+
+  [ a :Person; :firstName "ADAMS"; :lastName "JUDITH" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "ADAMS"; :lastName "JUDITH" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "ADISON"; :lastName "DANYEAL" ] :knows [ a :Person; :firstName "SHAUNA" ; :lastName "CARTER" ]  .
+
+  [ a :Person; :firstName "AGARWAL"; :lastName "SUMIT" ] :knows [ a :Person; :firstName "MARY" ; :lastName "NORTHERN" ]  .
+
+  [ a :Person; :firstName "AGNEW"; :lastName "RICHARD" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "AHUJA"; :lastName "SANJIV" ] :knows [ a :Person; :firstName "KARRIE" ; :lastName "PITZER" ]  .
+
+  [ a :Person; :firstName "ALEXANDER"; :lastName "JESSE" ] :knows [ a :Person; :firstName "MARGARET" ; :lastName "MAY" ]  .
+
+  [ a :Person; :firstName "ALI"; :lastName "FIRAS" ] :knows [ a :Person; :firstName "HEATHER" ; :lastName "MARTIN" ]  .
+
+  [ a :Person; :firstName "ALKADI"; :lastName "ROUBA" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "ALLARD"; :lastName "MARY" ] :knows [ a :Person; :firstName "BRIAN" ; :lastName "HARRISKOJETIN" ]  .
+
+  [ a :Person; :firstName "ALLEN"; :lastName "RICHARD" ] :knows [ a :Person; :firstName "JEFF" ; :lastName "GOLDSTEIN" ]  .
+
+  [ a :Person; :firstName "ALVAREZ"; :lastName "OSCAR" ] :knows [ a :Person; :firstName "KARRIE" ; :lastName "PITZER" ]  .
+
+  [ a :Person; :firstName "ALWINE"; :lastName "DONNA" ] :knows [ a :Person; :firstName "ERIN" ; :lastName "MCCARTNEY" ]  .
+
+  [ a :Person; :firstName "ALWINE"; :lastName "DONNA" ] :knows [ a :Person; :firstName "ERIN" ; :lastName "MCCARTNEY" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "JAMES" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "MICHAEL" ] :knows [ a :Person; :firstName "DAVID" ; :lastName "CONNOLLY" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "MICHAEL" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "QUINLAN" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "RONALD" ] :knows [ a :Person; :firstName "DONALD" ; :lastName "TUCK" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "WILLIAM" ] :knows [ a :Person; :firstName "MICHAEL" ; :lastName "LAZZERI" ]  .
+
+  [ a :Person; :firstName "ANDERSON"; :lastName "WILLIAM" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "ANGEL"; :lastName "LEWIS" ] :knows [ a :Person; :firstName "SHEILA" ; :lastName "LEWIS" ]  .
+
+  [ a :Person; :firstName "ANSELMO"; :lastName "CASTRO" ] :knows [ a :Person; :firstName "HARRISON" ; :lastName "GODFREY" ]  .
+
+  [ a :Person; :firstName "ARCHAMBAULT"; :lastName "DAVID" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "ARCHER"; :lastName "KEVIN" ] :knows [ a :Person; :firstName "MICHAEL" ; :lastName "MAKARAINEN" ]  .
+
+  [ a :Person; :firstName "ARCHITECT"; :lastName "ALISON" ] :knows [ a :Person; :firstName "EMILY" ; :lastName "FORT" ]  .
+
+  [ a :Person; :firstName "ARCHULETTA"; :lastName "DEANNA" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "ARNOLD"; :lastName "WILLIAM" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "ASHE"; :lastName "DAN" ] :knows [ a :Person; :firstName "CHARLES" ; :lastName "STERN" ]  .
+
+  [ a :Person; :firstName "ASSAD"; :lastName "SHAY" ] :knows [ a :Person; :firstName "MABEL" ; :lastName "ECHOLS" ]  .
+
+  [ a :Person; :firstName "ATCITTY"; :lastName "SHENAN" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "ATKINSON"; :lastName "ROBERT" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "AUGUSTAUSKAS"; :lastName "DIANE" ] :knows [ a :Person; :firstName "CORRINE" ; :lastName "BEST" ]  .
+
+  [ a :Person; :firstName "AUGUSTAUSKAS"; :lastName "DIANE" ] :knows [ a :Person; :firstName "MARGARET" ; :lastName "MAY" ]  .
+
+  [ a :Person; :firstName "AUSTIN"; :lastName "ELIZABETH" ] :knows [ a :Person; :firstName "SETH" ; :lastName "DUGAN" ]  .
+
+  [ a :Person; :firstName "AXENFELD"; :lastName "STUART" ] :knows [ a :Person; :firstName "MIKE" ; :lastName "LAZZERI" ]  .
+
+  [ a :Person; :firstName "AYERS"; :lastName "JENNIFER" ] :knows [ a :Person; :firstName "SHEILA" ; :lastName "LEWIS" ]  .
+
+  [ a :Person; :firstName "AYLWARD"; :lastName "KELLY" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "AYOOB"; :lastName "EDWARD" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "AZMAN"; :lastName "SHAWN" ] :knows [ a :Person; :firstName "EMILY" ; :lastName "FORT" ]  .
+
+  [ a :Person; :firstName "BACA"; :lastName "SYLVIA" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "BACA"; :lastName "SYLVIA" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "BACH"; :lastName "KENNETH" ] :knows [ a :Person; :firstName "MIKE" ; :lastName "LAZZERI" ]  .
+
+  [ a :Person; :firstName "BACHELLER"; :lastName "SUSAN" ] :knows [ a :Person; :firstName "ADAM" ; :lastName "ROSS" ]  .
+
+  [ a :Person; :firstName "BACHI"; :lastName "ALONA" ] :knows [ a :Person; :firstName "GREGG" ; :lastName "BURGESS" ]  .
+
+  [ a :Person; :firstName "BAILENSON"; :lastName "JEREMY" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "BAK"; :lastName "RICHARD" ] :knows [ a :Person; :firstName "LATINA" ; :lastName "THOMAS" ]  .
+
+  [ a :Person; :firstName "BAKER"; :lastName "DOUGLAS" ] :knows [ a :Person; :firstName "RAYMOND" ; :lastName "HANKINS" ]  .
+
+  [ a :Person; :firstName "BAKER"; :lastName "ROGER" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "SALDIVAR" ]  .
+
+  [ a :Person; :firstName "BALAMACI"; :lastName "DEAN" ] :knows [ a :Person; :firstName "BRIAN" ; :lastName "WINSECK" ]  .
+
+  [ a :Person; :firstName "BALDWIN"; :lastName "WILLIAM" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "BALDWIN"; :lastName "WILLIAM" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "BALLENGER"; :lastName "ROBERT" ] :knows [ a :Person; :firstName "LOUISE" ; :lastName "DYER" ]  .
+
+  [ a :Person; :firstName "BALLENGER"; :lastName "ROBERT" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "SALDIVAR" ]  .
+
+  [ a :Person; :firstName "BALLLENGER"; :lastName "DAVID" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "SALDIVAR" ]  .
+
+  [ a :Person; :firstName "BANTA"; :lastName "DRUE" ] :knows [ a :Person; :firstName "RICHARD" ; :lastName "MCPHILLIPS" ]  .
+
+  [ a :Person; :firstName "BARBER"; :lastName "TAMMIE" ] :knows [ a :Person; :firstName "NICOLE" ; :lastName "AIKIN" ]  .
+
+  [ a :Person; :firstName "BARBIER"; :lastName "LOUIS" ] :knows [ a :Person; :firstName "RYAN" ; :lastName "SCHAEFER" ]  .
+
+  [ a :Person; :firstName "BARBIER"; :lastName "LOUIS" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "BARDON"; :lastName "PATRICIA" ] :knows [ a :Person; :firstName "MABEL" ; :lastName "ECHOLS" ]  .
+
+  [ a :Person; :firstName "BARKER"; :lastName "CLAYTON" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "BARLOON"; :lastName "LINUS" ] :knows [ a :Person; :firstName "BENJAMIN" ; :lastName "PAUWELS" ]  .
+
+  [ a :Person; :firstName "BARLOON"; :lastName "LINUS" ] :knows [ a :Person; :firstName "ROGER" ; :lastName "SPARKS" ]  .
+
+  [ a :Person; :firstName "BARNES"; :lastName "EVETTE" ] :knows [ a :Person; :firstName "KATE" ; :lastName "HARLEY" ]  .
+
+  [ a :Person; :firstName "BARNES"; :lastName "EVETTE" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "MORRIS" ]  .
+
+  [ a :Person; :firstName "BARNES"; :lastName "EVETTE" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "MORRIS" ]  .
+
+  [ a :Person; :firstName "BARNES"; :lastName "THOMAS" ] :knows [ a :Person; :firstName "SHEILA" ; :lastName "LEWIS" ]  .
+
+  [ a :Person; :firstName "BARNEY"; :lastName "BRIAN" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "BARNEY"; :lastName "JACOB" ] :knows [ a :Person; :firstName "CAROLYN" ; :lastName "PHELPS" ]  .
+
+  [ a :Person; :firstName "BARRACK"; :lastName "ROBERT" ] :knows [ a :Person; :firstName "SHEILA" ; :lastName "LEWIS" ]  .
+
+  [ a :Person; :firstName "BARRANS"; :lastName "DAVID" ] :knows [ a :Person; :firstName "JOHN" ; :lastName "SALDIVAR" ]  .
+
+  [ a :Person; :firstName "BARTLETT"; :lastName "ALFRED" ] :knows [ a :Person; :firstName "LIN" ; :lastName "LIU" ]  .
+
+  [ a :Person; :firstName "BARTRUM"; :lastName "JOHN" ] :knows [ a :Person; :firstName "CRYSTAL" ; :lastName "ROACH" ]  .
+
+  [ a :Person; :firstName "BARWELL"; :lastName "OWEN" ] :knows [ a :Person; :firstName "JENIFER" ; :lastName "KARWOSKI" ]  .
+
+  [ a :Person; :firstName "BASKERVILLE"; :lastName "SONYA" ] :knows [ a :Person; :firstName "SHERRON" ; :lastName "WHITE" ]  .
+
+  [ a :Person; :firstName "BATTAGLIA"; :lastName "AMY" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "BATTEN"; :lastName "KATHARINE" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "EPPERSON" ]  .
+
+  [ a :Person; :firstName "BATTEN"; :lastName "KATHERINE" ] :knows [ a :Person; :firstName "CHARLES" ; :lastName "STERN" ]  .
+
+  [ a :Person; :firstName "BAUM"; :lastName "RAY" ] :knows [ a :Person; :firstName "DAWN" ; :lastName "MIELKE" ]  .
+
+  [ a :Person; :firstName "BAUMAN"; :lastName "MARK" ] :knows [ a :Person; :firstName "MARGARET" ; :lastName "MAY" ]  .
+
+  [ a :Person; :firstName "BAYLSON"; :lastName "JOSHUA" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "BAYLSON"; :lastName "JOSHUA" ] :knows [ a :Person; :firstName "MARVIS" ; :lastName "OLFUS" ]  .
+
+  [ a :Person; :firstName "BEAN"; :lastName "KARINA" ] :knows [ a :Person; :firstName "SHAUNA" ; :lastName "CARTER" ]  .
