@@ -1,0 +1,70 @@
+#!/usr/bin/env ruby
+a = ARGV.shift
+file = File.new(a)
+
+# Example input:
+	# PREFIX : <http://xmlns.com/foaf/0.1/>
+	# PREFIX u: <http://kota.s12.xrea.com/vocab/uranai>
+	# CONSTRUCT { [ a :Person; :name ?n; :homepage ?hp; u:bloodtype ?bt ] }
+	# LQRAPS ?n	?hp	?bt 
+	# Dan Brickley	http://danbri.org/	A+
+	# etc
+
+# LQ!: Testing for CONSTRUCT. L=# CONSTRUCT {  [ a :Person; :firstName ?NAMELAST; :lastName ?NAMEFIRST ] :knows [ a :Person; :firstName ?CALLER_NAME_FIRST ; :lastName ?CALLER_NAME_LAST ]  }
+
+prefix = {}
+construct = ""
+lqraps = {} 
+vars=[]
+puts
+file.each do |l|
+  next if l =~ /^#\s+$/
+#  puts "GOT: #{l}"
+  if l =~ /^#\s*LQRAPS:?\s*(.*)$/
+    spec = $1
+    spec.chomp!
+#  puts "LQ!: SPEC=#{spec}"
+    vars = spec.split(/[\t]/)
+    puts "# Vars: #{spec}"
+  end	
+  if l =~ /^# PREFIX\s+(\w*):\s*<(.*)>$/
+    prefix[$1]=$2
+#    puts "LQ!: @prefix #{$1}: <#{$2}> ."
+  end
+#  puts "LQ!: Testing for CONSTRUCT. L=#{l}"
+  if l =~ /^#\s+CONSTRUCT\s+\{(.*)\}\s*$/
+#    puts "LQ!: MATCHED CONSTRUCT. #{$1}"
+    construct = $1
+#    puts "#LQ!: template is: " + construct
+  end
+  next if l =~ /^#/ && !construct
+  next unless l =~ /\w/
+  unless l =~ /^#/ 
+    puts 
+    # debug: puts '# '  + l
+    fields = l.split(/\t/)
+    i=0
+    row = construct.clone
+    while (i < vars.length) do
+      # puts "Variable #{i} is #{vars[i]} value is: #{fields[i]} "
+      re=vars[i]
+      re.gsub!(/\?/,"")
+      re.chomp!
+      val = fields[i]
+      if (val != nil)
+        val.chomp!
+      end
+      if val =~ /^http:\// 		# need a better design
+        val = "<#{val}>"
+      else 
+        if ! ( val =~ /^".*"$/) 
+          val = "\"#{val}\""
+        end
+          
+      end
+      row.gsub!(/\?#{re}/, val)
+      i+=1
+    end
+    puts row + '.'
+  end
+end

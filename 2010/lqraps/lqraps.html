@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Lqraps</title>
+</head>
+<body>
+
+<h1>Lqraps!</h1>
+
+<p>
+Lqraps is backwards SPARQL. W3C's SPARQL lets you get a table of 
+variable/value bindings by asking questions of a collection of RDF 
+graphs. Lqraps does the reverse: by annotating a tabular resultset, and 
+rebinding the results to fragments of RDF (specified using SPARQL's 
+CONSTRUCT notation) you can generate RDF.
+</p>
+
+<p><strong>Status:</strong> 
+Rough cut only. Sketch of what we could do here.
+</p>
+
+<h2>Origins</h2>
+
+<p>
+The original idea here stems from an observation of R.V.Guha's, in the 
+QL'1998 paper, "<a 
+href="http://www.w3.org/TandS/QL/QL98/pp/enabling.html">Enabling 
+Inference</a>". Discussing a simple RDF query proposal:
+</p>
+<blockquote>
+The query is itself simply an RDF model (i.e., a directed labelled 
+graph), some of whose resources and properties may represent variables. 
+There are two outputs to every query,
+
+   1. A subgraph (of the KB against which the query is issued) which 
+matches the query.
+   2. A table of sets of legal bindings for the variables, i.e., when 
+these bindings are applied to the variables in the query, we get (1). 
+</blockquote>
+
+<p>
+In the years following, W3C has standardised the SPARQL query language 
+for RDF. It differs from the original Guha et al. proposal in several 
+ways. In addition to the GRAPH keyword, which doesn't impact upon 
+Lqraps' design, SPARQL queries can contain optionals, filters, and can 
+use DESCRIBE and ASK query forms. As such, a raw unconstrained SPARQL 
+query can have various features that make it ill-suited to 
+data-reconstruction by variable rebinding. However SPARQL also provides 
+for the <a 
+href="http://www.w3.org/TR/rdf-sparql-query/#constructGraph">CONSTRUCT</a> 
+query form, which is explicitly designed for generating RDF from a set 
+of bindings. 
+</p>
+
+<h3>Example: people.lq</h3>
+
+<div
+ style="background: black; color: green; margin: 2em; padding: 10">
+
+<pre>
+
+#!/usr/bin/env lqraps
+# PREFIX : &lt;http://xmlns.com/foaf/0.1/&gt;
+# PREFIX u: &lt;http://kota.s12.xrea.com/vocab/uranai&gt;
+# CONSTRUCT { [ a :Person; :name ?n; :homepage ?hp; u:bloodtype ?bt ] }
+# LQRAPS ?n	?hp	?bt
+#
+Dan Brickley	http://danbri.org/	A+
+John Doe	http://spares.example.com/	A+
+Alice Exemplar	http://example.org/alice/	O
+Libby Miller	http://nicecupoftea.org/	A
+
+</pre>
+
+</div>
+
+(see <a href="people.lq">people.lq</a>; tab formatting may not show 
+correctly here)
+
+<h3>Sample implementation</h3>
+
+<pre>
+./people.lq > test.n3 
+
+rapper -i turtle test.n3 
+
+[pocky]$ roqet -s test.n3 blood.rq 
+roqet: Querying from file blood.rq
+roqet: Query has a variable bindings result
+result: [url=uri&lt;http://example.org/alice/&gt;, name=string("Alice 
+Exemplar")]
+roqet: Query returned 1 results
+</pre>
+
+<p>
+See <a href="/2008/lqraps/">files</a>. Can you tell what they do? :)
+</p>
+<h3>Design Issues and Implementation</h3>
+
+<p>The toy Ruby implementation here expects a tab separate file only. 
+Clearly we should extend this to allow comma separated, quote delimited 
+etc., and find common ground across the various existing CSV/tab-etc 
+parsers.</p>
+<p>
+RDF (and hence SPARQL) makes some distinctions that are rarely explicit 
+in tabular data. Language tagging of literals, datatyping, and most 
+critically the distinction between literal and non-literal resources.
+This last distinction is the most urgent to handle well; here, I handle 
+it badly. Unless a value begins 'http:/', it becomes a plain literal 
+with no language tag. The desire here is to allow reasonable RDF 
+expressivity while still keeping the inline annotations pretty simple. 
+For a more full-featured approach, see the tools and languages around 
+SQL/RDF mappings (D2RQ, SquirrelRDF, Virtuoso etc).
+</p>
+
+<p>See also <a 
+href="http://swig.xmlhack.com/2008/02/29/2008-02-29.html#1204295767.861487">discussion 
+from SWIG IRC</a> ...
+</p>
+<p>
+Embedding an Lqraps-style CONSTRUCT in SPARQL result set formats (JSON, 
+XML) is left as an exercise for readers...
+</p>
+
+<a href="http://danbri.org/">Dan Brickley</a>, Feb 2008.
+
+</body>
+</html>
+

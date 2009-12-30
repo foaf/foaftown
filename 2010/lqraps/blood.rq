@@ -1,0 +1,9 @@
+PREFIX : <http://xmlns.com/foaf/0.1/> 
+PREFIX u: <http://kota.s12.xrea.com/vocab/uranai> 
+SELECT ?url, ?name 
+WHERE {
+ [ :name ?name; 
+   :homepage ?url;
+   u:bloodtype "O" 
+ ] 
+}

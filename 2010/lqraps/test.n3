@@ -1,0 +1,17 @@
+
+@prefix : <http://xmlns.com/foaf/0.1/> .
+@prefix u: <http://kota.s12.xrea.com/vocab/uranai> .
+# template is:  [ a :Person; :name ?n; :homepage ?hp; u:bloodtype ?bt ] 
+# Vars: ?n	?hp	?bt
+
+ [ a :Person; :name "Dan Brickley"; :homepage <http://danbri.org/>; u:bloodtype "A+" ] .
+
+
+ [ a :Person; :name "John Doe"; :homepage <http://spares.example.com/>; u:bloodtype "A+" ] .
+
+
+ [ a :Person; :name "Alice Exemplar"; :homepage <http://example.org/alice/>; u:bloodtype "O" ] .
+
+
+ [ a :Person; :name "Libby Miller"; :homepage <http://nicecupoftea.org/>; u:bloodtype "A" ] .
+
