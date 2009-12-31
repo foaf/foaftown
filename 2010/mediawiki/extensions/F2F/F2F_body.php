@@ -1,5 +1,8 @@
 <?php
 class F2F extends SpecialPage
+
+# see also http://www.mediawiki.org/wiki/Manual:$wgOut
+
 {
     function F2F() {
         SpecialPage::SpecialPage("F2F");
