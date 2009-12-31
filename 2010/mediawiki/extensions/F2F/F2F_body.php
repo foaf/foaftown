@@ -35,7 +35,16 @@ class F2F extends SpecialPage
         $user = $wgUser->getName();
         $wgOut->addWikiText("Logged in as " . $user);
         $u = array();
-        $wgOut->addWikiText( "Hello [http://wiki.foaf-project.org/w/DanBri/MediawikiOpenid World]!");
+        $sitehome = "http://wiki.foaf-project.org/";
+        $wgOut->addWikiText( "This is the [http://wiki.foaf-project.org/w/F2FMediawikiPlugin F2F Mediawiki extension]");
+	$wgOut->addWikiText("<div xmlns:foaf='http://xmlns.com/foaf/0.1/'><div about='#!aActiveOpenIDTrustGroup' typeof='foaf:Group'>\n");
+#        $wgOut->addWikiText("<span rel='foaf:maker'>OpenID accept list for <a href='..' typeof='foaf:Agent' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
+        $wgOut->addWikiText("<span rel='foaf:maker'>OpenID accept list for ");
+	$wgOut->addWikiText("<a href='..' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
+        $wgOut->addWikiText("<ul>\n");
+# <span rel='foaf:member'><li typeof='foaf:Agent' about='#!ah_5711c8ae25de381eda9ebae69d17a6ca5a03f5cf'><a rel='foaf:openid foaf:account' href='http://aberingi.pip.verisignlabs.com/'>http://aberingi.pip.verisignlabs.com/</a></li></span>
+
+
         $db = wfGetDB( DB_SLAVE ); 
 
         # Todo: How do we emit RDFa via addWikiText() ?
