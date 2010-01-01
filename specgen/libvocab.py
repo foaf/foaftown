@@ -503,12 +503,16 @@ class VocabReport(object):
     c_ids, p_ids = self.vocab.azlist()
     tl = """<div class="termlist">"""
     tl = """%s<h3>Classes and Properties (full detail)</h3>\n<div class='termdetails'><br />\n\n""" % tl
+
+
+# danbri hack 20100101 removed: href="http://www.w3.org/2003/06/sw-vocab-status/ns#%s" pending discussion w/ libby and leigh re URIs
+
     # first classes, then properties
     eg = """<div class="specterm" id="term_%s" about="%s" typeof="%s">
             <h3>%s: %s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td><span rel="vs:status" href="http://www.w3.org/2003/06/sw-vocab-status/ns#%s">%s</span></td></tr>
+	    <td><span rel="vs:status" >%s</span></td></tr>
             %s
             %s
             </table>
