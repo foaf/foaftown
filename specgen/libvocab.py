@@ -512,7 +512,7 @@ class VocabReport(object):
             <h3>%s: %s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
-	    <td><span rel="vs:status" >%s</span></td></tr>
+	    <td><span property="vs:status" >%s</span></td></tr>
             %s
             %s
             </table>
