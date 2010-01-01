@@ -8,4 +8,10 @@
 --prefix=foaf \
 --templatedir=../../foaf/trunk/xmlns.com/htdocs/foaf/spec/ \
 --indexrdfdir=../../foaf/trunk/xmlns.com/htdocs/foaf/spec/ \
+--outfile=20100101.html \
 --outdir=../../foaf/trunk/xmlns.com/htdocs/foaf/spec/ 
+
+
+#--outfile=_live_editors_edition.html \
+
+# TODO: can we say exactly which infile we want. useful while editing 20100101.rdf for eg, so index remains untouched until pub
