@@ -659,8 +659,8 @@ class VocabReport(object):
        sn = self.vocab.niceName(term.uri)
        s = termlink(s)
 
-	# danbri added another term.id 20010101
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id, term.id)
+	# danbri added another term.id 20010101 and removed term.status
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id, term.id)
 
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
