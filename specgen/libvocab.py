@@ -513,7 +513,7 @@ class VocabReport(object):
             %s
             </table>
             %s
-            <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] <!-- %s --> [<a href="#glance">back to top</a>]</p>
+            <p style="float: right; font-size: small;">[<a href="#term_%s">#</a>] [<a href="http://wiki.foaf-project.org/w/term_%s">wiki</a>] <!-- %s --> [<a href="#glance">back to top</a>]</p>
             <br/>
             </div>""" 
 
@@ -534,12 +534,14 @@ class VocabReport(object):
        q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
 
        relations = g.query(q, initNs=bindings)
-       startStr = '<tr><th>May be the object of:</th>\n'
+       startStr = '<tr><th>Properties include:</th>\n'
 
        contentStr = ''
        for (domain, label) in relations:
           dom = Term(domain)
-          termStr = """<a href="#term_%s">%s</a>\n""" % (dom.id, label)
+# danbri hack 20100101
+#          termStr = """<a href="#term_%s">%s</a>\n""" % (dom.id, label)
+          termStr = """<a href="#term_%s">%s</a>\n""" % (dom.id, dom.id)
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
@@ -549,12 +551,14 @@ class VocabReport(object):
 # class in range of
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
        relations2 = g.query(q2, initNs=bindings)
-       startStr = '<tr><th>May have properties:</th>\n'
+       startStr = '<tr><th>Used with:</th>\n'
 
        contentStr = ''
        for (range, label) in relations2:
           ran = Term(range)
-          termStr = """<a href="#term_%s">%s</a>\n""" % (ran.id, label)
+#          termStr = """<a href="#term_%s">%s</a>\n""" % (ran.id, label)
+# danbri hack 20100101 better to use exact IDs here
+          termStr = """<a href="#term_%s">%s</a>\n""" % (ran.id, ran.id)
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
@@ -651,8 +655,8 @@ class VocabReport(object):
        sn = self.vocab.niceName(term.uri)
        s = termlink(s)
 
-
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id)
+	# danbri added another term.id 20010101
+       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id, term.id)
 
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
@@ -767,7 +771,8 @@ class VocabReport(object):
        sn = self.vocab.niceName(term.uri)
        s = termlink(s)
        
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id)
+	# danbri added another term.id 20010101
+       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment, term.status,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id, term.id)
 
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
