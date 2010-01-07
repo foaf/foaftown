@@ -575,7 +575,7 @@ class VocabReport(object):
        q = 'SELECT ?sc ?l WHERE {<%s> rdfs:subClassOf ?sc . ?sc rdfs:label ?l } ' % (term.uri)
 
        relations = g.query(q, initNs=bindings)
-       startStr = '<tr><th>subClassOf</th>\n'
+       startStr = '<tr><th>Subclass Of</th>\n'
 
        contentStr = ''
        for (subclass, label) in relations:
@@ -591,7 +591,7 @@ class VocabReport(object):
  
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
        relations = g.query(q, initNs=bindings)
-       startStr = '<tr><th>has subclass</th>\n'
+       startStr = '<tr><th>Has Subclass</th>\n'
 
        contentStr = ''
        for (subclass, label) in relations:
@@ -670,6 +670,8 @@ class VocabReport(object):
        if(term.status == "unstable"):
           unstableTxt = unstableTxt + zz
        if(term.status == "archaic"):
+          archaicTxt = archaicTxt + zz
+       if((term.status == None) or (term.status== "") or (term.status== "unknown")):
           archaicTxt = archaicTxt + zz
 
 ## then add the whole thing to the main tl string
@@ -786,6 +788,8 @@ class VocabReport(object):
        if(term.status == "unstable"):
           unstableTxt = unstableTxt + zz
        if(term.status == "archaic"):
+          archaicTxt = archaicTxt + zz
+       if((term.status == None) or (term.status== "") or (term.status== "unknown")):
           archaicTxt = archaicTxt + zz
 
 ## then add the whole thing to the main tl string

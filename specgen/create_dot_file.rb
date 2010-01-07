@@ -6,62 +6,8 @@ require 'hpricot'
 require 'digest/sha1'
 require 'reddy'
 
-def createDotFile(graph)
-  #hmmm would be cool
-  #loop through all, getting out types
-  # if not a type make a link
-  nodes = {}
-  links = []
-  count = 0
-  text = "digraph Summary_Graph {\nratio=0.7\n"
-  graph.triples.each do |t|
-    if nodes.include?(t.object.to_s)
-      n = nodes[t.object.to_s]
-    else
-      n = "n#{count}"
-      nodes[t.object.to_s]=n
-      count=count+1
-    end
 
-    if nodes.include?(t.subject.to_s)
-      n2 = nodes[t.subject.to_s]
-    else
-      n2 = "n#{count}"
-      nodes[t.subject.to_s]=n2
-      count=count+1
-    end
-
-    if t.predicate.to_s=="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-      else
-       r = t.predicate.to_s
-       if (r =~ /.*\/(.*)/ )
-          r = $1
-       end
-       if (r =~ /.*#(.*)/ )
-          r = $1
-       end
-       links.push("#{n2}->#{n} [label=\"#{r}\"]")
-    end
-  end
-  #puts nodes
-
-  nodes.each_key do |k|
-     r = k.to_s
-     if (r =~ /.*\/(.*)/ )
-        r = $1
-     end
-     if (r =~ /.*#(.*)/ )
-        r = $1
-     end
-     text << "#{nodes[k]} [label=\"#{r}\"]\n"
-  end
-  text << links.join("\n")
-  text << "\n}"
-  #puts text
-  file = File.new("test.dot", "w")
-  file.puts(text)
-end
-
+## this method generates a dot file from a *schema*
 
 def createDotFileFromSchema(graph, xmlns_hash)
   #puts xmlns_hash
@@ -261,7 +207,7 @@ def createDotFileFromSchema(graph, xmlns_hash)
 
     if t.predicate.to_s=="http://www.w3.org/1999/02/22-rdf-syntax-ns#type" && (t.object.to_s=="http://www.w3.org/2000/01/rdf-schema#Class" || t.object.to_s=="http://www.w3.org/2002/07/owl#Class")
       s = t.subject
-      puts "S: "+s.to_s+"\n"
+      #puts "S: "+s.to_s+"\n"
 
       ss = s.to_s
 
@@ -305,6 +251,66 @@ def createDotFileFromSchema(graph, xmlns_hash)
 end
 
 
+## this method generates a dot file from *instance* data
+
+def createDotFile(graph)
+
+  # loop through all, getting out types
+  # if not a type make a link
+  nodes = {}
+  links = []
+  count = 0
+  text = "digraph Summary_Graph {\nratio=0.7\n"
+  graph.triples.each do |t|
+    if nodes.include?(t.object.to_s)
+      n = nodes[t.object.to_s]
+    else
+      n = "n#{count}"
+      nodes[t.object.to_s]=n
+      count=count+1
+    end
+
+    if nodes.include?(t.subject.to_s)
+      n2 = nodes[t.subject.to_s]
+    else
+      n2 = "n#{count}"
+      nodes[t.subject.to_s]=n2
+      count=count+1
+    end
+
+    if t.predicate.to_s=="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      else
+       r = t.predicate.to_s
+       if (r =~ /.*\/(.*)/ )
+          r = $1
+       end
+       if (r =~ /.*#(.*)/ )
+          r = $1
+       end
+       links.push("#{n2}->#{n} [label=\"#{r}\"]")
+    end
+  end
+  #puts nodes
+
+  nodes.each_key do |k|
+     r = k.to_s
+     if (r =~ /.*\/(.*)/ )
+        r = $1
+     end
+     if (r =~ /.*#(.*)/ )
+        r = $1
+     end
+     text << "#{nodes[k]} [label=\"#{r}\"]\n"
+  end
+  text << links.join("\n")
+  text << "\n}"
+  #puts text
+  file = File.new("test.dot", "w")
+  file.puts(text)
+end
+
+
+
     
 def has_object(graph,object)
   graph.triples.each do |value|
@@ -324,25 +330,30 @@ end
 
 begin
  #load rdfxml file
- doc = File.read("index.rdf")
- parser = RdfXmlParser.new(doc)
+ puts ARGV[0]
+ if(!ARGV[0])
+   puts "Usage: ruby create_dot_file.rb file"
+   puts "file should include any directories"
+ else
+   doc = File.read(ARGV[0])
+   parser = RdfXmlParser.new(doc)
 
- xml = Hpricot.XML(doc)
- xmlns_hash = {}
- (xml/'rdf:RDF').each do |item|
-   h = item.attributes
-   h.each do |xmlns|
-     short = xmlns[0]
-     uri = xmlns[1]
-     xmlns_hash[uri]=short
-     parser.graph.namespace(uri, short)
+   xml = Hpricot.XML(doc)
+   xmlns_hash = {}
+   (xml/'rdf:RDF').each do |item|
+     h = item.attributes
+     h.each do |xmlns|
+       short = xmlns[0]
+       uri = xmlns[1]
+       xmlns_hash[uri]=short
+       parser.graph.namespace(uri, short)
+     end
    end
- end
 
-
- puts parser.graph.to_ntriples
+   puts parser.graph.to_ntriples
 # createDotFile(parser.graph)
- createDotFileFromSchema(parser.graph, xmlns_hash)
+   createDotFileFromSchema(parser.graph, xmlns_hash)
+  end
 
 end
 
