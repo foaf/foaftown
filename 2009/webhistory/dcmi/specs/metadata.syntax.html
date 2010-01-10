@@ -1,0 +1,782 @@
+<!DOCTYPE html PUBLIC '-//IETF//DTD HTML 2.0//EN'>
+<HTML> 
+<!-- HTML tagging produced by TEIHTL.DIC --> 
+<!-- on 19 Apr 1996 at 15:40:50 --> 
+<HEAD>
+<BASE HREF="http://tigger.uic.edu.wstub.archive.org/~cmsmcq/tech/metadata.syntax.html">
+ 
+<TITLE>A syntax for Dublin core Metadata: Recommendations from the second Metadata Workshop</TITLE> 
+<meta name="title" 
+      content="A syntax for Dublin core Metadata: 
+ Recommendations from the second Metadata Workshop">
+<meta name="author" content="Lou Burnard">
+<meta name="author" content="Eric Miller">
+<meta name="author" content="Liam Quin">
+<meta name="author" content="C. M. Sperberg-McQueen">
+<meta name="subject" content="metadata">
+<meta name="subject" content="Second Metadata Workshop (Warwick, U.K.)">
+<meta name="date" content="1996">
+<meta name="date(ISO)" content="1996-04-19">
+<meta name="object-type" content="article">
+<meta name="form" content="HTML 2.0">
+<meta name="form(IMT)" content="text/html">
+<meta name="identifier(URL)" 
+      content="http://info.ox.ac.uk/~lou/wip/syntax.html">
+<meta name="identifier(URL)" 
+      content="http://www.uic.edu/~cmsmcq/tech/metadata.syntax.html">
+<meta name="source" content="(none)">
+<meta name="language(ISO639)" content="en">
+</HEAD> 
+<body> 
+<!-- tPage --> 
+<h1>A Syntax for Dublin Core Metadata</h1>
+<h1>Recommendations from the Second Metadata Workshop</h1>
+<br>Lou Burnard, Eric Miller, Liam Quin, and C.M. Sperberg-McQueen<br>
+<!-- /tPage --> 
+<hr> 
+<h2>Table of Contents</h2>
+<!-- TEIhtml.dic toc file 19 Apr 1996 15:40:27 -->
+<ul>
+<li><a href="#ID1">1 Requirements</a></li>
+<li><a href="#ID2">2 Summary of proposals</a><ul>
+<li><a href="#MINIMAL">2.1 The minimal effort approach</a></li>
+<li><a href="#ARMSLENGTH">2.2 Keeping the metadata at arms-length</a><ul>
+<li><a href="#ID2.2.1">2.2.1 Mapping Dublin Core elements to HTML</a></li>
+<li><a href="#ID2.2.2">2.2.2 Using a Dublin-Core specific syntax</a></li>
+</ul></li>
+<li><a href="#ID2.3">2.3 The Warwick Framework DTD</a></li>
+</ul></li>
+<li><a href="#DUB">3 The Dublin Core DTD fragment</a></li>
+<li><a href="#WAR">4 The Warwick Framework DTD fragment</a><ul>
+<li><a href="#ID4.1">4.1 Containers and packages</a></li>
+<li><a href="#ID4.2">4.2 Package components </a></li>
+</ul></li>
+</ul>
+<hr>
+<p> 
+This document summarizes a set of recommendations concerning the
+representation of metadata, derived from discussion within the syntax
+working group which met at the second Metadata Workshop, held at Warwick
+University in April 1996.  The discussion begun in Warwick has been
+continued electronically by the current authors, and this paper presents
+both the recommendations agreed on by the syntax working group in
+Warwick and some further developments for which the authors alone are
+responsible.</p> 
+<p> 
+In brief, the syntax working group recommended:
+<UL> 
+<li>that recommendations be made showing how to use the HTML
+<em>&lt;meta&gt;</em> element for Dublin-Core metadata (as described below in
+section <a href="#MINIMAL">2.1 The minimal effort approach</a> and section 
+<a href="#ARMSLENGTH">2.2 Keeping the metadata at arms-length</a>.</li> 
+<li>that a standard canonical syntax be defined for Dublin-Core
+metadata, using SGML syntax.  The working group defined no DTD, but
+a possible DTD devised by the authors is given below in section
+<a href="#DUB">3 The Dublin Core DTD fragment</a>.</li> 
+</UL> 
+<p>
+Discussions in Warwick also led to an informal demonstration of how
+SGML could be used as the mechanism for encoding the containers and
+metadata packages foreseen in the Warwick Framework.  A sample DTD
+for such packages is given in 
+section <a href="#WAR">4 The Warwick Framework DTD fragment</a>.</p> 
+<h1><a name="ID1">1 Requirements</a></h1><p> 
+The following criteria were advanced as desirable features in
+whatever syntax is to be used in defining a standard format for
+metadata:</p>
+<UL> 
+<li>ability to express optional, repeatable, sequences </li> 
+<li>verifiability, robustness</li> 
+<li>compactness</li> 
+<li>uniformity</li> 
+<li>ability to express of qualifiers</li> 
+<li>repeatability of groups </li> 
+<li>machine processability and human comprehensibility </li> 
+<li>internationalizability </li> 
+<li>simplicity</li> 
+<li>formality</li> 
+</UL> 
+<p> 
+The following functional requirements were identified for the syntax:
+</p>
+<UL> 
+<li>it should be simple enough for authors to create their own
+metadata (either directly or via a suitable interface)</li> 
+<li>it must be able to represent at least the elements
+of the Dublin core</li> 
+<li>it must support extension by users, with varying
+degrees of formality and control, so that users can extend the
+Dublin core</li> 
+<li>it must be able to express attribute-value-scheme
+triplets (since the metadata elements are all expressed as such)</li> 
+<li>it must be able to express optionality and
+repeatability</li> 
+</UL>  
+<p> 
+The ability to carry out down-translation to the proposed scheme
+from existing metadata schemes (specifically richer formats such as
+MARC, TEI, IAFA templates) was assumed.
+ </p> 
+<p> 
+There was no discussion of how the following additional requirements
+might be achieved, though there was a general feeling that they were all
+highly desirable:</p>
+<UL> 
+<li>mechanisms (such as a name registry) for constraining the
+range of some or all possible attribute names and values</li> 
+<li>mechanisms for grouping sub-parts of a specifications,
+e.g. to express the object/instance distinction </li> 
+<li>mechanisms for specifying the meaning of repeated
+sub-parts of a specification, e.g. whether two <em>&lt;form&gt;</em> components
+should be regarded as exclusive (copy in one of two forms)
+or additive (copy in both forms).</li> 
+</UL> 
+ 
+<p> 
+The problem of grouping, inheritance, and their meaning is discussed
+further in a paper by C. M. Sperberg-McQueen,
+"On Information Factoring in Dublin Metadata Records," 
+which is accessible on the World-Wide Web at
+<a href="http://www.uic.edu/~cmsmcq/tech/metadata.factoring.html">
+http://www.uic.edu/~cmsmcq/tech/metadata.factoring.html</a>.</p> 
+
+ 
+<h1><a name="ID2">2 Summary of proposals</a></h1><p> 
+This section presents the various possible approaches discussed at
+the workshop, whether actively recommended by the syntax working
+group or not.
+A fuller treatment of some of them is also presented in a paper written
+by Eric Miller following the first Metadata Workshop (see
+<cite>Issues of Document Description in HTML</cite>, available
+at <a href="http://www.oclc.org:5046/~emiller/publications/metadata/issues.html">
+http://www.oclc.org:5046/~emiller/publications/metadata/issues.html</a>).</p> 
+<h2><a name="MINIMAL">2.1 The minimal effort approach</a></h2><p> 
+The syntax working group recommended that authors, publishers, and
+site managers be encouraged to provide metadata in HTML documents by
+means of HTML <em>&lt;meta&gt;</em> elements embedded in their documents.  More
+elaborate metadata can be provided if the metadata records are external
+to the HTML document, as described below, but for information providers
+with limited ambitions, the method described here is recommended.
+ </p> 
+<p> 
+The assumption here is that existing browsers and search engines
+cannot be expected to accommodate any variation from current practice.
+Any additional features must be transparent to existing software and
+authoring practices.
+ </p> 
+<p> 
+The <em>&lt;meta&gt;</em> element of HTML2 should be used, with
+<em>name</em>and <em>content</em> attributes set to the
+metadata element's name and value respectively.
+ </p> 
+<p> 
+Example:
+<pre> 
+&lt;html>
+&lt;head>
+&lt;title>On the pulse of the morning&lt;/title>
+&lt;meta name="title" content="On the pulse of the morning">
+&lt;meta name="publisher content="University of Virginia Electronic Text Center">
+&lt;meta name="otheragent:transcriber"
+      content="University of Virginia Electronic Text Center">
+&lt;meta name='date(ISO)' content="1993-01-23">
+&lt;meta name="objectType" content="poem">
+&lt;meta name="form" content="1 ASCII file">
+&lt;meta name="form(IMT)" content="text/ASCII">
+&lt;meta name="source"
+      content="Newspaper stories and oral performance of text at the
+       Presidential inauguration of Bill Clinton">
+&lt;meta name="language(ISO 639)" content="en">
+ ...
+&lt;/head>
+&lt;body>
+&lt;h1>On the pulse of the morning&lt;/h1>
+ ...
+</pre> 
+ 
+<p> 
+Advantages: No change is needed to existing browsers or search
+engines. Any set of attribute-value pairs can be represented.
+ </p> 
+<p> 
+Disadvantages: No constraint can be imposed on the semantics of the
+attribute names used, and name clashes may occur. Other, possibly
+inconsistent, conventions are already established for use of the
+<em>&lt;meta&gt;</em> elements by other agents. This could however be overcome
+by using a prefix such as "DC:", e.g.
+<pre> 
+&lt;meta name='DC:date(ISO)' content="1993-01-23">
+</pre> 
+
+<p> 
+The order of <em>&lt;meta&gt;</em> elements within the <em>&lt;head&gt;</em> element
+is not significant, and elements cannot be grouped, though a
+sufficiently determined imagination might conceive of something like the
+following:
+<pre> 
+&lt;meta name='DC:groupStart' content='group number 42'>
+   &lt;meta name='DC:something' content="something else">
+   &lt;!-- more metas here -->
+&lt;meta name='DC:groupEnd' content= 'group number 42'>
+</pre> 
+<p> 
+Miller's paper, referred to above, also suggests prefixing a group of
+<em>&lt;meta&gt;</em> tags which together make up a metadata description of this
+kind with a particular labelling <em>&lt;meta&gt;</em> tag such as
+<pre> 
+&lt;meta name='citation' content="Dublin Core">
+</pre> 
+<p> 
+Without additional attributes such as <em>source</em> and
+<em>type</em>, considerable `overloading' of
+the attribute values is necessary to contain all the information
+available in the Dublin core. Even in this trivial example, it has been
+necessary to introduce some arbitrary syntax (the use of the colon and
+parentheses) to distinguish parts of the <em>name</em> attribute.</p> 
+<p> 
+Furthermore, attribute values are limited in length by the value of
+LITLEN (1024 according to the official SGML declaration for HTML2), or
+by other arbitrary limits imposed by particular browsers.  A literal
+cannot contain any tags which a browser might recognize, so another
+syntax must be invented if subfields of Dublin core elements are
+required.</p> 
+
+ 
+<h2><a name="ARMSLENGTH">2.2 Keeping the metadata at arms-length</a></h2><p> 
+For more complex metadata records, an unstructured series of
+<em>&lt;meta&gt;</em> elements will not suffice; the syntax working group
+recommended, therefore, that metadata consumers recognize references
+to external metadata from within the HTML <em>&lt;head&gt;</em> element.</p> 
+<p> 
+This approach involves keeping the metadata in an distinct
+document.  Because the metadata is independent of the form of the data
+proper, free-standing metadata can document with equal facility
+documents in HTML, ASCII, SGML, PDF, or proprietary formats, images,
+sound files, maps, etc.  Clear endorsement of free-standing metadata,
+and the construction of metadata catalogs, is thus important for
+ensuring that metadata is usable for objects on the net which are not
+also objects on WWW.
+ </p> 
+<p> 
+Two variants of the encoding syntax for metadata were
+discussed at the meeting: in the first, the metadata document uses
+existing HTML elements. In the second it uses some other syntax better
+suited to the requirements listed above. At the Warwick meeting, the
+workgroup agreed that this syntax should be expressed using an SGML
+DTD, and this is the approach which has been followed below. However,
+there is no reason why some other syntax that meets the functional
+requirements outlined above could not be
+invented for this purpose.
+ </p> 
+<p> 
+A one-way linkage in HTML documents, for example, is effected using
+the <em>&lt;link&gt;</em> element:</p> 
+<pre> 
+&lt;html>
+&lt;head>
+&lt;link rel='metadata'
+      href='pulse.meta'>
+&lt;/head>
+ ...
+&lt;/html>
+</pre> 
+<p> 
+Separating the metadata from the document makes it easy for existing
+browsers and search engines to ignore it if they wish, while those which
+are Dublin core-aware can access and process it effectively with no
+additional cost. On the other hand, there may be significant additional
+costs in ensuring that metadata and data are kept in step and
+consistent.
+ </p> 
+<p> 
+The next two sections discuss what exactly might be the contents of
+the object referenced by <em>pulse.meta</em>.
+ </p> 
+<h3><a name="ID2.2.1">2.2.1 Mapping Dublin Core elements to HTML</a></h3><p> 
+The attribute-value-class triples needed for the Dublin core can be
+mapped on to any appropriate HTML element. At the meeting, the
+<em>&lt;DL&gt;</em> element was suggested, as in the following example:
+<pre> 
+&lt;html>
+&lt;head>&lt;title>Metadata for the Nice Pome&lt;/title>&lt;/head>
+&lt;body>
+&lt;dl>
+&lt;dt>title&lt;/dt>
+&lt;dd>On the pulse of the morning&lt;/dd>
+&lt;dt>publisher&lt;/dt>
+&lt;dd>University of Virginia Electronic Text Center&lt;/dd>
+&lt;dt>otheragent:transcriber&lt;/dt>
+&lt;dd>University of Virginia Electronic Text Center&lt;/dd>
+&lt;dt>date:created/ISO&lt;/dt>
+&lt;dd>1993-01-23&lt;/dd>
+&lt;dt>objectType&lt;/dt>
+&lt;dd>poem&lt;/dd>
+&lt;dt>form&lt;/dt>
+&lt;dd>1 ASCII file&lt;/dd>
+&lt;dt>form/IMT&lt;/dt>
+&lt;dd>text/ASCII&lt;/dd>
+&lt;dt>source&lt;/dt>
+&lt;dd>Newspaper stories and oral performance of text at the Presidential
+inauguration of Bill Clinton&lt;/dd>
+&lt;dt>language/ISO 639&lt;/dt>
+&lt;dd>en&lt;/dd>
+&lt;/dl>
+&lt;/html>
+</pre> 
+
+<p> 
+Advantages: Metadata is cleanly separated from the data. Problems
+consequent on using attribute values to represent element content are no
+longer a concern and more powerful structuring abilities (e.g. nesting,
+repetition) are potentially available.
+ </p> 
+<p> 
+Disadvantages: Almost anything can go into a metadata description.
+(Unenforceable) conventions need to be established about how the
+metadata descriptions are to be mapped to HTML elements.  It's not clear
+how, for example, to do the SOURCE and TYPE attributes of the Dublin
+Core without extending HTML2.
+ </p> 
+<p> 
+This suggested approach did not gain much support from the syntax
+working group and is not recommended.</p> 
+
+ 
+<h3><a name="ID2.2.2">2.2.2 Using a Dublin-Core specific syntax</a></h3><p> 
+The syntax working group recommended the preparation of an SGML DTD
+for Dublin-Core metadata records; one such DTD is described below in
+section <a href="#DUB">3 The Dublin Core DTD fragment</a>.
+ </p> 
+<p> 
+The Dublin DTD defines specific elements for the 13 core elements,
+each of which bears attributes for <em>type</em> and
+<em>source</em>.
+ </p> 
+<p> 
+Using this syntax, the above example might like look this:
+ 
+<pre> 
+&lt;!DOCTYPE dublinCore PUBLIC '-//OCLC//DTD Dublin core v.1//EN'>
+&lt;dublinCore>
+  &lt;title>On the Pulse of Morning&lt;/title>
+  &lt;author>Maya Angelou&lt;/author>
+  &lt;publisher>University of Virginia Electronic Text Center&lt;/publisher>
+  &lt;otherAgent name='transcriber'>University of Virginia Electronic Text
+   Center&lt;/otherAgent>
+  &lt;date name='created' scheme='ISO'>1993-01-23&lt;/date>
+  &lt;objectType>poem&lt;/objectType>
+  &lt;form>1 ASCII file&lt;/form>
+  &lt;form scheme='IMT'>text/ASCII&lt;/form>
+  &lt;source>Newspaper stories and oral performance of text at the
+    Presidential inauguration of Bill Clinton&lt;/source>
+  &lt;language name='ISO 639'>en&lt;/language>
+&lt;/dublinCore>
+ 
+</pre> 
+
+<p> 
+Advantages: The syntax makes explicit the semantics of each Dublin
+core element. Distinct attributes can be defined for scheme and type.
+Element content could include other tags if subfields are required.
+ </p> 
+<p> 
+Disadvantages: Only Dublin core elements are provided (but there is
+an extension field). Discrete packages of metadata cannot be identified
+and the semantics of repeated elements are not specified.</p> 
+
+ 
+
+ 
+<h2><a name="ID2.3">2.3 The Warwick Framework DTD</a></h2><p> 
+At the workshop, the authors suggested applying SGML not only to the
+encoding of Dublin-Core records but also to the creation of metadata
+<em>packages</em> and <em>containers</em>, as defined in the
+architectural proposals for the Warwick Framework.  This section
+summarizes the relevant points.
+ </p> 
+<p> 
+The Warwick Framework DTD builds on the notion of discrete
+<em>packages</em> of metadata elements discussed at the Warwick
+Workshop. One such package might contain Dublin core elements; others
+might contain specialised elements appropriate to other kinds of
+metadata, or references to other components using other (possibly
+non-SGML) notations.
+ </p> 
+<p> 
+No specific package types additional to the Dublin core were
+discussed in any detail; though it seems likely that other groups will
+wish to define them. This can be done relatively easily by defining an
+additional DTD fragment (along the lines of that discussed below).
+Alternatively, new package types can also be created by using a generic
+package type called a <em>&lt;package&gt;</em>, composed of typed
+<em>&lt;metaData&gt;</em> or nestable <em>&lt;metaGroup&gt;</em> elements. This may be
+easier to define (and avoids possible namespace clashes). Full details
+of these are given below in section <a href="#WAR">4 The Warwick Framework DTD fragment</a>.
+ </p> 
+<p> 
+This approach was explored in some detail by the authors in order to
+demonstrate that the additional syntax and functionality required by
+the `container' approach could be supported
+directly by SGML, with no need to invent a new syntax and consequently
+additional ad hoc software.
+ </p> 
+<p> 
+A collection of packages of the same or different types  makes up a
+<em>&lt;container&gt;</em> element. This could be linked  to from an HTML
+document in the same way as in the preceding examples (using a
+<em>&lt;link&gt;</em> element in the HTML document), or form a part of a
+multipart MIME message along with the document itself. An example
+might look like the following:
+ 
+<pre> 
+ 
+&lt;!DOCTYPE container PUBLIC '-//OCLC//DTD Warwick Framework Demo v.1//EN'>
+&lt;container>
+ 
+&lt;dublinCore>
+  &lt;!-- etc. as in preceding example -->
+&lt;/dublinCore>
+ 
+&lt;package URI='hdl:oclc:repository/tc'
+         name='OCLC Standard Terms and Conditions / Set FPC45'
+         version='1.0'>
+ &lt;metadata name='permit'>www.oclc.org
+ &lt;metadata name='permit'>rsch.oclc.org
+ &lt;metadata name='permit'>lou@vax.ox.ac.uk
+ &lt;metadata name='deny'>dev.oclc.org
+ &lt;metadata name='inquiries'>stu@oclc.org
+&lt;/package>
+ 
+&lt;/container>
+</pre> 
+
+<h1><a name="DUB">3 The Dublin Core DTD fragment</a></h1><p> 
+This DTD fragment, prepared by the authors, is a slightly simplified
+version of that proposed in the paper by Miller cited above. It defines
+the following metadata elements, one for each of the components of the
+Dublin Core, as defined at the first Metadata Workshop:
+ 
+<DL> 
+<dt>title</dt><dd>The name of the object, if it has one.</dd> 
+<dt>author</dt><dd>Name of the persons and organizations primarily responsible for
+the intellectual content of the resouce. Encode one name per
+element.</dd> 
+<dt>otherAgent</dt><dd>Other person(s) and/or organization(s) who have made a significant
+contribution to the resource. The value of this element should follow
+the guidelines for the <em>&lt;author&gt;</em> element.  The
+<em>author</em> and <em>publisher</em> elements are
+semantically equivalent to instances of this element with the values
+"author" and "publisher" for their <em>type</em>
+attributes respectively.</dd> 
+<dt>publisher</dt><dd>The agent or agency responsible for making the resource
+available. The value of this element should follow the
+guidelines for the <em>&lt;author&gt;</em> element. </dd> 
+<dt>date</dt><dd>The date of publication in any format (as indicated by the
+<em>scheme</em> attribute).</dd> 
+<dt>subject</dt><dd>The field of knowledge to which the resource belongs, typically
+indicated as a series of keywords, possibly taken from a controlled
+vocabulary as indicated by the <em>scheme</em> attribute.</dd> 
+<dt>objectType</dt><dd>The abstract category of the resource, such as article, image,
+dictionary, etc. </dd> 
+<dt>form</dt><dd>The particular data representation of the resource. Typically
+this will be an Internet Media Type (formerly known as MIME
+content type). </dd> 
+<dt>identifier</dt><dd>String or number used to uniquely identify this resource, for
+example a URN, or identification number used by some other
+scheme.</dd> 
+<dt>relation</dt><dd>Relationship of this resource to another resource. This
+element should specify what the relationship is (using the
+<em>type</em> attribute)</dd> 
+<dt>source</dt><dd>Objects, either electronic or printed, from which this
+resource was derived. This is a special case of the <em>&lt;relation&gt;</em>
+element.</dd> 
+<dt>language</dt><dd>The natural language(s) of the resource. When more than one
+<em>&lt;language&gt;</em> element is specified, it indicates that more than one
+language is used to a significant degree in the work. No inference
+should be made about the relative proportions of language content based
+on the order of appearence of such elements.</dd> 
+<dt>coverage</dt><dd>The spatial extent and/or temporal duration characteristic of the
+resource, e.g. "19th Century France".</dd> 
+</DL> 
+<p> 
+These elements all share the following attributes:
+<DL> 
+<dt>type</dt><dd>optionally identifies a subcategorization of the metadata</dd> 
+<dt>scheme</dt><dd>identifies the domain or naming scheme from which categorizations
+are taken</dd> 
+</DL> 
+<p> 
+No closed set of values is defined for either of these attributes in
+the present proposal, though some suggestive examples are to be found in
+Miller's paper cited above.
+ </p> 
+<p> 
+These elements and attributes are formally defined as follows:
+<pre> 
+&lt;!ENTITY % a.global '
+          type               CDATA               #IMPLIED
+          scheme             CDATA               "uncontrolled"'>
+ 
+&lt;!ELEMENT title         - O  (#PCDATA)                          >
+&lt;!ATTLIST title              %a.global                          >
+&lt;!ELEMENT author        - O  (#PCDATA)                          >
+&lt;!ATTLIST author             %a.global                          >
+&lt;!ELEMENT otherAgent    - O  (#PCDATA)                          >
+&lt;!ATTLIST otherAgent         %a.global                          >
+&lt;!ELEMENT publisher     - O  (#PCDATA)                          >
+&lt;!ATTLIST publisher          %a.global                          >
+&lt;!ELEMENT date          - O  (#PCDATA)                          >
+&lt;!ATTLIST date               %a.global                          >
+&lt;!ELEMENT subject       - O  (#PCDATA)                          >
+&lt;!ATTLIST subject            %a.global                          >
+&lt;!ELEMENT objectType    - O  (#PCDATA)                          >
+&lt;!ATTLIST objectType         %a.global                          >
+&lt;!ELEMENT form          - O  (#PCDATA)                          >
+&lt;!ATTLIST form               %a.global                          >
+&lt;!ELEMENT identifier    - O  (#PCDATA)                          >
+&lt;!ATTLIST identifier         %a.global                          >
+&lt;!ELEMENT relation      - O  (#PCDATA)                          >
+&lt;!ATTLIST relation           %a.global                          >
+&lt;!ELEMENT source        - O  (#PCDATA)                          >
+&lt;!ATTLIST source             %a.global                          >
+&lt;!ELEMENT language      - O  (#PCDATA)                          >
+&lt;!ATTLIST language           %a.global                          >
+&lt;!ELEMENT coverage      - O  (#PCDATA)                          >
+&lt;!ATTLIST coverage           %a.global                          >
+&lt;!ELEMENT metadata      - O  (#PCDATA)                          >
+&lt;!ATTLIST metadata           %a.global                          >
+</pre> 
+
+ 
+The <em>&lt;metadata&gt;</em> element is described in more detail below, in
+section <a href="#WAR">4 The Warwick Framework DTD fragment</a>.
+<p> 
+Any number of any of the above elements may be grouped together to
+form a single Dublin core metadata description. Such a description is
+contained by a single <em>&lt;dublinCore&gt;</em> element, which bears an
+attribute <em>version</em> to indicate its version status.
+ </p> 
+<p> 
+This element is formally defined as follows:
+ 
+<pre> 
+&lt;!ELEMENT dublinCore    - O  (title
+                             | author
+                             | otherAgent
+                             | publisher
+                             | date
+                             | subject
+                             | objectType
+                             | form
+                             | identifier
+                             | relation
+                             | source
+                             | language
+                             | coverage
+                             | metadata)*                       >
+&lt;!ATTLIST dublinCore
+          version            CDATA               #IMPLIED       >
+</pre> 
+
+<p> 
+Several alternative methods have been proposed for defining the
+<em>scheme</em> and <em>type</em> attributes for various
+elements, in order to combine the virtues of a controlled vocabulary
+with the flexibility of an uncontrolled vocabulary:
+<UL> 
+<li>unrestricted values (as shown above), with suggested values
+given in the written documentation</li> 
+<li>values restricted to particular schemes and types, with
+provision for simple modification of the DTD to enable other types
+or schemes</li> 
+<li>provision of both a <em>scheme</em> and an
+<em>otherScheme</em> attribute, the first using controlled
+vocabular, the second accepting unrestricted values</li> 
+</UL> 
+<p>
+When this version of this document was prepared, no final
+consensus had been reached.</p> 
+
+ 
+<h1><a name="WAR">4 The Warwick Framework DTD fragment</a></h1><p> 
+This DTD, prepared by the authors, is intended to support the
+following three objectives:
+<UL> 
+<li>support for the Dublin core DTD as defined above</li> 
+<li>support for structured generic metadata elements</li> 
+<li>a framework within which these two can coexist</li> 
+</UL> 
+
+<h2><a name="ID4.1">4.1 Containers and packages</a></h2><p> 
+A document conforming to this DTD is represented by a
+<em>&lt;container&gt;</em> element. Each <em>&lt;container&gt;</em> element consists of
+a sequence of one or more of the following package-level elements:
+<DL> 
+<dt>dublinCore</dt><dd>contains one or more of the metadata elements defined in the
+Dublin core</dd> 
+<dt>package</dt><dd>contains one or more generic metadata or metagroup elements</dd> 
+<dt>packageRef</dt><dd>a reference to some other package</dd> 
+</DL> 
+
+<p> 
+Other package-level elements may be defined at a later date: to
+facilitate this, the contents of the <em>&lt;container&gt;</em> element are
+defined indirectly using a parameter entity (see DTD below).
+ </p> 
+<p> 
+Package-level elements all share the following attributes:
+<DL> 
+<dt>name</dt><dd>human-readable name for the element</dd> 
+<dt>URI</dt><dd>Universal Resource Indicator (?) referencing the element</dd> 
+<dt>version</dt><dd>version number or name</dd> 
+</DL> 
+
+<p> 
+Of these attributes, <em>name</em>is required, while the other
+two are optional. All three have CDATA content.
+ </p> 
+<p> 
+These elements and attributes are formally defined as follows:
+<pre> 
+&lt;!ENTITY % packageType 'package | dublinCore | packageRef'      >
+ 
+&lt;!ELEMENT container     - O  (%packageType)*                    >
+&lt;!ELEMENT package       - O  (metadata | metaGroup |
+                             %packageType)*                     >
+&lt;!ATTLIST package
+          name               CDATA               #REQUIRED
+          URI                CDATA               #IMPLIED
+          version            CDATA               #IMPLIED       >
+&lt;!ELEMENT packageRef    - O  EMPTY                              >
+&lt;!ATTLIST packageRef
+          URI                CDATA               #IMPLIED
+          name               CDATA               #REQUIRED
+          version            CDATA               #IMPLIED       >
+ 
+</pre> 
+
+<p> 
+Note that a <em>&lt;package&gt;</em> may also contain nested
+<em>&lt;package&gt;</em>, <em>&lt;dublinCore&gt;</em> or <em>&lt;packageRef&gt;</em> elements.
+This allows considerable flexibility in structuring metadata.</p> 
+
+ 
+<h2><a name="ID4.2">4.2 Package components </a></h2><p> 
+The components of the <em>&lt;dublinCore&gt;</em> element were defined above
+in section <a href="#DUB">3 The Dublin Core DTD fragment</a>. The <em>&lt;package&gt;</em> element  may contain
+a sequence of any number of the following sub-elements:
+ 
+<DL> 
+<dt>metadata</dt><dd>contains a single piece of metadata</dd> 
+<dt>metaGroup></dt><dd>contains a group of <em>&lt;metadata&gt;</em> or nested <em>&lt;metaGroup&gt;</em>
+elements</dd> 
+</DL> 
+
+<p> 
+The above elements all share the following attributes:
+<DL> 
+<dt>type</dt><dd>categorizes the metadata or metagroup</dd> 
+<dt>scheme</dt><dd>references the authority or taxonomy within which this piece of
+metadata is defined</dd> 
+<dt>show</dt><dd>indicates whether this metadata is visible (show), invisible
+(noshow), or inherits visibility from its immediate parent element
+(inherit).</dd> 
+<dt>sortKey</dt><dd>optionally supplies a sort key or other normalized version of
+this piece of metadata.</dd> 
+<dt>index</dt><dd>indicates whether this metadata should be indexed (index),
+not indexed (noindex), or should be treated in the same way as
+its immediate parent element
+(asparent).</dd> 
+</DL> 
+
+<p> 
+These elements and attributes are formally defined as follows:
+<pre> 
+&lt;!ELEMENT metaGroup     - O  (#PCDATA | metadata | metaGroup)*  >
+&lt;!ELEMENT metadata      - O  (#PCDATA | metadata)*              >
+&lt;!ATTLIST metadata
+          type               CDATA               #REQUIRED
+          scheme             CDATA               'uncontrolled'
+          show               (show
+                             | noshow
+                             | inherit)          inherit
+          sortkey            CDATA               #IMPLIED
+          index              (index
+                             | noindex
+                             | asparent)         asparent       >
+ 
+</pre> 
+</BODY>
+
+<SCRIPT language="Javascript">
+<!--
+
+// FILE ARCHIVED ON 20010611152511 AND RETRIEVED FROM THE
+// INTERNET ARCHIVE ON 20100110170658.
+// JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+// ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+// SECTION 108(a)(3)).
+
+   var sWayBackCGI = "http://web.archive.org/web/20010611152511/";
+
+   function xResolveUrl(url) {
+      var image = new Image();
+      image.src = url;
+      return image.src;
+   }
+   function xLateUrl(aCollection, sProp) {
+      var i = 0;
+      for(i = 0; i < aCollection.length; i++) {
+         var url = aCollection[i][sProp];         if (typeof(url) == "string") { 
+          if (url.indexOf("mailto:") == -1 &&
+             url.indexOf("javascript:") == -1
+             && url.length > 0) {
+            if(url.indexOf("http") != 0) {
+                url = xResolveUrl(url);
+            }
+            url = url.replace('.wstub.archive.org','');
+            aCollection[i][sProp] = sWayBackCGI + url;
+         }
+         }
+      }
+   }
+
+   xLateUrl(document.getElementsByTagName("IMG"),"src");
+   xLateUrl(document.getElementsByTagName("A"),"href");
+   xLateUrl(document.getElementsByTagName("AREA"),"href");
+   xLateUrl(document.getElementsByTagName("OBJECT"),"codebase");
+   xLateUrl(document.getElementsByTagName("OBJECT"),"data");
+   xLateUrl(document.getElementsByTagName("APPLET"),"codebase");
+   xLateUrl(document.getElementsByTagName("APPLET"),"archive");
+   xLateUrl(document.getElementsByTagName("EMBED"),"src");
+   xLateUrl(document.getElementsByTagName("BODY"),"background");
+   xLateUrl(document.getElementsByTagName("TD"),"background");
+   xLateUrl(document.getElementsByTagName("INPUT"),"src");
+   var forms = document.getElementsByTagName("FORM");
+   if (forms) {
+       var j = 0;
+       for (j = 0; j < forms.length; j++) {
+              f = forms[j];
+              if (typeof(f.action)  == "string") {
+                 if(typeof(f.method)  == "string") {
+                     if(typeof(f.method) != "post") {
+                        f.action = sWayBackCGI + f.action;
+                     }
+                  }
+              }
+        }
+    }
+
+
+//-->
+</SCRIPT>
+
+</HTML> 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-default-dtd-file:"~/sgml/html.ced"
+sgml-omittag:t
+sgml-shorttag:t
+End:
+-->
