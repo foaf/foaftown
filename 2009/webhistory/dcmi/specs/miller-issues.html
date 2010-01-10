@@ -1,0 +1,790 @@
+<HTML><head><title>Issues of Document Description in HTML</title></head>
+<!-- removed "type=collection" for title; broke indexers -->
+<center><p>[Mirrored from:  <a href="http://www.oclc.org:5046/~emiller/publications/metadata/issues.html">http://www.oclc.org:5046/~emiller/publications/metadata/issues.html</a>]</p>
+<h2>Issues of Document Description in HTML</h2>Eric J. Miller<BR><em>Office of Research, OCLC Online Computer Library Center, Inc., Dublin, Ohio<BR></em></center><BODY>
+<H2>1.0	Introduction</H2>
+<P>The rapid development of the World Wide Web and the electronic
+dissemination of information offers opportunities and burdens.  The
+opportunity is to provide unprecedented access to information with the
+flexibility and convenience of networked data offers.  The burden,
+however, is to integrate these services with organizational frameworks
+that will allow these opportunities to become a reality.</P>
+<P>HTML (HyperText Markup Language), a simple application of SGML-like
+markup, is a method for expressing document structure in
+the WWW  <A HREF="#Berners-Lee">[Berners-Lee]</A>.  Its
+simplicity has contributed to its popularity and made Web publishing
+more accessible, but that same simplicity makes it difficult to richly
+describe documents. This description is increasingly important for
+effective resource discovery and retrieval as more and more networked
+data becomes available.</P>
+<P>Object characterization ranges from automated full-text indexing to
+rich AACR2  <A HREF="#AACR2">[AACR2]</A> description,
+the encoding rules used by most library catalogers.  Effective
+description, validation, maintenance and duplication are all issues
+that will contribute to the growth of the information landscape.  This
+report discusses some of the issues of document description in
+HTML. </P>
+<H2>2.0	The HTML 2.0 META Element</H2>
+<P>Embedded description in HTML documents is currently facilitated
+through the use of the 
+ <A HREF="http://www.w3.org/hypertext/WWW/MarkUp/html-spec/html-spec_5.html#SEC5.2.5">
+META</A> element tag.  This element was originally designed to provide
+a means to "discover that the data set exists and how it might be
+obtained or accessed" and to "document the content, quality, and
+features of a data set, indicating its fitness for use"
+ <A HREF="#Berners-Lee">[Berners-Lee]</A>. </P>
+<P>HTML 2.0 defines the META element with the attributes
+HTTP-EQUIV, NAME and CONTENT.  The corresponding structure of the META element 
+is defined by the following DTD (Document Type Definition):</P>
+<pre>
+&lt;!ELEMENT META - O EMPTY&gt;
+&lt;!ATTLIST META
+        HTTP-EQUIV  NAME    #IMPLIED
+        NAME        NAME    #IMPLIED
+        CONTENT     CDATA   #REQUIRED    &gt;
+</pre><P>The HTTP-EQUIV attribute binds the element to an HTTP header field.
+The NAME attribute contains the name of the element. The CONTENT
+element contains the associated data.  These attributes allow the user
+a limited ability to describe a particular document.</P>
+<H2>3.0	Current Uses of the META Element</H2>
+<P>Currently, no widely supported guidelines exist that describe the
+use of the META element for the embedded description of HTML
+documents.  The lack of these guidelines has created a wide range of
+localized use.  One use is, as intended, to facilitate discovery and
+retrieval of document collections.  Examples of localized
+implementations that utilize the META element for this purpose include
+the  <A HREF="http://www.ics.uci.edu/WebSoft/MOMspider/">MOMspider</A> project,
+the  <A HREF="http://math.binghamton.edu/MATH/docs/index.html">WN</A> server, and
+ <A HREF="http://www.nexor.co.uk/public/aliweb/aliweb.html">ALIWEB</A> to
+name but a few.  The lack of a common descriptive element set,
+however, potentially compromises the effectiveness of interoperating
+between these systems.</P>
+<P> A different use of the META element is found in  <A HREF="http://www2.netscape.com/assist/net_sites/pushpull.html">
+Netscape's push-pull</A> implementation. The META element, in this
+case, is used to define a refresh duration and possible redirection of
+an HTML document.  <A HREF =
+"http://www.firstfloor.com">FirstFloor</A> additionally uses the
+META element for refreshing "bulletins" or messages that automatically
+notify users of new information on a Web site.  </P>
+<P>
+Additionally,  <A HREF="http://www.microsoft.com/">Microsoft's
+Internet Assistant</A> creates and embeds META values in HTML documents
+based on the software version and the user's configuration of
+Microsoft Word.</P>
+<H2>4.0	Current Document Description: The META Issue(s)</H2>
+<P> Given the variety of current implementations and the potential
+future uses, it is important to define a framework that will allow for
+both an effective object description and both localized and
+distributed extensions.  It is difficult, however, to anticipate all
+the possible descriptive elements or formats that will facilitate
+discovery and retrieval of localized and global networked information.
+The limitations of the basic attribute-value pairing allowed with the
+META element makes this general, descriptive framework extremely
+difficult to achieve.  The following examples illustrate some of the
+problems describing an object within the confines of the current META
+design.</P>
+<pre>
+&lt;META NAME = "Title"	CONTENT = "On the Pulse of Morning"&gt;
+&lt;META NAME = "Author" CONTENT = "Maya Angelou"&gt;
+&lt;META NAME = "Publisher" CONTENT = 
+"University of Virginia Library Electronic Text Center"&gt;
+&lt;META NAME = "OtherAgent" CONTENT = 
+"University of Virginia Electronic Text Center"&gt;
+&lt;META NAME = "Date" CONTENT = "1993"&gt;
+&lt;META NAME = "Object" CONTENT = "Poem"&gt;
+&lt;META NAME = "Form" CONTENT = "1 ASCII file"&gt;
+&lt;META NAME = "Source" CONTENT = "Newspaper stories and oral performance 
+of text at the presidential inauguration of Bill Clinton"&gt;
+&lt;META NAME = "Language" CONTENT = "English"&gt;
+</pre><P>This example represents an embedded HTML description of Maya
+Angelou's transcribed speech at the 1993 presidential inauguration.
+The descriptive elements are based on the Dublin Core element set.
+The Dublin Core is a set of thirteen metadata elements that originated
+from discussions at OCLC/NCSA Metadata Workshop  <A HREF="#Weibel">[Weibel]</A>. Among the elements are: author, title,
+publisher, subject, unique identifier or electronic location,
+language, date, relation to similar objects, physical form, spatial
+coverage and temporal duration.  The meaning of these elements can
+be understood by users with no training in formal cataloging or
+established record formats and can be used to create descriptions of
+Internet resources that are more detailed than automatically generated
+indexes.</P>
+<P>The first problem that becomes apparent is actually classifying the
+appropriate element set used for the description.  This example is
+based on the Dublin Core element set which focuses on the
+bibliographic characterization of the object.  A variety of different
+descriptive schemes will emerge that focus on other types of metadata
+information including transactional, terms and conditions and ratings.
+Therefore it is necessary to distinguish between these types of
+classification schemes.  The syntax and structure necessary to
+distinguish classification schemes would require agreement in the HTML
+standards community, however for illustrative purposes, the previous
+example could simply prepend the following identifier to signify the
+Dublin Core descriptive scheme.</P>
+<pre> 
+&lt;META NAME = "Citation" CONTENT = "Dublin Core"&gt;
+</pre><P>For effective searching of large collections of objects, defining
+controlled vocabularies and classification schemes may become
+increasingly important.  Controlled vocabularies when defining
+subjects, for example, become particularly useful when classifying
+knowledge domains.  For example, the subject element could be
+qualified by a scheme, which specifies adherence to a known
+classification system such as the Library of Congress Subject Headings
+(LCSH), the Dewey Decimal System (DDC), or the Art and Architecture
+Thesaurus.  The following examples illustrate this. </P>
+<pre>
+&lt;META NAME = "Subject" SCHEME = "LCSH" CONTENT = "UNIX (computer system)"&gt;
+&lt;META NAME = "Subject" SCHEME = "DDC" CONTENT = "004.251"&gt;
+</pre><p>Descriptive element schemes will evolve as networked information
+becomes more prevalent and the functional requirements of
+interoperability and access to distributed information become more of
+a reality.  Classification schemes, classification types, and
+versioning information become increasingly important as a basis for
+effective description and to facilitate the transition among evolving
+descriptive schemes.  Additional information about metadata element
+schemes, types, and versions is addressed in the OCLC/NCSA Metadata
+Workshop position paper <A HREF="#Weibel">[Weibel]</A>.  The following HTML DTD fragment representing the META
+element provides a redefinition of the structure and
+corresponding attribute information as a result of these metadata
+discussions.</P>
+<pre>
+&lt;!ELEMENT META	- O 	EMPTY &gt;
+&lt;!ATTLIST META
+        HTTP-EQUIV  	NAME   	#IMPLIED
+        NAME       	NAME   	#IMPLIED
+	VERSION		NAME	#IMPLIED
+        TYPE      	NAME   	#IMPLIED
+        SCHEME      	NAME   	#IMPLIED
+        CONTENT     	CDATA  	#REQUIRED    &gt;
+</pre><P>For additional examples and discussions about the
+Dublin Core element set see appendix 1.</P>
+<H2>5.0	Possible Directions of Document Description</H2>
+<P>When the META element is coupled with the VERSION, SCHEME and TYPE
+attributes, potential for effective bibliographic description is
+increased.  However it still provides only a limited framework for
+describing HTML documents.  For detailed cataloging, a more flexible
+framework is needed.</P>
+<P>Descriptive information may be found either internal or external to
+the actual HTML document.  A combination of both internal and external
+description is additionally possible based proposed HTML extensions
+that are currently being reviewed by the working group.  The following
+sections discuss some of the various framework issues associated with 
+both internally and externally referenced descriptive information.</P>
+<H3>5.1	External Description: The LINK Element</H3>
+<P>This framework could be developed by externally
+referencing metadata information associated with the object.  An
+example of this type of referencing, based on the HyperText LINKs proposal 
+ <A HREF="#Maloney">[Maloney]</A>
+is shown in the following example:</P>
+<pre> 
+&lt;LINK REL=META HREF="http://foo.bar/paper.marc"&gt; 
+</pre><P>A potential drawback to the external referencing of descriptive
+information is one of managing document modifications and versions.
+The ability to have documents independent of their descriptive
+information allows for modifications to be made to the document that
+are not reflected in the descriptive. Additional frameworks may be 
+required to handle versioning of documents.</P>
+<P>Another issue associated with externally referencing descriptive
+information is the additional protocol access required to identify the
+bibliographic characteristics of an object.  Additionally, the
+potential problem of document migration exists.  The Uniform Resource
+Locator, or URL, can change due to hardware reconfiguration, file
+system reorganization, or changes in organizational structure.  The
+unpredictable mobility of Internet resources is inconvenient.  For
+librarians, it is a serious problem which compromises their service to
+patrons and imposes an unacceptably large burden on catalog
+maintenance.  Continuing work in the Uniform Resource Name (URN)
+communities, and the recent introduction of the PURL  <A HREF="#PURL">[PURL]</A> services are designed to solve
+these problems. However, much work still is needed.</P>
+<P>A potential benefit of external referencing is that the descriptive
+encoding standard is independent of the HTML document, thus current
+markup schemes including MARC  <A HREF="#MARC">[MARC]</A>, TEI  <A HREF="#TEI">[TEI]</A>, and
+FGDC  <A HREF="#FGDC">[FGDC]</A>, could be readily
+used.  Additionally, formatting and rendering issues of the
+bibliographic information are no longer a concern.  </P>
+<H3>5.2	Internal and External Description</H3>
+<P>External referencing additionally provides an attractive framework
+for a modular, inherent framework for cataloging.  This type of
+cataloging has been discussed by several authors including Heaney
+ <A HREF="#Heaney">[Heaney]</A> and Tillett  <A HREF="#Tillett">[Tillett]</A>.  For example, a collection of
+similar objects might share a particular cataloging "class".  This
+"class" could then be referenced by all of the objects in a collection
+with only the intrinsic cataloging information, local to the object,
+documented.  Thus each local object would inherit the bibliographic
+information identified in the shared bibliographic record.</P>
+<P>The following is an hypothetical example of bibliographic
+inheritance based on records created by the University of Virginia
+Library's Electronic Text Center. (For a description of that project,
+see Gaynor  <A HREF="#Gaynor">[Gaynor]</A>).</P>
+<P><B>Object 1 with localized bibliographic information: </B></P>
+<pre>
+&lt;CITATION SCHEME="TEI-HEADER"&gt;
+&lt;HEADER TYPE=AACR2&gt;
+&lt;FILEDESC&gt;
+&lt;TITLSTMT&gt;
+&lt;TITLE&gt;On the pulse of morning [a machine-readable transcription]&lt;/TITLE&gt;
+&lt;AUTHOR&gt;Angelou, Maya&lt;/AUTHOR&gt;
+&lt;RESP&gt;&lt;NAME&gt;Unknown&lt;/NAME&gt;&lt;ROLE&gt;creation of 
+machine-readable edition&lt;/ROLE&gt;&lt;/RESP&gt;
+&lt;RESP&gt;&lt;ROLE&gt;Conversion to TEI-conformant markup&lt;/ROLE&gt;&lt;NAME&gt;University
+of Virginia Library Electronic Text Center&lt;/NAME&gt;&lt;/RESP&gt;
+&lt;/TITLSTMT&gt;
+
+&lt;PUBSTMT&gt;
+&lt;IDNO TYPE="ETC"&gt;Modern English, AngPuls&lt;/idno&gt;
+&lt;DATE&gt;1993&lt;/DATE&gt;
+&lt;LINK REL=META HREF="http://foo.bar/etext/pubstmt"&gt;
+&lt;/PUBSTMT&gt;
+...
+&lt;/HEADER&gt;
+&lt;/CITATION&gt;
+</pre><P><B>Object 2 with localized bibliographic information:</B></P>
+<pre>
+&lt;CITATION SCHEME="TEI-HEADER"&gt;
+&lt;HEADER TYPE=aacr2&gt;
+&lt;FILEDESC&gt;
+&lt;TITLSTMT&gt;
+&lt;TITLE&gt;The history of Lady Julia Mandeville [a machine-readable 
+transcription]&lt;/TITLE&gt;
+&lt;AUTHOR&gt;Brooke, Frances, 1724?-1789&lt;/AUTHOR&gt;
+&lt;RESP&gt;&lt;NAME&gt;Barbara Smith&lt;/NAME&gt;&lt;ROLE&gt;creation of 
+machine-readable edition&lt;/ROLE&gt;&lt;/RESP&gt;
+&lt;RESP&gt;&lt;ROLE&gt;Conversion to TEI-conformant markup&lt;/ROLE&gt;
+&lt;NAME&gt;University of Virginia Library Electronic Text Center&lt;/NAME&gt;&lt;/RESP&gt;
+&lt;/TITLSTMT&gt;
+
+&lt;PUBSTMT&gt;
+&lt;IDNO TYPE="ETC"&gt;Modern English, BroLady&lt;/IDNO&gt;
+&lt;DATE&gt;1993&lt;/DATE&gt;
+&lt;LINK REL=META HREF="http://foo.bar/etext/pubstmt"&gt;
+&lt;/PUBSTMT&gt;
+...
+&lt;/HEADER&gt;
+&lt;/CITATION&gt;
+</pre><P><B>Inherited bibliographic information:</B></P>
+<pre>
+&lt;PUBSTMT&gt;
+&lt;RESP&gt;&lt;NAME&gt;University of Virginia Library&lt;/NAME&gt;
+&lt;ROLE&gt;publisher&lt;/ROLE&gt;&lt;/RESP&gt;
+&lt;ADDRESS&gt;Charlottesville, Va.&lt;/ADDRESS&gt;
+&lt;AVAIL&gt;&lt;P&gt;Available for anonymous ftp at etext.lib.virginia.edu&lt;/P&gt;
+&lt;P&gt;Copies of this file are also available to University of
+Virginia faculty, staff, and students; please contact the Electronic
+Text Center&lt;/P&gt;
+&lt;P&gt;Available commercially from: Project Gutenberg&lt;/P&gt;
+&lt;/AVAIL&gt;
+&lt;/PUBSTMT&gt;
+</pre><P>A graphical representation of this relationship between local metadata
+information and its shared metadata record class is shown in Figure 1.
+</P>
+<center><IMG SRC = "../images/figure1.gif"></></center><P><B>Figure 1:</B>Relationship between local metadata information and
+its shared metadata record class.  The metadata associated 
+with any HTML object includes both the locally defined
+
+
+
+
+bibliographic information and the shared bibliographic information.</P>
+<H3>5.3	Internal Description: Place-holders and
+Content-Negotiation</H3>
+<P>Storing descriptive information internal to the document solves the
+problem of resource migration that is associated with external
+linking.  Additionally this type of storage provides a much simpler
+framework for handling document versions and updates.  The
+requirements of storing descriptive information internal to a HTML
+document however requires a "place-holder" framework for this
+descriptive information.  Issues regarding implementation, acceptance
+and backward compatibility of this internal descriptive framework is
+discussed in the following sections.</P>
+<H4>5.3.1	Place-holders</H4>
+<P>One possibility for providing flexibility is to to define a
+"place-holder" for this descriptive component.  An additional element
+(e.g., CITATION) in the HEAD of the document an area for arbitrarily
+rich embedded description of a document may be defined the following
+example.  Maya Angelou's transcribed speech is described using a DTD
+that resulted from the OCLC/NCSA Metadata Workshop.  The DTD from this
+workshop is found in appendix 2.</P>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//IETF//NEW DTD HTML//EN"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt; Transcription of Maya Angelou's "On the Pulse of Morning" &lt;/TITLE&gt;
+&lt;CITATION SCHEME = "Dublin Core" VERSION = "0.1"&gt;
+&lt;TITLE&gt; On the Pulse of Morning&lt;/&gt;
+&lt;AUTHOR SCHEME = "AACR2"&gt; Angelou, Maya &lt;/&gt;
+&lt;PUBLISHER&gt;University of Virginia Library Electronic Text Center&lt;/&gt;
+&lt;OTHERAGENT TYPE="TRANSCRIBER"&gt; University of Virginia Electronic 
+Text Center&lt;/&gt;
+&lt;DATE SCHEME = &gt; 1993 &lt;/&gt;
+&lt;OBJECT&gt; Poem &lt;/&gt;
+&lt;FORM&gt; 1 ASCII file &lt;/&gt;
+&lt;SOURCE&gt; Newspaper stories and oral performance of text at the 
+presidential inauguration of Bill Clinton &lt;/&gt;
+&lt;LANGUAGE&gt; English &lt;/&gt;
+&lt;RELATION TYPE = "CHILD"&gt; 
+http://foo.bar/1993/presidential-address/collection.html &lt;/RELATION&gt;
+&lt;RELATION TYPE = "ALTERNATE-FORM"&gt; 
+http://foo.bar/1993/presidential-address/audio/06983921.au &lt;/RELATION&gt;
+&lt;/CITATION&gt;
+</pre><P>An obvious problem associated with this modification is that it
+requires changes to both the HTML DTD as well as agreement in
+principle of the "non-rendering" of the CITATION content in WWW
+clients.</P>
+<P>With respect to the non-rendering of data, consider the hypothetic
+DATA element:</P>
+<pre>
+&lt;DATA NAME="Keywords" CONTENT="Information Retrieval"&gt;
+</pre><P>This statement might encode that the phrase "Information
+Retrieval" is associated with the DATA element "Keyword".
+Note that the data is included as an attribute of the second value
+defined for the DATA element.  Another possible HTML convention is
+to enclose the data in tags: </P>
+<pre>
+&lt;DATA NAME="Keywords"&gt;Information Retrieval&lt;/DATA&gt;
+</pre><p>If the browser encountered the second DATA statement, the phrase
+"Information Retrieval" would display, but the display would be
+suppressed if an HTML document contained the first DATA statement.
+The situation for the CITATION element would be similar.  While
+the bibliographic information in CITATION is potentially
+useful for discovery and retrieval, the rendering or display in
+browsers is somewhat problematic.</P>
+<H4>5.3.2	Content-Negotiation</H4>
+<P>Another possibility of incorporating this descriptive component
+using the concepts of SGML's "marked sections" and HTTP's "content
+negotiation" capabilities.  Marked sections in SGML show which parts
+of a document are not processed or should only be processed under
+certain conditions  <A HREF="#Herwijen">[Herwijen]</A>.
+For example, parts of documents destined for different groups of
+readers can be kept together in a single document. A parser can be
+instructed to process the document for different groups and deliver
+the only the appropriate parts.</P>
+<P>HTTP's content negotiation is a way for browsers and servers to
+"negotiate" for content  <A HREF="#Behlendorf">[Behlendorf]</A>.  The following is an simple example of this
+type of negotiation:</P>
+<pre><B>Client:</B> I'd like a copy of Maya Angelou's poem "On the Pulse of 
+Morning" and any bibliographic information you may have in 
+MARC or TEI formats.
+
+<B>Server:</B> I do have this poem, however the only bibliographic 
+information I have on this is encoded in the Dublin Core format.
+</pre><P>in which the client could either automatically or interactively choose</P>
+<pre><B>Client:</B>OK, give me both the poem and the bibliographic information
+in Dublin Core.
+</pre><P>or</P>
+<pre><B>Client:</B>I can't handle that format of bibliographic information... 
+Only give me the poem.
+</pre><P>Content negotiation allows the browser to tell the server what
+types of information it prefers or can easily handle, and the server
+automatically provides it, in one step.  SGML marked sections and DTD
+declarations could encapsulate this bibliographic information and
+provide a way to include or exclude this information.  The following
+is an example of this encapsulation of the CITATION in SGML:</P>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "HTTP://PURL.ORG/NET/DTD/HTML-DC.DTD"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Transcription of Maya Angelou's "On the Pulse of Morning"&lt;/TITLE&gt;
+
+&lt;![ &if-citation; [
+
+&lt;CITATION&gt;
+&lt;TITLE&gt;On the Pulse of Morning&lt;/TITLE&gt;
+&lt;AUTHOR SCHEME = "AACR2"&gt;Angelou, Maya&lt;/AUTHOR&gt;
+&lt;PUBLISHER&gt;
+University of Virginia Library Electronic Text Center&lt;/PUBLISHER&gt;
+&lt;OTHERAGENT TYPE="TRANSCRIBER"&gt;
+University of Virginia Electronic Text Center&lt;/OTHERAGENT&gt;
+...
+
+]&gt;
+</pre><P>The corresponding DTD for this citation 
+located at "HTTP://PURL.ORG/NET/DTD/HTML-DC.DTD" would then specify:</P>
+<pre>
+&lt;!ENTITY % if-citation "INCLUDE"&gt;
+</pre>
+or
+<pre>
+&lt;!ENTITY % if-citation "IGNORE"&gt;
+</pre><P>to include or omit the citation information.</P>
+<P>Content-negotiation has been in HTTP since the
+early days of the web.  It requires that both the server
+and client support this protocol. Unfortunately, only a few HTTP
+servers, such as the  <A HREF="http://www.apache.org/">Apache</A>
+and  <A HREF="http://www.w3.org/pub/WWW/">W3O</A> server
+currently support it. Few WWW clients use it correctly and fully.
+ <A HREF="#Behlendorf">[Behlendorf]</A>.</P>
+<H2>6.0	Conclusion</H2>
+<P> Access to distributed networked information requires effective
+mechanisms for resource discovery and retrieval.  With respect to the
+rapid development of the World Wide Web and the electronic
+dissemination of information, effective descriptive techniques become
+increasingly important.  The META element, provide the basis for
+document description, but does not provide the richness necessary for
+complex descriptive schemes.  Providing descriptive capabilities of
+metadata schemes as well as adding attribute information for more
+accurate elemental description is one step towards a more accurate
+document description and more effective discovery and retrieval. A
+much more flexible environment is necessary to fully allow for richer
+document description.  Future research in external declarations to
+bibliographic information and the growing interest in HTTP content
+negotiation look promising for this descriptive environment.</P>
+</BODY>
+<back>
+<HR size=4><H3>References</H3>
+<P><B><A name="AACR2">[AACR2]</A></B><BR>
+Anglo-American Cataloguing Rules. Second Edition, 1988 Revision
+</P>
+
+<P><B><A name="Behlendorf">[Behlendorf]</A></B><BR>B. Behlendorf, "What Is Content Negotiation?
+Towards an Extensible Framework for an Ecology of Data Types", 
+&lt;http://www.organic.com/Staff/brian/cn/&gt;
+</P>
+
+<P><B><A name="Berners-Lee">[Berners-Lee]</A></B><BR>T. Berners-Lee., D. Connolly
+"Hypertext Markup Language (HTML)", 1995, 
+&lt;URL:http://www.w3.org/hypertext/WWW/MarkUp/html-spec/html-spec_toc.html&gt;
+</P>
+
+<P><B><A name="FGDC">[FGDC]</A></B><BR>
+Federal Geographic Data Committee. 1994. Content standards for digital 
+geospatial metadata (June 8). Federal Geographic Data Committee.
+Washington, D.C.
+</P>
+
+<P><B><A name="Gaynor">[Gaynor]</A></B><BR>
+Gaynor, Edward. 1994. "Cataloging Electronic Texts: The
+University of Virginia Library Experience."  Library Resources
+and Technical Services 38(4): 403-413 (October 1994).
+</P>
+
+<P><B><A name="Heaney">[Heaney]</A></B><BR>M. Heaney, "Object-Oriented Cataloging",
+Information Technology, September 1995</P>
+
+<P><B><A name="Herwijnen">[Herwijnen]</A></B><BR>
+Herwijnen, Eric van, Practical SGML , Kluwer Academic Publishers, 1994
+</P>
+
+<P><B><A name="Maloney">[Maloney]</A></B><BR>M. Maloney, L. Quin, "Hypertext links in
+HTML, draft-ietf-html-relrev-00.txt", 
+&lt;ftp://ietf.cnri.reston.va.us/internet-drafts/draft-ietf-html-relrev-00.txt&gt;
+</P>
+
+<P><B><A name="MARC">[MARC]</A></B><BR>
+Network Development and MARC Standards, Office, ed. 1994. USMARC 
+Format for Bibliographic data. 1994.  Washington, DC: Cataloging 
+Distribution Service, Library of Congress.
+</P>
+
+<P><B><A name="Purl">[Purl]</A></B><BR>
+PURL: Persistant Uniform Resource Locators, &lt;http://purl.oclc.org&gt;
+</P>
+
+<P><B><A name="TEI">[TEI]</A></B><BR>
+Sperberg-McQueen, C. M., and Leu Burnard, ed. 1994. Guidelines
+for Electronic Text Encoding and Interchange. Chicago and Oxford:
+Text Encoding Initiative.
+</P>
+
+<P><B><A name="Tillett">[Tillett]</A></B><BR>B. Tillett, "Cataloging Rules and Conceptual Models",
+OCLC Distinguished Seminar Series, January 9, 1996, 
+&lt;http://purl.oclc.org/net/papers/tillett&gt;
+</P>
+
+<P><B><A name="Weibel">[Weibel]</A></B><BR>S. Weibel, J. Godby, E. Miller, and R. Daniel
+"Elements of Network Object Description, 
+OCLC/NCSA Metadata Workshop: The Essential Workshop Position Paper
+Workshop", March 1995, 
+&lt;URL:http://www.oclc.org:5046/conferences/metadata/metadata.html&gt;
+</P>
+
+<HR size=4><H2>Appendix 1.0: 	A Sample Dublin Core record encoded HTML 2.0</H2>
+<p> This appendix contains a simple Dublin Core record that conforms
+to the syntax of the META element in the current draft of the HTML 2.0
+specification.  This example describes an Internet Request for Comment
+(RFC) found on a Web page containing similar RFCs.  </P>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Sample Dublin Core URC for a RFC&lt;/TITLE&gt;
+&lt;META NAME = "CITATION" CONTENT = "Dublin Core"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "IETF RFC"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "URI"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "Uniform Resource Identifiers"&gt;
+&lt;META NAME = "TITLE" CONTENT = "A Unifying Syntax for the 
+Expression of Names and Addresses of Objects on the Network as 
+used in the World-Wide Web"&gt;
+&lt;META NAME = "TITLE" CONTENT = "Universal Resource Identifiers in WWW"&gt;
+&lt;META NAME = "AUTHOR" CONTENT = "T.Berners-Lee"&gt;
+&lt;META NAME = "PUBLISHER" CONTENT = "CERN"&gt;
+&lt;META NAME = "DATE" CONTENT = "1994"&gt;
+&lt;META NAME = "OBJECTTYPE" CONTENT = "monograph"&gt;
+&lt;META NAME = "FORM" CONTENT = "text/plain"&gt;
+&lt;META NAME = "IDENTIFIER" 
+CONTENT = "gopher://gopher.es.net:70/0R0-57601-/pub/rfcs/rfc1630.txt"&gt;
+&lt;META NAME = "RELATION" 
+CONTENT = "http://ds.internic.net/ds/dspg1intdoc.html"&gt;
+&lt;META NAME = "RELATION"  
+CONTENT = "http://ds.internic.net/rfc/rfc1738.txt"&gt;
+&lt;/HEAD&gt;
+&lt;/HTML&gt;
+</pre><p>A problem with this type of example is that the Dublin Core
+elements are ambiguous due to the lack of element modifiers.  A more
+useful record, for example, might identify the first RELATION element
+as a "parent" and the second as a "sibling" of the object being
+described.  Additionally, it would identify the type of access methods
+for these objects, in this case in the form of URLs.  The TITLE
+elements might be clarified: the first is a main title and the second
+is a subtitle.  Since the HTML META element currently defined for HTML
+2.0 severely constrains the richness of the description that can be
+created, members of the HTML Working Group are discussing 
+several proposals.</P>
+<P>In the following, SCHEMEs and TYPEs are used to modify the META
+element for a richer descriptive framework corresponding to the Dublin
+Core element set.</P>
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Sample Dublin Core URC for a RFC&lt;/TITLE&gt;
+&lt;META NAME = "CITATION" SCHEME="Dublin Core" CONTENT = "0.1"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "IETF RFC"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "URI"&gt;
+&lt;META NAME = "SUBJECT" CONTENT = "Uniform Resource Identifiers"&gt;
+&lt;META NAME = "TITLE" TYPE="MAIN" CONTENT = "A Unifying Syntax for 
+the Expression of Names and Addresses of Objects on the Network as 
+used in the World-Wide Web"&gt;
+&lt;META NAME = "TITLE" TYPE="ALT" CONTENT = "Universal Resource 
+Identifiers in WWW"&gt;
+&lt;META NAME = "AUTHOR" SCHEME="AACR2" CONTENT = "Berners-Lee, Tim"&gt;
+&lt;META NAME = "PUBLISHER" CONTENT = "CERN"&gt;
+&lt;META NAME = "OTHERAGENT" TYPE="CATALOGER" SCHEME="AACR2" 
+CONTENT = "Miller, Eric J."&gt;
+&lt;META NAME = "DATE" CONTENT = "1994"&gt;
+&lt;META NAME = "OBJECTTYPE" CONTENT = "monograph"&gt;
+&lt;META NAME = "FORM" SCHEME="IMT" CONTENT = "text/plain"&gt;
+&lt;META NAME = "IDENTIFIER" SCHEME="URL" 
+CONTENT = "gopher://gopher.es.net:70/0R0-57601-/pub/rfcs/rfc1630.txt"&gt;
+&lt;META NAME = "RELATION" TYPE = "CHILD" SCHEME="URL"  
+CONTENT = "http://ds.internic.net/ds/dspg1intdoc.html"&gt;
+&lt;META NAME = "RELATION" TYPE = "SIBLING" SCHEME="URL" 
+CONTENT = "http://ds.internic.net/rfc/rfc1738.txt"&gt;
+&lt;/HEAD&gt;
+&lt;/HTML&gt;
+</pre><HR size=4><H2>Appendix 2.0: 	A Proposed Document Type Definition for the Dublin Metadata Core</H2>
+<P>The following sample DTD is included to make the proposals in this
+report more precise and to promote discussion among those wishing to
+make improvements.  Since the SCHEME qualifier, as defined by the
+participants in the Dublin Metadata Workshop, is potentially
+ambiguous, the TYPE qualifier has also been defined.  SCHEME is used
+when reference is made to an external authority for notation or
+vocabulary. TYPE is used to describe a subclass of a generic element.
+For example, the TITLE element has subclasses such as Subtitle, Main
+Title, and Alternate Title.  The proposed distinction between SCHEME
+and TYPE is a suggestion, and illustrates a problem
+that will arise when the current version of the Dublin Core is
+implemented and describes real data.  Much more discussion is
+required before the problem of element modification can be adequately
+resolved.  </P>
+<P> The DTD in this appendix specifies one possible syntax for an SGML
+version of the Dublin Core. It is for illustrative purposes only.
+</P>
+<pre>
+
+&lt;!--
+This is the ISO8879:1986 document type definition for the default
+Dublin Core element set.  This DTD is subject to discussion and change
+by the members of the library community, IETF's URI/URC working group,
+or by anyone who cares to discuss this information.
+
+This DTD results from the OCLC/NCSA Metadata Workshop,
+Dublin, Ohio, March 3, 1995.  Additional information regarding this
+workshop, attendees and a working group position paper are available
+at &lt;URL:http://www.oclc.org:5046/conferences/metadata/metadata.html&gt;
+--&gt;
+
+&lt;!-- ============ Parameter Entities ===============
+
+&lt;!-- Parameter entities for Elements
+    These define the content models for the elements in the default
+    set. The convention for those names is n.xxx, where xxx is the
+    generic identifier of the element. --&gt;
+
+&lt;!ENTITY   %  n.Instance "(Author | Title | Subject | Identifier |
+                    URN | Location | URL | Form | Publisher | Date |
+                    ObjectType | OtherAgent | Relation | Source |
+                    Language | Coverage)"&gt;
+&lt;!ENTITY   % n.CITATION "(%n.Instance; | Instance)"&gt;
+
+&lt;!-- CITATION is the element that contains all the others. Instance is an
+  element that can group together any of the other elements, but not
+  itself. --&gt;
+
+&lt;!ENTITY   %  n.Subject     "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Title       "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Author      "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.OtherAgent  "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Publisher   "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Date        "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Relation    "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.ObjectType  "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Form        "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Identifier  "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Source      "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Language    "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Coverage    "(Spatial | Temporal | #PCDATA)*" &gt;
+&lt;!ENTITY   %  n.Spatial     "(#PCDATA)" &gt;
+&lt;!ENTITY   %  n.Temporal    "(#PCDATA)" &gt;
+
+&lt;!-- Parameter entities for Attributes
+    Almost all of the elements can have a "scheme" attribute that
+    can be used to more precisely  indicate their semantics. The
+    Many of the elements can have a "type" attribute as well in order
+    to specify additional structure.
+ --&gt;
+
+&lt;!ENTITY   % Author.Type
+             "Name | Email | OtherType" &gt;
+&lt;!ENTITY   % Author.Scheme
+             "AACR2 | DUNS | OtherScheme" &gt;
+
+&lt;!ENTITY   % Title.Type
+             "Main | SubTitle | PartTitle | Alternate |
+              Abbrev | OtherType" &gt;
+
+&lt;!ENTITY   % Title.Scheme
+             "AACR2 | OtherScheme" &gt;
+
+&lt;!ENTITY   % Subject.Scheme
+             "LCSH | MeSH | Sears | Abstract | OtherScheme" &gt;
+
+&lt;!ENTITY   % Identifier.Scheme
+             "URN | URL | LCCN | ISBN | ISSN | SICI | MessageID |
+              FPI | UPC | OtherScheme" &gt;
+
+&lt;!ENTITY   % Form.Scheme
+             "IMT | X.400 | OtherScheme"&gt;
+
+&lt;!ENTITY   % Publisher.Scheme
+             "AACR2 | DUNS | OtherScheme" &gt;
+
+&lt;!ENTITY   % Date.Scheme
+             "RFC822 | YYYY | YYYY-MM-DD | OtherScheme" &gt;
+
+&lt;!ENTITY   % OtherAgent.Type
+             "Editor | Sponsor | Principal | Compiler | Funder |
+              Composer | Cataloger | Illustrator | Translator |
+              OtherType"  &gt;
+&lt;!ENTITY   % OtherAgent.Scheme
+             "AACR2 | OtherScheme" &gt;
+
+&lt;!ENTITY   % Relationship.Scheme
+             "URN | URL | LCCN | ISBN | ISSN | SICI | MessageID |
+              FPI | OtherScheme" &gt;
+&lt;!ENTITY   % Relationship.Type
+             "Supersedes | Continues | Continued.From |
+              Contained.In | Superseded.By | Cites | Extracted.From |
+              Is.Part.Of | Contains | IsIndexOf | IsIndexedBy |
+              GlossaryOf | Predecessor | Successor | IsDerivativeOf |
+              Child | Parent | Sibling | OtherType " &gt;
+
+&lt;!-- Element list: Subject to change as this thing gets refined. Some
+     elements for meta-metadata (version info on the URC itself)
+     are the most likely candidates for addition. --&gt;
+
+&lt;!ELEMENT   CITATION       - -  (%n.CITATION;)*
+
+&lt;!ELEMENT   Author      - -     (%n.Author;)
+ -- Name of the persons and organizations primarily responsible for
+    the intellectual content of the resouce. Encode one name per
+    element. For personal names use Last, First (or whatever
+    the cultural norm is for sorted lists of names). -- &gt;
+&lt;!ATTLIST Author     Type     (%Author.Type;)         #IMPLIED
+                        Scheme   (%Author.Scheme;)       #IMPLIED &gt;
+
+&lt;!ELEMENT   Title       - -     (%n.Title;)
+ -- The name of the object, if it has one. -- &gt;
+&lt;!ATTLIST Title      Type     (%Title.Type;)          #IMPLIED
+                        Scheme   (%Title.Scheme;)        #IMPLIED &gt;
+
+&lt;!ELEMENT   Subject     - -     (%n.Subject;)
+ -- The field of knowledge to which the resource belongs. The default
+    content of the subject element is simple keywords. The scheme
+    attribute can be used to indicate the use of a controlled
+    vocabulary. -- &gt;
+&lt;!ATTLIST Subject    Scheme   (%Subject.Scheme;)      #IMPLIED &gt;
+
+&lt;!ELEMENT   Identifier  - -     (%n.Identifier;)
+ -- String or number used to uniquely identify this resource.
+    Typically the URN element will be used in favor of the URN
+    attribute on this element. Other identification schemes may
+    also be used. -- &gt;
+&lt;!ATTLIST Identifier Scheme   (%Identifier.Scheme;)   #IMPLIED &gt;
+
+&lt;!ELEMENT   Form        - -     (%n.Form;)
+ -- The particular data representation of the resource. Typically
+    this will be an Internet Media Type (formerly known as MIME
+    content type). In such a case the SCHEME attribute should be used
+    to identify it. -- &gt;
+
+&lt;!ATTLIST Form       Scheme   (%Form.Scheme;)         #IMPLIED &gt;
+
+&lt;!ELEMENT   Publisher   - -     (%n.Publisher;)
+ -- The agent or agency responsible for making the resource
+    available. The value of this element should follow the
+    guidelines for the AUTHOR element. -- &gt;
+&lt;!ATTLIST Publisher  Scheme   (%Publisher.Scheme;)    #IMPLIED &gt;
+
+&lt;!ELEMENT   Date        - -     (%n.Date;)
+ -- The date of publication. The scheme element can be used to
+    indicate the particular format of the date string. -- &gt;
+&lt;!ATTLIST Date       Scheme   (%Date.Scheme;)         #IMPLIED &gt;
+
+&lt;!ELEMENT   ObjectType  - -     (%n.ObjectType;)
+ -- The abstract category of the resource, such as article, image,
+    dictionary, etc. -- &gt;
+
+&lt;!ELEMENT   OtherAgent  - -     (%n.OtherAgent;)
+ -- Other person(s) and/or organization(s) who have made a
+    significant contribution to the resource. The value of this
+    element should follow the guidelines for the AUTHOR element.
+    The Author and Publisher elements are shorthand for using the
+    Author and Publisher attributes of this element. -- &gt;
+&lt;!ATTLIST OtherAgent Type     (%OtherAgent.Type;)     #IMPLIED
+                        Scheme   (%OtherAgent.Scheme;)   #IMPLIED &gt;
+
+&lt;!ELEMENT   Relation    - -     (%n.Relation;)
+ -- Relationship of this resource to another resource. This
+    element should specify what the relationship is, as well as
+    the target of the relationship. The TYPE attribute is used for
+    this purpose, the SCHEME attribute indicates how the
+    destination is encoded.  -- &gt;
+&lt;!ATTLIST Relation   Type     (%Relationship.Type;)   #IMPLIED
+                        Scheme   (%Relationship.Scheme;) #IMPLIED &gt;
+
+&lt;!ELEMENT   Source      - -     (%n.Source;)
+ -- Objects, either electronic or printed, from which this
+    resource was derived. This is a special case of the RELATION
+    element. -- &gt;
+
+&lt;!ELEMENT   Language    - -     (%n.Language;)
+ -- The natural language(s) of the resource. When more than
+    one Language element is specified, it indicates that more than
+    one language is used to a significant degree in the work. No
+    inference should be made about the relative proportions of the
+    language content based on the order of appearence of the
+    Language element. -- &gt;
+
+&lt;!ELEMENT   Coverage    - -     (%n.Coverage;)
+ -- The spatial extent and/or temporal duration characteristic of
+    the resource, e.g. "19'th Century France". -- &gt;
+
+&lt;!ELEMENT   Spatial     - -     (%n.Spatial;)
+ -- For more precise indication of the spatial extent characteristic
+    of the resource. -- &gt;
+
+&lt;!ELEMENT   Temporal    - -     (%n.Temporal;)
+ -- For more precise indication of the temporal duration
+    characteristic of the resource. -- &gt;
+
+</pre></back></HTML>
+
