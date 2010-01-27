@@ -1,0 +1,8 @@
+﻿<application title="winButtons" id="{5ec8e61c-00a4-4971-b7e6-252743e7a064}">
+	<entrypoint id="{1331948a-0531-4149-b511-b4bb862a188e}"
+				addin="winButtons.MyAddIn, winButtons,Culture=Neutral,Version=1.0.0.0,PublicKeyToken=2f03d0b3d8a5e772"
+				title="winButtons"
+				description="winButtons Description">
+		<category category="Background"/>
+	</entrypoint>
+</application>

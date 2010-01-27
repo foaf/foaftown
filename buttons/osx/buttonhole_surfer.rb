@@ -84,7 +84,7 @@ def bubbleEvent(e,sb)
   msg = "#{e.class}: #{e.label} (#{e.name})"
   puts msg
 #  to = "alice.notube@gmail.com"
-  to = "buttons@foaf.tv"
+  to = "buttons@foaf.tv/gumboviListener"
   subject = "Apple Remote Event"
   begin 
 #    m = Message::new(to, msg).set_type(:normal).set_id('1').set_subject(subject)
