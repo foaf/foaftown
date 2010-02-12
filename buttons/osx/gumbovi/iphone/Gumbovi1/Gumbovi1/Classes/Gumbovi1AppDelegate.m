@@ -177,7 +177,7 @@
 	NSLog(@"==============================================================");
 }
 
-- (void)xmppClientDidConnect:(XMPPClient *)sender
+- (void)xmppClientDidConnect:(XMPPClient *)sende
 {
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidConnect");

@@ -20,6 +20,7 @@
 	IBOutlet UIButton *righ;
 	IBOutlet UIButton *plpz;
 	IBOutlet UIButton *menu;
+	IBOutlet UIButton *like;
 
 	IBOutlet UITextView *output;
 
