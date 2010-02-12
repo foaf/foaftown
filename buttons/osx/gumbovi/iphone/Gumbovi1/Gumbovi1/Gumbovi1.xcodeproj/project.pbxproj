@@ -76,6 +76,7 @@
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
 		B67CC40610A5784500511209 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CC40510A5784500511209 /* CFNetwork.framework */; };
+		B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
@@ -195,6 +196,7 @@
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
 		B67CC40510A5784500511209 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CFNetwork.framework; sourceTree = "<group>"; };
+		B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,6 +213,7 @@
 				B67CC3A710A5763F00511209 /* libidn.a in Frameworks */,
 				B67CC3A810A5763F00511209 /* libidn.a in Frameworks */,
 				B67CC40610A5784500511209 /* CFNetwork.framework in Frameworks */,
+				B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +251,7 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
+				B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */,
 				B67CC40510A5784500511209 /* CFNetwork.framework */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
@@ -621,6 +625,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = DistributionTest;
 		};
@@ -666,6 +671,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -686,6 +692,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
+				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Release;
 		};
