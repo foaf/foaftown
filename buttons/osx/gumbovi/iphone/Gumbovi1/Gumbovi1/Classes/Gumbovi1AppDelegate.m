@@ -37,6 +37,7 @@
 @synthesize window;
 @synthesize tabBarController;
 @synthesize toJid;
+@synthesize aJid;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -53,19 +54,31 @@
 
 //- (void)initXMPP: (NSObject *)config  {
 - (void)initXMPP  {
-
+    NSLog(@"initXMPP *****");
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-    NSLog(@"TIMER: Initialising XMPP");
+    NSLog(@"TIMER: (?re-)Initialising XMPP");
     xmppClient = [[XMPPClient alloc] init];
 	[xmppClient addDelegate:self];
 	[xmppClient setPort:5222];	
 	NSLog(@"Userid: %@", fvc.userid.text);
 	NSLog(@"Passwd: %@", fvc.password.text);
-	[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
+  //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
+	//NSLog("aJiD: ",aJID);
+	
+	if(( [fvc.userid.text rangeOfString:@"gmail"].location == NSNotFound)){
+		NSLog(@"gmail not found in user JID %@", fvc.userid.text);
+		NSLog(@"We should parse out the host name...?");
+	} else {
+		NSLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
+		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
+	}
+	
 	// [xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
     if (fvc.userid.text != NULL) {
 		NSLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
+	    //XMPPJID aJID = [xmppClient myJID];
+	/////	NSLog("MY JID IS NOW: ",xmppClient.myJID);
 	}
     if (fvc.password.text != NULL) {
 		NSLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	

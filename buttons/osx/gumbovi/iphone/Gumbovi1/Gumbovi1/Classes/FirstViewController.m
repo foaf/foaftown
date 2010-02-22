@@ -120,8 +120,10 @@
       if (self.password.text != NULL) {
 		NSLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
 		[gad.xmppClient setPassword:self.password.text];
-	  } 
-	  [gad.xmppClient disconnect]; // Have you tried turning it off and on again? :)
+	  }
+	 // [gad initXMPP];	
+     // causes  -[UIViewController userid]: unrecognized selector sent to instance 0x3d41dc0
+		[gad.xmppClient disconnect]; // Have you tried turning it off and on again? :)
 	  [gad.xmppClient connect];
 	} else {
 	  NSLog(@"SWITCHED: ON");	

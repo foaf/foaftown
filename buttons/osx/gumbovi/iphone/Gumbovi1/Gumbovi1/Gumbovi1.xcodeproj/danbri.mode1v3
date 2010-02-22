@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -276,7 +278,6 @@
 								<string>B67CC3A110A5763F00511209</string>
 								<string>B67CC3A310A5763F00511209</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -285,6 +286,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>22</integer>
+									<integer>9</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -321,14 +324,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FirstViewController.m</string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -336,11 +337,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>FirstViewController.m</string>
+										<string>Gumbovi1AppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6C9580A1132ADB900CF15AA</string>
+										<string>B6C958B81132F90600CF15AA</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43B10A57B0600511209</string>
@@ -360,8 +361,6 @@
 											<string>B6F984C010BC89B700B9E811</string>
 											<string>B635EA4310C91B8F0062724F</string>
 											<string>B668E57A10D10AF500EDD38D</string>
-											<string>B668E57C10D10AF500EDD38D</string>
-											<string>B668E57D10D10AF500EDD38D</string>
 											<string>B6306F0710D67D5200973387</string>
 											<string>B6CD32E210D7F19F0013AA39</string>
 											<string>B67496961111B2840033F5D0</string>
@@ -372,7 +371,10 @@
 											<string>B6BD0FF911329E9200ED28CD</string>
 											<string>B6BD0FFA11329E9200ED28CD</string>
 											<string>B6C957FD1132ACC200CF15AA</string>
-											<string>B6C957F91132ACBF00CF15AA</string>
+											<string>B6C958151132B10000CF15AA</string>
+											<string>B6C958801132B6C800CF15AA</string>
+											<string>B6C958B61132F90600CF15AA</string>
+											<string>B6C958661132B5DA00CF15AA</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -406,7 +408,8 @@
 											<string>B67A3F4B111D96D900DB95ED</string>
 											<string>B6BD0FFD11329E9200ED28CD</string>
 											<string>B6BD0FFE11329E9200ED28CD</string>
-											<string>B6C957FE1132ACC200CF15AA</string>
+											<string>B6C958181132B10000CF15AA</string>
+											<string>B6C958B71132F90600CF15AA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -464,9 +467,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>B6C958001132ACC200CF15AA</string>
+				<string>B6C958B91132F90600CF15AA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>B6C958011132ACC200CF15AA</string>
+				<string>B6C958BA1132F90600CF15AA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -600,13 +603,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6C958081132ACC200CF15AA</string>
-		<string>B6C958091132ACC200CF15AA</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>B67CC37E10A5759F00511209</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
-		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>295 87 959 791 0 0 1440 878 </string>
@@ -632,7 +629,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FirstViewController.m</string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -855,18 +852,18 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{0, 0}, {781, 212}}</string>
+										<string>{{0, 0}, {938, 290}}</string>
 										<key>RubberWindowFrame</key>
-										<string>447 385 781 470 0 0 1440 878 </string>
+										<string>447 183 938 672 0 0 1440 878 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXNavigatorGroup</string>
 									<key>Proportion</key>
-									<string>781pt</string>
+									<string>938pt</string>
 								</dict>
 							</array>
 							<key>Proportion</key>
-							<string>212pt</string>
+							<string>290pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -881,18 +878,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 217}, {781, 212}}</string>
+								<string>{{0, 295}, {938, 336}}</string>
 								<key>RubberWindowFrame</key>
-								<string>447 385 781 470 0 0 1440 878 </string>
+								<string>447 183 938 672 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
 							<key>Proportion</key>
-							<string>212pt</string>
+							<string>336pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>429pt</string>
+					<string>631pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -912,7 +909,7 @@
 				<string>1CD0528E0623707200166675</string>
 			</array>
 			<key>WindowString</key>
-			<string>447 385 781 470 0 0 1440 878 </string>
+			<string>447 183 938 672 0 0 1440 878 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
@@ -982,7 +979,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

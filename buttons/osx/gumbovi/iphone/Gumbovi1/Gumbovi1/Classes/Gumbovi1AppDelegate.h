@@ -17,6 +17,7 @@
     UIWindow *window;
     UITabBarController *tabBarController;
     XMPPJID *toJid;
+    XMPPJID *aJid;
 	
 	//FirstViewController *fvc;
 
@@ -27,6 +28,7 @@
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; 
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
+@property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
 
 - (IBAction) sendMENU:(id) button;
 - (IBAction) sendLIKE:(id) button;
