@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="137"/>
+			<integer value="145"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -108,6 +108,7 @@
 										<bool key="IBUIHighlighted">YES</bool>
 										<int key="IBUIContentHorizontalAlignment">0</int>
 										<int key="IBUIContentVerticalAlignment">0</int>
+										<bool key="IBUIOn">YES</bool>
 									</object>
 									<object class="IBUILabel" id="591175380">
 										<reference key="NSNextResponder" ref="369919823"/>
@@ -1158,6 +1159,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>aJid</string>
 							<string>tabBarController</string>
 							<string>toJid</string>
 							<string>window</string>
@@ -1165,6 +1167,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>XMPPJID</string>
 							<string>UITabBarController</string>
 							<string>XMPPJID</string>
 							<string>UIWindow</string>
