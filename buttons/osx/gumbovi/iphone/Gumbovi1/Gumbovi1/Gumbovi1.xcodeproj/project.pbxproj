@@ -50,9 +50,6 @@
 		B67CC39A10A5763500511209 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39610A5763500511209 /* Icon.png */; };
 		B67CC39B10A5763500511209 /* beancounter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39710A5763500511209 /* beancounter.jpg */; };
 		B67CC39C10A5763500511209 /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39810A5763500511209 /* buttons.png */; };
-		B67CC3A610A5763F00511209 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CC3A010A5763F00511209 /* libidn.a */; };
-		B67CC3A710A5763F00511209 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CC3A210A5763F00511209 /* libidn.a */; };
-		B67CC3A810A5763F00511209 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CC3A410A5763F00511209 /* libidn.a */; };
 		B67CC3B410A5764900511209 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
 		B67CC3B510A5764900511209 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AE10A5764900511209 /* DDXMLElement.m */; };
 		B67CC3B610A5764900511209 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B010A5764900511209 /* DDXMLNode.m */; };
@@ -75,7 +72,10 @@
 		B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
-		B67CC40610A5784500511209 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67CC40510A5784500511209 /* CFNetwork.framework */; };
+		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
+		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
+		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
+		B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
 		B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
@@ -142,9 +142,6 @@
 		B67CC39710A5763500511209 /* beancounter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beancounter.jpg; sourceTree = "<group>"; };
 		B67CC39810A5763500511209 /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttons.png; sourceTree = "<group>"; };
 		B67CC39E10A5763F00511209 /* idn-int.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "idn-int.h"; sourceTree = "<group>"; };
-		B67CC3A010A5763F00511209 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
-		B67CC3A210A5763F00511209 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
-		B67CC3A410A5763F00511209 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
 		B67CC3A510A5763F00511209 /* stringprep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringprep.h; sourceTree = "<group>"; };
 		B67CC3AA10A5764900511209 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
 		B67CC3AB10A5764900511209 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
@@ -195,7 +192,10 @@
 		B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream_Prefix.pch; sourceTree = "<group>"; };
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
-		B67CC40510A5784500511209 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CFNetwork.framework; sourceTree = "<group>"; };
+		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
+		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -209,11 +209,11 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
-				B67CC3A610A5763F00511209 /* libidn.a in Frameworks */,
-				B67CC3A710A5763F00511209 /* libidn.a in Frameworks */,
-				B67CC3A810A5763F00511209 /* libidn.a in Frameworks */,
-				B67CC40610A5784500511209 /* CFNetwork.framework in Frameworks */,
 				B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */,
+				B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */,
+				B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */,
+				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
+				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +251,8 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
+				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */,
-				B67CC40510A5784500511209 /* CFNetwork.framework */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -288,6 +288,7 @@
 				B67CC3C910A5766500511209 /* XMPPElement.m */,
 				B67CC3CA10A5766500511209 /* XMPPIQ.h */,
 				B67CC3CB10A5766500511209 /* LibIDN.h */,
+				B6BD101E1132A25500ED28CD /* CFNetwork.framework */,
 				B67CC3CC10A5766500511209 /* LibIDN.m */,
 				B67CC3CD10A5766500511209 /* NSXMLElementAdditions.m */,
 				B67CC3CE10A5766500511209 /* NSXMLElementAdditions.h */,
@@ -345,6 +346,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */,
+				B6BD10301132A46F00ED28CD /* CFNetwork.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765070DF74369002DB57D /* CoreGraphics.framework */,
@@ -402,7 +405,6 @@
 		B67CC39F10A5763F00511209 /* iphoneos */ = {
 			isa = PBXGroup;
 			children = (
-				B67CC3A010A5763F00511209 /* libidn.a */,
 			);
 			path = iphoneos;
 			sourceTree = "<group>";
@@ -410,7 +412,6 @@
 		B67CC3A110A5763F00511209 /* iphonesimulator */ = {
 			isa = PBXGroup;
 			children = (
-				B67CC3A210A5763F00511209 /* libidn.a */,
 			);
 			path = iphonesimulator;
 			sourceTree = "<group>";
@@ -418,7 +419,6 @@
 		B67CC3A310A5763F00511209 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				B67CC3A410A5763F00511209 /* libidn.a */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -581,6 +581,13 @@
 					"\"$(SRCROOT)/libidn/iphoneos\"",
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
+					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
 				);
 				PRODUCT_NAME = Gumbovi1;
 			};
@@ -603,6 +610,13 @@
 					"\"$(SRCROOT)/libidn/iphoneos\"",
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
+					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
 				);
 				PRODUCT_NAME = Gumbovi1;
 			};
@@ -624,7 +638,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1.3;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = DistributionTest;
@@ -648,6 +662,13 @@
 					"\"$(SRCROOT)/libidn/iphoneos\"",
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
+					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
 				);
 				PRODUCT_NAME = Gumbovi1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9164329A-452F-4E7E-A825-1736EECD5D41";
@@ -670,7 +691,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1.3;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;
@@ -691,7 +712,7 @@
 					"-lxml2",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1.3;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Release;
