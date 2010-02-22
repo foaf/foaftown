@@ -25,8 +25,7 @@
 @synthesize like;
 @synthesize output;
 @synthesize appdel;
-
-
+//@synthesize toggleSwitch;
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -109,24 +108,25 @@
 
 
 - (void) connectionSetup:(id)sender {
-	NSLog(@"connection setup ... switch moved so restarting xmpp");
-
-    NSLog(@"SWITCH state: %@", sender);	
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-
-
-    
-	if (self.userid.text != NULL) {
-		NSLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
+	NSLog(@"connection setup ... switch moved so restarting xmpp if it moved to On");
+	NSLog(@"SWITCH state: %@", sender);	
+	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];  
+	if ([sender isOn]) {
+	  NSLog(@"SWITCHED: ON");	
+  	  if (self.userid.text != NULL) {
+	 	NSLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
 		[gad.xmppClient setMyJID:[XMPPJID jidWithString:self.userid.text]];
-	}
-    if (self.password.text != NULL) {
+	  }
+      if (self.password.text != NULL) {
 		NSLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
 		[gad.xmppClient setPassword:self.password.text];
+	  } 
+	  [gad.xmppClient disconnect]; // Have you tried turning it off and on again? :)
+	  [gad.xmppClient connect];
+	} else {
+	  NSLog(@"SWITCHED: ON");	
+	  [gad.xmppClient disconnect];	
 	}
-	[gad.xmppClient disconnect];
-	[gad.xmppClient connect];
-
 }
 
 - (void) updateText:(id)sender {

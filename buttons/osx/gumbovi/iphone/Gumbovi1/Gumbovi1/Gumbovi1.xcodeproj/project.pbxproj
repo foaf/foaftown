@@ -76,7 +76,6 @@
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
 		B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
-		B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
@@ -196,7 +195,6 @@
 		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SystemConfiguration.framework; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,7 +207,6 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
-				B6DC0C8D11254F6700FEC640 /* SystemConfiguration.framework in Frameworks */,
 				B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */,
 				B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */,
 				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
@@ -252,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
-				B6DC0C8C11254F6700FEC640 /* SystemConfiguration.framework */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
 				080E96DDFE201D6D7F000001 /* Classes */,
