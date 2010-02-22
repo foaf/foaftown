@@ -24,6 +24,8 @@
 
 	IBOutlet UITextView *output;
 
+//	IBOutlet UISwitch *toggleSwitch;
+	
 	IBOutlet Gumbovi1AppDelegate *appdel; // to get our xmpp session!
 								// todo, find out how to use XMPPClient class here
 								// do we import FirstViewController.h ? didnt work.
@@ -43,7 +45,7 @@
 	@property (nonatomic, retain) IBOutlet UIButton *menu;
     @property (nonatomic, retain) IBOutlet UIButton *like;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
-	
+//	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;
 	- (IBAction) connectionSetup:(id)sender;
