@@ -1082,6 +1082,13 @@
 		sourceDirectories = (
 		);
 	};
+	B6C959D91133172000CF15AA /* QRGumbovi-Info.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist.xml;
+		name = "QRGumbovi-Info.plist";
+		path = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/QRGumbovi-Info.plist";
+		sourceTree = "<absolute>";
+	};
 	B6C95ABF1133238600CF15AA /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */;
