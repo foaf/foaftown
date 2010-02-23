@@ -88,7 +88,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1CB0CC6011341B540058A051 /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGumbovi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gumbovi1AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gumbovi1AppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B622B62710A5B9E8007E8F37 /* SecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		B647EF911134611000A52058 /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGumbovi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down-100x.png"; sourceTree = "<group>"; };
 		B648FE9210D1A3040068001F /* heartbuttons4-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down.png"; sourceTree = "<group>"; };
 		B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-left-100x.png"; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Gumbovi1.app */,
-				1CB0CC6011341B540058A051 /* QRGumbovi.app */,
+				B647EF911134611000A52058 /* QRGumbovi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,7 +492,7 @@
 			);
 			name = QRGumbovi;
 			productName = QRGumbovi;
-			productReference = 1CB0CC6011341B540058A051 /* QRGumbovi.app */;
+			productReference = B647EF911134611000A52058 /* QRGumbovi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

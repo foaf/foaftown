@@ -24,6 +24,9 @@
 	IBOutlet UIButton *okay;
 	IBOutlet UITextView *output;
 
+	IBOutlet UISlider *volume;
+
+	
 //	IBOutlet UISwitch *toggleSwitch;
 	
 	IBOutlet Gumbovi1AppDelegate *appdel; // to get our xmpp session!
@@ -46,6 +49,10 @@
     @property (nonatomic, retain) IBOutlet UIButton *like;
 	@property (nonatomic, retain) IBOutlet UIButton *okay;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
+
+	@property (nonatomic, retain) IBOutlet UISlider *volume;
+
+
 //	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;

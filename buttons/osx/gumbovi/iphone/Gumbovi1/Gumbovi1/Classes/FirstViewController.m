@@ -26,6 +26,9 @@
 @synthesize okay;
 @synthesize output;
 @synthesize appdel;
+@synthesize volume;
+
+
 //@synthesize toggleSwitch;
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -183,6 +186,12 @@
 	    NSLog(@"OKAY");	
 		[self.appdel sendOKAY:sender];
 		self.output.text = @"Okay";
+	}
+	else if (sender == self.volume) {
+         NSLog(@"Volume : %f", self.volume.value);
+		//NSLog(@"VOLUME Loudness change.");	
+		[self.appdel sendLOUD:sender];
+		self.output.text = @"Loud: ", self.volume.value;
 	}
 	else {
 		NSLog(@"Unrecognised buttonDown UI action: %@", sender);

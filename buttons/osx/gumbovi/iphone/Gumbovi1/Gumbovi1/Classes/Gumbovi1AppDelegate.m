@@ -186,6 +186,15 @@
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
+- (void)sendLOUD:(NSObject *)myS;
+{
+	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+	NSString *msg =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
+//	NSString *msg = @"LOUDness event %@", ;
+	NSLog(@"SENDING LOUD %@", msg  );
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
