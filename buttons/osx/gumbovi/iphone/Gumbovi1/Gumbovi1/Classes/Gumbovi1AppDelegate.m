@@ -88,6 +88,7 @@
 
 //	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
+//	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
 	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
 
 	
@@ -178,6 +179,12 @@
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
+- (void)sendOKAY:(NSObject *)button
+{
+	NSLog(@"SENDING OKAY %@", button);
+	NSString *msg = @"OKAY event.";
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:

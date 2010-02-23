@@ -21,7 +21,7 @@
 	IBOutlet UIButton *plpz;
 	IBOutlet UIButton *menu;
 	IBOutlet UIButton *like;
-
+	IBOutlet UIButton *okay;
 	IBOutlet UITextView *output;
 
 //	IBOutlet UISwitch *toggleSwitch;
@@ -44,6 +44,7 @@
 	@property (nonatomic, retain) IBOutlet UIButton *plpz;
 	@property (nonatomic, retain) IBOutlet UIButton *menu;
     @property (nonatomic, retain) IBOutlet UIButton *like;
+	@property (nonatomic, retain) IBOutlet UIButton *okay;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 //	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;
 	- (IBAction) updateText:(id) sender;
