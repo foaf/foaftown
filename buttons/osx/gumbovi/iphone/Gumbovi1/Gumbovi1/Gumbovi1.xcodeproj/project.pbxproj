@@ -88,6 +88,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1CB0CC6011341B540058A051 /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGumbovi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gumbovi1AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gumbovi1AppDelegate.m; sourceTree = "<group>"; };
@@ -203,7 +204,6 @@
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6C9591D1133065D00CF15AA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
-		B6C959D71133172000CF15AA /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = QRGumbovi.app; path = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/build/Debug-iphonesimulator/QRGumbovi.app"; sourceTree = "<absolute>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Gumbovi1.app */,
+				1CB0CC6011341B540058A051 /* QRGumbovi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -491,7 +492,7 @@
 			);
 			name = QRGumbovi;
 			productName = QRGumbovi;
-			productReference = B6C959D71133172000CF15AA /* QRGumbovi.app */;
+			productReference = 1CB0CC6011341B540058A051 /* QRGumbovi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

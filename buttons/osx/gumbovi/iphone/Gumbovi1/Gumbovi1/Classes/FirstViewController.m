@@ -23,6 +23,7 @@
 @synthesize plpz;
 @synthesize menu;
 @synthesize like;
+@synthesize okay;
 @synthesize output;
 @synthesize appdel;
 //@synthesize toggleSwitch;
@@ -177,6 +178,11 @@
 	    NSLog(@"LIKE");	
 		[self.appdel sendLIKE:sender];
 		self.output.text = @"Like";
+	}
+	else if (sender == self.okay) {
+	    NSLog(@"OKAY");	
+		[self.appdel sendOKAY:sender];
+		self.output.text = @"Okay";
 	}
 	else {
 		NSLog(@"Unrecognised buttonDown UI action: %@", sender);

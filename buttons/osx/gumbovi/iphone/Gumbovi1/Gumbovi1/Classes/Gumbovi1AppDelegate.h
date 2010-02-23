@@ -37,6 +37,7 @@
 - (IBAction) sendMINU:(id) button;
 - (IBAction) sendLEFT:(id) button;
 - (IBAction) sendRIGH:(id) button;
+- (IBAction) sendOKAY:(id) button;
 - (void) initXMPP: (id) config;
 - (void) initXMPP;
 
