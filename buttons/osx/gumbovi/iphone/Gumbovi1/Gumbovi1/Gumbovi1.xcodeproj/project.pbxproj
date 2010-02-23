@@ -77,12 +77,12 @@
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
 		B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
 		B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
-		B6C959261133069E00CF15AA /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B6C959231133069E00CF15AA /* Decoder.mm */; };
-		B6C959271133069E00CF15AA /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C959251133069E00CF15AA /* DecoderController.m */; };
-		B6C95931113306BA00CF15AA /* qrui-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6C95930113306BA00CF15AA /* qrui-Info.plist */; };
-		B6C959361133070600CF15AA /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C959331133070600CF15AA /* OverlayView.m */; };
-		B6C959371133070600CF15AA /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C959351133070600CF15AA /* QRImagePickerController.m */; };
-		B6C9593B1133072500CF15AA /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C9593A1133072500CF15AA /* qruiAppDelegate.m */; };
+		B6C95A9E11331F8800CF15AA /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
+		B6C95A9F11331F9A00CF15AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
+		B6C95AA61133210600CF15AA /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */; };
+		B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
@@ -203,18 +203,8 @@
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6C9591D1133065D00CF15AA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
-		B6C959221133069E00CF15AA /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
-		B6C959231133069E00CF15AA /* Decoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Decoder.mm; sourceTree = "<group>"; };
-		B6C959241133069E00CF15AA /* DecoderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecoderController.h; sourceTree = "<group>"; };
-		B6C959251133069E00CF15AA /* DecoderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecoderController.m; sourceTree = "<group>"; };
-		B6C95930113306BA00CF15AA /* qrui-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "qrui-Info.plist"; sourceTree = "<group>"; };
-		B6C959321133070600CF15AA /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
-		B6C959331133070600CF15AA /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		B6C959341133070600CF15AA /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRImagePickerController.h; sourceTree = "<group>"; };
-		B6C959351133070600CF15AA /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRImagePickerController.m; sourceTree = "<group>"; };
-		B6C959381133072500CF15AA /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrui_Prefix.pch; sourceTree = "<group>"; };
-		B6C959391133072500CF15AA /* qruiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qruiAppDelegate.h; sourceTree = "<group>"; };
-		B6C9593A1133072500CF15AA /* qruiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qruiAppDelegate.m; sourceTree = "<group>"; };
+		B6C959D71133172000CF15AA /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGumbovi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C959D91133172000CF15AA /* QRGumbovi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QRGumbovi-Info.plist"; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,6 +222,16 @@
 				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
 				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6C959D51133172000CF15AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6C95A9E11331F8800CF15AA /* libiconv.2.dylib in Frameworks */,
+				B6C95A9F11331F9A00CF15AA /* CoreGraphics.framework in Frameworks */,
+				B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* Gumbovi1.app */,
+				B6C959D71133172000CF15AA /* QRGumbovi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,7 +270,6 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
-				B6C959211133068600CF15AA /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
@@ -279,6 +279,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				B6E095C410B1AE4E00F27218 /* Entitlements.plist */,
+				B6C959D91133172000CF15AA /* QRGumbovi-Info.plist */,
 			);
 			name = Gumbovi1;
 			sourceTree = "<group>";
@@ -459,25 +460,6 @@
 			path = KissXML;
 			sourceTree = "<group>";
 		};
-		B6C959211133068600CF15AA /* qr */ = {
-			isa = PBXGroup;
-			children = (
-				B6C959221133069E00CF15AA /* Decoder.h */,
-				B6C959231133069E00CF15AA /* Decoder.mm */,
-				B6C95930113306BA00CF15AA /* qrui-Info.plist */,
-				B6C959321133070600CF15AA /* OverlayView.h */,
-				B6C959331133070600CF15AA /* OverlayView.m */,
-				B6C959381133072500CF15AA /* qrui_Prefix.pch */,
-				B6C959391133072500CF15AA /* qruiAppDelegate.h */,
-				B6C9593A1133072500CF15AA /* qruiAppDelegate.m */,
-				B6C959341133070600CF15AA /* QRImagePickerController.h */,
-				B6C959351133070600CF15AA /* QRImagePickerController.m */,
-				B6C959241133069E00CF15AA /* DecoderController.h */,
-				B6C959251133069E00CF15AA /* DecoderController.m */,
-			);
-			name = qr;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -498,6 +480,23 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Gumbovi1.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B6C959D61133172000CF15AA /* QRGumbovi */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6C959DD1133172200CF15AA /* Build configuration list for PBXNativeTarget "QRGumbovi" */;
+			buildPhases = (
+				B6C959D31133172000CF15AA /* Resources */,
+				B6C959D41133172000CF15AA /* Sources */,
+				B6C959D51133172000CF15AA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QRGumbovi;
+			productName = QRGumbovi;
+			productReference = B6C959D71133172000CF15AA /* QRGumbovi.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -511,6 +510,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
+				B6C959D61133172000CF15AA /* QRGumbovi */,
 			);
 		};
 /* End PBXProject section */
@@ -549,7 +549,13 @@
 				B648FEA010D1A3040068001F /* heartbuttons4-up.png in Resources */,
 				B67496831111AB4A0033F5D0 /* control_bar.png in Resources */,
 				B67496851111AB7A0033F5D0 /* nav_wheel.png in Resources */,
-				B6C95931113306BA00CF15AA /* qrui-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6C959D31133172000CF15AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,11 +601,16 @@
 				B656AA5610ADDD590089D78F /* SBJsonBase.m in Sources */,
 				B656AA5710ADDD590089D78F /* SBJsonParser.m in Sources */,
 				B656AA5810ADDD590089D78F /* SBJsonWriter.m in Sources */,
-				B6C959261133069E00CF15AA /* Decoder.mm in Sources */,
-				B6C959271133069E00CF15AA /* DecoderController.m in Sources */,
-				B6C959361133070600CF15AA /* OverlayView.m in Sources */,
-				B6C959371133070600CF15AA /* QRImagePickerController.m in Sources */,
-				B6C9593B1133072500CF15AA /* qruiAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6C959D41133172000CF15AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */,
+				B6C95AA61133210600CF15AA /* DrillDownAppAppDelegate.m in Sources */,
+				B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +637,7 @@
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
 					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -655,6 +667,7 @@
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
 					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -665,6 +678,88 @@
 				PRODUCT_NAME = Gumbovi1;
 			};
 			name = Release;
+		};
+		B6C959DA1133172200CF15AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "QRGumbovi-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = QRGumbovi;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Debug;
+		};
+		B6C959DB1133172200CF15AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "QRGumbovi-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = QRGumbovi;
+				SDKROOT = iphoneos3.1.3;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B6C959DC1133172200CF15AA /* DistributionTest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "QRGumbovi-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = QRGumbovi;
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = DistributionTest;
 		};
 		B6E095A010B1AB4100F27218 /* DistributionTest */ = {
 			isa = XCBuildConfiguration;
@@ -707,6 +802,7 @@
 					"\"$(SRCROOT)/libidn/iphonesimulator\"",
 					"\"$(SRCROOT)/libidn/Mac\"",
 					"\"$(SRCROOT)/../newsrc/trunk/libidn\"",
+					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -770,6 +866,16 @@
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 				B6E095A110B1AB4100F27218 /* DistributionTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6C959DD1133172200CF15AA /* Build configuration list for PBXNativeTarget "QRGumbovi" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6C959DA1133172200CF15AA /* Debug */,
+				B6C959DB1133172200CF15AA /* Release */,
+				B6C959DC1133172200CF15AA /* DistributionTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
