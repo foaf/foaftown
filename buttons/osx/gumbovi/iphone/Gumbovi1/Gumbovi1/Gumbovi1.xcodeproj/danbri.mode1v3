@@ -273,9 +273,10 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>B6B74B5B11355C2D00DD019D</string>
 								<string>B6B74AB61135581500DD019D</string>
+								<string>B6B74ACF1135583700DD019D</string>
 								<string>B6B74AC41135583600DD019D</string>
+								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
@@ -291,56 +292,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>4</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>5</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>6</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>7</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>8</integer>
-									<integer>7</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>9</integer>
-									<integer>7</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>10</integer>
-									<integer>7</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>11</integer>
-									<integer>7</integer>
-									<integer>3</integer>
-									<integer>0</integer>
-								</array>
-								<array>
-									<integer>12</integer>
-									<integer>3</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -382,7 +334,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DecoderController.m</string>
+								<string>DecoderController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -390,11 +342,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DecoderController.m</string>
+										<string>DecoderController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6B74BCE11356DBE00DD019D</string>
+										<string>B6B74C3111357B2500DD019D</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43B10A57B0600511209</string>
@@ -404,14 +356,11 @@
 											<string>B60B4AB110A8B84600BC7A57</string>
 											<string>B6BF421010AE1760008F629B</string>
 											<string>B6E095F010B1C1A300F27218</string>
-											<string>B6E095F210B1C1A300F27218</string>
-											<string>B6E095F310B1C1A300F27218</string>
 											<string>B6304FC710B45DA8008B0431</string>
 											<string>B6304FC810B45DA8008B0431</string>
 											<string>B6304FC910B45DA8008B0431</string>
 											<string>B6F984C010BC89B700B9E811</string>
 											<string>B635EA4310C91B8F0062724F</string>
-											<string>B668E57A10D10AF500EDD38D</string>
 											<string>B6306F0710D67D5200973387</string>
 											<string>B6CD32E210D7F19F0013AA39</string>
 											<string>B67496961111B2840033F5D0</string>
@@ -430,9 +379,14 @@
 											<string>B647EFEC113474FF00A52058</string>
 											<string>B647F0121134784000A52058</string>
 											<string>B6B74AF51135599C00DD019D</string>
-											<string>B6B74B7611355ECD00DD019D</string>
 											<string>B6B74BCB11356DBE00DD019D</string>
-											<string>B6B74BCC11356DBE00DD019D</string>
+											<string>B6B74C111135784D00DD019D</string>
+											<string>B6B74C121135784D00DD019D</string>
+											<string>B6B74C131135784D00DD019D</string>
+											<string>B6B74C141135784D00DD019D</string>
+											<string>B6B74C151135784D00DD019D</string>
+											<string>B6B74C161135784D00DD019D</string>
+											<string>B6B74B7611355ECD00DD019D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -472,6 +426,19 @@
 											<string>B6B74AF71135599C00DD019D</string>
 											<string>B6B74B7811355ECD00DD019D</string>
 											<string>B6B74BCD11356DBE00DD019D</string>
+											<string>B6B74C171135784D00DD019D</string>
+											<string>B6B74C181135784D00DD019D</string>
+											<string>B6B74C191135784D00DD019D</string>
+											<string>B6B74C1A1135784D00DD019D</string>
+											<string>B6B74C1B1135784D00DD019D</string>
+											<string>B6B74C1C1135784D00DD019D</string>
+											<string>B6B74C1D1135784D00DD019D</string>
+											<string>B6B74C1E1135784D00DD019D</string>
+											<string>B6B74C1F1135784D00DD019D</string>
+											<string>B6B74C201135784D00DD019D</string>
+											<string>B6B74C211135784D00DD019D</string>
+											<string>B6B74C221135784D00DD019D</string>
+											<string>B6B74C231135784D00DD019D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -665,14 +632,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6B74BCF11356DBE00DD019D</string>
 		<string>B6B74AFB1135599C00DD019D</string>
 		<string>B6B74AFC1135599C00DD019D</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>B67CC44310A57B0600511209</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>B67CC44310A57B0600511209</string>
 	</array>
 	<key>WindowString</key>
 	<string>99 51 815 827 0 0 1440 878 </string>
@@ -1216,7 +1182,7 @@
 			<key>WindowToolGUID</key>
 			<string>B67CC44310A57B0600511209</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
