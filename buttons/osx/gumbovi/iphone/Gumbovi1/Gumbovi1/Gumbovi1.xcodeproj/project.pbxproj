@@ -283,7 +283,6 @@
 			children = (
 				B6A67F1B11357F2000EA4712 /* lists */,
 				B6A67EE011357B8300EA4712 /* qr */,
-				B6B74BF7113577B900DD019D /* qrlib.xcodeproj */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
@@ -460,6 +459,7 @@
 		B6A67EE011357B8300EA4712 /* qr */ = {
 			isa = PBXGroup;
 			children = (
+				B6B74BF7113577B900DD019D /* qrlib.xcodeproj */,
 				B6A67EE111357B8300EA4712 /* QRImagePickerController.h */,
 				B6A67EE211357B8300EA4712 /* QRImagePickerController.m */,
 				B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */,
