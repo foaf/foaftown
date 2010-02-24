@@ -188,7 +188,8 @@
 		self.output.text = @"Okay";
 	}
 	else if (sender == self.volume) {
-         NSLog(@"Volume : %f", self.volume.value);
+		// http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISlider_Class/Reference/Reference.html
+		NSLog(@"Volume : %f", self.volume.value);
 		//NSLog(@"VOLUME Loudness change.");	
 		[self.appdel sendLOUD:sender];
 		self.output.text = @"Loud: ", self.volume.value;
