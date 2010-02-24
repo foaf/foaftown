@@ -186,6 +186,13 @@
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
+- (void)sendINFO:(NSObject *)button
+{
+	NSLog(@"SENDING INFO %@", button);
+	NSString *msg = @"INFO event.";
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+}
+
 - (void)sendLOUD:(NSObject *)myS;
 {
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
