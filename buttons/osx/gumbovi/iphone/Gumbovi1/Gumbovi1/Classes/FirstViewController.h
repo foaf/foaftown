@@ -22,6 +22,7 @@
 	IBOutlet UIButton *menu;
 	IBOutlet UIButton *like;
 	IBOutlet UIButton *okay;
+	IBOutlet UIButton *info;
 	IBOutlet UITextView *output;
 
 	IBOutlet UISlider *volume;
@@ -48,6 +49,7 @@
 	@property (nonatomic, retain) IBOutlet UIButton *menu;
     @property (nonatomic, retain) IBOutlet UIButton *like;
 	@property (nonatomic, retain) IBOutlet UIButton *okay;
+	@property (nonatomic, retain) IBOutlet UIButton *info;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 
 	@property (nonatomic, retain) IBOutlet UISlider *volume;

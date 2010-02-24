@@ -24,6 +24,7 @@
 @synthesize menu;
 @synthesize like;
 @synthesize okay;
+@synthesize info;
 @synthesize output;
 @synthesize appdel;
 @synthesize volume;
@@ -186,6 +187,11 @@
 	    NSLog(@"OKAY");	
 		[self.appdel sendOKAY:sender];
 		self.output.text = @"Okay";
+	}
+	else if (sender == self.info) {
+	    NSLog(@"INFO");	
+		[self.appdel sendINFO:sender];
+		self.output.text = @"Info";
 	}
 	else if (sender == self.volume) {
 		// http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISlider_Class/Reference/Reference.html
