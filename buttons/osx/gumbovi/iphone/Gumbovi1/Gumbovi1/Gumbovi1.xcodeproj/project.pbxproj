@@ -72,6 +72,7 @@
 		B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
+		B6B74B6211355C4700DD019D /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74B6011355C2D00DD019D /* libqrlib.a */; };
 		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
@@ -86,6 +87,23 @@
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6B74B5F11355C2D00DD019D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libqrlib.a */;
+			remoteInfo = qrlib;
+		};
+		B6B74B6411355CE000DD019D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* qrlib */;
+			remoteInfo = qrlib;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -199,6 +217,18 @@
 		B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream_Prefix.pch; sourceTree = "<group>"; };
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
+		B6B74AC21135583600DD019D /* Decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		B6B74AC31135583600DD019D /* Decoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Decoder.mm; sourceTree = "<group>"; };
+		B6B74AC61135583600DD019D /* QRImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRImagePickerController.h; sourceTree = "<group>"; };
+		B6B74AC71135583600DD019D /* QRImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRImagePickerController.m; sourceTree = "<group>"; };
+		B6B74AC91135583700DD019D /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		B6B74ACA1135583700DD019D /* OverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		B6B74ACB1135583700DD019D /* DecoderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecoderController.h; sourceTree = "<group>"; };
+		B6B74ACC1135583700DD019D /* DecoderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecoderController.m; sourceTree = "<group>"; };
+		B6B74ACD1135583700DD019D /* qruiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qruiAppDelegate.h; sourceTree = "<group>"; };
+		B6B74ACE1135583700DD019D /* qruiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qruiAppDelegate.m; sourceTree = "<group>"; };
+		B6B74AD01135583700DD019D /* qrui_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrui_Prefix.pch; sourceTree = "<group>"; };
+		B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../../../../../working/barcode/liteqr/qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
 		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -221,6 +251,7 @@
 				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
 				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
+				B6B74B6211355C4700DD019D /* libqrlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +300,8 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
+				B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */,
+				B6B74AB61135581500DD019D /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
@@ -458,6 +491,72 @@
 			path = KissXML;
 			sourceTree = "<group>";
 		};
+		B6B74AB61135581500DD019D /* qr */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74ACF1135583700DD019D /* Other Sources */,
+				B6B74ACD1135583700DD019D /* qruiAppDelegate.h */,
+				B6B74ACE1135583700DD019D /* qruiAppDelegate.m */,
+				B6B74AC41135583600DD019D /* Decoder Controller */,
+				B6B74AC11135583600DD019D /* Decoder */,
+			);
+			name = qr;
+			sourceTree = "<group>";
+		};
+		B6B74AC11135583600DD019D /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74AC21135583600DD019D /* Decoder.h */,
+				B6B74AC31135583600DD019D /* Decoder.mm */,
+			);
+			name = Decoder;
+			sourceTree = "<group>";
+		};
+		B6B74AC41135583600DD019D /* Decoder Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74ACB1135583700DD019D /* DecoderController.h */,
+				B6B74ACC1135583700DD019D /* DecoderController.m */,
+				B6B74AC81135583700DD019D /* Overlay View */,
+				B6B74AC51135583600DD019D /* Image Picker */,
+			);
+			name = "Decoder Controller";
+			sourceTree = "<group>";
+		};
+		B6B74AC51135583600DD019D /* Image Picker */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74AC61135583600DD019D /* QRImagePickerController.h */,
+				B6B74AC71135583600DD019D /* QRImagePickerController.m */,
+			);
+			name = "Image Picker";
+			sourceTree = "<group>";
+		};
+		B6B74AC81135583700DD019D /* Overlay View */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74AC91135583700DD019D /* OverlayView.h */,
+				B6B74ACA1135583700DD019D /* OverlayView.m */,
+			);
+			name = "Overlay View";
+			sourceTree = "<group>";
+		};
+		B6B74ACF1135583700DD019D /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74AD01135583700DD019D /* qrui_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		B6B74B5C11355C2D00DD019D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6B74B6011355C2D00DD019D /* libqrlib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -489,6 +588,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B6B74B6511355CE000DD019D /* PBXTargetDependency */,
 			);
 			name = QRGumbovi;
 			productName = QRGumbovi;
@@ -505,6 +605,12 @@
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gumbovi1 */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B6B74B5C11355C2D00DD019D /* Products */;
+					ProjectRef = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
@@ -512,6 +618,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B6B74B6011355C2D00DD019D /* libqrlib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libqrlib.a;
+			remoteRef = B6B74B5F11355C2D00DD019D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
@@ -613,6 +729,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6B74B6511355CE000DD019D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = qrlib;
+			targetProxy = B6B74B6411355CE000DD019D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -822,9 +946,14 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				HEADER_SEARCH_PATHS = (
+					"../../../../../../working/barcode/liteqr/qrlib/src//**",
+					/usr/include/libxml2,
+				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"";
 				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
 					"-lidn",
 					"-lxml2",
 				);
