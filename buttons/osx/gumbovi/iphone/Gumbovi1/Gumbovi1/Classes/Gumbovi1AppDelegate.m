@@ -88,8 +88,8 @@
 
 //	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
-//	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
-	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
+	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
+//	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
 
 	
 	[xmppClient setAutoLogin:YES];
