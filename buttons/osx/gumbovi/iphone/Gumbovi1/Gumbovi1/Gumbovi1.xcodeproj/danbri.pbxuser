@@ -171,6 +171,8 @@
 			B6A67F0A11357EA600EA4712 /* PlistBookmark */ = B6A67F0A11357EA600EA4712 /* PlistBookmark */;
 			B6A67F0B11357EA600EA4712 /* PBXTextBookmark */ = B6A67F0B11357EA600EA4712 /* PBXTextBookmark */;
 			B6A67F0C11357EA600EA4712 /* PlistBookmark */ = B6A67F0C11357EA600EA4712 /* PlistBookmark */;
+			B6A67F4A11357F7700EA4712 /* PlistBookmark */ = B6A67F4A11357F7700EA4712 /* PlistBookmark */;
+			B6A67F4B11357F7700EA4712 /* PlistBookmark */ = B6A67F4B11357F7700EA4712 /* PlistBookmark */;
 			B6B74AF51135599C00DD019D = B6B74AF51135599C00DD019D /* PBXTextBookmark */;
 			B6B74AF71135599C00DD019D = B6B74AF71135599C00DD019D /* PBXTextBookmark */;
 			B6B74B7611355ECD00DD019D = B6B74B7611355ECD00DD019D /* PBXTextBookmark */;
@@ -970,6 +972,28 @@
 		vrLoc = 0;
 	};
 	B6A67F0C11357EA600EA4712 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B656AA3510ADDCBD0089D78F /* Data.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Data.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	B6A67F4A11357F7700EA4712 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B656AA3510ADDCBD0089D78F /* Data.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Data.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	B6A67F4B11357F7700EA4712 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = B656AA3510ADDCBD0089D78F /* Data.plist */;
 		fallbackIsa = PBXBookmark;
