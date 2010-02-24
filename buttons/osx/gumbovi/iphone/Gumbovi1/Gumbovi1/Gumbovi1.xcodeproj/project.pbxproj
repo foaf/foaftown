@@ -23,10 +23,6 @@
 		B648FE9E10D1A3040068001F /* heartbuttons4-righ.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9610D1A3040068001F /* heartbuttons4-righ.png */; };
 		B648FE9F10D1A3040068001F /* heartbuttons4-up-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */; };
 		B648FEA010D1A3040068001F /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
-		B656AA2B10ADDC800089D78F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2410ADDC800089D78F /* RootViewController.m */; };
-		B656AA2C10ADDC800089D78F /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */; };
-		B656AA2D10ADDC800089D78F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2810ADDC800089D78F /* DetailViewController.m */; };
-		B656AA2E10ADDC800089D78F /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2A10ADDC800089D78F /* ImageViewController.m */; };
 		B656AA3810ADDCBD0089D78F /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3010ADDCBD0089D78F /* Image.jpg */; };
 		B656AA3D10ADDCBD0089D78F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3510ADDCBD0089D78F /* Data.plist */; };
 		B656AA3E10ADDCBD0089D78F /* notube.json in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3610ADDCBD0089D78F /* notube.json */; };
@@ -93,7 +89,6 @@
 		B6C95A9F11331F9A00CF15AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
-		B6C95AA61133210600CF15AA /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */; };
 		B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
@@ -132,14 +127,6 @@
 		B648FE9610D1A3040068001F /* heartbuttons4-righ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-righ.png"; sourceTree = "<group>"; };
 		B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up-100x.png"; sourceTree = "<group>"; };
 		B648FE9810D1A3040068001F /* heartbuttons4-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up.png"; sourceTree = "<group>"; };
-		B656AA2310ADDC800089D78F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		B656AA2410ADDC800089D78F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		B656AA2510ADDC800089D78F /* DrillDownAppAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrillDownAppAppDelegate.h; sourceTree = "<group>"; };
-		B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrillDownAppAppDelegate.m; sourceTree = "<group>"; };
-		B656AA2710ADDC800089D78F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		B656AA2810ADDC800089D78F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		B656AA2910ADDC800089D78F /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
-		B656AA2A10ADDC800089D78F /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		B656AA3010ADDCBD0089D78F /* Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image.jpg; sourceTree = "<group>"; };
 		B656AA3510ADDCBD0089D78F /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		B656AA3610ADDCBD0089D78F /* notube.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notube.json; sourceTree = "<group>"; };
@@ -273,17 +260,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B656AA4510ADDD590089D78F /* JSON */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
-				B656AA4510ADDD590089D78F /* JSON */,
-				B656AA2310ADDC800089D78F /* RootViewController.h */,
-				B656AA2410ADDC800089D78F /* RootViewController.m */,
-				B656AA2510ADDC800089D78F /* DrillDownAppAppDelegate.h */,
-				B656AA2610ADDC800089D78F /* DrillDownAppAppDelegate.m */,
-				B656AA2710ADDC800089D78F /* DetailViewController.h */,
-				B656AA2810ADDC800089D78F /* DetailViewController.m */,
-				B656AA2910ADDC800089D78F /* ImageViewController.h */,
-				B656AA2A10ADDC800089D78F /* ImageViewController.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 			);
@@ -692,10 +671,6 @@
 				B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */,
 				B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */,
 				B67CC3F010A5766500511209 /* XMPPStream.m in Sources */,
-				B656AA2B10ADDC800089D78F /* RootViewController.m in Sources */,
-				B656AA2C10ADDC800089D78F /* DrillDownAppAppDelegate.m in Sources */,
-				B656AA2D10ADDC800089D78F /* DetailViewController.m in Sources */,
-				B656AA2E10ADDC800089D78F /* ImageViewController.m in Sources */,
 				B656AA5310ADDD590089D78F /* NSObject+SBJSON.m in Sources */,
 				B656AA5410ADDD590089D78F /* NSString+SBJSON.m in Sources */,
 				B656AA5510ADDD590089D78F /* SBJSON.m in Sources */,
@@ -714,7 +689,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */,
-				B6C95AA61133210600CF15AA /* DrillDownAppAppDelegate.m in Sources */,
 				B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */,
 				B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */,
 				B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */,
