@@ -72,6 +72,8 @@
 		B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
+		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
+		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
@@ -92,7 +94,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = B6B74BF7113577B900DD019D /* qrlib.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libqrlib.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = qrlib;
 		};
 /* End PBXContainerItemProxy section */
@@ -209,17 +211,11 @@
 		B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream_Prefix.pch; sourceTree = "<group>"; };
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
-		B6B74AC21135583600DD019D /* Decoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
-		B6B74AC31135583600DD019D /* Decoder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Decoder.mm; sourceTree = "<group>"; };
-		B6B74AC61135583600DD019D /* QRImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QRImagePickerController.h; sourceTree = "<group>"; };
-		B6B74AC71135583600DD019D /* QRImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRImagePickerController.m; sourceTree = "<group>"; };
-		B6B74AC91135583700DD019D /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
-		B6B74ACA1135583700DD019D /* OverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		B6B74ACB1135583700DD019D /* DecoderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecoderController.h; sourceTree = "<group>"; };
-		B6B74ACC1135583700DD019D /* DecoderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecoderController.m; sourceTree = "<group>"; };
-		B6B74ACD1135583700DD019D /* qruiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qruiAppDelegate.h; sourceTree = "<group>"; };
-		B6B74ACE1135583700DD019D /* qruiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qruiAppDelegate.m; sourceTree = "<group>"; };
-		B6B74AD01135583700DD019D /* qrui_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrui_Prefix.pch; sourceTree = "<group>"; };
+		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
+		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
+		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		B6A67EE411357B8300EA4712 /* qruiAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qruiAppDelegate.h; path = qr/qruiAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = qruiAppDelegate.m; path = qr/qruiAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		B6B74BF7113577B900DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
 		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -291,8 +287,8 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
+				B6A67EE011357B8300EA4712 /* qr */,
 				B6B74BF7113577B900DD019D /* qrlib.xcodeproj */,
-				B6B74AB61135581500DD019D /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC39D10A5763F00511209 /* libidn */,
@@ -482,63 +478,17 @@
 			path = KissXML;
 			sourceTree = "<group>";
 		};
-		B6B74AB61135581500DD019D /* qr */ = {
+		B6A67EE011357B8300EA4712 /* qr */ = {
 			isa = PBXGroup;
 			children = (
-				B6B74ACF1135583700DD019D /* Other Sources */,
-				B6B74ACD1135583700DD019D /* qruiAppDelegate.h */,
-				B6B74ACE1135583700DD019D /* qruiAppDelegate.m */,
-				B6B74AC41135583600DD019D /* Decoder Controller */,
-				B6B74AC11135583600DD019D /* Decoder */,
+				B6A67EE111357B8300EA4712 /* QRImagePickerController.h */,
+				B6A67EE211357B8300EA4712 /* QRImagePickerController.m */,
+				B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */,
+				B6A67EE411357B8300EA4712 /* qruiAppDelegate.h */,
+				B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */,
 			);
-			name = qr;
-			sourceTree = "<group>";
-		};
-		B6B74AC11135583600DD019D /* Decoder */ = {
-			isa = PBXGroup;
-			children = (
-				B6B74AC21135583600DD019D /* Decoder.h */,
-				B6B74AC31135583600DD019D /* Decoder.mm */,
-			);
-			name = Decoder;
-			sourceTree = "<group>";
-		};
-		B6B74AC41135583600DD019D /* Decoder Controller */ = {
-			isa = PBXGroup;
-			children = (
-				B6B74ACB1135583700DD019D /* DecoderController.h */,
-				B6B74ACC1135583700DD019D /* DecoderController.m */,
-				B6B74AC81135583700DD019D /* Overlay View */,
-				B6B74AC51135583600DD019D /* Image Picker */,
-			);
-			name = "Decoder Controller";
-			sourceTree = "<group>";
-		};
-		B6B74AC51135583600DD019D /* Image Picker */ = {
-			isa = PBXGroup;
-			children = (
-				B6B74AC61135583600DD019D /* QRImagePickerController.h */,
-				B6B74AC71135583600DD019D /* QRImagePickerController.m */,
-			);
-			name = "Image Picker";
-			sourceTree = "<group>";
-		};
-		B6B74AC81135583700DD019D /* Overlay View */ = {
-			isa = PBXGroup;
-			children = (
-				B6B74AC91135583700DD019D /* OverlayView.h */,
-				B6B74ACA1135583700DD019D /* OverlayView.m */,
-			);
-			name = "Overlay View";
-			sourceTree = "<group>";
-		};
-		B6B74ACF1135583700DD019D /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				B6B74AD01135583700DD019D /* qrui_Prefix.pch */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
+			path = qr;
+			sourceTree = SOURCE_ROOT;
 		};
 		B6B74BF8113577B900DD019D /* Products */ = {
 			isa = PBXGroup;
@@ -715,6 +665,8 @@
 				B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */,
 				B6C95AA61133210600CF15AA /* DrillDownAppAppDelegate.m in Sources */,
 				B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */,
+				B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */,
+				B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
