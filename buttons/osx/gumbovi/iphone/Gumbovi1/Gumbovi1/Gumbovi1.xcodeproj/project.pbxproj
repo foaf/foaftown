@@ -74,7 +74,7 @@
 		B6A67F2F11357F2000EA4712 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2311357F2000EA4712 /* RootViewController.m */; };
 		B6A67F3011357F2000EA4712 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2411357F2000EA4712 /* DetailView.xib */; };
 		B6A67F3111357F2000EA4712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2911357F2000EA4712 /* main.m */; };
-		B6A67F3211357F2000EA4712 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* MainWindow.xib */; };
+		B6A67F3211357F2000EA4712 /* ListsMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */; };
 		B6A67F3311357F2000EA4712 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2B11357F2000EA4712 /* RootViewController.xib */; };
 		B6A67F3411357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
 		B6A67F3511357F2000EA4712 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F1F11357F2000EA4712 /* DetailViewController.m */; };
@@ -82,7 +82,7 @@
 		B6A67F3711357F2000EA4712 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2311357F2000EA4712 /* RootViewController.m */; };
 		B6A67F3811357F2000EA4712 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2411357F2000EA4712 /* DetailView.xib */; };
 		B6A67F3911357F2000EA4712 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2911357F2000EA4712 /* main.m */; };
-		B6A67F3A11357F2000EA4712 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* MainWindow.xib */; };
+		B6A67F3A11357F2000EA4712 /* ListsMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */; };
 		B6A67F3B11357F2000EA4712 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2B11357F2000EA4712 /* RootViewController.xib */; };
 		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
@@ -229,7 +229,7 @@
 		B6A67F2311357F2000EA4712 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = lists/Classes/RootViewController.m; sourceTree = SOURCE_ROOT; };
 		B6A67F2411357F2000EA4712 /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DetailView.xib; path = lists/DetailView.xib; sourceTree = SOURCE_ROOT; };
 		B6A67F2911357F2000EA4712 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = lists/main.m; sourceTree = SOURCE_ROOT; };
-		B6A67F2A11357F2000EA4712 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = lists/MainWindow.xib; sourceTree = SOURCE_ROOT; };
+		B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListsMainWindow.xib; sourceTree = "<group>"; };
 		B6A67F2B11357F2000EA4712 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = lists/RootViewController.xib; sourceTree = SOURCE_ROOT; };
 		B6B74BF7113577B900DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 				B6A67F1C11357F2000EA4712 /* Classes */,
 				B6A67F2411357F2000EA4712 /* DetailView.xib */,
 				B6A67F2911357F2000EA4712 /* main.m */,
-				B6A67F2A11357F2000EA4712 /* MainWindow.xib */,
+				B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */,
 				B6A67F2B11357F2000EA4712 /* RootViewController.xib */,
 			);
 			path = lists;
@@ -644,7 +644,7 @@
 				B67496851111AB7A0033F5D0 /* nav_wheel.png in Resources */,
 				B6A67F3411357F2000EA4712 /* Data.plist in Resources */,
 				B6A67F3811357F2000EA4712 /* DetailView.xib in Resources */,
-				B6A67F3A11357F2000EA4712 /* MainWindow.xib in Resources */,
+				B6A67F3A11357F2000EA4712 /* ListsMainWindow.xib in Resources */,
 				B6A67F3B11357F2000EA4712 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,7 +655,7 @@
 			files = (
 				B6A67F2C11357F2000EA4712 /* Data.plist in Resources */,
 				B6A67F3011357F2000EA4712 /* DetailView.xib in Resources */,
-				B6A67F3211357F2000EA4712 /* MainWindow.xib in Resources */,
+				B6A67F3211357F2000EA4712 /* ListsMainWindow.xib in Resources */,
 				B6A67F3311357F2000EA4712 /* RootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
