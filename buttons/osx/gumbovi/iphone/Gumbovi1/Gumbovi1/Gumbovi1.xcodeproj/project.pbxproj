@@ -72,7 +72,6 @@
 		B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
-		B6B74B6211355C4700DD019D /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74B6011355C2D00DD019D /* libqrlib.a */; };
 		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
@@ -89,18 +88,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B6B74B5F11355C2D00DD019D /* PBXContainerItemProxy */ = {
+		B6B74BFE113577B900DD019D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
+			containerPortal = B6B74BF7113577B900DD019D /* qrlib.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libqrlib.a */;
-			remoteInfo = qrlib;
-		};
-		B6B74B6411355CE000DD019D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* qrlib */;
 			remoteInfo = qrlib;
 		};
 /* End PBXContainerItemProxy section */
@@ -228,7 +220,7 @@
 		B6B74ACD1135583700DD019D /* qruiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qruiAppDelegate.h; sourceTree = "<group>"; };
 		B6B74ACE1135583700DD019D /* qruiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = qruiAppDelegate.m; sourceTree = "<group>"; };
 		B6B74AD01135583700DD019D /* qrui_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qrui_Prefix.pch; sourceTree = "<group>"; };
-		B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../../../../../working/barcode/liteqr/qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B6B74BF7113577B900DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
 		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -251,7 +243,6 @@
 				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
 				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
-				B6B74B6211355C4700DD019D /* libqrlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +291,7 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
-				B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */,
+				B6B74BF7113577B900DD019D /* qrlib.xcodeproj */,
 				B6B74AB61135581500DD019D /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
 				B67CC3A910A5764900511209 /* KissXML */,
@@ -549,10 +540,10 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		B6B74B5C11355C2D00DD019D /* Products */ = {
+		B6B74BF8113577B900DD019D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6B74B6011355C2D00DD019D /* libqrlib.a */,
+				B6B74BFF113577B900DD019D /* libqrlib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -588,7 +579,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6B74B6511355CE000DD019D /* PBXTargetDependency */,
 			);
 			name = QRGumbovi;
 			productName = QRGumbovi;
@@ -607,8 +597,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B6B74B5C11355C2D00DD019D /* Products */;
-					ProjectRef = B6B74B5B11355C2D00DD019D /* qrlib.xcodeproj */;
+					ProductGroup = B6B74BF8113577B900DD019D /* Products */;
+					ProjectRef = B6B74BF7113577B900DD019D /* qrlib.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -620,11 +610,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B6B74B6011355C2D00DD019D /* libqrlib.a */ = {
+		B6B74BFF113577B900DD019D /* libqrlib.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libqrlib.a;
-			remoteRef = B6B74B5F11355C2D00DD019D /* PBXContainerItemProxy */;
+			remoteRef = B6B74BFE113577B900DD019D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -729,14 +719,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B6B74B6511355CE000DD019D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = qrlib;
-			targetProxy = B6B74B6411355CE000DD019D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -947,7 +929,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../../../../../../working/barcode/liteqr/qrlib/src//**",
+					"../../qrlib/src/**",
 					/usr/include/libxml2,
 				);
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"";
