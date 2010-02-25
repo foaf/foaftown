@@ -29,6 +29,8 @@
 @synthesize appdel;
 @synthesize volume;
 
+@synthesize last_vol;
+
 
 //@synthesize toggleSwitch;
 /*
@@ -196,7 +198,14 @@
 	else if (sender == self.volume) {
 		// http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISlider_Class/Reference/Reference.html
 		NSLog(@"Volume : %f", self.volume.value);
-		//NSLog(@"VOLUME Loudness change.");	
+		NSLog(@"VOLUME Loudness change.");	
+		NSLog(@"Last volume: %f", self.last_vol);
+		if (self.last_vol > self.volume.value) {
+			NSLog(@"LESSLOUD");
+		} else {
+			NSLog(@"MORELOUD");
+		}
+		self.last_vol = self.volume.value;
 		[self.appdel sendLOUD:sender];
 		self.output.text = @"Loud: ", self.volume.value;
 	}
