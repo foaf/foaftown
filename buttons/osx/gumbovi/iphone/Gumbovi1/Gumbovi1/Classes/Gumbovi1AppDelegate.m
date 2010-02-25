@@ -29,9 +29,23 @@
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
 
-//#import <Foundation/NSString.h>
+
+/// from lists drilldown demo
+#import "DrillDownAppAppDelegate.h"
+#import "RootViewController.h"
+
+
 
 @implementation Gumbovi1AppDelegate
+
+// from lists
+@synthesize navigationController;
+@synthesize data;
+// end lists stuff
+
+
+//#import <Foundation/NSString.h>
+
 
 @synthesize xmppClient;
 @synthesize window;
@@ -50,6 +64,20 @@
 	
 	NSLog(@"TIMER: connecting to XMPP");
 
+
+	 // from drilldown lists code
+	NSString *Path = [[NSBundle mainBundle] bundlePath];
+	NSString *DataPath = [Path stringByAppendingPathComponent:@"data.plist"];
+	
+	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
+	self.data = tempDict;
+	[tempDict release];
+	
+	// Configure and show the window
+	[window addSubview:[navigationController view]];
+	[window makeKeyAndVisible];
+	
+	
 }
 
 //- (void)initXMPP: (NSObject *)config  {
@@ -88,8 +116,8 @@
 
 //	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
-	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
-//	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
+//	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
+	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
 
 	
 	[xmppClient setAutoLogin:YES];
@@ -115,10 +143,15 @@
 
 
 - (void)dealloc {
+	[data release]; // lists /drilldown
+	[navigationController release]; // lists drilldown
     [tabBarController release];
     [window release];
     [super dealloc];
 }
+
+
+
 
 
 - (void)sendPLUS:(NSObject *)button
@@ -303,6 +336,19 @@
     
 	//fvc.output.text = log; // problem?
     NSLog(log);
+}
+
+
+
+/// LISTS
+
+/// copied from DrillDownApp 
+
+	
+
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+	// Save data if appropriate
 }
 
 

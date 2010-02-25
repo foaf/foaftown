@@ -27,6 +27,8 @@
 
 	IBOutlet UISlider *volume;
 
+	float last_vol;
+
 	
 //	IBOutlet UISwitch *toggleSwitch;
 	
@@ -53,6 +55,8 @@
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 
 	@property (nonatomic, retain) IBOutlet UISlider *volume;
+
+    @property float last_vol;
 
 
 //	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;

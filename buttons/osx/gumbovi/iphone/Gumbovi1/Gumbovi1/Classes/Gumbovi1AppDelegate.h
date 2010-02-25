@@ -19,6 +19,10 @@
     XMPPJID *toJid;
     XMPPJID *aJid;
 	
+	// lists drilldown
+	UINavigationController *navigationController;
+	NSDictionary *data;
+	
 	//FirstViewController *fvc;
 
 	
@@ -29,6 +33,11 @@
 @property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; 
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 @property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
+
+// lists drilldown
+@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) NSDictionary *data;
+
 
 - (IBAction) sendMENU:(id) button;
 - (IBAction) sendLIKE:(id) button;
