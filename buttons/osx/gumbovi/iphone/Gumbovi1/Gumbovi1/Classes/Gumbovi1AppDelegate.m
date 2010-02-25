@@ -229,11 +229,21 @@
 - (void)sendLOUD:(NSObject *)myS;
 {
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-	NSString *msg =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
-//	NSString *msg = @"LOUDness event %@", ;
-	NSLog(@"SENDING LOUD %@", msg  );
+	NSString *v =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
+	NSLog(@"SENDING LOUD %@", v  );
+	NSString *msg = @"LOUD";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
+
+- (void)sendHUSH:(NSObject *)myS;
+{
+	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+	NSString *v =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
+	NSLog(@"SENDING HUSH %@", v  );
+	NSString *msg = @"HUSH";
+	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:
