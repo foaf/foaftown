@@ -14,7 +14,7 @@
 
 @synthesize tableDataSource, CurrentTitle, CurrentLevel;
 
-
+/*
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -33,26 +33,35 @@
 	else 
 		self.navigationItem.title = CurrentTitle;	
 }
+*/
 
+/*
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
     // Release anything that's not essential, such as cached data
 }
+*/
 
 #pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+/*
+ - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+*/
 
 
+
+/*
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.tableDataSource count];
 }
+*/
 
 
 // Customize the appearance of table view cells.
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -68,8 +77,9 @@
 
     return cell;
 }
+*/
 
-
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 	//Get the dictionary of the selected data source.
@@ -103,6 +113,8 @@
 		[rvController release];
 	}
 }
+*/
+
 
 - (void)dealloc {
 	[CurrentTitle release];
