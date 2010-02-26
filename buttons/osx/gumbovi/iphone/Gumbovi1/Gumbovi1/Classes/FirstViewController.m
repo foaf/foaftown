@@ -10,7 +10,7 @@
 #import "Gumbovi1AppDelegate.h"
 #import "XMPP.h"
 #import "XMPPClient.h"
-
+#import <AudioToolbox/AudioToolbox.h>
 
 @implementation FirstViewController
 
@@ -147,6 +147,8 @@
 
 - (void) buttonDone:(id)sender {
 	
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); // buzz if we got a button done event 
+	
 	NSLog(@" buttonDone called: %@", sender);
     if (sender == self.plus) {
 		NSLog(@"PLUS");
@@ -202,11 +204,12 @@
 		NSLog(@"Last volume: %f", self.last_vol);
 		if (self.last_vol > self.volume.value) {
 			NSLog(@"LESSLOUD");
+			[self.appdel sendHUSH:sender];
 		} else {
 			NSLog(@"MORELOUD");
+			[self.appdel sendLOUD:sender];
 		}
 		self.last_vol = self.volume.value;
-		[self.appdel sendLOUD:sender];
 		self.output.text = @"Loud: ", self.volume.value;
 	}
 	else {
