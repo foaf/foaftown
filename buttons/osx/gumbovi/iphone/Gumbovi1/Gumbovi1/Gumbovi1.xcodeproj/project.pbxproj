@@ -34,6 +34,8 @@
 		B656AA5810ADDD590089D78F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5210ADDD590089D78F /* SBJsonWriter.m */; };
 		B668E56F10D0F67500EDD38D /* heartbuttons4-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */; };
 		B668E57010D0F67500EDD38D /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
+		B66B41321137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
+		B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B67496831111AB4A0033F5D0 /* control_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496821111AB4A0033F5D0 /* control_bar.png */; };
 		B67496851111AB7A0033F5D0 /* nav_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496841111AB7A0033F5D0 /* nav_wheel.png */; };
 		B67CC39910A5763500511209 /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
@@ -145,6 +147,7 @@
 		B656AA5210ADDD590089D78F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-100x.png"; sourceTree = "<group>"; };
 		B668E56E10D0F67500EDD38D /* heartbuttons4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartbuttons4.png; sourceTree = "<group>"; };
+		B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B67496821111AB4A0033F5D0 /* control_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = control_bar.png; sourceTree = "<group>"; };
 		B67496841111AB7A0033F5D0 /* nav_wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_wheel.png; sourceTree = "<group>"; };
 		B67CC39510A5763500511209 /* foaflets-12pt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foaflets-12pt.jpg"; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 				B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */,
 				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
+				B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +255,7 @@
 				B6C95A9E11331F8800CF15AA /* libiconv.2.dylib in Frameworks */,
 				B6C95A9F11331F9A00CF15AA /* CoreGraphics.framework in Frameworks */,
 				B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */,
+				B66B41321137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +366,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */,
 				B6C9591D1133065D00CF15AA /* libiconv.2.dylib */,
 				B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */,
 				B6BD10301132A46F00ED28CD /* CFNetwork.framework */,

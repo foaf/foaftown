@@ -46,6 +46,8 @@
 
 //#import <Foundation/NSString.h>
 
+//@synthesize listswindow;
+
 
 @synthesize xmppClient;
 @synthesize window;

@@ -12,11 +12,13 @@
 
 @implementation DrillDownAppAppDelegate
 
+//@synthesize lists_window;
 @synthesize window;
 @synthesize navigationController;
 @synthesize data;
 
 
+/*
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
 	NSString *Path = [[NSBundle mainBundle] bundlePath];
@@ -35,6 +37,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
 }
+*/
 
 
 - (void)dealloc {
