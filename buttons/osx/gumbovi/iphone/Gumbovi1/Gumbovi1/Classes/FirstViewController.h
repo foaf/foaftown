@@ -62,6 +62,7 @@
 //	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;
+	- (IBAction) buttonTouchVibrate:(id) sender;
 	- (IBAction) connectionSetup:(id)sender;
     - (IBAction) textFieldShouldReturnUITextField:(id)sender;
 

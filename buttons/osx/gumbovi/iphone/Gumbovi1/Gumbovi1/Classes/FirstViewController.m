@@ -145,9 +145,15 @@
     return;
 }
 
+
+- (void) buttonTouchVibrate:(id)sender {
+	
+	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+}
+
 - (void) buttonDone:(id)sender {
 	
-	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); // buzz if we got a button done event 
+//	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); // buzz if we got a button done event 
 	
 	NSLog(@" buttonDone called: %@", sender);
     if (sender == self.plus) {
