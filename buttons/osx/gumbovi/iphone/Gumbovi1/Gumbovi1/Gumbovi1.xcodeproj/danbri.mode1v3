@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -323,6 +321,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -340,7 +340,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6AFC8A211389CEB0013DE80</string>
+										<string>B6AFC8BC11389D5E0013DE80</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43B10A57B0600511209</string>
@@ -617,14 +617,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6AFC8A311389CEB0013DE80</string>
 		<string>B6AFC8A411389CEB0013DE80</string>
 		<string>B6AFC89E11389CA50013DE80</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>B67CC44310A57B0600511209</string>
 	</array>
 	<key>WindowString</key>
 	<string>330 56 1091 822 0 0 1440 878 </string>
@@ -998,7 +998,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1155,7 +1155,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>B67CC44310A57B0600511209</string>
-				<string>B6AFC76A113814E60013DE80</string>
+				<string>B6AFC8B711389D4B0013DE80</string>
 				<string>1C78EAB2065D492600B07095</string>
 				<string>1CD052920623707200166675</string>
 			</array>
@@ -1166,7 +1166,7 @@
 			<key>WindowToolGUID</key>
 			<string>B67CC44310A57B0600511209</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
