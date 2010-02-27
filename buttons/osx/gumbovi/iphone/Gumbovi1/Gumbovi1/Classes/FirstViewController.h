@@ -53,19 +53,13 @@
 	@property (nonatomic, retain) IBOutlet UIButton *okay;
 	@property (nonatomic, retain) IBOutlet UIButton *info;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
-
 	@property (nonatomic, retain) IBOutlet UISlider *volume;
-
     @property float last_vol;
 
-
-//	@property (nonatomic,retain) IBOutlet UISwitch *toggleSwitch;
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;
 	- (IBAction) buttonTouchVibrate:(id) sender;
 	- (IBAction) connectionSetup:(id)sender;
     - (IBAction) textFieldShouldReturnUITextField:(id)sender;
-
-
 
 @end
