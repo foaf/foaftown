@@ -87,6 +87,7 @@
     NSLog(@"initXMPP *****");
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
     NSLog(@"TIMER: (?re-)Initialising XMPP");
+	NSLog(@"FVC is", fvc);
     xmppClient = [[XMPPClient alloc] init];
 	[xmppClient addDelegate:self];
 	[xmppClient setPort:5222];	
@@ -103,7 +104,9 @@
 		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
-	// [xmppClient setMyJID:[XMPPJID jidWithString:@"alice@gmail.com"]];
+	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice.notube@gmail.com"]];
+	[xmppClient setPassword:@"gargonza"];
+
     if (fvc.userid.text != NULL) {
 		NSLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
@@ -231,19 +234,17 @@
 - (void)sendLOUD:(NSObject *)myS;
 {
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-	NSString *v =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
+	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"LOUD", fvc.volume.value];
 	NSLog(@"SENDING LOUD %@", v  );
-	NSString *msg = @"LOUD";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
 }
 
 - (void)sendHUSH:(NSObject *)myS;
 {
 	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-	NSString *v =  [NSString stringWithFormat:@"%.1f", fvc.volume.value];
+	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"HUSH", fvc.volume.value];
 	NSLog(@"SENDING HUSH %@", v  );
-	NSString *msg = @"HUSH";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
 }
 
 
