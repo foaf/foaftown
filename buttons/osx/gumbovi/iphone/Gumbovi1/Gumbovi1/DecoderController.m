@@ -228,8 +228,10 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
 	NSLog(@"Got a new buddy: %@", result.text);
 
 //	NSLog(@"Buddy data type %@", result.text);
+	//NSString *s = (NSString *)s;
+    //[gad newJID:s];
+	[gad newJID:result.text];
 
-    [gad newJID:result.text];
 	//uf.text = result.text;
   UITabBarController *tbc =  [gad tabBarController];
   NSLog(@"Got tbc: %@", tbc);
