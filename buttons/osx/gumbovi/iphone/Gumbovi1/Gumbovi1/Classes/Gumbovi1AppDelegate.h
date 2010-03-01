@@ -31,6 +31,9 @@
 	UINavigationController *navigationController;
 	NSDictionary *data;
 	//FirstViewController *fvc;
+
+	UITextField* qr_results;//libby
+
 }
 //@property (nonatomic, retain) IBOutlet FirstViewController *fvc;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
