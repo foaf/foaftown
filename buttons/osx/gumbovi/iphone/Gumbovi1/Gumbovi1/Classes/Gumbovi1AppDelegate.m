@@ -376,8 +376,9 @@
 }
 
 - (void)newJID: (NSString *)jid {
-	NSLog(@"Got a new buddy! via QR code. %@",jid);	
+	NSLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
+	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
 }
 
 @end
