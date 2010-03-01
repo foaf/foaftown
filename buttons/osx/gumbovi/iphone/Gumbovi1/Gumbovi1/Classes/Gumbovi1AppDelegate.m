@@ -375,8 +375,9 @@
 	[decoder_window addSubview:decoderController.view];	
 }
 
-- (void) newBuddy:(NSString *)newJID {
-	NSLog(@"Got a new buddy! via QR code. %@",newJID);	
+- (void)newJID: (NSString *)jid {
+	NSLog(@"Got a new buddy! via QR code. %@",jid);	
+    self.qr_results.text=jid;
 }
 
 @end
