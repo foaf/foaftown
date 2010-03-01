@@ -18,8 +18,10 @@
 @synthesize data;
 
 
-/*
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+	
+	NSLog(@"DrillDown app delegate loaded. ERROR????");
 	
 	NSString *Path = [[NSBundle mainBundle] bundlePath];
 	NSString *DataPath = [Path stringByAppendingPathComponent:@"data.plist"];
@@ -27,6 +29,7 @@
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
+
 	
 	// Configure and show the window
 	[window addSubview:[navigationController view]];
@@ -37,7 +40,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Save data if appropriate
 }
-*/
+
 
 
 - (void)dealloc {

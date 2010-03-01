@@ -27,6 +27,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) applicationDidFinishLaunching:(UIApplication*)application {
+
+  NSLog(@"QRUI App Delegate launched. NOT EXPECTED!!!!!!!!!!!!!!!! ");	
+	
   _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
   _decoderController = [[DecoderController alloc] init];

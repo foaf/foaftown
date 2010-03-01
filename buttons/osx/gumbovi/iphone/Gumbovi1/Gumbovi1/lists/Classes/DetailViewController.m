@@ -11,17 +11,17 @@
 
 @implementation DetailViewController
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//	
-//	self.navigationItem.title = @"Detail View";
-//}
+///Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	self.navigationItem.title = @"Detail View";
+}
 
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-//    // Release anything that's not essential, such as cached data
-//}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
+    // Release anything that's not essential, such as cached data
+}
 
 
 - (void)dealloc {

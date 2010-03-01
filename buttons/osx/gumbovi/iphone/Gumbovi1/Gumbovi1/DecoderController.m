@@ -21,9 +21,7 @@
 #import "Decoder.h"
 #import "TwoDDecoderResult.h"
 
-static const NSTimeInterval kTakePictureTimeInterval = 5
-;
-
+static const NSTimeInterval kTakePictureTimeInterval = 5;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -223,8 +221,13 @@ static const NSTimeInterval kTakePictureTimeInterval = 5
   Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];	
   NSLog(@"DECODER DONE, trying to restore main app, %@", gad);
   //gad.qr_results.text = result.text;	
+	NSLog(@" HOW CAN WE STORE NEW BUDDY?! %@", result.text);
 
-	//UITextField *uf = [gad qr_results];
+	// UITextField *uf = gad.qr_results ;
+	
+	NSLog(@"Got a new buddy: %@", result.text);
+//	[gad newBuddy newJID:result.text];
+
 	//uf.text = result.text;
   UITabBarController *tbc =  [gad tabBarController];
   NSLog(@"Got tbc: %@", tbc);
