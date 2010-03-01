@@ -68,7 +68,7 @@
 
 - (IBAction) startQRScan:(id) sender;
 
-- (void) newBuddy:(NSString *) newJID;
+- (void) newJID:(NSString *) jid;
 
 
 @end
