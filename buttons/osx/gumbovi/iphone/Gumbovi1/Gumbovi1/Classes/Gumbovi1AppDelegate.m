@@ -29,12 +29,11 @@
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
 
-
 /// from lists drilldown demo
-#import "DrillDownAppAppDelegate.h"
 #import "RootViewController.h"
 
-
+// for qr
+#import "DecoderController.h"
 
 @implementation Gumbovi1AppDelegate
 
@@ -43,6 +42,8 @@
 @synthesize data;
 // end lists stuff
 
+@synthesize decoder_window;
+@synthesize qr_results;
 
 //#import <Foundation/NSString.h>
 
@@ -57,29 +58,19 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
-	
-	NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
-
+    NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
-	
-	NSLog(@"TIMER: connecting to XMPP");
-
-
-	 // from drilldown lists code
+	// from drilldown lists code
 	NSString *Path = [[NSBundle mainBundle] bundlePath];
-	NSString *DataPath = [Path stringByAppendingPathComponent:@"data.plist"];
-	
+	NSString *DataPath = [Path stringByAppendingPathComponent:@"Data.plist"];
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
-	
-	// Configure and show the window
-	[window addSubview:[navigationController view]];
-	[window makeKeyAndVisible];
-	
-	
+	NSLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
+	// Configure and show the window	
+
+
 }
 
 //- (void)initXMPP: (NSObject *)config  {
@@ -312,6 +303,10 @@
 {
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
+	
+	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updated roster!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+	//[alert show]; [alert release]; 
+	
 	NSLog(@"==============================================================");
 }
 
@@ -366,6 +361,23 @@
 
 
 
+- (void) startQRScan:(id)sender {
+	NSLog(@"Starting qr scan. %@ ", sender);
+	//Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];	
+	UINavigationController *myQrController = [tabBarController.viewControllers objectAtIndex:4];
+    NSLog(@"My qr controller in 5th tab is %@ " , myQrController); // a UINavigationController
+	decoderController = [[DecoderController alloc] init];
+    NSLog(@"Trying to push a DecoderController %@ ", decoderController);
+	NSLog(@"...onto my UINavigationController %@ ", myQrController);
+	[myQrController pushViewController:decoderController animated:YES];
+	self.decoder_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];	
+		//	self.decoder_window = [[UIWindow alloc] initWithFrame:myQrController.view.bounds ];	
+	[decoder_window addSubview:decoderController.view];	
+}
+
+- (void) newBuddy:(NSString *)newJID {
+	NSLog(@"Got a new buddy! via QR code. %@",newJID);	
+}
 
 @end
 

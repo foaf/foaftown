@@ -36,6 +36,15 @@
 		B668E57010D0F67500EDD38D /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
 		B66B41321137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
+		B66F4105113BCB61004DF167 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
+		B66F4113113BCBFC004DF167 /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
+		B66F4114113BCC08004DF167 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
+		B66F4138113BCCA5004DF167 /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B66F4135113BCCA5004DF167 /* Decoder.mm */; };
+		B66F4139113BCCA5004DF167 /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4137113BCCA5004DF167 /* DecoderController.m */; };
+		B66F413A113BCCA5004DF167 /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B66F4135113BCCA5004DF167 /* Decoder.mm */; };
+		B66F413B113BCCA5004DF167 /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4137113BCCA5004DF167 /* DecoderController.m */; };
+		B66F4148113BCD13004DF167 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4147113BCD13004DF167 /* OverlayView.m */; };
+		B66F4149113BCD13004DF167 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4147113BCD13004DF167 /* OverlayView.m */; };
 		B67496831111AB4A0033F5D0 /* control_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496821111AB4A0033F5D0 /* control_bar.png */; };
 		B67496851111AB7A0033F5D0 /* nav_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496841111AB7A0033F5D0 /* nav_wheel.png */; };
 		B67CC39910A5763500511209 /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
@@ -84,6 +93,8 @@
 		B6A67F3B11357F2000EA4712 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2B11357F2000EA4712 /* RootViewController.xib */; };
 		B6AFC753113812110013DE80 /* FINGERPRINT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6AFC752113812110013DE80 /* FINGERPRINT.jpg */; };
 		B6AFC754113812110013DE80 /* FINGERPRINT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6AFC752113812110013DE80 /* FINGERPRINT.jpg */; };
+		B6B32F89113BE73F005F31EB /* qr_bg_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B32F88113BE73F005F31EB /* qr_bg_blur.png */; };
+		B6B32F8A113BE73F005F31EB /* qr_bg_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B32F88113BE73F005F31EB /* qr_bg_blur.png */; };
 		B6BD0FE71131ECE400ED28CD /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
 		B6BD101F1132A25500ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
 		B6BD10311132A46F00ED28CD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
@@ -150,6 +161,12 @@
 		B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-100x.png"; sourceTree = "<group>"; };
 		B668E56E10D0F67500EDD38D /* heartbuttons4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartbuttons4.png; sourceTree = "<group>"; };
 		B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B66F4134113BCCA5004DF167 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = SOURCE_ROOT; };
+		B66F4135113BCCA5004DF167 /* Decoder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Decoder.mm; sourceTree = SOURCE_ROOT; };
+		B66F4136113BCCA5004DF167 /* DecoderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecoderController.h; sourceTree = SOURCE_ROOT; };
+		B66F4137113BCCA5004DF167 /* DecoderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DecoderController.m; sourceTree = SOURCE_ROOT; };
+		B66F4146113BCD13004DF167 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = SOURCE_ROOT; };
+		B66F4147113BCD13004DF167 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = SOURCE_ROOT; };
 		B67496821111AB4A0033F5D0 /* control_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = control_bar.png; sourceTree = "<group>"; };
 		B67496841111AB7A0033F5D0 /* nav_wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_wheel.png; sourceTree = "<group>"; };
 		B67CC39510A5763500511209 /* foaflets-12pt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "foaflets-12pt.jpg"; sourceTree = "<group>"; };
@@ -224,6 +241,7 @@
 		B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListsMainWindow.xib; sourceTree = "<group>"; };
 		B6A67F2B11357F2000EA4712 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = lists/RootViewController.xib; sourceTree = SOURCE_ROOT; };
 		B6AFC752113812110013DE80 /* FINGERPRINT.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FINGERPRINT.jpg; sourceTree = "<group>"; };
+		B6B32F88113BE73F005F31EB /* qr_bg_blur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr_bg_blur.png; sourceTree = "<group>"; };
 		B6B74BF7113577B900DD019D /* qrlib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = qrlib.xcodeproj; path = ../../qrlib/qrlib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6BD0FE61131ECE400ED28CD /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
 		B6BD101E1132A25500ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -248,6 +266,7 @@
 				B6BD10521132A5B100ED28CD /* SystemConfiguration.framework in Frameworks */,
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
 				B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
+				B66F4113113BCBFC004DF167 /* libqrlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +488,12 @@
 			isa = PBXGroup;
 			children = (
 				B6B74BF7113577B900DD019D /* qrlib.xcodeproj */,
+				B66F4134113BCCA5004DF167 /* Decoder.h */,
+				B66F4135113BCCA5004DF167 /* Decoder.mm */,
+				B66F4136113BCCA5004DF167 /* DecoderController.h */,
+				B66F4137113BCCA5004DF167 /* DecoderController.m */,
+				B66F4146113BCD13004DF167 /* OverlayView.h */,
+				B66F4147113BCD13004DF167 /* OverlayView.m */,
 				B6A67EE111357B8300EA4712 /* QRImagePickerController.h */,
 				B6A67EE211357B8300EA4712 /* QRImagePickerController.m */,
 				B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */,
@@ -481,6 +506,7 @@
 		B6A67EF111357C8000EA4712 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B6B32F88113BE73F005F31EB /* qr_bg_blur.png */,
 				B6AFC752113812110013DE80 /* FINGERPRINT.jpg */,
 				B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */,
 				B668E56E10D0F67500EDD38D /* heartbuttons4.png */,
@@ -636,6 +662,7 @@
 				B6A67F3A11357F2000EA4712 /* ListsMainWindow.xib in Resources */,
 				B6A67F3B11357F2000EA4712 /* RootViewController.xib in Resources */,
 				B6AFC754113812110013DE80 /* FINGERPRINT.jpg in Resources */,
+				B6B32F8A113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +675,7 @@
 				B6A67F3211357F2000EA4712 /* ListsMainWindow.xib in Resources */,
 				B6A67F3311357F2000EA4712 /* RootViewController.xib in Resources */,
 				B6AFC753113812110013DE80 /* FINGERPRINT.jpg in Resources */,
+				B6B32F89113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,6 +721,11 @@
 				B6A67F3611357F2000EA4712 /* DrillDownAppAppDelegate.m in Sources */,
 				B6A67F3711357F2000EA4712 /* RootViewController.m in Sources */,
 				B6A67F3911357F2000EA4712 /* main.m in Sources */,
+				B66F4105113BCB61004DF167 /* qruiAppDelegate.m in Sources */,
+				B66F4114113BCC08004DF167 /* QRImagePickerController.m in Sources */,
+				B66F413A113BCCA5004DF167 /* Decoder.mm in Sources */,
+				B66F413B113BCCA5004DF167 /* DecoderController.m in Sources */,
+				B66F4149113BCD13004DF167 /* OverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,6 +741,9 @@
 				B6A67F2E11357F2000EA4712 /* DrillDownAppAppDelegate.m in Sources */,
 				B6A67F2F11357F2000EA4712 /* RootViewController.m in Sources */,
 				B6A67F3111357F2000EA4712 /* main.m in Sources */,
+				B66F4138113BCCA5004DF167 /* Decoder.mm in Sources */,
+				B66F4139113BCCA5004DF167 /* DecoderController.m in Sources */,
+				B66F4148113BCD13004DF167 /* OverlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

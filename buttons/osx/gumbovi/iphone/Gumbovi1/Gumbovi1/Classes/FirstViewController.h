@@ -24,10 +24,14 @@
 	IBOutlet UIButton *okay;
 	IBOutlet UIButton *info;
 	IBOutlet UITextView *output;
-
 	IBOutlet UISlider *volume;
 
+	//IBOutlet UITextView *qr_result;
+
+	
 	float last_vol;
+
+//	@class DecoderController;
 
 	
 //	IBOutlet UISwitch *toggleSwitch;
@@ -54,7 +58,9 @@
 	@property (nonatomic, retain) IBOutlet UIButton *info;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 	@property (nonatomic, retain) IBOutlet UISlider *volume;
-    @property float last_vol;
+	//@property (nonatomic, retain) IBOutlet UITextView *qr_result;
+
+	@property float last_vol;
 
 	- (IBAction) updateText:(id) sender;
 	- (IBAction) buttonDone:(id) sender;

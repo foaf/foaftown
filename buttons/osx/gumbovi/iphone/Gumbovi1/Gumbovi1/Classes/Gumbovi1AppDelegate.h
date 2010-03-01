@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "FirstViewController.h"
 #import "XMPPJID.h"
+#import "DecoderController.h"
 
+//@class DecoderController;
 @class XMPPClient;
 
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
@@ -19,13 +21,16 @@
     XMPPJID *toJid;
     XMPPJID *aJid;
 	
+	// qrcodes	
+	DecoderController*  decoderController;
+	UIWindow* decoder_window;
+	NSString* qr_buddy;
+	//UITextField* qr_results;
+	
 	// lists drilldown
 	UINavigationController *navigationController;
 	NSDictionary *data;
-	
 	//FirstViewController *fvc;
-
-	
 }
 //@property (nonatomic, retain) IBOutlet FirstViewController *fvc;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -34,9 +39,15 @@
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 @property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
 
+@property (nonatomic, retain) IBOutlet UITextField *qr_results; 
+
 // lists drilldown
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSDictionary *data;
+
+
+@property (nonatomic, retain) UIWindow *decoder_window;
+//@property (nonatomic, retain) NSString *qr_buddy;
 
 
 - (IBAction) sendMENU:(id) button;
@@ -51,9 +62,13 @@
 - (IBAction) sendHUSH:(id) button;
 - (IBAction) sendINFO:(id) button;
 - (void) initXMPP: (id) config;
-- (void) initXMPP;
+- (void) initXMPP;//hmmtodo fix
 
 //	- (IBAction) setTargetJID:(XMPPJID) jid;
+
+- (IBAction) startQRScan:(id) sender;
+
+- (void) newBuddy:(NSString *) newJID;
 
 
 @end
