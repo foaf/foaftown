@@ -28,7 +28,7 @@
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
-
+#import "AudioToolbox/AudioServices.h"
 /// from lists drilldown demo
 #import "RootViewController.h"
 
@@ -394,6 +394,14 @@
 	[fvc.roster_list addObject:jid];
 	NSLog(@"Roster now: %@",roster);
 	NSLog(@"gad.toJID is now: %@",self.toJid);
+	
+	//see also http://www.freesound.org/samplesViewSingle.php?id=706 etc - can try for haptic on button presses
+	NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle mainBundle] resourcePath],@"/pop.wav"];
+		SystemSoundID soundID;
+		NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+		AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+		AudioServicesPlaySystemSound(soundID);
+
 }
 
 @end
