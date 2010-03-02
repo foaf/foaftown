@@ -86,8 +86,10 @@
 
 #pragma mark Table view methods
 
+
+//http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UITableViewDatasource_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006941-CH3-SW9
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+	    return 1;
 }
 
 
@@ -97,7 +99,10 @@
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
     //[roster retain];
-	//NSLog(@"NUMROWS: %@", [roster count]);
+	NSLog(@"Data TABLE: numberOfRowsInSection called");
+	//int i = [roster count];
+	//NSLog(@"DATA TABLE CHECKING NUMROWS: %@", i);
+//	return i;
     return [roster count];
 } 
 
@@ -105,7 +110,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	// NSLog(@"FRESH CELL: %@",indexPath.row);
+	// NSLog(@"FRESH CELL: %@",indexPath);
 
 	
     static NSString *CellIdentifier = @"Cell";
@@ -178,6 +183,13 @@
     return YES;
 }
 */
+
+
+
+
+
+
+
 
 
 - (void)dealloc {
