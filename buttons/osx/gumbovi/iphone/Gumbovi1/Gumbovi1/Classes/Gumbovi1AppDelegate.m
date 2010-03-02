@@ -375,7 +375,7 @@
 	[decoder_window addSubview:decoderController.view];	
 }
 
-- (void)newJID: (NSString *)jid {
+- (void)newJID:(id)jid {
 	NSLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
 	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
