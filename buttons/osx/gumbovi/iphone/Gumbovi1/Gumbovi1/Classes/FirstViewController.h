@@ -26,6 +26,8 @@
 	IBOutlet UITextView *output;
 	IBOutlet UISlider *volume;
 
+	IBOutlet UITableView *roster_view;
+	
 	//IBOutlet UITextView *qr_result;
 
 	
@@ -59,6 +61,10 @@
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 	@property (nonatomic, retain) IBOutlet UISlider *volume;
 	//@property (nonatomic, retain) IBOutlet UITextView *qr_result;
+
+	@property (nonatomic, retain) IBOutlet UITableView *roster_view;
+	@property (nonatomic, retain) NSMutableArray *roster_list;
+
 
 	@property float last_vol;
 
