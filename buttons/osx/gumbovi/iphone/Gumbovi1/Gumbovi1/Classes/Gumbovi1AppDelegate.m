@@ -213,6 +213,15 @@
 	NSLog(@"SENDING OKAY %@", button);
 	NSString *msg = @"OKAY event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+
+	// lets try send an IQ too
+	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	    [errorDetail setValue:@"Failed to do something wicked" forKey:NSLocalizedDescriptionKey];
+	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+	NSXMLElement *myStanza = [[NSXMLElement alloc] 
+							  initWithXMLString:@"<iq type='get'><buttons xmlns='http://buttons.foaf.tv/'>OKAY</buttons></iq>" error:&bError];
+	[ self.xmppClient sendElement:myStanza];
+
 }
 
 - (void)sendINFO:(NSObject *)button
@@ -379,6 +388,12 @@
 	NSLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
 	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+    NSMutableArray *roster = fvc.roster_list;
+	NSLog(@"Roster was: %@",roster);
+	[fvc.roster_list addObject:jid];
+	NSLog(@"Roster now: %@",roster);
+	NSLog(@"gad.toJID is now: %@",self.toJid);
 }
 
 @end
