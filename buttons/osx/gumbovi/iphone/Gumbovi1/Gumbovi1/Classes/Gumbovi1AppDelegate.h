@@ -13,8 +13,8 @@
 
 //@class DecoderController;
 @class XMPPClient;
-
-@interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+{
 	XMPPClient *xmppClient;
     UIWindow *window;
     UITabBarController *tabBarController;

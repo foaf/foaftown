@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+		<meta name="description" content="Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?" />
+		<title>freesound :: the freesound project</title>
+		<script type="text/javascript" language="JavaScript" src="http://www.freesound.org/freesound.js"></script>
+		<script type="text/javascript" language="JavaScript" src="http://www.freesound.org/flash/flashobject.js"></script>
+		
+		<style type="text/css" media="screen">
+			@import url( "/freesound.css" );
+		</style>
+		<link rel="icon" href="/img/favicon.ico" />
+	</head>
+<body onload="">
+	<div id="title">
+		<a href="http://www.freesound.org/index.php"><h1><span>Freesound Project</span></h1></a>
+	</div>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td id="column1" valign="top">
+			<div class="donate">
+<a href='http://www.pledgie.com/campaigns/8639'><img alt='Click here to lend your support to: Freesound 2010 donations and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/8639.png?skin_name=chrome' border='0' /></a>
+<div>
+
+<div id="login">
+		<form action="http://www.freesound.org/forum/login.php" method="post">
+		<input type="hidden" name="redirect" value="../index.php" />
+		<table>
+			<tr>
+				<td align="right">User:</td>
+				<td><input name="username" size="12" maxlength="40" value="" type="text" /></td>
+			</tr>
+			<tr>
+				<td align="right">Pass:</td>
+				<td><input name="password" size="12" maxlength="25" type="password" /></td>
+			</tr>
+			<tr>
+				<td align="right">&nbsp;</td>
+				<td><input name="autologin" type="checkbox" class="checkbox" checked="checked" /> autologin</td>
+			</tr>
+		</table>
+		<input type="submit" value="login" name="login" class="button" size="15"/>
+	</form>
+	<ul id="join-register">
+		 <li style="font-size:14px"><a href="http://www.freesound.org/forum/profile.php?mode=register">Join / Register</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=sendpassword">Forgotten password?</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=sendusername">Forgotten username?</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=resendactivation">Resend activation email.</a></li>
+	</ul>
+</div>
+
+<div id="menu">
+	<h2>Main</h2>
+	<ul>
+		<li><a href="http://www.freesound.org/index.php">Home</a></li>
+		<li><a href="http://www.freesound.org/forum/index.php">Forum</a></li>
+		<li><a href="http://www.freesound.org/articles.php">Articles</a></li>
+		<li><a href="http://www.freesound.org/competition.php">Competition</a></li>
+		<li><a href="http://www.freesound.org/forum/viewforum.php?f=3">Help &amp; FAQ</a></li>
+		<li><a href="http://www.freesound.org/rules.php">Rules</a></li>
+		<li><a href="http://www.freesound.org/contact.php">Contact Us</a></li>
+		<li><a href="http://www.freesound.org/mootcher.php">Mootcher</a></li>
+	</ul>
+
+	<h2>Interact</h2>
+	<ul>
+		<li><a href="http://www.freesound.org/shoutbox.php">Shoutbox!</a></li>
+		<li><a href="http://www.freesound.org/latestComments.php">Latest comments</a></li>
+	</ul>
+	
+	<h2>Search/Browse</h2>
+	<ul>
+		<li><a href="http://www.freesound.org/searchText.php">Search</a></li>
+		<li><a href="http://www.freesound.org/samplesViewRandom.php">Random Sample</a></li>
+		<li><a href="http://www.freesound.org/tagsView.php">Tags</a></li>
+		<li><a href="http://www.freesound.org/packsView.php">Sample packs</a>
+		<li><a href="http://www.freesound.org/usersView.php">Browse users</a></li>
+		<li><a href="http://www.freesound.org/samplesViewTree.php">Remix! tree</a></li>
+		<li><a href="http://www.freesound.org/geotagsView.php">Geotagged Samples</a></li>
+	</ul>
+
+						
+	<h2>Adding files</h2>
+	<ul>
+		<li><a href="http://www.freesound.org/filesUploadHowtoAdd.php">Contribute to Freesound</a></li>
+		<li><a href="http://www.freesound.org/filesUploadApplet.php">FTP applet</a></li>
+		<li><a href="http://www.freesound.org/filesUploadedBrowse.php">Describe uploaded files</a></li>
+	</ul>
+	
+	<h2>Information</h2>
+	<ul>
+		<li><a href="http://www.freesound.org/whatIsFreesound.php">What is Freesound?</a></li>
+		<li><a href="http://www.freesound.org/legal.php">Legal</a></li>
+		<li><a href="http://www.freesound.org/press.php">Press package</a></li>
+		<li><a href="http://www.freesound.org/technology.php">Technology</a></li>
+		<li><a href="http://www.freesound.org/respect.php">Respect</a></li>
+	</ul>
+</div>		</td>
+		<td id="main" valign="top">
+			<h2>Login</h2>
+<p>
+	You have to be logged in to see this page...
+</p>
+<p>
+	<form action="http://www.freesound.org/forum/login.php" method="post">
+		<input type="hidden" name="redirect" value="../index.php" />
+		<table>
+			<tr>
+				<td align="right">User:</td>
+				<td><input name="username" size="12" maxlength="40" value="" type="text" /></td>
+			</tr>
+			<tr>
+				<td align="right">Pass:</td>
+				<td><input name="password" size="12" maxlength="25" type="password" /></td>
+			</tr>
+			<tr>
+				<td align="right">&nbsp;</td>
+				<td><input name="autologin" type="checkbox" class="checkbox" checked="checked" /> autologin</td>
+			</tr>
+		</table>
+		<input type="submit" value="login" name="login" class="button" size="15"/>
+	</form>
+	<ul id="join-register">
+		 <li style="font-size:14px"><a href="http://www.freesound.org/forum/profile.php?mode=register">Join / Register</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=sendpassword">Forgotten password?</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=sendusername">Forgotten username?</a></li>
+		 <li><a href="http://www.freesound.org/forum/profile.php?mode=resendactivation">Resend activation email.</a></li>
+	</ul>
+</p>
+		</td>
+				<td id="column2" valign="top">
+			<div class="window"><div id="searchbox">
+<form method="post" action="http://www.freesound.org/searchText.php">
+   <input type="text" name="search" value="" size="30" />
+   <input type="hidden" name="searchTags" value="on"/>
+   <input type="hidden" name="searchDescriptions" value="on"/>
+   <input type="submit" name="submit" value="search" />
+</form></div></div>
+<!--
+<div class="window" id="shoutboxsmall">
+	<h2>Shoutbox!</h2>
+		<p>
+		<a href="http://www.freesound.org/shoutbox.php">add your own shout!</a>
+	</p>
+</div>
+-->
+<div class="window">
+	<h2>Additions in last 48 hours...</h2>
+	<ul>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=634166">Benboncan</a> : 3 files</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=923140">NomSomGomLom</a> : 1 files</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=399326">M-RED</a> : 1 files</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=321967">Robinhood76</a> : 1 files</li>
+			</ul>
+	<p>
+		<a href="http://www.freesound.org/latestUploads.php" class="stat">more...</a> | 
+		<a href="http://www.freesound.org/rss.php">RSS</a> | 
+		85036 files in total
+	</p>
+</div>
+<div class="window">
+	<h2>Latest forum posts...</h2>
+	<ul>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24611#24611">Attention:  Recording Acoust..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1281492">Suicidity</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24610#24610">drum fills</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1281492">Suicidity</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24608#24608">Looking for a rusty squeekin..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=119991">Haijpoh</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24607#24607">Watch me leave - short horro..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1051859">surfaceofthesun</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24606#24606">Free Sound Editing Program</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=634166">Benboncan</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24605#24605">Best song ever(Should listen..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=937616">SLAMAcademy</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24603#24603">reel to reel tape sounds</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1085376">eleventwelve</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24602#24602">Looking for very simple soun..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1015240">Timbre</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24601#24601">I need a deep, sleepy male w..</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1015240">Timbre</a>
+		</li>
+				<li>
+			<a href="http://www.freesound.org/forum/viewtopic.php?p=24599#24599">Looking for sexy female voice</a> by <a href="http://www.freesound.org/usersViewSingle.php?id=1432178">victorydiv</a>
+		</li>
+			</ul>
+	<p><a href="http://www.freesound.org/forum/index.php">more...</a></p>
+</div>
+<div class="window">
+	<h2>Most active freesounders</h2>
+	<ul>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=34216">klankschap</a> : 4639.9100 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=2518">Jovica</a> : 3616.7700 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=28867">inchadney</a> : 2971.0500 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=8043">dobroide</a> : 2565.3300 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=4948">NoiseCollector</a> : 2383.4300 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=215874">ERH</a> : 1479.3600 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=96">hanstimm</a> : 1413.0500 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=7037">Corsica_S</a> : 1311.9200 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=591226">goierrikoahtez</a> : 1276.9400 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=36188">LG</a> : 981.4200 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=197070">csengeri</a> : 784.3500 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=634166">Benboncan</a> : 674.1800 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=29541">digifishmusic</a> : 659.0500 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=37876">acclivity</a> : 621.6500 min</li>
+				<li><a href="http://www.freesound.org/usersViewSingle.php?id=828493">sonsdebarcelona</a> : 612.4800 min</li>
+			</ul>
+	<p><p><a href="http://www.freesound.org/usersView.php">more...</a></p>
+</div>
+<div class="window">
+	<h2>Most popular files (last 7 days)</h2>
+	<ul>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=34338" title="wind.wav by ERH">wind.wav</a> (394)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=2523" title="rbh thunder storm.wav by RHumphries">rbh thunder storm.wav</a> (351)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=33637" title="CinematicBoomNorm.wav by HerbertBoland">CinematicBoomNorm.wav</a> (309)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=21409" title="heart beat.mp3 by greyseraphim">heart beat.mp3</a> (289)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=18765" title="evening in the forest.wav by reinsamba">evening in the forest..</a> (279)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=48412" title="oceanwavescrushing.wav by Luftrum">oceanwavescrushing.wav</a> (242)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=33245" title="grenade.wav by ljudman">grenade.wav</a> (238)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=3536" title="record scratch.wav by luffy">record scratch.wav</a> (230)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=57808" title="carterattack.mp3 by guitarguy1985">carterattack.mp3</a> (192)
+		</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=33796" title="ambience03.wav by yewbic">ambience03.wav</a> (190)
+		</li>
+			</ul>
+	<p>15486930 downloads in total</p>
+</div>
+<div class="window">
+	<h2>Highest rated sounds (min. 7 votes)</h2>
+	<ul>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=17185" title="Nightingale song 3.wav by reinsamba">Nightingale song 3.wav</a> : 9.10 (1270)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=57808" title="carterattack.mp3 by guitarguy1985">carterattack.mp3</a> : 9.02 (603)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=33637" title="CinematicBoomNorm.wav by HerbertBoland">CinematicBoomNorm.wav</a> : 9.02 (1047)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=57714" title="Metal Atmosphere 001.mp3 by DJ Chronos">Metal Atmosphere 001...</a> : 9.01 (63)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=48544" title="Rezzo_4.wav by Flick3r">Rezzo_4.wav</a> : 9.01 (64)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=14854" title="Nightingale song.wav by reinsamba">Nightingale song.wav</a> : 8.98 (279)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=24052" title="bleep10.wav by ermine">bleep10.wav</a> : 8.98 (372)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=37145" title="overblow_echo.mp3 by kerri">overblow_echo.mp3</a> : 8.97 (96)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=71103" title="EAS warning.wav by parabolix">EAS warning.wav</a> : 8.97 (35)</li>
+				<li><a href="http://www.freesound.org/samplesViewSingle.php?id=27257" title="eagle_feather.mp3 by kerri">eagle_feather.mp3</a> : 8.96 (274)</li>
+			</ul>
+</div>
+		</td>
+			</tr>
+	</table>
+	<div id="footer">
+		This site is licensed under a <a href="http://creativecommons.org/licenses/by-nd/2.0/">Creative Commons License</a> by <a href="http://www.mtg.upf.edu/">MTG</a> (<a href="http://www.upf.edu/">UPF</a>). | <a href="http://www.freesound.org/contact.php">Contact Webmaster</a> | Some Rights Reserved!
+	</div>
+	<!-- Time to render page: 205 -->
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+  _uacct = "UA-86270-1";
+  urchinTracker();
+  </script>
+</body>
+</html>
