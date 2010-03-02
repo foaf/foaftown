@@ -31,6 +31,9 @@
 
 @synthesize last_vol;
 
+@synthesize roster_view;
+@synthesize roster_list;
+
 
 //@synthesize toggleSwitch;
 /*
@@ -49,12 +52,14 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.roster_list = [[NSMutableArray alloc] initWithObjects:@"bob.notube@gmail.com/",@"zetland.mythbot@googlemail.com/gumboviListener",@"buttons@foaf.tv/",nil]; 
+    NSLog(@"FVC viewDidLoad, set up array for roster: %@", self.roster_list);
 }
-*/
+
 
 
 - (BOOL)textFieldShouldReturn: (UITextField *)textField {
