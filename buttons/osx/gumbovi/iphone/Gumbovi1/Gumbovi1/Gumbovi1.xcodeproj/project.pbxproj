@@ -25,8 +25,6 @@
 		B648FEA010D1A3040068001F /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
 		B64E91D2113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */; };
 		B64E91D3113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */; };
-		B64E931A113D6288002137A2 /* blip2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9319113D6288002137A2 /* blip2.wav */; };
-		B64E931B113D6288002137A2 /* blip2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9319113D6288002137A2 /* blip2.wav */; };
 		B64E9335113D6699002137A2 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9334113D6699002137A2 /* pop.wav */; };
 		B64E9336113D6699002137A2 /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9334113D6699002137A2 /* pop.wav */; };
 		B656AA3810ADDCBD0089D78F /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3010ADDCBD0089D78F /* Image.jpg */; };
@@ -150,7 +148,6 @@
 		B648FE9810D1A3040068001F /* heartbuttons4-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up.png"; sourceTree = "<group>"; };
 		B64E91D0113D3ABC002137A2 /* LinkedTVRosterTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedTVRosterTableController.h; sourceTree = "<group>"; };
 		B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedTVRosterTableController.m; sourceTree = "<group>"; };
-		B64E9319113D6288002137A2 /* blip2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blip2.wav; sourceTree = "<group>"; };
 		B64E9334113D6699002137A2 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		B656AA3010ADDCBD0089D78F /* Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image.jpg; sourceTree = "<group>"; };
 		B656AA3510ADDCBD0089D78F /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
@@ -389,7 +386,6 @@
 			children = (
 				B6A67EF111357C8000EA4712 /* Images */,
 				B622B62710A5B9E8007E8F37 /* SecondView.xib */,
-				B64E9319113D6288002137A2 /* blip2.wav */,
 				B64E9334113D6699002137A2 /* pop.wav */,
 				B656AA3510ADDCBD0089D78F /* Data.plist */,
 				B656AA3610ADDCBD0089D78F /* notube.json */,
@@ -677,7 +673,6 @@
 				B6A67F3B11357F2000EA4712 /* RootViewController.xib in Resources */,
 				B6AFC754113812110013DE80 /* FINGERPRINT.jpg in Resources */,
 				B6B32F8A113BE73F005F31EB /* qr_bg_blur.png in Resources */,
-				B64E931A113D6288002137A2 /* blip2.wav in Resources */,
 				B64E9335113D6699002137A2 /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +687,6 @@
 				B6A67F3311357F2000EA4712 /* RootViewController.xib in Resources */,
 				B6AFC753113812110013DE80 /* FINGERPRINT.jpg in Resources */,
 				B6B32F89113BE73F005F31EB /* qr_bg_blur.png in Resources */,
-				B64E931B113D6288002137A2 /* blip2.wav in Resources */,
 				B64E9336113D6699002137A2 /* pop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
