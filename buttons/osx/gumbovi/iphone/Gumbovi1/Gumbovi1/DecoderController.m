@@ -90,10 +90,13 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
     _overlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
     _imagePicker.delegate = self;
-    _imagePicker.allowsEditing = NO;
-    _imagePicker.showsCameraControls = NO;
-    _imagePicker.cameraOverlayView = _overlayView;
-
+    //not221: 
+	  _imagePicker.allowsEditing = NO;
+    //not221:
+	  _imagePicker.showsCameraControls = NO;
+ //not 221
+	  _imagePicker.cameraOverlayView = _overlayView;
+ 
     [self presentModalViewController:_imagePicker animated:YES];
 
     _timer = [NSTimer
@@ -213,26 +216,15 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)decoder:(Decoder *)decoder didDecodeImage:(UIImage *)image usingSubset:(UIImage *)subset withResult:(TwoDDecoderResult *)result {
-  // danbri xxx
   NSLog(@"didDecodeImage");
   NSLog(@"%@", result.text);
   NSLog(@"%@", result.points);
   _overlayView.points = result.points;
   Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];	
   NSLog(@"DECODER DONE, trying to restore main app, %@", gad);
-  //gad.qr_results.text = result.text;	
-	NSLog(@" HOW CAN WE STORE NEW BUDDY?! %@", result.text);
-
-	// UITextField *uf = gad.qr_results ;
-	
-	NSLog(@"Got a new buddy: %@", result.text);
-
-//	NSLog(@"Buddy data type %@", result.text);
-	//NSString *s = (NSString *)s;
-    //[gad newJID:s];
-	[gad newJID:result.text];
-
-	//uf.text = result.text;
+  //NSString *s = (NSString *)s;
+  //[gad newJID:s];
+  [gad newJID:result.text];
   UITabBarController *tbc =  [gad tabBarController];
   NSLog(@"Got tbc: %@", tbc);
   UINavigationController *myQrController = [tbc.viewControllers objectAtIndex:4];

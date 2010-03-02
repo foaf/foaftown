@@ -27,10 +27,20 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 - (id) init {
   if( self = [super init] ) {
-    self.wantsFullScreenLayout = YES;
-    self.sourceType = UIImagePickerControllerSourceTypeCamera;
-    self.cameraViewTransform = CGAffineTransformScale(
-      self.cameraViewTransform, CAMERA_SCALAR, CAMERA_SCALAR);
+ 
+	  
+	  //float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+//		  self.wantsFullScreenLayout = YES;
+		  self.sourceType = UIImagePickerControllerSourceTypeCamera;
+		  self.cameraViewTransform = CGAffineTransformScale(self.cameraViewTransform, CAMERA_SCALAR, CAMERA_SCALAR);	
+
+//221 version:		  self.sourceType = UIImagePickerControllerSourceTypeCamera;		  
+	  
+	//not 2.2.1 
+	  // self.wantsFullScreenLayout = YES;
+//    self.sourceType = UIImagePickerControllerSourceTypeCamera;
+    //not221 self.cameraViewTransform = CGAffineTransformScale(
+      //not221: self.cameraViewTransform, CAMERA_SCALAR, CAMERA_SCALAR);
   }
 
   return self;
