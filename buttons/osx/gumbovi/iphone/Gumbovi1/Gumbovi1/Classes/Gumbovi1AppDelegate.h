@@ -32,6 +32,8 @@
 	NSDictionary *data;
 	//FirstViewController *fvc;
 
+	//WebViewController *webController;
+	
 	UITextField* qr_results;//libby
 
 }
@@ -47,6 +49,8 @@
 // lists drilldown
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSDictionary *data;
+
+//@property (nonatomic, retain) IBOutlet WebViewController *webController;
 
 
 @property (nonatomic, retain) UIWindow *decoder_window;

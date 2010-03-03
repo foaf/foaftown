@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface LinkedTVRosterTableController : UITableViewController {
+@interface LinkedTVRosterTableController : UITableViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet UITableView *roster_view;
 }
 @property (nonatomic, retain) IBOutlet UITableView *roster_view;
