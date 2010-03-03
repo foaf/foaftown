@@ -45,6 +45,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     NSLog(@"table will appear.");
+	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+    NSMutableArray *roster = fvc.roster_list;
+	NSLog(@"viewWillAppear: roster is %@",roster);
+	NSLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
     [roster_view reloadData]; // refresh roster when anyone will look
 }
 
@@ -89,12 +94,14 @@
 
 //http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UITableViewDatasource_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006941-CH3-SW9
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	    return 1;
+    NSLog(@"numberOfSectionsInTableView called");
+	return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"numberOfRowsInSection called");
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
@@ -109,7 +116,8 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    NSLog(@"cellForRowAtIndexPath called");
+
 	// NSLog(@"FRESH CELL: %@",indexPath);
 
 	

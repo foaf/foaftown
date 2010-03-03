@@ -34,6 +34,7 @@
 
 // for qr
 #import "DecoderController.h"
+//#import "WebViewController.h"
 
 @implementation Gumbovi1AppDelegate
 
@@ -41,6 +42,9 @@
 @synthesize navigationController;
 @synthesize data;
 // end lists stuff
+
+//@synthesize webController;
+
 
 @synthesize decoder_window;
 @synthesize qr_results;

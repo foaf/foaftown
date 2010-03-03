@@ -9,6 +9,11 @@
 #import "WebViewController.h"
 
 
+//
+//NSURL *urlURL = [NSURL URLWithString:@"http://services.notube.tv/notube/zapper/epgactionmobile2.php?username=lora"] ;
+//theWebView.backgroundColor = [UIColor blackColor];
+//[theWebView loadRequest:[NSURLRequest requestWithURL:urlURL]];
+
 @implementation WebViewController
 
 @synthesize webview;
@@ -16,16 +21,9 @@
 @synthesize urlAddress;
 
 - (void)viewDidLoad {
-	
 	urlAddress = @"http://buttons.foaf.tv/";
-	
-	//Create a URL object.
 	NSURL *url = [NSURL URLWithString:urlAddress];
-	
-	//URL Requst Object
 	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-	
-	//Load the request in the UIWebView.
 	[webview loadRequest:requestObj];
 }
 

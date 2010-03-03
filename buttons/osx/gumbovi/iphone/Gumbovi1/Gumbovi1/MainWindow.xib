@@ -50,7 +50,7 @@
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<object class="IBUIViewController" key="IBUISelectedViewController" id="223029272">
 					<object class="IBUIView" key="IBUIView" id="161669108">
-						<reference key="NSNextResponder"/>
+						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">274</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -64,7 +64,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{15, 10}, {67, 21}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -87,7 +86,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{15, 58}, {80, 21}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -103,7 +101,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{137, 97}, {94, 27}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -117,7 +114,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{15, 100}, {91, 21}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -133,7 +129,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{97, 58}, {174, 31}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 										<int key="IBUIContentVerticalAlignment">0</int>
@@ -160,7 +155,6 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{97, 10}, {174, 31}}</string>
 										<reference key="NSSuperview" ref="369919823"/>
-										<reference key="NSWindow"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 										<int key="IBUIContentVerticalAlignment">0</int>
@@ -184,7 +178,6 @@
 								</object>
 								<string key="NSFrame">{{18, 28}, {277, 138}}</string>
 								<reference key="NSSuperview" ref="161669108"/>
-								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MC4wNzk4NjQ0MTMgMC4wODcwMjYwNDUgMC4xMDAwMDAwMgA</bytes>
@@ -196,7 +189,6 @@
 								<int key="NSvFlags">274</int>
 								<string key="NSFrame">{{20, 179}, {275, 232}}</string>
 								<reference key="NSSuperview" ref="161669108"/>
-								<reference key="NSWindow"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="1025548576">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MQA</bytes>
@@ -214,8 +206,6 @@
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 411}</string>
-						<reference key="NSSuperview"/>
-						<reference key="NSWindow"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -1143,7 +1133,15 @@
 						<reference key="source" ref="1068719711"/>
 						<reference key="destination" ref="627201548"/>
 					</object>
-					<int key="connectionID">395</int>
+					<int key="connectionID">396</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">roster_view</string>
+						<reference key="source" ref="223029272"/>
+						<reference key="destination" ref="627201548"/>
+					</object>
+					<int key="connectionID">397</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1746,7 +1744,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">395</int>
+			<int key="maxID">397</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
