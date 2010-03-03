@@ -14,6 +14,8 @@
 	IBOutlet UITextField *userid;
 	IBOutlet UITextField *password;
 
+//IBOutlet UIWebView *webview;
+	
 	IBOutlet UIButton *plus;
 	IBOutlet UIButton *minu;
 	IBOutlet UIButton *left;
@@ -67,6 +69,8 @@
 
 //	@property (nonatomic, retain) IBOutlet UITableView *roster_view;
 	@property (nonatomic, retain) NSMutableArray *roster_list;
+
+//@property (nonatomic, retain) UIWebView *webview;
 
 
 	@property float last_vol;

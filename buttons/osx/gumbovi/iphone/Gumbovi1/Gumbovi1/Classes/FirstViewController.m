@@ -28,11 +28,9 @@
 @synthesize output;
 @synthesize appdel;
 @synthesize volume;
-
 @synthesize last_vol;
-
-//@synthesize roster_view;
 @synthesize roster_list;
+/////@synthesize webview;
 
 
 //@synthesize toggleSwitch;

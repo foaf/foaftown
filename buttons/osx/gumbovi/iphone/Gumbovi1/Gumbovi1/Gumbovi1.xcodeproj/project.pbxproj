@@ -111,6 +111,8 @@
 		B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
+		B6E6D5F5113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
+		B6E6D5F6113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +259,8 @@
 		B6C9591D1133065D00CF15AA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		B6E6D5F3113E9A27009DD63D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		B6E6D5F4113E9A27009DD63D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +301,8 @@
 				B656AA4510ADDD590089D78F /* JSON */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
+				B6E6D5F3113E9A27009DD63D /* WebViewController.h */,
+				B6E6D5F4113E9A27009DD63D /* WebViewController.m */,
 				B64E91D0113D3ABC002137A2 /* LinkedTVRosterTableController.h */,
 				B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
@@ -739,6 +745,7 @@
 				B66F413B113BCCA5004DF167 /* DecoderController.m in Sources */,
 				B66F4149113BCD13004DF167 /* OverlayView.m in Sources */,
 				B64E91D2113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */,
+				B6E6D5F6113E9A27009DD63D /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +765,7 @@
 				B66F4139113BCCA5004DF167 /* DecoderController.m in Sources */,
 				B66F4148113BCD13004DF167 /* OverlayView.m in Sources */,
 				B64E91D3113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */,
+				B6E6D5F5113E9A27009DD63D /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
