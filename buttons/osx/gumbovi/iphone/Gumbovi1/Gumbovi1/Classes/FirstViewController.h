@@ -28,6 +28,9 @@
 
 //	IBOutlet UITableView *roster_view;
 	
+	NSMutableArray *roster_list;
+
+	
 	//IBOutlet UITextView *qr_result;
 
 	
