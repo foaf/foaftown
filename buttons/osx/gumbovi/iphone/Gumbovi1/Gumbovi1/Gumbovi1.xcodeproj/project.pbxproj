@@ -80,6 +80,36 @@
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0E10113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
+		B69F0E1E113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
+		B69F0E1F113FFA2E00365B22 /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
+		B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
+		B69F0E21113FFA2E00365B22 /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
+		B69F0E25113FFA3E00365B22 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
+		B69F0E26113FFA3E00365B22 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E24113FFA3E00365B22 /* ChatViewController.xib */; };
+		B69F0E27113FFA3E00365B22 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
+		B69F0E28113FFA3E00365B22 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E24113FFA3E00365B22 /* ChatViewController.xib */; };
+		B69F0E2D113FFA7F00365B22 /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
+		B69F0E2E113FFA7F00365B22 /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
+		B69F0E32113FFAAA00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
+		B69F0E33113FFAAA00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
+		B69F0E37113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */; };
+		B69F0E38113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */; };
+		B69F0E3B113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
+		B69F0E3C113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
+		B69F0E41113FFB0200365B22 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
+		B69F0E42113FFB0200365B22 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E40113FFB0200365B22 /* StreamController.m */; };
+		B69F0E43113FFB0200365B22 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
+		B69F0E44113FFB0200365B22 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E40113FFB0200365B22 /* StreamController.m */; };
+		B69F0E52113FFB2E00365B22 /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E51113FFB2E00365B22 /* DDString.m */; };
+		B69F0E53113FFB2E00365B22 /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E51113FFB2E00365B22 /* DDString.m */; };
+		B69F0E67113FFD1000365B22 /* SLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E65113FFD1000365B22 /* SLRootViewController.m */; };
+		B69F0E68113FFD1000365B22 /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E66113FFD1000365B22 /* SLRootViewController.xib */; };
+		B69F0E69113FFD1000365B22 /* SLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E65113FFD1000365B22 /* SLRootViewController.m */; };
+		B69F0E6A113FFD1000365B22 /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E66113FFD1000365B22 /* SLRootViewController.xib */; };
+		B69F0ECA113FFE5F00365B22 /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
+		B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
+		B69F0ECD113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
+		B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
 		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
 		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6A67F2C11357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -237,6 +267,29 @@
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B69F0E1B113FFA2E00365B22 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
+		B69F0E1C113FFA2E00365B22 /* BonjourClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonjourClient.h; sourceTree = "<group>"; };
+		B69F0E1D113FFA2E00365B22 /* BonjourClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonjourClient.m; sourceTree = "<group>"; };
+		B69F0E22113FFA3E00365B22 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		B69F0E23113FFA3E00365B22 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		B69F0E24113FFA3E00365B22 /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		B69F0E2C113FFA7F00365B22 /* Bonjour.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bonjour.xib; sourceTree = "<group>"; };
+		B69F0E30113FFAAA00365B22 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		B69F0E31113FFAAA00365B22 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = ServerlessDemo.xcdatamodel; sourceTree = "<group>"; };
+		B69F0E39113FFAEA00365B22 /* ServerlessDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerlessDemoAppDelegate.h; sourceTree = "<group>"; };
+		B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerlessDemoAppDelegate.m; sourceTree = "<group>"; };
+		B69F0E3D113FFB0200365B22 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		B69F0E3E113FFB0200365B22 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
+		B69F0E3F113FFB0200365B22 /* StreamController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamController.h; sourceTree = "<group>"; };
+		B69F0E40113FFB0200365B22 /* StreamController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamController.m; sourceTree = "<group>"; };
+		B69F0E50113FFB2E00365B22 /* DDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDString.h; sourceTree = "<group>"; };
+		B69F0E51113FFB2E00365B22 /* DDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDString.m; sourceTree = "<group>"; };
+		B69F0E65113FFD1000365B22 /* SLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLRootViewController.m; sourceTree = "<group>"; };
+		B69F0E66113FFD1000365B22 /* SLRootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SLRootViewController.xib; sourceTree = "<group>"; };
+		B69F0E6B113FFD1800365B22 /* SLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRootViewController.h; sourceTree = "<group>"; };
+		B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnreadIndicator.png; sourceTree = "<group>"; };
+		B69F0ECC113FFE6800365B22 /* GreenBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBubble.png; sourceTree = "<group>"; };
 		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
 		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
 		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -329,6 +382,7 @@
 		29B97314FDCFA39411CA2CEA /* Gumbovi1 */ = {
 			isa = PBXGroup;
 			children = (
+				B69F0E1A113FF9F500365B22 /* serverless */,
 				B6A67F1B11357F2000EA4712 /* lists */,
 				B6A67EE011357B8300EA4712 /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
@@ -505,6 +559,36 @@
 				B67CC3B310A5764900511209 /* NSStringAdditions.m */,
 			);
 			path = KissXML;
+			sourceTree = "<group>";
+		};
+		B69F0E1A113FF9F500365B22 /* serverless */ = {
+			isa = PBXGroup;
+			children = (
+				B69F0E1B113FFA2E00365B22 /* BlueBubble.png */,
+				B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */,
+				B69F0E65113FFD1000365B22 /* SLRootViewController.m */,
+				B69F0E66113FFD1000365B22 /* SLRootViewController.xib */,
+				B69F0E6B113FFD1800365B22 /* SLRootViewController.h */,
+				B69F0E50113FFB2E00365B22 /* DDString.h */,
+				B69F0ECC113FFE6800365B22 /* GreenBubble.png */,
+				B69F0E51113FFB2E00365B22 /* DDString.m */,
+				B69F0E3D113FFB0200365B22 /* Service.h */,
+				B69F0E3E113FFB0200365B22 /* Service.m */,
+				B69F0E3F113FFB0200365B22 /* StreamController.h */,
+				B69F0E40113FFB0200365B22 /* StreamController.m */,
+				B69F0E2C113FFA7F00365B22 /* Bonjour.xib */,
+				B69F0E22113FFA3E00365B22 /* ChatViewController.h */,
+				B69F0E23113FFA3E00365B22 /* ChatViewController.m */,
+				B69F0E24113FFA3E00365B22 /* ChatViewController.xib */,
+				B69F0E1C113FFA2E00365B22 /* BonjourClient.h */,
+				B69F0E30113FFAAA00365B22 /* Message.h */,
+				B69F0E39113FFAEA00365B22 /* ServerlessDemoAppDelegate.h */,
+				B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */,
+				B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */,
+				B69F0E31113FFAAA00365B22 /* Message.m */,
+				B69F0E1D113FFA2E00365B22 /* BonjourClient.m */,
+			);
+			name = serverless;
 			sourceTree = "<group>";
 		};
 		B6A67EE011357B8300EA4712 /* qr */ = {
@@ -687,6 +771,12 @@
 				B6B32F8A113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 				B64E9335113D6699002137A2 /* pop.wav in Resources */,
 				B69F0DD6113FC43500365B22 /* README.TXT in Resources */,
+				B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */,
+				B69F0E28113FFA3E00365B22 /* ChatViewController.xib in Resources */,
+				B69F0E2E113FFA7F00365B22 /* Bonjour.xib in Resources */,
+				B69F0E6A113FFD1000365B22 /* SLRootViewController.xib in Resources */,
+				B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
+				B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +792,12 @@
 				B6B32F89113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 				B64E9336113D6699002137A2 /* pop.wav in Resources */,
 				B69F0DD5113FC43500365B22 /* README.TXT in Resources */,
+				B69F0E1E113FFA2E00365B22 /* BlueBubble.png in Resources */,
+				B69F0E26113FFA3E00365B22 /* ChatViewController.xib in Resources */,
+				B69F0E2D113FFA7F00365B22 /* Bonjour.xib in Resources */,
+				B69F0E68113FFD1000365B22 /* SLRootViewController.xib in Resources */,
+				B69F0ECA113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
+				B69F0ECD113FFE6800365B22 /* GreenBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +850,15 @@
 				B66F4149113BCD13004DF167 /* OverlayView.m in Sources */,
 				B64E91D2113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */,
 				B6E6D5F6113E9A27009DD63D /* WebViewController.m in Sources */,
+				B69F0E21113FFA2E00365B22 /* BonjourClient.m in Sources */,
+				B69F0E27113FFA3E00365B22 /* ChatViewController.m in Sources */,
+				B69F0E33113FFAAA00365B22 /* Message.m in Sources */,
+				B69F0E38113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */,
+				B69F0E3C113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */,
+				B69F0E43113FFB0200365B22 /* Service.m in Sources */,
+				B69F0E44113FFB0200365B22 /* StreamController.m in Sources */,
+				B69F0E53113FFB2E00365B22 /* DDString.m in Sources */,
+				B69F0E69113FFD1000365B22 /* SLRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +879,15 @@
 				B66F4148113BCD13004DF167 /* OverlayView.m in Sources */,
 				B64E91D3113D3ABC002137A2 /* LinkedTVRosterTableController.m in Sources */,
 				B6E6D5F5113E9A27009DD63D /* WebViewController.m in Sources */,
+				B69F0E1F113FFA2E00365B22 /* BonjourClient.m in Sources */,
+				B69F0E25113FFA3E00365B22 /* ChatViewController.m in Sources */,
+				B69F0E32113FFAAA00365B22 /* Message.m in Sources */,
+				B69F0E37113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */,
+				B69F0E3B113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */,
+				B69F0E41113FFB0200365B22 /* Service.m in Sources */,
+				B69F0E42113FFB0200365B22 /* StreamController.m in Sources */,
+				B69F0E52113FFB2E00365B22 /* DDString.m in Sources */,
+				B69F0E67113FFD1000365B22 /* SLRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
