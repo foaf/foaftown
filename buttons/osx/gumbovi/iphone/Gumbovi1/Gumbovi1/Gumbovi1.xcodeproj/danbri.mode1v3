@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -286,12 +288,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>85</integer>
-									<integer>80</integer>
+									<integer>56</integer>
+									<integer>54</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 784}, {284, 763}}</string>
+							<string>{{0, 0}, {284, 763}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -312,7 +315,7 @@
 							<real>262</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>112 56 1091 822 0 0 1440 878 </string>
+						<string>328 56 1091 822 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -340,7 +343,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6E6D711113F0304009DD63D</string>
+										<string>B69F0DCB113FBEE600365B22</string>
 										<key>history</key>
 										<array>
 											<string>B67CC43B10A57B0600511209</string>
@@ -399,7 +402,7 @@
 											<string>B6E6D6BE113EFAE5009DD63D</string>
 											<string>B6E6D6BF113EFAE5009DD63D</string>
 											<string>B6E6D70E113F0304009DD63D</string>
-											<string>B6E6D70A113F0183009DD63D</string>
+											<string>B6E6D715113F0FC4009DD63D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -458,73 +461,8 @@
 											<string>B64E91E9113D3E96002137A2</string>
 											<string>B64E91EB113D3E96002137A2</string>
 											<string>B64E92D0113D5395002137A2</string>
-											<string>B6E6D600113E9A79009DD63D</string>
-											<string>B6E6D601113E9A79009DD63D</string>
-											<string>B6E6D602113E9A79009DD63D</string>
-											<string>B6E6D603113E9A79009DD63D</string>
-											<string>B6E6D604113E9A79009DD63D</string>
-											<string>B6E6D605113E9A79009DD63D</string>
-											<string>B6E6D606113E9A79009DD63D</string>
-											<string>B6E6D607113E9A79009DD63D</string>
-											<string>B6E6D608113E9A79009DD63D</string>
-											<string>B6E6D609113E9A79009DD63D</string>
 											<string>B6E6D60A113E9A79009DD63D</string>
-											<string>B6E6D60B113E9A79009DD63D</string>
-											<string>B6E6D60C113E9A79009DD63D</string>
-											<string>B6E6D60D113E9A79009DD63D</string>
 											<string>B6E6D623113EAADA009DD63D</string>
-											<string>B6E6D647113EAE5B009DD63D</string>
-											<string>B6E6D648113EAE5B009DD63D</string>
-											<string>B6E6D649113EAE5B009DD63D</string>
-											<string>B6E6D64A113EAE5B009DD63D</string>
-											<string>B6E6D64B113EAE5B009DD63D</string>
-											<string>B6E6D64C113EAE5B009DD63D</string>
-											<string>B6E6D64D113EAE5B009DD63D</string>
-											<string>B6E6D64E113EAE5B009DD63D</string>
-											<string>B6E6D64F113EAE5B009DD63D</string>
-											<string>B6E6D650113EAE5B009DD63D</string>
-											<string>B6E6D65C113EB312009DD63D</string>
-											<string>B6E6D65D113EB312009DD63D</string>
-											<string>B6E6D65E113EB312009DD63D</string>
-											<string>B6E6D66C113EC38F009DD63D</string>
-											<string>B6E6D66D113EC38F009DD63D</string>
-											<string>B6E6D66E113EC38F009DD63D</string>
-											<string>B6E6D66F113EC38F009DD63D</string>
-											<string>B6E6D677113ED154009DD63D</string>
-											<string>B6E6D68E113EED4A009DD63D</string>
-											<string>B6E6D68F113EED4A009DD63D</string>
-											<string>B6E6D690113EED4A009DD63D</string>
-											<string>B6E6D691113EED4A009DD63D</string>
-											<string>B6E6D692113EED4A009DD63D</string>
-											<string>B6E6D693113EED4A009DD63D</string>
-											<string>B6E6D694113EED4A009DD63D</string>
-											<string>B6E6D695113EED4A009DD63D</string>
-											<string>B6E6D696113EED4A009DD63D</string>
-											<string>B6E6D697113EED4A009DD63D</string>
-											<string>B6E6D698113EED4A009DD63D</string>
-											<string>B6E6D699113EED4A009DD63D</string>
-											<string>B6E6D69A113EED4A009DD63D</string>
-											<string>B6E6D69B113EED4A009DD63D</string>
-											<string>B6E6D69C113EED4A009DD63D</string>
-											<string>B6E6D69D113EED4A009DD63D</string>
-											<string>B6E6D69E113EED4A009DD63D</string>
-											<string>B6E6D6B1113EFA89009DD63D</string>
-											<string>B6E6D6C2113EFAE5009DD63D</string>
-											<string>B6E6D6C3113EFAE5009DD63D</string>
-											<string>B6E6D6C4113EFAE5009DD63D</string>
-											<string>B6E6D6C5113EFAE5009DD63D</string>
-											<string>B6E6D6C6113EFAE5009DD63D</string>
-											<string>B6E6D6C7113EFAE5009DD63D</string>
-											<string>B6E6D6C8113EFAE5009DD63D</string>
-											<string>B6E6D6C9113EFAE5009DD63D</string>
-											<string>B6E6D6CA113EFAE5009DD63D</string>
-											<string>B6E6D6D1113EFBEC009DD63D</string>
-											<string>B6E6D6D2113EFBEC009DD63D</string>
-											<string>B6E6D6FF113F008A009DD63D</string>
-											<string>B6E6D700113F008A009DD63D</string>
-											<string>B6E6D701113F008A009DD63D</string>
-											<string>B6E6D70F113F0304009DD63D</string>
-											<string>B6E6D710113F0304009DD63D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -538,7 +476,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {785, 574}}</string>
 								<key>RubberWindowFrame</key>
-								<string>112 56 1091 822 0 0 1440 878 </string>
+								<string>328 56 1091 822 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -546,8 +484,6 @@
 							<string>574pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -560,7 +496,7 @@
 								<key>Frame</key>
 								<string>{{0, 579}, {785, 202}}</string>
 								<key>RubberWindowFrame</key>
-								<string>112 56 1091 822 0 0 1440 878 </string>
+								<string>328 56 1091 822 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -584,9 +520,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>B6E6D5C2113E7F11009DD63D</string>
+				<string>B69F0DC7113FBEDD00365B22</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>B6E6D5C3113E7F11009DD63D</string>
+				<string>B69F0DC8113FBEDD00365B22</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -720,16 +656,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6E6D60F113E9A79009DD63D</string>
-		<string>B6E6D610113E9A79009DD63D</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>112 56 1091 822 0 0 1440 878 </string>
+	<string>328 56 1091 822 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -750,7 +681,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LinkedTVRosterTableController.h</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -767,8 +698,6 @@
 							<string>224pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
@@ -810,7 +739,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>B67CC37E10A5759F00511209</string>
-				<string>B6E6D5C7113E8264009DD63D</string>
+				<string>B69F0DCC113FBEE600365B22</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
