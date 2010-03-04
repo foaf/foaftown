@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28216C970DB411BC00E5133A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		B622B62910A5B9E8007E8F37 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62710A5B9E8007E8F37 /* SecondView.xib */; };
 		B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
 		B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
 		B648FE9A10D1A3040068001F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
@@ -77,6 +76,8 @@
 		B67CC3EE10A5766500511209 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B67CC3EF10A5766500511209 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
+		B69F0DD5113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
+		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
 		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6A67F2C11357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -137,7 +138,6 @@
 		28A0AB4B0D9B1048005BE974 /* Gumbovi1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gumbovi1_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		B622B62710A5B9E8007E8F37 /* SecondView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondView.xib; sourceTree = "<group>"; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B647EF911134611000A52058 /* QRGumbovi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRGumbovi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down-100x.png"; sourceTree = "<group>"; };
@@ -233,6 +233,7 @@
 		B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream_Prefix.pch; sourceTree = "<group>"; };
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
+		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
 		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
 		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -391,7 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				B6A67EF111357C8000EA4712 /* Images */,
-				B622B62710A5B9E8007E8F37 /* SecondView.xib */,
+				B69F0DD4113FC43500365B22 /* README.TXT */,
 				B64E9334113D6699002137A2 /* pop.wav */,
 				B656AA3510ADDCBD0089D78F /* Data.plist */,
 				B656AA3610ADDCBD0089D78F /* notube.json */,
@@ -654,7 +655,6 @@
 				B67CC39A10A5763500511209 /* Icon.png in Resources */,
 				B67CC39B10A5763500511209 /* beancounter.jpg in Resources */,
 				B67CC39C10A5763500511209 /* buttons.png in Resources */,
-				B622B62910A5B9E8007E8F37 /* SecondView.xib in Resources */,
 				B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */,
 				B656AA3810ADDCBD0089D78F /* Image.jpg in Resources */,
 				B656AA3D10ADDCBD0089D78F /* Data.plist in Resources */,
@@ -680,6 +680,7 @@
 				B6AFC754113812110013DE80 /* FINGERPRINT.jpg in Resources */,
 				B6B32F8A113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 				B64E9335113D6699002137A2 /* pop.wav in Resources */,
+				B69F0DD6113FC43500365B22 /* README.TXT in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +695,7 @@
 				B6AFC753113812110013DE80 /* FINGERPRINT.jpg in Resources */,
 				B6B32F89113BE73F005F31EB /* qr_bg_blur.png in Resources */,
 				B64E9336113D6699002137A2 /* pop.wav in Resources */,
+				B69F0DD5113FC43500365B22 /* README.TXT in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
