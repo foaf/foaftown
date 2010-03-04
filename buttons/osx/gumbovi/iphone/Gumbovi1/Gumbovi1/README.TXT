@@ -23,5 +23,18 @@ Major TODOs:
  * Roster-events and service discovery: buddy list should show media-capable accounts
  * as much of NoTube demo scripts as humanly possible
  
+
+LICENSE
+
+ http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+
+  
  
+DEPENDENCIES
  
+* QR code reader: http://github.com/jverkoey/liteqr/tree/master/qrlib/ 
+  Apache license: http://github.com/jverkoey/liteqr/blob/master/LICENSE
+  
+* XMPP: http://code.google.com/p/xmppframework/wiki/iPhone (New BSD License) 
+   which in turn uses http://code.google.com/p/xmppframework/wiki/ThirdPartyCode
+   AsyncSocket (by Dustin Voss, public domain); libidn (GNU LesserGPL).
