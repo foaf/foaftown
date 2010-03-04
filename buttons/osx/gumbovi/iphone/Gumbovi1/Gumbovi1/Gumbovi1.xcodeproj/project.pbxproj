@@ -78,6 +78,8 @@
 		B67CC3F010A5766500511209 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
 		B69F0DD5113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
+		B69F0E10113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
+		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
 		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6A67F2C11357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -234,6 +236,7 @@
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
+		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
 		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
 		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -279,6 +282,7 @@
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
 				B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
 				B66F4113113BCBFC004DF167 /* libqrlib.a in Frameworks */,
+				B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +294,7 @@
 				B6C95A9F11331F9A00CF15AA /* CoreGraphics.framework in Frameworks */,
 				B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */,
 				B66B41321137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
+				B69F0E10113FF99700365B22 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +410,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B69F0E0F113FF99700365B22 /* CoreData.framework */,
 				B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */,
 				B6C9591D1133065D00CF15AA /* libiconv.2.dylib */,
 				B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */,
