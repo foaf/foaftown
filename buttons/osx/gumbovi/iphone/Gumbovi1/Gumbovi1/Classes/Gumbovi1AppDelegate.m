@@ -32,6 +32,9 @@
 /// from lists drilldown demo
 #import "RootViewController.h"
 
+#import "SLRootViewController.h"
+
+
 // for qr
 #import "DecoderController.h"
 //#import "WebViewController.h"

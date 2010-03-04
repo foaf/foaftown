@@ -564,10 +564,13 @@
 		B69F0E1A113FF9F500365B22 /* serverless */ = {
 			isa = PBXGroup;
 			children = (
+				B69F0E1D113FFA2E00365B22 /* BonjourClient.m */,
+				B69F0E2C113FFA7F00365B22 /* Bonjour.xib */,
 				B69F0E1B113FFA2E00365B22 /* BlueBubble.png */,
 				B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */,
 				B69F0E65113FFD1000365B22 /* SLRootViewController.m */,
 				B69F0E66113FFD1000365B22 /* SLRootViewController.xib */,
+				B69F0E24113FFA3E00365B22 /* ChatViewController.xib */,
 				B69F0E6B113FFD1800365B22 /* SLRootViewController.h */,
 				B69F0E50113FFB2E00365B22 /* DDString.h */,
 				B69F0ECC113FFE6800365B22 /* GreenBubble.png */,
@@ -576,17 +579,14 @@
 				B69F0E3E113FFB0200365B22 /* Service.m */,
 				B69F0E3F113FFB0200365B22 /* StreamController.h */,
 				B69F0E40113FFB0200365B22 /* StreamController.m */,
-				B69F0E2C113FFA7F00365B22 /* Bonjour.xib */,
 				B69F0E22113FFA3E00365B22 /* ChatViewController.h */,
 				B69F0E23113FFA3E00365B22 /* ChatViewController.m */,
-				B69F0E24113FFA3E00365B22 /* ChatViewController.xib */,
 				B69F0E1C113FFA2E00365B22 /* BonjourClient.h */,
 				B69F0E30113FFAAA00365B22 /* Message.h */,
 				B69F0E39113FFAEA00365B22 /* ServerlessDemoAppDelegate.h */,
 				B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */,
 				B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */,
 				B69F0E31113FFAAA00365B22 /* Message.m */,
-				B69F0E1D113FFA2E00365B22 /* BonjourClient.m */,
 			);
 			name = serverless;
 			sourceTree = "<group>";
