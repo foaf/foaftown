@@ -281,13 +281,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>81</integer>
-									<integer>74</integer>
-									<integer>0</integer>
+									<integer>100</integer>
+									<integer>92</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 784}, {284, 741}}</string>
+							<string>{{0, 1061}, {284, 741}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -324,7 +323,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Gumbovi1-Info.plist</string>
+								<string>SLRootViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -332,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Gumbovi1-Info.plist</string>
+										<string>SLRootViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B69F0FBC1140468300365B22</string>
+										<string>B69F100B11410B4900365B22</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -391,14 +390,12 @@
 											<string>B69F0E70113FFDCC00365B22</string>
 											<string>B69F0E71113FFDCC00365B22</string>
 											<string>B69F0E72113FFDCC00365B22</string>
-											<string>B69F0E73113FFDCC00365B22</string>
 											<string>B69F0E74113FFDCC00365B22</string>
 											<string>B69F0E75113FFDCC00365B22</string>
 											<string>B69F0E83113FFDCC00365B22</string>
 											<string>B69F0ED0113FFE7B00365B22</string>
 											<string>B69F0ED4113FFE7B00365B22</string>
 											<string>B69F0EEF113FFF0C00365B22</string>
-											<string>B69F0EF0113FFF0C00365B22</string>
 											<string>B69F0F2C1140024300365B22</string>
 											<string>B69F0F841140417E00365B22</string>
 											<string>B69F0F851140417E00365B22</string>
@@ -407,10 +404,14 @@
 											<string>B69F0F891140417E00365B22</string>
 											<string>B69F0F8A1140417E00365B22</string>
 											<string>B69F0F8B1140417E00365B22</string>
-											<string>B69F0F8C1140417E00365B22</string>
 											<string>B69F0F8D1140417E00365B22</string>
 											<string>B69F0FBA1140468300365B22</string>
-											<string>B69F0F871140417E00365B22</string>
+											<string>B69F0FCE1140FFCE00365B22</string>
+											<string>B69F0FCF1140FFCE00365B22</string>
+											<string>B69F0FD01140FFCE00365B22</string>
+											<string>B69F0FD11140FFCE00365B22</string>
+											<string>B69F0FD21140FFCE00365B22</string>
+											<string>B69F0FC61140FEC700365B22</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -519,6 +520,12 @@
 											<string>B69F0F9A1140417E00365B22</string>
 											<string>B69F0F9B1140417E00365B22</string>
 											<string>B69F0FBB1140468300365B22</string>
+											<string>B69F0FD41140FFCE00365B22</string>
+											<string>B69F0FD51140FFCE00365B22</string>
+											<string>B69F0FD61140FFCE00365B22</string>
+											<string>B69F0FD71140FFCE00365B22</string>
+											<string>B69F0FD81140FFCE00365B22</string>
+											<string>B69F0FD91140FFCE00365B22</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -540,6 +547,8 @@
 							<string>552pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -712,13 +721,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B69F100C11410B4900365B22</string>
+		<string>B69F0FDC1140FFCE00365B22</string>
 		<string>B69F0F301140024300365B22</string>
 		<string>B69F0F311140024300365B22</string>
 		<string>B67CC44310A57B0600511209</string>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1029,7 +1040,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -1095,7 +1106,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
