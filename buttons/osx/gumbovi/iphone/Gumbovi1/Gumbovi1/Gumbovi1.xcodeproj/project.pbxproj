@@ -109,7 +109,6 @@
 		B69F0ECD113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
 		B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
 		B69F10881141475B00365B22 /* Bonjour-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = B69F10871141475B00365B22 /* Bonjour-test.plist */; };
-		B69F10891141475B00365B22 /* Bonjour-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = B69F10871141475B00365B22 /* Bonjour-test.plist */; };
 		B69F1097114147AC00365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
 		B69F1098114147AD00365B22 /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
 		B69F1099114147AF00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
@@ -152,7 +151,6 @@
 		B69F10D21141485800365B22 /* XMPPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BD10A5766400511209 /* XMPPClient.m */; };
 		B69F10D31141485900365B22 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
 		B69F10D41141485A00365B22 /* XMPPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D310A5766500511209 /* XMPPMessage.m */; };
-		B69F10D51141486600365B22 /* Gumbovi1-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */; };
 		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
 		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6A67F2C11357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -188,6 +186,62 @@
 		B6DE270011415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
 		B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
 		B6DE270211415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
+		B6DE2712114168670080EC8F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F1F11357F2000EA4712 /* DetailViewController.m */; };
+		B6DE2713114168680080EC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2911357F2000EA4712 /* main.m */; };
+		B6DE2714114168690080EC8F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2311357F2000EA4712 /* RootViewController.m */; };
+		B6DE2715114168690080EC8F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2B11357F2000EA4712 /* RootViewController.xib */; };
+		B6DE27161141686A0080EC8F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2411357F2000EA4712 /* DetailView.xib */; };
+		B6DE27181141686D0080EC8F /* ListsMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */; };
+		B6DE27191141686F0080EC8F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
+		B6DE271A114168700080EC8F /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2111357F2000EA4712 /* DrillDownAppAppDelegate.m */; };
+		B6DE271B1141687B0080EC8F /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
+		B6DE271C1141687C0080EC8F /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B66F4135113BCCA5004DF167 /* Decoder.mm */; };
+		B6DE271D1141687E0080EC8F /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4147113BCD13004DF167 /* OverlayView.m */; };
+		B6DE271E114168800080EC8F /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4137113BCCA5004DF167 /* DecoderController.m */; };
+		B6DE271F114168810080EC8F /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
+		B6DE2720114168920080EC8F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4C10ADDD590089D78F /* SBJSON.m */; };
+		B6DE2721114168930080EC8F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4E10ADDD590089D78F /* SBJsonBase.m */; };
+		B6DE2722114168940080EC8F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5210ADDD590089D78F /* SBJsonWriter.m */; };
+		B6DE2723114168960080EC8F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4810ADDD590089D78F /* NSObject+SBJSON.m */; };
+		B6DE2724114168970080EC8F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4A10ADDD590089D78F /* NSString+SBJSON.m */; };
+		B6DE2725114168980080EC8F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5010ADDD590089D78F /* SBJsonParser.m */; };
+		B6DE2768114168B70080EC8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
+		B6DE2769114168C80080EC8F /* Bonjour-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = B69F10871141475B00365B22 /* Bonjour-test.plist */; };
+		B6DE276A114168C90080EC8F /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9334113D6699002137A2 /* pop.wav */; };
+		B6DE276B114168CA0080EC8F /* heartbuttons4-up-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */; };
+		B6DE276C114168CF0080EC8F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
+		B6DE276D114168D10080EC8F /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3010ADDCBD0089D78F /* Image.jpg */; };
+		B6DE276E114168D30080EC8F /* FINGERPRINT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6AFC752113812110013DE80 /* FINGERPRINT.jpg */; };
+		B6DE276F114168D50080EC8F /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
+		B6DE2770114168DA0080EC8F /* heartbuttons4-left.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9410D1A3040068001F /* heartbuttons4-left.png */; };
+		B6DE2771114168DB0080EC8F /* beancounter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39710A5763500511209 /* beancounter.jpg */; };
+		B6DE2772114168DD0080EC8F /* notube.json in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3610ADDCBD0089D78F /* notube.json */; };
+		B6DE2773114168E20080EC8F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
+		B6DE2774114168E40080EC8F /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
+		B6DE2775114168E90080EC8F /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39810A5763500511209 /* buttons.png */; };
+		B6DE2776114168EB0080EC8F /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
+		B6DE2777114168EC0080EC8F /* heartbuttons4-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */; };
+		B6DE2778114168F00080EC8F /* nav_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496841111AB7A0033F5D0 /* nav_wheel.png */; };
+		B6DE2779114168F30080EC8F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39610A5763500511209 /* Icon.png */; };
+		B6DE277A114168FA0080EC8F /* control_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496821111AB4A0033F5D0 /* control_bar.png */; };
+		B6DE277B114168FB0080EC8F /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
+		B6DE277C114168FC0080EC8F /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
+		B6DE277D114168FE0080EC8F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
+		B6DE277E114169010080EC8F /* heartbuttons4-righ-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */; };
+		B6DE277F114169030080EC8F /* qr_bg_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B32F88113BE73F005F31EB /* qr_bg_blur.png */; };
+		B6DE2780114169040080EC8F /* heartbuttons4-righ.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9610D1A3040068001F /* heartbuttons4-righ.png */; };
+		B6DE2781114169060080EC8F /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
+		B6DE2782114169080080EC8F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3510ADDCBD0089D78F /* Data.plist */; };
+		B6DE278D114169130080EC8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		B6DE278E114169130080EC8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		B6DE278F114169150080EC8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		B6DE2790114169160080EC8F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
+		B6DE2791114169170080EC8F /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
+		B6DE2792114169180080EC8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
+		B6DE2793114169190080EC8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
+		B6DE27941141691A0080EC8F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
+		B6DE279B114169DA0080EC8F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
+		B6DE279C114169F40080EC8F /* Gumbovi1-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 		B6E6D5F5113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
@@ -393,6 +447,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B69F10AC1141480B00365B22 /* libidn.a in Frameworks */,
+				B6DE2768114168B70080EC8F /* CFNetwork.framework in Frameworks */,
+				B6DE278D114169130080EC8F /* CoreGraphics.framework in Frameworks */,
+				B6DE278E114169130080EC8F /* UIKit.framework in Frameworks */,
+				B6DE278F114169150080EC8F /* Foundation.framework in Frameworks */,
+				B6DE2790114169160080EC8F /* CoreData.framework in Frameworks */,
+				B6DE2791114169170080EC8F /* libiconv.2.dylib in Frameworks */,
+				B6DE2792114169180080EC8F /* CFNetwork.framework in Frameworks */,
+				B6DE2793114169190080EC8F /* SystemConfiguration.framework in Frameworks */,
+				B6DE27941141691A0080EC8F /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,9 +693,9 @@
 				B69F0E1B113FFA2E00365B22 /* BlueBubble.png */,
 				B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */,
 				B69F0E65113FFD1000365B22 /* SLRootViewController.m */,
+				B69F0E6B113FFD1800365B22 /* SLRootViewController.h */,
 				B69F0E66113FFD1000365B22 /* SLRootViewController.xib */,
 				B69F0E24113FFA3E00365B22 /* ChatViewController.xib */,
-				B69F0E6B113FFD1800365B22 /* SLRootViewController.h */,
 				B69F0E50113FFB2E00365B22 /* DDString.h */,
 				B69F0ECC113FFE6800365B22 /* GreenBubble.png */,
 				B69F0E51113FFB2E00365B22 /* DDString.m */,
@@ -855,7 +918,6 @@
 				B69F0E6A113FFD1000365B22 /* SLRootViewController.xib in Resources */,
 				B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
 				B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */,
-				B69F10891141475B00365B22 /* Bonjour-test.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,7 +931,38 @@
 				B69F109D114147B800365B22 /* UnreadIndicator.png in Resources */,
 				B69F10A3114147C100365B22 /* BlueBubble.png in Resources */,
 				B69F10A5114147C300365B22 /* SLRootViewController.xib in Resources */,
-				B69F10D51141486600365B22 /* Gumbovi1-Info.plist in Resources */,
+				B6DE2715114168690080EC8F /* RootViewController.xib in Resources */,
+				B6DE27161141686A0080EC8F /* DetailView.xib in Resources */,
+				B6DE27181141686D0080EC8F /* ListsMainWindow.xib in Resources */,
+				B6DE27191141686F0080EC8F /* Data.plist in Resources */,
+				B6DE2769114168C80080EC8F /* Bonjour-test.plist in Resources */,
+				B6DE276A114168C90080EC8F /* pop.wav in Resources */,
+				B6DE276B114168CA0080EC8F /* heartbuttons4-up-100x.png in Resources */,
+				B6DE276C114168CF0080EC8F /* heartbuttons4-down.png in Resources */,
+				B6DE276D114168D10080EC8F /* Image.jpg in Resources */,
+				B6DE276E114168D30080EC8F /* FINGERPRINT.jpg in Resources */,
+				B6DE276F114168D50080EC8F /* foaflets-12pt.jpg in Resources */,
+				B6DE2770114168DA0080EC8F /* heartbuttons4-left.png in Resources */,
+				B6DE2771114168DB0080EC8F /* beancounter.jpg in Resources */,
+				B6DE2772114168DD0080EC8F /* notube.json in Resources */,
+				B6DE2773114168E20080EC8F /* MainWindow.xib in Resources */,
+				B6DE2774114168E40080EC8F /* iTunesArtwork in Resources */,
+				B6DE2775114168E90080EC8F /* buttons.png in Resources */,
+				B6DE2776114168EB0080EC8F /* heartbuttons4.png in Resources */,
+				B6DE2777114168EC0080EC8F /* heartbuttons4-100x.png in Resources */,
+				B6DE2778114168F00080EC8F /* nav_wheel.png in Resources */,
+				B6DE2779114168F30080EC8F /* Icon.png in Resources */,
+				B6DE277A114168FA0080EC8F /* control_bar.png in Resources */,
+				B6DE277B114168FB0080EC8F /* heartbuttons4-left-100x.png in Resources */,
+				B6DE277C114168FC0080EC8F /* README.TXT in Resources */,
+				B6DE277D114168FE0080EC8F /* heartbuttons4-down-100x.png in Resources */,
+				B6DE277E114169010080EC8F /* heartbuttons4-righ-100x.png in Resources */,
+				B6DE277F114169030080EC8F /* qr_bg_blur.png in Resources */,
+				B6DE2780114169040080EC8F /* heartbuttons4-righ.png in Resources */,
+				B6DE2781114169060080EC8F /* heartbuttons4-up.png in Resources */,
+				B6DE2782114169080080EC8F /* Data.plist in Resources */,
+				B6DE279B114169DA0080EC8F /* Entitlements.plist in Resources */,
+				B6DE279C114169F40080EC8F /* Gumbovi1-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,6 +1089,21 @@
 				B69F10D31141485900365B22 /* XMPPPresence.m in Sources */,
 				B69F10D41141485A00365B22 /* XMPPMessage.m in Sources */,
 				B6DE270211415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
+				B6DE2712114168670080EC8F /* DetailViewController.m in Sources */,
+				B6DE2713114168680080EC8F /* main.m in Sources */,
+				B6DE2714114168690080EC8F /* RootViewController.m in Sources */,
+				B6DE271A114168700080EC8F /* DrillDownAppAppDelegate.m in Sources */,
+				B6DE271B1141687B0080EC8F /* QRImagePickerController.m in Sources */,
+				B6DE271C1141687C0080EC8F /* Decoder.mm in Sources */,
+				B6DE271D1141687E0080EC8F /* OverlayView.m in Sources */,
+				B6DE271E114168800080EC8F /* DecoderController.m in Sources */,
+				B6DE271F114168810080EC8F /* qruiAppDelegate.m in Sources */,
+				B6DE2720114168920080EC8F /* SBJSON.m in Sources */,
+				B6DE2721114168930080EC8F /* SBJsonBase.m in Sources */,
+				B6DE2722114168940080EC8F /* SBJsonWriter.m in Sources */,
+				B6DE2723114168960080EC8F /* NSObject+SBJSON.m in Sources */,
+				B6DE2724114168970080EC8F /* NSString+SBJSON.m in Sources */,
+				B6DE2725114168980080EC8F /* SBJsonParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
