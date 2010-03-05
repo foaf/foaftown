@@ -340,6 +340,8 @@
 	if(![self isViewLoaded]) return;
 	
 	NSLog(@"controllerDidChangeContent");
+	//NSLog(@"deletedsections: %@", deletedSections);
+	//NSLog(@"insertedsections: %@", insertedSections);
 	
 	[deletedSections removeAllIndexes];
 	[insertedSections removeAllIndexes];

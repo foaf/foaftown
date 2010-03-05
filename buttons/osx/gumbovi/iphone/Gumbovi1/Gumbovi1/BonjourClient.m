@@ -115,6 +115,7 @@ static BonjourClient *sharedInstance;
 	for (id key in dict)
 	{
 		NSData *data = [dict objectForKey:key];
+		if ([data isEqual:[NSNull null]]) { break; }// danbri hack
 		NSString *str = [NSString stringWithUTF8Data:data];
 		
 		if (str)
@@ -143,7 +144,6 @@ static BonjourClient *sharedInstance;
 		if ([str isKindOfClass:[NSString class]])
 		{
 			NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-			
 			[mDict setObject:data forKey:key];
 		}
 		else
