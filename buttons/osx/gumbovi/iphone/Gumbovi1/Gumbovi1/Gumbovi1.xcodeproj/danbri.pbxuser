@@ -71,8 +71,6 @@
 		codeSenseManager = B66EABF710A56AD50037F743 /* Code sense */;
 		executables = (
 			B66EABF010A56AD20037F743 /* Gumbovi1 */,
-			B6DE28591141711A0080EC8F /* BonjourUI */,
-			B6DE28E7114181A10080EC8F /* Gumbovi1 copy */,
 		);
 		perUserDictionary = {
 			PBXConfiguration.PBXFileTableDataSource3.PBXBookmarksDataSource = {
@@ -87,6 +85,20 @@
 					PBXBookmarksDataSource_LocationID,
 					PBXBookmarksDataSource_NameID,
 					PBXBookmarksDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					686,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
 				);
 			};
 			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
@@ -478,6 +490,7 @@
 			B6DE28FC114182ED0080EC8F /* PBXTextBookmark */ = B6DE28FC114182ED0080EC8F /* PBXTextBookmark */;
 			B6DE290B114183E10080EC8F /* PBXTextBookmark */ = B6DE290B114183E10080EC8F /* PBXTextBookmark */;
 			B6DE290E114184070080EC8F /* PBXTextBookmark */ = B6DE290E114184070080EC8F /* PBXTextBookmark */;
+			B6DE292B114186150080EC8F /* PBXTextBookmark */ = B6DE292B114186150080EC8F /* PBXTextBookmark */;
 			B6E095F010B1C1A300F27218 = B6E095F010B1C1A300F27218 /* PBXBookmark */;
 			B6E095F410B1C1A300F27218 = B6E095F410B1C1A300F27218 /* PlistBookmark */;
 			B6E095F510B1C1A300F27218 = B6E095F510B1C1A300F27218 /* PBXBookmark */;
@@ -536,7 +549,7 @@
 		ignoreCount = 0;
 		lineNumber = 343;
 		location = Gumbovi1;
-		modificationTime = 289501737.861157;
+		modificationTime = 289506999.161926;
 		state = 2;
 	};
 	B60B4A8F10A8B39500BC7A57 /* Gumbovi1AppDelegate.m:340 */ = {
@@ -553,7 +566,7 @@
 		ignoreCount = 0;
 		lineNumber = 340;
 		location = Gumbovi1;
-		modificationTime = 289501737.861181;
+		modificationTime = 289506999.161947;
 		state = 2;
 	};
 	B60B4A9110A8B39900BC7A57 /* Gumbovi1AppDelegate.m:338 */ = {
@@ -570,7 +583,7 @@
 		ignoreCount = 0;
 		lineNumber = 338;
 		location = Gumbovi1;
-		modificationTime = 289501737.861189;
+		modificationTime = 289506999.161966;
 		state = 2;
 	};
 	B60B4A9310A8B39C00BC7A57 /* Gumbovi1AppDelegate.m:336 */ = {
@@ -587,7 +600,7 @@
 		ignoreCount = 0;
 		lineNumber = 336;
 		location = Gumbovi1;
-		modificationTime = 289501737.861195;
+		modificationTime = 289506999.16198;
 		state = 2;
 	};
 	B60B4A9510A8B39E00BC7A57 /* Gumbovi1AppDelegate.m:344 */ = {
@@ -604,7 +617,7 @@
 		ignoreCount = 0;
 		lineNumber = 344;
 		location = Gumbovi1;
-		modificationTime = 289501737.8612;
+		modificationTime = 289506999.161994;
 		state = 2;
 	};
 	B60B4A9710A8B39F00BC7A57 /* Gumbovi1AppDelegate.m:345 */ = {
@@ -621,7 +634,7 @@
 		ignoreCount = 0;
 		lineNumber = 345;
 		location = Gumbovi1;
-		modificationTime = 289501737.86121;
+		modificationTime = 289506999.162006;
 		state = 2;
 	};
 	B60B4A9910A8B3A100BC7A57 /* Gumbovi1AppDelegate.m:346 */ = {
@@ -638,7 +651,7 @@
 		ignoreCount = 0;
 		lineNumber = 346;
 		location = Gumbovi1;
-		modificationTime = 289501737.861218;
+		modificationTime = 289506999.162024;
 		state = 2;
 	};
 	B60B4A9B10A8B3A200BC7A57 /* Gumbovi1AppDelegate.m:348 */ = {
@@ -655,7 +668,7 @@
 		ignoreCount = 0;
 		lineNumber = 348;
 		location = Gumbovi1;
-		modificationTime = 289501737.861223;
+		modificationTime = 289506999.162038;
 		state = 2;
 	};
 	B60B4AB110A8B84600BC7A57 /* PBXTextBookmark */ = {
@@ -692,7 +705,7 @@
 		ignoreCount = 0;
 		lineNumber = 334;
 		location = Gumbovi1;
-		modificationTime = 289501737.861228;
+		modificationTime = 289506999.162046;
 		state = 2;
 	};
 	B622B53B10A5812C007E8F37 /* PBXBookmark */ = {
@@ -1305,7 +1318,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {974, 392}}";
 			sepNavSelRange = "{204, 34}";
-			sepNavVisRange = "{0, 385}";
+			sepNavVisRange = "{24, 375}";
 			sepNavWindowFrame = "{{77, 63}, {946, 789}}";
 		};
 	};
@@ -1769,6 +1782,21 @@
 			sepNavSelRange = "{3174, 34}";
 			sepNavVisRange = "{2699, 767}";
 		};
+	};
+	B69F10871141475B00365B22 /* Bonjour-test.plist */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = text.plist.xml;
+		name = "Bonjour-test.plist";
+		path = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Bonjour-test.plist";
+		sourceTree = "<absolute>";
+	};
+	B69F10921141478300365B22 /* Bonjour-test-Info.plist */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = text.plist.xml;
+		name = "Bonjour-test-Info.plist";
+		path = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Bonjour-test-Info.plist";
+		sourceTree = "<absolute>";
 	};
 	B69F10D71141488200365B22 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -4453,38 +4481,6 @@
 		vrLen = 383;
 		vrLoc = 0;
 	};
-	B6DE27EE1141711A0080EC8F /* BonjourUI */ = {
-		activeExec = 0;
-		executables = (
-			B6DE28591141711A0080EC8F /* BonjourUI */,
-		);
-	};
-	B6DE28591141711A0080EC8F /* BonjourUI */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = BonjourUI;
-		savedGlobals = {
-		};
-		sourceDirectories = (
-		);
-	};
 	B6DE285D114171710080EC8F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = B69F0E6B113FFD1800365B22 /* SLRootViewController.h */;
@@ -4673,35 +4669,6 @@
 		vrLen = 399;
 		vrLoc = 0;
 	};
-	B6DE287C114181A10080EC8F /* Gumbovi1 copy */ = {
-		activeExec = 0;
-		executables = (
-			B6DE28E7114181A10080EC8F /* Gumbovi1 copy */,
-		);
-	};
-	B6DE28E7114181A10080EC8F /* Gumbovi1 copy */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 0;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		enableDebugStr = 1;
-		environmentEntries = (
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = "Gumbovi1 copy";
-		sourceDirectories = (
-		);
-	};
 	B6DE28EC114181BB0080EC8F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = B69F0E6B113FFD1800365B22 /* SLRootViewController.h */;
@@ -4801,6 +4768,16 @@
 		rType = 0;
 		vrLen = 385;
 		vrLoc = 0;
+	};
+	B6DE292B114186150080EC8F /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B69F0E22113FFA3E00365B22 /* ChatViewController.h */;
+		name = "ChatViewController.h: 8";
+		rLen = 34;
+		rLoc = 204;
+		rType = 0;
+		vrLen = 375;
+		vrLoc = 24;
 	};
 	B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {
 		uiCtxt = {
@@ -4936,7 +4913,7 @@
 		ignoreCount = 0;
 		lineNumber = 95;
 		location = Gumbovi1;
-		modificationTime = 289501737.861233;
+		modificationTime = 289506999.162063;
 		state = 2;
 	};
 	B6ED8BB61138AF5E001217C1 /* RootViewController.m:94 */ = {
@@ -4953,7 +4930,7 @@
 		ignoreCount = 0;
 		lineNumber = 94;
 		location = Gumbovi1;
-		modificationTime = 289501737.861243;
+		modificationTime = 289506999.162087;
 		state = 2;
 	};
 	B6ED8BB81138AF5F001217C1 /* RootViewController.m:93 */ = {
@@ -4970,7 +4947,7 @@
 		ignoreCount = 0;
 		lineNumber = 93;
 		location = Gumbovi1;
-		modificationTime = 289501737.86125;
+		modificationTime = 289506999.162109;
 		state = 2;
 	};
 	B6F984AD10BC899500B9E811 /* PBXTextBookmark */ = {
