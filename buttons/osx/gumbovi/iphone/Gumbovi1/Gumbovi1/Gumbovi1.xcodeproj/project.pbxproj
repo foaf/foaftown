@@ -92,8 +92,6 @@
 		B69F0E2E113FFA7F00365B22 /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
 		B69F0E32113FFAAA00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
 		B69F0E33113FFAAA00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
-		B69F0E37113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */; };
-		B69F0E38113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */; };
 		B69F0E3B113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
 		B69F0E3C113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
 		B69F0E41113FFB0200365B22 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
@@ -110,6 +108,51 @@
 		B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
 		B69F0ECD113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
 		B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
+		B69F10881141475B00365B22 /* Bonjour-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = B69F10871141475B00365B22 /* Bonjour-test.plist */; };
+		B69F10891141475B00365B22 /* Bonjour-test.plist in Resources */ = {isa = PBXBuildFile; fileRef = B69F10871141475B00365B22 /* Bonjour-test.plist */; };
+		B69F1097114147AC00365B22 /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
+		B69F1098114147AD00365B22 /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
+		B69F1099114147AF00365B22 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
+		B69F109A114147B100365B22 /* SLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E65113FFD1000365B22 /* SLRootViewController.m */; };
+		B69F109B114147B300365B22 /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E40113FFB0200365B22 /* StreamController.m */; };
+		B69F109C114147B600365B22 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E24113FFA3E00365B22 /* ChatViewController.xib */; };
+		B69F109D114147B800365B22 /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
+		B69F109E114147BB00365B22 /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E51113FFB2E00365B22 /* DDString.m */; };
+		B69F109F114147BD00365B22 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
+		B69F10A0114147BE00365B22 /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
+		B69F10A2114147BF00365B22 /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
+		B69F10A3114147C100365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
+		B69F10A4114147C200365B22 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
+		B69F10A5114147C300365B22 /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E66113FFD1000365B22 /* SLRootViewController.xib */; };
+		B69F10AC1141480B00365B22 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
+		B69F10AD1141481100365B22 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B310A5764900511209 /* NSStringAdditions.m */; };
+		B69F10AE1141481200365B22 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B010A5764900511209 /* DDXMLNode.m */; };
+		B69F10AF1141481300365B22 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AE10A5764900511209 /* DDXMLElement.m */; };
+		B69F10B01141481400365B22 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
+		B69F10B11141483000365B22 /* LinkedTVRosterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */; };
+		B69F10B21141483000365B22 /* Gumbovi1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */; };
+		B69F10B31141483200365B22 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
+		B69F10B41141483400365B22 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
+		B69F10C21141484200365B22 /* XMPPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C510A5766500511209 /* XMPPUser.m */; };
+		B69F10C31141484200365B22 /* XMPPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D710A5766500511209 /* XMPPPing.m */; };
+		B69F10C41141484300365B22 /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
+		B69F10C51141484600365B22 /* XMPP.exp in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BA10A5766400511209 /* XMPP.exp */; };
+		B69F10C61141484600365B22 /* XMPPElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C910A5766500511209 /* XMPPElement.m */; };
+		B69F10C71141484800365B22 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C110A5766400511209 /* NSDataAdditions.m */; };
+		B69F10C81141484900365B22 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B910A5766400511209 /* AsyncSocket.m */; };
+		B69F10C91141484B00365B22 /* XMPPIQ.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CF10A5766500511209 /* XMPPIQ.m */; };
+		B69F10CA1141484C00365B22 /* MulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C610A5766500511209 /* MulticastDelegate.m */; };
+		B69F10CB1141484D00365B22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		B69F10CC1141484E00365B22 /* XMPPTransports.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BF10A5766400511209 /* XMPPTransports.m */; };
+		B69F10CD1141485000365B22 /* NSXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CD10A5766500511209 /* NSXMLElementAdditions.m */; };
+		B69F10CE1141485200365B22 /* LibIDN.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CC10A5766500511209 /* LibIDN.m */; };
+		B69F10CF1141485400365B22 /* XMPPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D510A5766500511209 /* XMPPParser.m */; };
+		B69F10D01141485600365B22 /* XMPPJID.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D110A5766500511209 /* XMPPJID.m */; };
+		B69F10D11141485700365B22 /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
+		B69F10D21141485800365B22 /* XMPPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BD10A5766400511209 /* XMPPClient.m */; };
+		B69F10D31141485900365B22 /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
+		B69F10D41141485A00365B22 /* XMPPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D310A5766500511209 /* XMPPMessage.m */; };
+		B69F10D51141486600365B22 /* Gumbovi1-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */; };
 		B6A67EE611357B8300EA4712 /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
 		B6A67EE711357B8300EA4712 /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
 		B6A67F2C11357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -276,7 +319,6 @@
 		B69F0E2C113FFA7F00365B22 /* Bonjour.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Bonjour.xib; sourceTree = "<group>"; };
 		B69F0E30113FFAAA00365B22 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		B69F0E31113FFAAA00365B22 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = ServerlessDemo.xcdatamodel; sourceTree = "<group>"; };
 		B69F0E39113FFAEA00365B22 /* ServerlessDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerlessDemoAppDelegate.h; sourceTree = "<group>"; };
 		B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerlessDemoAppDelegate.m; sourceTree = "<group>"; };
 		B69F0E3D113FFB0200365B22 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
@@ -290,6 +332,9 @@
 		B69F0E6B113FFD1800365B22 /* SLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLRootViewController.h; sourceTree = "<group>"; };
 		B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnreadIndicator.png; sourceTree = "<group>"; };
 		B69F0ECC113FFE6800365B22 /* GreenBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBubble.png; sourceTree = "<group>"; };
+		B69F10871141475B00365B22 /* Bonjour-test.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bonjour-test.plist"; sourceTree = "<group>"; };
+		B69F10901141478300365B22 /* Bonjour-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bonjour-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B69F10921141478300365B22 /* Bonjour-test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bonjour-test-Info.plist"; sourceTree = "<group>"; };
 		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
 		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
 		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -339,6 +384,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B69F108E1141478300365B22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69F10AC1141480B00365B22 /* libidn.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6C959D51133172000CF15AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -375,6 +428,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* Gumbovi1.app */,
 				B647EF911134611000A52058 /* QRGumbovi.app */,
+				B69F10901141478300365B22 /* Bonjour-test.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,6 +448,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				B6E095C410B1AE4E00F27218 /* Entitlements.plist */,
+				B69F10921141478300365B22 /* Bonjour-test-Info.plist */,
 			);
 			name = Gumbovi1;
 			sourceTree = "<group>";
@@ -456,6 +511,7 @@
 				B656AA3510ADDCBD0089D78F /* Data.plist */,
 				B656AA3610ADDCBD0089D78F /* notube.json */,
 				B622B62810A5B9E8007E8F37 /* MainWindow.xib */,
+				B69F10871141475B00365B22 /* Bonjour-test.plist */,
 				8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */,
 			);
 			name = Resources;
@@ -585,7 +641,6 @@
 				B69F0E30113FFAAA00365B22 /* Message.h */,
 				B69F0E39113FFAEA00365B22 /* ServerlessDemoAppDelegate.h */,
 				B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */,
-				B69F0E36113FFAE100365B22 /* ServerlessDemo.xcdatamodel */,
 				B69F0E31113FFAAA00365B22 /* Message.m */,
 			);
 			name = serverless;
@@ -685,6 +740,23 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* Gumbovi1.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B69F108F1141478300365B22 /* Bonjour-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B69F10961141478500365B22 /* Build configuration list for PBXNativeTarget "Bonjour-test" */;
+			buildPhases = (
+				B69F108C1141478300365B22 /* Resources */,
+				B69F108D1141478300365B22 /* Sources */,
+				B69F108E1141478300365B22 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bonjour-test";
+			productName = "Bonjour-test";
+			productReference = B69F10901141478300365B22 /* Bonjour-test.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B6C959D61133172000CF15AA /* QRGumbovi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6C959DD1133172200CF15AA /* Build configuration list for PBXNativeTarget "QRGumbovi" */;
@@ -722,6 +794,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
 				B6C959D61133172000CF15AA /* QRGumbovi */,
+				B69F108F1141478300365B22 /* Bonjour-test */,
 			);
 		};
 /* End PBXProject section */
@@ -777,6 +850,21 @@
 				B69F0E6A113FFD1000365B22 /* SLRootViewController.xib in Resources */,
 				B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
 				B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */,
+				B69F10891141475B00365B22 /* Bonjour-test.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B69F108C1141478300365B22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69F1097114147AC00365B22 /* GreenBubble.png in Resources */,
+				B69F1098114147AD00365B22 /* Bonjour.xib in Resources */,
+				B69F109C114147B600365B22 /* ChatViewController.xib in Resources */,
+				B69F109D114147B800365B22 /* UnreadIndicator.png in Resources */,
+				B69F10A3114147C100365B22 /* BlueBubble.png in Resources */,
+				B69F10A5114147C300365B22 /* SLRootViewController.xib in Resources */,
+				B69F10D51141486600365B22 /* Gumbovi1-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +886,7 @@
 				B69F0E68113FFD1000365B22 /* SLRootViewController.xib in Resources */,
 				B69F0ECA113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
 				B69F0ECD113FFE6800365B22 /* GreenBubble.png in Resources */,
+				B69F10881141475B00365B22 /* Bonjour-test.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,12 +942,53 @@
 				B69F0E21113FFA2E00365B22 /* BonjourClient.m in Sources */,
 				B69F0E27113FFA3E00365B22 /* ChatViewController.m in Sources */,
 				B69F0E33113FFAAA00365B22 /* Message.m in Sources */,
-				B69F0E38113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */,
 				B69F0E3C113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */,
 				B69F0E43113FFB0200365B22 /* Service.m in Sources */,
 				B69F0E44113FFB0200365B22 /* StreamController.m in Sources */,
 				B69F0E53113FFB2E00365B22 /* DDString.m in Sources */,
 				B69F0E69113FFD1000365B22 /* SLRootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B69F108D1141478300365B22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69F1099114147AF00365B22 /* Message.m in Sources */,
+				B69F109A114147B100365B22 /* SLRootViewController.m in Sources */,
+				B69F109B114147B300365B22 /* StreamController.m in Sources */,
+				B69F109E114147BB00365B22 /* DDString.m in Sources */,
+				B69F109F114147BD00365B22 /* Service.m in Sources */,
+				B69F10A0114147BE00365B22 /* BonjourClient.m in Sources */,
+				B69F10A2114147BF00365B22 /* ServerlessDemoAppDelegate.m in Sources */,
+				B69F10A4114147C200365B22 /* ChatViewController.m in Sources */,
+				B69F10AD1141481100365B22 /* NSStringAdditions.m in Sources */,
+				B69F10AE1141481200365B22 /* DDXMLNode.m in Sources */,
+				B69F10AF1141481300365B22 /* DDXMLElement.m in Sources */,
+				B69F10B01141481400365B22 /* DDXMLDocument.m in Sources */,
+				B69F10B11141483000365B22 /* LinkedTVRosterTableController.m in Sources */,
+				B69F10B21141483000365B22 /* Gumbovi1AppDelegate.m in Sources */,
+				B69F10B31141483200365B22 /* FirstViewController.m in Sources */,
+				B69F10B41141483400365B22 /* WebViewController.m in Sources */,
+				B69F10C21141484200365B22 /* XMPPUser.m in Sources */,
+				B69F10C31141484200365B22 /* XMPPPing.m in Sources */,
+				B69F10C41141484300365B22 /* XMPPResource.m in Sources */,
+				B69F10C51141484600365B22 /* XMPP.exp in Sources */,
+				B69F10C61141484600365B22 /* XMPPElement.m in Sources */,
+				B69F10C71141484800365B22 /* NSDataAdditions.m in Sources */,
+				B69F10C81141484900365B22 /* AsyncSocket.m in Sources */,
+				B69F10C91141484B00365B22 /* XMPPIQ.m in Sources */,
+				B69F10CA1141484C00365B22 /* MulticastDelegate.m in Sources */,
+				B69F10CB1141484D00365B22 /* main.m in Sources */,
+				B69F10CC1141484E00365B22 /* XMPPTransports.m in Sources */,
+				B69F10CD1141485000365B22 /* NSXMLElementAdditions.m in Sources */,
+				B69F10CE1141485200365B22 /* LibIDN.m in Sources */,
+				B69F10CF1141485400365B22 /* XMPPParser.m in Sources */,
+				B69F10D01141485600365B22 /* XMPPJID.m in Sources */,
+				B69F10D11141485700365B22 /* XMPPStream.m in Sources */,
+				B69F10D21141485800365B22 /* XMPPClient.m in Sources */,
+				B69F10D31141485900365B22 /* XMPPPresence.m in Sources */,
+				B69F10D41141485A00365B22 /* XMPPMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -882,7 +1012,6 @@
 				B69F0E1F113FFA2E00365B22 /* BonjourClient.m in Sources */,
 				B69F0E25113FFA3E00365B22 /* ChatViewController.m in Sources */,
 				B69F0E32113FFAAA00365B22 /* Message.m in Sources */,
-				B69F0E37113FFAE100365B22 /* ServerlessDemo.xcdatamodel in Sources */,
 				B69F0E3B113FFAEA00365B22 /* ServerlessDemoAppDelegate.m in Sources */,
 				B69F0E41113FFB0200365B22 /* Service.m in Sources */,
 				B69F0E42113FFB0200365B22 /* StreamController.m in Sources */,
@@ -955,6 +1084,88 @@
 				PRODUCT_NAME = Gumbovi1;
 			};
 			name = Release;
+		};
+		B69F10931141478500365B22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Bonjour-test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libidn/Mac\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bonjour-test";
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = Debug;
+		};
+		B69F10941141478500365B22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Bonjour-test.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libidn/Mac\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bonjour-test";
+				SDKROOT = iphoneos3.1.3;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		B69F10951141478500365B22 /* DistributionTest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
+				INFOPLIST_FILE = "Bonjour-test-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/libidn/Mac\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Bonjour-test";
+				SDKROOT = iphoneos3.1.3;
+			};
+			name = DistributionTest;
 		};
 		B6C959DA1133172200CF15AA /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1151,6 +1362,16 @@
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 				B6E095A110B1AB4100F27218 /* DistributionTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B69F10961141478500365B22 /* Build configuration list for PBXNativeTarget "Bonjour-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B69F10931141478500365B22 /* Debug */,
+				B69F10941141478500365B22 /* Release */,
+				B69F10951141478500365B22 /* DistributionTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
