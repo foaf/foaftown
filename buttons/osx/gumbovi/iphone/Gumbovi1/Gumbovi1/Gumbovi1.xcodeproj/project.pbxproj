@@ -185,6 +185,9 @@
 		B6C95AA011331F9B00CF15AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		B6C95AA51133210600CF15AA /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
 		B6C95AA71133210700CF15AA /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
+		B6DE270011415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
+		B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
+		B6DE270211415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 		B6E6D5F5113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
@@ -359,6 +362,7 @@
 		B6BD10301132A46F00ED28CD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6C9591D1133065D00CF15AA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
+		B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = ServerlessDemo.xcdatamodel; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B6E6D5F3113E9A27009DD63D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				B69F0E1D113FFA2E00365B22 /* BonjourClient.m */,
+				B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */,
 				B69F0E2C113FFA7F00365B22 /* Bonjour.xib */,
 				B69F0E1B113FFA2E00365B22 /* BlueBubble.png */,
 				B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */,
@@ -947,6 +952,7 @@
 				B69F0E44113FFB0200365B22 /* StreamController.m in Sources */,
 				B69F0E53113FFB2E00365B22 /* DDString.m in Sources */,
 				B69F0E69113FFD1000365B22 /* SLRootViewController.m in Sources */,
+				B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,6 +995,7 @@
 				B69F10D21141485800365B22 /* XMPPClient.m in Sources */,
 				B69F10D31141485900365B22 /* XMPPPresence.m in Sources */,
 				B69F10D41141485A00365B22 /* XMPPMessage.m in Sources */,
+				B6DE270211415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1024,7 @@
 				B69F0E42113FFB0200365B22 /* StreamController.m in Sources */,
 				B69F0E52113FFB2E00365B22 /* DDString.m in Sources */,
 				B69F0E67113FFD1000365B22 /* SLRootViewController.m in Sources */,
+				B6DE270011415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
