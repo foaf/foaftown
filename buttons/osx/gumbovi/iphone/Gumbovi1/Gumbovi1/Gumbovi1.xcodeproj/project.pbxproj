@@ -200,6 +200,104 @@
 		B6DE28511141711A0080EC8F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B6DE28521141711A0080EC8F /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
 		B6DE28531141711A0080EC8F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
+		B6DE287E114181A10080EC8F /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
+		B6DE287F114181A10080EC8F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39610A5763500511209 /* Icon.png */; };
+		B6DE2880114181A10080EC8F /* beancounter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39710A5763500511209 /* beancounter.jpg */; };
+		B6DE2881114181A10080EC8F /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39810A5763500511209 /* buttons.png */; };
+		B6DE2882114181A10080EC8F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
+		B6DE2883114181A10080EC8F /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3010ADDCBD0089D78F /* Image.jpg */; };
+		B6DE2884114181A10080EC8F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3510ADDCBD0089D78F /* Data.plist */; };
+		B6DE2885114181A10080EC8F /* notube.json in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3610ADDCBD0089D78F /* notube.json */; };
+		B6DE2886114181A10080EC8F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
+		B6DE2887114181A10080EC8F /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
+		B6DE2888114181A10080EC8F /* heartbuttons4-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */; };
+		B6DE2889114181A10080EC8F /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
+		B6DE288A114181A10080EC8F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
+		B6DE288B114181A10080EC8F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
+		B6DE288C114181A10080EC8F /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
+		B6DE288D114181A10080EC8F /* heartbuttons4-left.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9410D1A3040068001F /* heartbuttons4-left.png */; };
+		B6DE288E114181A10080EC8F /* heartbuttons4-righ-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */; };
+		B6DE288F114181A10080EC8F /* heartbuttons4-righ.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9610D1A3040068001F /* heartbuttons4-righ.png */; };
+		B6DE2890114181A10080EC8F /* heartbuttons4-up-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */; };
+		B6DE2891114181A10080EC8F /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
+		B6DE2892114181A10080EC8F /* control_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496821111AB4A0033F5D0 /* control_bar.png */; };
+		B6DE2893114181A10080EC8F /* nav_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496841111AB7A0033F5D0 /* nav_wheel.png */; };
+		B6DE2894114181A10080EC8F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
+		B6DE2895114181A10080EC8F /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2411357F2000EA4712 /* DetailView.xib */; };
+		B6DE2896114181A10080EC8F /* ListsMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2A11357F2000EA4712 /* ListsMainWindow.xib */; };
+		B6DE2897114181A10080EC8F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F2B11357F2000EA4712 /* RootViewController.xib */; };
+		B6DE2898114181A10080EC8F /* FINGERPRINT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6AFC752113812110013DE80 /* FINGERPRINT.jpg */; };
+		B6DE2899114181A10080EC8F /* qr_bg_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B32F88113BE73F005F31EB /* qr_bg_blur.png */; };
+		B6DE289A114181A10080EC8F /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9334113D6699002137A2 /* pop.wav */; };
+		B6DE289B114181A10080EC8F /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
+		B6DE289C114181A10080EC8F /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
+		B6DE289D114181A10080EC8F /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E24113FFA3E00365B22 /* ChatViewController.xib */; };
+		B6DE289E114181A10080EC8F /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E2C113FFA7F00365B22 /* Bonjour.xib */; };
+		B6DE289F114181A10080EC8F /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E66113FFD1000365B22 /* SLRootViewController.xib */; };
+		B6DE28A0114181A10080EC8F /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
+		B6DE28A1114181A10080EC8F /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
+		B6DE28A3114181A10080EC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		B6DE28A4114181A10080EC8F /* Gumbovi1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */; };
+		B6DE28A5114181A10080EC8F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
+		B6DE28A6114181A10080EC8F /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
+		B6DE28A7114181A10080EC8F /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AE10A5764900511209 /* DDXMLElement.m */; };
+		B6DE28A8114181A10080EC8F /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B010A5764900511209 /* DDXMLNode.m */; };
+		B6DE28A9114181A10080EC8F /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B310A5764900511209 /* NSStringAdditions.m */; };
+		B6DE28AA114181A10080EC8F /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B910A5766400511209 /* AsyncSocket.m */; };
+		B6DE28AB114181A10080EC8F /* XMPP.exp in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BA10A5766400511209 /* XMPP.exp */; };
+		B6DE28AC114181A10080EC8F /* XMPPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BD10A5766400511209 /* XMPPClient.m */; };
+		B6DE28AD114181A10080EC8F /* XMPPTransports.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3BF10A5766400511209 /* XMPPTransports.m */; };
+		B6DE28AE114181A10080EC8F /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C110A5766400511209 /* NSDataAdditions.m */; };
+		B6DE28AF114181A10080EC8F /* XMPPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C510A5766500511209 /* XMPPUser.m */; };
+		B6DE28B0114181A10080EC8F /* MulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C610A5766500511209 /* MulticastDelegate.m */; };
+		B6DE28B1114181A10080EC8F /* XMPPElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3C910A5766500511209 /* XMPPElement.m */; };
+		B6DE28B2114181A10080EC8F /* LibIDN.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CC10A5766500511209 /* LibIDN.m */; };
+		B6DE28B3114181A10080EC8F /* NSXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CD10A5766500511209 /* NSXMLElementAdditions.m */; };
+		B6DE28B4114181A10080EC8F /* XMPPIQ.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3CF10A5766500511209 /* XMPPIQ.m */; };
+		B6DE28B5114181A10080EC8F /* XMPPJID.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D110A5766500511209 /* XMPPJID.m */; };
+		B6DE28B6114181A10080EC8F /* XMPPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D310A5766500511209 /* XMPPMessage.m */; };
+		B6DE28B7114181A10080EC8F /* XMPPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D510A5766500511209 /* XMPPParser.m */; };
+		B6DE28B8114181A10080EC8F /* XMPPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D710A5766500511209 /* XMPPPing.m */; };
+		B6DE28B9114181A10080EC8F /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3D910A5766500511209 /* XMPPPresence.m */; };
+		B6DE28BA114181A10080EC8F /* XMPPResource.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DB10A5766500511209 /* XMPPResource.m */; };
+		B6DE28BB114181A10080EC8F /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3DE10A5766500511209 /* XMPPStream.m */; };
+		B6DE28BC114181A10080EC8F /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4810ADDD590089D78F /* NSObject+SBJSON.m */; };
+		B6DE28BD114181A10080EC8F /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4A10ADDD590089D78F /* NSString+SBJSON.m */; };
+		B6DE28BE114181A10080EC8F /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4C10ADDD590089D78F /* SBJSON.m */; };
+		B6DE28BF114181A10080EC8F /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4E10ADDD590089D78F /* SBJsonBase.m */; };
+		B6DE28C0114181A10080EC8F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5010ADDD590089D78F /* SBJsonParser.m */; };
+		B6DE28C1114181A10080EC8F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5210ADDD590089D78F /* SBJsonWriter.m */; };
+		B6DE28C2114181A10080EC8F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F1F11357F2000EA4712 /* DetailViewController.m */; };
+		B6DE28C3114181A10080EC8F /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2111357F2000EA4712 /* DrillDownAppAppDelegate.m */; };
+		B6DE28C4114181A10080EC8F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2311357F2000EA4712 /* RootViewController.m */; };
+		B6DE28C5114181A10080EC8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2911357F2000EA4712 /* main.m */; };
+		B6DE28C6114181A10080EC8F /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
+		B6DE28C7114181A10080EC8F /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
+		B6DE28C8114181A10080EC8F /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B66F4135113BCCA5004DF167 /* Decoder.mm */; };
+		B6DE28C9114181A10080EC8F /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4137113BCCA5004DF167 /* DecoderController.m */; };
+		B6DE28CA114181A10080EC8F /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4147113BCD13004DF167 /* OverlayView.m */; };
+		B6DE28CB114181A10080EC8F /* LinkedTVRosterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */; };
+		B6DE28CC114181A10080EC8F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
+		B6DE28CD114181A10080EC8F /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
+		B6DE28CE114181A10080EC8F /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
+		B6DE28CF114181A10080EC8F /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
+		B6DE28D0114181A10080EC8F /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
+		B6DE28D1114181A10080EC8F /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
+		B6DE28D2114181A10080EC8F /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E40113FFB0200365B22 /* StreamController.m */; };
+		B6DE28D3114181A10080EC8F /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E51113FFB2E00365B22 /* DDString.m */; };
+		B6DE28D4114181A10080EC8F /* SLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E65113FFD1000365B22 /* SLRootViewController.m */; };
+		B6DE28D5114181A10080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
+		B6DE28D7114181A10080EC8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		B6DE28D8114181A10080EC8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		B6DE28D9114181A10080EC8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		B6DE28DA114181A10080EC8F /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD0FE61131ECE400ED28CD /* libidn.a */; };
+		B6DE28DB114181A10080EC8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD101E1132A25500ED28CD /* CFNetwork.framework */; };
+		B6DE28DC114181A10080EC8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
+		B6DE28DD114181A10080EC8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
+		B6DE28DE114181A10080EC8F /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
+		B6DE28DF114181A10080EC8F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
+		B6DE28E0114181A10080EC8F /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
+		B6DE28E1114181A10080EC8F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 		B6E6D5F6113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
@@ -318,7 +416,6 @@
 		B67CC3D910A5766500511209 /* XMPPPresence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPPresence.m; sourceTree = "<group>"; };
 		B67CC3DA10A5766500511209 /* XMPPResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPResource.h; sourceTree = "<group>"; };
 		B67CC3DB10A5766500511209 /* XMPPResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPResource.m; sourceTree = "<group>"; };
-		B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream_Prefix.pch; sourceTree = "<group>"; };
 		B67CC3DD10A5766500511209 /* XMPPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPStream.h; sourceTree = "<group>"; };
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
@@ -374,6 +471,8 @@
 		B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = ServerlessDemo.xcdatamodel; sourceTree = "<group>"; };
 		B6DE28581141711A0080EC8F /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DE285A1141711A0080EC8F /* Gumbovi1-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info copy.plist"; sourceTree = "<group>"; };
+		B6DE28E6114181A10080EC8F /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6DE28E8114181A20080EC8F /* Gumbovi1-Info copy 2.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info copy 2.plist"; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B6E6D5F3113E9A27009DD63D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -417,6 +516,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6DE28D6114181A10080EC8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6DE28D7114181A10080EC8F /* Foundation.framework in Frameworks */,
+				B6DE28D8114181A10080EC8F /* UIKit.framework in Frameworks */,
+				B6DE28D9114181A10080EC8F /* CoreGraphics.framework in Frameworks */,
+				B6DE28DA114181A10080EC8F /* libidn.a in Frameworks */,
+				B6DE28DB114181A10080EC8F /* CFNetwork.framework in Frameworks */,
+				B6DE28DC114181A10080EC8F /* CFNetwork.framework in Frameworks */,
+				B6DE28DD114181A10080EC8F /* SystemConfiguration.framework in Frameworks */,
+				B6DE28DE114181A10080EC8F /* libiconv.2.dylib in Frameworks */,
+				B6DE28DF114181A10080EC8F /* AudioToolbox.framework in Frameworks */,
+				B6DE28E0114181A10080EC8F /* libqrlib.a in Frameworks */,
+				B6DE28E1114181A10080EC8F /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -441,6 +558,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* Gumbovi1.app */,
 				B6DE28581141711A0080EC8F /* Gumbovi1.app */,
+				B6DE28E6114181A10080EC8F /* Gumbovi1.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -450,10 +568,7 @@
 			children = (
 				B69F0E1A113FF9F500365B22 /* serverless */,
 				B6A67F1B11357F2000EA4712 /* lists */,
-				B6A67EE011357B8300EA4712 /* qr */,
 				B6BD0FE61131ECE400ED28CD /* libidn.a */,
-				B67CC3A910A5764900511209 /* KissXML */,
-				B67CC39D10A5763F00511209 /* libidn */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -468,44 +583,11 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				B67CC3B810A5766400511209 /* AsyncSocket.h */,
-				B67CC3B910A5766400511209 /* AsyncSocket.m */,
-				B67CC3BA10A5766400511209 /* XMPP.exp */,
-				B67CC3BB10A5766400511209 /* XMPP.h */,
-				B67CC3BC10A5766400511209 /* XMPPClient.h */,
-				B67CC3BD10A5766400511209 /* XMPPClient.m */,
-				B67CC3BE10A5766400511209 /* XMPPTransports.h */,
-				B67CC3BF10A5766400511209 /* XMPPTransports.m */,
-				B67CC3C010A5766400511209 /* XMPPUser.h */,
-				B67CC3C110A5766400511209 /* NSDataAdditions.m */,
-				B67CC3C210A5766400511209 /* NSDataAdditions.h */,
-				B67CC3C310A5766400511209 /* stringprep.h */,
-				B67CC3C410A5766500511209 /* idn-int.h */,
-				B67CC3C510A5766500511209 /* XMPPUser.m */,
-				B67CC3C610A5766500511209 /* MulticastDelegate.m */,
-				B67CC3C710A5766500511209 /* MulticastDelegate.h */,
-				B67CC3C810A5766500511209 /* XMPPElement.h */,
-				B67CC3C910A5766500511209 /* XMPPElement.m */,
-				B67CC3CA10A5766500511209 /* XMPPIQ.h */,
-				B67CC3CB10A5766500511209 /* LibIDN.h */,
+				B6DE2905114183920080EC8F /* XMPP */,
 				B6BD101E1132A25500ED28CD /* CFNetwork.framework */,
-				B67CC3CC10A5766500511209 /* LibIDN.m */,
-				B67CC3CD10A5766500511209 /* NSXMLElementAdditions.m */,
-				B67CC3CE10A5766500511209 /* NSXMLElementAdditions.h */,
-				B67CC3CF10A5766500511209 /* XMPPIQ.m */,
-				B67CC3D010A5766500511209 /* XMPPJID.h */,
-				B67CC3D110A5766500511209 /* XMPPJID.m */,
-				B67CC3D210A5766500511209 /* XMPPMessage.h */,
-				B67CC3D310A5766500511209 /* XMPPMessage.m */,
-				B67CC3D410A5766500511209 /* XMPPParser.h */,
-				B67CC3D510A5766500511209 /* XMPPParser.m */,
-				B67CC3D610A5766500511209 /* XMPPPing.h */,
-				B67CC3D710A5766500511209 /* XMPPPing.m */,
-				B67CC3D810A5766500511209 /* XMPPPresence.h */,
-				B67CC3D910A5766500511209 /* XMPPPresence.m */,
-				B67CC3DA10A5766500511209 /* XMPPResource.h */,
-				B67CC3DB10A5766500511209 /* XMPPResource.m */,
-				B67CC3DC10A5766500511209 /* XMPPStream_Prefix.pch */,
+				B6A67EE011357B8300EA4712 /* qr */,
+				B67CC39D10A5763F00511209 /* libidn */,
+				B67CC3A910A5764900511209 /* KissXML */,
 				B67CC3DD10A5766500511209 /* XMPPStream.h */,
 				B67CC3DE10A5766500511209 /* XMPPStream.m */,
 				28A0AB4B0D9B1048005BE974 /* Gumbovi1_Prefix.pch */,
@@ -522,10 +604,11 @@
 				B64E9334113D6699002137A2 /* pop.wav */,
 				B656AA3510ADDCBD0089D78F /* Data.plist */,
 				B656AA3610ADDCBD0089D78F /* notube.json */,
+				B6DE285A1141711A0080EC8F /* Gumbovi1-Info copy.plist */,
 				B622B62810A5B9E8007E8F37 /* MainWindow.xib */,
 				B69F10871141475B00365B22 /* Bonjour-test.plist */,
 				8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */,
-				B6DE285A1141711A0080EC8F /* Gumbovi1-Info copy.plist */,
+				B6DE28E8114181A20080EC8F /* Gumbovi1-Info copy 2.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -677,7 +760,7 @@
 				B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */,
 			);
 			path = qr;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		B6A67EF111357C8000EA4712 /* Images */ = {
 			isa = PBXGroup;
@@ -734,6 +817,49 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B6DE2905114183920080EC8F /* XMPP */ = {
+			isa = PBXGroup;
+			children = (
+				B67CC3B810A5766400511209 /* AsyncSocket.h */,
+				B67CC3B910A5766400511209 /* AsyncSocket.m */,
+				B67CC3BA10A5766400511209 /* XMPP.exp */,
+				B67CC3BB10A5766400511209 /* XMPP.h */,
+				B67CC3BC10A5766400511209 /* XMPPClient.h */,
+				B67CC3BD10A5766400511209 /* XMPPClient.m */,
+				B67CC3BE10A5766400511209 /* XMPPTransports.h */,
+				B67CC3BF10A5766400511209 /* XMPPTransports.m */,
+				B67CC3C010A5766400511209 /* XMPPUser.h */,
+				B67CC3C110A5766400511209 /* NSDataAdditions.m */,
+				B67CC3C210A5766400511209 /* NSDataAdditions.h */,
+				B67CC3C310A5766400511209 /* stringprep.h */,
+				B67CC3C410A5766500511209 /* idn-int.h */,
+				B67CC3C510A5766500511209 /* XMPPUser.m */,
+				B67CC3C610A5766500511209 /* MulticastDelegate.m */,
+				B67CC3C710A5766500511209 /* MulticastDelegate.h */,
+				B67CC3C810A5766500511209 /* XMPPElement.h */,
+				B67CC3C910A5766500511209 /* XMPPElement.m */,
+				B67CC3CA10A5766500511209 /* XMPPIQ.h */,
+				B67CC3CB10A5766500511209 /* LibIDN.h */,
+				B67CC3CC10A5766500511209 /* LibIDN.m */,
+				B67CC3CD10A5766500511209 /* NSXMLElementAdditions.m */,
+				B67CC3CE10A5766500511209 /* NSXMLElementAdditions.h */,
+				B67CC3CF10A5766500511209 /* XMPPIQ.m */,
+				B67CC3D010A5766500511209 /* XMPPJID.h */,
+				B67CC3D110A5766500511209 /* XMPPJID.m */,
+				B67CC3D210A5766500511209 /* XMPPMessage.h */,
+				B67CC3D310A5766500511209 /* XMPPMessage.m */,
+				B67CC3D410A5766500511209 /* XMPPParser.h */,
+				B67CC3D510A5766500511209 /* XMPPParser.m */,
+				B67CC3D610A5766500511209 /* XMPPPing.h */,
+				B67CC3D710A5766500511209 /* XMPPPing.m */,
+				B67CC3D810A5766500511209 /* XMPPPresence.h */,
+				B67CC3D910A5766500511209 /* XMPPPresence.m */,
+				B67CC3DA10A5766500511209 /* XMPPResource.h */,
+				B67CC3DB10A5766500511209 /* XMPPResource.m */,
+			);
+			name = XMPP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -771,6 +897,23 @@
 			productReference = B6DE28581141711A0080EC8F /* Gumbovi1.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B6DE287C114181A10080EC8F /* Gumbovi1 copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6DE28E2114181A10080EC8F /* Build configuration list for PBXNativeTarget "Gumbovi1 copy" */;
+			buildPhases = (
+				B6DE287D114181A10080EC8F /* Resources */,
+				B6DE28A2114181A10080EC8F /* Sources */,
+				B6DE28D6114181A10080EC8F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gumbovi1 copy";
+			productName = Gumbovi1;
+			productReference = B6DE28E6114181A10080EC8F /* Gumbovi1.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -791,6 +934,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
 				B6DE27EE1141711A0080EC8F /* BonjourUI */,
+				B6DE287C114181A10080EC8F /* Gumbovi1 copy */,
 			);
 		};
 /* End PBXProject section */
@@ -889,6 +1033,49 @@
 				B6DE28111141711A0080EC8F /* SLRootViewController.xib in Resources */,
 				B6DE28121141711A0080EC8F /* UnreadIndicator.png in Resources */,
 				B6DE28131141711A0080EC8F /* GreenBubble.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6DE287D114181A10080EC8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6DE287E114181A10080EC8F /* foaflets-12pt.jpg in Resources */,
+				B6DE287F114181A10080EC8F /* Icon.png in Resources */,
+				B6DE2880114181A10080EC8F /* beancounter.jpg in Resources */,
+				B6DE2881114181A10080EC8F /* buttons.png in Resources */,
+				B6DE2882114181A10080EC8F /* MainWindow.xib in Resources */,
+				B6DE2883114181A10080EC8F /* Image.jpg in Resources */,
+				B6DE2884114181A10080EC8F /* Data.plist in Resources */,
+				B6DE2885114181A10080EC8F /* notube.json in Resources */,
+				B6DE2886114181A10080EC8F /* Entitlements.plist in Resources */,
+				B6DE2887114181A10080EC8F /* iTunesArtwork in Resources */,
+				B6DE2888114181A10080EC8F /* heartbuttons4-100x.png in Resources */,
+				B6DE2889114181A10080EC8F /* heartbuttons4.png in Resources */,
+				B6DE288A114181A10080EC8F /* heartbuttons4-down-100x.png in Resources */,
+				B6DE288B114181A10080EC8F /* heartbuttons4-down.png in Resources */,
+				B6DE288C114181A10080EC8F /* heartbuttons4-left-100x.png in Resources */,
+				B6DE288D114181A10080EC8F /* heartbuttons4-left.png in Resources */,
+				B6DE288E114181A10080EC8F /* heartbuttons4-righ-100x.png in Resources */,
+				B6DE288F114181A10080EC8F /* heartbuttons4-righ.png in Resources */,
+				B6DE2890114181A10080EC8F /* heartbuttons4-up-100x.png in Resources */,
+				B6DE2891114181A10080EC8F /* heartbuttons4-up.png in Resources */,
+				B6DE2892114181A10080EC8F /* control_bar.png in Resources */,
+				B6DE2893114181A10080EC8F /* nav_wheel.png in Resources */,
+				B6DE2894114181A10080EC8F /* Data.plist in Resources */,
+				B6DE2895114181A10080EC8F /* DetailView.xib in Resources */,
+				B6DE2896114181A10080EC8F /* ListsMainWindow.xib in Resources */,
+				B6DE2897114181A10080EC8F /* RootViewController.xib in Resources */,
+				B6DE2898114181A10080EC8F /* FINGERPRINT.jpg in Resources */,
+				B6DE2899114181A10080EC8F /* qr_bg_blur.png in Resources */,
+				B6DE289A114181A10080EC8F /* pop.wav in Resources */,
+				B6DE289B114181A10080EC8F /* README.TXT in Resources */,
+				B6DE289C114181A10080EC8F /* BlueBubble.png in Resources */,
+				B6DE289D114181A10080EC8F /* ChatViewController.xib in Resources */,
+				B6DE289E114181A10080EC8F /* Bonjour.xib in Resources */,
+				B6DE289F114181A10080EC8F /* SLRootViewController.xib in Resources */,
+				B6DE28A0114181A10080EC8F /* UnreadIndicator.png in Resources */,
+				B6DE28A1114181A10080EC8F /* GreenBubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,6 +1195,64 @@
 				B6DE28451141711A0080EC8F /* DDString.m in Sources */,
 				B6DE28461141711A0080EC8F /* SLRootViewController.m in Sources */,
 				B6DE28471141711A0080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6DE28A2114181A10080EC8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6DE28A3114181A10080EC8F /* main.m in Sources */,
+				B6DE28A4114181A10080EC8F /* Gumbovi1AppDelegate.m in Sources */,
+				B6DE28A5114181A10080EC8F /* FirstViewController.m in Sources */,
+				B6DE28A6114181A10080EC8F /* DDXMLDocument.m in Sources */,
+				B6DE28A7114181A10080EC8F /* DDXMLElement.m in Sources */,
+				B6DE28A8114181A10080EC8F /* DDXMLNode.m in Sources */,
+				B6DE28A9114181A10080EC8F /* NSStringAdditions.m in Sources */,
+				B6DE28AA114181A10080EC8F /* AsyncSocket.m in Sources */,
+				B6DE28AB114181A10080EC8F /* XMPP.exp in Sources */,
+				B6DE28AC114181A10080EC8F /* XMPPClient.m in Sources */,
+				B6DE28AD114181A10080EC8F /* XMPPTransports.m in Sources */,
+				B6DE28AE114181A10080EC8F /* NSDataAdditions.m in Sources */,
+				B6DE28AF114181A10080EC8F /* XMPPUser.m in Sources */,
+				B6DE28B0114181A10080EC8F /* MulticastDelegate.m in Sources */,
+				B6DE28B1114181A10080EC8F /* XMPPElement.m in Sources */,
+				B6DE28B2114181A10080EC8F /* LibIDN.m in Sources */,
+				B6DE28B3114181A10080EC8F /* NSXMLElementAdditions.m in Sources */,
+				B6DE28B4114181A10080EC8F /* XMPPIQ.m in Sources */,
+				B6DE28B5114181A10080EC8F /* XMPPJID.m in Sources */,
+				B6DE28B6114181A10080EC8F /* XMPPMessage.m in Sources */,
+				B6DE28B7114181A10080EC8F /* XMPPParser.m in Sources */,
+				B6DE28B8114181A10080EC8F /* XMPPPing.m in Sources */,
+				B6DE28B9114181A10080EC8F /* XMPPPresence.m in Sources */,
+				B6DE28BA114181A10080EC8F /* XMPPResource.m in Sources */,
+				B6DE28BB114181A10080EC8F /* XMPPStream.m in Sources */,
+				B6DE28BC114181A10080EC8F /* NSObject+SBJSON.m in Sources */,
+				B6DE28BD114181A10080EC8F /* NSString+SBJSON.m in Sources */,
+				B6DE28BE114181A10080EC8F /* SBJSON.m in Sources */,
+				B6DE28BF114181A10080EC8F /* SBJsonBase.m in Sources */,
+				B6DE28C0114181A10080EC8F /* SBJsonParser.m in Sources */,
+				B6DE28C1114181A10080EC8F /* SBJsonWriter.m in Sources */,
+				B6DE28C2114181A10080EC8F /* DetailViewController.m in Sources */,
+				B6DE28C3114181A10080EC8F /* DrillDownAppAppDelegate.m in Sources */,
+				B6DE28C4114181A10080EC8F /* RootViewController.m in Sources */,
+				B6DE28C5114181A10080EC8F /* main.m in Sources */,
+				B6DE28C6114181A10080EC8F /* qruiAppDelegate.m in Sources */,
+				B6DE28C7114181A10080EC8F /* QRImagePickerController.m in Sources */,
+				B6DE28C8114181A10080EC8F /* Decoder.mm in Sources */,
+				B6DE28C9114181A10080EC8F /* DecoderController.m in Sources */,
+				B6DE28CA114181A10080EC8F /* OverlayView.m in Sources */,
+				B6DE28CB114181A10080EC8F /* LinkedTVRosterTableController.m in Sources */,
+				B6DE28CC114181A10080EC8F /* WebViewController.m in Sources */,
+				B6DE28CD114181A10080EC8F /* BonjourClient.m in Sources */,
+				B6DE28CE114181A10080EC8F /* ChatViewController.m in Sources */,
+				B6DE28CF114181A10080EC8F /* Message.m in Sources */,
+				B6DE28D0114181A10080EC8F /* ServerlessDemoAppDelegate.m in Sources */,
+				B6DE28D1114181A10080EC8F /* Service.m in Sources */,
+				B6DE28D2114181A10080EC8F /* StreamController.m in Sources */,
+				B6DE28D3114181A10080EC8F /* DDString.m in Sources */,
+				B6DE28D4114181A10080EC8F /* SLRootViewController.m in Sources */,
+				B6DE28D5114181A10080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1171,6 +1416,101 @@
 			};
 			name = DistributionTest;
 		};
+		B6DE28E3114181A10080EC8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1-Info copy 2.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = Gumbovi1;
+			};
+			name = Debug;
+		};
+		B6DE28E4114181A10080EC8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1-Info copy 2.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = Gumbovi1;
+			};
+			name = Release;
+		};
+		B6DE28E5114181A10080EC8F /* DistributionTest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dan Brickley";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1-Info copy 2.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = Gumbovi1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9164329A-452F-4E7E-A825-1736EECD5D41";
+			};
+			name = DistributionTest;
+		};
 		B6E095A010B1AB4100F27218 /* DistributionTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1294,6 +1634,16 @@
 				B6DE28551141711A0080EC8F /* Debug */,
 				B6DE28561141711A0080EC8F /* Release */,
 				B6DE28571141711A0080EC8F /* DistributionTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6DE28E2114181A10080EC8F /* Build configuration list for PBXNativeTarget "Gumbovi1 copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6DE28E3114181A10080EC8F /* Debug */,
+				B6DE28E4114181A10080EC8F /* Release */,
+				B6DE28E5114181A10080EC8F /* DistributionTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

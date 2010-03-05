@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -271,6 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -279,7 +282,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
+									<integer>13</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -333,7 +337,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6DE287A114172C60080EC8F</string>
+										<string>B6DE290E114184070080EC8F</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -379,7 +383,6 @@
 											<string>B69F0E75113FFDCC00365B22</string>
 											<string>B69F0E83113FFDCC00365B22</string>
 											<string>B69F0ED0113FFE7B00365B22</string>
-											<string>B69F0F851140417E00365B22</string>
 											<string>B69F0F881140417E00365B22</string>
 											<string>B69F10D81141488200365B22</string>
 											<string>B69F10DB1141488200365B22</string>
@@ -499,7 +502,6 @@
 											<string>B69F0EDA113FFE7B00365B22</string>
 											<string>B69F0EF2113FFF0C00365B22</string>
 											<string>B69F0F2D1140024300365B22</string>
-											<string>B69F0F931140417E00365B22</string>
 											<string>B69F0F9B1140417E00365B22</string>
 											<string>B69F0FD81140FFCE00365B22</string>
 											<string>B69F0FD91140FFCE00365B22</string>
@@ -587,8 +589,6 @@
 							<string>270pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -761,6 +761,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B6DE28F3114181E10080EC8F</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>B6DE2764114168A60080EC8F</string>
 		<string>B6DE2765114168A60080EC8F</string>
