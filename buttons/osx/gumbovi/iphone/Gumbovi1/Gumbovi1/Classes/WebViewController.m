@@ -46,7 +46,7 @@
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
 
 		NSLog(@"SENDING NOWP (as chat and IQ).");
-		NSString *msg = @"NOWP: Please send 'now playing' html fragment..";
+		NSString *msg = @"NOWP Please send 'now playing' html fragment..";
 		[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
 		// lets try send an IQ too
 	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
