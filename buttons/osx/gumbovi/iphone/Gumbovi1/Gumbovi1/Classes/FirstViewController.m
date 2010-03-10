@@ -88,6 +88,15 @@
 		
 	NSLog(@"XMPP now: %@",gad.xmppClient);
 
+		[super viewWillAppear:animated];
+	
+	//
+//	NSLog(@"fvc calling wvc willappear");
+//	UINavigationController *myWVC = [gad.tabBarController.viewControllers objectAtIndex:1];
+//	NSLog(@"Web view content via fvc: %@", gad.htmlInfo); 
+	//[myWVC viewWillAppear:animated];
+	
+	
 //	NSLog(@"Got app delgate %@", gad.xmppClient  );
 }
 
