@@ -36,6 +36,8 @@
 	
 	UITextField* qr_results;//libby
 
+	NSString* htmlInfo;
+	
 }
 //@property (nonatomic, retain) IBOutlet FirstViewController *fvc;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -55,6 +57,8 @@
 
 @property (nonatomic, retain) UIWindow *decoder_window;
 //@property (nonatomic, retain) NSString *qr_buddy;
+
+@property (nonatomic, retain) NSString *htmlInfo;
 
 
 - (IBAction) sendMENU:(id) button;

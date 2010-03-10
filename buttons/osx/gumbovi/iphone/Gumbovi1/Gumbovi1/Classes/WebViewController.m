@@ -7,7 +7,9 @@
 //
 
 #import "WebViewController.h"
-
+#import "FirstViewController.h"
+#import "Gumbovi1AppDelegate.h"
+#import "XMPP.h"
 
 //
 //NSURL *urlURL = [NSURL URLWithString:@"http://services.notube.tv/notube/zapper/epgactionmobile2.php?username=lora"] ;
@@ -21,11 +23,45 @@
 @synthesize urlAddress;
 
 - (void)viewDidLoad {
-	urlAddress = @"http://buttons.foaf.tv/";
-	NSURL *url = [NSURL URLWithString:urlAddress];
-	NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-	[webview loadRequest:requestObj];
+	if (webview == NULL) {
+		NSLog(@"viewDidLoad called with NULL webview, returning immediately.");	
+		return;
+	}
+ 	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
+	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSLog(@"load Webview is %@:",webview);
+	NSLog(@"DID LOAD: viewDidload, gad is: %@",gad);
+//	NSLog(@"DID LOAD: gad.htmlInfo to webview, %@", gad.htmlInfo);
+//	NSString *s = @"<html><head><title>Loading...</title><body>Move along, nothing to see...</body></html>";
+//	[webview loadHTMLString:s baseURL:baseURL];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+ 	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
+	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	
+	NSLog(@"WILL APPEAR: viewWillAppear, gad is: %@",gad);
+	NSLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
+    NSLog(@"appear Webview is %@:",webview);
+	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
+
+		NSLog(@"SENDING NOWP (as chat and IQ).");
+		NSString *msg = @"NOWP: Please send 'now playing' html fragment..";
+		[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
+		// lets try send an IQ too
+	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	    [errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
+		NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+		NSXMLElement *myStanza = [[NSXMLElement alloc] 
+								  initWithXMLString:@"<iq type='get'><buttons xmlns='http://buttons.foaf.tv/'>NOWP</buttons></iq>" error:&bError];
+		[ gad.xmppClient sendElement:myStanza];			
+	
+	
+	///	NSString *s = @"<html><head><title>Loading...</title><body>viewWillAppear...</body></html>";
+//	[webview loadHTMLString:s baseURL:baseURL];
+
+}
+
 
 
 - (void)webViewDidStartLoad:(UIWebView *)wv {

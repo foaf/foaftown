@@ -62,12 +62,19 @@
 @synthesize tabBarController;
 @synthesize toJid;
 @synthesize aJid;
-
+@synthesize htmlInfo;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
+
+	//
+	// for http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/Reference/Reference.html#//apple_ref/occ/instm/UIWebView/loadData:MIMEType:textEncodingName:baseURL: 
+	// in WebViewController
+	self.htmlInfo = @"<html><head><title>Now Playing</title></head><body><h1>Now Playing</h1><p>...not known.</p></body></html>";
+	NSLog(@"gad launched. self.htmlInfo is: %@", self.htmlInfo);
+	
 	// from drilldown lists code
 	NSString *Path = [[NSBundle mainBundle] bundlePath];
 	NSString *DataPath = [Path stringByAppendingPathComponent:@"Data.plist"];
@@ -338,6 +345,8 @@
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
 	NSLog(@"==============================================================");
+    
+
 }
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveMessage:(XMPPMessage *)message
