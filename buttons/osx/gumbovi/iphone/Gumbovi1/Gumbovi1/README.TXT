@@ -32,6 +32,8 @@ LICENSE
  
 DEPENDENCIES
  
+ Icons - will probably use  http://twitter.com/glyphish/ so need to credit there (and list the app?)
+ 
 * QR code reader: http://github.com/jverkoey/liteqr/tree/master/qrlib/ 
   Apache license: http://github.com/jverkoey/liteqr/blob/master/LICENSE
   

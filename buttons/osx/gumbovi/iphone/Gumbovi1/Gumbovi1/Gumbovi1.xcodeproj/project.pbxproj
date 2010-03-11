@@ -201,6 +201,13 @@
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
 		B6E6D5F6113E9A27009DD63D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
+		B6EF3CDD1148EF7A0047CF12 /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CD81148EF7A0047CF12 /* 15-tags.png */; };
+		B6EF3CDE1148EF7A0047CF12 /* 58-bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */; };
+		B6EF3CDF1148EF7A0047CF12 /* 70-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDA1148EF7A0047CF12 /* 70-tv.png */; };
+		B6EF3CE01148EF7A0047CF12 /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDB1148EF7A0047CF12 /* 20-gear2.png */; };
+		B6EF3CE11148EF7A0047CF12 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDC1148EF7A0047CF12 /* 96-book.png */; };
+		B6EF3CE31148F06B0047CF12 /* 104-index-cards.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */; };
+		B6EF3CE51148F0870047CF12 /* 73-radar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE41148F0870047CF12 /* 73-radar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -372,6 +379,13 @@
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		B6E6D5F3113E9A27009DD63D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		B6E6D5F4113E9A27009DD63D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		B6EF3CD81148EF7A0047CF12 /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags.png"; sourceTree = "<group>"; };
+		B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "58-bookmark.png"; sourceTree = "<group>"; };
+		B6EF3CDA1148EF7A0047CF12 /* 70-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "70-tv.png"; sourceTree = "<group>"; };
+		B6EF3CDB1148EF7A0047CF12 /* 20-gear2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-gear2.png"; sourceTree = "<group>"; };
+		B6EF3CDC1148EF7A0047CF12 /* 96-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "96-book.png"; sourceTree = "<group>"; };
+		B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "104-index-cards.png"; sourceTree = "<group>"; };
+		B6EF3CE41148F0870047CF12 /* 73-radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "73-radar.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -640,6 +654,13 @@
 		B6A67EF111357C8000EA4712 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B6EF3CD81148EF7A0047CF12 /* 15-tags.png */,
+				B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */,
+				B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */,
+				B6EF3CE41148F0870047CF12 /* 73-radar.png */,
+				B6EF3CDA1148EF7A0047CF12 /* 70-tv.png */,
+				B6EF3CDB1148EF7A0047CF12 /* 20-gear2.png */,
+				B6EF3CDC1148EF7A0047CF12 /* 96-book.png */,
 				B6B32F88113BE73F005F31EB /* qr_bg_blur.png */,
 				B6AFC752113812110013DE80 /* FINGERPRINT.jpg */,
 				B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */,
@@ -866,6 +887,13 @@
 				B69F0E6A113FFD1000365B22 /* SLRootViewController.xib in Resources */,
 				B69F0ECB113FFE5F00365B22 /* UnreadIndicator.png in Resources */,
 				B69F0ECE113FFE6800365B22 /* GreenBubble.png in Resources */,
+				B6EF3CDD1148EF7A0047CF12 /* 15-tags.png in Resources */,
+				B6EF3CDE1148EF7A0047CF12 /* 58-bookmark.png in Resources */,
+				B6EF3CDF1148EF7A0047CF12 /* 70-tv.png in Resources */,
+				B6EF3CE01148EF7A0047CF12 /* 20-gear2.png in Resources */,
+				B6EF3CE11148EF7A0047CF12 /* 96-book.png in Resources */,
+				B6EF3CE31148F06B0047CF12 /* 104-index-cards.png in Resources */,
+				B6EF3CE51148F0870047CF12 /* 73-radar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

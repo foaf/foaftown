@@ -384,6 +384,10 @@
 					</object>
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="765670903">
 						<string key="IBUITitle">Buttons</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">70-tv.png</string>
+						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="1034742383"/>
@@ -432,6 +436,10 @@
 						</object>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="1066320004">
 							<string key="IBUITitle">Web</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">15-tags.png</string>
+							</object>
 							<reference key="IBUITabBar"/>
 						</object>
 						<object class="NSArray" key="IBUIToolbarItems">
@@ -442,6 +450,10 @@
 					<object class="IBUIViewController" id="797973650">
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="526946278">
 							<string key="IBUITitle">Lists</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">96-book.png</string>
+							</object>
 							<reference key="IBUITabBar"/>
 						</object>
 						<object class="NSArray" key="IBUIToolbarItems">
@@ -612,6 +624,10 @@
 						</object>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="798593568">
 							<string key="IBUITitle">Accounts</string>
+							<object class="NSCustomResource" key="IBUIImage">
+								<string key="NSClassName">NSImage</string>
+								<string key="NSResourceName">20-gear2.png</string>
+							</object>
 							<reference key="IBUITabBar"/>
 						</object>
 						<object class="NSArray" key="IBUIToolbarItems">
@@ -1769,11 +1785,6 @@
 							<reference key="view" ref="161669108"/>
 							<float key="location">2.850000e+02</float>
 							<int key="affinity">1</int>
-						</object>
-						<object class="IBUserGuide">
-							<reference key="view" ref="161669108"/>
-							<float key="location">1.575000e+02</float>
-							<int key="affinity">0</int>
 						</object>
 						<object class="IBUserGuide">
 							<reference key="view" ref="161669108"/>
