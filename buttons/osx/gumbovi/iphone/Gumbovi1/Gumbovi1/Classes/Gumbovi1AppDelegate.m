@@ -224,12 +224,11 @@
 
 - (void)sendOKAY:(NSObject *)button
 {
-	NSLog(@"SENDING OKAY %@", button);
-	NSString *msg = @"OKAY event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	//NSString *msg = @"OKAY event.";
+	//[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 
-	// lets try send an IQ too
-	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	NSLog(@"SENDING IQ OKAY %@", button);
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	    [errorDetail setValue:@"Failed to do something wicked" forKey:NSLocalizedDescriptionKey];
 	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] 
