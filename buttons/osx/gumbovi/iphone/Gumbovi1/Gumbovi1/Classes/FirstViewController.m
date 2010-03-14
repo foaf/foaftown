@@ -54,7 +54,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.roster_list = [[NSMutableArray alloc] initWithObjects:@"bob.notube@gmail.com/b1",@"zetland.mythbot@googlemail.com/gumboviListener",@"buttons@foaf.tv/t2",nil]; 
+	self.roster_list = [[NSMutableArray alloc] initWithObjects:@"bob.notube@gmail.com/b1",@"zetland.mythbot@googlemail.com/gumboviListener",
+						@"buttons@foaf.tv/Basicbot",
+						@"buttons@foaf.tv/t2",@"bob.notube@gmail.com",@"bob.notube@gmail.com/switchboard",nil]; 
     NSLog(@"FVC viewDidLoad, set up array for roster: %@", self.roster_list);
 }
 

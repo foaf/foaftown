@@ -109,11 +109,12 @@
 		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice.notube@gmail.com"]];
+	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice.notube@gmail.com/gmb1"]]; // should not be hardcoded
 	[xmppClient setPassword:@"gargonza"];
 
     if (fvc.userid.text != NULL) {
 		NSLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
+	//	NSString *myjs =  [NSString stringWithFormat:@"", fvc.userid.text, @"/gmb1"] ; // todo: random /resource ? 
 		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
 	    //XMPPJID aJID = [xmppClient myJID];
 	/////	NSLog("MY JID IS NOW: ",xmppClient.myJID);
@@ -122,7 +123,7 @@
 		NSLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
 		[xmppClient setPassword:fvc.password.text];
 	}
-	NSLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@", xmppClient.myJID, xmppClient.password);
+	NSLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppClient.myJID, xmppClient.password);
 
 //	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
@@ -229,12 +230,26 @@
 
 	NSLog(@"SENDING IQ OKAY %@", button);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	    [errorDetail setValue:@"Failed to do something wicked" forKey:NSLocalizedDescriptionKey];
+	    [errorDetail setValue:@"Failed to do something" forKey:NSLocalizedDescriptionKey];
 	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-	NSXMLElement *myStanza = [[NSXMLElement alloc] 
-							  initWithXMLString:@"<iq type='get'><buttons xmlns='http://buttons.foaf.tv/'>OKAY</buttons></iq>" error:&bError];
-	[ self.xmppClient sendElement:myStanza];
 
+	// should we manually send from too? from='%@', [xmppClient.myJID full]
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' id='1001' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
+	NSLog(@"myXML: %@",myXML);
+	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
+	NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
+	NSLog(@"Markup was: %@",myStanza);
+	[self.xmppClient sendElement:myStanza];
+
+	// not working. try this?
+	
+/*	NSXMLElement *buttons = [NSXMLElement elementWithName:@"buttons" xmlns:@"http://buttons.foaf.tv/"];
+	NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
+	[iq addAttributeWithName:@"type" stringValue:@"get"];
+	[iq addChild:buttons];
+	[self.xmppClient sendElement:iq]; */
+	
+	
 }
 
 - (void)sendINFO:(NSObject *)button
