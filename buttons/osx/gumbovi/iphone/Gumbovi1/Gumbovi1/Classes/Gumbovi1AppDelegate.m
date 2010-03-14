@@ -233,8 +233,8 @@
 	    [errorDetail setValue:@"Failed to do something" forKey:NSLocalizedDescriptionKey];
 	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 
-	// should we manually send from too? from='%@', [xmppClient.myJID full]
-	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' id='1001' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
+	// should we manually send from too? from='%@', [xmppClient.myJID full] ... dow e need id= ?
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
 	NSLog(@"myXML: %@",myXML);
 	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
 	NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
@@ -352,7 +352,22 @@
 	while (object = [e nextObject]) {
 		NSLog(@"Do we add %@ ? ", object);
 		NSLog(@"resources for jid is %@ ? ", [object sortedResources ] );
-
+		NSEnumerator *e = [[object sortedResources] objectEnumerator];
+		id r;
+		while (r = [e nextObject]) {
+			NSLog(@"Sending discovery IQ to %@", r);
+			
+			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
+			[disco addAttributeWithName:@"type" stringValue:@"get"];
+			//[disco addAttributeWithName:@"from" stringValue:[[sender myJID] full]];
+			// got If set, the 'from' attribute must be set to the user's full JID (400 error) when only sending foo@bar
+			
+			[disco addAttributeWithName:@"to" stringValue:[NSString stringWithFormat:@"%@",[r jid]  ]];
+			[disco addAttributeWithName:@"id" stringValue:@"disco1"];
+			[disco addChild:[NSXMLElement elementWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"]];
+			NSLog(@"About to send %@", disco);
+			[sender sendElement:disco];
+		}
 		// here or nearby we might do discovery to find out what's available there...
 		
 		// http://xmpp.org/extensions/xep-0030.html#info
