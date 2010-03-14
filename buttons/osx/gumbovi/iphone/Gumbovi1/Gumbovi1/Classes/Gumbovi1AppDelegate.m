@@ -340,9 +340,40 @@
 {
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
+	NSLog(@"Update msg is: %@",sender);
+//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updated roster!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+//	[alert show]; [alert release]; 
+	[sender fetchRoster]; // make sure we're up to date (necessary?)
+	NSArray *buddies = [sender sortedAvailableUsersByName];
+    NSLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
+    NSLog(@"The XMPP Roster is (accounts not full JIDs with resources): %@", buddies);
+	NSEnumerator *e = [buddies objectEnumerator];
+	id object;
+	while (object = [e nextObject]) {
+		NSLog(@"Do we add %@ ? ", object);
+		NSLog(@"resources for jid is %@ ? ", [object sortedResources ] );
+
+		// here or nearby we might do discovery to find out what's available there...
+		
+		// http://xmpp.org/extensions/xep-0030.html#info
+/* 
+ <iq type='get'
+ from='romeo@montague.net/orchard'
+ to='plays.shakespeare.lit'
+ id='info1'>
+ <query xmlns='http://jabber.org/protocol/disco#info'/>
+ </iq>    */
+		
+//	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' id='1001' to='%@'><query xmlns='http://jabber.org/protocol/disco#info'/></iq>", [toJid full]];
+
+//		NSLog(@"myXML: %@",myXML);
+//		NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
+//		NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
+//		NSLog(@"Markup was: %@",myStanza);
+//		[self.xmppClient sendElement:myStanza];
 	
-	//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updated roster!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
-	//[alert show]; [alert release]; 
+	
+	}
 	
 	NSLog(@"==============================================================");
 }
