@@ -40,14 +40,24 @@
  	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	
-	NSLog(@"WILL APPEAR: viewWillAppear, gad is: %@",gad);
+	NSLog(@"WILL APPEAR: viewWillAppear, gad is: %@",gad.toJid);
+	//libby
+	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+    NSMutableArray *roster = fvc.roster_list;
+    NSLog(@"roster list: %@",roster);
+    
+	for (NSString *s in roster) {
+		NSLog(@"hello %@",s);
+	}
+	
 	NSLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
     NSLog(@"appear Webview is %@:",webview);
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
 
 		NSLog(@"SENDING NOWP (as chat and IQ).");
-		NSString *msg = @"NOWP Please send 'now playing' html fragment..";
-		[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
+	    //libby: removed because if we send a chat first, it grabs that
+		//NSString *msg = @"NOWP Please send 'now playing' html fragment..";
+		//[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
 		// lets try send an IQ too
 	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	    [errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
@@ -59,7 +69,7 @@
 	[ gad.xmppClient sendElement:myStanza];			
 	
 	
-	///	NSString *s = @"<html><head><title>Loading...</title><body>viewWillAppear...</body></html>";
+//	NSString *s = @"<html><head><title>Loading...</title><body>viewWillAppear...</body></html>";
 //	[webview loadHTMLString:s baseURL:baseURL];
 
 }
