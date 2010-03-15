@@ -127,7 +127,19 @@
 
 //	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 
-	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/gumboviListener"]; // buddy w/ media services
+	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/Basicbot"]; // buddy w/ media services
+    //libby
+    NSMutableArray *roster = fvc.roster_list;
+//	for (NSString *s in roster) {
+//		NSLog(@"hello %@",s);
+//	}
+    NSLog(@"roster list2: %@",roster);	
+	
+//       if(it rangeOfString:@self.toJid !=NSNotFound)
+
+	
+
+	
 //	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
 
 	
@@ -354,6 +366,7 @@
 		NSLog(@"resources for jid is %@ ? ", [object sortedResources ] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
+
 		while (r = [e nextObject]) {
 			NSLog(@"Sending discovery IQ to %@", r);
 			
@@ -361,8 +374,30 @@
 			// add to UI rosterx xxxxxxxxxxx
 			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
 			[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
-
-			
+            NSLog(@"adding to roster %@", r);
+			NSLog(@"Roster now1111: %@",fvc.roster_list);
+			NSLog(@"TOJID %@", self.toJid);
+			//if we have a match for tojid, set tojid to be it@@@
+			//libby's big mess
+			NSString *foo = self.toJid.description;
+			NSString *bar = [NSString stringWithFormat:@"%@",[r jid]];
+		    if([bar rangeOfString:foo].location != NSNotFound){
+				NSLog(@"OK!!!!");
+				NSLog(@"foo ok %@ bar ok %@",foo, bar);
+                self.toJid = [XMPPJID jidWithString:bar];
+			}
+			else
+			{
+				NSLog(@"foo %@ bar %@",foo, bar);
+			}
+//			if (range.location != NSNotFound)
+//			{
+//				NSLog (@"Yay! '%@' found in '%@'.", self.toJid, r);
+//			}
+//			else
+//			{
+//			    NSLog (@"Boo! '%@' not found in '%@'.", self.toJid, r);
+//			}
 			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
