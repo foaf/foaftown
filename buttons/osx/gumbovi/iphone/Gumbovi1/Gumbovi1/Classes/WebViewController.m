@@ -52,9 +52,11 @@
 	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	    [errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
 		NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-		NSXMLElement *myStanza = [[NSXMLElement alloc] 
-								  initWithXMLString:@"<iq type='get'><buttons xmlns='http://buttons.foaf.tv/'>NOWP</buttons></iq>" error:&bError];
-		[ gad.xmppClient sendElement:myStanza];			
+
+	// send a NOWP IQ
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full]];
+	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
+	[ gad.xmppClient sendElement:myStanza];			
 	
 	
 	///	NSString *s = @"<html><head><title>Loading...</title><body>viewWillAppear...</body></html>";
