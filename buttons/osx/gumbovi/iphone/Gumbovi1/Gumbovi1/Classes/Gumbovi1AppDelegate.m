@@ -357,6 +357,13 @@
 		while (r = [e nextObject]) {
 			NSLog(@"Sending discovery IQ to %@", r);
 			
+			
+			// add to UI rosterx xxxxxxxxxxx
+			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+			[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
+
+			
+			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
 			//[disco addAttributeWithName:@"from" stringValue:[[sender myJID] full]];
