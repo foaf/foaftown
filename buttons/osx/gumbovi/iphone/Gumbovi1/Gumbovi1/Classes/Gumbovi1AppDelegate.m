@@ -373,7 +373,11 @@
 			
 			// add to UI rosterx xxxxxxxxxxx
 			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-			[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
+//			[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
+//adding to the end not the start
+			[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
+			
+
             NSLog(@"adding to roster %@", r);
 			NSLog(@"Roster now1111: %@",fvc.roster_list);
 			NSLog(@"TOJID %@", self.toJid);
