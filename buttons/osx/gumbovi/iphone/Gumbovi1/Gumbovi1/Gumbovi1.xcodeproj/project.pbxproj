@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C08B709114FACC500511D74 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
 		1D3623260D0F684500981E51 /* Gumbovi1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -221,6 +222,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C08B708114FACC500511D74 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gumbovi1AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gumbovi1AppDelegate.m; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				B66F4113113BCBFC004DF167 /* libqrlib.a in Frameworks */,
 				B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */,
 				B683761D114192E800DEF94D /* libidn.a in Frameworks */,
+				1C08B709114FACC500511D74 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +502,7 @@
 			children = (
 				B683761B114192E800DEF94D /* Mac */,
 				B69F0E0F113FF99700365B22 /* CoreData.framework */,
+				1C08B708114FACC500511D74 /* CoreData.framework */,
 				B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */,
 				B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */,
 				B6BD10301132A46F00ED28CD /* CFNetwork.framework */,

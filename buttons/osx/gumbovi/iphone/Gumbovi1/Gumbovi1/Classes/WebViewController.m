@@ -55,7 +55,6 @@
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
 
 		NSLog(@"SENDING NOWP (as chat and IQ).");
-	    //libby: removed because if we send a chat first, it grabs that
 		//NSString *msg = @"NOWP Please send 'now playing' html fragment..";
 		//[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
 		// lets try send an IQ too
