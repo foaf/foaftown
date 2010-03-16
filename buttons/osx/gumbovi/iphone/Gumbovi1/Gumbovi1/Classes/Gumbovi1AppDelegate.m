@@ -379,29 +379,7 @@
 			
 
             NSLog(@"adding to roster %@", r);
-			NSLog(@"Roster now1111: %@",fvc.roster_list);
 			NSLog(@"TOJID %@", self.toJid);
-			//if we have a match for tojid, set tojid to be it@@@
-			//libby's big mess
-			NSString *foo = self.toJid.description;
-			NSString *bar = [NSString stringWithFormat:@"%@",[r jid]];
-		    if([bar rangeOfString:foo].location != NSNotFound){
-				NSLog(@"OK!!!!");
-				NSLog(@"foo ok %@ bar ok %@",foo, bar);
-                self.toJid = [XMPPJID jidWithString:bar];
-			}
-			else
-			{
-				NSLog(@"foo %@ bar %@",foo, bar);
-			}
-//			if (range.location != NSNotFound)
-//			{
-//				NSLog (@"Yay! '%@' found in '%@'.", self.toJid, r);
-//			}
-//			else
-//			{
-//			    NSLog (@"Boo! '%@' not found in '%@'.", self.toJid, r);
-//			}
 			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
