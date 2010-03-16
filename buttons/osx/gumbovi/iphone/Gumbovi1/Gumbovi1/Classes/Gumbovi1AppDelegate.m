@@ -363,18 +363,24 @@
 	id object;
 	while (object = [e nextObject]) {
 		NSLog(@"Do we add %@ ? ", object);
-		NSLog(@"resources for jid is %@ ? ", [object sortedResources ] );
+		NSLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 
 		while (r = [e nextObject]) {
+
+            //get the presence
+			//not sure how to display it!
+			XMPPPresence *pres = [[XMPPPresence alloc] init];
+			pres = [XMPPPresence presenceFromElement:[r presence]];
+			NSLog(@"presence is %@", [pres status]);
+
 			NSLog(@"Sending discovery IQ to %@", r);
-			
 			
 			// add to UI rosterx xxxxxxxxxxx
 			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-//			[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
-//adding to the end not the start
+			//[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
+            //adding to the end not the start
 			[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 			
 
