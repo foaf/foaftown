@@ -51,6 +51,7 @@
 	NSLog(@"viewWillAppear: roster is %@",roster);
 	NSLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
     [roster_view reloadData]; // refresh roster when anyone will look
+	[roster_view flashScrollIndicators]; //to show that it's scrollable
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -135,6 +136,7 @@
 	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
     // Set up the cell...
 	[cell setText:(@"NoTube Network: %@", jid)];
+
     return cell;
 }
 
