@@ -46,9 +46,9 @@
     NSMutableArray *roster = fvc.roster_list;
     NSLog(@"roster list: %@",roster);
     
-	for (NSString *s in roster) {
-		NSLog(@"hello %@",s);
-	}
+//	for (NSString *s in roster) {
+//		NSLog(@"hello %@",s);
+//	}
 	
 	NSLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
     NSLog(@"appear Webview is %@:",webview);

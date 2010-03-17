@@ -9,6 +9,7 @@
 #import "LinkedTVRosterTableController.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
+#import "XMPP.h"
 
 // For now, lots of state is in FVC
 
@@ -119,7 +120,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"cellForRowAtIndexPath called");
 
-	// NSLog(@"FRESH CELL: %@",indexPath);
+	//NSLog(@"FRESH CELL: %@",indexPath);
 
 	
     static NSString *CellIdentifier = @"Cell";
@@ -133,8 +134,10 @@
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
 	///[roster retain];// hmm help, memory stuff. todo!
-	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
+//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
+    NSObject *jid = [roster objectAtIndex:indexPath.row];
     // Set up the cell...
+
 	[cell setText:(@"NoTube Network: %@", jid)];
 
     return cell;
