@@ -96,7 +96,9 @@
 //- (void)initXMPP: (NSObject *)config  {
 - (void)initXMPP  {
     NSLog(@"initXMPP *****");
-	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+//	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+
     NSLog(@"TIMER: (?re-)Initialising XMPP");
 	NSLog(@"FVC is", fvc);
     xmppClient = [[XMPPClient alloc] init];
@@ -279,7 +281,8 @@
 
 - (void)sendLOUD:(NSObject *)myS;
 {
-	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+//	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"LOUD", fvc.volume.value];
 	NSLog(@"SENDING LOUD %@", v  );
 	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
@@ -287,7 +290,8 @@
 
 - (void)sendHUSH:(NSObject *)myS;
 {
-	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+	//FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+    FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"HUSH", fvc.volume.value];
 	NSLog(@"SENDING HUSH %@", v  );
 	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
@@ -386,8 +390,8 @@
 			
 
 			// add to UI rosterx xxxxxxxxxxx
-			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-
+//			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+			FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
 			//[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
             //adding to the end not the start. it crashes a lot either way so wrapping in try catch
 			@try { 
