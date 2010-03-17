@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>B617181611518F4200FF50CD</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Gumbovi1AppDelegate.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>B617181711518F4200FF50CD</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Gumbovi1AppDelegate.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>B61718411151A04200FF50CD</string>
+						<key>history</key>
+						<array>
+							<string>B61718371151A01400FF50CD</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {976, 673}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>430 164 976 714 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -273,8 +314,6 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>B6DE2914114185850080EC8F</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
-								<string>B6A67EE011357B8300EA4712</string>
-								<string>B67CC3A910A5764900511209</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
@@ -286,12 +325,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>85</integer>
-									<integer>75</integer>
+									<integer>74</integer>
+									<integer>51</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 806}, {288, 741}}</string>
+							<string>{{0, 619}, {288, 741}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -328,7 +367,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Gumbovi1AppDelegate.m</string>
+								<string>FirstViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -336,11 +375,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Gumbovi1AppDelegate.m</string>
+										<string>FirstViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B61717C21151768200FF50CD</string>
+										<string>B61718401151A04200FF50CD</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -407,7 +446,6 @@
 											<string>B6DE293A114186FE0080EC8F</string>
 											<string>B6DE293B114186FE0080EC8F</string>
 											<string>B6DE293D114186FE0080EC8F</string>
-											<string>B6DE293F114186FE0080EC8F</string>
 											<string>B6DE2940114186FE0080EC8F</string>
 											<string>B683750F11418D9000DEF94D</string>
 											<string>B683751011418D9000DEF94D</string>
@@ -436,15 +474,17 @@
 											<string>B6482A1A114E51AE00389051</string>
 											<string>B6482A1B114E51AE00389051</string>
 											<string>B674F17F1150DA870018BBAE</string>
-											<string>B644E3B0115114A200A154D1</string>
 											<string>B644E3FB11512A6500A154D1</string>
 											<string>B644E4151151304100A154D1</string>
 											<string>B644E4161151304100A154D1</string>
 											<string>B644E42F1151341100A154D1</string>
 											<string>B644E44F11513D2400A154D1</string>
-											<string>B644E45111513D2400A154D1</string>
 											<string>B644E46711513F8000A154D1</string>
-											<string>B61717C11151768200FF50CD</string>
+											<string>B617180811518BC600FF50CD</string>
+											<string>B61718391151A04200FF50CD</string>
+											<string>B617183A1151A04200FF50CD</string>
+											<string>B617183B1151A04200FF50CD</string>
+											<string>B617183C1151A04200FF50CD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -543,6 +583,13 @@
 											<string>B644E4191151304100A154D1</string>
 											<string>B644E41A1151304100A154D1</string>
 											<string>B644E45411513D2400A154D1</string>
+											<string>B617180111518A4000FF50CD</string>
+											<string>B617180A11518BC600FF50CD</string>
+											<string>B61718251151978E00FF50CD</string>
+											<string>B61718261151978E00FF50CD</string>
+											<string>B617183D1151A04200FF50CD</string>
+											<string>B617183E1151A04200FF50CD</string>
+											<string>B617183F1151A04200FF50CD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -738,11 +785,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B61717F51151855300FF50CD</string>
+		<string>B61717F61151855300FF50CD</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>B617181611518F4200FF50CD</string>
 	</array>
 	<key>WindowString</key>
 	<string>81 74 1341 800 0 0 1440 878 </string>

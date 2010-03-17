@@ -6,23 +6,9 @@
 //  This code - license: MIT, Share-and-Enjoy.
 //  See embedded XMPP, KissXML and IDN libs for their distribution terms.
 //  (c) Dan Brickley <danbri@danbri.org> & VU University Amsterdam
+// + Libby Miller
 //
 //  Thanks to Chris van Aart, Jens Finkhäuser, and Daniel Salber for Xcode & Obj-C advice.
-//
-// xcode 101 notes:
-// jens: well, the idea is that firstviewcontroller controls the tab contents, app delegate controls tabs.
-// I suspect I'd hook most of what you've talked about up in firstviewcontroller
-//
-// daniel: the easy way to get hold of the app delegate is: [[UIApplication sharedApplication] delegate]
-
-
-// Status: we can connect to XMPP and route events between iphone UI and remote JIDs
-// we don't load our username and password from the UI fields yet
-// - when keyboard is used on phone, it won't go away
-// - there is no protocol design
-// - for now, simply sending physical-style messages (ie. which key pressed)
-// - should impl some services, eg. list videos
-
 
 #import "XMPP.h"
 #import "FirstViewController.h"
@@ -30,12 +16,12 @@
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
 #import "AudioToolbox/AudioServices.h"
-/// from lists drilldown demo
+
+// from lists drilldown demo (not used)
 #import "RootViewController.h"
+#import "SLRootViewController.h" 
 
-#import "SLRootViewController.h"
-
-// xml stuff
+// xml stuff (maybe not all needed)
 #import "DDXMLNode.h"
 #import "DDXMLElement.h"
 #import "DDXMLDocument.h"
@@ -51,18 +37,9 @@
 @synthesize navigationController;
 @synthesize data;
 // end lists stuff
-
 //@synthesize webController;
-
-
 @synthesize decoder_window;
 @synthesize qr_results;
-
-//#import <Foundation/NSString.h>
-
-//@synthesize listswindow;
-
-
 @synthesize xmppClient;
 @synthesize window;
 @synthesize tabBarController;
@@ -87,7 +64,7 @@
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
-	NSLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
+	// NSLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
 	// Configure and show the window	
 
 
@@ -258,7 +235,7 @@
 	NSLog(@"myXML: %@",myXML);
 	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
 	NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
-	NSLog(@"Markup was: %@",myStanza);
+	// NSLog(@"Markup was: %@",myStanza);
 	[self.xmppClient sendElement:myStanza];
 
 	// not working. try this?
@@ -372,10 +349,13 @@
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
-		NSLog(@"Do we add %@ ? ", object);
+		NSLog(@"Roster UI check: %@", object);
 		NSLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
+		
+		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+//		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
 
 		while (r = [e nextObject]) {
 
@@ -383,26 +363,21 @@
 			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			NSLog(@"pres is %@", pres);
-			NSLog(@"presence is %@", [pres status]);
-
-			NSLog(@"Sending discovery IQ to %@", r);
-			
-
-			// add to UI rosterx xxxxxxxxxxx
-//			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-			FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+//			NSLog(@"pres is %@", pres);
+			NSLog(@"presence: %@", [pres status]);
+ 			NSLog(@"Sending discovery IQ to %@", r);
 			//[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
-            //adding to the end not the start. it crashes a lot either way so wrapping in try catch
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
+				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+				fvc.roster_list =     [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 			}
                 @catch (NSException *exception) {
 				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
 			} 
 
-            NSLog(@"adding to roster %@", r);
-			NSLog(@"TOJID %@", self.toJid);
+			//  NSLog(@"adding to roster %@", r);
+			//	NSLog(@"TOJID %@", self.toJid);
 			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
@@ -412,7 +387,7 @@
 			[disco addAttributeWithName:@"to" stringValue:[NSString stringWithFormat:@"%@",[r jid]  ]];
 			[disco addAttributeWithName:@"id" stringValue:@"disco1"];
 			[disco addChild:[NSXMLElement elementWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"]];
-			NSLog(@"About to send %@", disco);
+			// NSLog(@"About to send %@", disco);
 			[sender sendElement:disco];
 		}
 		// here or nearby we might do discovery to find out what's available there...
@@ -451,13 +426,11 @@
 {
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
-	
-	NSLog(@"XXXNOWPTESTER Is this IQ a buttons response?");
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
-	NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
-//ok	NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
+	//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+	//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
+	// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
 	//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
 	//NSLog(@"nowp results: %@", nowpNodes);
 	//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
@@ -465,17 +438,17 @@
     //while ( obj = [enumerator nextObject] ) {
     //    printf( "%s\n", [[obj description] cString] );
     //}
-	
+
 	// Sleazy XML handling
 	DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
 	DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
 	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
-	NSLog(@"X2: %@",xs);
+	// NSLog(@"X2: %@",xs);
 	
 	if([xs rangeOfString:@"<div>"].location == NSNotFound){
-		NSLog(@"div not found in xs %@", xs);
+	//	NSLog(@"div not found in xs %@", xs);
 	} else {
-		NSLog(@"Setting self.htmlInfo to: %@",xs);
+		NSLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
 		self.htmlInfo = xs;
 
 		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:1];//ugh
@@ -485,14 +458,10 @@
 	
 	}
 //		NSLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
-	
-	// Nothing works. Related attempts:
+	// Nothing worked. Related attempts:
 	// additions see http://code.google.com/p/kissxml/issues/detail?id=18
 	// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
 	//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
-	//	NSLog(@"BUTTONS NOWP markup: %@",info);
-	//	NSLog(@"XMLHELP: 1st child is: %@",x);
-
 	
 	NSLog(@"==============================================================");
     
