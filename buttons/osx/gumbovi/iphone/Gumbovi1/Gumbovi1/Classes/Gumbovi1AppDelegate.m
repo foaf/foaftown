@@ -373,16 +373,23 @@
 			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
+			NSLog(@"pres is %@", pres);
 			NSLog(@"presence is %@", [pres status]);
 
 			NSLog(@"Sending discovery IQ to %@", r);
 			
+
 			// add to UI rosterx xxxxxxxxxxx
 			FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
+
 			//[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
-            //adding to the end not the start
-			[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
-			
+            //adding to the end not the start. it crashes a lot either way so wrapping in try catch
+			@try { 
+				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
+			}
+                @catch (NSException *exception) {
+				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
+			} 
 
             NSLog(@"adding to roster %@", r);
 			NSLog(@"TOJID %@", self.toJid);
