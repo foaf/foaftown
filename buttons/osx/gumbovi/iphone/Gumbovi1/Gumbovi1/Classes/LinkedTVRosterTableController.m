@@ -118,11 +118,9 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cellForRowAtIndexPath called");
+   // NSLog(@"cellForRowAtIndexPath called");
+   //NSLog(@"FRESH CELL: %@",indexPath);
 
-	//NSLog(@"FRESH CELL: %@",indexPath);
-
-	
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -132,15 +130,12 @@
     
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
-	NSLog(@"Is this fvc? %@:", fvc);
-    NSMutableArray *roster = fvc.roster_list;
-	///[roster retain];// hmm help, memory stuff. todo!
-//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
+	NSMutableArray *roster = fvc.roster_list;
+	///[roster retain];// hmm help, memory stuff. todo!	
+	//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
     NSObject *jid = [roster objectAtIndex:indexPath.row];
     // Set up the cell...
-
 	[cell setText:(@"NoTube Network: %@", jid)];
-
     return cell;
 }
 

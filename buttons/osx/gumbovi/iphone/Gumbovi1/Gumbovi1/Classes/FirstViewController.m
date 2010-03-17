@@ -60,8 +60,9 @@
 	//@"zetland.mythbot@googlemail.com/Basicbot",
 	//@"buttons@foaf.tv/Basicbot",
 	//@"buttons@foaf.tv/t2",@"bob.notube@gmail.com",@"bob.notube@gmail.com/switchboard"
-	self.roster_list = [[NSMutableArray alloc] initWithObjects:@"bob.notube@gmail.com/test",nil]; 
 //    NSLog(@"FVC viewDidLoad, set up array for roster: %@", self.roster_list);
+	self.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; 
+
 }
 
 

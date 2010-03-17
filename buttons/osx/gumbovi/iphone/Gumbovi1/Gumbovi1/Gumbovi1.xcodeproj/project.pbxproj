@@ -14,6 +14,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28216C970DB411BC00E5133A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		B61718441151A06100FF50CD /* bgbuttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B61718431151A06100FF50CD /* bgbuttons.png */; };
 		B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
 		B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */; };
 		B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
@@ -235,6 +236,7 @@
 		28A0AB4B0D9B1048005BE974 /* Gumbovi1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gumbovi1_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		B61718431151A06100FF50CD /* bgbuttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgbuttons.png; sourceTree = "<group>"; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
@@ -436,14 +438,14 @@
 			isa = PBXGroup;
 			children = (
 				B656AA4510ADDD590089D78F /* JSON */,
+				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
+				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
 				28216C960DB411BC00E5133A /* FirstViewController.m */,
 				B6E6D5F3113E9A27009DD63D /* WebViewController.h */,
 				B6E6D5F4113E9A27009DD63D /* WebViewController.m */,
 				B64E91D0113D3ABC002137A2 /* LinkedTVRosterTableController.h */,
 				B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */,
-				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
-				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -665,6 +667,7 @@
 			children = (
 				B6EF3CD81148EF7A0047CF12 /* 15-tags.png */,
 				B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */,
+				B61718431151A06100FF50CD /* bgbuttons.png */,
 				B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */,
 				B6EF3CE41148F0870047CF12 /* 73-radar.png */,
 				B6EF3CDA1148EF7A0047CF12 /* 70-tv.png */,
@@ -903,6 +906,7 @@
 				B6EF3CE11148EF7A0047CF12 /* 96-book.png in Resources */,
 				B6EF3CE31148F06B0047CF12 /* 104-index-cards.png in Resources */,
 				B6EF3CE51148F0870047CF12 /* 73-radar.png in Resources */,
+				B61718441151A06100FF50CD /* bgbuttons.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
