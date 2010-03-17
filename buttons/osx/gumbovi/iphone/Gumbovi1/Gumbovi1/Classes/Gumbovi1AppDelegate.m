@@ -107,7 +107,7 @@
   //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
 	//NSLog("aJiD: ",aJID);
 	
-	if(( [fvc.userid.text rangeOfString:@"gmail"].location == NSNotFound)){
+	if(( [fvc.userid.text rangeOfString:@"gmail"].location == NSNotFound) && ( [fvc.userid.text rangeOfString:@"googlemail"].location == NSNotFound)){
 		NSLog(@"gmail not found in user JID %@", fvc.userid.text);
 		NSLog(@"We should parse out the host name...?");
 	} else {
@@ -115,7 +115,7 @@
 		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"alice.notube@gmail.com/gmb1"]]; // should not be hardcoded
+	[xmppClient setMyJID:[XMPPJID jidWithString:@"jana.notube@googlemail.com/hardcoded"]]; // should not be hardcoded
 	[xmppClient setPassword:@"gargonza"];
 
     if (fvc.userid.text != NULL) {
