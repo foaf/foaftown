@@ -40,6 +40,9 @@
  	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	
+	webview.scalesPageToFit=TRUE;
+
+	
 	NSLog(@"WILL APPEAR: viewWillAppear, gad is: %@",gad.toJid);
 	//libby
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
