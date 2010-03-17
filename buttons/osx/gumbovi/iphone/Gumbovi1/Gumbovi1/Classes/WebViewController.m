@@ -43,7 +43,7 @@
 	webview.scalesPageToFit=TRUE;
 
 	
-	NSLog(@"WILL APPEAR: viewWillAppear, gad is: %@",gad.toJid);
+	NSLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
 	//libby
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
