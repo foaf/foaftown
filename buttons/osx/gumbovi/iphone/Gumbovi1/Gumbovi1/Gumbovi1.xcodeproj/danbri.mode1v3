@@ -197,7 +197,88 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>B644E436115135AF00A154D1</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>Gumbovi1AppDelegate.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>B644E437115135AF00A154D1</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>Gumbovi1AppDelegate.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>B644E4731151414900A154D1</string>
+						<key>history</key>
+						<array>
+							<string>B644E4331151359700A154D1</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {976, 673}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>430 164 976 714 0 0 1440 878 </string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>B644E46C11513F8000A154D1</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>WebViewController.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>B644E46D11513F8000A154D1</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>WebViewController.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>B644E4741151414900A154D1</string>
+						<key>history</key>
+						<array>
+							<string>B644E46311513F0700A154D1</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {946, 692}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>54 140 946 733 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -233,8 +314,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -288,13 +367,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>43</integer>
-									<integer>34</integer>
-									<integer>0</integer>
+									<integer>88</integer>
+									<integer>75</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 585}, {288, 741}}</string>
+							<string>{{0, 857}, {288, 741}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -331,7 +409,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>DDXMLElementAdditions.h</string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -339,11 +417,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>DDXMLElementAdditions.h</string>
+										<string>Gumbovi1AppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B644E42A1151329100A154D1</string>
+										<string>B644E4721151414900A154D1</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -438,15 +516,16 @@
 											<string>B6482A19114E51AE00389051</string>
 											<string>B6482A1A114E51AE00389051</string>
 											<string>B6482A1B114E51AE00389051</string>
-											<string>B674F1481150B7140018BBAE</string>
 											<string>B674F17F1150DA870018BBAE</string>
 											<string>B644E3B0115114A200A154D1</string>
-											<string>B644E3CC11511C1A00A154D1</string>
 											<string>B644E3FB11512A6500A154D1</string>
-											<string>B644E3FC11512A6500A154D1</string>
 											<string>B644E4151151304100A154D1</string>
 											<string>B644E4161151304100A154D1</string>
-											<string>B644E4171151304100A154D1</string>
+											<string>B644E42F1151341100A154D1</string>
+											<string>B644E44F11513D2400A154D1</string>
+											<string>B644E45111513D2400A154D1</string>
+											<string>B644E46711513F8000A154D1</string>
+											<string>B644E46811513F8000A154D1</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -550,6 +629,11 @@
 											<string>B644E4181151304100A154D1</string>
 											<string>B644E4191151304100A154D1</string>
 											<string>B644E41A1151304100A154D1</string>
+											<string>B644E4301151341100A154D1</string>
+											<string>B644E45311513D2400A154D1</string>
+											<string>B644E45411513D2400A154D1</string>
+											<string>B644E45611513D2400A154D1</string>
+											<string>B644E46911513F8000A154D1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -571,6 +655,8 @@
 							<string>447pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -743,14 +829,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B644E41C1151304100A154D1</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>B644E3C2115114A200A154D1</string>
 		<string>B644E3C4115114A200A154D1</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>B67CC37E10A5759F00511209</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>B644E46C11513F8000A154D1</string>
+		<string>B644E436115135AF00A154D1</string>
+		<string>B67CC37E10A5759F00511209</string>
 	</array>
 	<key>WindowString</key>
 	<string>81 74 1341 800 0 0 1440 878 </string>
@@ -769,12 +856,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -843,7 +932,7 @@
 			<key>WindowToolGUID</key>
 			<string>B67CC37E10A5759F00511209</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -1058,7 +1147,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -1124,7 +1213,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

@@ -26,6 +26,7 @@
 
 #import "XMPP.h"
 #import "FirstViewController.h"
+#import "WebViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
 #import "AudioToolbox/AudioServices.h"
@@ -453,17 +454,35 @@
 	NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 //	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
 //ok	NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
-	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/*" error:&error];
+	//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
+	//NSLog(@"nowp results: %@", nowpNodes);
+	//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
+    //id obj;	
+    //while ( obj = [enumerator nextObject] ) {
+    //    printf( "%s\n", [[obj description] cString] );
+    //}
 	
-	NSLog(@"nowp results: %@", nowpNodes);
-	NSEnumerator *enumerator = [nowpNodes objectEnumerator];
-    id obj;	
-    while ( obj = [enumerator nextObject] ) {
-        printf( "%s\n", [[obj description] cString] );
-    }
-		
+	// Sleazy XML handling
+	DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
+	DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
+	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
+	NSLog(@"X2: %@",xs);
+	
+	if([xs rangeOfString:@"<div>"].location == NSNotFound){
+		NSLog(@"div not found in xs %@", xs);
+	} else {
+		NSLog(@"Setting self.htmlInfo to: %@",xs);
+		self.htmlInfo = xs;
+
+		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:1];//ugh
+		NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
+		[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
+
+	
+	}
+//		NSLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
+	
 	// Nothing works. Related attempts:
-	//	DDXMLElement *x = [iq childAtIndex:0];
 	// additions see http://code.google.com/p/kissxml/issues/detail?id=18
 	// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
 	//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
