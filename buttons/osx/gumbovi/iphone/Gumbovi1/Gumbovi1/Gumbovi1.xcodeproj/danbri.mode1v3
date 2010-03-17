@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B61718411151A04200FF50CD</string>
+						<string>B61718511151A3F600FF50CD</string>
 						<key>history</key>
 						<array>
 							<string>B61718371151A01400FF50CD</string>
@@ -316,6 +316,7 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>B6A67EF111357C8000EA4712</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>B683761B114192E800DEF94D</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -325,12 +326,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>74</integer>
-									<integer>51</integer>
+									<integer>96</integer>
+									<integer>72</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 619}, {288, 741}}</string>
+							<string>{{0, 993}, {288, 741}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -362,12 +363,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>FirstViewController.m</string>
+								<string>LinkedTVRosterTableController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -375,11 +378,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>FirstViewController.m</string>
+										<string>LinkedTVRosterTableController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B61718401151A04200FF50CD</string>
+										<string>B61718501151A3F600FF50CD</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -480,11 +483,12 @@
 											<string>B644E42F1151341100A154D1</string>
 											<string>B644E44F11513D2400A154D1</string>
 											<string>B644E46711513F8000A154D1</string>
-											<string>B617180811518BC600FF50CD</string>
 											<string>B61718391151A04200FF50CD</string>
 											<string>B617183A1151A04200FF50CD</string>
 											<string>B617183B1151A04200FF50CD</string>
-											<string>B617183C1151A04200FF50CD</string>
+											<string>B617184B1151A3F600FF50CD</string>
+											<string>B617184C1151A3F600FF50CD</string>
+											<string>B617184D1151A3F600FF50CD</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -590,6 +594,8 @@
 											<string>B617183D1151A04200FF50CD</string>
 											<string>B617183E1151A04200FF50CD</string>
 											<string>B617183F1151A04200FF50CD</string>
+											<string>B617184E1151A3F600FF50CD</string>
+											<string>B617184F1151A3F600FF50CD</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -611,8 +617,6 @@
 							<string>447pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -785,14 +789,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B61718521151A3F600FF50CD</string>
 		<string>B61717F51151855300FF50CD</string>
 		<string>B61717F61151855300FF50CD</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>B617181611518F4200FF50CD</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
-		<string>B617181611518F4200FF50CD</string>
 	</array>
 	<key>WindowString</key>
 	<string>81 74 1341 800 0 0 1440 878 </string>
