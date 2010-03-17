@@ -34,6 +34,11 @@
 
 #import "SLRootViewController.h"
 
+// xml stuff
+#import "DDXMLNode.h"
+#import "DDXMLElement.h"
+#import "DDXMLDocument.h"
+#import "NSStringAdditions.h"
 
 // for qr
 #import "DecoderController.h"
@@ -441,6 +446,31 @@
 {
 	NSLog(@"==============================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
+	
+	NSLog(@"XXXNOWPTESTER Is this IQ a buttons response?");
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
+	NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
+//ok	NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
+	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/*" error:&error];
+	
+	NSLog(@"nowp results: %@", nowpNodes);
+	NSEnumerator *enumerator = [nowpNodes objectEnumerator];
+    id obj;	
+    while ( obj = [enumerator nextObject] ) {
+        printf( "%s\n", [[obj description] cString] );
+    }
+		
+	// Nothing works. Related attempts:
+	//	DDXMLElement *x = [iq childAtIndex:0];
+	// additions see http://code.google.com/p/kissxml/issues/detail?id=18
+	// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
+	//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
+	//	NSLog(@"BUTTONS NOWP markup: %@",info);
+	//	NSLog(@"XMLHELP: 1st child is: %@",x);
+
+	
 	NSLog(@"==============================================================");
     
 

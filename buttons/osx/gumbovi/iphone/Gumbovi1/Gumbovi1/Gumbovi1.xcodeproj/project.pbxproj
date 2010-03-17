@@ -15,6 +15,7 @@
 		28216C970DB411BC00E5133A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
+		B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */; };
 		B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
 		B648FE9A10D1A3040068001F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
 		B648FE9B10D1A3040068001F /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
@@ -235,6 +236,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
 		B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down-100x.png"; sourceTree = "<group>"; };
 		B648FE9210D1A3040068001F /* heartbuttons4-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down.png"; sourceTree = "<group>"; };
 		B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-left-100x.png"; sourceTree = "<group>"; };
@@ -594,6 +597,8 @@
 				B67CC3B110A5764900511209 /* DDXMLPrivate.h */,
 				B67CC3B210A5764900511209 /* NSStringAdditions.h */,
 				B67CC3B310A5764900511209 /* NSStringAdditions.m */,
+				B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */,
+				B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */,
 			);
 			path = KissXML;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				B69F0E53113FFB2E00365B22 /* DDString.m in Sources */,
 				B69F0E69113FFD1000365B22 /* SLRootViewController.m in Sources */,
 				B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
+				B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -132,6 +132,7 @@
     
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+	NSLog(@"Is this fvc? %@:", fvc);
     NSMutableArray *roster = fvc.roster_list;
 	///[roster retain];// hmm help, memory stuff. todo!
 //	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
