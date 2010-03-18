@@ -17,8 +17,13 @@ import urllib2
 import urllib, simplejson
 from xmpp import *
 from datetime import datetime
+import pprint
+from xmpp.simplexml import XML2Node
+from xml.sax.saxutils import escape
 
 server = "http://localhost:8800/xbmcCmds/xbmcHttp"
+#pp = pprint.PrettyPrinter(indent=4)
+pp = pprint.PrettyPrinter(depth=6)
 
 try:
   secret=os.environ["NOTUBEPASS"]
@@ -98,7 +103,13 @@ def runCmd(command):
 
 
 def getImdb(fn):
-  r = runCmd("echo 'select * from video_files where strPath=\"" + fn + "\";' | sqlite3 ~/Library/Application\ Support/BOXEE/UserData/Database/boxee_media.db")
+  escfn = fn
+  escfn = escfn.replace('\'',"\'\'") # http://www.sqlite.org/lang_expr.html
+  escfn = escfn.replace('\"','\\\"')
+  print "ESCAPED: "+escfn
+  c = "echo \"select * from video_files where strPath=\'" + escfn + "\';\" | sqlite3 ~/Library/Application\ Support/BOXEE/UserData/Database/boxee_media.db"
+  print "RUNNING: "+c
+  r = runCmd(c)
   arr = r.split("|")
   return arr[12]
 
@@ -123,7 +134,7 @@ def got_like():
     dt = datetime.now().ctime() 
     url = imdb
     comments="likes"
-    u  = "http://services.notube.tv/notube/zapper/boxeelog.php%s" % urllib.urlencode({'action': "insert", 'username': userid, 'title': title, 'when': dt, 'url': url, 'comments': comments })
+    u  = "http://services.notube.tv/notube/zapper/boxeelog.php?%s" % urllib.urlencode({"action": "insert", 'username': userid, 'title': title, 'when': dt, 'url': url, 'comments': comments })
     print "Using URL for NoTube Network activity log: "+u
     urllib2.urlopen(u)
     # Hey, we should also store the offset in time, and make a screenshot, store that too? :)
@@ -144,14 +155,60 @@ def presenceHandler(conn,presence_node):
     if presence_node.getFrom().bareMatch(targetJID):
         pass
 
+    # http://collincode.wordpress.com/2009/01/31/xmpp-jabber-photo-module-2/
+    # http://xmpppy.sourceforge.net/examples/commandsbot.py
+    # http://docs.python.org/library/pprint.html
+    # Target reply is something like:
+	#<iq xmlns="jabber:client" to="bob.notube@gmail.com/Buttonbox9A7BE9D5" type="get" from="alice.notube@gmail.com/33386E01"><query xmlns="http://buttons.foaf.tv/"><button>NOWP</button></query></iq>
+	#<xmpp.protocol.Iq object at 0x105e3d0>
+
+#actual:
+#<iq to="alice.notube@gmail.com/920AE059" from="bob.notube@gmail.com/Buttonbox495761D9" id="5" type="result"><query xmlns="http://buttons.foaf.tv/"></query><nowp-result xmlns="http://buttons.foaf.tv/" foo="bar">
+#<iq to="alice.notube@gmail.com/97BD3D47" from="bob.notube@gmail.com/ButtonboxCE4CD8BA" id="6" type="result"><query xmlns="http://buttons.foaf.tv/"/><nowp-result xmlns="http://buttons.foaf.tv/"><div xmlns="http://www.gajim.org/xmlns/undeclared"><meta content="width=320" name="viewport"/>&lt;html&gt;
+
 def iqHandler(conn,iq_node):
     """ Handler for processing some "get" query from custom namespace"""
     print "Got an IQ query:"
     print iq_node
-#3      pass
-#    reply=iq_node.buildReply('result')
-#    conn.send(reply) # ... put some content into reply node
-    raise NodeProcessed  # This stanza is fully processed
+ #   reply=iq_node.buildReply('result')
+ #   reply.addChild(name='div', namespace='http://buttons.foaf.tv/', attrs={'foo':'bar'}, payload=replypayload)
+    print "Trying to prettyprint: "
+    pp.pprint(iq_node)
+    print "Type of IQ is ", iq_node.getType()
+    print "Element of IQ is ", iq_node.getQuerynode()
+    bEl = iq_node.getChildren()[0]
+    print "First child is ", bEl
+    print "NS is: ",iq_node.getQueryNS()
+    if (iq_node.getType()=='get'):
+      print "GET, we got."
+
+    if (iq_node.getQueryNS()=='http://buttons.foaf.tv/' and iq_node.getType()=='get'):
+      print "We got a buttons query. a GET."
+
+      # todo: reply with ...
+      # <iq to="alice.notube@gmail.com/76566DAF" type="result" from="zetland.mythbot@googlemail.com/Basicbot553D2BBB"><nowp-result xmlns="http://buttons.foaf.tv/"><div><h2>Now playing</h2>
+# <iq to="alice.notube@gmail.com/97BD3D47" from="bob.notube@gmail.com/ButtonboxCE4CD8BA" id="6" type="result"><query xmlns="http://buttons.foaf.tv/"/><nowp-result xmlns="http://buttons.foaf.tv/"><div xmlns="http://www.gajim.org/xmlns/undeclared"><meta content="width=320" name="viewport"/>&lt;html&gt;
+      if bEl != None:
+        print "First child of child is", bEl.getChildren()[0]
+        if str(bEl.getChildren()[0]) == '<button>NOWP</button>':
+          print "Got a NOWP request. We should reply with HTML status."
+          np = boxee_GetCurrentlyPlaying()
+          newXML = XML2Node("<div><meta name='viewport' content='width=320'/>"+escape(np)+"</div>" )
+          print "Reply should be: ",newXML
+          reply = iq_node.buildReply('result')
+          print "Draft reply is "
+          pp.pprint(reply) 
+          replypayload =  newXML # [  ] 
+          reply.addChild(name='nowp-result', namespace='http://buttons.foaf.tv/', payload=replypayload)
+          conn.send(reply) # ... put some content into reply node
+          raise NodeProcessed  # This stanza is fully processed
+   
+      else:
+        print "bEl was None???"
+     
+
+    #conn.send(reply) # ... put some content into reply node
+    #raise NodeProcessed  # This stanza is fully processed
 
 def messageHandler(conn,mess_node): 
     value = str(mess_node.getBody())
@@ -175,8 +232,8 @@ def messageHandler(conn,mess_node):
 #    toggleBoxeePlayer()    
 #    reply=mess_node.buildReply('toggled!')
     txt = boxee_GetCurrentlyPlaying()
-    conn.send(Message(mess_node.getFrom(),txt, "chat" ))
-    print "!!! replied to " + str( mess_node.getFrom() )
+#    conn.send(Message(mess_node.getFrom(),txt, "chat" ))
+#    print "!!! replied to " + str( mess_node.getFrom() )
 
 #cl = Client(server='foaf.tv', debug=[]) 
 #conn = cl.connect(server=('foaf.tv', 5222)) 
@@ -194,7 +251,7 @@ print "Connected: %s" % conn
 #auth = cl.auth(user='buttons', password=secret, resource='foo') 
 
 # use gmail account:
-auth = cl.auth(user='bob.notube', password=secret, resource='foo') 
+auth = cl.auth(user='bob.notube', password=secret, resource='Buttonbox') 
 
 if not auth: 
   print "Unable to authorize - check login/password." 
