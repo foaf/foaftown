@@ -55,7 +55,7 @@
 	//
 	// for http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/Reference/Reference.html#//apple_ref/occ/instm/UIWebView/loadData:MIMEType:textEncodingName:baseURL: 
 	// in WebViewController
-	self.htmlInfo = @"<html><head><title>Now Playing</title></head><body><h1>Now Playing</h1><p>...not known.</p></body></html>";
+	self.htmlInfo = @"<html><head><title>Now Playing</title></head><body><div><meta name=\"viewport\" content=\"width=320\"/><h1>Now Playing</h1><p>Please wait...</p></div></body></html>";
 	NSLog(@"gad launched. self.htmlInfo is: %@", self.htmlInfo);
 	
 	// from drilldown lists code
