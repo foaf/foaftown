@@ -10,6 +10,11 @@
 <script type='text/javascript'  src='sha1.js'></script>
 <script src="jquery.controls.js" type="text/javascript"></script>
 
+  <script type='text/javascript'         src='http://flxhr.flensed.com/code/build/flXHR.js'></script>
+  <script type='text/javascript'         src='plugins/strophe.flxhr.min.js'></script>
+  <script type='text/javascript'	  src='crossdomain.js'></script>
+
+
 <style type="text/css">
 h1 {color: blue; font-weight: bold}
 body { 
@@ -94,7 +99,7 @@ function linked(status) {
 
 function xmppSend(from, to, text, conn) {
 	// normally we are buttons, sending to alice
-
+	
              var stanza = new Strophe.Builder(
                 "message", {"to": to, "type": "chat"}
                         ).c("body").t(text);
@@ -228,7 +233,7 @@ function on_buttons(msg) {
 	to: from, from: to, id: id}).c('nowp-result').c('div').c('meta', { name: 'viewport', content: 'width=320'}
 	 ).t('Hello Buttons! Web now playing: ' + nowplaying );
     connection.send(reply.tree());
-    log.innerHTML("reply: "+reply);
+//    log.innerHTML("reply: "+reply);
   }
 }
 
