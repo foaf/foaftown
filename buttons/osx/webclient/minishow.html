@@ -105,6 +105,7 @@ function xmppSend(from, to, text, conn) {
 }
 
 
+
 function on_message(msg) { 
     event = Strophe.serialize(msg);
     var avElement =	document.getElementById('content');
@@ -211,7 +212,26 @@ function log(msg) {
 }
 
 connection.addHandler(     on_message,     null,     "message",    "chat");
+connection.addHandler(     on_buttons, "http://buttons.foaf.tv/", "iq", "get");
 connection.connect(    jid,     password, linked);
+
+function on_buttons(msg) {
+//  alert("Buttons IQ GET."),
+  type = msg.getAttribute('type');
+  if (type == 'get') {
+    from = msg.getAttribute('from');
+    to = msg.getAttribute('to');
+    id = msg.getAttribute('id');
+    var nowplaying = "Unknown.";
+    nowplaying =  trailers[ix]['title'];
+    reply = $iq({type: 'result', 
+	to: from, from: to, id: id}).c('nowp-result').c('div').c('meta', { name: 'viewport', content: 'width=320'}
+	 ).t('Hello Buttons! Web now playing: ' + nowplaying );
+    connection.send(reply.tree());
+    log.innerHTML("reply: "+reply);
+  }
+}
+
 </script>
 
 <div id="demo">
