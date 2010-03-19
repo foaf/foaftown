@@ -66,7 +66,10 @@
 		NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 
 	// send a NOWP IQ
-	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full]];
+	
+	int r = arc4random() % 10000000; // hmmm
+
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
 	[ gad.xmppClient sendElement:myStanza];			
 	
