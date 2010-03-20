@@ -67,7 +67,7 @@
 
 	// send a NOWP IQ
 	
-	int r = arc4random() % 10000000; // hmmm
+	int r = arc4random() % 10000000 ; // hmmm
 
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];

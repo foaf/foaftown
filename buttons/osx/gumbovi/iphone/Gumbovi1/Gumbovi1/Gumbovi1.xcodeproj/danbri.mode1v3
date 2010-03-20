@@ -344,7 +344,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B65FC92811542DA100992EB1</string>
+										<string>B65A74A01154C2B4009AA5A9</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -449,7 +449,7 @@
 											<string>B617184C1151A3F600FF50CD</string>
 											<string>B65FC92311542DA100992EB1</string>
 											<string>B65FC92411542DA100992EB1</string>
-											<string>B65FC92511542DA100992EB1</string>
+											<string>B65FC92811542DA100992EB1</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -549,8 +549,6 @@
 											<string>B644E45411513D2400A154D1</string>
 											<string>B617183D1151A04200FF50CD</string>
 											<string>B617184F1151A3F600FF50CD</string>
-											<string>B65FC92611542DA100992EB1</string>
-											<string>B65FC92711542DA100992EB1</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -608,9 +606,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>B65FC8F41153F27D00992EB1</string>
+				<string>B65A749111542E26009AA5A9</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>B65FC8F51153F27D00992EB1</string>
+				<string>B65A749211542E26009AA5A9</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -744,12 +742,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B65FC92911542DA100992EB1</string>
-		<string>B65FC92A11542DA100992EB1</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
+		<string>B65A749B11542E26009AA5A9</string>
+		<string>B65A749D11542E26009AA5A9</string>
 		<string>B67CC37E10A5759F00511209</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/danbri/Documents/Xcode/checkout/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
+		<string>1C78EAAD065D492600B07095</string>
 	</array>
 	<key>WindowString</key>
 	<string>112 187 988 591 0 0 1280 778 </string>
@@ -790,8 +788,6 @@
 							<string>202pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXBuildLogShowsTranscriptDefaultKey</key>
@@ -833,7 +829,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>B67CC37E10A5759F00511209</string>
-				<string>B65FC8F61153F27D00992EB1</string>
+				<string>B65A749311542E26009AA5A9</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -953,13 +949,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>B65FC90F115428E300992EB1</string>
+				<string>B65A749411542E26009AA5A9</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>B65FC910115428E300992EB1</string>
-				<string>B65FC911115428E300992EB1</string>
-				<string>B65FC912115428E300992EB1</string>
-				<string>B65FC913115428E300992EB1</string>
-				<string>B65FC914115428E300992EB1</string>
+				<string>B65A749511542E26009AA5A9</string>
+				<string>B65A749611542E26009AA5A9</string>
+				<string>B65A749711542E26009AA5A9</string>
+				<string>B65A749811542E26009AA5A9</string>
+				<string>B65A749911542E26009AA5A9</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -1115,7 +1111,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>B65FC915115428E300992EB1</string>
+				<string>B65A749A11542E26009AA5A9</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1125,7 +1121,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
