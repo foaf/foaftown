@@ -10,6 +10,7 @@
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "XMPP.h"
+#import "ButtonCell.h"
 
 // For now, lots of state is in FVC
 
@@ -118,14 +119,26 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   // NSLog(@"cellForRowAtIndexPath called");
-   //NSLog(@"FRESH CELL: %@",indexPath);
-
-    static NSString *CellIdentifier = @"Cell";
+    NSLog(@"FRESH CELL: %@",indexPath);
+    static NSString *CellIdentifier = @"myButtonCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	ButtonCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		NSLog(@"ButtonCell created");
+		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"ButtonCell" owner:nil options:nil];
+		for (id currentObject in nibObjects) 
+		{
+			if ( [currentObject isKindOfClass:[ButtonCell class]]) 
+			{
+				cell = (ButtonCell *) currentObject;
+			}
+		
+		}
+		
+		[[cell deviceName] setText:@"Testing 321"];
+//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -135,7 +148,7 @@
 	//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
     NSObject *jid = [roster objectAtIndex:indexPath.row];
     // Set up the cell...
-	[cell setText:(@"NoTube Network: %@", jid)];
+	[[cell deviceName] setText:[NSString stringWithFormat:@"%@",jid]];
     return cell;
 }
 
