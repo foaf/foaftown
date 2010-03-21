@@ -174,6 +174,7 @@
 		B6837611114192C800DEF94D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B683761D114192E800DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B683761E114192EF00DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
+		B69034D91156217E00F02FBC /* mythtv.png in Resources */ = {isa = PBXBuildFile; fileRef = B69034D81156217E00F02FBC /* mythtv.png */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
@@ -342,6 +343,7 @@
 		B6837616114192C800DEF94D /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6837618114192C800DEF94D /* BonjourUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BonjourUI-Info.plist"; sourceTree = "<group>"; };
 		B683761C114192E800DEF94D /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
+		B69034D81156217E00F02FBC /* mythtv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythtv.png; path = files/mythtv.png; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B69F0E1B113FFA2E00365B22 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				B60ACB3711561A6F00E83353 /* 120px-Boxee.png */,
+				B69034D81156217E00F02FBC /* mythtv.png */,
 				B6EF3CD81148EF7A0047CF12 /* 15-tags.png */,
 				B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */,
 				B61718431151A06100FF50CD /* bgbuttons.png */,
@@ -920,6 +923,7 @@
 				B61718441151A06100FF50CD /* bgbuttons.png in Resources */,
 				B60ACADE1155644800E83353 /* ButtonCell.xib in Resources */,
 				B60ACB3811561A6F00E83353 /* 120px-Boxee.png in Resources */,
+				B69034D91156217E00F02FBC /* mythtv.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
