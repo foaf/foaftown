@@ -123,7 +123,7 @@
     static NSString *CellIdentifier = @"myButtonCell";
     
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	ButtonCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	ButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
 		NSLog(@"ButtonCell created");
@@ -136,9 +136,6 @@
 			}
 		
 		}
-		
-		[[cell deviceName] setText:@"Testing 321"];
-//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
@@ -149,6 +146,9 @@
     NSObject *jid = [roster objectAtIndex:indexPath.row];
     // Set up the cell...
 	[[cell deviceName] setText:[NSString stringWithFormat:@"%@",jid]];
+	[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv.png"]];
+	[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"Unknown type, scanning..."  ]];
+								
     return cell;
 }
 

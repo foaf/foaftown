@@ -49,7 +49,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = B66EABF010A56AD20037F743 /* Gumbovi1 */;
-		activeSDKPreference = iphoneos3.1.3;
+		activeSDKPreference = iphonesimulator3.1.3;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Gumbovi1 */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
@@ -212,21 +212,16 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 290856079;
-			PBXWorkspaceStateSaveDate = 290856079;
+			PBXPerProjectTemplateStateSaveDate = 290857686;
+			PBXWorkspaceStateSaveDate = 290857686;
 		};
 		perUserProjectItems = {
 			B60ACAED1155647300E83353 = B60ACAED1155647300E83353 /* PBXTextBookmark */;
 			B60ACAEE1155647300E83353 = B60ACAEE1155647300E83353 /* PBXTextBookmark */;
 			B60ACAFA115565DC00E83353 = B60ACAFA115565DC00E83353 /* PBXTextBookmark */;
-			B60ACB4111561B4000E83353 = B60ACB4111561B4000E83353 /* PBXTextBookmark */;
-			B60ACB4211561B4000E83353 = B60ACB4211561B4000E83353 /* PBXBookmark */;
-			B60ACB4311561B4000E83353 = B60ACB4311561B4000E83353 /* PBXBookmark */;
-			B60ACB4411561B4000E83353 = B60ACB4411561B4000E83353 /* PBXBookmark */;
 			B61718391151A04200FF50CD = B61718391151A04200FF50CD /* PBXTextBookmark */;
 			B617183B1151A04200FF50CD = B617183B1151A04200FF50CD /* PBXTextBookmark */;
 			B617184B1151A3F600FF50CD = B617184B1151A3F600FF50CD /* PBXTextBookmark */;
-			B617184C1151A3F600FF50CD = B617184C1151A3F600FF50CD /* PBXBookmark */;
 			B62151B9114D773F0083F916 = B62151B9114D773F0083F916 /* PBXTextBookmark */;
 			B62151BA114D773F0083F916 = B62151BA114D773F0083F916 /* PBXTextBookmark */;
 			B62151DC114D90440083F916 = B62151DC114D90440083F916 /* PBXTextBookmark */;
@@ -257,6 +252,17 @@
 			B683763F1141AA1C00DEF94D = B683763F1141AA1C00DEF94D /* PlistBookmark */;
 			B68376401141AA1C00DEF94D = B68376401141AA1C00DEF94D /* PlistBookmark */;
 			B68C543B114BE90A00E2100C = B68C543B114BE90A00E2100C /* PBXTextBookmark */;
+			B69034DE115622CE00F02FBC = B69034DE115622CE00F02FBC /* PBXBookmark */;
+			B69034DF115622CE00F02FBC = B69034DF115622CE00F02FBC /* PBXBookmark */;
+			B69034E0115622CE00F02FBC = B69034E0115622CE00F02FBC /* PBXBookmark */;
+			B69034E1115622CE00F02FBC = B69034E1115622CE00F02FBC /* PBXBookmark */;
+			B69034E2115622CE00F02FBC = B69034E2115622CE00F02FBC /* PBXTextBookmark */;
+			B69034E3115622CE00F02FBC = B69034E3115622CE00F02FBC /* PBXBookmark */;
+			B69034E4115622CE00F02FBC = B69034E4115622CE00F02FBC /* PBXBookmark */;
+			B690350F115623D800F02FBC /* PBXBookmark */ = B690350F115623D800F02FBC /* PBXBookmark */;
+			B6903510115623D800F02FBC /* PBXTextBookmark */ = B6903510115623D800F02FBC /* PBXTextBookmark */;
+			B690351E1156240400F02FBC /* PBXTextBookmark */ = B690351E1156240400F02FBC /* PBXTextBookmark */;
+			B69035211156245100F02FBC /* PBXTextBookmark */ = B69035211156245100F02FBC /* PBXTextBookmark */;
 			B69F0E75113FFDCC00365B22 = B69F0E75113FFDCC00365B22 /* PBXTextBookmark */;
 			B69F0E83113FFDCC00365B22 = B69F0E83113FFDCC00365B22 /* PBXTextBookmark */;
 			B69F0ED0113FFE7B00365B22 = B69F0ED0113FFE7B00365B22 /* PBXTextBookmark */;
@@ -383,28 +389,6 @@
 		rType = 0;
 		vrLen = 303;
 		vrLoc = 0;
-	};
-	B60ACB4111561B4000E83353 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
-		name = "LinkedTVRosterTableController.m: 140";
-		rLen = 0;
-		rLoc = 4607;
-		rType = 0;
-		vrLen = 1628;
-		vrLoc = 4849;
-	};
-	B60ACB4211561B4000E83353 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = B6EF3CD81148EF7A0047CF12 /* 15-tags.png */;
-	};
-	B60ACB4311561B4000E83353 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = B60ACB3711561A6F00E83353 /* 120px-Boxee.png */;
-	};
-	B60ACB4411561B4000E83353 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = B60ACB3711561A6F00E83353 /* 120px-Boxee.png */;
 	};
 	B60B4A4B10A8921B00BC7A57 /* Gumbovi1AppDelegate.m:404 */ = {
 		isa = PBXFileBreakpoint;
@@ -598,10 +582,6 @@
 		vrLen = 1158;
 		vrLoc = 1137;
 	};
-	B617184C1151A3F600FF50CD /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = B61718431151A06100FF50CD /* bgbuttons.png */;
-	};
 	B62151B9114D773F0083F916 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = B67CC3C010A5766400511209 /* XMPPUser.h */;
@@ -774,9 +754,9 @@
 	};
 	B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1188, 2678}}";
-			sepNavSelRange = "{4607, 0}";
-			sepNavVisRange = "{4750, 1725}";
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 2834}}";
+			sepNavSelRange = "{5167, 0}";
+			sepNavVisRange = "{3991, 1378}";
 			sepNavWindowFrame = "{{101, 42}, {946, 789}}";
 		};
 	};
@@ -1228,6 +1208,79 @@
 		rType = 0;
 		vrLen = 1090;
 		vrLoc = 355;
+	};
+	B69034D81156217E00F02FBC /* mythtv.png */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{74, 315}, {750, 558}}";
+		};
+	};
+	B69034DE115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B60ACB3711561A6F00E83353 /* 120px-Boxee.png */;
+	};
+	B69034DF115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B61718431151A06100FF50CD /* bgbuttons.png */;
+	};
+	B69034E0115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */;
+	};
+	B69034E1115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B6EF3CD81148EF7A0047CF12 /* 15-tags.png */;
+	};
+	B69034E2115622CE00F02FBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
+		name = "LinkedTVRosterTableController.m: 152";
+		rLen = 0;
+		rLoc = 5144;
+		rType = 0;
+		vrLen = 1322;
+		vrLoc = 4046;
+	};
+	B69034E3115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B69034D81156217E00F02FBC /* mythtv.png */;
+	};
+	B69034E4115622CE00F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B69034D81156217E00F02FBC /* mythtv.png */;
+	};
+	B690350F115623D800F02FBC /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B69034D81156217E00F02FBC /* mythtv.png */;
+	};
+	B6903510115623D800F02FBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
+		name = "LinkedTVRosterTableController.m: 126";
+		rLen = 0;
+		rLoc = 4163;
+		rType = 0;
+		vrLen = 1194;
+		vrLoc = 3991;
+	};
+	B690351E1156240400F02FBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
+		name = "LinkedTVRosterTableController.m: 149";
+		rLen = 0;
+		rLoc = 5134;
+		rType = 0;
+		vrLen = 1188;
+		vrLoc = 3991;
+	};
+	B69035211156245100F02FBC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
+		name = "LinkedTVRosterTableController.m: 150";
+		rLen = 0;
+		rLoc = 5167;
+		rType = 0;
+		vrLen = 1378;
+		vrLoc = 3991;
 	};
 	B69F0DD4113FC43500365B22 /* README.TXT */ = {
 		uiCtxt = {
