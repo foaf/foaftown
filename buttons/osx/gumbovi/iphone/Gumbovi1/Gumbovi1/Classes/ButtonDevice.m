@@ -18,6 +18,11 @@
 @synthesize icon;
 @synthesize fromQRCode; // exact semantics to be clarified
 
+-(NSString *) description {
+	return (@"a ButtonDev description goes here");	
+// return ([NSString stringWithFormat:@"ButtonDevice: name=%@ uri=%@ icon=%@ fromQRCode=%@", name, uri, icon, fromQRCode ]);
+// these are bad accesses, or a couple at least!
+}
 
 -(ButtonDevice *) initWithURI: (NSString *) u {
 	NSLog(@"NEW BUTTONDEVICE");
@@ -26,8 +31,18 @@
         [self setUri: u];
 		NSLog(@"NEW BUTTONDEVICE setting URI, %@", u);
     }
-	
+	NSLog(@"NEW BUTTONDEVICE Constructor returning...");
     return self;
 }
+
+
+- (void)dealloc {
+	
+//    [anything_i_alloc_here release];
+		
+    [super dealloc];
+}
+
+
 
 @end

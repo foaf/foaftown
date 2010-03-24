@@ -9,6 +9,12 @@
 // + Libby Miller
 //
 //  Thanks to Chris van Aart, Jens Finkhäuser, and Daniel Salber for Xcode & Obj-C advice.
+//
+// Release notes:
+// * before release, check executable properties and turn off EXC_BAD_ACCESS handling 
+//    ie. http://www.cocoadev.com/index.pl?NSZombieEnabled
+//
+
 
 #import "XMPP.h"
 #import "FirstViewController.h"
@@ -336,6 +342,48 @@
 	NSLog(@"==============================================================");
 }
 
+
+- (void)rebuildRosterUI
+{
+	NSLog(@"REBUILDING LOCAL ROSTER UI:");
+	NSLog(@"App delegate xmppClient is %@",self.xmppClient);
+	[self.xmppClient fetchRoster]; // make sure we're up to date (necessary?)
+	NSArray *buddies = [self.xmppClient sortedAvailableUsersByName];
+	NSLog(@"1. We have a list of buddies from current online roster: @", buddies);
+
+	NSEnumerator *e = [buddies objectEnumerator];
+	id object;
+	while (object = [e nextObject]) {
+		NSLog(@"Roster UI check: %@", object);
+		NSLog(@"resources for jid is %@ ? ", [object sortedResources] );
+		NSEnumerator *e = [[object sortedResources] objectEnumerator];
+		id r;
+		
+		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+		//		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
+		
+		while (r = [e nextObject]) {
+			
+            //get the presence
+			//not sure how to display it!
+			XMPPPresence *pres = [[XMPPPresence alloc] init];
+			pres = [XMPPPresence presenceFromElement:[r presence]];
+			//			NSLog(@"pres is %@", pres);
+			NSLog(@"presence: %@", [pres status]);
+			@try { 
+				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
+				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+				NSLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
+				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+			}
+			@catch (NSException *exception) {
+				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
+			} 
+		}
+	
+	}
+}
+
 - (void)xmppClientDidUpdateRoster:(XMPPClient *)sender
 {
 	NSLog(@"==============================================================");
@@ -347,6 +395,9 @@
 	NSArray *buddies = [sender sortedAvailableUsersByName];
     NSLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
     NSLog(@"The XMPP Roster is (accounts not full JIDs with resources): %@", buddies);
+
+	[self rebuildRosterUI];
+ 	
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
@@ -482,13 +533,13 @@
 
 	// fvc.output.text = m.description;  // trying to strip out <body> and <body/> below gives trouble
 
-	NSString *log = m.description;
+	NSString *log = [NSString stringWithFormat:@"%@",m.description];
 	log = [[log stringByReplacingOccurrencesOfString:@"<body>" withString:@""] stringByReplacingOccurrencesOfString:@"</body>" withString:@""];
 	[log retain];
 	  // @"......"; m.description;  //log ;			//+ [NSString log]; //  m.description;
     
 	//fvc.output.text = log; // problem?
-    NSLog(log);
+    NSLog(@"XMPP MSG: %@",log);
 }
 
 
@@ -532,7 +583,15 @@
 	NSLog(@"gad.toJID is now: %@",self.toJid);
 	NSString *new_uri = [NSString stringWithFormat:@"%@",jid]; // or was it a string already
 		   
-	ButtonDevice *newDev = [[ButtonDevice alloc] initWithURI:new_uri]; //danbri
+	
+	NSLog(@"NEW BUTTONDEVICE: About to construct");
+	ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:new_uri] autorelease]; //danbri
+	NSLog(@"NEW BUTTONDEVICE: Back from constructor. About to set properties.");
+
+//	[newDev setName:@"jid"];
+	[newDev setFromQRCode:YES];
+	
+	NSLog(@"Made a new device: %@", newDev);
 	
 	//see also http://www.freesound.org/samplesViewSingle.php?id=706 etc - can try for haptic on button presses
 	NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle mainBundle] resourcePath],@"/pop.wav"];
