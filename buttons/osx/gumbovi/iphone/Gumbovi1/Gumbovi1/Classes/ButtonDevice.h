@@ -21,4 +21,7 @@
 	@property (nonatomic, retain) IBOutlet NSString *icon;
 	@property (nonatomic) IBOutlet BOOL fromQRCode;
 	
+-(ButtonDevice *) initWithURI: (NSString *) u;
+
+
 @end
