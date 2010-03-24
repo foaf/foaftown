@@ -20,6 +20,7 @@
 		B61718441151A06100FF50CD /* bgbuttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B61718431151A06100FF50CD /* bgbuttons.png */; };
 		B622B62A10A5B9E8007E8F37 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B622B62810A5B9E8007E8F37 /* MainWindow.xib */; };
 		B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */; };
+		B647AD2311594357007BE4E9 /* ButtonDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B647AD2211594357007BE4E9 /* ButtonDevice.m */; };
 		B648FE9910D1A3040068001F /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
 		B648FE9A10D1A3040068001F /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
 		B648FE9B10D1A3040068001F /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
@@ -248,6 +249,8 @@
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		B647AD2111594357007BE4E9 /* ButtonDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonDevice.h; sourceTree = "<group>"; };
+		B647AD2211594357007BE4E9 /* ButtonDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonDevice.m; sourceTree = "<group>"; };
 		B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down-100x.png"; sourceTree = "<group>"; };
 		B648FE9210D1A3040068001F /* heartbuttons4-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-down.png"; sourceTree = "<group>"; };
 		B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-left-100x.png"; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 				B656AA4510ADDD590089D78F /* JSON */,
 				B60ACAD81155642600E83353 /* ButtonCell.h */,
 				B60ACAD91155642600E83353 /* ButtonCell.m */,
+				B647AD2111594357007BE4E9 /* ButtonDevice.h */,
+				B647AD2211594357007BE4E9 /* ButtonDevice.m */,
 				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
@@ -1030,6 +1035,7 @@
 				B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */,
 				B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */,
 				B60ACADA1155642600E83353 /* ButtonCell.m in Sources */,
+				B647AD2311594357007BE4E9 /* ButtonDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
