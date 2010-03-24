@@ -16,6 +16,7 @@
 #import "Gumbovi1AppDelegate.h"
 #import "XMPPJID.h"
 #import "AudioToolbox/AudioServices.h"
+#import "ButtonDevice.h"
 
 // from lists drilldown demo (not used)
 #import "RootViewController.h"
@@ -529,6 +530,9 @@
 	[fvc.roster_list addObject:jid];
 	NSLog(@"Roster now: %@",roster);
 	NSLog(@"gad.toJID is now: %@",self.toJid);
+	NSString *new_uri = [NSString stringWithFormat:@"%@",jid]; // or was it a string already
+		   
+	ButtonDevice *newDev = [[ButtonDevice alloc] initWithURI:new_uri]; //danbri
 	
 	//see also http://www.freesound.org/samplesViewSingle.php?id=706 etc - can try for haptic on button presses
 	NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle mainBundle] resourcePath],@"/pop.wav"];

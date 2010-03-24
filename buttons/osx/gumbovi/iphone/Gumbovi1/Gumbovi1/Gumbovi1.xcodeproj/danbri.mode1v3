@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -285,6 +287,11 @@
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
+								<array>
+									<integer>9</integer>
+									<integer>4</integer>
+									<integer>0</integer>
+								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
 							<string>{{0, 19}, {288, 763}}</string>
@@ -319,14 +326,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ButtonDevice.h</string>
+								<string>ButtonDevice.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -334,11 +339,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ButtonDevice.h</string>
+										<string>ButtonDevice.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B647AD46115A3B3B007BE4E9</string>
+										<string>B647AD99115A4467007BE4E9</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -441,14 +446,14 @@
 											<string>B69034E1115622CE00F02FBC</string>
 											<string>B690350F115623D800F02FBC</string>
 											<string>B647AD3A115A3A18007BE4E9</string>
-											<string>B647AD3B115A3A18007BE4E9</string>
 											<string>B647AD3C115A3A18007BE4E9</string>
-											<string>B647AD3D115A3A18007BE4E9</string>
 											<string>B647AD3E115A3A18007BE4E9</string>
-											<string>B647AD3F115A3A18007BE4E9</string>
 											<string>B647AD40115A3A18007BE4E9</string>
 											<string>B647AD41115A3A18007BE4E9</string>
-											<string>B647AD42115A3A18007BE4E9</string>
+											<string>B647AD56115A3C8B007BE4E9</string>
+											<string>B647AD75115A3EAD007BE4E9</string>
+											<string>B647AD7E115A3F25007BE4E9</string>
+											<string>B647AD98115A4467007BE4E9</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -644,10 +649,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>B647AD93115A437C007BE4E9</string>
+		<string>B647AD94115A437C007BE4E9</string>
+		<string>B647AD95115A437C007BE4E9</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>B67CC44310A57B0600511209</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -672,7 +680,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ButtonDevice.h</string>
+								<string>ButtonDevice.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -975,6 +983,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1020,7 +1030,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
