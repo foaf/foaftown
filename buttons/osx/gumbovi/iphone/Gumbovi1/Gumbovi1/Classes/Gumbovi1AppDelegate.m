@@ -23,28 +23,15 @@
 #import "XMPPJID.h"
 #import "AudioToolbox/AudioServices.h"
 #import "ButtonDevice.h"
-
-// from lists drilldown demo (not used)
-#import "RootViewController.h"
-#import "SLRootViewController.h" 
-
-// xml stuff (maybe not all needed)
 #import "DDXMLNode.h"
 #import "DDXMLElement.h"
 #import "DDXMLDocument.h"
 #import "NSStringAdditions.h"
-
-// for qr
 #import "DecoderController.h"
-//#import "WebViewController.h"
+#import "RootViewController.h" // from lists drilldown demo (not used)
+#import "SLRootViewController.h" 
 
 @implementation Gumbovi1AppDelegate
-
-// from lists
-@synthesize navigationController;
-@synthesize data;
-// end lists stuff
-//@synthesize webController;
 @synthesize decoder_window;
 @synthesize qr_results;
 @synthesize xmppClient;
@@ -53,6 +40,8 @@
 @synthesize toJid;
 @synthesize aJid;
 @synthesize htmlInfo;
+@synthesize navigationController; // from lists
+@synthesize data;				  // end lists stuff
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
