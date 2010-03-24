@@ -363,13 +363,9 @@
 		//		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
 		
 		while (r = [e nextObject]) {
-			
-            //get the presence
-			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			//			NSLog(@"pres is %@", pres);
-			NSLog(@"presence: %@", [pres status]);
+			NSLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 

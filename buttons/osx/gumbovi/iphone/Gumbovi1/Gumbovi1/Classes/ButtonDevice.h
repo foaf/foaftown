@@ -13,12 +13,12 @@
 {
 	NSString *name;
 	NSString *uri;
-	NSString *icon;
+	UIImage *icon;
 	BOOL fromQRCode;
 }
 	@property (nonatomic, retain) IBOutlet NSString *name;
 	@property (nonatomic, retain) IBOutlet NSString *uri;
-	@property (nonatomic, retain) IBOutlet NSString *icon;
+	@property (nonatomic, retain) IBOutlet UIImage *icon;
 	@property (nonatomic) IBOutlet BOOL fromQRCode;
 	
 -(ButtonDevice *) initWithURI: (NSString *) u;
