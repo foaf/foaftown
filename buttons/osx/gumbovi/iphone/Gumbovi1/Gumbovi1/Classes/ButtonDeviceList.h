@@ -15,9 +15,13 @@
 // This list is the model side of things, displaced by the LinkedTVRosterTableController
 //
 
-@interface ButtonDeviceList : NSSet {
+@interface ButtonDeviceList : NSCountedSet {
 
 }
+
+
+- (void)removeAllNonLocalDevices;
+
 
 // -serverRosterDevices
 
