@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B6FA4776115BDFE900E7385E</string>
+						<string>B6FA4788115BF90C00E7385E</string>
 						<key>history</key>
 						<array>
 							<string>B6FA4727115BCC0100E7385E</string>
@@ -382,7 +382,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6FA4775115BDFE900E7385E</string>
+										<string>B6FA4787115BF90C00E7385E</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -496,7 +496,7 @@
 											<string>B6FA4771115BDFE900E7385E</string>
 											<string>B6FA4772115BDFE900E7385E</string>
 											<string>B6FA4773115BDFE900E7385E</string>
-											<string>B6FA4774115BDFE900E7385E</string>
+											<string>B6FA4786115BF90C00E7385E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -692,13 +692,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6FA4777115BDFE900E7385E</string>
+		<string>B6FA4789115BF90C00E7385E</string>
 		<string>B6FA4741115BCDDA00E7385E</string>
 		<string>B6FA4742115BCDDA00E7385E</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>B67CC37E10A5759F00511209</string>
 		<string>B6FA473D115BCDDA00E7385E</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>B67CC37E10A5759F00511209</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -723,7 +723,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -740,6 +740,8 @@
 							<string>202pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -790,7 +792,7 @@
 			<key>WindowToolGUID</key>
 			<string>B67CC37E10A5759F00511209</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
