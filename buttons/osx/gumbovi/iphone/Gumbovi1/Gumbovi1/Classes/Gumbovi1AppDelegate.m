@@ -50,6 +50,10 @@
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 
+	
+	ButtonDeviceList *_buddies = [[ButtonDeviceList alloc] init];
+	self.buttonDevices = _buddies;
+	
 	//
 	// for http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/Reference/Reference.html#//apple_ref/occ/instm/UIWebView/loadData:MIMEType:textEncodingName:baseURL: 
 	// in WebViewController
@@ -367,7 +371,6 @@
 				//	[newDev setName:@"jid"];
 				[newDev setFromQRCode:NO];
 				[[self buttonDevices] addObject:newDev]; //added to set
-			
 			}
 			@catch (NSException *exception) {
 				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
@@ -379,18 +382,13 @@
 
 - (void)xmppClientDidUpdateRoster:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
+	NSLog(@"===========================================================");
 	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
 	NSLog(@"Update msg is: %@",sender);
-//	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Updated roster!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
-//	[alert show]; [alert release]; 
-	[sender fetchRoster]; // make sure we're up to date (necessary?)
 	NSArray *buddies = [sender sortedAvailableUsersByName];
     NSLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
-    NSLog(@"The XMPP Roster is (accounts not full JIDs with resources): %@", buddies);
-
 	[self rebuildRosterUI];
- 	
+ 	[self.buttonDevices removeAllNonLocalDevices]; // wipe out everything except QR Code entries
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
@@ -408,10 +406,8 @@
 			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-//			NSLog(@"pres is %@", pres);
 			NSLog(@"presence: %@", [pres status]);
  			NSLog(@"Sending discovery IQ to %@", r);
-			//[fvc.roster_list addObject:[NSString stringWithFormat:@"%@",[r jid]]];
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 

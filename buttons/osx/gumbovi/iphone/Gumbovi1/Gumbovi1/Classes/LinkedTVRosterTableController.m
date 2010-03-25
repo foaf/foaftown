@@ -46,8 +46,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"table will appear.");
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSLog(@"LinkedTVRosterTableController viewWillAppear:");
+	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+
+    NSLog(@"LinkedTVRosterTableController viewWillAppear: about to call buttonReport. If we have a list: %@", gad.buttonDevices);
+
+	[gad.buttonDevices buttonReport];
+
+	NSLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
+
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
 	NSLog(@"viewWillAppear: roster is %@",roster);

@@ -28,11 +28,8 @@
 - (id) init {
   if( self = [super init] ) {
  
-	  UIImagePickerController *qrPicker = (UIImagePickerController *) self;
-	  
-	  //  float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-//	
-	self.wantsFullScreenLayout = YES;
+	UIImagePickerController *qrPicker = (UIImagePickerController *) self;
+	qrPicker.wantsFullScreenLayout = YES;
 	qrPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
 	qrPicker.cameraViewTransform = CGAffineTransformScale(qrPicker.cameraViewTransform, CAMERA_SCALAR, CAMERA_SCALAR);	
 
