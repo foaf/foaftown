@@ -362,6 +362,12 @@
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
 				NSLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
 				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+				NSLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
+				ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:[NSString stringWithFormat:@"%@",[r jid]]] autorelease]; //danbri
+				//	[newDev setName:@"jid"];
+				[newDev setFromQRCode:NO];
+				[[self buttonDevices] addObject:newDev]; //added to set
+			
 			}
 			@catch (NSException *exception) {
 				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
@@ -574,9 +580,9 @@
 	NSLog(@"NEW BUTTONDEVICE: About to construct");
 	ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:new_uri] autorelease]; //danbri
 	NSLog(@"NEW BUTTONDEVICE: Back from constructor. About to set properties.");
-
 //	[newDev setName:@"jid"];
 	[newDev setFromQRCode:YES];
+	[[self buttonDevices] addObject:newDev]; //added to set
 	
 	NSLog(@"Made a new device: %@", newDev);
 	
