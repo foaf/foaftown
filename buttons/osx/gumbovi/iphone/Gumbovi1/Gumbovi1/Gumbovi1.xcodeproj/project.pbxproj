@@ -1340,7 +1340,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos3.0;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;

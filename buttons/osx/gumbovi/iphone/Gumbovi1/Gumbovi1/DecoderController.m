@@ -15,9 +15,9 @@
  */
 
 
+#import "QRImagePickerController.h"
 #import "DecoderController.h"
 #import "OverlayView.h"
-#import "QRImagePickerController.h"
 #import "Decoder.h"
 #import "TwoDDecoderResult.h"
 
@@ -85,19 +85,20 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
     [alertView show];
 
   } else {
-    _imagePicker = [[QRImagePickerController alloc] init];
+     _imagePicker = [[QRImagePickerController alloc] init];
 
     _overlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
     _imagePicker.delegate = self;
-    //not221: 
-	  _imagePicker.allowsEditing = NO;
+	_imagePicker.allowsEditing = NO;
     //not221:
+	///////  
 	  _imagePicker.showsCameraControls = NO;
  //not 221
+/////////// 
 	  _imagePicker.cameraOverlayView = _overlayView;
  
-    [self presentModalViewController:_imagePicker animated:YES];
+    [self presentModalViewController:_imagePicker animated:NO];
 
     _timer = [NSTimer
       scheduledTimerWithTimeInterval: kTakePictureTimeInterval
