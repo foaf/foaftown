@@ -345,7 +345,7 @@
 		B67CC3DE10A5766500511209 /* XMPPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPStream.m; sourceTree = "<group>"; };
 		B6837616114192C800DEF94D /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6837618114192C800DEF94D /* BonjourUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BonjourUI-Info.plist"; sourceTree = "<group>"; };
-		B683761C114192E800DEF94D /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
+		B683761C114192E800DEF94D /* libidn.a */ = {isa = PBXFileReference; comments = "Dan-Brickleys-MacBook-Pro:Gumbovi1 danbri$ file libidn/Mac/libidn.a \nlibidn/Mac/libidn.a: Mach-O universal binary with 4 architectures\nlibidn/Mac/libidn.a (for architecture x86_64):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture i386):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture ppc):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture armv6):\tcurrent ar archive random library\n"; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
 		B69034D81156217E00F02FBC /* mythtv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythtv.png; path = files/mythtv.png; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -522,7 +522,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B683761B114192E800DEF94D /* Mac */,
+				B683761C114192E800DEF94D /* libidn.a */,
 				B69F0E0F113FF99700365B22 /* CoreData.framework */,
 				1C08B708114FACC500511D74 /* CoreData.framework */,
 				B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */,
@@ -620,14 +620,6 @@
 				B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */,
 			);
 			path = KissXML;
-			sourceTree = "<group>";
-		};
-		B683761B114192E800DEF94D /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				B683761C114192E800DEF94D /* libidn.a */,
-			);
-			path = Mac;
 			sourceTree = "<group>";
 		};
 		B69F0E1A113FF9F500365B22 /* serverless */ = {
