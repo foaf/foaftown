@@ -328,6 +328,11 @@
 			B6EF3D161148F8670047CF12 = B6EF3D161148F8670047CF12 /* PBXBookmark */;
 			B6F984C010BC89B700B9E811 = B6F984C010BC89B700B9E811 /* PBXTextBookmark */;
 			B6FA470F115BCBEC00E7385E = B6FA470F115BCBEC00E7385E /* PBXTextBookmark */;
+			B6FA4727115BCC0100E7385E /* PBXBookmark */ = B6FA4727115BCC0100E7385E /* PBXBookmark */;
+			B6FA4738115BCDDA00E7385E /* PBXTextBookmark */ = B6FA4738115BCDDA00E7385E /* PBXTextBookmark */;
+			B6FA4739115BCDDA00E7385E /* PBXTextBookmark */ = B6FA4739115BCDDA00E7385E /* PBXTextBookmark */;
+			B6FA473A115BCDDA00E7385E /* PBXTextBookmark */ = B6FA473A115BCDDA00E7385E /* PBXTextBookmark */;
+			B6FA473F115BCDDA00E7385E /* PBXTextBookmark */ = B6FA473F115BCDDA00E7385E /* PBXTextBookmark */;
 		};
 		sourceControlManager = B66EABF610A56AD50037F743 /* Source Control */;
 		userBookmarkGroup = B647AD0C1158E045007BE4E9 /* PBXBookmarkGroup */;
@@ -949,9 +954,9 @@
 	};
 	B66F4137113BCCA5004DF167 /* DecoderController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {896, 3432}}";
-			sepNavSelRange = "{3112, 0}";
-			sepNavVisRange = "{2275, 1667}";
+			sepNavIntBoundsRect = "{{0, 0}, {861, 3445}}";
+			sepNavSelRange = "{3309, 0}";
+			sepNavVisRange = "{2275, 1464}";
 			sepNavWindowFrame = "{{133, 43}, {920, 767}}";
 		};
 	};
@@ -1049,7 +1054,7 @@
 		fRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */;
 		name = "QRImagePickerController.m: 37";
 		rLen = 0;
-		rLoc = 1458;
+		rLoc = 1451;
 		rType = 0;
 		vrLen = 1951;
 		vrLoc = 0;
@@ -1059,7 +1064,7 @@
 		fRef = B66F4137113BCCA5004DF167 /* DecoderController.m */;
 		name = "DecoderController.m: 97";
 		rLen = 0;
-		rLoc = 3110;
+		rLoc = 3114;
 		rType = 0;
 		vrLen = 1633;
 		vrLoc = 2320;
@@ -1654,9 +1659,9 @@
 	};
 	B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {936, 689}}";
-			sepNavSelRange = "{1458, 0}";
-			sepNavVisRange = "{0, 1951}";
+			sepNavIntBoundsRect = "{{0, 0}, {896, 634}}";
+			sepNavSelRange = "{1352, 0}";
+			sepNavVisRange = "{0, 1601}";
 			sepNavWindowFrame = "{{64, 106}, {920, 767}}";
 		};
 	};
@@ -2385,9 +2390,53 @@
 		fRef = B66F4137113BCCA5004DF167 /* DecoderController.m */;
 		name = "DecoderController.m: 98";
 		rLen = 0;
-		rLoc = 3110;
+		rLoc = 3114;
 		rType = 0;
 		vrLen = 1682;
+		vrLoc = 2275;
+	};
+	B6FA4727115BCC0100E7385E /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = B66F4137113BCCA5004DF167 /* DecoderController.m */;
+	};
+	B6FA4738115BCDDA00E7385E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B66F4137113BCCA5004DF167 /* DecoderController.m */;
+		name = "DecoderController.m: 98";
+		rLen = 0;
+		rLoc = 3114;
+		rType = 0;
+		vrLen = 1667;
+		vrLoc = 2275;
+	};
+	B6FA4739115BCDDA00E7385E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B6A67EE111357B8300EA4712 /* QRImagePickerController.h */;
+		name = "QRImagePickerController.h: 20";
+		rLen = 23;
+		rLoc = 939;
+		rType = 0;
+		vrLen = 974;
+		vrLoc = 0;
+	};
+	B6FA473A115BCDDA00E7385E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */;
+		name = "QRImagePickerController.m: 35";
+		rLen = 0;
+		rLoc = 1352;
+		rType = 0;
+		vrLen = 1601;
+		vrLoc = 0;
+	};
+	B6FA473F115BCDDA00E7385E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B66F4137113BCCA5004DF167 /* DecoderController.m */;
+		name = "DecoderController.m: 104";
+		rLen = 0;
+		rLoc = 3309;
+		rType = 0;
+		vrLen = 1464;
 		vrLoc = 2275;
 	};
 }
