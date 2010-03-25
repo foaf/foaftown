@@ -10,6 +10,7 @@
 #import "FirstViewController.h"
 #import "XMPPJID.h"
 #import "DecoderController.h"
+#import "ButtonDeviceList.h"
 
 //@class DecoderController;
 @class XMPPClient;
@@ -20,6 +21,8 @@
     UITabBarController *tabBarController;
     XMPPJID *toJid;
     XMPPJID *aJid;
+	
+	ButtonDeviceList *buttonDevices;
 	
 	// qrcodes	
 	DecoderController*  decoderController;
@@ -45,8 +48,9 @@
 @property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; 
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 @property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
-
 @property (nonatomic, retain) IBOutlet UITextField *qr_results; 
+@property (nonatomic, retain) IBOutlet ButtonDeviceList *buttonDevices;
+
 
 // lists drilldown
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;

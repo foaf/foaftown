@@ -86,22 +86,13 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
 
   } else {
      _imagePicker = [[QRImagePickerController alloc] init];
-
     _overlayView = [[OverlayView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-
     _imagePicker.delegate = self;
 	_imagePicker.allowsEditing = NO;
-    //not221:
-	///////  
-	  _imagePicker.showsCameraControls = NO;
- //not 221
-/////////// 
-	  _imagePicker.cameraOverlayView = _overlayView;
- 
+	_imagePicker.showsCameraControls = NO;
+	_imagePicker.cameraOverlayView = _overlayView; 
     [self presentModalViewController:_imagePicker animated:NO];
-
-    _timer = [NSTimer
-      scheduledTimerWithTimeInterval: kTakePictureTimeInterval
+    _timer = [NSTimer scheduledTimerWithTimeInterval: kTakePictureTimeInterval
                               target: self
                             selector: @selector(takePicture:)
                             userInfo: nil
@@ -232,8 +223,8 @@ static const NSTimeInterval kTakePictureTimeInterval = 5;
   UINavigationController *myQrController = [tbc.viewControllers objectAtIndex:4];
   NSLog(@"Got my qrc, asking it to pop: %@", myQrController);
 //	[myQrController popViewControllerAnimated: NO];
-//	[_imagePicker dismissModalViewControllerAnimated];
-	[self dismissModalViewControllerAnimated:YES];
+	// [_imagePicker dismissModalViewControllerAnimated];
+	[self dismissModalViewControllerAnimated:NO];
 	//[[gad decoder_window] release];
 
 }

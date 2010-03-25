@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>B6FA473F115BCDDA00E7385E</string>
+						<string>B6FA4776115BDFE900E7385E</string>
 						<key>history</key>
 						<array>
 							<string>B6FA4727115BCC0100E7385E</string>
@@ -274,8 +274,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -318,7 +316,6 @@
 								<string>B6A67EE011357B8300EA4712</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>B683761B114192E800DEF94D</string>
 								<string>B69F0E0F113FF99700365B22</string>
 								<string>1C08B708114FACC500511D74</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -328,9 +325,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>41</integer>
-									<integer>40</integer>
-									<integer>39</integer>
+									<integer>30</integer>
+									<integer>22</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -367,12 +363,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>QRImagePickerController.m</string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -380,11 +378,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>QRImagePickerController.m</string>
+										<string>Gumbovi1AppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6FA473A115BCDDA00E7385E</string>
+										<string>B6FA4775115BDFE900E7385E</string>
 										<key>history</key>
 										<array>
 											<string>B622B58610A586EA007E8F37</string>
@@ -487,16 +485,18 @@
 											<string>B647AD3E115A3A18007BE4E9</string>
 											<string>B647AD40115A3A18007BE4E9</string>
 											<string>B647AD41115A3A18007BE4E9</string>
-											<string>B647AD56115A3C8B007BE4E9</string>
 											<string>B64B4C83115A5675008C5105</string>
 											<string>B64B4CF2115A5D4A008C5105</string>
-											<string>B64B4CF7115A5DCD008C5105</string>
 											<string>B64B4D26115A6C1D008C5105</string>
-											<string>B67C7865115BBE080050DF62</string>
 											<string>B67C78B0115BC31F0050DF62</string>
-											<string>B6FA4738115BCDDA00E7385E</string>
 											<string>B6FA4739115BCDDA00E7385E</string>
-											<string>B67C78EC115BC4610050DF62</string>
+											<string>B6FA4751115BCE4900E7385E</string>
+											<string>B6FA476F115BDFE900E7385E</string>
+											<string>B6FA4770115BDFE900E7385E</string>
+											<string>B6FA4771115BDFE900E7385E</string>
+											<string>B6FA4772115BDFE900E7385E</string>
+											<string>B6FA4773115BDFE900E7385E</string>
+											<string>B6FA4774115BDFE900E7385E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -692,13 +692,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B6FA4740115BCDDA00E7385E</string>
+		<string>B6FA4777115BDFE900E7385E</string>
 		<string>B6FA4741115BCDDA00E7385E</string>
 		<string>B6FA4742115BCDDA00E7385E</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
 		<string>B6FA473D115BCDDA00E7385E</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1071,7 +1071,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

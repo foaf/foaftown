@@ -30,6 +30,7 @@
 #import "DecoderController.h"
 #import "RootViewController.h" // from lists drilldown demo (not used)
 #import "SLRootViewController.h" 
+#import "ButtonDeviceList.h"
 
 @implementation Gumbovi1AppDelegate
 @synthesize decoder_window;
@@ -42,6 +43,7 @@
 @synthesize htmlInfo;
 @synthesize navigationController; // from lists
 @synthesize data;				  // end lists stuff
+@synthesize buttonDevices;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");

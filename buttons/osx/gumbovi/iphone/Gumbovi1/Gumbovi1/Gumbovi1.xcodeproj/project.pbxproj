@@ -216,6 +216,7 @@
 		B6EF3CE11148EF7A0047CF12 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDC1148EF7A0047CF12 /* 96-book.png */; };
 		B6EF3CE31148F06B0047CF12 /* 104-index-cards.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */; };
 		B6EF3CE51148F0870047CF12 /* 73-radar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE41148F0870047CF12 /* 73-radar.png */; };
+		B6FA4763115BD12C00E7385E /* ButtonDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FA4762115BD12C00E7385E /* ButtonDeviceList.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +406,8 @@
 		B6EF3CDC1148EF7A0047CF12 /* 96-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "96-book.png"; sourceTree = "<group>"; };
 		B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "104-index-cards.png"; sourceTree = "<group>"; };
 		B6EF3CE41148F0870047CF12 /* 73-radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "73-radar.png"; sourceTree = "<group>"; };
+		B6FA4761115BD12C00E7385E /* ButtonDeviceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonDeviceList.h; sourceTree = "<group>"; };
+		B6FA4762115BD12C00E7385E /* ButtonDeviceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonDeviceList.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,8 @@
 				B60ACAD91155642600E83353 /* ButtonCell.m */,
 				B647AD2111594357007BE4E9 /* ButtonDevice.h */,
 				B647AD2211594357007BE4E9 /* ButtonDevice.m */,
+				B6FA4761115BD12C00E7385E /* ButtonDeviceList.h */,
+				B6FA4762115BD12C00E7385E /* ButtonDeviceList.m */,
 				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				28216C950DB411BC00E5133A /* FirstViewController.h */,
@@ -1028,6 +1033,7 @@
 				B644E40F11512F5000A154D1 /* DDXMLElementAdditions.m in Sources */,
 				B60ACADA1155642600E83353 /* ButtonCell.m in Sources */,
 				B647AD2311594357007BE4E9 /* ButtonDevice.m in Sources */,
+				B6FA4763115BD12C00E7385E /* ButtonDeviceList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
