@@ -24,13 +24,13 @@
 
 - (void)viewDidLoad {
 	if (webview == NULL) {
-		DebugLog(@"viewDidLoad called with NULL webview, returning immediately.");	
+		VerboseLog(@"viewDidLoad called with NULL webview, returning immediately.");	
 		return;
 	}
  	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-    DebugLog(@"load Webview is %@:",webview);
-	DebugLog(@"DID LOAD: viewDidload, gad is: %@",gad);
+    VerboseLog(@"Webview viewDidLoad %@:",webview);
+	VerboseLog(@"DID LOAD: viewDidload, gad is: %@",gad);
 //	DebugLog(@"DID LOAD: gad.htmlInfo to webview, %@", gad.htmlInfo);
 //	NSString *s = @"<html><head><title>Loading...</title><body>Move along, nothing to see...</body></html>";
 //	[webview loadHTMLString:s baseURL:baseURL];
@@ -43,7 +43,7 @@
 	webview.scalesPageToFit=TRUE;
 
 	
-	DebugLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
+	VerboseLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
 	//libby
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;

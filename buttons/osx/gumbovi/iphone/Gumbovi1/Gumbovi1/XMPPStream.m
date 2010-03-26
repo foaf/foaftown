@@ -15,8 +15,8 @@
 
 
 // Define the debugging state
-#define DEBUG_SEND      YES
-#define DEBUG_RECV      YES
+#define DEBUG_SEND      NO
+#define DEBUG_RECV      NO
 #define DEBUG_DELEGATE  YES
 
 #define DDLogSend(format, ...)    do{ if(DEBUG_SEND) NSLog((format), ##__VA_ARGS__); }while(0)
