@@ -15,6 +15,7 @@
 //    ie. http://www.cocoadev.com/index.pl?NSZombieEnabled
 //
 
+/* for console Debugging settings, see Gumbovi1_Prefix for definitions. Also xmppstream class.  */
 
 #import "XMPP.h"
 #import "FirstViewController.h"
@@ -28,7 +29,7 @@
 #import "DDXMLDocument.h"
 #import "NSStringAdditions.h"
 #import "DecoderController.h"
-#import "RootViewController.h" // from lists drilldown demo (not used)
+#import "RootViewController.h"								// from lists drilldown demo (not used)
 #import "SLRootViewController.h" 
 #import "ButtonDeviceList.h"
 
@@ -46,7 +47,7 @@
 @synthesize buttonDevices;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    NSLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
+    DebugLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 
@@ -58,7 +59,7 @@
 	// for http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/Reference/Reference.html#//apple_ref/occ/instm/UIWebView/loadData:MIMEType:textEncodingName:baseURL: 
 	// in WebViewController
 	self.htmlInfo = @"<html><head><title>Now Playing</title></head><body><div><meta name=\"viewport\" content=\"width=320\"/><h1>Now Playing</h1><p>Please wait...</p></div></body></html>";
-	NSLog(@"gad launched. self.htmlInfo is: %@", self.htmlInfo);
+	VerboseLog(@"gad launched. self.htmlInfo is: %@", self.htmlInfo);
 	
 	// from drilldown lists code
 	NSString *Path = [[NSBundle mainBundle] bundlePath];
@@ -66,33 +67,25 @@
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
-	// NSLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
-	// Configure and show the window	
-
-
+	// DebugLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
 }
 
-//- (void)initXMPP: (NSObject *)config  {
 - (void)initXMPP  {
-    NSLog(@"initXMPP *****");
-//	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
-
-    NSLog(@"TIMER: (?re-)Initialising XMPP");
-	NSLog(@"FVC is", fvc);
+    DebugLog(@"initXMPP *****");
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
+	VerboseLog(@"FVC is", fvc);
     xmppClient = [[XMPPClient alloc] init];
 	[xmppClient addDelegate:self];
 	[xmppClient setPort:5222];	
-	NSLog(@"Userid: %@", fvc.userid.text);
-	NSLog(@"Passwd: %@", fvc.password.text);
-  //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
-	//NSLog("aJiD: ",aJID);
+	DebugLog(@"Userid: %@", fvc.userid.text);
+	DebugLog(@"Passwd: %@", fvc.password.text);
+    //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
 	
 	if(( [fvc.userid.text rangeOfString:@"gmail"].location == NSNotFound) && ( [fvc.userid.text rangeOfString:@"googlemail"].location == NSNotFound)){
-		NSLog(@"gmail not found in user JID %@", fvc.userid.text);
-		NSLog(@"We should parse out the host name...?");
+		DebugLog(@"gmail not found in user JID %@", fvc.userid.text);
+		DebugLog(@"We should parse out the host name...?");
 	} else {
-		NSLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
+		DebugLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
 		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
@@ -100,36 +93,30 @@
 	[xmppClient setPassword:@"gargonza"];
 
     if (fvc.userid.text != NULL) {
-		NSLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
+		DebugLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 	//	NSString *myjs =  [NSString stringWithFormat:@"", fvc.userid.text, @"/gmb1"] ; // todo: random /resource ? 
 		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
 	    //XMPPJID aJID = [xmppClient myJID];
-	/////	NSLog("MY JID IS NOW: ",xmppClient.myJID);
+	/////	DebugLog("MY JID IS NOW: ",xmppClient.myJID);
 	}
     if (fvc.password.text != NULL) {
-		NSLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
+		DebugLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
 		[xmppClient setPassword:fvc.password.text];
 	}
-	NSLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppClient.myJID, xmppClient.password);
+	DebugLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppClient.myJID, xmppClient.password);
 
-//	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
-
+// TEMPORARY DEVELOPMENT CODE, with ButtonDeviceList and local prefs, should not be needed.
+// Here we set an initial default target XMPP JID, where our messages are sent.
+#ifdef LIBBY_CFG
 	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/Basicbot"]; // buddy w/ media services
-    //libby
+#endif
+#ifdef DANBRI_CFG
+	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
+#endif
+	
     NSMutableArray *roster = fvc.roster_list;
-//	for (NSString *s in roster) {
-//		NSLog(@"hello %@",s);
-//	}
-    NSLog(@"roster list2: %@",roster);	
-	
-//       if(it rangeOfString:@self.toJid !=NSNotFound)
-
-	
-
-	
-//	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/gumboviListener"]; // buddy w/ media services
-
-	
+    DebugLog(@"roster list2: %@",roster);	
+		
 	[xmppClient setAutoLogin:YES];
 	[xmppClient setAllowsPlaintextAuth:NO];
 	[xmppClient setAutoPresence:YES];
@@ -147,9 +134,8 @@
 
 // Optional UITabBarControllerDelegate method
 - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
-	NSLog(@"TIMER: app delegate didEndCustomizingViewControllers");
+	VerboseLog(@"TIMER: app delegate didEndCustomizingViewControllers");
 }
-
 
 
 - (void)dealloc {
@@ -163,61 +149,70 @@
 
 
 
-
+/*     BUTTONS PROTOCOL 
+ 
+	BUTTONS 0.0 PROTOCOL IMPLEMENTATION
+    THIS IS CURRENTLY AWFUL STOPGAP.
+ BUTTONS SHOULD:
+  - IQ instead of Chat messages
+  - use 'set' when side-effects demanded or expected (REST-Lite)
+  - use markup (buttons.foaf.tv ns)
+  - be extensible
+  - be documented					
+ 
+ In the meantime, we just send out 4-letter codes in textual messages. OK for starters....
+ 
+ */
 - (void)sendPLUS:(NSObject *)button
 {
-	NSLog(@"SENDING PLUS%@", button);
+	DebugLog(@"SENDING PLUS%@", button);
 	NSString *msg = @"PLUS event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLEFT:(NSObject *)button
 {
-	NSLog(@"SENDING LEFT %@", button);
+	DebugLog(@"SENDING LEFT %@", button);
 	NSString *msg = @"LEFT event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendRIGH:(NSObject *)button
 {
-	NSLog(@"SENDING RIGH %@", button);
+	DebugLog(@"SENDING RIGH %@", button);
 	NSString *msg = @"RIGH event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendMINU:(NSObject *)button
 {
-	NSLog(@"SENDING MINU %@", button);
+	DebugLog(@"SENDING MINU %@", button);
 	NSString *msg = @"MINU event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendPLPZ:(NSObject *)button
 {
-	NSLog(@"SENDING PLPZ %@", button);
-    //	- (void)sendMessage:(NSString *)message toJID:(XMPPJID *)jid;
+	DebugLog(@"SENDING PLPZ %@", button);
 	NSString *msg = @"PLPZ event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
-	NSLog(@"Sent msg %@", msg);
-	NSLog(@"To jid %@", self.toJid);
-	NSLog(@" XMPP CLient: %@", self.xmppClient );
-	//NSLog(@" XMPP CLient connected?: %@", self.xmppClient.isConnected );
+	VerboseLog(@"Sent msg %@", msg);
+	VerboseLog(@"To jid %@", self.toJid);
+	VerboseLog(@" XMPP CLient: %@", self.xmppClient );
+	VerboseLog(@" XMPP CLient connected?: %@", self.xmppClient.isConnected );
 
 }
 
 - (void)sendMENU:(NSObject *)button
 {
-	NSLog(@"SENDING MENU %@", button);
+	DebugLog(@"SENDING MENU %@", button);
 	NSString *msg = @"MENU event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
-
-//    XMPPJID *aJid = [XMPPJID jidWithString:@"alice.notube@gmail.com"];
-//	[ self.xmppClient sendMessage:msg toJID:aJid ] ;
 }
 
 - (void)sendLIKE:(NSObject *)button
 {
-	NSLog(@"SENDING LIKE %@", button);
+	DebugLog(@"SENDING LIKE %@", button);
 	NSString *msg = @"LIKE event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
@@ -227,52 +222,47 @@
 	NSString *msg = @"OKAY event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 
-	NSLog(@"SENDING IQ OKAY %@", button);
+	VerboseLog(@"SENDING IQ OKAY %@", button);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	    [errorDetail setValue:@"Failed to do something" forKey:NSLocalizedDescriptionKey];
-	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-
+	NSError *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 	// should we manually send from too? from='%@', [xmppClient.myJID full] ... dow e need id= ?
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
-	NSLog(@"myXML: %@",myXML);
+	VerboseLog(@"myXML: %@",myXML);
 	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-	NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
-	// NSLog(@"Markup was: %@",myStanza);
+	VerboseLog(@"Sending IQ okay via %@ ", self.xmppClient);
+	VerboseLog(@"Markup was: %@",myStanza);
 	[self.xmppClient sendElement:myStanza];
-
-	// not working. try this?
 	
 /*	NSXMLElement *buttons = [NSXMLElement elementWithName:@"buttons" xmlns:@"http://buttons.foaf.tv/"];
 	NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 	[iq addAttributeWithName:@"type" stringValue:@"get"];
 	[iq addChild:buttons];
 	[self.xmppClient sendElement:iq]; */
-	
-	
+		
 }
 
 - (void)sendINFO:(NSObject *)button
 {
-	NSLog(@"SENDING INFO %@", button);
+	DebugLog(@"SENDING INFO %@", button);
 	NSString *msg = @"INFO event.";
 	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLOUD:(NSObject *)myS;
 {
-//	FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"LOUD", fvc.volume.value];
-	NSLog(@"SENDING LOUD %@", v  );
+	DebugLog(@"SENDING LOUD %@", v  );
 	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
 }
 
 - (void)sendHUSH:(NSObject *)myS;
 {
 	//FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
-    FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+    FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"HUSH", fvc.volume.value];
-	NSLog(@"SENDING HUSH %@", v  );
+	DebugLog(@"SENDING HUSH %@", v  );
 	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
 }
 
@@ -283,74 +273,74 @@
 
 - (void)xmppClientConnecting:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientConnecting");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientConnecting");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClientDidConnect:(XMPPClient *)sende
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidConnect");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidConnect");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClientDidNotConnect:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidNotConnect");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidNotConnect");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClientDidDisconnect:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidDisconnect");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidDisconnect");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClientDidRegister:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidRegister");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidRegister");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClient:(XMPPClient *)sender didNotRegister:(NSXMLElement *)error
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotRegister: %@", error);
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotRegister: %@", error);
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClientDidAuthenticate:(XMPPClient *)sender
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidAuthenticate");
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidAuthenticate");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClient:(XMPPClient *)sender didNotAuthenticate:(NSXMLElement *)error
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotAuthenticate: %@", error);
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotAuthenticate: %@", error);
+	DebugLog(@"==============================================================");
 }
 
 
 - (void)rebuildRosterUI
 {
-	NSLog(@"REBUILDING LOCAL ROSTER UI:");
-	NSLog(@"App delegate xmppClient is %@",self.xmppClient);
+	DebugLog(@"REBUILDING LOCAL ROSTER UI:");
+	DebugLog(@"App delegate xmppClient is %@",self.xmppClient);
 	[self.xmppClient fetchRoster]; // make sure we're up to date (necessary?)
 	NSArray *buddies = [self.xmppClient sortedAvailableUsersByName];
-	NSLog(@"1. We have a list of buddies from current online roster: @", buddies);
+	DebugLog(@"1. We have a list of buddies from current online roster: @", buddies);
 
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
-		NSLog(@"Roster UI check: %@", object);
-		NSLog(@"resources for jid is %@ ? ", [object sortedResources] );
+		DebugLog(@"Roster UI check: %@", object);
+		DebugLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 		
@@ -360,20 +350,20 @@
 		while (r = [e nextObject]) {
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			NSLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
+			DebugLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
-				NSLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
+				DebugLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
 				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
-				NSLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
+				DebugLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
 				ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:[NSString stringWithFormat:@"%@",[r jid]]] autorelease]; //danbri
 				//	[newDev setName:@"jid"];
 				[newDev setFromQRCode:NO];
 				[[self buttonDevices] addObject:newDev]; //added to set
 			}
 			@catch (NSException *exception) {
-				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
+				DebugLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
 			} 
 		}
 	
@@ -382,18 +372,18 @@
 
 - (void)xmppClientDidUpdateRoster:(XMPPClient *)sender
 {
-	NSLog(@"===========================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
-	NSLog(@"Update msg is: %@",sender);
+	DebugLog(@"===========================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
+	DebugLog(@"Update msg is: %@",sender);
 	NSArray *buddies = [sender sortedAvailableUsersByName];
-    NSLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
+    DebugLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
 	[self rebuildRosterUI];
  	[self.buttonDevices removeAllNonLocalDevices]; // wipe out everything except QR Code entries
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
-		NSLog(@"Roster UI check: %@", object);
-		NSLog(@"resources for jid is %@ ? ", [object sortedResources] );
+		DebugLog(@"Roster UI check: %@", object);
+		DebugLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 		
@@ -406,19 +396,19 @@
 			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			NSLog(@"presence: %@", [pres status]);
- 			NSLog(@"Sending discovery IQ to %@", r);
+			DebugLog(@"presence: %@", [pres status]);
+ 			DebugLog(@"Sending discovery IQ to %@", r);
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
 				fvc.roster_list =     [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 			}
                 @catch (NSException *exception) {
-				NSLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
+				DebugLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
 			} 
 
-			//  NSLog(@"adding to roster %@", r);
-			//	NSLog(@"TOJID %@", self.toJid);
+			//  DebugLog(@"adding to roster %@", r);
+			//	DebugLog(@"TOJID %@", self.toJid);
 			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
@@ -428,7 +418,7 @@
 			[disco addAttributeWithName:@"to" stringValue:[NSString stringWithFormat:@"%@",[r jid]  ]];
 			[disco addAttributeWithName:@"id" stringValue:@"disco1"];
 			[disco addChild:[NSXMLElement elementWithName:@"query" xmlns:@"http://jabber.org/protocol/disco#info"]];
-			// NSLog(@"About to send %@", disco);
+			// DebugLog(@"About to send %@", disco);
 			[sender sendElement:disco];
 		}
 		// here or nearby we might do discovery to find out what's available there...
@@ -444,36 +434,36 @@
 		
 //	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' id='1001' to='%@'><query xmlns='http://jabber.org/protocol/disco#info'/></iq>", [toJid full]];
 
-//		NSLog(@"myXML: %@",myXML);
+//		DebugLog(@"myXML: %@",myXML);
 //		NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-//		NSLog(@"Sending IQ okay via %@ ", self.xmppClient);
-//		NSLog(@"Markup was: %@",myStanza);
+//		DebugLog(@"Sending IQ okay via %@ ", self.xmppClient);
+//		DebugLog(@"Markup was: %@",myStanza);
 //		[self.xmppClient sendElement:myStanza];
 	
 	
 	}
 	
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveBuddyRequest:(XMPPJID *)jid
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveBuddyRequest: %@", jid);
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveBuddyRequest: %@", jid);
+	DebugLog(@"==============================================================");
 }
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveIQ:(XMPPIQ *)iq
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
 	//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 	//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
 	// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
 	//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
-	//NSLog(@"nowp results: %@", nowpNodes);
+	//DebugLog(@"nowp results: %@", nowpNodes);
 	//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
     //id obj;	
     //while ( obj = [enumerator nextObject] ) {
@@ -484,12 +474,12 @@
 	DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
 	DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
 	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
-	// NSLog(@"X2: %@",xs);
+	// DebugLog(@"X2: %@",xs);
 	
 	if([xs rangeOfString:@"<div>"].location == NSNotFound){
-	//	NSLog(@"div not found in xs %@", xs);
+	//	DebugLog(@"div not found in xs %@", xs);
 	} else {
-		NSLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
+		DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
 		self.htmlInfo = xs;
 
 		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:1];//ugh
@@ -498,22 +488,22 @@
 
 	
 	}
-//		NSLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
+//		DebugLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
 	// Nothing worked. Related attempts:
 	// additions see http://code.google.com/p/kissxml/issues/detail?id=18
 	// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
 	//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
 	
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
     
 
 }
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveMessage:(XMPPMessage *)message
 {
-	NSLog(@"==============================================================");
-	NSLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveMessage: %@", message);
-	NSLog(@"==============================================================");
+	DebugLog(@"==============================================================");
+	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveMessage: %@", message);
+	DebugLog(@"==============================================================");
 	//tabBarController.selectedViewController.output.text = @"Got message!";
 
 	
@@ -528,7 +518,7 @@
 	  // @"......"; m.description;  //log ;			//+ [NSString log]; //  m.description;
     
 	//fvc.output.text = log; // problem?
-    NSLog(@"XMPP MSG: %@",log);
+    DebugLog(@"XMPP MSG: %@",log);
 }
 
 
@@ -547,13 +537,13 @@
 
 
 - (void) startQRScan:(id)sender {
-	NSLog(@"Starting qr scan. %@ ", sender);
+	DebugLog(@"Starting qr scan. %@ ", sender);
 	//Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];	
 	UINavigationController *myQrController = [tabBarController.viewControllers objectAtIndex:4];
-    NSLog(@"My qr controller in 5th tab is %@ " , myQrController); // a UINavigationController
+    DebugLog(@"My qr controller in 5th tab is %@ " , myQrController); // a UINavigationController
 	decoderController = [[DecoderController alloc] init];
-    NSLog(@"Trying to push a DecoderController %@ ", decoderController);
-	NSLog(@"...onto my UINavigationController %@ ", myQrController);
+    DebugLog(@"Trying to push a DecoderController %@ ", decoderController);
+	DebugLog(@"...onto my UINavigationController %@ ", myQrController);
 	[myQrController pushViewController:decoderController animated:YES];
 	self.decoder_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];	
 		//	self.decoder_window = [[UIWindow alloc] initWithFrame:myQrController.view.bounds ];	
@@ -561,26 +551,30 @@
 }
 
 - (void)newJID:(id)jid {
-	NSLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
+	DebugLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
 	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	NSLog(@"Roster was: %@",roster);
+	DebugLog(@"Roster was: %@",roster);
 	[fvc.roster_list addObject:jid];
-	NSLog(@"Roster now: %@",roster);
-	NSLog(@"gad.toJID is now: %@",self.toJid);
+	DebugLog(@"Roster now: %@",roster);
+	DebugLog(@"gad.toJID is now: %@",self.toJid);
 	NSString *new_uri = [NSString stringWithFormat:@"%@",jid]; // or was it a string already
 		   
 	
-	NSLog(@"NEW BUTTONDEVICE: About to construct");
-	ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:new_uri] autorelease]; //danbri
-	NSLog(@"NEW BUTTONDEVICE: Back from constructor. About to set properties.");
-//	[newDev setName:@"jid"];
-	[newDev setFromQRCode:YES];
+	VerboseLog(@"NEW BUTTONDEVICE: About to construct");
+	ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:new_uri] retain]; // MEM-TODO	
+	VerboseLog(@"NEW BUTTONDEVICE: Back from constructor. About to set properties on: %@", newDev);
+	[newDev setName:@"jid"];
+//	DebugLog(@"BEFORE"); 
+	newDev.fromQRCode = YES; // vs. [newDev setFromQRCode:YES]
+	[newDev retain];
+	DebugLog(@"AFTER"); 
+	DebugLog(@"DONE setting qrcode on newdev: %@",newDev);
 	[[self buttonDevices] addObject:newDev]; //added to set
 	
-	NSLog(@"Made a new device: %@", newDev);
+	DebugLog(@"Made a new device: %@", newDev);
 	
 	//see also http://www.freesound.org/samplesViewSingle.php?id=706 etc - can try for haptic on button presses
 	NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle mainBundle] resourcePath],@"/pop.wav"];

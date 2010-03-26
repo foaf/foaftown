@@ -37,28 +37,28 @@
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	NSLog(@"LinkedTVRosterTableController view loaded. roster is: %@",roster);
+	DebugLog(@"LinkedTVRosterTableController view loaded. roster is: %@",roster);
 //	[fvc.roster_list addObject:jid];
-//	NSLog(@"gad.toJID is now: %@",self.toJid);
+//	DebugLog(@"gad.toJID is now: %@",self.toJid);
 
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"LinkedTVRosterTableController viewWillAppear:");
+    DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    NSLog(@"LinkedTVRosterTableController viewWillAppear: about to call buttonReport. If we have a list: %@", gad.buttonDevices);
+    DebugLog(@"LinkedTVRosterTableController viewWillAppear: about to call buttonReport. If we have a list: %@", gad.buttonDevices);
 
 	[gad.buttonDevices buttonReport];
 
-	NSLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
+	DebugLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
 
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	NSLog(@"viewWillAppear: roster is %@",roster);
-	NSLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
+	DebugLog(@"viewWillAppear: roster is %@",roster);
+	DebugLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
     [roster_view reloadData]; // refresh roster when anyone will look
 	[roster_view flashScrollIndicators]; //to show that it's scrollable
 }
@@ -104,21 +104,21 @@
 
 //http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UITableViewDatasource_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006941-CH3-SW9
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"numberOfSectionsInTableView called");
+    DebugLog(@"numberOfSectionsInTableView called");
 	return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"numberOfRowsInSection called");
+    DebugLog(@"numberOfRowsInSection called");
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
     //[roster retain];
-	NSLog(@"Data TABLE: numberOfRowsInSection called");
+	DebugLog(@"Data TABLE: numberOfRowsInSection called");
 	//int i = [roster count];
-	//NSLog(@"DATA TABLE CHECKING NUMROWS: %@", i);
+	//DebugLog(@"DATA TABLE CHECKING NUMROWS: %@", i);
 //	return i;
     return [roster count];
 } 
@@ -126,14 +126,14 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"FRESH CELL: %@",indexPath);
+    DebugLog(@"FRESH CELL: %@",indexPath);
     static NSString *CellIdentifier = @"myButtonCell";
     
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	ButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
-		NSLog(@"ButtonCell created");
+		DebugLog(@"ButtonCell created");
 		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"ButtonCell" owner:nil options:nil];
 		for (id currentObject in nibObjects) 
 		{
@@ -165,7 +165,7 @@
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	NSLog(@"LinkedTV: toJID is now xmpp: %@",[roster objectAtIndex:indexPath.row]);
+	DebugLog(@"LinkedTV: toJID is now xmpp: %@",[roster objectAtIndex:indexPath.row]);
 	gad.toJid = [XMPPJID jidWithString:[roster objectAtIndex:indexPath.row]];
 	// Navigation logic may go here. Create and push another view controller.
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];

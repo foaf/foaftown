@@ -12,43 +12,45 @@
 @implementation ButtonDeviceList
 
 - (void)removeAllNonLocalDevices {
-	NSLog(@"ButtonDeviceList removeAllNonLocalDevices - dumping everything before rebuilding");
+	DebugLog(@"ButtonDeviceList removeAllNonLocalDevices - dumping everything before rebuilding");
 	NSEnumerator *enumerator = [self.allObjects objectEnumerator];
     id obj;	
     while ( obj = [enumerator nextObject] ) {
-        NSLog(@"DELETING: %@\n", obj  );
+#ifdef BUTTONS_DEBUG
+        DebugLog(@"EXAMINING: %@\n", obj  );
+#endif
 		if ( ((ButtonDevice *) obj).fromQRCode == NO ) {
-			NSLog(@"DELETING: %@\n", obj  );
+#ifdef BUTTONS_DEBUG
+			DebugLog(@"DELETING: %@\n", obj  );
+#endif
 			[self removeObject:obj];
 		} else {
-			NSLog(@"KEEPING (QR-based): %@\n", obj  );
-
+#ifdef BUTTONS_DEBUG 
+			DebugLog(@"KEEPING (QR-based): %@\n", obj  );
+#endif
 		}
 	}
 }
 	
 //http://developer.apple.com/mac/library/documentation/cocoa/reference/Foundation/Classes/NSCountedSet_Class/Reference/Reference.html#//apple_ref/occ/instm/NSCountedSet/objectEnumerator
 - (void)buttonReport {
-	NSLog(@"ButtonDeviceList buttonReport:");
-	NSLog(@"______________________________\n\n");
-    NSLog(@"ButtonDeviceList is now: ", self);
+	DebugLog(@"__________________________________________________________________________________\n\n");
+	DebugLog(@"					ButtonDeviceList buttonReport :");
+	DebugLog(@"__________________________________________________________________________________\n\n");
+    DebugLog(@"ButtonDeviceList is now: ", self);
 	
 	NSEnumerator *enumerator = [self.allObjects objectEnumerator];
     id obj;	
     while ( obj = [enumerator nextObject] ) {
-        NSLog(@"BUTTONDEVICE: %@\n", obj  );
+        DebugLog(@"BUTTONDEVICE: %@\n", obj  );
 		if ( ((ButtonDevice *) obj).fromQRCode == NO ) {
-			NSLog(@"NON-QR: %@\n", obj  );
-		//	[self removeObject:obj];
-/* *** Terminating app due to uncaught exception 'NSGenericException', reason: '*** Collection <NSCFDictionary: 0x27bf30> was mutated while being enumerated.'
- */
-		
+			DebugLog(@"NON-QR: %@\n", obj  );
 		} else {
-			NSLog(@"QR: %@\n", obj  );			
+			DebugLog(@"QR: %@\n", obj  );			
 		}
-		NSLog(@"\n");
+		DebugLog(@"\n");
 	}
-	NSLog(@"_____________________________.\n\n");	
+	DebugLog(@"__________________________________________________________________________________\n\n");
 }
 
 - (void)dealloc {

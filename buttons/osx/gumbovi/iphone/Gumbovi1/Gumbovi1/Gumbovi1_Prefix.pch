@@ -8,3 +8,34 @@
     #import <CoreData/CoreData.h>
   ////  #import <Cocoa/Cocoa.h>
 #endif
+
+//Toggle DebugLog() Visibility
+#define ShowDebugLogs 1
+#define VerboseDebugLogs 0
+
+//DebugLog() Visibility
+#if ShowDebugLogs
+#define DebugLog(...) NSLog(__VA_ARGS__)
+#else
+#define DebugLog(...)
+#endif
+
+//VerboseLog() Visibility
+#if ShowVerboseLogs
+#define VerboseLog(...) NSLog(__VA_ARGS__)
+#else
+#define VerboseLog(...)
+#endif
+
+//ReleaseLog() Visibility
+#define ReleaseLog(...) NSLog(__VA_ARGS__)
+
+
+#define TAB_BUTTONS 0
+#define TAB_INFO 1
+#define TAB_DEVICES 2
+#define TAB_SETUP 3
+#define TAB_SCAN 4
+
+#define DANBRI_CFG 1
+#define LIBBY_CFG 0
