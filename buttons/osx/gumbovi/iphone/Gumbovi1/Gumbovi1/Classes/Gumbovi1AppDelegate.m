@@ -15,7 +15,9 @@
 //    ie. http://www.cocoadev.com/index.pl?NSZombieEnabled
 //
 
-/* for console Debugging settings, see Gumbovi1_Prefix for definitions. Also xmppstream class.  */
+/* for console Debugging settings, see Gumbovi1_Prefix for definitions. 
+ Also xmppstream class defines DEBUG_SEND DEBUG_RECV...
+ */
 
 #import "XMPP.h"
 #import "FirstViewController.h"
@@ -47,7 +49,7 @@
 @synthesize buttonDevices;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    DebugLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
+    VerboseLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 
@@ -114,8 +116,9 @@
 	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
 #endif
 	
-    NSMutableArray *roster = fvc.roster_list;
-    DebugLog(@"roster list2: %@",roster);	
+    // NSMutableArray *roster = fvc.roster_list;
+
+    VerboseLog(@"initxmpp: roster list: %@",roster);	
 		
 	[xmppClient setAutoLogin:YES];
 	[xmppClient setAllowsPlaintextAuth:NO];
@@ -330,17 +333,15 @@
 
 - (void)rebuildRosterUI
 {
-	DebugLog(@"REBUILDING LOCAL ROSTER UI:");
-	DebugLog(@"App delegate xmppClient is %@",self.xmppClient);
+	DebugLog(@"REBUILDING LOCAL ROSTER UI. xmppClient is %@", self.xmppClient);
 	[self.xmppClient fetchRoster]; // make sure we're up to date (necessary?)
 	NSArray *buddies = [self.xmppClient sortedAvailableUsersByName];
-	DebugLog(@"1. We have a list of buddies from current online roster: @", buddies);
+	DebugLog(@"1. current online roster: %@", buddies);
 
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
-		DebugLog(@"Roster UI check: %@", object);
-		DebugLog(@"resources for jid is %@ ? ", [object sortedResources] );
+		VerboseLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 		
@@ -350,15 +351,15 @@
 		while (r = [e nextObject]) {
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			DebugLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
+			VerboseLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
-				DebugLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
+				VerboseLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
 				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
-				DebugLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
-				ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:[NSString stringWithFormat:@"%@",[r jid]]] autorelease]; //danbri
-				//	[newDev setName:@"jid"];
+				VerboseLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
+				ButtonDevice *newDev = [[ButtonDevice alloc] initWithURI:[NSString stringWithFormat:@"%@",[r jid]]]; //danbri
+				// [newDev setName:@"jid"];
 				[newDev setFromQRCode:NO];
 				[[self buttonDevices] addObject:newDev]; //added to set
 			}
@@ -374,20 +375,20 @@
 {
 	DebugLog(@"===========================================================");
 	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
-	DebugLog(@"Update msg is: %@",sender);
+	DebugLog(@"UpdateRoster msg is: %@",sender);
 	NSArray *buddies = [sender sortedAvailableUsersByName];
-    DebugLog(@"XMPP Roster has been updated. Reviewing its membership. Each JID has potentially multiple active connections (resources). We should add these to our local buddylist UI.");
+
 	[self rebuildRosterUI];
- 	[self.buttonDevices removeAllNonLocalDevices]; // wipe out everything except QR Code entries
+ 	
+	[self.buttonDevices removeAllNonLocalDevices]; // wipe out everything except QR Code entries
 	NSEnumerator *e = [buddies objectEnumerator];
 	id object;
 	while (object = [e nextObject]) {
-		DebugLog(@"Roster UI check: %@", object);
-		DebugLog(@"resources for jid is %@ ? ", [object sortedResources] );
+		VerboseLog(@"resources for jid is %@ ? ", [object sortedResources] );
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 		
-		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 //		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
 
 		while (r = [e nextObject]) {
@@ -396,8 +397,8 @@
 			//not sure how to display it!
 			XMPPPresence *pres = [[XMPPPresence alloc] init];
 			pres = [XMPPPresence presenceFromElement:[r presence]];
-			DebugLog(@"presence: %@", [pres status]);
- 			DebugLog(@"Sending discovery IQ to %@", r);
+			VerboseLog(@"presence: %@", [pres status]);
+ 			VerboseLog(@"Sending discovery IQ to %@", r);
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
 				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
@@ -406,10 +407,6 @@
                 @catch (NSException *exception) {
 				DebugLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
 			} 
-
-			//  DebugLog(@"adding to roster %@", r);
-			//	DebugLog(@"TOJID %@", self.toJid);
-			
 			NSXMLElement *disco = [NSXMLElement elementWithName:@"iq"];
 			[disco addAttributeWithName:@"type" stringValue:@"get"];
 			//[disco addAttributeWithName:@"from" stringValue:[[sender myJID] full]];
@@ -422,7 +419,6 @@
 			[sender sendElement:disco];
 		}
 		// here or nearby we might do discovery to find out what's available there...
-		
 		// http://xmpp.org/extensions/xep-0030.html#info
 /* 
  <iq type='get'
@@ -455,8 +451,7 @@
 
 - (void)xmppClient:(XMPPClient *)sender didReceiveIQ:(XMPPIQ *)iq
 {
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
+	VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
 	//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
@@ -551,6 +546,7 @@
 }
 
 - (void)newJID:(id)jid {
+	
 	DebugLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
 	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
@@ -562,19 +558,17 @@
 	DebugLog(@"gad.toJID is now: %@",self.toJid);
 	NSString *new_uri = [NSString stringWithFormat:@"%@",jid]; // or was it a string already
 		   
-	
 	VerboseLog(@"NEW BUTTONDEVICE: About to construct");
 	ButtonDevice *newDev = [[[ButtonDevice alloc] initWithURI:new_uri] retain]; // MEM-TODO	
 	VerboseLog(@"NEW BUTTONDEVICE: Back from constructor. About to set properties on: %@", newDev);
 	[newDev setName:@"jid"];
-//	DebugLog(@"BEFORE"); 
+	//	DebugLog(@"BEFORE"); 
 	newDev.fromQRCode = YES; // vs. [newDev setFromQRCode:YES]
 	[newDev retain];
-	DebugLog(@"AFTER"); 
-	DebugLog(@"DONE setting qrcode on newdev: %@",newDev);
+	VerboseLog(@"DONE setting qrcode on newdev: %@",newDev);
 	[[self buttonDevices] addObject:newDev]; //added to set
 	
-	DebugLog(@"Made a new device: %@", newDev);
+	DebugLog(@"Made a new qr device: %@", newDev);
 	
 	//see also http://www.freesound.org/samplesViewSingle.php?id=706 etc - can try for haptic on button presses
 	NSString *path = [NSString stringWithFormat:@"%@%@",[[NSBundle mainBundle] resourcePath],@"/pop.wav"];

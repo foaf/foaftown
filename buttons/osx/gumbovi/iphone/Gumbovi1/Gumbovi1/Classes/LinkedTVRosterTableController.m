@@ -37,7 +37,7 @@
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	DebugLog(@"LinkedTVRosterTableController view loaded. roster is: %@",roster);
+	VerboseLog(@"LinkedTVRosterTableController view loaded. roster is: %@",roster);
 //	[fvc.roster_list addObject:jid];
 //	DebugLog(@"gad.toJID is now: %@",self.toJid);
 
@@ -104,19 +104,19 @@
 
 //http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UITableViewDatasource_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006941-CH3-SW9
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    DebugLog(@"numberOfSectionsInTableView called");
+    VerboseLog(@"numberOfSectionsInTableView called");
 	return 1;
 }
 
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    DebugLog(@"numberOfRowsInSection called");
+    VerboseLog(@"numberOfRowsInSection called");
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
     //[roster retain];
-	DebugLog(@"Data TABLE: numberOfRowsInSection called");
+	VerboseLog(@"Data TABLE: numberOfRowsInSection called");
 	//int i = [roster count];
 	//DebugLog(@"DATA TABLE CHECKING NUMROWS: %@", i);
 //	return i;
@@ -126,7 +126,7 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"FRESH CELL: %@",indexPath);
+    VerboseLog(@"FRESH CELL: %@",indexPath);
     static NSString *CellIdentifier = @"myButtonCell";
     
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

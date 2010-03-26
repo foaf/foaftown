@@ -84,16 +84,16 @@
 // or did it? why nothing in logs?
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-	DebugLog(@"TIMER viewDidAppear!");
+	VerboseLog(@"TIMER viewDidAppear!");
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
     if (! gad.xmppClient.isConnected ) {
-	  	DebugLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
+	  	VerboseLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
         [gad initXMPP];
 	} else {
-		DebugLog(@"We seem to be connected %@",gad.xmppClient);
+		VerboseLog(@"We seem to be connected %@",gad.xmppClient);
 	}
 		
-	DebugLog(@"XMPP now: %@",gad.xmppClient);
+	VerboseLog(@"XMPP now: %@",gad.xmppClient);
 
 		[super viewWillAppear:animated];
 	

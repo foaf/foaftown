@@ -44,7 +44,7 @@ VerboseLog(@"NEW BUTTONDEVICE");
         [self setUri: u];
 		VerboseLog(@"NEW BUTTONDEVICE setting URI, %@", u);
     }
-	DebugLog(@"NEW BUTTONDEVICE Constructor returning...");
+	VerboseLog(@"NEW BUTTONDEVICE Constructor returning...");
     return self;
 }
 

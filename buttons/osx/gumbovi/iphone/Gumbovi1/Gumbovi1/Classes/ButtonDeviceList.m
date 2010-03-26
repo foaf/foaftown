@@ -34,19 +34,19 @@
 	
 //http://developer.apple.com/mac/library/documentation/cocoa/reference/Foundation/Classes/NSCountedSet_Class/Reference/Reference.html#//apple_ref/occ/instm/NSCountedSet/objectEnumerator
 - (void)buttonReport {
-	DebugLog(@"__________________________________________________________________________________\n\n");
-	DebugLog(@"					ButtonDeviceList buttonReport :");
-	DebugLog(@"__________________________________________________________________________________\n\n");
+	DebugLog(@" __________________________________________________________________________________\n\n");
+	DebugLog(@"|					ButtonDeviceList buttonReport :");
+	DebugLog(@" __________________________________________________________________________________\n\n");
     DebugLog(@"ButtonDeviceList is now: ", self);
 	
 	NSEnumerator *enumerator = [self.allObjects objectEnumerator];
     id obj;	
     while ( obj = [enumerator nextObject] ) {
-        DebugLog(@"BUTTONDEVICE: %@\n", obj  );
+        DebugLog(@"|    BUTTONDEVICE: %@\n", obj  );
 		if ( ((ButtonDevice *) obj).fromQRCode == NO ) {
-			DebugLog(@"NON-QR: %@\n", obj  );
+			VerboseLog(@"NON-QR: %@\n", obj  );
 		} else {
-			DebugLog(@"QR: %@\n", obj  );			
+			VerboseLog(@"QR: %@\n", obj  );			
 		}
 		DebugLog(@"\n");
 	}
