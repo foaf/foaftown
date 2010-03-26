@@ -19,19 +19,32 @@
 @synthesize fromQRCode; // exact semantics to be clarified
 
 -(NSString *) description {
-	return (@"a ButtonDev description goes here");	
-// return ([NSString stringWithFormat:@"ButtonDevice: name=%@ uri=%@ icon=%@ fromQRCode=%@", name, uri, icon, fromQRCode ]);
-// these are bad accesses, or a couple at least!
+    NSString* n = name;	
+    NSString* u = name;	
+	NSString* qr;
+	if(fromQRCode){
+
+		VerboseLog(@"VERBOSE: buttondevice is a qrcode");
+
+		qr = @"Local QR Device.";
+	} else {
+		VerboseLog(@"VERBOSE: buttondevice is not qrcode");
+		qr = @"Server-linked XMPP Device.";
+	}
+	return ([NSString stringWithFormat:@"ButtonDevice name: %@ uri: %@ fromQRCode: %@", n, u, qr ]);
 }
 
 -(ButtonDevice *) initWithURI: (NSString *) u {
-	NSLog(@"NEW BUTTONDEVICE");
+
+VerboseLog(@"NEW BUTTONDEVICE");
+	
     self = [super init];	
+	//[[self retain] autorelease]; // danbri testing, object crashes us when we try set properties
     if ( self ) {
         [self setUri: u];
-		NSLog(@"NEW BUTTONDEVICE setting URI, %@", u);
+		VerboseLog(@"NEW BUTTONDEVICE setting URI, %@", u);
     }
-	NSLog(@"NEW BUTTONDEVICE Constructor returning...");
+	DebugLog(@"NEW BUTTONDEVICE Constructor returning...");
     return self;
 }
 

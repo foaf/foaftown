@@ -60,7 +60,7 @@
 	//@"zetland.mythbot@googlemail.com/Basicbot",
 	//@"buttons@foaf.tv/Basicbot",
 	//@"buttons@foaf.tv/t2",@"bob.notube@gmail.com",@"bob.notube@gmail.com/switchboard"
-//    NSLog(@"FVC viewDidLoad, set up array for roster: %@", self.roster_list);
+//    DebugLog(@"FVC viewDidLoad, set up array for roster: %@", self.roster_list);
 	self.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; 
 
 }
@@ -68,7 +68,7 @@
 
 
 - (BOOL)textFieldShouldReturn: (UITextField *)textField {
-	NSLog(@"textFieldShouldReturn");
+	DebugLog(@"textFieldShouldReturn");
 	[textField resignFirstResponder];
 	return YES;
 }
@@ -84,27 +84,27 @@
 // or did it? why nothing in logs?
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-	NSLog(@"TIMER viewDidAppear!");
+	DebugLog(@"TIMER viewDidAppear!");
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
     if (! gad.xmppClient.isConnected ) {
-	  	NSLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
+	  	DebugLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
         [gad initXMPP];
 	} else {
-		NSLog(@"We seem to be connected %@",gad.xmppClient);
+		DebugLog(@"We seem to be connected %@",gad.xmppClient);
 	}
 		
-	NSLog(@"XMPP now: %@",gad.xmppClient);
+	DebugLog(@"XMPP now: %@",gad.xmppClient);
 
 		[super viewWillAppear:animated];
 	
 	//
-//	NSLog(@"fvc calling wvc willappear");
+//	DebugLog(@"fvc calling wvc willappear");
 //	UINavigationController *myWVC = [gad.tabBarController.viewControllers objectAtIndex:1];
-//	NSLog(@"Web view content via fvc: %@", gad.htmlInfo); 
+//	DebugLog(@"Web view content via fvc: %@", gad.htmlInfo); 
 	//[myWVC viewWillAppear:animated];
 	
 	
-//	NSLog(@"Got app delgate %@", gad.xmppClient  );
+//	DebugLog(@"Got app delgate %@", gad.xmppClient  );
 }
 
 
@@ -136,17 +136,17 @@
 
 
 - (void) connectionSetup:(id)sender {
-	NSLog(@"connection setup ... switch moved so restarting xmpp if it moved to On");
-	NSLog(@"SWITCH state: %@", sender);	
+	DebugLog(@"connection setup ... switch moved so restarting xmpp if it moved to On");
+	DebugLog(@"SWITCH state: %@", sender);	
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];  
 	if ([sender isOn]) {
-	  NSLog(@"SWITCHED: ON");	
+	  DebugLog(@"SWITCHED: ON");	
   	  if (self.userid.text != NULL) {
-	 	NSLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
+	 	DebugLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
 		[gad.xmppClient setMyJID:[XMPPJID jidWithString:self.userid.text]];
 	  }
       if (self.password.text != NULL) {
-		NSLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
+		DebugLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
 		[gad.xmppClient setPassword:self.password.text];
 	  }
 	 // [gad initXMPP];	
@@ -154,14 +154,14 @@
 		[gad.xmppClient disconnect]; // Have you tried turning it off and on again? :)
 	  [gad.xmppClient connect];
 	} else {
-	  NSLog(@"SWITCHED: ON");	
+	  DebugLog(@"SWITCHED: ON");	
 	  [gad.xmppClient disconnect];	
 	}
 }
 
 - (void) updateText:(id)sender {
    
-	NSLog(@" updatedText called ");
+	DebugLog(@" updatedText called ");
 
     return;
 }
@@ -176,71 +176,71 @@
 	
 //	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); // buzz if we got a button done event 
 	
-	NSLog(@" buttonDone called: %@", sender);
+	DebugLog(@" buttonDone called: %@", sender);
     if (sender == self.plus) {
-		NSLog(@"PLUS");
+		DebugLog(@"PLUS");
 		[self.appdel sendPLUS:sender];
 		self.output.text = @"Plus";
 	} 
 	else if (sender == self.left) {
-		NSLog(@"LEFT");
+		DebugLog(@"LEFT");
 		[self.appdel sendLEFT:sender];
 		self.output.text = @"Left";
 
 	} 
 	else if (sender == self.minu) {
-		NSLog(@"MINU");
+		DebugLog(@"MINU");
 		[self.appdel sendMINU:sender];
 		self.output.text = @"Minus";
 
 	} 
 	else if (sender == self.righ) {
-		NSLog(@"RIGH");
+		DebugLog(@"RIGH");
 		[self.appdel sendRIGH:sender];
 		self.output.text = @"Right";
 	}
 	else if (sender == self.plpz) {
-		NSLog(@"PLPZ");
+		DebugLog(@"PLPZ");
 		[self.appdel sendPLPZ:sender];
 		self.output.text = @"Play/Pause";
 	}
 	else if (sender == self.menu) {
-	    NSLog(@"MENU");	
+	    DebugLog(@"MENU");	
 		[self.appdel sendMENU:sender];
 		self.output.text = @"Menu";
 	}
 	else if (sender == self.like) {
-	    NSLog(@"LIKE");	
+	    DebugLog(@"LIKE");	
 		[self.appdel sendLIKE:sender];
 		self.output.text = @"Like";
 	}
 	else if (sender == self.okay) {
-	    NSLog(@"OKAY");	
+	    DebugLog(@"OKAY");	
 		[self.appdel sendOKAY:sender];
 		self.output.text = @"Okay";
 	}
 	else if (sender == self.info) {
-	    NSLog(@"INFO");	
+	    DebugLog(@"INFO");	
 		[self.appdel sendINFO:sender];
 		self.output.text = @"Info";
 	}
 	else if (sender == self.volume) {
 		// http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISlider_Class/Reference/Reference.html
-		NSLog(@"Volume : %f", self.volume.value);
-		NSLog(@"VOLUME Loudness change.");	
-		NSLog(@"Last volume: %f", self.last_vol);
+		DebugLog(@"Volume : %f", self.volume.value);
+		DebugLog(@"VOLUME Loudness change.");	
+		DebugLog(@"Last volume: %f", self.last_vol);
 		if (self.last_vol > self.volume.value) {
-			NSLog(@"LESSLOUD");
+			DebugLog(@"LESSLOUD");
 			[self.appdel sendHUSH:sender];
 		} else {
-			NSLog(@"MORELOUD");
+			DebugLog(@"MORELOUD");
 			[self.appdel sendLOUD:sender];
 		}
 		self.last_vol = self.volume.value;
 		self.output.text = @"Loud: ", self.volume.value;
 	}
 	else {
-		NSLog(@"Unrecognised buttonDown UI action: %@", sender);
+		DebugLog(@"Unrecognised buttonDown UI action: %@", sender);
 	}
     return;
 }

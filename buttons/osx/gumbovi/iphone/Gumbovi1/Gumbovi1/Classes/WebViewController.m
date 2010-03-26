@@ -24,14 +24,14 @@
 
 - (void)viewDidLoad {
 	if (webview == NULL) {
-		NSLog(@"viewDidLoad called with NULL webview, returning immediately.");	
+		DebugLog(@"viewDidLoad called with NULL webview, returning immediately.");	
 		return;
 	}
  	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSLog(@"load Webview is %@:",webview);
-	NSLog(@"DID LOAD: viewDidload, gad is: %@",gad);
-//	NSLog(@"DID LOAD: gad.htmlInfo to webview, %@", gad.htmlInfo);
+    DebugLog(@"load Webview is %@:",webview);
+	DebugLog(@"DID LOAD: viewDidload, gad is: %@",gad);
+//	DebugLog(@"DID LOAD: gad.htmlInfo to webview, %@", gad.htmlInfo);
 //	NSString *s = @"<html><head><title>Loading...</title><body>Move along, nothing to see...</body></html>";
 //	[webview loadHTMLString:s baseURL:baseURL];
 }
@@ -43,21 +43,21 @@
 	webview.scalesPageToFit=TRUE;
 
 	
-	NSLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
+	DebugLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
 	//libby
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-    NSLog(@"roster list: %@",roster);
+    DebugLog(@"roster list: %@",roster);
     
 //	for (NSString *s in roster) {
-//		NSLog(@"hello %@",s);
+//		DebugLog(@"hello %@",s);
 //	}
 	
-	NSLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
-    NSLog(@"appear Webview is %@:",webview);
+	DebugLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
+    DebugLog(@"appear Webview is %@:",webview);
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
 
-		NSLog(@"SENDING NOWP (as chat and IQ).");
+		DebugLog(@"SENDING NOWP (as chat and IQ).");
 		//NSString *msg = @"NOWP Please send 'now playing' html fragment..";
 		//[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
 		// lets try send an IQ too
@@ -82,17 +82,17 @@
 
 
 - (void)webViewDidStartLoad:(UIWebView *)wv {
-	NSLog (@"webViewDidStartLoad");
+	DebugLog (@"webViewDidStartLoad");
 	[theActivityIndicatorView startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)wv {
-	NSLog (@"webViewDidFinishLoad");
+	DebugLog (@"webViewDidFinishLoad");
 	[theActivityIndicatorView stopAnimating];
 }
 
 - (void)webView:(UIWebView *)wv didFailLoadWithError:(NSError *)error {
-	NSLog (@"webView:didFailLoadWithError");
+	DebugLog (@"webView:didFailLoadWithError");
 	[theActivityIndicatorView stopAnimating];
 	if (error != NULL) {
 		UIAlertView *errorAlert = [[UIAlertView alloc]
