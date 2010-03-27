@@ -43,9 +43,7 @@
 	
 //	IBOutlet UISwitch *toggleSwitch;
 	
-	IBOutlet Gumbovi1AppDelegate *appdel; // to get our xmpp session!
-								// todo, find out how to use XMPPClient class here
-								// do we import FirstViewController.h ? didnt work.
+	IBOutlet Gumbovi1AppDelegate *appdel; // to get to our xmpp session! TODO: needed?
 }
 
 	@property (nonatomic, retain) IBOutlet Gumbovi1AppDelegate *appdel;	

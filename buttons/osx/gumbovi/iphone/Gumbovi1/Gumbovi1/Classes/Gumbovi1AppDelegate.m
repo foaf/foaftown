@@ -129,6 +129,14 @@
 }
 
 
+- (void)sendIQ:(NSXMLElement *)myStanza {
+	DebugLog(@"BUTTONS IQ SENDER: %@",myStanza);
+	[self.xmppClient sendElement:myStanza];
+}
+
+//NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
+//[ gad.xmppClient sendElement:myStanza];		
+
 /*
 // Optional UITabBarControllerDelegate method
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
