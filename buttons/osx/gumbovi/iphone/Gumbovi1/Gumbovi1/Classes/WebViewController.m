@@ -39,44 +39,24 @@
 - (void)viewWillAppear:(BOOL)animated {
  	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
 	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	
-	webview.scalesPageToFit=TRUE;
-
-	
+	webview.scalesPageToFit=TRUE;	
 	VerboseLog(@"WILL APPEAR: viewWillAppear, gad.toJid is: %@",gad.toJid);
-	//libby
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
     DebugLog(@"roster list: %@",roster);
-    
-//	for (NSString *s in roster) {
-//		DebugLog(@"hello %@",s);
-//	}
-	
 	DebugLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
     DebugLog(@"appear Webview is %@:",webview);
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
-
-		DebugLog(@"SENDING NOWP (as chat and IQ).");
-		//NSString *msg = @"NOWP Please send 'now playing' html fragment..";
-		//[ gad.xmppClient sendMessage:msg toJID:gad.toJid ] ;
-		// lets try send an IQ too
-	    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	    [errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
-		NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+	DebugLog(@"SENDING NOWP (as chat and IQ).");
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	[errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
+	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
 
 	// send a NOWP IQ
-	
 	int r = arc4random() % 10000000 ; // hmmm
-
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
-	[ gad.xmppClient sendElement:myStanza];			
-	
-	
-//	NSString *s = @"<html><head><title>Loading...</title><body>viewWillAppear...</body></html>";
-//	[webview loadHTMLString:s baseURL:baseURL];
-
+	[gad sendIQ:myStanza];			
 }
 
 
