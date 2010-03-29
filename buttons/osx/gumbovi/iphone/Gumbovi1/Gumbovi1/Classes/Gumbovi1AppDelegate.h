@@ -16,52 +16,32 @@
 @class XMPPClient;
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
-	XMPPClient *xmppClient;
+	XMPPClient *xmppLink;
     UIWindow *window;
     UITabBarController *tabBarController;
     XMPPJID *toJid;
     XMPPJID *aJid;
-	
 	ButtonDeviceList *buttonDevices;
-	
-	// qrcodes	
 	DecoderController*  decoderController;
 	UIWindow* decoder_window;
 	NSString* qr_buddy;
-	//UITextField* qr_results;
-	
-	// lists drilldown
 	UINavigationController *navigationController;
 	NSDictionary *data;
-	//FirstViewController *fvc;
-
-	//WebViewController *webController;
-	
 	UITextField* qr_results;//libby
 
 	NSString* htmlInfo;
 	
 }
-//@property (nonatomic, retain) IBOutlet FirstViewController *fvc;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet XMPPClient *xmppClient; 
+@property (nonatomic, retain) IBOutlet XMPPClient *xmppLink; 
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 @property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
 @property (nonatomic, retain) IBOutlet UITextField *qr_results; 
 @property (nonatomic, retain) IBOutlet ButtonDeviceList *buttonDevices;
-
-
-// lists drilldown
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) NSDictionary *data;
-
-//@property (nonatomic, retain) IBOutlet WebViewController *webController;
-
-
 @property (nonatomic, retain) UIWindow *decoder_window;
-//@property (nonatomic, retain) NSString *qr_buddy;
-
 @property (nonatomic, retain) NSString *htmlInfo;
 
 
@@ -83,7 +63,12 @@
 
 - (IBAction) startQRScan:(id) sender;
 
+
 - (void) newJID:(NSString *) jid;
+- (void)connectIfOffline;
+- (void)setTargetJidWithString:(NSString *)someJid;
+- (void)sendIQ:(NSXMLElement *)myStanza;
+
 
 
 @end

@@ -9,12 +9,6 @@
 #import "WebViewController.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
-#import "XMPP.h"
-
-//
-//NSURL *urlURL = [NSURL URLWithString:@"http://services.notube.tv/notube/zapper/epgactionmobile2.php?username=lora"] ;
-//theWebView.backgroundColor = [UIColor blackColor];
-//[theWebView loadRequest:[NSURLRequest requestWithURL:urlURL]];
 
 @implementation WebViewController
 
@@ -27,13 +21,8 @@
 		VerboseLog(@"viewDidLoad called with NULL webview, returning immediately.");	
 		return;
 	}
- 	NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		// for images etc?
-	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
     VerboseLog(@"Webview viewDidLoad %@:",webview);
 	VerboseLog(@"DID LOAD: viewDidload, gad is: %@",gad);
-//	DebugLog(@"DID LOAD: gad.htmlInfo to webview, %@", gad.htmlInfo);
-//	NSString *s = @"<html><head><title>Loading...</title><body>Move along, nothing to see...</body></html>";
-//	[webview loadHTMLString:s baseURL:baseURL];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -47,13 +36,11 @@
 	DebugLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
     DebugLog(@"appear Webview is %@:",webview);
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
-	DebugLog(@"SENDING NOWP (as chat and IQ).");
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	[errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
-	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-
-	// send a NOWP IQ
-	int r = arc4random() % 10000000 ; // hmmm
+	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail]; // TODO: define protocol errors
+	// send a NOWP IQ via Buttons (TODO, move logic to a buttons class. JIRA needed).
+	int r = arc4random() % 10000000 ; // TODO: careful handling of IQ identifiers
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
 	[gad sendIQ:myStanza];			

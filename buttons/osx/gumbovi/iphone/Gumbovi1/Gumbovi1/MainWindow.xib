@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="325"/>
 			<integer value="106"/>
+			<integer value="325"/>
 			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1241,14 +1241,6 @@
 					<int key="connectionID">208</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">appdel</string>
-						<reference key="source" ref="1024858337"/>
-						<reference key="destination" ref="664661524"/>
-					</object>
-					<int key="connectionID">209</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">connectionSetup:</string>
 						<reference key="source" ref="718419972"/>
@@ -2411,7 +2403,7 @@
 							<string>tabBarController</string>
 							<string>toJid</string>
 							<string>window</string>
-							<string>xmppClient</string>
+							<string>xmppLink</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>

@@ -9,7 +9,6 @@
 #import "LinkedTVRosterTableController.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
-#import "XMPP.h"
 #import "ButtonCell.h"
 
 // For now, lots of state is in FVC
@@ -165,59 +164,10 @@
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
     NSMutableArray *roster = fvc.roster_list;
-	DebugLog(@"LinkedTV: toJID is now xmpp: %@",[roster objectAtIndex:indexPath.row]);
-	gad.toJid = [XMPPJID jidWithString:[roster objectAtIndex:indexPath.row]];
-	// Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}// http://icodeblog.com/2008/08/08/iphone-programming-tutorial-populating-uitableview-with-an-nsarray/
+	DebugLog(@"LinkedTV: toJID is now: %@",[roster objectAtIndex:indexPath.row]);
+	[gad setTargetJidWithString:[roster objectAtIndex:indexPath.row]];
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
 }
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
-
-
-
-
 
 
 
@@ -228,3 +178,12 @@
 
 @end
 
+
+
+
+
+/*
+ // Navigation logic may go here. Create and push another view controller.
+ // AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+ // [self.navigationController pushViewController:anotherViewController];
+ // [anotherViewController release];// http://icodeblog.com/2008/08/08/iphone-programming-tutorial-populating-uitableview-with-an-nsarray/ */

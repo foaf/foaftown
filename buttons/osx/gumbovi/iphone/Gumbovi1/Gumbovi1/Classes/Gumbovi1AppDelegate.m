@@ -38,7 +38,7 @@
 @implementation Gumbovi1AppDelegate
 @synthesize decoder_window;
 @synthesize qr_results;
-@synthesize xmppClient;
+@synthesize xmppLink;
 @synthesize window;
 @synthesize tabBarController;
 @synthesize toJid;
@@ -53,11 +53,9 @@
     // Add the tab bar controller's current view as a subview of the window
     [window addSubview:tabBarController.view];
 
-	
 	ButtonDeviceList *_buddies = [[ButtonDeviceList alloc] init];
 	self.buttonDevices = _buddies;
 	
-	//
 	// for http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIWebView_Class/Reference/Reference.html#//apple_ref/occ/instm/UIWebView/loadData:MIMEType:textEncodingName:baseURL: 
 	// in WebViewController
 	self.htmlInfo = @"<html><head><title>Now Playing</title></head><body><div><meta name=\"viewport\" content=\"width=320\"/><h1>Now Playing</h1><p>Please wait...</p></div></body></html>";
@@ -76,9 +74,10 @@
     DebugLog(@"initXMPP *****");
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	VerboseLog(@"FVC is", fvc);
-    xmppClient = [[XMPPClient alloc] init];
-	[xmppClient addDelegate:self];
-	[xmppClient setPort:5222];	
+    xmppLink = [[XMPPClient alloc] init];
+	[xmppLink addDelegate:self];
+	[xmppLink setPort:5222];	
+	DebugLog(@"EXPECT1 NOTNULL xmlLink: %@",xmppLink);
 	DebugLog(@"Userid: %@", fvc.userid.text);
 	DebugLog(@"Passwd: %@", fvc.password.text);
     //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
@@ -88,24 +87,23 @@
 		DebugLog(@"We should parse out the host name...?");
 	} else {
 		DebugLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
-		[xmppClient setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
+		[xmppLink setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
-	[xmppClient setMyJID:[XMPPJID jidWithString:@"jana.notube@googlemail.com/hardcoded"]]; // should not be hardcoded
-	[xmppClient setPassword:@"gargonza"];
+	DebugLog(@"EXPECT2 NOTNULL xmlLink: %@",xmppLink);
+	[xmppLink setMyJID:[XMPPJID jidWithString:@"jana.notube@googlemail.com/hardcoded"]]; // should not be hardcoded
+	[xmppLink setPassword:@"gargonza"];
 
     if (fvc.userid.text != NULL) {
 		DebugLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 	//	NSString *myjs =  [NSString stringWithFormat:@"", fvc.userid.text, @"/gmb1"] ; // todo: random /resource ? 
-		[xmppClient setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
-	    //XMPPJID aJID = [xmppClient myJID];
-	/////	DebugLog("MY JID IS NOW: ",xmppClient.myJID);
+		[xmppLink setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
 	}
     if (fvc.password.text != NULL) {
 		DebugLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
-		[xmppClient setPassword:fvc.password.text];
+		[xmppLink setPassword:fvc.password.text];
 	}
-	DebugLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppClient.myJID, xmppClient.password);
+	DebugLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppLink.myJID, xmppLink.password);
 
 // TEMPORARY DEVELOPMENT CODE, with ButtonDeviceList and local prefs, should not be needed.
 // Here we set an initial default target XMPP JID, where our messages are sent.
@@ -119,23 +117,45 @@
     // NSMutableArray *roster = fvc.roster_list;
 
     VerboseLog(@"initxmpp: roster list: %@",roster);	
-		
-	[xmppClient setAutoLogin:YES];
-	[xmppClient setAllowsPlaintextAuth:NO];
-	[xmppClient setAutoPresence:YES];
-	[xmppClient setAutoRoster:YES];
-	[xmppClient connect];
+	DebugLog(@"EXPECT3 NOTNULL xmlLink: %@",xmppLink);
+	
+	[xmppLink setAutoLogin:YES];
+	[xmppLink setAllowsPlaintextAuth:NO];
+	[xmppLink setAutoPresence:YES];
+	[xmppLink setAutoRoster:YES];
+	[xmppLink connect];
 	
 }
 
+//[XMPPJID jidWithString:
+
+- (void)connectIfOffline {
+	DebugLog(@"connectIfOffline checks...");
+	if (! self.xmppLink.isConnected ) {
+		DebugLog(@"connectIfOffline: checked xmpp and it was disconnected ... connecting!");
+		[self initXMPP];
+	} else {
+		DebugLog(@"We seem to be connected %@",self.xmppLink);
+	}
+	DebugLog(@"XMPP now: %@",self.xmppLink);  
+	
+}
+
+ 
+
+
+- (void)setTargetJidWithString:(NSString *)someJid {
+	NSLog(@"BUTTONS JID TARGET: %@",someJid);
+	self.toJid = [XMPPJID jidWithString:someJid];
+	// TODO: Error correction here. Strip xmpp: prefix, etc? print warnings?
+}
 
 - (void)sendIQ:(NSXMLElement *)myStanza {
 	DebugLog(@"BUTTONS IQ SENDER: %@",myStanza);
-	[self.xmppClient sendElement:myStanza];
-}
+	[self.xmppLink sendElement:myStanza];
+	DebugLog(@"EXPECT4 NOTNULL xmlLink: %@",xmppLink);
 
-//NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
-//[ gad.xmppClient sendElement:myStanza];		
+}
 
 /*
 // Optional UITabBarControllerDelegate method
@@ -151,6 +171,7 @@
 
 - (void)dealloc {
 	[data release]; // lists /drilldown
+	[xmppLink release]; // bye-bye XMPP
 	[navigationController release]; // lists drilldown
     [tabBarController release];
     [window release];
@@ -165,7 +186,7 @@
 	BUTTONS 0.0 PROTOCOL IMPLEMENTATION
     THIS IS CURRENTLY AWFUL STOPGAP.
  BUTTONS SHOULD:
-  - IQ instead of Chat messages
+  - IQ instead of Chat messages (although they are useful for quick testing)
   - use 'set' when side-effects demanded or expected (REST-Lite)
   - use markup (buttons.foaf.tv ns)
   - be extensible
@@ -178,39 +199,41 @@
 {
 	DebugLog(@"SENDING PLUS%@", button);
 	NSString *msg = @"PLUS event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	DebugLog(@"EXPECT5 NOTNULL xmlLink: %@",xmppLink);
+
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLEFT:(NSObject *)button
 {
 	DebugLog(@"SENDING LEFT %@", button);
 	NSString *msg = @"LEFT event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendRIGH:(NSObject *)button
 {
 	DebugLog(@"SENDING RIGH %@", button);
 	NSString *msg = @"RIGH event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendMINU:(NSObject *)button
 {
 	DebugLog(@"SENDING MINU %@", button);
 	NSString *msg = @"MINU event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendPLPZ:(NSObject *)button
 {
-	DebugLog(@"SENDING PLPZ %@", button);
+	DebugLog(@"SENDING PLPZ %@ to %@", button, self.toJid);
 	NSString *msg = @"PLPZ event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 	VerboseLog(@"Sent msg %@", msg);
 	VerboseLog(@"To jid %@", self.toJid);
-	VerboseLog(@" XMPP CLient: %@", self.xmppClient );
-	VerboseLog(@" XMPP CLient connected?: %@", self.xmppClient.isConnected );
+	VerboseLog(@" XMPP CLient: %@", self.xmppLink );
+	VerboseLog(@" XMPP CLient connected?: %@", self.xmppLink.isConnected );
 
 }
 
@@ -218,38 +241,38 @@
 {
 	DebugLog(@"SENDING MENU %@", button);
 	NSString *msg = @"MENU event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLIKE:(NSObject *)button
 {
 	DebugLog(@"SENDING LIKE %@", button);
 	NSString *msg = @"LIKE event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendOKAY:(NSObject *)button
 {
 	NSString *msg = @"OKAY event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 
 	VerboseLog(@"SENDING IQ OKAY %@", button);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	    [errorDetail setValue:@"Failed to do something" forKey:NSLocalizedDescriptionKey];
 	NSError *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-	// should we manually send from too? from='%@', [xmppClient.myJID full] ... dow e need id= ?
+	// should we manually send from too? from='%@', [xmppLink.myJID full] ... dow e need id= ?
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
 	VerboseLog(@"myXML: %@",myXML);
 	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-	VerboseLog(@"Sending IQ okay via %@ ", self.xmppClient);
+	VerboseLog(@"Sending IQ okay via %@ ", self.xmppLink);
 	VerboseLog(@"Markup was: %@",myStanza);
-	[self.xmppClient sendElement:myStanza];
+	[self.xmppLink sendElement:myStanza];
 	
 /*	NSXMLElement *buttons = [NSXMLElement elementWithName:@"buttons" xmlns:@"http://buttons.foaf.tv/"];
 	NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
 	[iq addAttributeWithName:@"type" stringValue:@"get"];
 	[iq addChild:buttons];
-	[self.xmppClient sendElement:iq]; */
+	[self.xmppLink sendElement:iq]; */
 		
 }
 
@@ -257,7 +280,7 @@
 {
 	DebugLog(@"SENDING INFO %@", button);
 	NSString *msg = @"INFO event.";
-	[ self.xmppClient sendMessage:msg toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 }
 
 - (void)sendLOUD:(NSObject *)myS;
@@ -265,7 +288,7 @@
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"LOUD", fvc.volume.value];
 	DebugLog(@"SENDING LOUD %@", v  );
-	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:v toJID:self.toJid ] ;
 }
 
 - (void)sendHUSH:(NSObject *)myS;
@@ -274,10 +297,12 @@
     FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"HUSH", fvc.volume.value];
 	DebugLog(@"SENDING HUSH %@", v  );
-	[ self.xmppClient sendMessage:v toJID:self.toJid ] ;
+	[ self.xmppLink sendMessage:v toJID:self.toJid ] ;
 }
 
 
+
+// TODO: Client was removed, check what to do here... JIRA needed
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPClient Delegate Methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,7 +314,7 @@
 	DebugLog(@"==============================================================");
 }
 
-- (void)xmppClientDidConnect:(XMPPClient *)sende
+- (void)xmppClientDidConnect:(XMPPClient *)sender
 {
 	DebugLog(@"==============================================================");
 	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidConnect");
@@ -341,9 +366,9 @@
 
 - (void)rebuildRosterUI
 {
-	DebugLog(@"REBUILDING LOCAL ROSTER UI. xmppClient is %@", self.xmppClient);
-	[self.xmppClient fetchRoster]; // make sure we're up to date (necessary?)
-	NSArray *buddies = [self.xmppClient sortedAvailableUsersByName];
+	DebugLog(@"REBUILDING LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
+	[self.xmppLink fetchRoster]; // make sure we're up to date (necessary?)
+	NSArray *buddies = [self.xmppLink sortedAvailableUsersByName];
 	DebugLog(@"1. current online roster: %@", buddies);
 
 	NSEnumerator *e = [buddies objectEnumerator];
@@ -353,7 +378,7 @@
 		NSEnumerator *e = [[object sortedResources] objectEnumerator];
 		id r;
 		
-		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 		//		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
 		
 		while (r = [e nextObject]) {
@@ -362,7 +387,7 @@
 			VerboseLog(@"presence (should attach to appropriate ButtonDevice): %@", [pres status]); // todo, add to ButtonDevice
 			@try { 
 				[fvc.roster_list insertObject:[NSString stringWithFormat:@"%@",[r jid]] atIndex:0];
-				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+				// NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
 				VerboseLog(@"2. REBUILD ROSTER: Current uniq'd roster list is: %@", tmp);
 				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 				VerboseLog(@"NEW BUTTONDEVICE (from XMPP): About to construct");
@@ -440,9 +465,9 @@
 
 //		DebugLog(@"myXML: %@",myXML);
 //		NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-//		DebugLog(@"Sending IQ okay via %@ ", self.xmppClient);
+//		DebugLog(@"Sending IQ okay via %@ ", self.xmppLink);
 //		DebugLog(@"Markup was: %@",myStanza);
-//		[self.xmppClient sendElement:myStanza];
+//		[self.xmppLink sendElement:myStanza];
 	
 	
 	}
@@ -485,7 +510,7 @@
 		DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
 		self.htmlInfo = xs;
 
-		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:1];//ugh
+		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:TAB_INFO];
 		NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
 		[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
 
@@ -558,7 +583,7 @@
 	DebugLog(@"Got a new Linked TV via QR code. Setting toJID to: %@",jid);	
     self.qr_results.text=jid;
 	self.toJid = [XMPPJID jidWithString:jid]; // buddy w/ media services
-	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:0];//ugh
+	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
     NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"Roster was: %@",roster);
 	[fvc.roster_list addObject:jid];

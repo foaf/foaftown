@@ -27,27 +27,11 @@
 	IBOutlet UIButton *info;
 	IBOutlet UITextView *output;
 	IBOutlet UISlider *volume;
-
-//	IBOutlet UITableView *roster_view;
-	
 	NSMutableArray *roster_list;
-
-	
-	//IBOutlet UITextView *qr_result;
-
-	
 	float last_vol;
-
-//	@class DecoderController;
-
-	
-//	IBOutlet UISwitch *toggleSwitch;
-	
-	IBOutlet Gumbovi1AppDelegate *appdel; // to get to our xmpp session! TODO: needed?
 }
 
 	@property (nonatomic, retain) IBOutlet Gumbovi1AppDelegate *appdel;	
-
 	@property (nonatomic, retain) IBOutlet UITextField *userid;
 	@property (nonatomic, retain) IBOutlet UITextField *password;
 	
@@ -63,14 +47,7 @@
 	@property (nonatomic, retain) IBOutlet UIButton *info;
 	@property (nonatomic, retain) IBOutlet UITextView *output;
 	@property (nonatomic, retain) IBOutlet UISlider *volume;
-	//@property (nonatomic, retain) IBOutlet UITextView *qr_result;
-
-//	@property (nonatomic, retain) IBOutlet UITableView *roster_view;
 	@property (nonatomic, retain) NSMutableArray *roster_list;
-
-//@property (nonatomic, retain) UIWebView *webview;
-
-
 	@property float last_vol;
 
 	- (IBAction) updateText:(id) sender;
