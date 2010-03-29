@@ -10,9 +10,9 @@
 	};
 	1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1041, 8424}}";
-			sepNavSelRange = "{7196, 13}";
-			sepNavVisRange = "{6644, 1162}";
+			sepNavIntBoundsRect = "{{0, 0}, {1160, 8515}}";
+			sepNavSelRange = "{7303, 0}";
+			sepNavVisRange = "{6644, 1159}";
 			sepNavWindowFrame = "{{282, 8}, {976, 770}}";
 		};
 	};
@@ -269,6 +269,7 @@
 			B69F112B114148AE00365B22 = B69F112B114148AE00365B22 /* PBXTextBookmark */;
 			B69F11441141494200365B22 = B69F11441141494200365B22 /* PBXTextBookmark */;
 			B6A5981B116107A000EC1713 /* PBXTextBookmark */ = B6A5981B116107A000EC1713 /* PBXTextBookmark */;
+			B6A59828116107D500EC1713 /* PBXTextBookmark */ = B6A59828116107D500EC1713 /* PBXTextBookmark */;
 			B6A67F0111357EA600EA4712 = B6A67F0111357EA600EA4712 /* PBXBookmark */;
 			B6A67F0211357EA600EA4712 = B6A67F0211357EA600EA4712 /* PBXBookmark */;
 			B6A67F0311357EA600EA4712 = B6A67F0311357EA600EA4712 /* PBXBookmark */;
@@ -1597,6 +1598,16 @@
 		rLoc = 7196;
 		rType = 0;
 		vrLen = 1162;
+		vrLoc = 6644;
+	};
+	B6A59828116107D500EC1713 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */;
+		name = "Gumbovi1AppDelegate.m: 205";
+		rLen = 0;
+		rLoc = 7303;
+		rType = 0;
+		vrLen = 1159;
 		vrLoc = 6644;
 	};
 	B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {
