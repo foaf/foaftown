@@ -26,7 +26,7 @@
 @synthesize okay;
 @synthesize info;
 @synthesize output;
-@synthesize appdel;
+//@synthesize appdel;
 @synthesize volume;
 @synthesize last_vol;
 @synthesize roster_list;
@@ -81,39 +81,20 @@
 // the keyboard to go away. Six new methods later, your quest is at an end. Until the next time you need a UITextField.
 
 
-// or did it? why nothing in logs?
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-	VerboseLog(@"TIMER viewDidAppear!");
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-    if (! gad.xmppClient.isConnected ) {
-	  	VerboseLog(@"View appeared, checked xmpp and it was disconnected ... connecting!");
-        [gad initXMPP];
-	} else {
-		VerboseLog(@"We seem to be connected %@",gad.xmppClient);
-	}
-		
-	VerboseLog(@"XMPP now: %@",gad.xmppClient);
-
-		[super viewWillAppear:animated];
-	
-	//
-//	DebugLog(@"fvc calling wvc willappear");
-//	UINavigationController *myWVC = [gad.tabBarController.viewControllers objectAtIndex:1];
-//	DebugLog(@"Web view content via fvc: %@", gad.htmlInfo); 
-	//[myWVC viewWillAppear:animated];
-	
-	
-//	DebugLog(@"Got app delgate %@", gad.xmppClient  );
+	VerboseLog(@"FVC viewDidAppear! initiating network link if needed.");
+	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	[buttons connectIfOffline];
+	[super viewWillAppear:animated];
 }
 
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	// return (interfaceOrientation == UIInterfaceOrientationPortrait);
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-
 }
 
 
@@ -143,85 +124,91 @@
 	  DebugLog(@"SWITCHED: ON");	
   	  if (self.userid.text != NULL) {
 	 	DebugLog(@"User wasn't null so setting userid to be it: %@", self.userid.text);	
-		[gad.xmppClient setMyJID:[XMPPJID jidWithString:self.userid.text]];
+		[gad.xmppLink setMyJID:[XMPPJID jidWithString:self.userid.text]];
 	  }
       if (self.password.text != NULL) {
 		DebugLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
-		[gad.xmppClient setPassword:self.password.text];
+		[gad.xmppLink setPassword:self.password.text];
 	  }
 	 // [gad initXMPP];	
      // causes  -[UIViewController userid]: unrecognized selector sent to instance 0x3d41dc0
-		[gad.xmppClient disconnect]; // Have you tried turning it off and on again? :)
-	  [gad.xmppClient connect];
+		[gad.xmppLink disconnect]; // Have you tried turning it off and on again? :)
+	  [gad.xmppLink connect];
 	} else {
 	  DebugLog(@"SWITCHED: ON");	
-	  [gad.xmppClient disconnect];	
+	  [gad.xmppLink disconnect];	
 	}
 }
 
 - (void) updateText:(id)sender {
    
 	DebugLog(@" updatedText called ");
-
-    return;
+	return;
 }
 
 
 - (void) buttonTouchVibrate:(id)sender {
-	
+	// TODO: Switch to audio clips? Disable? Wait for Apple to expose more expressive API? JIRA needed.
 	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 
+
+/*    BUTTONS PROTOCOL DETAILS 
+		Half of this lives in the main class, half here. Move to a Buttons class!  JIRA needed.
+		Code is dangerously repetitive. Also needs to use a real IQ protocol. XMPP logic should be encapsulated.
+ */
+
 - (void) buttonDone:(id)sender {
 	
-//	AudioServicesPlaySystemSound(kSystemSoundID_Vibrate); // buzz if we got a button done event 
+	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+
 	
 	DebugLog(@" buttonDone called: %@", sender);
     if (sender == self.plus) {
 		DebugLog(@"PLUS");
-		[self.appdel sendPLUS:sender];
+		[buttons sendPLUS:sender];
 		self.output.text = @"Plus";
 	} 
 	else if (sender == self.left) {
 		DebugLog(@"LEFT");
-		[self.appdel sendLEFT:sender];
+		[buttons sendLEFT:sender];
 		self.output.text = @"Left";
 
 	} 
 	else if (sender == self.minu) {
 		DebugLog(@"MINU");
-		[self.appdel sendMINU:sender];
+		[buttons sendMINU:sender];
 		self.output.text = @"Minus";
 
 	} 
 	else if (sender == self.righ) {
 		DebugLog(@"RIGH");
-		[self.appdel sendRIGH:sender];
+		[buttons sendRIGH:sender];
 		self.output.text = @"Right";
 	}
 	else if (sender == self.plpz) {
 		DebugLog(@"PLPZ");
-		[self.appdel sendPLPZ:sender];
+		[buttons sendPLPZ:sender];
 		self.output.text = @"Play/Pause";
 	}
 	else if (sender == self.menu) {
 	    DebugLog(@"MENU");	
-		[self.appdel sendMENU:sender];
+		[buttons sendMENU:sender];
 		self.output.text = @"Menu";
 	}
 	else if (sender == self.like) {
 	    DebugLog(@"LIKE");	
-		[self.appdel sendLIKE:sender];
+		[buttons sendLIKE:sender];
 		self.output.text = @"Like";
 	}
 	else if (sender == self.okay) {
 	    DebugLog(@"OKAY");	
-		[self.appdel sendOKAY:sender];
+		[buttons sendOKAY:sender];
 		self.output.text = @"Okay";
 	}
 	else if (sender == self.info) {
 	    DebugLog(@"INFO");	
-		[self.appdel sendINFO:sender];
+		[buttons sendINFO:sender];
 		self.output.text = @"Info";
 	}
 	else if (sender == self.volume) {
@@ -231,10 +218,10 @@
 		DebugLog(@"Last volume: %f", self.last_vol);
 		if (self.last_vol > self.volume.value) {
 			DebugLog(@"LESSLOUD");
-			[self.appdel sendHUSH:sender];
+			[buttons sendHUSH:sender];
 		} else {
 			DebugLog(@"MORELOUD");
-			[self.appdel sendLOUD:sender];
+			[buttons sendLOUD:sender];
 		}
 		self.last_vol = self.volume.value;
 		self.output.text = @"Loud: ", self.volume.value;
