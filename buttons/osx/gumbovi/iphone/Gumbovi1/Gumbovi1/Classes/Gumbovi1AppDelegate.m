@@ -391,74 +391,18 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 
 
-// TODO: Client was removed, check what to do here... JIRA needed
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark XMPPClient Delegate Methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* FIXME
- 
-- (void)xmppClientConnecting:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientConnecting");
-	DebugLog(@"==============================================================");
-}
 
-- (void)xmppClientDidConnect:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidConnect");
-	DebugLog(@"==============================================================");
-}
 
-- (void)xmppClientDidNotConnect:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidNotConnect");
-	DebugLog(@"==============================================================");
-}
+///  OLD EVENT HANDLERS HERE, see below for new delegate methods
 
-- (void)xmppClientDidDisconnect:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidDisconnect");
-	DebugLog(@"==============================================================");
-}
 
-- (void)xmppClientDidRegister:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidRegister");
-	DebugLog(@"==============================================================");
-}
-
-- (void)xmppClient:(XMPPClient *)sender didNotRegister:(NSXMLElement *)error
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotRegister: %@", error);
-	DebugLog(@"==============================================================");
-}
-
-- (void)xmppClientDidAuthenticate:(XMPPClient *)sender
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidAuthenticate");
-	DebugLog(@"==============================================================");
-}
-
-- (void)xmppClient:(XMPPClient *)sender didNotAuthenticate:(NSXMLElement *)error
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didNotAuthenticate: %@", error);
-	DebugLog(@"==============================================================");
-}
-
- */
+// FIXME: rebuildRosterUI should consult roster
 
 - (void)rebuildRosterUI
 {
-	DebugLog(@"OLD CODE FIXME / DELETEME LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
+	DebugLog(@"OLD CODE FIXME: LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
 	//[self.xmppLink fetchRoster]; // make sure we're up to date (necessary?)
 
 	
@@ -499,6 +443,9 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	 
 	 */
 }
+
+
+
 
 //FIXME
 // see iphone demo classes for new roster management
@@ -562,26 +509,11 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
  <query xmlns='http://jabber.org/protocol/disco#info'/>
  </iq>    */
 		
-//	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' id='1001' to='%@'><query xmlns='http://jabber.org/protocol/disco#info'/></iq>", [toJid full]];
-
-//		DebugLog(@"myXML: %@",myXML);
-//		NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-//		DebugLog(@"Sending IQ okay via %@ ", self.xmppLink);
-//		DebugLog(@"Markup was: %@",myStanza);
-//		[self.xmppLink sendElement:myStanza];
-	
-	
 	}
 	
-	DebugLog(@"==============================================================");
 }
 
-- (void)xmppClient:(XMPPStream *)sender didReceiveBuddyRequest:(XMPPJID *)jid
-{
-	DebugLog(@"==============================================================");
-	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveBuddyRequest: %@", jid);
-	DebugLog(@"==============================================================");
-}
+
 
 - (void)xmppClient:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
 {
