@@ -140,7 +140,7 @@
 		}
 	
 	} else {
-	  DebugLog(@"SWITCHED: ON");	
+	  DebugLog(@"SWITCHED: OFF");	
 	  [gad.xmppLink disconnect];	
 	}
 }

@@ -125,9 +125,13 @@
 	DebugLog(@"GUMBOVI: %@ ",self);
 	DebugLog(@"ABOUT TO CONNECT!: %@ ",xmppLink);
 
-	[xmppLink setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/hardcoded"]]; // should not be hardcoded FIXME
+	//[xmppLink setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/hardcoded"]]; // should not be hardcoded FIXME
+	[xmppLink setMyJID:[XMPPJID jidWithString:@"alice.notube@gmail.com/hardcoded"]]; // should not be hardcoded FIXME
+
 	[xmppLink setHostPort:5222];	
-	[xmppLink setHostName:@"foaf.tv"];
+	//[xmppLink setHostName:@"foaf.tv"];
+	//[xmppLink setHostName:@"talk.google.com"];
+
 	self.password = @"gargonza"; // FIXME
 	
 	allowSelfSignedCertificates = YES;
