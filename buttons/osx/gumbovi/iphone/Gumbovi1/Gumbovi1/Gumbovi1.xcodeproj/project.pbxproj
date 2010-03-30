@@ -520,7 +520,6 @@
 		B6A5988E11611B5300EC1713 /* XMPPUserMemoryStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPUserMemoryStorage.h; path = xmppframework/XMPPUserMemoryStorage.h; sourceTree = "<group>"; };
 		B6A5988F11611B5300EC1713 /* XMPPUserMemoryStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPUserMemoryStorage.m; path = xmppframework/XMPPUserMemoryStorage.m; sourceTree = "<group>"; };
 		B6A5995B11611B6900EC1713 /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6A5995D11611B6900EC1713 /* Gumbovi1-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info copy.plist"; sourceTree = "<group>"; };
 		B6A67EE111357B8300EA4712 /* QRImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRImagePickerController.h; path = qr/QRImagePickerController.h; sourceTree = SOURCE_ROOT; };
 		B6A67EE211357B8300EA4712 /* QRImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRImagePickerController.m; path = qr/QRImagePickerController.m; sourceTree = SOURCE_ROOT; };
 		B6A67EE311357B8300EA4712 /* qrui_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrui_Prefix.pch; path = qr/qrui_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -688,7 +687,6 @@
 				B6E095C410B1AE4E00F27218 /* Entitlements.plist */,
 				8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */,
 				B6837618114192C800DEF94D /* BonjourUI-Info.plist */,
-				B6A5995D11611B6900EC1713 /* Gumbovi1-Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
