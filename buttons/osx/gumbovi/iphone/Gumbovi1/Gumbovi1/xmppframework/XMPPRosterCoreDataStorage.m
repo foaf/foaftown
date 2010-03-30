@@ -81,7 +81,7 @@
 	
 	NSManagedObjectModel *mom = [self managedObjectModel];
 	
-	NSLog(@"XMPPLIB XMPPRosterCoreDataStorage: about to attempt to create storecoordinator, using managed object model: %@", mom);
+	// DANBRI NSLog(@"XMPPLIB XMPPRosterCoreDataStorage: about to attempt to create storecoordinator, using managed object model: %@", mom);
 
 	persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
 	

@@ -11,7 +11,7 @@
 
 //Toggle DebugLog() Visibility
 #define ShowDebugLogs 1
-#define VerboseDebugLogs 0
+#define VerboseDebugLogs 1
 
 //DebugLog() Visibility
 #if ShowDebugLogs
