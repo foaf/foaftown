@@ -11,12 +11,17 @@
 #import "XMPPJID.h"
 #import "DecoderController.h"
 #import "ButtonDeviceList.h"
+#import "XMPPRoster.h"
+#import "XMPPRosterCoreDataStorage.h"
+#import "XMPPReconnect.h"
+#import "XMPPCapabilities.h"
+#import "XMPPCapabilitiesCoreDataStorage.h"
 
 //@class DecoderController;
-@class XMPPClient;
+@class XMPPStream;
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
-	XMPPClient *xmppLink;
+	XMPPStream *xmppLink;
     UIWindow *window;
     UITabBarController *tabBarController;
     XMPPJID *toJid;
@@ -28,13 +33,28 @@
 	UINavigationController *navigationController;
 	NSDictionary *data;
 	UITextField* qr_results;//libby
-
-	NSString* htmlInfo;
 	
+	NSString *password;
+	NSString *htmlInfo;
+	// use link XMPPStream *xmppStream;
+	XMPPRoster *xmppRoster;
+	XMPPRosterCoreDataStorage *xmppRosterStorage;
+	
+	XMPPReconnect *xmppReconnect;
+	XMPPCapabilities *xmppCapabilities;
+	XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
+	
+	
+	BOOL allowSelfSignedCertificates;
+	BOOL allowSSLHostNameMismatch;
+	BOOL isOpen;
+	
+
 }
+
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-@property (nonatomic, retain) IBOutlet XMPPClient *xmppLink; 
+@property (nonatomic, retain) IBOutlet XMPPStream *xmppLink; 
 @property (nonatomic, retain) IBOutlet XMPPJID *toJid; 
 @property (nonatomic, retain) IBOutlet XMPPJID *aJid; 
 @property (nonatomic, retain) IBOutlet UITextField *qr_results; 
@@ -43,7 +63,14 @@
 @property (nonatomic, retain) NSDictionary *data;
 @property (nonatomic, retain) UIWindow *decoder_window;
 @property (nonatomic, retain) NSString *htmlInfo;
+@property (nonatomic, retain) NSString *password;
 
+// XMPP
+@property (nonatomic, readonly) XMPPRoster *xmppRoster;
+@property (nonatomic, readonly) XMPPRosterCoreDataStorage *xmppRosterStorage;
+@property (nonatomic, readonly) XMPPReconnect *xmppReconnect;
+@property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
+@property (nonatomic, readonly) XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
 
 - (IBAction) sendMENU:(id) button;
 - (IBAction) sendLIKE:(id) button;

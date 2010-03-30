@@ -14,9 +14,13 @@
 // * before release, check executable properties and turn off EXC_BAD_ACCESS handling 
 //    ie. http://www.cocoadev.com/index.pl?NSZombieEnabled
 //
+//
+// We use the XMPPFramework for Jabber networking, migrating to v2.0
+// sample code: http://code.google.com/p/xmppframework/source/browse/trunk/iPhoneXMPP/Classes/iPhoneXMPPAppDelegate.m
+// API changes: http://groups.google.com/group/xmppframework/browse_thread/thread/c65faffac3627169
 
 /* for console Debugging settings, see Gumbovi1_Prefix for definitions. 
- Also xmppstream class defines DEBUG_SEND DEBUG_RECV...
+ Also XMPPStream class defines DEBUG_SEND DEBUG_RECV...
  */
 
 #import "XMPP.h"
@@ -34,11 +38,13 @@
 #import "RootViewController.h"								// from lists drilldown demo (not used)
 #import "SLRootViewController.h" 
 #import "ButtonDeviceList.h"
+#import "XMPPRosterCoreDataStorage.h"
+#import "XMPPRoster.h"
 
 @implementation Gumbovi1AppDelegate
+
 @synthesize decoder_window;
 @synthesize qr_results;
-@synthesize xmppLink;
 @synthesize window;
 @synthesize tabBarController;
 @synthesize toJid;
@@ -47,6 +53,14 @@
 @synthesize navigationController; // from lists
 @synthesize data;				  // end lists stuff
 @synthesize buttonDevices;
+
+@synthesize xmppLink;
+@synthesize xmppRoster;
+@synthesize xmppRosterStorage;
+@synthesize password;
+@synthesize xmppReconnect;
+@synthesize xmppCapabilities;
+@synthesize xmppCapabilitiesStorage;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     VerboseLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
@@ -74,26 +88,41 @@
     DebugLog(@"initXMPP *****");
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	VerboseLog(@"FVC is", fvc);
-    xmppLink = [[XMPPClient alloc] init];
+    xmppLink = [[XMPPStream alloc] init];
+	xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+//    xmppRoster = [[XMPPRoster alloc] init];
+
+	xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
+	// FIXME trouble - 'Cannot create an NSPersistentStoreCoordinator with a nil model' after a while
+	
 	[xmppLink addDelegate:self];
-	[xmppLink setPort:5222];	
+	[xmppRoster addDelegate:self];
+	[xmppRoster setAutoRoster:YES];
+
+	allowSelfSignedCertificates = YES;
+	allowSSLHostNameMismatch = YES;
+	
+	[xmppLink setHostPort:5222];	
+	
 	DebugLog(@"EXPECT1 NOTNULL xmlLink: %@",xmppLink);
 	DebugLog(@"Userid: %@", fvc.userid.text);
 	DebugLog(@"Passwd: %@", fvc.password.text);
-    //  XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
+    // XMPPJID aJID = [XMPPJID jidWithString:fvc.userid.text];
 	
 	if(( [fvc.userid.text rangeOfString:@"gmail"].location == NSNotFound) && ( [fvc.userid.text rangeOfString:@"googlemail"].location == NSNotFound)){
 		DebugLog(@"gmail not found in user JID %@", fvc.userid.text);
 		DebugLog(@"We should parse out the host name...?");
+		[xmppLink setHostName:@"foaf.tv"] ; //FIXME hardcoding is wrong and dumb
 	} else {
 		DebugLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
-		[xmppLink setDomain:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
+		[xmppLink setHostName:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
 	
 	DebugLog(@"EXPECT2 NOTNULL xmlLink: %@",xmppLink);
-	[xmppLink setMyJID:[XMPPJID jidWithString:@"jana.notube@googlemail.com/hardcoded"]]; // should not be hardcoded
-	[xmppLink setPassword:@"gargonza"];
-
+	
+	[xmppLink setMyJID:[XMPPJID jidWithString: @"buttons@foaf.tv/hardcoded"]]; // should not be hardcoded
+	self.password = @"gargonza"; // workie? 
+	
     if (fvc.userid.text != NULL) {
 		DebugLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
 	//	NSString *myjs =  [NSString stringWithFormat:@"", fvc.userid.text, @"/gmb1"] ; // todo: random /resource ? 
@@ -101,9 +130,18 @@
 	}
     if (fvc.password.text != NULL) {
 		DebugLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
-		[xmppLink setPassword:fvc.password.text];
+		self.password = fvc.password.text;// testing
 	}
-	DebugLog(@"XMPP in initXMPP DEBUG: u: %@ p: %@",xmppLink.myJID, xmppLink.password);
+	
+	DebugLog(@"GUMBOVI: %@ ",self);
+
+	DebugLog(@"ABOUT TO CONNECT!: %@ ",xmppLink);
+
+	NSError *error = nil;
+	if (![xmppLink connect:&error]) {
+		NSLog (@"ERROR CONNECTING: %@", error);
+	}
+	
 
 // TEMPORARY DEVELOPMENT CODE, with ButtonDeviceList and local prefs, should not be needed.
 // Here we set an initial default target XMPP JID, where our messages are sent.
@@ -111,20 +149,20 @@
 	self.toJid = [XMPPJID jidWithString:@"zetland.mythbot@googlemail.com/Basicbot"]; // buddy w/ media services
 #endif
 #ifdef DANBRI_CFG
-	self.toJid = [XMPPJID jidWithString:@"buttons@foaf.tv/gumboviListener"]; // buddy w/ media services
+	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/hardcoded"]; // buddy w/ media services
 #endif
 	
-    // NSMutableArray *roster = fvc.roster_list;
-
     VerboseLog(@"initxmpp: roster list: %@",roster);	
 	DebugLog(@"EXPECT3 NOTNULL xmlLink: %@",xmppLink);
 	
+	//FIXME
+	/*
 	[xmppLink setAutoLogin:YES];
 	[xmppLink setAllowsPlaintextAuth:NO];
 	[xmppLink setAutoPresence:YES];
-	[xmppLink setAutoRoster:YES];
-	[xmppLink connect];
-	
+//done	[xmppLink setAutoRoster:YES];
+//done	[xmppLink connect];
+     */	
 }
 
 //[XMPPJID jidWithString:
@@ -307,6 +345,8 @@
 #pragma mark XMPPClient Delegate Methods:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/* FIXME
+ 
 - (void)xmppClientConnecting:(XMPPClient *)sender
 {
 	DebugLog(@"==============================================================");
@@ -363,6 +403,7 @@
 	DebugLog(@"==============================================================");
 }
 
+ */
 
 - (void)rebuildRosterUI
 {
@@ -404,11 +445,16 @@
 	}
 }
 
-- (void)xmppClientDidUpdateRoster:(XMPPClient *)sender
+//FIXME
+// see iphone demo classes for new roster management
+
+- (void)xmppClientDidUpdateRoster:(XMPPStream *)sender
 {
 	DebugLog(@"===========================================================");
 	DebugLog(@"iPhoneXMPPAppDelegate: xmppClientDidUpdateRoster");
 	DebugLog(@"UpdateRoster msg is: %@",sender);
+	
+	
 	NSArray *buddies = [sender sortedAvailableUsersByName];
 
 	[self rebuildRosterUI];
@@ -475,14 +521,14 @@
 	DebugLog(@"==============================================================");
 }
 
-- (void)xmppClient:(XMPPClient *)sender didReceiveBuddyRequest:(XMPPJID *)jid
+- (void)xmppClient:(XMPPStream *)sender didReceiveBuddyRequest:(XMPPJID *)jid
 {
 	DebugLog(@"==============================================================");
 	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveBuddyRequest: %@", jid);
 	DebugLog(@"==============================================================");
 }
 
-- (void)xmppClient:(XMPPClient *)sender didReceiveIQ:(XMPPIQ *)iq
+- (void)xmppClient:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
 {
 	VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
@@ -527,7 +573,7 @@
 
 }
 
-- (void)xmppClient:(XMPPClient *)sender didReceiveMessage:(XMPPMessage *)message
+- (void)xmppClient:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
 	DebugLog(@"==============================================================");
 	DebugLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveMessage: %@", message);

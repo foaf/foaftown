@@ -9,6 +9,7 @@
 #import "WebViewController.h"
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
+#import "DDXML.h"
 
 @implementation WebViewController
 
@@ -41,6 +42,8 @@
 	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail]; // TODO: define protocol errors
 	// send a NOWP IQ via Buttons (TODO, move logic to a buttons class. JIRA needed).
 	int r = arc4random() % 10000000 ; // TODO: careful handling of IQ identifiers
+	//FIXEM should use rs here instead
+	// NSString *rs = [gad.xmppLink generateUUID];
 	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
 	[gad sendIQ:myStanza];			

@@ -9,7 +9,7 @@
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "XMPP.h"
-#import "XMPPClient.h"
+#import "XMPPStream.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 @implementation FirstViewController
@@ -128,12 +128,17 @@
 	  }
       if (self.password.text != NULL) {
 		DebugLog(@"Pass wasn't null so setting userid to be it: %@", self.password.text);	
-		[gad.xmppLink setPassword:self.password.text];
+		gad.password = self.password.text;
 	  }
 	 // [gad initXMPP];	
      // causes  -[UIViewController userid]: unrecognized selector sent to instance 0x3d41dc0
 		[gad.xmppLink disconnect]; // Have you tried turning it off and on again? :)
-	  [gad.xmppLink connect];
+	  
+		NSError *error = nil;
+		if (![gad.xmppLink connect:&error]) {
+			NSLog (@"ERROR CONNECTING: %@", error);
+		}
+	
 	} else {
 	  DebugLog(@"SWITCHED: ON");	
 	  [gad.xmppLink disconnect];	
