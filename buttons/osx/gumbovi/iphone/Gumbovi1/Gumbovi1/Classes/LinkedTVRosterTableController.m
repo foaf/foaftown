@@ -33,10 +33,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+	Gumbovi1AppDelegate * buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
     NSMutableArray *roster = fvc.roster_list;
 	VerboseLog(@"LinkedTVRosterTableController view loaded. roster is: %@",roster);
+	
 //	[fvc.roster_list addObject:jid];
 //	DebugLog(@"gad.toJID is now: %@",self.toJid);
 
@@ -46,20 +47,28 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
-	Gumbovi1AppDelegate *gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    DebugLog(@"LinkedTVRosterTableController viewWillAppear: about to call buttonReport. If we have a list: %@", gad.buttonDevices);
+    DebugLog(@"LinkedTVRosterTableController viewWillAppear: about to (not!) call buttonReport. If we have a list: %@", buttons.buttonDevices);
 
-	[gad.buttonDevices buttonReport];
+	//FIXME [gad.buttonDevices buttonReport];
 
-	DebugLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
-
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+//	DebugLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
+	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@", buttons.xmppRoster);
+	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster storage? %@", buttons.xmppRosterStorage);
+	
+	NSManagedObjectModel *who = buttons.xmppRosterStorage.managedObjectModel;
+	for (NSEntityDescription *entity in who) {
+		// entity is each instance of NSEntityDescription in aModel in turn
+		DebugLog(@"ROSTER ENTITY: %@",entity);
+	}
+	
+	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
     NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"viewWillAppear: roster is %@",roster);
 	DebugLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
-    [roster_view reloadData]; // refresh roster when anyone will look
-	[roster_view flashScrollIndicators]; //to show that it's scrollable
+    [roster_view reloadData];				// refresh roster when anyone will look
+	[roster_view flashScrollIndicators];	//to show that it's scrollable
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -27,29 +27,23 @@
     XMPPJID *toJid;
     XMPPJID *aJid;
 	ButtonDeviceList *buttonDevices;
-	DecoderController*  decoderController;
-	UIWindow* decoder_window;
-	NSString* qr_buddy;
+	DecoderController *decoderController;
+	UIWindow *decoder_window;
+	NSString *qr_buddy;
 	UINavigationController *navigationController;
 	NSDictionary *data;
-	UITextField* qr_results;//libby
-	
+	UITextField *qr_results;//libby
 	NSString *password;
 	NSString *htmlInfo;
-	// use link XMPPStream *xmppStream;
 	XMPPRoster *xmppRoster;
 	XMPPRosterCoreDataStorage *xmppRosterStorage;
-	
 	XMPPReconnect *xmppReconnect;
 	XMPPCapabilities *xmppCapabilities;
 	XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
-	
-	
 	BOOL allowSelfSignedCertificates;
 	BOOL allowSSLHostNameMismatch;
 	BOOL isOpen;
 	
-
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -64,9 +58,7 @@
 @property (nonatomic, retain) UIWindow *decoder_window;
 @property (nonatomic, retain) NSString *htmlInfo;
 @property (nonatomic, retain) NSString *password;
-
-// XMPP
-@property (nonatomic, readonly) XMPPRoster *xmppRoster;
+@property (nonatomic, readonly) XMPPRoster *xmppRoster;								// XMPP
 @property (nonatomic, readonly) XMPPRosterCoreDataStorage *xmppRosterStorage;
 @property (nonatomic, readonly) XMPPReconnect *xmppReconnect;
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
@@ -89,13 +81,9 @@
 //	- (IBAction) setTargetJID:(XMPPJID) jid;
 
 - (IBAction) startQRScan:(id) sender;
-
-
 - (void) newJID:(NSString *) jid;
 - (void)connectIfOffline;
 - (void)setTargetJidWithString:(NSString *)someJid;
 - (void)sendIQ:(NSXMLElement *)myStanza;
-
-
 
 @end

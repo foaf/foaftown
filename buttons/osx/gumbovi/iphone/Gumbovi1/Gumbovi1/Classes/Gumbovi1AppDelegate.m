@@ -400,6 +400,9 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 // FIXME: rebuildRosterUI should consult roster
 
+// XMPPFramework 2 monitors roster/presence/capabilities and keeps these in local db
+// so we won't need most of this. Need QR handling though. Hmm...
+
 - (void)rebuildRosterUI
 {
 	DebugLog(@"OLD CODE FIXME: LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
