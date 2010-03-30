@@ -497,6 +497,7 @@
 			B6497CAC11629DBF004272A3 /* PBXTextBookmark */ = B6497CAC11629DBF004272A3 /* PBXTextBookmark */;
 			B6497CAF11629DC8004272A3 /* PBXTextBookmark */ = B6497CAF11629DC8004272A3 /* PBXTextBookmark */;
 			B6497CB011629DC8004272A3 /* PBXTextBookmark */ = B6497CB011629DC8004272A3 /* PBXTextBookmark */;
+			B6497CB311629DF0004272A3 /* PBXTextBookmark */ = B6497CB311629DF0004272A3 /* PBXTextBookmark */;
 			B64E9243113D484E002137A2 = B64E9243113D484E002137A2 /* PBXTextBookmark */;
 			B651DE311161EDCF009E1C55 = B651DE311161EDCF009E1C55 /* PBXTextBookmark */;
 			B651DE561161EFC0009E1C55 = B651DE561161EFC0009E1C55 /* PBXTextBookmark */;
@@ -3833,6 +3834,16 @@
 		rType = 0;
 		vrLen = 1476;
 		vrLoc = 0;
+	};
+	B6497CB311629DF0004272A3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */;
+		name = "LinkedTVRosterTableController.m: 59";
+		rLen = 0;
+		rLoc = 2052;
+		rType = 0;
+		vrLen = 1600;
+		vrLoc = 1293;
 	};
 	B64B4C7D115A5492008C5105 /* _CFStringCreateWithFormatAndArgumentsAux */ = {
 		isa = PBXSymbolicBreakpoint;
