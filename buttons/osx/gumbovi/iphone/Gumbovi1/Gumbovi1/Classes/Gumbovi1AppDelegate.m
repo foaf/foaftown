@@ -40,6 +40,8 @@
 #import "ButtonDeviceList.h"
 #import "XMPPRosterCoreDataStorage.h"
 #import "XMPPRoster.h"
+#import "XMPPStream.h"
+#import <CFNetwork/CFNetwork.h>
 
 @implementation Gumbovi1AppDelegate
 
@@ -53,7 +55,6 @@
 @synthesize navigationController; // from lists
 @synthesize data;				  // end lists stuff
 @synthesize buttonDevices;
-
 @synthesize xmppLink;
 @synthesize xmppRoster;
 @synthesize xmppRosterStorage;
@@ -81,28 +82,22 @@
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
-	// DebugLog(@"appDidFinishLaunching ... we set up our data dict: %@", self.data);
+
 }
 
 - (void)initXMPP  {
-    DebugLog(@"initXMPP *****");
+    DebugLog(@"XMPP: initXMPP starting.");
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	VerboseLog(@"FVC is", fvc);
     xmppLink = [[XMPPStream alloc] init];
 	xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
-//    xmppRoster = [[XMPPRoster alloc] init];
-
-	xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
-	// FIXME trouble - 'Cannot create an NSPersistentStoreCoordinator with a nil model' after a while
-	
+	xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];	
 	[xmppLink addDelegate:self];
 	[xmppRoster addDelegate:self];
 	[xmppRoster setAutoRoster:YES];
-
-	allowSelfSignedCertificates = YES;
-	allowSSLHostNameMismatch = YES;
 	
-	[xmppLink setHostPort:5222];	
+	
+	// HUGE PILE OF MESS TO GET JIDS SETUP
 	
 	DebugLog(@"EXPECT1 NOTNULL xmlLink: %@",xmppLink);
 	DebugLog(@"Userid: %@", fvc.userid.text);
@@ -117,30 +112,38 @@
 		DebugLog(@"Hostname matched gmail in JID so setting domain to talk.google.com");
 		[xmppLink setHostName:@"talk.google.com"]; // should do this (i) inspect domain name in JID, (ii) dns voodoo
 	}
-	
-	DebugLog(@"EXPECT2 NOTNULL xmlLink: %@",xmppLink);
-	
-	[xmppLink setMyJID:[XMPPJID jidWithString: @"buttons@foaf.tv/hardcoded"]]; // should not be hardcoded
-	self.password = @"gargonza"; // workie? 
-	
     if (fvc.userid.text != NULL) {
 		DebugLog(@"GAD: User wasn't null so setting userid to be it: %@",  fvc.userid.text);	
-	//	NSString *myjs =  [NSString stringWithFormat:@"", fvc.userid.text, @"/gmb1"] ; // todo: random /resource ? 
 		[xmppLink setMyJID:[XMPPJID jidWithString:fvc.userid.text]];
 	}
     if (fvc.password.text != NULL) {
 		DebugLog(@"GAD Pass wasn't null so setting userid to be it: %@", fvc.password.text);	
 		self.password = fvc.password.text;// testing
 	}
+	// END HUGE PILE OF MESS. FIXME!
 	
 	DebugLog(@"GUMBOVI: %@ ",self);
-
 	DebugLog(@"ABOUT TO CONNECT!: %@ ",xmppLink);
 
-	NSError *error = nil;
+	[xmppLink setMyJID:[XMPPJID jidWithString:@"buttons@foaf.tv/hardcoded"]]; // should not be hardcoded FIXME
+	[xmppLink setHostPort:5222];	
+	[xmppLink setHostName:@"foaf.tv"];
+	self.password = @"gargonza"; // FIXME
+	
+	allowSelfSignedCertificates = YES;
+	allowSSLHostNameMismatch = YES; 
+	
+	
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	[errorDetail setValue:@"Failed to init xmpp" forKey:NSLocalizedDescriptionKey];
+	NSError *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+	// NSError *error = nil;
+
 	if (![xmppLink connect:&error]) {
+		
 		NSLog (@"ERROR CONNECTING: %@", error);
 	}
+	
 	
 
 // TEMPORARY DEVELOPMENT CODE, with ButtonDeviceList and local prefs, should not be needed.
@@ -152,8 +155,16 @@
 	self.toJid = [XMPPJID jidWithString:@"bob.notube@gmail.com/hardcoded"]; // buddy w/ media services
 #endif
 	
-    VerboseLog(@"initxmpp: roster list: %@",roster);	
 	DebugLog(@"EXPECT3 NOTNULL xmlLink: %@",xmppLink);
+
+	if (! self.xmppLink.isConnected ) {
+		DebugLog(@"INIT XMPP CLient NOT connected");		
+	} else {
+		DebugLog(@"INIT XMPP CLient IS connected");		
+	}
+
+	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
+	[[self xmppLink] sendElement:presence];
 	
 	//FIXME
 	/*
@@ -186,6 +197,32 @@
 	NSLog(@"BUTTONS JID TARGET: %@",someJid);
 	self.toJid = [XMPPJID jidWithString:someJid];
 	// TODO: Error correction here. Strip xmpp: prefix, etc? print warnings?
+}
+
+
+/* NSString *rs = [gad.xmppLink generateUUID]; // FIXME minor XMPP library dependency introduced here
+NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], rs];
+DebugLog(@"WebView Sending IQ XML: %@", myXML); 
+NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
+[gad sendIQ:myStanza];	
+*/
+
+//[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+
+- (void)sendMessage:(NSString *)messageStr {
+    if([messageStr length] > 0) {
+		NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+		[body setStringValue:messageStr]; // FIXME: test this escapes ok.
+		NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
+		[message addAttributeWithName:@"type" stringValue:@"chat"];
+		[message addAttributeWithName:@"to" stringValue:[self.toJid full] ];
+		[message addChild:body]; 
+		DebugLog(@"BUTTONS ABOUT TO SEND MESSAGE: %@", message);
+		[xmppLink sendElement:message];
+		DebugLog(@"SENT!");
+	 } else {
+		 DebugLog(@"sendMessage was passed empty message; ignoring quietly.");
+	 }	
 }
 
 - (void)sendIQ:(NSXMLElement *)myStanza {
@@ -239,60 +276,70 @@
 	NSString *msg = @"PLUS event.";
 	DebugLog(@"EXPECT5 NOTNULL xmlLink: %@",xmppLink);
 
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendLEFT:(NSObject *)button
 {
 	DebugLog(@"SENDING LEFT %@", button);
 	NSString *msg = @"LEFT event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendRIGH:(NSObject *)button
 {
 	DebugLog(@"SENDING RIGH %@", button);
 	NSString *msg = @"RIGH event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendMINU:(NSObject *)button
 {
 	DebugLog(@"SENDING MINU %@", button);
 	NSString *msg = @"MINU event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendPLPZ:(NSObject *)button
 {
 	DebugLog(@"SENDING PLPZ %@ to %@", button, self.toJid);
 	NSString *msg = @"PLPZ event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 	VerboseLog(@"Sent msg %@", msg);
 	VerboseLog(@"To jid %@", self.toJid);
 	VerboseLog(@" XMPP CLient: %@", self.xmppLink );
-	VerboseLog(@" XMPP CLient connected?: %@", self.xmppLink.isConnected );
+	VerboseLog(@" XMPP CLient connected?: ");
+    NSString *c;
+	if (xmppLink.isConnected ) { 
+		c = @"Y";
+	} else { 
+		c = @"N";
+	}
 
+	
+	NSLog( c );
+	NSLog(@"____end PLPZ tests.");
+	
 }
 
 - (void)sendMENU:(NSObject *)button
 {
 	DebugLog(@"SENDING MENU %@", button);
 	NSString *msg = @"MENU event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendLIKE:(NSObject *)button
 {
 	DebugLog(@"SENDING LIKE %@", button);
 	NSString *msg = @"LIKE event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 }
 
 - (void)sendOKAY:(NSObject *)button
 {
 	NSString *msg = @"OKAY event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg];
 
 	VerboseLog(@"SENDING IQ OKAY %@", button);
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
@@ -318,24 +365,24 @@
 {
 	DebugLog(@"SENDING INFO %@", button);
 	NSString *msg = @"INFO event.";
-	[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
+	[self sendMessage:msg] ;
 }
 
-- (void)sendLOUD:(NSObject *)myS;
+- (void)sendLOUD:(NSObject *)m;
 {
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"LOUD", fvc.volume.value];
 	DebugLog(@"SENDING LOUD %@", v  );
-	[ self.xmppLink sendMessage:v toJID:self.toJid ] ;
+	[self sendMessage:v] ;
 }
 
-- (void)sendHUSH:(NSObject *)myS;
+- (void)sendHUSH:(NSObject *)m;
 {
 	//FirstViewController * fvc = (FirstViewController *) tabBarController.selectedViewController;
     FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSString *v = [NSString stringWithFormat:@"%@ %.1f", @"HUSH", fvc.volume.value];
 	DebugLog(@"SENDING HUSH %@", v  );
-	[ self.xmppLink sendMessage:v toJID:self.toJid ] ;
+	[self sendMessage:v] ;
 }
 
 
@@ -407,8 +454,11 @@
 
 - (void)rebuildRosterUI
 {
-	DebugLog(@"REBUILDING LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
-	[self.xmppLink fetchRoster]; // make sure we're up to date (necessary?)
+	DebugLog(@"OLD CODE FIXME / DELETEME LOCAL ROSTER UI. xmppLink is %@", self.xmppLink);
+	//[self.xmppLink fetchRoster]; // make sure we're up to date (necessary?)
+
+	
+	/*
 	NSArray *buddies = [self.xmppLink sortedAvailableUsersByName];
 	DebugLog(@"1. current online roster: %@", buddies);
 
@@ -441,8 +491,9 @@
 				DebugLog(@"main: Caught %@: %@", [exception name],  [exception reason]); 
 			} 
 		}
-	
 	}
+	 
+	 */
 }
 
 //FIXME
@@ -656,6 +707,161 @@
 		AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
 		AudioServicesPlaySystemSound(soundID);
 }
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Custom
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// It's easy to create XML elments to send and to read received XML elements.
+// You have the entire NSXMLElement and NSXMLNode API's.
+// 
+// In addition to this, the NSXMLElementAdditions class provides some very handy methods for working with XMPP.
+// 
+// On the iPhone, Apple chose not to include the full NSXML suite.
+// No problem - we use the KissXML library as a drop in replacement.
+// 
+// For more information on working with XML elements, see the Wiki article:
+// http://code.google.com/p/xmppframework/wiki/WorkingWithElements
+
+- (void)goOnline
+{
+	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
+	
+	[[self xmppLink] sendElement:presence];
+}
+
+- (void)goOffline
+{
+	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
+	[presence addAttributeWithName:@"type" stringValue:@"unavailable"];
+	
+	[[self xmppLink] sendElement:presence];
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark XMPPStream Delegate
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)xmppStream:(XMPPStream *)sender willSecureWithSettings:(NSMutableDictionary *)settings
+{
+	NSLog(@"---------- xmppStream:willSecureWithSettings: ----------");
+	
+	if (allowSelfSignedCertificates)
+	{
+		[settings setObject:[NSNumber numberWithBool:YES] forKey:(NSString *)kCFStreamSSLAllowsAnyRoot];
+	}
+	
+	if (allowSSLHostNameMismatch)
+	{
+		[settings setObject:[NSNull null] forKey:(NSString *)kCFStreamSSLPeerName];
+	}
+	else
+	{
+		// Google does things incorrectly (does not conform to RFC).
+		// Because so many people ask questions about this (assume xmpp framework is broken),
+		// I've explicitly added code that shows how other xmpp clients "do the right thing"
+		// when connecting to a google server (gmail, or google apps for domains).
+		
+		NSString *expectedCertName = nil;
+		
+		NSString *serverDomain = xmppLink.hostName;
+		NSString *virtualDomain = [xmppLink.myJID domain];
+		
+		if ([serverDomain isEqualToString:@"talk.google.com"])
+		{
+			if ([virtualDomain isEqualToString:@"gmail.com"])
+			{
+				expectedCertName = virtualDomain;
+			}
+			else
+			{
+				expectedCertName = serverDomain;
+			}
+		}
+		else
+		{
+			expectedCertName = serverDomain;
+		}
+		
+		[settings setObject:expectedCertName forKey:(NSString *)kCFStreamSSLPeerName];
+	}
+}
+
+- (void)xmppStreamDidSecure:(XMPPStream *)sender
+{
+	NSLog(@"---------- xmppStreamDidSecure: ----------");
+}
+
+- (void)xmppStreamDidOpen:(XMPPStream *)sender
+{
+	NSLog(@"---------- xmppStreamDidOpen: ----------");
+	
+	isOpen = YES;
+	
+	NSError *error = nil;
+	
+	if (![[self xmppLink] authenticateWithPassword:password error:&error])
+	{
+		NSLog(@"Error authenticating: %@", error);
+	}
+}
+
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
+{
+	NSLog(@"---------- xmppStreamDidAuthenticate: ----------");
+	
+	[self goOnline];
+}
+
+- (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(NSXMLElement *)error
+{
+	NSLog(@"---------- xmppStream:didNotAuthenticate: ----------");
+}
+
+- (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
+{
+	NSLog(@"---------- xmppStream:didReceiveIQ: ----------");
+	
+	return NO;
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
+{
+	NSLog(@"---------- xmppStream:didReceiveMessage: ----------");
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceivePresence:(XMPPPresence *)presence
+{
+	NSLog(@"---------- xmppStream:didReceivePresence: ----------");
+}
+
+- (void)xmppStream:(XMPPStream *)sender didReceiveError:(id)error
+{
+	NSLog(@"---------- xmppStream:didReceiveError: ----------");
+}
+
+- (void)xmppStreamDidClose:(XMPPStream *)sender
+{
+	NSLog(@"---------- xmppStreamDidClose: ----------");
+	
+	if (!isOpen)
+	{
+		NSLog(@"Unable to connect to server. Check xmppStream.hostName");
+	}
+}
+
+
+
+
+
+
+
 
 @end
 

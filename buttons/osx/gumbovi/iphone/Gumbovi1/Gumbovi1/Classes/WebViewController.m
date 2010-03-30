@@ -10,6 +10,7 @@
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "DDXML.h"
+#import "XMPPStream.h"
 
 @implementation WebViewController
 
@@ -23,7 +24,8 @@
 		return;
 	}
     VerboseLog(@"Webview viewDidLoad %@:",webview);
-	VerboseLog(@"DID LOAD: viewDidload, gad is: %@",gad);
+	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	VerboseLog(@"DID LOAD: viewDidload, buttons app is: %@",buttons);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,12 +43,12 @@
 	[errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
 	NSError    *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail]; // TODO: define protocol errors
 	// send a NOWP IQ via Buttons (TODO, move logic to a buttons class. JIRA needed).
-	int r = arc4random() % 10000000 ; // TODO: careful handling of IQ identifiers
-	//FIXEM should use rs here instead
-	// NSString *rs = [gad.xmppLink generateUUID];
-	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], r];
+	NSString *rs = [gad.xmppLink generateUUID]; // FIXME minor XMPP library dependency introduced here
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], rs];
+	DebugLog(@"WebView Sending IQ XML: %@", myXML); 
 	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
 	[gad sendIQ:myStanza];			
+
 }
 
 
