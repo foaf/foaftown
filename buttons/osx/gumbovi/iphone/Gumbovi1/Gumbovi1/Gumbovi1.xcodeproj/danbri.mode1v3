@@ -342,7 +342,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B6497CB311629DF0004272A3</string>
+										<string>B619E5851162A4E200B00346</string>
 										<key>history</key>
 										<array>
 											<string>B6E095F010B1C1A300F27218</string>
@@ -469,8 +469,6 @@
 											<string>B6A599D91161203800EC1713</string>
 											<string>B6A599DA1161203800EC1713</string>
 											<string>B6A59A2A116138F400EC1713</string>
-											<string>B6A59A52116146F700EC1713</string>
-											<string>B6A59A54116146F700EC1713</string>
 											<string>B6A59A8311614D3900EC1713</string>
 											<string>B6A59A9F1161501400EC1713</string>
 											<string>B651DE311161EDCF009E1C55</string>
@@ -514,7 +512,7 @@
 											<string>B6497C7D11629AF3004272A3</string>
 											<string>B6497C7E11629AF3004272A3</string>
 											<string>B6497C7F11629AF3004272A3</string>
-											<string>B6497C9B11629BD4004272A3</string>
+											<string>B6497CB71162A37B004272A3</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -526,14 +524,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {968, 611}}</string>
+								<string>{{0, 0}, {968, 606}}</string>
 								<key>RubberWindowFrame</key>
 								<string>173 51 1267 827 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>611pt</string>
+							<string>606pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -546,14 +544,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 616}, {968, 170}}</string>
+								<string>{{0, 611}, {968, 175}}</string>
 								<key>RubberWindowFrame</key>
 								<string>173 51 1267 827 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>170pt</string>
+							<string>175pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -572,9 +570,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>B6497B30116239FA004272A3</string>
+				<string>B619E5861162A4E200B00346</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>B6497B31116239FA004272A3</string>
+				<string>B619E5871162A4E200B00346</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -710,11 +708,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>B67CC44310A57B0600511209</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -739,7 +733,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Gumbovi1AppDelegate.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -756,8 +750,6 @@
 							<string>425pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -797,7 +789,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>B67CC37E10A5759F00511209</string>
-				<string>B6497AF711623594004272A3</string>
+				<string>B619E5881162A4E200B00346</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -1089,7 +1081,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
