@@ -89,7 +89,6 @@
 	// NSError *err = nil;
 	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     DebugLog(@"array is: %@" , results);	
-	
 	for (NSEntityDescription *entity in results) {
 		DebugLog(@"ROSTER ENTITY: %@",entity);
 		//NSString *xp = [entity presenceStr];
@@ -98,17 +97,13 @@
 		NSString *aJid = [entity jidStr];
 		XMPPPresence *xp = [entity presence];
 		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
-		NSLog(@"XML EXTRACTED JID: %@",fullJid);		
-		//DebugLog(@"ROSTER XML PRESENCE: %@", xp);
+		NSLog(@"EXTRACTED JID: %@",fullJid);		
 		DebugLog(@"We got a JID in our roster: %@",aJid);	
 		DebugLog(@"Roster was: %@",roster);
 		[roster addObject:fullJid];
 		DebugLog(@"Roster now: %@",roster);
 	
 	} 
-	
-	DebugLog(@"++++++++++++++++++++++++++++++");
-	
 	
 	// Core Data XMPPUserCoreDataStorage
 	NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
@@ -117,20 +112,10 @@
 	[fetchRequest1 setIncludesPendingChanges:YES];
 	[fetchRequest1 setFetchLimit:100];
 	NSArray *results1 = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest1 error:nil];
-    DebugLog(@"user array is: %@" , results1);	
-	DebugLog(@"==============================================");
-	
 	for (NSEntityDescription *entity1 in results1) {
-		DebugLog(@"ROSTER USER: %@",entity1);
-		DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
+		// DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
 	
 	} 
-	
-	
-	
-	
-	
-	
 	
 	// Core Data XMPPCapabilitiesCoreDataStorage
 
@@ -154,11 +139,7 @@
 		}
 	}
 	
-	
-	
-	DebugLog(@"viewWillAppear: roster is %@",roster);
-	DebugLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
-    [roster_view reloadData];				// refresh roster when anyone will look
+	[roster_view reloadData];				// refresh roster when anyone will look
 	[roster_view flashScrollIndicators];	//to show that it's scrollable
 }
 
