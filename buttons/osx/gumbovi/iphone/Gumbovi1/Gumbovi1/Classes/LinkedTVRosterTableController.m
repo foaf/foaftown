@@ -49,7 +49,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
+
 	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
+	
+	NSMutableArray *roster = fvc.roster_list;
 
     //DebugLog(@"LinkedTVRosterTableController viewWillAppear: %@", buttons.buttonDevices);
 	//FIXME [buttons.buttonDevices buttonReport];
@@ -86,24 +90,36 @@
 	[fetchRequest setFetchLimit:100];
 	
 	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    DebugLog(@"Got array of contacts: %@", results);	
+    DebugLog(@"Got array of contacts."); // , results);	
+    DebugLog(@"array is: %@" , results);	
+
+	DebugLog(@"++++++++++++++++++++++++++++++");
 	for (NSEntityDescription *entity in results) {
 		// entity is each instance of NSEntityDescription
-		 DebugLog(@"ROSTER ENTITY: %@",entity);
+		DebugLog(@"ROSTER ENTITY: %@",entity);
 		DebugLog(@"JID: %@ status: %@ ", [entity jidStr],  [entity presence]);
+		NSString *aJid = [entity jidStr];
+	
+		DebugLog(@"We got a JID in our roster: %@",aJid);	
+		DebugLog(@"Roster was: %@",roster);
+		[fvc.roster_list addObject:aJid];
+		DebugLog(@"Roster now: %@",roster);
+	
 	} 
+	DebugLog(@"++++++++++++++++++++++++++++++");
+	DebugLog(@"++++++++++++++++++++++++++++++");
 
 	
 	// Core Data XMPPCapabilitiesCoreDataStorage
 
 	NSEntityDescription *cdb = [NSEntityDescription entityForName:@"XMPPCapsCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
-	DebugLog(@"CAPS DB: %@", cdb);
+	// DebugLog(@"CAPS DB: %@", cdb);
 	NSFetchRequest *fetchRequest2 = [[NSFetchRequest alloc] init];
 	[fetchRequest2 setEntity:cdb];
 	[fetchRequest2 setIncludesPendingChanges:YES];
 	[fetchRequest2 setFetchLimit:100];
 	NSArray *caps = [buttons.xmppCapabilitiesStorage.managedObjectContext executeFetchRequest:fetchRequest2 error:nil];
-    DebugLog(@"Got array of caps: %@", caps);	
+    //DebugLog(@"Got array of caps: %@", caps);	
 
 	for (NSEntityDescription *c in caps) {
 		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: %@ ", [c capabilities]);
@@ -116,9 +132,6 @@
 		}
 	}
 	
-	
-	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
-    NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"viewWillAppear: roster is %@",roster);
 	DebugLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
     [roster_view reloadData];				// refresh roster when anyone will look

@@ -72,7 +72,7 @@
 	NSManagedObjectModel *mom = [self managedObjectModel];
 	
 	/// DANBRI 
-	VerboseLog(@"XMPP CAPS: about to attempt to create storecoordinator, using managed object model: %@", mom);
+	VerboseLog(@"XMPP CAPS: about to attempt to create storecoordinator, using managed object model");// , mom);
 	
 	persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
 	
