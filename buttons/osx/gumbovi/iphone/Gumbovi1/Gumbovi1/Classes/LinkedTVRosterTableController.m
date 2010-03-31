@@ -57,8 +57,8 @@
 	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@", buttons.xmppRoster);
 	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster storage? %@", buttons.xmppRosterStorage);
 	
-	NSManagedObjectModel *who = buttons.xmppRosterStorage.managedObjectModel;
-	for (NSEntityDescription *entity in who) {
+	NSArray *who = buttons.xmppRosterStorage.managedObjectModel.entities;
+	for (NSObject *entity in who) {
 		// entity is each instance of NSEntityDescription in aModel in turn
 		DebugLog(@"ROSTER ENTITY: %@",entity);
 	}
