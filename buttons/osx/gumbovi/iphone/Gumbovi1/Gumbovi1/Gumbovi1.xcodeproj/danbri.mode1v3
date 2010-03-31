@@ -197,7 +197,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>B619E7E01163D6AF00B00346</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>FirstViewController.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>B619E7E11163D6AF00B00346</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>FirstViewController.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>B619E7E81163D72C00B00346</string>
+						<key>history</key>
+						<array>
+							<string>B619E7D91163D60F00B00346</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {827, 645}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>534 160 827 686 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -285,12 +326,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>29</integer>
 									<integer>15</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 75}, {277, 768}}</string>
+							<string>{{0, 65}, {277, 768}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -341,7 +383,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B619E7941163BA2400B00346</string>
+										<string>B619E7E71163D72C00B00346</string>
 										<key>history</key>
 										<array>
 											<string>B6E095F010B1C1A300F27218</string>
@@ -439,7 +481,6 @@
 											<string>B6B566F7115DF2C700A0AAE3</string>
 											<string>B6B566F8115DF2C700A0AAE3</string>
 											<string>B6B566F9115DF2C700A0AAE3</string>
-											<string>B6B5671A115DF81200A0AAE3</string>
 											<string>B6B5674D115DFC4E00A0AAE3</string>
 											<string>B6B5674E115DFC4E00A0AAE3</string>
 											<string>B6A5996211611C0500EC1713</string>
@@ -500,20 +541,21 @@
 											<string>B6497BDB11627A24004272A3</string>
 											<string>B6497BDC11627A24004272A3</string>
 											<string>B6497C1E11628221004272A3</string>
-											<string>B6497C4711629077004272A3</string>
 											<string>B6497C5811629717004272A3</string>
 											<string>B6497C7E11629AF3004272A3</string>
 											<string>B6497C7F11629AF3004272A3</string>
-											<string>B619E5B41163303400B00346</string>
 											<string>B619E63211635FA500B00346</string>
 											<string>B619E6AE1163817B00B00346</string>
-											<string>B619E71311638AD200B00346</string>
-											<string>B619E75D116394DB00B00346</string>
 											<string>B619E75F116394DB00B00346</string>
 											<string>B619E760116394DB00B00346</string>
 											<string>B619E76311639F7B00B00346</string>
 											<string>B619E7891163B8FE00B00346</string>
-											<string>B619E7871163B8FB00B00346</string>
+											<string>B619E7C31163C16F00B00346</string>
+											<string>B619E7C41163C16F00B00346</string>
+											<string>B619E7D31163D5C300B00346</string>
+											<string>B619E7DC1163D6AF00B00346</string>
+											<string>B619E7DD1163D6AF00B00346</string>
+											<string>B619E7DE1163D6AF00B00346</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -710,9 +752,10 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C78EAAD065D492600B07095</string>
+		<string>B619E7E01163D6AF00B00346</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1087,7 +1130,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
