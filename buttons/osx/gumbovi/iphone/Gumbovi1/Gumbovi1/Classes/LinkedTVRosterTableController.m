@@ -64,53 +64,73 @@
  type = available;
  user = 0x3c78dc0 <x-coredata://2DA156B3-F83C-4FCD-9B3E-F52197807ADB/XMPPUserCoreDataStorage/p5>;
  */
+/* <presence from="bob.notube@gmail.com/gmail.B14765EE" to="alice.notube@gmail.com/hardcodedE1D3D2F3"><show>away</show><priority>0</priority><caps:c xmlns:caps="http://jabber.org/protocol/caps" node="http://mail.google.com/xmpp/client/caps" ver="1.1" ext="pmuc-v1 sms-v1 vavinvite-v1"></caps:c><status>watching tv and loving it</status><x xmlns="vcard-temp:x:update"><photo></photo></x></presence> */
+/* "A predicate (an instance of NSPredicate) that specifies which properties to select by and the constraints on selection, for example “last name begins with a ‘J’”. If you don’t specify a predicate, then all instances of the specified entity are selected (subject to other constraints, see executeFetchRequest:error: for full details)." http://developer.apple.com/mac/library/documentation/Cocoa/Reference/CoreDataFramework/Classes/NSFetchRequest_Class/NSFetchRequest.html  */
+//NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr == %@", fullJIDStr];
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
-
 	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	fvc.roster_list.removeAllObjects;
 	NSMutableArray *roster = fvc.roster_list;
+
 	// Core Data XMPPResourceCoreDataStorage
-	/* "A predicate (an instance of NSPredicate) that specifies which properties to select by and the constraints on selection, for example “last name begins with a ‘J’”. If you don’t specify a predicate, then all instances of the specified entity are selected (subject to other constraints, see executeFetchRequest:error: for full details)." http://developer.apple.com/mac/library/documentation/Cocoa/Reference/CoreDataFramework/Classes/NSFetchRequest_Class/NSFetchRequest.html  */
+	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
 	
-	VerboseLog(@"LinkedTVRosterTableController viewWillAppear:");
-	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@", buttons.xmppRoster);
-	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster storage? %@", buttons.xmppRosterStorage);
-		
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-	
-	//DebugLog(@"ROSTER ENTITY DB: %@", entity);
-	
-	//NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr == %@", fullJIDStr];
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
 	[fetchRequest setIncludesPendingChanges:YES];
 	[fetchRequest setFetchLimit:100];
-	
-	NSError *err = nil;
-	DebugLog(@"ROSTER DEBUG: moC? %@",buttons.xmppRosterStorage.managedObjectContext);
+	// NSError *err = nil;
 	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-	DebugLog(@"ROSTER DEBUG: Error? %@", err);
-    DebugLog(@"Got array of contacts."); // , results);	
     DebugLog(@"array is: %@" , results);	
-	DebugLog(@"++++++++++++++++++++++++++++++");
-
+	
 	for (NSEntityDescription *entity in results) {
 		DebugLog(@"ROSTER ENTITY: %@",entity);
-		DebugLog(@"JID: %@ status: %@ ", [entity jidStr],  [entity presence]);
+		//NSString *xp = [entity presenceStr];
+		//DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
+		DebugLog(@"JID: %@", [entity jidStr]);
 		NSString *aJid = [entity jidStr];
+		XMPPPresence *xp = [entity presence];
+		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
+		NSLog(@"XML EXTRACTED JID: %@",fullJid);		
+		//DebugLog(@"ROSTER XML PRESENCE: %@", xp);
 		DebugLog(@"We got a JID in our roster: %@",aJid);	
 		DebugLog(@"Roster was: %@",roster);
-		[fvc.roster_list addObject:aJid];
+		[roster addObject:fullJid];
 		DebugLog(@"Roster now: %@",roster);
 	
 	} 
+	
 	DebugLog(@"++++++++++++++++++++++++++++++");
+	
+	
+	// Core Data XMPPUserCoreDataStorage
+	NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+	NSFetchRequest *fetchRequest1 = [[NSFetchRequest alloc] init];
+	[fetchRequest1 setEntity:entity1 ];
+	[fetchRequest1 setIncludesPendingChanges:YES];
+	[fetchRequest1 setFetchLimit:100];
+	NSArray *results1 = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest1 error:nil];
+    DebugLog(@"user array is: %@" , results1);	
+	DebugLog(@"==============================================");
+	
+	for (NSEntityDescription *entity1 in results1) {
+		DebugLog(@"ROSTER USER: %@",entity1);
+		DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
+	
+	} 
+	
+	
+	
+	
+	
+	
 	
 	// Core Data XMPPCapabilitiesCoreDataStorage
 
@@ -133,6 +153,8 @@
 							[x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
 		}
 	}
+	
+	
 	
 	DebugLog(@"viewWillAppear: roster is %@",roster);
 	DebugLog(@"viewWillAppear linked tv roster_view is: %@",roster_view);
