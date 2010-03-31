@@ -10,6 +10,8 @@
 #import "FirstViewController.h"
 #import "Gumbovi1AppDelegate.h"
 #import "ButtonCell.h"
+#import "XMPPCapabilities.h"
+#import "XMPPCapsResourceCoreDataStorageObject.h"
 
 // For now, lots of state is in FVC
 
@@ -49,19 +51,71 @@
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
 	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 
-    DebugLog(@"LinkedTVRosterTableController viewWillAppear: about to (not!) call buttonReport. If we have a list: %@", buttons.buttonDevices);
+    //DebugLog(@"LinkedTVRosterTableController viewWillAppear: %@", buttons.buttonDevices);
+	//FIXME [buttons.buttonDevices buttonReport];
 
-	//FIXME [gad.buttonDevices buttonReport];
-
-//	DebugLog(@"LinkedTVRosterTableController viewWillAppear: after calling buttonReport");
-	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@", buttons.xmppRoster);
-	DebugLog(@"GUMBOVI ROSTER CHECK. Do we have our roster storage? %@", buttons.xmppRosterStorage);
+	VerboseLog(@"LinkedTVRosterTableController viewWillAppear:");
+	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@", buttons.xmppRoster);
+	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster storage? %@", buttons.xmppRosterStorage);
 	
-	NSArray *who = buttons.xmppRosterStorage.managedObjectModel.entities;
-	for (NSObject *entity in who) {
-		// entity is each instance of NSEntityDescription in aModel in turn
-		DebugLog(@"ROSTER ENTITY: %@",entity);
+	/*
+	 entity: XMPPResourceCoreDataStorage; id: 0x3c80ec0 <x-coredata://2DA156B3-F83C-4FCD-9B3E-F52197807ADB/XMPPResourceCoreDataStorage/p5> ; data: {
+	 jidStr = "libby.miller@gmail.com";
+	 presence = "(...not nil..)";
+	 presenceDate = nil;
+	 presenceStr = "<presence to=\"alice.notube@gmail.com/hardcodedE4EF";
+	 primaryResourceInverse = nil;
+	 priorityNum = 0;
+	 show = nil;
+	 showNum = 3;
+	 status = "Now playing Bertie and Elizabeth on ITV3";
+	 type = available;
+	 user = 0x3c78dc0 <x-coredata://2DA156B3-F83C-4FCD-9B3E-F52197807ADB/XMPPUserCoreDataStorage/p5>;
+	 */
+	
+	// Core Data XMPPResourceCoreDataStorage
+	/* "A predicate (an instance of NSPredicate) that specifies which properties to select by and the constraints on selection, for example “last name begins with a ‘J’”. If you don’t specify a predicate, then all instances of the specified entity are selected (subject to other constraints, see executeFetchRequest:error: for full details)." http://developer.apple.com/mac/library/documentation/Cocoa/Reference/CoreDataFramework/Classes/NSFetchRequest_Class/NSFetchRequest.html  */
+	
+	 //NSString *fullJIDStr = @"buttons@foaf.tv/gumboviListener";
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+	//DebugLog(@"ROSTER ENTITY DB: %@", entity);
+	//NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr == %@", fullJIDStr];
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
+	[fetchRequest setIncludesPendingChanges:YES];
+	[fetchRequest setFetchLimit:100];
+	
+	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    DebugLog(@"Got array of contacts: %@", results);	
+	for (NSEntityDescription *entity in results) {
+		// entity is each instance of NSEntityDescription
+		 DebugLog(@"ROSTER ENTITY: %@",entity);
+		DebugLog(@"JID: %@ status: %@ ", [entity jidStr],  [entity presence]);
+	} 
+
+	
+	// Core Data XMPPCapabilitiesCoreDataStorage
+
+	NSEntityDescription *cdb = [NSEntityDescription entityForName:@"XMPPCapsCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
+	DebugLog(@"CAPS DB: %@", cdb);
+	NSFetchRequest *fetchRequest2 = [[NSFetchRequest alloc] init];
+	[fetchRequest2 setEntity:cdb];
+	[fetchRequest2 setIncludesPendingChanges:YES];
+	[fetchRequest2 setFetchLimit:100];
+	NSArray *caps = [buttons.xmppCapabilitiesStorage.managedObjectContext executeFetchRequest:fetchRequest2 error:nil];
+    DebugLog(@"Got array of caps: %@", caps);	
+
+	for (NSEntityDescription *c in caps) {
+		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: %@ ", [c capabilities]);
+		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
+		NSSet *capSet = [c resources];
+		for (XMPPCapsResourceCoreDataStorageObject *x in capSet) 
+		{
+			DebugLog(@"CAPS XMPPCapsResourceCoreDataStorageObject RESOURCE: ext: %@  failed: %@ hashAlgorithm: %@ hashStr: %@ jidStr: %@ node: %@ ver: x", 
+							[x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
+		}
 	}
+	
 	
 	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
     NSMutableArray *roster = fvc.roster_list;

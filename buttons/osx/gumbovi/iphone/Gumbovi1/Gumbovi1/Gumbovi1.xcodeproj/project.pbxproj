@@ -365,6 +365,7 @@
 		B60ACADD1155644800E83353 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		B60ACB3711561A6F00E83353 /* 120px-Boxee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120px-Boxee.png"; sourceTree = "<group>"; };
 		B61718431151A06100FF50CD /* bgbuttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgbuttons.png; sourceTree = "<group>"; };
+		B619E67C11637C2300B00346 /* untitled.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; name = untitled.xcclassmodel; path = ../../../../../untitled.xcclassmodel; sourceTree = SOURCE_ROOT; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
@@ -618,7 +619,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B656AA4510ADDD590089D78F /* JSON */,
 				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				B60ACAD81155642600E83353 /* ButtonCell.h */,
@@ -659,6 +659,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				B619E67C11637C2300B00346 /* untitled.xcclassmodel */,
 			);
 			name = Gumbovi1;
 			sourceTree = "<group>";
@@ -667,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				B6A5983D11611B1000EC1713 /* xmppframework */,
+				B656AA4510ADDD590089D78F /* JSON */,
 				B6A67EE011357B8300EA4712 /* qr */,
 				B67CC39D10A5763F00511209 /* libidn */,
 				B67CC3A910A5764900511209 /* KissXML */,
@@ -820,7 +822,8 @@
 				B656AA5110ADDD590089D78F /* SBJsonWriter.h */,
 				B656AA5210ADDD590089D78F /* SBJsonWriter.m */,
 			);
-			path = JSON;
+			name = JSON;
+			path = Classes/JSON;
 			sourceTree = "<group>";
 		};
 		B67CC39D10A5763F00511209 /* libidn */ = {
