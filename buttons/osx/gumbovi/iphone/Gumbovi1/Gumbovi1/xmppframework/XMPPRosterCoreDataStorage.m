@@ -108,9 +108,9 @@
 		if(!persistentStore)
 		{
 			NSLog(@"=====================================================================================");
-			NSLog(@"Error creating persistent store:\n%@", error);
+			NSLog(@"XMPP ROSTER: Error creating persistent store:\n%@", error);
 		#if TARGET_OS_IPHONE
-			NSLog(@"Chaned core data model recently? Quick Fix: Delete the app from device and reinstall.");
+			NSLog(@"Changed core data model recently? Quick Fix: Delete the app from device and reinstall.");
 		#else
 			NSLog(@"Quick Fix: Delete the database: %@", storePath);
 		#endif

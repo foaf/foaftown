@@ -42,6 +42,7 @@
 #import "XMPPRoster.h"
 #import "XMPPStream.h"
 #import <CFNetwork/CFNetwork.h>
+#import "XMPPCapabilities.h"
 
 @implementation Gumbovi1AppDelegate
 
@@ -63,6 +64,43 @@
 @synthesize xmppCapabilities;
 @synthesize xmppCapabilitiesStorage;
 
+
+- (id)init
+{
+	if((self = [super init]))
+	{
+		
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *documentsDirectory = [paths objectAtIndex:0];
+		DebugLog(@"init, with a base dir of: %@", documentsDirectory);
+
+		xmppLink = [[XMPPStream alloc] init];
+		xmppReconnect = [[XMPPReconnect alloc] initWithStream:xmppLink]; // FIXME - we do this only once
+		[xmppReconnect addDelegate:self];
+
+		//xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
+		xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
+		xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+		xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
+		xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:xmppLink capabilitiesStorage:xmppCapabilitiesStorage];
+		xmppCapabilities.autoFetchHashedCapabilities = YES;
+		xmppCapabilities.autoFetchNonHashedCapabilities = YES;
+		
+		[xmppLink addDelegate:self];
+		[xmppRoster addDelegate:self];
+		[xmppRoster setAutoRoster:YES];
+		
+		// turnSockets = [[NSMutableArray alloc] init];
+		// XEP-0065 see sample AppDelegate 
+		// perhaps similar needed for XEP-0174? TODO - investigate. Jingle-related?
+		//         NSLog(@"You now have a socket that you can use to send/receive data to/from the other person.");
+		// 
+	}
+	return self;
+}
+
+
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     VerboseLog(@"TIMER: app delegate appplicationDidFinishLaunching, adding tabBar...");
     // Add the tab bar controller's current view as a subview of the window
@@ -82,20 +120,24 @@
 	NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:DataPath];
 	self.data = tempDict;
 	[tempDict release];
-
+	
+//	xmppReconnect = [[XMPPReconnect alloc] initWithStream:xmppLink]; // FIXME - we do this only once
+//	[xmppReconnect addDelegate:self];
+	
 }
 
 - (void)initXMPP  {
     DebugLog(@"XMPP: initXMPP starting.");
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	VerboseLog(@"FVC is", fvc);
-    xmppLink = [[XMPPStream alloc] init];
-	xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
-	xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];	
-	[xmppLink addDelegate:self];
-	[xmppRoster addDelegate:self];
-	[xmppRoster setAutoRoster:YES];
+   // moved to init: xmppLink = [[XMPPStream alloc] init];
 	
+	//xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+	//xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];	
+//	[xmppLink addDelegate:self];
+//	[xmppRoster addDelegate:self];
+//	[xmppRoster setAutoRoster:YES];
+// moved to init	
 	
 	// HUGE PILE OF MESS TO GET JIDS SETUP
 	
@@ -785,6 +827,8 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	NSLog(@"---------- xmppStream:didReceiveError: ----------");
 }
 
+
+/* we use a reconnect 
 - (void)xmppStreamDidClose:(XMPPStream *)sender
 {
 	NSLog(@"---------- xmppStreamDidClose: ----------");
@@ -794,10 +838,28 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		NSLog(@"Unable to connect to server. Check xmppStream.hostName");
 	}
 }
+*/
 
 
 
 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark Auto Reconnect
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)xmppStreamDidClose:(XMPPStream *)sender
+{
+	// If we weren't using auto reconnect, we could take this opportunity to display the sign in sheet.
+}
+
+- (BOOL)xmppReconnect:(XMPPReconnect *)sender shouldAttemptAutoReconnect:(SCNetworkReachabilityFlags)reachabilityFlags
+{
+	NSLog(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
+	
+	return YES;
+}
 
 
 

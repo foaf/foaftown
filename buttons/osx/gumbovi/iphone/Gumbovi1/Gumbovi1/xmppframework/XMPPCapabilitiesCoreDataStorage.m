@@ -71,12 +71,14 @@
 	
 	NSManagedObjectModel *mom = [self managedObjectModel];
 	
-	/// DANBRI NSLog(@"XMPPLIB Capabilities: about to attempt to create storecoordinator, using managed object model: %@", mom);
+	/// DANBRI 
+	VerboseLog(@"XMPP CAPS: about to attempt to create storecoordinator, using managed object model: %@", mom);
 	
 	persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
 	
 	NSString *docsPath = [self persistentStoreDirectory];
 	NSString *storePath = [docsPath stringByAppendingPathComponent:@"Locations.sqlite"];
+	VerboseLog(@"XMPP CAPS: docs path: %@ storePath: %@", docsPath, storePath);
 	if (storePath)
 	{
 		// If storePath is nil, then NSURL will throw an exception
@@ -85,6 +87,14 @@
 		
 		NSError *error = nil;
 		NSPersistentStore *persistentStore;
+		
+		//danbri
+		DebugLog(@"DELETING CAPS DB FILE! FIXME. We don't want to be doing this.");
+		NSFileManager *fileManager = [NSFileManager defaultManager];
+		[fileManager removeItemAtPath:storePath error:NULL];
+		 
+		//end
+		
 		persistentStore = [persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
 		                                                           configuration:nil
 		                                                                  URL:storeUrl
@@ -93,8 +103,8 @@
 		if(!persistentStore)
 		{
 			NSLog(@"=====================================================================================");
-			NSLog(@"Error creating persistent store:\n%@", error);
-			NSLog(@"Chaned core data model recently?");
+			NSLog(@"XMPP CAPS: Error creating persistent store:\n%@", error);
+			NSLog(@"Changed core data model recently?");
 		#if TARGET_OS_IPHONE
 			NSLog(@"Quick Fix: Delete the app from device and reinstall.");
 		#else
