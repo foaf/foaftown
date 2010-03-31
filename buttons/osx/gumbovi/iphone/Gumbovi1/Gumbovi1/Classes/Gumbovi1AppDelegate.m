@@ -79,8 +79,8 @@
 		[xmppReconnect addDelegate:self];
 
 		//xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
-		xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
 		xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+		xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
 		xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
 		xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:xmppLink capabilitiesStorage:xmppCapabilitiesStorage];
 		xmppCapabilities.autoFetchHashedCapabilities = YES;
