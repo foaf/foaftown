@@ -287,6 +287,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
+									<integer>15</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -328,7 +329,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>XMPPRoster.xcdatamodel</string>
+								<string>Gumbovi1AppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -336,11 +337,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>XMPPRoster.xcdatamodel</string>
+										<string>Gumbovi1AppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B67091321164A36A0015A00F</string>
+										<string>B670915F1165019F0015A00F</string>
 										<key>history</key>
 										<array>
 											<string>B6E095F010B1C1A300F27218</string>
@@ -466,7 +467,6 @@
 											<string>B6A599DA1161203800EC1713</string>
 											<string>B6A59A2A116138F400EC1713</string>
 											<string>B6A59A8311614D3900EC1713</string>
-											<string>B6A59A9F1161501400EC1713</string>
 											<string>B651DE311161EDCF009E1C55</string>
 											<string>B651DE561161EFC0009E1C55</string>
 											<string>B651DE571161EFC0009E1C55</string>
@@ -507,12 +507,13 @@
 											<string>B619E7891163B8FE00B00346</string>
 											<string>B619E7C31163C16F00B00346</string>
 											<string>B619E7DC1163D6AF00B00346</string>
-											<string>B619E7DD1163D6AF00B00346</string>
 											<string>B619E83D1163E88300B00346</string>
 											<string>B67090FD1164995A0015A00F</string>
-											<string>B67090FE1164995A0015A00F</string>
-											<string>B67091301164A36A0015A00F</string>
-											<string>B67091311164A36A0015A00F</string>
+											<string>B67091371164A4380015A00F</string>
+											<string>B67091381164A4380015A00F</string>
+											<string>B67091531164EDBE0015A00F</string>
+											<string>B67091541164EDBE0015A00F</string>
+											<string>B67091551164EDBE0015A00F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -708,12 +709,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B67091601165019F0015A00F</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>B67090F4116497220015A00F</string>
 		<string>B67090F5116497220015A00F</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B67CC37E10A5759F00511209</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi1.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -954,7 +956,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>LinkedTVRosterTableController.m</string>
+										<string>Gumbovi1AppDelegate.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -1020,7 +1022,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

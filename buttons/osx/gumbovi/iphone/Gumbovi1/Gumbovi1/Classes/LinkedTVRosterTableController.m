@@ -107,7 +107,7 @@
 		NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
 		fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 		DebugLog(@"Roster now: %@",fvc.roster_list);
-	
+		[roster_view reloadData]; /// try to get ui to refresh while we watch fixme
 	} 
 	
 	// Core Data XMPPUserCoreDataStorage

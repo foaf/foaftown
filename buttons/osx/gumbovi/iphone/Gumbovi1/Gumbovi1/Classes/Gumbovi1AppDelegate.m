@@ -559,52 +559,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 }
 
 
-
-- (void)xmppClient:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
-{
-	VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
-	//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-	//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
-	// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
-	//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
-	//DebugLog(@"nowp results: %@", nowpNodes);
-	//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
-    //id obj;	
-    //while ( obj = [enumerator nextObject] ) {
-    //    printf( "%s\n", [[obj description] cString] );
-    //}
-
-	// Sleazy XML handling
-	DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
-	DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
-	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
-	// DebugLog(@"X2: %@",xs);
-	
-	if([xs rangeOfString:@"<div>"].location == NSNotFound){
-	//	DebugLog(@"div not found in xs %@", xs);
-	} else {
-		DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
-		self.htmlInfo = xs;
-
-		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:TAB_INFO];
-		NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
-		[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
-
-	
-	}
-//		DebugLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
-	// Nothing worked. Related attempts:
-	// additions see http://code.google.com/p/kissxml/issues/detail?id=18
-	// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
-	//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
-	
-	DebugLog(@"==============================================================");
-    
-
-}
-
 - (void)xmppClient:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
 	DebugLog(@"==============================================================");
@@ -808,6 +762,54 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 - (BOOL)xmppStream:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
 {
 	NSLog(@"---------- xmppStream:didReceiveIQ: ----------");
+
+	
+	//- (void)xmppClient:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
+	
+		VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
+		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+		[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
+		//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+		//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
+		// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
+		//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
+		//DebugLog(@"nowp results: %@", nowpNodes);
+		//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
+		//id obj;	
+		//while ( obj = [enumerator nextObject] ) {
+		//    printf( "%s\n", [[obj description] cString] );
+		//}
+		
+		// Sleazy XML handling
+		DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
+		DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
+		NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
+		// DebugLog(@"X2: %@",xs);
+		
+		if([xs rangeOfString:@"<div>"].location == NSNotFound){
+			//	DebugLog(@"div not found in xs %@", xs);
+		} else {
+			DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
+			self.htmlInfo = xs;
+			
+			WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:TAB_INFO];
+			NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
+			[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
+			
+			
+		}
+		//		DebugLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
+		// Nothing worked. Related attempts:
+		// additions see http://code.google.com/p/kissxml/issues/detail?id=18
+		// http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
+		//	DDXMLElement *info = [iq elementForName:@"nowp-result" xmlns:@"http://buttons.foaf.tv/"];
+		
+		DebugLog(@"==============================================================");
+		
+	
+	
+	
+	
 	
 	return NO;
 }
