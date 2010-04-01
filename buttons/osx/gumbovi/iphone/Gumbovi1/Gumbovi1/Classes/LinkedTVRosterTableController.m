@@ -73,6 +73,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
+
+	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	[buttons scanRosterForDevices];
+	
+	/*
 	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	fvc.roster_list.release; // FIXME
@@ -143,6 +148,7 @@
 							[x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
 		}
 	}
+	*/
 	
 	[roster_view reloadData];				// refresh roster when anyone will look
 	[roster_view flashScrollIndicators];	//to show that it's scrollable

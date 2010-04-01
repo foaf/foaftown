@@ -85,5 +85,6 @@
 - (void)connectIfOffline;
 - (void)setTargetJidWithString:(NSString *)someJid;
 - (void)sendIQ:(NSXMLElement *)myStanza;
+- (void)scanRosterForDevices;
 
 @end
