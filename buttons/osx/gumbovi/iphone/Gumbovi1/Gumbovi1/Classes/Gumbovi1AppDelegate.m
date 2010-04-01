@@ -43,6 +43,9 @@
 #import "XMPPStream.h"
 #import <CFNetwork/CFNetwork.h>
 #import "XMPPCapabilities.h"
+#import "ButtonCell.h"
+#import "XMPPCapabilities.h"
+#import "XMPPCapsResourceCoreDataStorageObject.h"
 
 @implementation Gumbovi1AppDelegate
 
@@ -649,6 +652,86 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 
 
+- (void)scanRosterForDevices {
+    VerboseLog(@"Scanning Core Data (caps, roster)");
+	// COPIED FROM LINKED TV CONTROLLER
+	
+	Gumbovi1AppDelegate *buttons = self;
+	FirstViewController *fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
+	fvc.roster_list.release; // FIXME
+	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME 			   
+			   
+	// Core Data XMPPResourceCoreDataStorage
+	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
+			   
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+			
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
+	[fetchRequest setIncludesPendingChanges:YES];
+	[fetchRequest setFetchLimit:100];
+	// NSError *err = nil;
+	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+			   // DebugLog(@"array is: %@" , results);	
+	for (NSEntityDescription *entity in results) {
+	
+		DebugLog(@"ROSTER ENTITY: %@",entity);
+		//NSString *xp = [entity presenceStr];
+		//DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
+		DebugLog(@"JID: %@", [entity jidStr]);
+		NSString *aJid = [entity jidStr];
+		XMPPPresence *xp = [entity presence];
+		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
+		NSLog(@"EXTRACTED JID: %@",fullJid);		
+		DebugLog(@"We got a JID in our roster: %@",aJid);	
+		DebugLog(@"Roster was: %@",fvc.roster_list);
+		[fvc.roster_list addObject:fullJid];
+		NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+		fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+		DebugLog(@"Roster now: %@",fvc.roster_list);
+	} 
+}	
+	/*
+			   // Core Data XMPPUserCoreDataStorage
+			   NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+			   NSFetchRequest *fetchRequest1 = [[NSFetchRequest alloc] init];
+			   [fetchRequest1 setEntity:entity1 ];
+			   [fetchRequest1 setIncludesPendingChanges:YES];
+			   [fetchRequest1 setFetchLimit:100];
+			   NSArray *results1 = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest1 error:nil];
+			   for (NSEntityDescription *entity1 in results1) {
+			   // DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
+			   
+			   } 
+			   
+			   // Core Data XMPPCapabilitiesCoreDataStorage
+			   
+			   NSEntityDescription *cdb = [NSEntityDescription entityForName:@"XMPPCapsCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
+			   // DebugLog(@"CAPS DB: %@", cdb);
+			   NSFetchRequest *fetchRequest2 = [[NSFetchRequest alloc] init];
+			   [fetchRequest2 setEntity:cdb];
+			   [fetchRequest2 setIncludesPendingChanges:YES];
+			   [fetchRequest2 setFetchLimit:100];
+			   NSArray *caps = [buttons.xmppCapabilitiesStorage.managedObjectContext executeFetchRequest:fetchRequest2 error:nil];
+			   //DebugLog(@"Got array of caps: %@", caps);	
+			   
+			   for (NSEntityDescription *c in caps) {
+			   DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: \n\t%@\n\n", [c capabilities]);
+			   //DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
+			   NSSet *capSet = [c resources];
+			   for (XMPPCapsResourceCoreDataStorageObject *x in capSet) 
+			   {
+			   DebugLog(@"CAPS XMPPCapsResourceCoreDataStorageObject RESOURCE: ext: %@  failed: %@ hashAlgorithm: %@ hashStr: %@ jidStr: %@ node: %@ ver: x", 
+			   [x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
+			   }
+			   }
+			   */
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark Custom
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -766,38 +849,37 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	
 	//- (void)xmppClient:(XMPPStream *)sender didReceiveIQ:(XMPPIQ *)iq
 	
-		VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
-		NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-		[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
-		//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-		//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
-		// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
-		//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
-		//DebugLog(@"nowp results: %@", nowpNodes);
-		//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
-		//id obj;	
-		//while ( obj = [enumerator nextObject] ) {
-		//    printf( "%s\n", [[obj description] cString] );
-		//}
+	VerboseLog(@"iPhoneXMPPAppDelegate: xmppClient:didReceiveIQ: %@", iq);
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+	[errorDetail setValue:@"Failed to decode NOWP IQ" forKey:NSLocalizedDescriptionKey];
+	//NSError    *error = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
+	//	NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result" error:&error];
+	// ok NSArray *nowpNodes = [iq nodesForXPath:@"." error:&error];
+	//NSArray *nowpNodes = [iq nodesForXPath:@"./iq/nowp-result/" error:&error];
+	//DebugLog(@"nowp results: %@", nowpNodes);
+	//NSEnumerator *enumerator = [nowpNodes objectEnumerator];
+	//id obj;	
+	//while ( obj = [enumerator nextObject] ) {
+	//    printf( "%s\n", [[obj description] cString] );
+	//}
 		
-		// Sleazy XML handling
-		DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
-		DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
-		NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
-		// DebugLog(@"X2: %@",xs);
+	// Sleazy XML handling ---- see presence code for something maybe better? FIXME
+	DDXMLElement *x = (DDXMLElement *)[iq childAtIndex:0];
+	DDXMLElement *x2 = (DDXMLElement *) [x childAtIndex:0];
+	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
+	// DebugLog(@"X2: %@",xs);
 		
-		if([xs rangeOfString:@"<div>"].location == NSNotFound){
-			//	DebugLog(@"div not found in xs %@", xs);
-		} else {
-			DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
-			self.htmlInfo = xs;
+	if([xs rangeOfString:@"<div>"].location == NSNotFound){
+	//	DebugLog(@"div not found in xs %@", xs);
+	} else {
+		DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
+		self.htmlInfo = xs;
 			
-			WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:TAB_INFO];
-			NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
-			[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
+		WebViewController *wvc = (WebViewController *) [self.tabBarController.viewControllers objectAtIndex:TAB_INFO];
+		NSURL *baseURL = [NSURL URLWithString:@"http://buttons.notube.tv/"];		
+		[wvc.webview loadHTMLString:self.htmlInfo baseURL:baseURL];		
 			
-			
-		}
+	}
 		//		DebugLog(@"xs was null, assuming we didn't find HTML. should check xmlns/element or at least for a <div>");	
 		// Nothing worked. Related attempts:
 		// additions see http://code.google.com/p/kissxml/issues/detail?id=18
@@ -807,11 +889,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		DebugLog(@"==============================================================");
 		
 	
-	
-	
-	
-	
-	return NO;
+	return NO; // FIXME --- investigate what this means
 }
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
