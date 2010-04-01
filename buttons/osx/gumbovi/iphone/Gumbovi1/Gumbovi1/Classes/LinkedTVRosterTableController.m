@@ -75,9 +75,12 @@
     DebugLog(@"LinkedTVRosterTableController viewWillAppear:");
 	Gumbovi1AppDelegate *buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
-	fvc.roster_list.removeAllObjects;
-	NSMutableArray *roster = fvc.roster_list;
-
+	fvc.roster_list.release; // FIXME
+	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME 
+	//NSMutableArray *roster = fvc.roster_list;
+    
+	DebugLog(@"EMPTY ROSTER! nothing should be here: %@", fvc.roster_list);
+	
 	// Core Data XMPPResourceCoreDataStorage
 	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
 	
@@ -88,7 +91,7 @@
 	[fetchRequest setFetchLimit:100];
 	// NSError *err = nil;
 	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    DebugLog(@"array is: %@" , results);	
+    // DebugLog(@"array is: %@" , results);	
 	for (NSEntityDescription *entity in results) {
 		DebugLog(@"ROSTER ENTITY: %@",entity);
 		//NSString *xp = [entity presenceStr];
@@ -99,9 +102,11 @@
 		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
 		NSLog(@"EXTRACTED JID: %@",fullJid);		
 		DebugLog(@"We got a JID in our roster: %@",aJid);	
-		DebugLog(@"Roster was: %@",roster);
-		[roster addObject:fullJid];
-		DebugLog(@"Roster now: %@",roster);
+		DebugLog(@"Roster was: %@",fvc.roster_list);
+		[fvc.roster_list addObject:fullJid];
+		NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+		fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+		DebugLog(@"Roster now: %@",fvc.roster_list);
 	
 	} 
 	
@@ -129,8 +134,8 @@
     //DebugLog(@"Got array of caps: %@", caps);	
 
 	for (NSEntityDescription *c in caps) {
-		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: %@ ", [c capabilities]);
-		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
+		DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: \n\t%@\n\n", [c capabilities]);
+		//DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
 		NSSet *capSet = [c resources];
 		for (XMPPCapsResourceCoreDataStorageObject *x in capSet) 
 		{
@@ -226,8 +231,9 @@
     }
     
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSMutableArray *roster = fvc.roster_list;
+	DebugLog(@"CELL FOR JID LIST %@", fvc.roster_list);
 	///[roster retain];// hmm help, memory stuff. todo!	
 	//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
     NSObject *jid = [roster objectAtIndex:indexPath.row];
