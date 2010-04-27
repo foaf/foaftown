@@ -30,6 +30,16 @@
     <script src="js/graffle.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/graph.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/foafvis.js" type="text/javascript" charset="utf-8"></script> 
+
+
+<!-- we add a container element to the og: stuff, to distinguish a page from its topic -->
+
+<object about="http://www.imdb.com/title/tt0117500/#og" typeof="og:Movie">
+<span property="og:title" content="The Rock" />
+<span property="og:type" content="movie" />
+<span property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+<span property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+</object>
   </head>
 
  <body >
@@ -38,17 +48,11 @@
 
       <ul>
         <li><a href="#main">Main</a></li>
-        <li><a href="#graph" id="ganchor">Graph <span class="beta">Beta!</span></a></li>
+        <li><a href="#graph" id="ganchor">Graph</a></li>
       </ul>
 
       <div id="main">
 
-<object about="http://www.imdb.com/title/tt0117500/#og" typeof="og:Movie">
-<span property="og:title" content="The Rock" />
-<span property="og:type" content="movie" />
-<span property="og:url" content="http://www.imdb.com/title/tt0117500/" />
-<span property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
-</object>
 	
       </div>
 
