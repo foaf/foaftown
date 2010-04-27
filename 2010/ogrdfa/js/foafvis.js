@@ -16,7 +16,7 @@ function shortLink(url){
 
 //  url = url.replace("", "x:");
   url = url.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
-  alert ("Short link:"+url);
+  //alert ("Short link:"+url);
   return url;
 }
 
