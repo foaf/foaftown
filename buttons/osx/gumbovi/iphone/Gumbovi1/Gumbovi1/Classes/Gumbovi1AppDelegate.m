@@ -259,19 +259,39 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 //[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 
 - (void)sendMessage:(NSString *)messageStr {
-    if([messageStr length] > 0) {
-		NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
-		[body setStringValue:messageStr]; // FIXME: test this escapes ok.
-		NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
-		[message addAttributeWithName:@"type" stringValue:@"chat"];
-		[message addAttributeWithName:@"to" stringValue:[self.toJid full] ];
-		[message addChild:body]; 
-		DebugLog(@"BUTTONS ABOUT TO SEND MESSAGE: %@", message);
-		[xmppLink sendElement:message];
-		DebugLog(@"SENT!");
-	 } else {
-		 DebugLog(@"sendMessage was passed empty message; ignoring quietly.");
-	 }	
+    if([messageStr length] < 1) {
+		DebugLog(@"sendMessage was passed empty message; ignoring quietly.");
+		return;
+	}
+
+#if SEND_AS_CHAT
+  
+	NSXMLElement *body = [NSXMLElement elementWithName:@"body"];
+	[body setStringValue:messageStr]; // FIXME: test this escapes ok.
+	NSXMLElement *message = [NSXMLElement elementWithName:@"message"];
+	[message addAttributeWithName:@"type" stringValue:@"chat"];
+	[message addAttributeWithName:@"to" stringValue:[self.toJid full] ];
+	[message addChild:body]; 
+	DebugLog(@"BUTTONS ABOUT TO SEND MESSAGE: %@", message);
+	[xmppLink sendElement:message];
+	DebugLog(@"SENT!");
+	
+#else
+	NSLog(@"SEND_AS_CHAT disabled, only IQ. Not sending this as XMPP chat message: ", messageStr);
+
+	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary]; // TODO move to re-usable place in code
+	[errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
+	NSError *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail]; // TODO: define protocol errors
+	NSString *rs = [xmppLink generateUUID]; // FIXME minor XMPP library dependency introduced here
+	NSString *myXML = [NSString stringWithFormat:@"<iq type='set' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>%@</button></query></iq>", [toJid full], rs, messageStr];
+	DebugLog(@"BUTTONS IQ SENDER: %@",myXML);
+	NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
+    [xmppLink sendElement:myStanza];
+	
+#endif
+	
+
+
 }
 
 - (void)sendIQ:(NSXMLElement *)myStanza {
@@ -303,15 +323,13 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 }
 
 
-
-
 /*     BUTTONS PROTOCOL 
  
 	BUTTONS 0.0 PROTOCOL IMPLEMENTATION
     THIS IS CURRENTLY AWFUL STOPGAP.
  BUTTONS SHOULD:
-  - IQ instead of Chat messages (although they are useful for quick testing)
-  - use 'set' when side-effects demanded or expected (REST-Lite)
+  - DONE (well, ifdef'd default) IQ instead of Chat messages (although they are useful for quick testing)
+  - DONE: use 'set' when side-effects demanded or expected (REST-Lite)
   - use markup (buttons.foaf.tv ns)
   - be extensible
   - be documented					
@@ -321,38 +339,32 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
  */
 - (void)sendPLUS:(NSObject *)button
 {
-	DebugLog(@"SENDING PLUS%@", button);
-	NSString *msg = @"PLUS event.";
-	DebugLog(@"EXPECT5 NOTNULL xmlLink: %@",xmppLink);
-
+	NSString *msg = @"PLUS";
 	[self sendMessage:msg];
 }
 
 - (void)sendLEFT:(NSObject *)button
 {
-	DebugLog(@"SENDING LEFT %@", button);
-	NSString *msg = @"LEFT event.";
+	NSString *msg = @"LEFT";
 	[self sendMessage:msg];
 }
 
 - (void)sendRIGH:(NSObject *)button
 {
-	DebugLog(@"SENDING RIGH %@", button);
-	NSString *msg = @"RIGH event.";
+	NSString *msg = @"RIGH";
 	[self sendMessage:msg];
 }
 
 - (void)sendMINU:(NSObject *)button
 {
-	DebugLog(@"SENDING MINU %@", button);
-	NSString *msg = @"MINU event.";
+	NSString *msg = @"MINU";
 	[self sendMessage:msg];
 }
 
 - (void)sendPLPZ:(NSObject *)button
 {
 	DebugLog(@"SENDING PLPZ %@ to %@", button, self.toJid);
-	NSString *msg = @"PLPZ event.";
+	NSString *msg = @"PLPZ";
 	[self sendMessage:msg];
 	VerboseLog(@"Sent msg %@", msg);
 	VerboseLog(@"To jid %@", self.toJid);
@@ -364,8 +376,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	} else { 
 		c = @"N";
 	}
-
-	
 	NSLog( c );
 	NSLog(@"____end PLPZ tests.");
 	
@@ -373,46 +383,25 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 - (void)sendMENU:(NSObject *)button
 {
-	DebugLog(@"SENDING MENU %@", button);
-	NSString *msg = @"MENU event.";
+	NSString *msg = @"MENU";
 	[self sendMessage:msg];
 }
 
 - (void)sendLIKE:(NSObject *)button
 {
-	DebugLog(@"SENDING LIKE %@", button);
-	NSString *msg = @"LIKE event.";
+	NSString *msg = @"LIKE";
 	[self sendMessage:msg];
 }
 
 - (void)sendOKAY:(NSObject *)button
 {
-	NSString *msg = @"OKAY event.";
+	NSString *msg = @"OKAY";
 	[self sendMessage:msg];
-
-	VerboseLog(@"SENDING IQ OKAY %@", button);
-	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
-	    [errorDetail setValue:@"Failed to do something" forKey:NSLocalizedDescriptionKey];
-	NSError *bError = [NSError errorWithDomain:@"buttons" code:100 userInfo:errorDetail];
-	// should we manually send from too? from='%@', [xmppLink.myJID full] ... dow e need id= ?
-	NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@'><query xmlns='http://buttons.foaf.tv/'><button>OKAY</button></query></iq>", [toJid full]];
-	VerboseLog(@"myXML: %@",myXML);
-	NSXMLElement *myStanza = [[NSXMLElement alloc]  initWithXMLString:myXML error:&bError];
-	VerboseLog(@"Sending IQ okay via %@ ", self.xmppLink);
-	VerboseLog(@"Markup was: %@",myStanza);
-	[self.xmppLink sendElement:myStanza];
-	
-/*	NSXMLElement *buttons = [NSXMLElement elementWithName:@"buttons" xmlns:@"http://buttons.foaf.tv/"];
-	NSXMLElement *iq = [NSXMLElement elementWithName:@"iq"];
-	[iq addAttributeWithName:@"type" stringValue:@"get"];
-	[iq addChild:buttons];
-	[self.xmppLink sendElement:iq]; */
 		
 }
 
 - (void)sendINFO:(NSObject *)button
 {
-	DebugLog(@"SENDING INFO %@", button);
 	NSString *msg = @"INFO event.";
 	[self sendMessage:msg] ;
 }
