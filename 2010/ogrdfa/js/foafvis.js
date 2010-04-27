@@ -8,15 +8,20 @@ function shortLink(url){
   url = url.replace("http://xmlns.com/foaf/0.1/", "foaf:");
   url = url.replace("http://www.w3.org/2000/01/rdf-schema#", "rdfs:");
   url = url.replace("http://www.w3.org/2002/07/owl#", "owl:");
-
-//  url = url.replace("", "x:");
   url = url.replace("http://purl.org/dc/terms/", "dcterms:");
   url = url.replace("http://dbpedia.org/resource/", "dbpedia:");
   url = url.replace("http://purl.org/vocab/bio/0.1/", "bio:");
-
-//  url = url.replace("", "x:");
   url = url.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
-  //alert ("Short link:"+url);
+  url = url.replace("http://www.w3.org/2000/01/rdf-schema#", "rdfs:");
+  url = url.replace("http://www.w3.org/2004/02/skos/core#", "skos:");
+  url = url.replace("http://www.w3.org/2001/XMLSchema#", "xsd:");
+  url = url.replace("http://rdfs.org/sioc/ns#", "sioc:");
+  url = url.replace("http://purl.org/rss/1.0/", "rss1:");
+  url = url.replace("http://usefulinc.com/ns/doap#", "doap:");
+  url = url.replace("http://www.w3.org/2007/05/powder#", "powder:");
+
+
+ 
   return url;
 }
 
@@ -37,20 +42,18 @@ jQuery(function ($) {
 	    // we're skipping assertions about the page itself
 	    if (!isHashUri(subj))
 		return true;
-	    g.addNode(subj);
-
-//            g.addNode( subj, {  label: subj, getShape : function(r,x,y) { return r.rect(x-30, y-13, 62, 33).attr({"fill": "#f00", "stroke-width": 4}); } } );
+	    g.addNode( shortLink ( subj) );
 
 	    $.each(predvals, function (pred, objvals) {
 
 		var  linkType = shortLink(pred);   
    	        g.addNode( pred , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
 
-		g.addEdge(subj, pred, { directed : true });	
+		g.addEdge( shortLink(subj) , pred, { directed : true });	
 
 		$.each(objvals, function (k, obj) {
-		    g.addNode(obj.value);
-		    g.addEdge(pred, obj.value, { directed : true });
+		    g.addNode( shortLink( obj.value ) );
+		    g.addEdge(pred,  shortLink ( obj.value ) , { directed : true });
 
 		    /*
 		    var triple = {
