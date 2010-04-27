@@ -27,6 +27,10 @@
 #define VerboseLog(...)
 #endif
 
+// Do we (also) send commands as chat messages (per original pre-protocol)
+#define SEND_AS_CHAT 0
+
+
 //ReleaseLog() Visibility
 #define ReleaseLog(...) NSLog(__VA_ARGS__)
 
