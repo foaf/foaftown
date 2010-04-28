@@ -48,19 +48,27 @@ jQuery(function ($) {
 	    $.each(predvals, function (pred, objvals) {
 
 		var  linkType = shortLink(pred);   
-   	        g.addNode( pred , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
-//   	        g.addNode( pred , {  label: linkType, getShape : function(r,x,y) { return r.g.arrow(x,y,8).attr({"fill": "#f00", "stroke-width": 1}); } } );
 
+		
+
+		var arcID = Math.floor(Math.random()*10000);
+
+
+
+//   	        g.addNode( arcID , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
+   	        g.addNode( pred  , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
+
+//		g.addEdge( shortLink(subj) , arcID, { directed : true });	
 		g.addEdge( shortLink(subj) , pred, { directed : true });	
 
 		$.each(objvals, function (k, obj) {
 
 		    //g.addNode( shortLink( obj.value ) );
        	            g.addNode( shortLink(obj.value) , {  label: shortLink(obj.value), getShape : function(r,x,y) { 
-				return r.rect(x,y, 40, 25, 10).attr({"fill": "000", "stroke-width": 2})
-; } 
+				return r.rect(x,y, 40, 25, 10).attr({"fill": "000", "stroke-width": 2}); } 
 		    } );
 
+//		    g.addEdge(arcID,  shortLink ( obj.value ) , { directed : true });
 		    g.addEdge(pred,  shortLink ( obj.value ) , { directed : true });
 
 		    /*
