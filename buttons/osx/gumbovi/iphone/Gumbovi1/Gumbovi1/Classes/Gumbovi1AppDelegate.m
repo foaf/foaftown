@@ -256,7 +256,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 [gad sendIQ:myStanza];	
 */
 
-//[ self.xmppLink sendMessage:msg toJID:self.toJid ] ;
 
 - (void)sendMessage:(NSString *)messageStr {
     if([messageStr length] < 1) {
@@ -741,6 +740,11 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
 	
 	[[self xmppLink] sendElement:presence];
+
+    // TODO timer danbri ping 
+	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
+	
+	
 }
 
 - (void)goOffline
@@ -749,6 +753,13 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	[presence addAttributeWithName:@"type" stringValue:@"unavailable"];
 	
 	[[self xmppLink] sendElement:presence];
+
+}
+
+
+- (void) keepAlive {
+	NSLog(@"keepAlive: sending NOOP to %@", self.toJid);
+	[self sendMessage:@"NOOP"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
