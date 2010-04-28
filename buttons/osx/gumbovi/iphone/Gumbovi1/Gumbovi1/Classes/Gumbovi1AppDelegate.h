@@ -44,6 +44,9 @@
 	BOOL allowSSLHostNameMismatch;
 	BOOL isOpen;
 	
+	NSTimer *keepaliveTimer; // for stayin' alive http://icodeblog.com/2009/07/23/nstimer-the-poor-mans-threading-code-snapshot/
+				
+	
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -63,6 +66,9 @@
 @property (nonatomic, readonly) XMPPReconnect *xmppReconnect;
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, readonly) XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
+
+@property (nonatomic, readonly) NSTimer *keepaliveTimer;
+
 
 - (IBAction) sendMENU:(id) button;
 - (IBAction) sendLIKE:(id) button;
@@ -86,5 +92,7 @@
 - (void)setTargetJidWithString:(NSString *)someJid;
 - (void)sendIQ:(NSXMLElement *)myStanza;
 - (void)scanRosterForDevices;
+- (void)keepAlive;
+
 
 @end
