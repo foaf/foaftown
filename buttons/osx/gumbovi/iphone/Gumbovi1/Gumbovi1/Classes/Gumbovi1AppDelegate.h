@@ -21,6 +21,7 @@
 @class XMPPStream;
 @interface Gumbovi1AppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
+		
 	XMPPStream *xmppLink;
     UIWindow *window;
     UITabBarController *tabBarController;
@@ -57,6 +58,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *qr_results; 
 @property (nonatomic, retain) IBOutlet ButtonDeviceList *buttonDevices;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
 @property (nonatomic, retain) NSDictionary *data;
 @property (nonatomic, retain) UIWindow *decoder_window;
 @property (nonatomic, retain) NSString *htmlInfo;

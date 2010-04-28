@@ -47,6 +47,7 @@
 #import "XMPPCapabilities.h"
 #import "XMPPCapsResourceCoreDataStorageObject.h"
 
+
 @implementation Gumbovi1AppDelegate
 
 @synthesize decoder_window;
@@ -642,7 +643,9 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 - (void)scanRosterForDevices {
     VerboseLog(@"Scanning Core Data (caps, roster)");
-	// COPIED FROM LINKED TV CONTROLLER
+
+	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	
 	Gumbovi1AppDelegate *buttons = self;
 	FirstViewController *fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
@@ -677,7 +680,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
 		fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 		DebugLog(@"Roster now: %@",fvc.roster_list);
-	} 
+	}
+	
+	[ [buttons.tabBarController.viewControllers objectAtIndex:TAB_DEVICES] reloadData] ;
+
+	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
 }	
 	/*
 			   // Core Data XMPPUserCoreDataStorage
@@ -760,6 +768,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 - (void) keepAlive {
 	NSLog(@"keepAlive: sending NOOP to %@", self.toJid);
 	[self sendMessage:@"NOOP"];
+
+	NSLog(@"heartbeat - scanning roster (local db) for devices:");
+	
+	[self scanRosterForDevices]; 	
+
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
