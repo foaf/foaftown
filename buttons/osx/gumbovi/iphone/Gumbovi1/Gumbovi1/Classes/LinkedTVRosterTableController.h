@@ -14,4 +14,7 @@
 }
 @property (nonatomic, retain) IBOutlet UITableView *roster_view;
 
+- (void)reloadData;
+
+
 @end

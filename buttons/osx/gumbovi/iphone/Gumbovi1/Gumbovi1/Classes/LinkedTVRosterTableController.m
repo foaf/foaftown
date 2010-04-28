@@ -80,6 +80,11 @@
 	[roster_view flashScrollIndicators];	//to show that it's scrollable
 }
 
+
+- (void)reloadData {
+	[roster_view reloadData];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
@@ -181,7 +186,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:0];//ugh
+	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];//ugh
     NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"LinkedTV: toJID is now: %@",[roster objectAtIndex:indexPath.row]);
 	[gad setTargetJidWithString:[roster objectAtIndex:indexPath.row]];
