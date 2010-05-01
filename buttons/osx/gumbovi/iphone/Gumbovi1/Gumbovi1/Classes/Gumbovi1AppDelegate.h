@@ -16,6 +16,7 @@
 #import "XMPPReconnect.h"
 #import "XMPPCapabilities.h"
 #import "XMPPCapabilitiesCoreDataStorage.h"
+#import "XMPPUser.h"
 
 //@class DecoderController;
 @class XMPPStream;

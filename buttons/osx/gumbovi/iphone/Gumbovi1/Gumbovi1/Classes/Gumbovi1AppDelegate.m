@@ -23,7 +23,8 @@
  Also XMPPStream class defines DEBUG_SEND DEBUG_RECV...
  */
 
-#import "XMPP.h"
+#import <CFNetwork/CFNetwork.h>
+
 #import "FirstViewController.h"
 #import "WebViewController.h"
 #import "Gumbovi1AppDelegate.h"
@@ -38,15 +39,15 @@
 #import "RootViewController.h"								// from lists drilldown demo (not used)
 #import "SLRootViewController.h" 
 #import "ButtonDeviceList.h"
+#import "ButtonCell.h"
+#import "XMPP.h"
 #import "XMPPRosterCoreDataStorage.h"
 #import "XMPPRoster.h"
 #import "XMPPStream.h"
-#import <CFNetwork/CFNetwork.h>
-#import "XMPPCapabilities.h"
-#import "ButtonCell.h"
 #import "XMPPCapabilities.h"
 #import "XMPPCapsResourceCoreDataStorageObject.h"
-
+#import "XMPPUser.h"
+#import "XMPPResource.h" 
 
 @implementation Gumbovi1AppDelegate
 
@@ -82,8 +83,8 @@
 		xmppReconnect = [[XMPPReconnect alloc] initWithStream:xmppLink]; // FIXME - we do this only once
 		[xmppReconnect addDelegate:self];
 
-		//xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];
-		xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
+		xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];// DANBRI MAY2010 debug - can core do this api?
+		//xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
 		xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
 		xmppCapabilitiesStorage = [[XMPPCapabilitiesCoreDataStorage alloc] init];
 		xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:xmppLink capabilitiesStorage:xmppCapabilitiesStorage];
@@ -637,7 +638,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 
 
-
+/* see also  "When the capabilities are received, the xmppCapabilities:didDiscoverCapabilities: delegate method is invoked." */ 
 
 - (void)scanRosterForDevices {
     VerboseLog(@"Scanning Core Data (caps, roster)");
@@ -645,11 +646,71 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 	
+
 	Gumbovi1AppDelegate *buttons = self;
 	FirstViewController *fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 /// needed?	fvc.roster_list.release; // FIXME
 	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME 			   
-			   
+
+	
+	
+	DebugLog(@"BUTTONS CAPABILITIES DB: %@", buttons.xmppCapabilities);
+	DebugLog(@"BUTTONS ROSTER DB: %@", buttons.xmppRoster);
+	
+	if (buttons.xmppRoster.autoRoster==TRUE) {
+		DebugLog(@"BUTTONS AUTOROSTER true");
+	} else {
+		DebugLog(@"BUTTONS AUTOROSTER false");			
+	}
+	
+	
+	NSArray *devs = [buttons.xmppRosterStorage sortedUsersByAvailabilityName];
+	//DebugLog(@"Roster sortedUsersByAvailabilityName: %@ ", devs);
+	for (NSObject *u in devs) {
+		DebugLog(@"User: %@ primaryResource: %@", u, [u primaryResource] ) ; // XMPPUser
+		if ([u isOnline]) { 
+			DebugLog(@"ONLINE!"); 
+			NSArray *a = [u sortedResources];
+			for (NSObject *ro in a) {
+				XMPPJID *r = (XMPPJID *) [ro jid];
+				DebugLog(@"ONLINE RESOURCE: %@  ...", r);
+				NSString *fullJid = [r description];
+				[fvc.roster_list addObject:fullJid ];
+				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+				fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+				DebugLog(@"Roster now: %@",fvc.roster_list);
+				
+				
+				// TODO, get capabilities here
+				
+				XMPPCapabilities *caps = (XMPPCapabilities *) buttons.xmppCapabilities;
+				
+				// 2010-05-02 01:31:31.105 Gumbovi1[61982:207] *** -[XMPPCapabilities areCapabilitiesKnownForJID:]: unrecognized selector sent to instance 0x3e2f2d0
+
+				DebugLog(@"Caps available? %@", caps);
+				
+				//if ([caps areCapabilitiesKnownForJID:(XMPPJID *)[XMPPJID jidWithString:fullJid]]) {
+				//	DebugLog(@"Caps available.");
+//					(XMPPJID *)[ro jid]
+				XMPPJID *j1 = [ro jid];	
+				
+				//	XMPPIQ *capXML = [caps capabilitiesForJID:j1];
+				//	DebugLog(@"XML: %@", capXML);
+				//} 
+			
+			}
+			
+			
+		} else { DebugLog(@"OFFLINE."); } 
+	
+	}
+	
+	[ [buttons.tabBarController.viewControllers objectAtIndex:TAB_DEVICES] reloadData] ;
+
+	return;
+	
+    /// all that follows - can we delete? coredata version seems not to have the api we need	
+	
 	// Core Data XMPPResourceCoreDataStorage
 	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
 		
@@ -658,7 +719,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	
 	// 2nd DB, capabilities
 	
-	NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+	//NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
 
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -682,9 +743,10 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
 		
 		
-		XMPPCapsResourceCoreDataStorageObject *lastRes = [caps resourceForJID:fullJid];
-		DebugLog(@"last resource for full JID %@ is : %@", fullJid, lastRes);
-		
+	//	XMPPJID *xJid = [XMPPJID jidWithString:fullJid];
+	//	XMPPCapsResourceCoreDataStorageObject *lastRes = [caps resourceForJID:xJid];
+	//	DebugLog(@"last resource for full JID %@ is : %@", xJid, lastRes);
+	
 		
 		NSLog(@"EXTRACTED JID: %@",fullJid);		
 		DebugLog(@"We got a JID in our roster: %@",aJid);	
@@ -763,7 +825,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	[[self xmppLink] sendElement:presence];
 
     // TODO timer danbri ping 
-	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
+	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
 	
 	
 }
