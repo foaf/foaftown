@@ -19,9 +19,6 @@ function shortLink(url){
   url = url.replace("http://purl.org/rss/1.0/", "rss1:");
   url = url.replace("http://usefulinc.com/ns/doap#", "doap:");
   url = url.replace("http://www.w3.org/2007/05/powder#", "powder:");
-
-
- 
   return url;
 }
 
@@ -40,45 +37,23 @@ jQuery(function ($) {
 	$.each(rdfjson, function (subj, predvals) { 	
 	    // jQuery-ese idiom for "continue"
 	    // we're skipping assertions about the page itself
-	    if (!isHashUri(subj))
-		return true;
-//	    g.addNode( shortLink ( subj) );
+	    if (!isHashUri(subj)) { return true; }
  	    g.addNode( shortLink(subj) , {  label: shortLink(subj), getShape : function(r,x,y) { return r.rect(x-30, y-13, 62, 33).attr({"fill": "#f00", "stroke-width": 2}); } } );
-
 	    $.each(predvals, function (pred, objvals) {
-
 		var  linkType = shortLink(pred);   
-
-		
-
 		var arcID = Math.floor(Math.random()*10000);
-
-
-
-//   	        g.addNode( arcID , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
-   	        g.addNode( pred  , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
-
-//		g.addEdge( shortLink(subj) , arcID, { directed : true });	
-		g.addEdge( shortLink(subj) , pred, { directed : true });	
+//		alert("arcID: "+arcID+ " / "+pred);
+   	        g.addNode( " "+arcID , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
+//		g.addEdge( shortLink(subj) , pred, { directed : true });	
+		g.addEdge( shortLink(subj) , " "+arcID, { directed : true });	
 
 		$.each(objvals, function (k, obj) {
 
 		    //g.addNode( shortLink( obj.value ) );
-       	            g.addNode( shortLink(obj.value) , {  label: shortLink(obj.value), getShape : function(r,x,y) { 
-				return r.rect(x,y, 40, 25, 10).attr({"fill": "000", "stroke-width": 2}); } 
-		    } );
+       	            g.addNode( shortLink(obj.value) , {  label: shortLink(obj.value), getShape : function(r,x,y) { return r.rect(x,y, 40, 25, 10).attr({"fill": "000", "stroke-width": 2}); } } );
+		    g.addEdge(" "+arcID,  shortLink ( obj.value ) , { directed : true });
+//		    g.addEdge(pred,  shortLink ( obj.value ) , { directed : true });
 
-//		    g.addEdge(arcID,  shortLink ( obj.value ) , { directed : true });
-		    g.addEdge(pred,  shortLink ( obj.value ) , { directed : true });
-
-		    /*
-		    var triple = {
-		        subject: subj,
-		        predicate: pred,
-		        object: obj.value, 
-		        objtype: obj.type
-		    };
-                    */
 		});
 	    });
 	});
@@ -91,3 +66,4 @@ jQuery(function ($) {
 
     });
 });
+		    /*  var triple = { subject: subj, predicate: pred, object: obj.value, objtype: obj.type		    }; */
