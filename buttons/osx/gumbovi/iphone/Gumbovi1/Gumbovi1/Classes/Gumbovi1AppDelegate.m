@@ -370,16 +370,14 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	VerboseLog(@"To jid %@", self.toJid);
 	VerboseLog(@" XMPP CLient: %@", self.xmppLink );
 	VerboseLog(@" XMPP CLient connected?: ");
-    NSString *c;
+/*    NSString *c;
 	if (xmppLink.isConnected ) { 
 		c = @"Y";
 	} else { 
 		c = @"N";
-	}
-	NSLog( c );
-	NSLog(@"____end PLPZ tests.");
-	
+	}	*/
 }
+ 
 
 - (void)sendMENU:(NSObject *)button
 {
@@ -649,20 +647,29 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	
 	Gumbovi1AppDelegate *buttons = self;
 	FirstViewController *fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
-	fvc.roster_list.release; // FIXME
+/// needed?	fvc.roster_list.release; // FIXME
 	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME 			   
 			   
 	// Core Data XMPPResourceCoreDataStorage
 	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
-			   
+		
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-			
+
+	
+	// 2nd DB, capabilities
+	
+	NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+
+	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
 	[fetchRequest setIncludesPendingChanges:YES];
 	[fetchRequest setFetchLimit:100];
 	// NSError *err = nil;
 	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+	
+	[fetchRequest release]; // TODO - a lot more of this needed...
+	
 			   // DebugLog(@"array is: %@" , results);	
 	for (NSEntityDescription *entity in results) {
 	
@@ -673,6 +680,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		NSString *aJid = [entity jidStr];
 		XMPPPresence *xp = [entity presence];
 		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
+		
+		
+		XMPPCapsResourceCoreDataStorageObject *lastRes = [caps resourceForJID:fullJid];
+		DebugLog(@"last resource for full JID %@ is : %@", fullJid, lastRes);
+		
+		
 		NSLog(@"EXTRACTED JID: %@",fullJid);		
 		DebugLog(@"We got a JID in our roster: %@",aJid);	
 		DebugLog(@"Roster was: %@",fvc.roster_list);
@@ -750,7 +763,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	[[self xmppLink] sendElement:presence];
 
     // TODO timer danbri ping 
-	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
+	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
 	
 	
 }
