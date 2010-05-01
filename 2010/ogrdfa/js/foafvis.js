@@ -10,6 +10,7 @@ function shortLink(url){
   url = url.replace("http://www.w3.org/2002/07/owl#", "owl:");
   url = url.replace("http://purl.org/dc/terms/", "dcterms:");
   url = url.replace("http://dbpedia.org/resource/", "dbpedia:");
+  url = url.replace("http://dbpedia.org/ontology/", "dbtypes:");
   url = url.replace("http://purl.org/vocab/bio/0.1/", "bio:");
   url = url.replace("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf:");
   url = url.replace("http://www.w3.org/2000/01/rdf-schema#", "rdfs:");
