@@ -42,7 +42,7 @@ jQuery(function ($) {
  	    g.addNode( shortLink(subj) , {  label: shortLink(subj), getShape : function(r,x,y) { return r.rect(x-30, y-13, 62, 33).attr({"fill": "#f00", "stroke-width": 2}); } } );
 	    $.each(predvals, function (pred, objvals) {
 		var  linkType = shortLink(pred);   
-		var arcID = Math.floor(Math.random()*10000);
+     	        var arcID = Math.floor(Math.random()*10000);
 //		alert("arcID: "+arcID+ " / "+pred);
    	        g.addNode( " "+arcID , {  label: linkType, getShape : function(r,x,y) { return r.circle(x,y,8 ).attr({"fill": "#f00", "stroke-width": 1}); } } );
 //		g.addEdge( shortLink(subj) , pred, { directed : true });	
