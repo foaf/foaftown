@@ -90,7 +90,7 @@
 		xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:xmppLink capabilitiesStorage:xmppCapabilitiesStorage];
 		xmppCapabilities.autoFetchHashedCapabilities = YES;
 		xmppCapabilities.autoFetchNonHashedCapabilities = YES;
-		
+				
 		[xmppLink addDelegate:self];
 		[xmppRoster addDelegate:self];
 		[xmppRoster setAutoRoster:YES];
@@ -675,31 +675,28 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 				XMPPJID *r = (XMPPJID *) [ro jid];
 				DebugLog(@"ONLINE RESOURCE: %@  ...", r);
 				NSString *fullJid = [r description];
-				[fvc.roster_list addObject:fullJid ];
-				NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
-				fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+				
+				[fvc.roster_list addObject:fullJid ]; // TODO Roster is ButtonDevice / ButtonDeviceList ?
+				// NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+				// fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
 				DebugLog(@"Roster now: %@",fvc.roster_list);
+				// [tmp release];
 				
-				
-				// TODO, get capabilities here
-				
-				XMPPCapabilities *caps = (XMPPCapabilities *) buttons.xmppCapabilities;
-				
-				// 2010-05-02 01:31:31.105 Gumbovi1[61982:207] *** -[XMPPCapabilities areCapabilitiesKnownForJID:]: unrecognized selector sent to instance 0x3e2f2d0
-
+				/* Caps are handled with the XEP-0115 standard which defines a technique for 
+				 hashing capabilities (disco info responses), and broadcasting them within a presence element. */
+				XMPPCapabilitiesCoreDataStorage *caps = (XMPPCapabilitiesCoreDataStorage *) buttons.xmppCapabilitiesStorage;
 				DebugLog(@"Caps available? %@", caps);
+				XMPPJID *jj = (XMPPJID *)[XMPPJID jidWithString:fullJid];
+				// DebugLog(@"XMPPJID for caps query: %@", jj);
+				// if ([caps isMemberOfClass:[XMPPCapabilitiesCoreDataStorage class]]) { DebugLog(@"OK");}
 				
-				//if ([caps areCapabilitiesKnownForJID:(XMPPJID *)[XMPPJID jidWithString:fullJid]]) {
-				//	DebugLog(@"Caps available.");
-//					(XMPPJID *)[ro jid]
-				XMPPJID *j1 = [ro jid];	
-				
-				//	XMPPIQ *capXML = [caps capabilitiesForJID:j1];
-				//	DebugLog(@"XML: %@", capXML);
-				//} 
-			
-			}
-			
+				if ([caps areCapabilitiesKnownForJID:jj] ) {
+					XMPPJID *j1 = [ro jid];	
+					XMPPIQ *capXML = [caps capabilitiesForJID:j1];
+					DebugLog(@"XML: %@", capXML);
+					
+				} else { DebugLog(@"NOXML: %@ capabilities unknown.", jj); }
+			} // end loop through connected resources
 			
 		} else { DebugLog(@"OFFLINE."); } 
 	
@@ -709,19 +706,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 	return;
 	
-    /// all that follows - can we delete? coredata version seems not to have the api we need	
 	
-	// Core Data XMPPResourceCoreDataStorage
-	//	VerboseLog(@"GUMBOVI ROSTER CHECK. Do we have our roster? %@ and storage %@", buttons.xmppRoster, buttons.xmppRosterStora);
+	/*
+    /// all that follows - can we delete? coredata version seems not to have the api we need	
 		
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-
-	
-	// 2nd DB, capabilities
-	
-	//NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
-
-	
+	//NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
 	[fetchRequest setIncludesPendingChanges:YES];
@@ -759,6 +749,10 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	
 	[ [buttons.tabBarController.viewControllers objectAtIndex:TAB_DEVICES] reloadData] ;
 
+	*/
+	
+	
+	
 	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 }	
