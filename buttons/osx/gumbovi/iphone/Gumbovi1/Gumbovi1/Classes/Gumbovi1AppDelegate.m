@@ -695,6 +695,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 					XMPPIQ *capXML = [caps capabilitiesForJID:j1];
 					DebugLog(@"XML: %@", capXML);
 					
+					// qwerty you are here
+					// <identity category="client" type="pc" name="BitlBee"></identity>
+
+					
+					// 
+					
 				} else { DebugLog(@"NOXML: %@ capabilities unknown.", jj); }
 			} // end loop through connected resources
 			
@@ -819,12 +825,12 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	[[self xmppLink] sendElement:presence];
 
     // TODO timer danbri ping 
-	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
+	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
 	
 	
 }
 
-- (void)goOffline
+- (void)goOfflinesent 
 {
 	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
 	[presence addAttributeWithName:@"type" stringValue:@"unavailable"];
@@ -952,7 +958,7 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	NSString *xs = 	[NSString stringWithFormat:@"%@", x2];
 	// DebugLog(@"X2: %@",xs);
 		
-	if([xs rangeOfString:@"<div>"].location == NSNotFound){
+	if([xs rangeOfString:@"<div"].location == NSNotFound){
 	//	DebugLog(@"div not found in xs %@", xs);
 	} else {
 		DebugLog(@"NOWP: Setting self.htmlInfo to: %@",xs);
