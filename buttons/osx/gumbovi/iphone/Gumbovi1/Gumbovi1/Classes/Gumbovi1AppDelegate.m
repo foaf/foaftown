@@ -694,10 +694,36 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 					XMPPJID *j1 = [ro jid];	
 					XMPPIQ *capXML = [caps capabilitiesForJID:j1];
 					DebugLog(@"XML: %@", capXML);
-					
+					// DebugLog( @"Presence?: ", [ro status]);
+							 
 					// qwerty you are here
 					// <identity category="client" type="pc" name="BitlBee"></identity>
 
+					/*NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+					NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+					
+					NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr == %@", jj];
+
+					[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
+					[fetchRequest setIncludesPendingChanges:YES];
+					[fetchRequest setFetchLimit:100];
+					[fetchRequest setPredicate:predicate];
+					NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+					[fetchRequest release]; // TODO - a lot more of this needed...
+					for (NSEntityDescription *entity in results) {
+						
+						DebugLog(@"ROSTER ENTITY: %@",entity);
+						NSString *xp = [entity presenceStr];
+						//DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
+						DebugLog(@"JID: %@", [entity jidStr]);
+						NSString *aJid = [entity jidStr];
+						//XMPPPresence *xp = [entity presence];
+						//NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
+						
+					}*/
+					
+					
+					
 					
 					// 
 					
