@@ -173,12 +173,15 @@
 	DebugLog(@"CELL FOR JID LIST %@", fvc.roster_list);
     XMPPJID *jid = [XMPPJID jidWithString:[roster objectAtIndex:indexPath.row] ];
 	
+	
+	// http://xmpp.org/registrar/disco-categories.html
+	//
 	XMPPCapabilitiesCoreDataStorage *caps = (XMPPCapabilitiesCoreDataStorage *) buttons.xmppCapabilitiesStorage;
 	DebugLog(@"UI REBUILD - consulting caps: %@", caps);
 	XMPPJID *jj = (XMPPJID *)[XMPPJID jidWithString:[jid description]];
-	BOOL isDesktop = false;
-	BOOL isMythTV = false;
-	BOOL isVLC = false;
+	BOOL isDesktop = FALSE;
+	BOOL isMythTV = FALSE;
+	BOOL isVLC = FALSE;
 	
 	if ([caps areCapabilitiesKnownForJID:jj ] ) {
 		XMPPIQ *capXML = [caps capabilitiesForJID:jid];
@@ -186,24 +189,40 @@
 		DebugLog(@"BUTTONS UI-REGEN XML: %@", capXML);
 		
 		if([xs rangeOfString:@"type=\"pc\""].location == NSNotFound){
-			DebugLog(@"BUTTONS UI-REGEN CAPS: Not a client");	
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Not a pc client");	
 		} else {
-			DebugLog(@"BUTTONS UI-REGEN CAPS: Desktop Client!");
-			isDesktop=true;
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Desktop pc Client!");
+			isDesktop=TRUE;
 		}
 		
+		// name="MythTV Buttons"
+		if([xs rangeOfString:@"name=\"MythTV Buttons\""].location != NSNotFound) { isMythTV=TRUE; }
+			
 	}
 	
     // Set up the cell...
 	[[cell deviceName] setText:[NSString stringWithFormat:@"%@",jid]];
 	
+	// use a case switch?
+	
 	if (isDesktop) {
-	[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]];
-	} else {
-		[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv.png"]];		
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]];
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"Buddy"  ]];
 	}
 	
-	[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"Unknown type, scanning..."  ]];
+	if (isMythTV ) { 
+//		[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv-tv.png"]]; 
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]]; 
+
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
+
+	} 
+	else {
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"blank-tv.png"]];		
+	}
+	
+	
+	
 								
     return cell;
 }
