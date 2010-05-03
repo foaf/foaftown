@@ -167,16 +167,42 @@
 		}
     }
     
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
+	Gumbovi1AppDelegate * buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"CELL FOR JID LIST %@", fvc.roster_list);
-	///[roster retain];// hmm help, memory stuff. todo!	
-	//	NSString *jid = (NSString *)[roster objectAtIndex:indexPath.row];
-    NSObject *jid = [roster objectAtIndex:indexPath.row];
+    XMPPJID *jid = [XMPPJID jidWithString:[roster objectAtIndex:indexPath.row] ];
+	
+	XMPPCapabilitiesCoreDataStorage *caps = (XMPPCapabilitiesCoreDataStorage *) buttons.xmppCapabilitiesStorage;
+	DebugLog(@"UI REBUILD - consulting caps: %@", caps);
+	XMPPJID *jj = (XMPPJID *)[XMPPJID jidWithString:[jid description]];
+	BOOL isDesktop = false;
+	BOOL isMythTV = false;
+	BOOL isVLC = false;
+	
+	if ([caps areCapabilitiesKnownForJID:jj ] ) {
+		XMPPIQ *capXML = [caps capabilitiesForJID:jid];
+		NSString *xs = [capXML description];
+		DebugLog(@"BUTTONS UI-REGEN XML: %@", capXML);
+		
+		if([xs rangeOfString:@"type=\"pc\""].location == NSNotFound){
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Not a client");	
+		} else {
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Desktop Client!");
+			isDesktop=true;
+		}
+		
+	}
+	
     // Set up the cell...
 	[[cell deviceName] setText:[NSString stringWithFormat:@"%@",jid]];
-	[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv.png"]];
+	
+	if (isDesktop) {
+	[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]];
+	} else {
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv.png"]];		
+	}
+	
 	[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"Unknown type, scanning..."  ]];
 								
     return cell;
@@ -185,11 +211,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	Gumbovi1AppDelegate * gad = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
-	FirstViewController * fvc = (FirstViewController *) [gad.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];//ugh
+	Gumbovi1AppDelegate * buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
+	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
     NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"LinkedTV: toJID is now: %@",[roster objectAtIndex:indexPath.row]);
-	[gad setTargetJidWithString:[roster objectAtIndex:indexPath.row]];
+	[buttons setTargetJidWithString:[roster objectAtIndex:indexPath.row]];
 
 }
 

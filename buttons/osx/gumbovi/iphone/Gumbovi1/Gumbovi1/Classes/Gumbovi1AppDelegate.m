@@ -68,6 +68,7 @@
 @synthesize xmppReconnect;
 @synthesize xmppCapabilities;
 @synthesize xmppCapabilitiesStorage;
+@synthesize keepaliveTimer;
 
 
 - (id)init
@@ -135,14 +136,6 @@
     DebugLog(@"XMPP: initXMPP starting.");
 	FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	VerboseLog(@"FVC is", fvc);
-   // moved to init: xmppLink = [[XMPPStream alloc] init];
-	
-	//xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
-	//xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];	
-//	[xmppLink addDelegate:self];
-//	[xmppRoster addDelegate:self];
-//	[xmppRoster setAutoRoster:YES];
-// moved to init	
 	
 	// HUGE PILE OF MESS TO GET JIDS SETUP
 	
@@ -216,18 +209,8 @@
 
 	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
 	[[self xmppLink] sendElement:presence];
-	
-	//FIXME
-	/*
-	[xmppLink setAutoLogin:YES];
-	[xmppLink setAllowsPlaintextAuth:NO];
-	[xmppLink setAutoPresence:YES];
-//done	[xmppLink setAutoRoster:YES];
-//done	[xmppLink connect];
-     */	
-}
 
-//[XMPPJID jidWithString:
+}
 
 - (void)connectIfOffline {
 	DebugLog(@"connectIfOffline checks...");
@@ -250,13 +233,6 @@
 	// TODO: Error correction here. Strip xmpp: prefix, etc? print warnings?
 }
 
-
-/* NSString *rs = [gad.xmppLink generateUUID]; // FIXME minor XMPP library dependency introduced here
-NSString *myXML = [NSString stringWithFormat:@"<iq type='get' to='%@' id='%d'><query xmlns='http://buttons.foaf.tv/'><button>NOWP</button></query></iq>", [gad.toJid full], rs];
-DebugLog(@"WebView Sending IQ XML: %@", myXML); 
-NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bError];
-[gad sendIQ:myStanza];	
-*/
 
 
 - (void)sendMessage:(NSString *)messageStr {
@@ -506,7 +482,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 		id r;
 		
 		FirstViewController * fvc = (FirstViewController *) [tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
-//		fvc.roster_list = [[NSMutableArray alloc] initWithObjects:nil]; // blank it down each time (losing qr codes?)
 
 		while (r = [e nextObject]) {
 
@@ -571,14 +546,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	//fvc.output.text = log; // problem?
     DebugLog(@"XMPP MSG: %@",log);
 }
-
-
-
-/// LISTS
-
-/// copied from DrillDownApp 
-
-	
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -649,10 +616,8 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 	Gumbovi1AppDelegate *buttons = self;
 	FirstViewController *fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
-/// needed?	fvc.roster_list.release; // FIXME
-	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME 			   
-
-	
+	/// needed?	fvc.roster_list.release; // FIXME
+	fvc.roster_list = [[NSMutableArray alloc] init]; // must be a better way to empty things FIXME
 	
 	DebugLog(@"BUTTONS CAPABILITIES DB: %@", buttons.xmppCapabilities);
 	DebugLog(@"BUTTONS ROSTER DB: %@", buttons.xmppRoster);
@@ -662,7 +627,6 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 	} else {
 		DebugLog(@"BUTTONS AUTOROSTER false");			
 	}
-	
 	
 	NSArray *devs = [buttons.xmppRosterStorage sortedUsersByAvailabilityName];
 	//DebugLog(@"Roster sortedUsersByAvailabilityName: %@ ", devs);
@@ -689,44 +653,17 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 				XMPPJID *jj = (XMPPJID *)[XMPPJID jidWithString:fullJid];
 				// DebugLog(@"XMPPJID for caps query: %@", jj);
 				// if ([caps isMemberOfClass:[XMPPCapabilitiesCoreDataStorage class]]) { DebugLog(@"OK");}
-				
+				DebugLog(@"CHECKING FOR XML...");
 				if ([caps areCapabilitiesKnownForJID:jj] ) {
 					XMPPJID *j1 = [ro jid];	
 					XMPPIQ *capXML = [caps capabilitiesForJID:j1];
 					DebugLog(@"XML: %@", capXML);
-					// DebugLog( @"Presence?: ", [ro status]);
-							 
-					// qwerty you are here
-					// <identity category="client" type="pc" name="BitlBee"></identity>
-
-					/*NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-					NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-					
-					NSPredicate *predicate = [NSPredicate predicateWithFormat:@"jidStr == %@", jj];
-
-					[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
-					[fetchRequest setIncludesPendingChanges:YES];
-					[fetchRequest setFetchLimit:100];
-					[fetchRequest setPredicate:predicate];
-					NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-					[fetchRequest release]; // TODO - a lot more of this needed...
-					for (NSEntityDescription *entity in results) {
-						
-						DebugLog(@"ROSTER ENTITY: %@",entity);
-						NSString *xp = [entity presenceStr];
-						//DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
-						DebugLog(@"JID: %@", [entity jidStr]);
-						NSString *aJid = [entity jidStr];
-						//XMPPPresence *xp = [entity presence];
-						//NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
-						
-					}*/
-					
-					
-					
-					
-					// 
-					
+					NSString *xs = [capXML description];
+					if([xs rangeOfString:@"category=\"client\""].location == NSNotFound){
+						DebugLog(@"BUTTONS CAPS: Not a client");	
+					} else {
+						DebugLog(@"BUTTONS CAPS: Desktop Client!");
+					}
 				} else { DebugLog(@"NOXML: %@ capabilities unknown.", jj); }
 			} // end loop through connected resources
 			
@@ -738,91 +675,13 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 	return;
 	
-	
-	/*
-    /// all that follows - can we delete? coredata version seems not to have the api we need	
-		
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-	//NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];	
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	[fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
-	[fetchRequest setIncludesPendingChanges:YES];
-	[fetchRequest setFetchLimit:100];
-	// NSError *err = nil;
-	NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-	
-	[fetchRequest release]; // TODO - a lot more of this needed...
-	
-			   // DebugLog(@"array is: %@" , results);	
-	for (NSEntityDescription *entity in results) {
-	
-		DebugLog(@"ROSTER ENTITY: %@",entity);
-		//NSString *xp = [entity presenceStr];
-		//DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
-		DebugLog(@"JID: %@", [entity jidStr]);
-		NSString *aJid = [entity jidStr];
-		XMPPPresence *xp = [entity presence];
-		NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
-		
-		
-	//	XMPPJID *xJid = [XMPPJID jidWithString:fullJid];
-	//	XMPPCapsResourceCoreDataStorageObject *lastRes = [caps resourceForJID:xJid];
-	//	DebugLog(@"last resource for full JID %@ is : %@", xJid, lastRes);
-	
-		
-		NSLog(@"EXTRACTED JID: %@",fullJid);		
-		DebugLog(@"We got a JID in our roster: %@",aJid);	
-		DebugLog(@"Roster was: %@",fvc.roster_list);
-		[fvc.roster_list addObject:fullJid];
-		NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
-		fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
-		DebugLog(@"Roster now: %@",fvc.roster_list);
-	}
-	
-	[ [buttons.tabBarController.viewControllers objectAtIndex:TAB_DEVICES] reloadData] ;
 
-	*/
-	
-	
+
 	
 	VerboseLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 }	
-	/*
-			   // Core Data XMPPUserCoreDataStorage
-			   NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
-			   NSFetchRequest *fetchRequest1 = [[NSFetchRequest alloc] init];
-			   [fetchRequest1 setEntity:entity1 ];
-			   [fetchRequest1 setIncludesPendingChanges:YES];
-			   [fetchRequest1 setFetchLimit:100];
-			   NSArray *results1 = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest1 error:nil];
-			   for (NSEntityDescription *entity1 in results1) {
-			   // DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
-			   
-			   } 
-			   
-			   // Core Data XMPPCapabilitiesCoreDataStorage
-			   
-			   NSEntityDescription *cdb = [NSEntityDescription entityForName:@"XMPPCapsCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
-			   // DebugLog(@"CAPS DB: %@", cdb);
-			   NSFetchRequest *fetchRequest2 = [[NSFetchRequest alloc] init];
-			   [fetchRequest2 setEntity:cdb];
-			   [fetchRequest2 setIncludesPendingChanges:YES];
-			   [fetchRequest2 setFetchLimit:100];
-			   NSArray *caps = [buttons.xmppCapabilitiesStorage.managedObjectContext executeFetchRequest:fetchRequest2 error:nil];
-			   //DebugLog(@"Got array of caps: %@", caps);	
-			   
-			   for (NSEntityDescription *c in caps) {
-			   DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: \n\t%@\n\n", [c capabilities]);
-			   //DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
-			   NSSet *capSet = [c resources];
-			   for (XMPPCapsResourceCoreDataStorageObject *x in capSet) 
-			   {
-			   DebugLog(@"CAPS XMPPCapsResourceCoreDataStorageObject RESOURCE: ext: %@  failed: %@ hashAlgorithm: %@ hashStr: %@ jidStr: %@ node: %@ ver: x", 
-			   [x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
-			   }
-			   }
-			   */
+
 
 
 
@@ -1061,3 +920,101 @@ NSXMLElement *myStanza = [[NSXMLElement alloc] initWithXMLString:myXML error:&bE
 
 @end
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ /// all that follows - can we delete? coredata version seems not to have the api we need	
+ 
+ NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPResourceCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+ //NSEntityDescription *caps = [NSEntityDescription entityForName:@"XMPPCapsResourceCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];	
+ NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+ [fetchRequest setEntity:entity];				// everything if no predicate, so commented out: [fetchRequest setPredicate:predicate];
+ [fetchRequest setIncludesPendingChanges:YES];
+ [fetchRequest setFetchLimit:100];
+ // NSError *err = nil;
+ NSArray *results = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+ 
+ [fetchRequest release]; // TODO - a lot more of this needed...
+ 
+ // DebugLog(@"array is: %@" , results);	
+ for (NSEntityDescription *entity in results) {
+ 
+ DebugLog(@"ROSTER ENTITY: %@",entity);
+ //NSString *xp = [entity presenceStr];
+ //DebugLog("ROSTER PRESENCE STRING: presence markup is %@",[entity presenceStr]);
+ DebugLog(@"JID: %@", [entity jidStr]);
+ NSString *aJid = [entity jidStr];
+ XMPPPresence *xp = [entity presence];
+ NSString *fullJid = [[xp attributeForName:@"from"] stringValue];
+ 
+ 
+ //	XMPPJID *xJid = [XMPPJID jidWithString:fullJid];
+ //	XMPPCapsResourceCoreDataStorageObject *lastRes = [caps resourceForJID:xJid];
+ //	DebugLog(@"last resource for full JID %@ is : %@", xJid, lastRes);
+ 
+ 
+ NSLog(@"EXTRACTED JID: %@",fullJid);		
+ DebugLog(@"We got a JID in our roster: %@",aJid);	
+ DebugLog(@"Roster was: %@",fvc.roster_list);
+ [fvc.roster_list addObject:fullJid];
+ NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
+ fvc.roster_list = [[NSMutableArray alloc] initWithArray:[tmp allObjects]];
+ DebugLog(@"Roster now: %@",fvc.roster_list);
+ }
+ 
+ [ [buttons.tabBarController.viewControllers objectAtIndex:TAB_DEVICES] reloadData] ;
+ 
+ */
+
+
+
+/*
+ // Core Data XMPPUserCoreDataStorage
+ NSEntityDescription *entity1 = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorage" inManagedObjectContext:buttons.xmppRosterStorage.managedObjectContext];
+ NSFetchRequest *fetchRequest1 = [[NSFetchRequest alloc] init];
+ [fetchRequest1 setEntity:entity1 ];
+ [fetchRequest1 setIncludesPendingChanges:YES];
+ [fetchRequest1 setFetchLimit:100];
+ NSArray *results1 = [buttons.xmppRosterStorage.managedObjectContext executeFetchRequest:fetchRequest1 error:nil];
+ for (NSEntityDescription *entity1 in results1) {
+ // DebugLog(@"jidstr: %@  ", [entity1 jidStr]);
+ 
+ } 
+ 
+ // Core Data XMPPCapabilitiesCoreDataStorage
+ 
+ NSEntityDescription *cdb = [NSEntityDescription entityForName:@"XMPPCapsCoreDataStorageObject" inManagedObjectContext:buttons.xmppCapabilitiesStorage.managedObjectContext];
+ // DebugLog(@"CAPS DB: %@", cdb);
+ NSFetchRequest *fetchRequest2 = [[NSFetchRequest alloc] init];
+ [fetchRequest2 setEntity:cdb];
+ [fetchRequest2 setIncludesPendingChanges:YES];
+ [fetchRequest2 setFetchLimit:100];
+ NSArray *caps = [buttons.xmppCapabilitiesStorage.managedObjectContext executeFetchRequest:fetchRequest2 error:nil];
+ //DebugLog(@"Got array of caps: %@", caps);	
+ 
+ for (NSEntityDescription *c in caps) {
+ DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilities: \n\t%@\n\n", [c capabilities]);
+ //DebugLog(@"CAPS XMPPCapsCoreDataStorageObject: capabilitiesStr: %@ ", [c capabilitiesStr]);
+ NSSet *capSet = [c resources];
+ for (XMPPCapsResourceCoreDataStorageObject *x in capSet) 
+ {
+ DebugLog(@"CAPS XMPPCapsResourceCoreDataStorageObject RESOURCE: ext: %@  failed: %@ hashAlgorithm: %@ hashStr: %@ jidStr: %@ node: %@ ver: x", 
+ [x ext], [x failed], [x hashAlgorithm], [x hashStr],[x jidStr], [x node] );
+ }
+ }
+ */
