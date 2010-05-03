@@ -12,6 +12,9 @@
 #import "ButtonCell.h"
 #import "XMPPCapabilities.h"
 #import "XMPPCapsResourceCoreDataStorageObject.h"
+#import "XMPPUserMemoryStorage.h"
+#import "XMPPUser.h"
+#import "XMPPResource.h"
 
 // For now, lots of state is in FVC
 
@@ -146,6 +149,25 @@
 } 
 
 
+// TODO: move this to Utils if useful
+- (NSString *)getDataBetweenFromString:(NSString *)data leftString:(NSString *)leftData rightString:(NSString *)rightData leftOffset:(NSInteger)leftPos; 
+{         
+    NSInteger left, right;         
+    NSString *foundData;                 
+	NSScanner *scanner = [NSScanner scannerWithString:data];
+
+    [scanner scanUpToString:leftData intoString: nil];         
+    left = [scanner scanLocation];         
+    [scanner setScanLocation:left + leftPos];         
+    [scanner scanUpToString:rightData intoString: nil];         
+    right = [scanner scanLocation] + 1;         
+    left += leftPos;         
+    foundData = [data substringWithRange: NSMakeRange(left, (right - left) - 1)]; 
+	[scanner release];
+	return foundData; 
+}
+
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VerboseLog(@"FRESH CELL: %@",indexPath);
@@ -167,62 +189,153 @@
 		}
     }
     
+	// http://xmpp.org/registrar/disco-categories.html
+
 	Gumbovi1AppDelegate * buttons = (Gumbovi1AppDelegate *) [[UIApplication sharedApplication] delegate];
 	FirstViewController * fvc = (FirstViewController *) [buttons.tabBarController.viewControllers objectAtIndex:TAB_BUTTONS];
 	NSMutableArray *roster = fvc.roster_list;
 	DebugLog(@"CELL FOR JID LIST %@", fvc.roster_list);
     XMPPJID *jid = [XMPPJID jidWithString:[roster objectAtIndex:indexPath.row] ];
-	
-	
-	// http://xmpp.org/registrar/disco-categories.html
-	//
 	XMPPCapabilitiesCoreDataStorage *caps = (XMPPCapabilitiesCoreDataStorage *) buttons.xmppCapabilitiesStorage;
-	DebugLog(@"UI REBUILD - consulting caps: %@", caps);
+	VerboseLog(@"UI REBUILD - consulting caps: %@", caps);
 	XMPPJID *jj = (XMPPJID *)[XMPPJID jidWithString:[jid description]];
-	BOOL isDesktop = FALSE;
+
+	// TODO: This will go away in future; when we replace roster_list with ButtonDeviceList and the entries are OO-modelled. 
+
+	BOOL isPC = FALSE;
 	BOOL isMythTV = FALSE;
 	BOOL isVLC = FALSE;
+	BOOL isBOXEE = FALSE;
+	BOOL isXBMC = FALSE;
+	BOOL isWWW = FALSE;
 	
 	if ([caps areCapabilitiesKnownForJID:jj ] ) {
 		XMPPIQ *capXML = [caps capabilitiesForJID:jid];
 		NSString *xs = [capXML description];
-		DebugLog(@"BUTTONS UI-REGEN XML: %@", capXML);
+		VerboseLog(@"BUTTONS UI-REGEN XML: %@", capXML);
 		
 		if([xs rangeOfString:@"type=\"pc\""].location == NSNotFound){
-			DebugLog(@"BUTTONS UI-REGEN CAPS: Not a pc client");	
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Not a pc client %@", xs);	
 		} else {
-			DebugLog(@"BUTTONS UI-REGEN CAPS: Desktop pc Client!");
-			isDesktop=TRUE;
-		}
+			DebugLog(@"BUTTONS UI-REGEN CAPS: Desktop pc Client! %@", xs);
+			isPC = TRUE;
+		};
 		
 		// name="MythTV Buttons"
-		if([xs rangeOfString:@"name=\"MythTV Buttons\""].location != NSNotFound) { isMythTV=TRUE; }
-			
+		if([xs rangeOfString:@"name=\"MythTV Buttons\""].location != NSNotFound) { isMythTV = TRUE; }
+		if([xs rangeOfString:@"name=\"VLC\""].location != NSNotFound) { isVLC = TRUE; } // TODO: send this from VLC
+		if([xs rangeOfString:@"name=\"BOXEE\""].location != NSNotFound) { isBOXEE = TRUE; }	// TODO: send this from Boxee
+		if([xs rangeOfString:@"name=\"XBMC\""].location != NSNotFound) { isXBMC = TRUE; }	// TODO: send this from XBMC
+		if([xs rangeOfString:@"name=\"WWW\""].location != NSNotFound) { isWWW = TRUE; }	// TODO: send this from Strophe.js
+
+		DebugLog(@"XML to extract device summary is: %@", xs); // name="MythTV Buttons"
+		// see http://stackoverflow.com/questions/594797/how-to-use-nsscanner
+		
+		//NSString *name = [self getDataBetweenFromString:xs leftString:@"name=" rightString:@"\"" leftOffset:5];
+		//DebugLog(@"BNAME: %@", name);
+		
+		
+		// we want in capXML to match iq/query/identify@name
+		// http://developer.apple.com/mac/library/documentation/Cocoa/Reference/Foundation/Classes/NSXMLElement_Class/Reference/Reference.html
+
+		// woes: http://groups.google.com/group/xmppframework/browse_thread/thread/1ae1f1ca58abbd90
+		
+		/* 
+	       <iq to="alice.notube@gmail.com/hardcoded0C271803" type="result" id="CB7DC50D-CB21-4C57-B1F3-34EA0097DD7E" from="bob.notube@gmail.com/BasicbotA263033F"><query xmlns="http://jabber.org/protocol/disco#info"><identity name="MythTV Buttons" category="client" type="bot"></identity><feature var="dnssrv"></feature><feature var="stringprep"></feature><feature var="urn:ietf:params:xml:ns:xmpp-sasl#c2s"></feature><feature var="jabber:iq:version"></feature></query></iq>
+	   */	
+		
+		//NSArray *nodes = [capXML nodesForXPath:@"./iq/query/identify/@name" error:nil];
+		//NSArray *event = [message nodesForXPath:@"//event/items/item/data" error:&error]; 
+
+		//NSArray *name = [capXML nodesForXPath:@"//identify/@name" error:nil];
+		//DebugLog(@"IDENTIFY NAME array: %@", name);
+		
+		//if ([name count] > 0) {
+		//	NSString *value = [[name objectAtIndex:0] stringValue];
+		//	DebugLog(@"IDENTIFY NAME: %@", value);
+		//} else { DebugLog(@"Array is 0"); }
+			 
+
+
+	
 	}
+	
+	// Nooo, can't print BOOLs. DebugLog(@"SUMMARY: isPC:%@ isMythTV:%@ isVLC:%@ isBOXEE:%@ isWWW:%@", isPC, isMythTV, isVLC, isBOXEE, isWWW);
+	
 	
     // Set up the cell...
 	[[cell deviceName] setText:[NSString stringWithFormat:@"%@",jid]];
 	
-	// use a case switch?
 	
-	if (isDesktop) {
+	
+	
+	// Set up image:
+	[[cell deviceIcon] setImage:[UIImage imageNamed:@"blank-tv.png"]]; 
+	
+	if (isPC) {
 		[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]];
 		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"Buddy"  ]];
-	}
+	};
 	
 	if (isMythTV ) { 
-//		[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv-tv.png"]]; 
-		[[cell deviceIcon] setImage:[UIImage imageNamed:@"foaf-explorer.png"]]; 
-
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"mythtv-tv.png"]]; 
+		[[cell deviceName] setText:[NSString stringWithFormat:@"MythTV"]];
 		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
 
-	} 
-	else {
-		[[cell deviceIcon] setImage:[UIImage imageNamed:@"blank-tv.png"]];		
+	};
+
+	
+	if (isBOXEE ) { 
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"boxee-tv.png"]]; 
+		[[cell deviceName] setText:[NSString stringWithFormat:@"Boxee"]];
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
+	};
+	
+	if (isWWW ) { 
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"www-tv.png"]]; 
+		[[cell deviceName] setText:[NSString stringWithFormat:@"Web"]];
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
+	};
+	if (isXBMC ) { 
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"xbmc-tv.png"]]; 
+		[[cell deviceName] setText:[NSString stringWithFormat:@"XBMC"]];
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
+	};
+	if (isVLC ) { 
+		[[cell deviceIcon] setImage:[UIImage imageNamed:@"vlc-tv.png"]]; 
+		[[cell deviceName] setText:[NSString stringWithFormat:@"VLC"]];
+		[[cell deviceType] setText:[NSString stringWithFormat:@"%@", @"NoTube Network"  ]];
+	};
+	
+	
+	// Scan devices and stuff their last status into the UI 
+	// This is JUST WRONG. we should pick up via resourceForJID instead of iterating. TODO: find out why/where that failed. lazy slow for now.
+	
+	NSArray *devs = [buttons.xmppRosterStorage sortedUsersByAvailabilityName];
+	
+	for (XMPPUserMemoryStorage *u in devs) {
+		if ([u isOnline]) { 
+			NSArray *a = [u sortedResources];
+			for (NSObject *ro in a) {
+				XMPPJID *r = (XMPPJID *) [ro jid];
+				DebugLog(@"UI STATUS FOR JID: %@", r);
+				NSString *fullJid = [r description];
+				NSString *myStatus = [NSString stringWithFormat:@"%@", [[ro presence] status]    ];
+				DebugLog(@"UI STATUS: %@", myStatus );
+				if ( [r isEqual:jid] ) { 
+					if(myStatus != @"(null)" ) {
+					[[cell deviceType] setText:myStatus];
+				}
+					else {
+					[[cell deviceType] setText:@"(NoTube Network device)"]; // yes this is spaghetti to get here - TODO: de-pasta
+				}
+				NSLog(@"UI STATUS: Matched %@ jid", r);
+				} else { 
+					DebugLog(@"Jid %@ != %@", r, jid);
+				}
+			}
+		}
 	}
-	
-	
-	
 								
     return cell;
 }
