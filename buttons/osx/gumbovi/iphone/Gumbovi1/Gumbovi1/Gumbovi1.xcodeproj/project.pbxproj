@@ -168,6 +168,12 @@
 		B6837611114192C800DEF94D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B683761D114192E800DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B683761E114192EF00DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
+		B68D2621118F33B2001BFA9D /* foaf-explorer.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2620118F33B2001BFA9D /* foaf-explorer.png */; };
+		B68D2625118F3BF7001BFA9D /* mythtv-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2624118F3BF7001BFA9D /* mythtv-tv.png */; };
+		B68D262A118F3C10001BFA9D /* tv-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2626118F3C10001BFA9D /* tv-tv.png */; };
+		B68D262B118F3C10001BFA9D /* vlc-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2627118F3C10001BFA9D /* vlc-tv.png */; };
+		B68D262C118F3C10001BFA9D /* www-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2628118F3C10001BFA9D /* www-tv.png */; };
+		B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2629118F3C10001BFA9D /* xbmc-tv.png */; };
 		B69034D91156217E00F02FBC /* mythtv.png in Resources */ = {isa = PBXBuildFile; fileRef = B69034D81156217E00F02FBC /* mythtv.png */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
@@ -430,6 +436,12 @@
 		B6837616114192C800DEF94D /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6837618114192C800DEF94D /* BonjourUI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BonjourUI-Info.plist"; sourceTree = "<group>"; };
 		B683761C114192E800DEF94D /* libidn.a */ = {isa = PBXFileReference; comments = "Dan-Brickleys-MacBook-Pro:Gumbovi1 danbri$ file libidn/Mac/libidn.a \nlibidn/Mac/libidn.a: Mach-O universal binary with 4 architectures\nlibidn/Mac/libidn.a (for architecture x86_64):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture i386):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture ppc):\tcurrent ar archive random library\nlibidn/Mac/libidn.a (for architecture armv6):\tcurrent ar archive random library\n"; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/Mac/libidn.a; sourceTree = "<group>"; };
+		B68D2620118F33B2001BFA9D /* foaf-explorer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "foaf-explorer.png"; path = "files/foaf-explorer.png"; sourceTree = "<group>"; };
+		B68D2624118F3BF7001BFA9D /* mythtv-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mythtv-tv.png"; path = "files/mythtv-tv.png"; sourceTree = "<group>"; };
+		B68D2626118F3C10001BFA9D /* tv-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tv-tv.png"; path = "files/tv-tv.png"; sourceTree = "<group>"; };
+		B68D2627118F3C10001BFA9D /* vlc-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "vlc-tv.png"; path = "files/vlc-tv.png"; sourceTree = "<group>"; };
+		B68D2628118F3C10001BFA9D /* www-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "www-tv.png"; path = "files/www-tv.png"; sourceTree = "<group>"; };
+		B68D2629118F3C10001BFA9D /* xbmc-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "xbmc-tv.png"; path = "files/xbmc-tv.png"; sourceTree = "<group>"; };
 		B69034D81156217E00F02FBC /* mythtv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythtv.png; path = files/mythtv.png; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -941,7 +953,13 @@
 			children = (
 				B60ACB3711561A6F00E83353 /* 120px-Boxee.png */,
 				B69034D81156217E00F02FBC /* mythtv.png */,
+				B68D2620118F33B2001BFA9D /* foaf-explorer.png */,
 				B6EF3CD81148EF7A0047CF12 /* 15-tags.png */,
+				B68D2626118F3C10001BFA9D /* tv-tv.png */,
+				B68D2627118F3C10001BFA9D /* vlc-tv.png */,
+				B68D2628118F3C10001BFA9D /* www-tv.png */,
+				B68D2629118F3C10001BFA9D /* xbmc-tv.png */,
+				B68D2624118F3BF7001BFA9D /* mythtv-tv.png */,
 				B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */,
 				B61718431151A06100FF50CD /* bgbuttons.png */,
 				B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */,
@@ -1159,6 +1177,12 @@
 				B60ACADE1155644800E83353 /* ButtonCell.xib in Resources */,
 				B60ACB3811561A6F00E83353 /* 120px-Boxee.png in Resources */,
 				B69034D91156217E00F02FBC /* mythtv.png in Resources */,
+				B68D2621118F33B2001BFA9D /* foaf-explorer.png in Resources */,
+				B68D2625118F3BF7001BFA9D /* mythtv-tv.png in Resources */,
+				B68D262A118F3C10001BFA9D /* tv-tv.png in Resources */,
+				B68D262B118F3C10001BFA9D /* vlc-tv.png in Resources */,
+				B68D262C118F3C10001BFA9D /* www-tv.png in Resources */,
+				B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

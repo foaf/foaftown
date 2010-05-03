@@ -59,7 +59,6 @@
 @property (nonatomic, retain) IBOutlet UITextField *qr_results; 
 @property (nonatomic, retain) IBOutlet ButtonDeviceList *buttonDevices;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
-
 @property (nonatomic, retain) NSDictionary *data;
 @property (nonatomic, retain) UIWindow *decoder_window;
 @property (nonatomic, retain) NSString *htmlInfo;
@@ -69,7 +68,6 @@
 @property (nonatomic, readonly) XMPPReconnect *xmppReconnect;
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, readonly) XMPPCapabilitiesCoreDataStorage *xmppCapabilitiesStorage;
-
 @property (nonatomic, readonly) NSTimer *keepaliveTimer;
 
 
