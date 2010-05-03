@@ -84,6 +84,7 @@
 		xmppReconnect = [[XMPPReconnect alloc] initWithStream:xmppLink]; // FIXME - we do this only once
 		[xmppReconnect addDelegate:self];
 
+		//qwerty
 		xmppRosterStorage = [[XMPPRosterMemoryStorage alloc] init];// DANBRI MAY2010 debug - can core do this api?
 		//xmppRosterStorage = [[XMPPRosterCoreDataStorage alloc] init];
 		xmppRoster = [[XMPPRoster alloc] initWithStream:xmppLink rosterStorage:xmppRosterStorage];
@@ -628,17 +629,28 @@
 		DebugLog(@"BUTTONS AUTOROSTER false");			
 	}
 	
+	
 	NSArray *devs = [buttons.xmppRosterStorage sortedUsersByAvailabilityName];
+	
+	
 	//DebugLog(@"Roster sortedUsersByAvailabilityName: %@ ", devs);
-	for (NSObject *u in devs) {
+	for (XMPPUserMemoryStorage *u in devs) {
+		
+		
+		// we think these are XMPPUserMemoryStorage
+		
 		DebugLog(@"User: %@ primaryResource: %@", u, [u primaryResource] ) ; // XMPPUser
 		if ([u isOnline]) { 
-			DebugLog(@"ONLINE!"); 
+			//DebugLog(@"ONLINE! status: %@", [u status]); 
+			DebugLog(@"ONLINE"); // 
 			NSArray *a = [u sortedResources];
+			//XMPPResource *ro;//qwerty
 			for (NSObject *ro in a) {
 				XMPPJID *r = (XMPPJID *) [ro jid];
 				DebugLog(@"ONLINE RESOURCE: %@  ...", r);
 				NSString *fullJid = [r description];
+				DebugLog(@"PREZZZZ: %@", [[ro presence] status] );
+				
 				
 				[fvc.roster_list addObject:fullJid ]; // TODO Roster is ButtonDevice / ButtonDeviceList ?
 				// NSSet *tmp = [NSSet setWithArray:fvc.roster_list]; 
