@@ -38,6 +38,7 @@
     DebugLog(@"roster list: %@",roster);
 	DebugLog(@"WILL APPEAR: vieWillAppear Setting gad.htmlInfo to webview, %@", gad.htmlInfo);
     DebugLog(@"appear Webview is %@:",webview);
+	//[webview flashScrollIndicators];
 	[webview loadHTMLString:gad.htmlInfo baseURL:baseURL];
 	NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
 	[errorDetail setValue:@"Failed to send NOWP IQ" forKey:NSLocalizedDescriptionKey];
