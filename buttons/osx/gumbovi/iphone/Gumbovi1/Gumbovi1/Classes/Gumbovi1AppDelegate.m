@@ -722,7 +722,7 @@
 	[[self xmppLink] sendElement:presence];
 
     // TODO timer danbri ping 
-	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
+	keepaliveTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(keepAlive) userInfo:nil repeats:YES];
 	
 	
 }
