@@ -305,6 +305,55 @@
 		B69E5EE71191662A00BCC80E /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDF1191662A00BCC80E /* Bonjour.xib */; };
 		B69E5EE81191662A00BCC80E /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EE01191662A00BCC80E /* SLRootViewController.xib */; };
 		B69E5EE91191662A00BCC80E /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EE11191662A00BCC80E /* ButtonCell.xib */; };
+		B69EB0181191A149008720E8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0051191A149008720E8 /* back.png */; };
+		B69EB0191191A149008720E8 /* back.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0061191A149008720E8 /* back.svg */; };
+		B69EB01A1191A149008720E8 /* buttondown.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0071191A149008720E8 /* buttondown.svg */; };
+		B69EB01B1191A149008720E8 /* buttonmask.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0081191A149008720E8 /* buttonmask.svg */; };
+		B69EB01C1191A149008720E8 /* buttonup.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0091191A149008720E8 /* buttonup.svg */; };
+		B69EB01D1191A149008720E8 /* lightbulb.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00A1191A149008720E8 /* lightbulb.svg */; };
+		B69EB01E1191A149008720E8 /* shakyhand.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00B1191A149008720E8 /* shakyhand.svg */; };
+		B69EB01F1191A149008720E8 /* shakyphone.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00C1191A149008720E8 /* shakyphone.svg */; };
+		B69EB0201191A149008720E8 /* stopwatch.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00D1191A149008720E8 /* stopwatch.svg */; };
+		B69EB0211191A149008720E8 /* zbar-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00E1191A149008720E8 /* zbar-button.png */; };
+		B69EB0221191A149008720E8 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00F1191A149008720E8 /* zbar-help.html */; };
+		B69EB0231191A149008720E8 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0101191A149008720E8 /* zbar-helpicons.png */; };
+		B69EB0241191A149008720E8 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0111191A149008720E8 /* zbar-samples.png */; };
+		B69EB02A1191A149008720E8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0051191A149008720E8 /* back.png */; };
+		B69EB02B1191A149008720E8 /* back.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0061191A149008720E8 /* back.svg */; };
+		B69EB02C1191A149008720E8 /* buttondown.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0071191A149008720E8 /* buttondown.svg */; };
+		B69EB02D1191A149008720E8 /* buttonmask.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0081191A149008720E8 /* buttonmask.svg */; };
+		B69EB02E1191A149008720E8 /* buttonup.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0091191A149008720E8 /* buttonup.svg */; };
+		B69EB02F1191A149008720E8 /* lightbulb.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00A1191A149008720E8 /* lightbulb.svg */; };
+		B69EB0301191A149008720E8 /* shakyhand.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00B1191A149008720E8 /* shakyhand.svg */; };
+		B69EB0311191A149008720E8 /* shakyphone.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00C1191A149008720E8 /* shakyphone.svg */; };
+		B69EB0321191A149008720E8 /* stopwatch.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00D1191A149008720E8 /* stopwatch.svg */; };
+		B69EB0331191A149008720E8 /* zbar-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00E1191A149008720E8 /* zbar-button.png */; };
+		B69EB0341191A149008720E8 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00F1191A149008720E8 /* zbar-help.html */; };
+		B69EB0351191A149008720E8 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0101191A149008720E8 /* zbar-helpicons.png */; };
+		B69EB0361191A149008720E8 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0111191A149008720E8 /* zbar-samples.png */; };
+		B69EB0371191A149008720E8 /* ZBarHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0131191A149008720E8 /* ZBarHelpController.m */; };
+		B69EB0381191A149008720E8 /* ZBarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0141191A149008720E8 /* ZBarImage.m */; };
+		B69EB0391191A149008720E8 /* ZBarImageScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0151191A149008720E8 /* ZBarImageScanner.m */; };
+		B69EB03A1191A149008720E8 /* ZBarReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0161191A149008720E8 /* ZBarReaderController.m */; };
+		B69EB03B1191A149008720E8 /* ZBarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0171191A149008720E8 /* ZBarSymbol.m */; };
+		B69EB03C1191A149008720E8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0051191A149008720E8 /* back.png */; };
+		B69EB03D1191A149008720E8 /* back.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0061191A149008720E8 /* back.svg */; };
+		B69EB03E1191A149008720E8 /* buttondown.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0071191A149008720E8 /* buttondown.svg */; };
+		B69EB03F1191A149008720E8 /* buttonmask.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0081191A149008720E8 /* buttonmask.svg */; };
+		B69EB0401191A149008720E8 /* buttonup.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0091191A149008720E8 /* buttonup.svg */; };
+		B69EB0411191A149008720E8 /* lightbulb.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00A1191A149008720E8 /* lightbulb.svg */; };
+		B69EB0421191A149008720E8 /* shakyhand.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00B1191A149008720E8 /* shakyhand.svg */; };
+		B69EB0431191A149008720E8 /* shakyphone.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00C1191A149008720E8 /* shakyphone.svg */; };
+		B69EB0441191A149008720E8 /* stopwatch.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00D1191A149008720E8 /* stopwatch.svg */; };
+		B69EB0451191A149008720E8 /* zbar-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00E1191A149008720E8 /* zbar-button.png */; };
+		B69EB0461191A149008720E8 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00F1191A149008720E8 /* zbar-help.html */; };
+		B69EB0471191A149008720E8 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0101191A149008720E8 /* zbar-helpicons.png */; };
+		B69EB0481191A149008720E8 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0111191A149008720E8 /* zbar-samples.png */; };
+		B69EB0491191A149008720E8 /* ZBarHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0131191A149008720E8 /* ZBarHelpController.m */; };
+		B69EB04A1191A149008720E8 /* ZBarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0141191A149008720E8 /* ZBarImage.m */; };
+		B69EB04B1191A149008720E8 /* ZBarImageScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0151191A149008720E8 /* ZBarImageScanner.m */; };
+		B69EB04C1191A149008720E8 /* ZBarReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0161191A149008720E8 /* ZBarReaderController.m */; };
+		B69EB04D1191A149008720E8 /* ZBarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0171191A149008720E8 /* ZBarSymbol.m */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
@@ -713,6 +762,28 @@
 		B69E5EDF1191662A00BCC80E /* Bonjour.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Bonjour.xib; path = "Resources-iPad/Bonjour.xib"; sourceTree = "<group>"; };
 		B69E5EE01191662A00BCC80E /* SLRootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SLRootViewController.xib; path = "Resources-iPad/SLRootViewController.xib"; sourceTree = "<group>"; };
 		B69E5EE11191662A00BCC80E /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ButtonCell.xib; path = "Resources-iPad/ButtonCell.xib"; sourceTree = "<group>"; };
+		B69EB0011191A149008720E8 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		B69EB0021191A149008720E8 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		B69EB0031191A149008720E8 /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prefix.pch; sourceTree = "<group>"; };
+		B69EB0051191A149008720E8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		B69EB0061191A149008720E8 /* back.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = back.svg; sourceTree = "<group>"; };
+		B69EB0071191A149008720E8 /* buttondown.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = buttondown.svg; sourceTree = "<group>"; };
+		B69EB0081191A149008720E8 /* buttonmask.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = buttonmask.svg; sourceTree = "<group>"; };
+		B69EB0091191A149008720E8 /* buttonup.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = buttonup.svg; sourceTree = "<group>"; };
+		B69EB00A1191A149008720E8 /* lightbulb.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lightbulb.svg; sourceTree = "<group>"; };
+		B69EB00B1191A149008720E8 /* shakyhand.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shakyhand.svg; sourceTree = "<group>"; };
+		B69EB00C1191A149008720E8 /* shakyphone.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shakyphone.svg; sourceTree = "<group>"; };
+		B69EB00D1191A149008720E8 /* stopwatch.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = stopwatch.svg; sourceTree = "<group>"; };
+		B69EB00E1191A149008720E8 /* zbar-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-button.png"; sourceTree = "<group>"; };
+		B69EB00F1191A149008720E8 /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
+		B69EB0101191A149008720E8 /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
+		B69EB0111191A149008720E8 /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		B69EB0121191A149008720E8 /* ZBarHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarHelpController.h; sourceTree = "<group>"; };
+		B69EB0131191A149008720E8 /* ZBarHelpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarHelpController.m; sourceTree = "<group>"; };
+		B69EB0141191A149008720E8 /* ZBarImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarImage.m; sourceTree = "<group>"; };
+		B69EB0151191A149008720E8 /* ZBarImageScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarImageScanner.m; sourceTree = "<group>"; };
+		B69EB0161191A149008720E8 /* ZBarReaderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarReaderController.m; sourceTree = "<group>"; };
+		B69EB0171191A149008720E8 /* ZBarSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarSymbol.m; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B69F0E1B113FFA2E00365B22 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
@@ -1219,6 +1290,51 @@
 			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
+		B69EAFF51191A0D4008720E8 /* qrcodes */ = {
+			isa = PBXGroup;
+			children = (
+				B69EB0001191A149008720E8 /* zbar */,
+			);
+			name = qrcodes;
+			sourceTree = "<group>";
+		};
+		B69EB0001191A149008720E8 /* zbar */ = {
+			isa = PBXGroup;
+			children = (
+				B69EB0011191A149008720E8 /* config.h */,
+				B69EB0021191A149008720E8 /* debug.h */,
+				B69EB0031191A149008720E8 /* prefix.pch */,
+				B69EB0041191A149008720E8 /* res */,
+				B69EB0121191A149008720E8 /* ZBarHelpController.h */,
+				B69EB0131191A149008720E8 /* ZBarHelpController.m */,
+				B69EB0141191A149008720E8 /* ZBarImage.m */,
+				B69EB0151191A149008720E8 /* ZBarImageScanner.m */,
+				B69EB0161191A149008720E8 /* ZBarReaderController.m */,
+				B69EB0171191A149008720E8 /* ZBarSymbol.m */,
+			);
+			path = zbar;
+			sourceTree = "<group>";
+		};
+		B69EB0041191A149008720E8 /* res */ = {
+			isa = PBXGroup;
+			children = (
+				B69EB0051191A149008720E8 /* back.png */,
+				B69EB0061191A149008720E8 /* back.svg */,
+				B69EB0071191A149008720E8 /* buttondown.svg */,
+				B69EB0081191A149008720E8 /* buttonmask.svg */,
+				B69EB0091191A149008720E8 /* buttonup.svg */,
+				B69EB00A1191A149008720E8 /* lightbulb.svg */,
+				B69EB00B1191A149008720E8 /* shakyhand.svg */,
+				B69EB00C1191A149008720E8 /* shakyphone.svg */,
+				B69EB00D1191A149008720E8 /* stopwatch.svg */,
+				B69EB00E1191A149008720E8 /* zbar-button.png */,
+				B69EB00F1191A149008720E8 /* zbar-help.html */,
+				B69EB0101191A149008720E8 /* zbar-helpicons.png */,
+				B69EB0111191A149008720E8 /* zbar-samples.png */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
 		B69F0E1A113FF9F500365B22 /* serverless */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,6 +1476,7 @@
 		B6DE2914114185850080EC8F /* libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B69EAFF51191A0D4008720E8 /* qrcodes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				B6C9591D1133065D00CF15AA /* libiconv.2.dylib */,
 			);
@@ -1557,6 +1674,19 @@
 				B68D262B118F3C10001BFA9D /* vlc-tv.png in Resources */,
 				B68D262C118F3C10001BFA9D /* www-tv.png in Resources */,
 				B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */,
+				B69EB0181191A149008720E8 /* back.png in Resources */,
+				B69EB0191191A149008720E8 /* back.svg in Resources */,
+				B69EB01A1191A149008720E8 /* buttondown.svg in Resources */,
+				B69EB01B1191A149008720E8 /* buttonmask.svg in Resources */,
+				B69EB01C1191A149008720E8 /* buttonup.svg in Resources */,
+				B69EB01D1191A149008720E8 /* lightbulb.svg in Resources */,
+				B69EB01E1191A149008720E8 /* shakyhand.svg in Resources */,
+				B69EB01F1191A149008720E8 /* shakyphone.svg in Resources */,
+				B69EB0201191A149008720E8 /* stopwatch.svg in Resources */,
+				B69EB0211191A149008720E8 /* zbar-button.png in Resources */,
+				B69EB0221191A149008720E8 /* zbar-help.html in Resources */,
+				B69EB0231191A149008720E8 /* zbar-helpicons.png in Resources */,
+				B69EB0241191A149008720E8 /* zbar-samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1660,6 +1790,19 @@
 				B69E5EE71191662A00BCC80E /* Bonjour.xib in Resources */,
 				B69E5EE81191662A00BCC80E /* SLRootViewController.xib in Resources */,
 				B69E5EE91191662A00BCC80E /* ButtonCell.xib in Resources */,
+				B69EB03C1191A149008720E8 /* back.png in Resources */,
+				B69EB03D1191A149008720E8 /* back.svg in Resources */,
+				B69EB03E1191A149008720E8 /* buttondown.svg in Resources */,
+				B69EB03F1191A149008720E8 /* buttonmask.svg in Resources */,
+				B69EB0401191A149008720E8 /* buttonup.svg in Resources */,
+				B69EB0411191A149008720E8 /* lightbulb.svg in Resources */,
+				B69EB0421191A149008720E8 /* shakyhand.svg in Resources */,
+				B69EB0431191A149008720E8 /* shakyphone.svg in Resources */,
+				B69EB0441191A149008720E8 /* stopwatch.svg in Resources */,
+				B69EB0451191A149008720E8 /* zbar-button.png in Resources */,
+				B69EB0461191A149008720E8 /* zbar-help.html in Resources */,
+				B69EB0471191A149008720E8 /* zbar-helpicons.png in Resources */,
+				B69EB0481191A149008720E8 /* zbar-samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1775,6 +1918,19 @@
 				B6DD8EC611914BE000700E41 /* www-tv.png in Resources */,
 				B6DD8EC711914BE000700E41 /* xbmc-tv.png in Resources */,
 				B6DD8F4E11915DD300700E41 /* iPadMainWindow.xib in Resources */,
+				B69EB02A1191A149008720E8 /* back.png in Resources */,
+				B69EB02B1191A149008720E8 /* back.svg in Resources */,
+				B69EB02C1191A149008720E8 /* buttondown.svg in Resources */,
+				B69EB02D1191A149008720E8 /* buttonmask.svg in Resources */,
+				B69EB02E1191A149008720E8 /* buttonup.svg in Resources */,
+				B69EB02F1191A149008720E8 /* lightbulb.svg in Resources */,
+				B69EB0301191A149008720E8 /* shakyhand.svg in Resources */,
+				B69EB0311191A149008720E8 /* shakyphone.svg in Resources */,
+				B69EB0321191A149008720E8 /* stopwatch.svg in Resources */,
+				B69EB0331191A149008720E8 /* zbar-button.png in Resources */,
+				B69EB0341191A149008720E8 /* zbar-help.html in Resources */,
+				B69EB0351191A149008720E8 /* zbar-helpicons.png in Resources */,
+				B69EB0361191A149008720E8 /* zbar-samples.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1964,6 +2120,11 @@
 				B69E5EC41191662400BCC80E /* DDNumber.m in Sources */,
 				B69E5EC51191662400BCC80E /* XMPPCapabilities.xcdatamodel in Sources */,
 				B69E5EC61191662400BCC80E /* XMPPRoster.xcdatamodel in Sources */,
+				B69EB0491191A149008720E8 /* ZBarHelpController.m in Sources */,
+				B69EB04A1191A149008720E8 /* ZBarImage.m in Sources */,
+				B69EB04B1191A149008720E8 /* ZBarImageScanner.m in Sources */,
+				B69EB04C1191A149008720E8 /* ZBarReaderController.m in Sources */,
+				B69EB04D1191A149008720E8 /* ZBarSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2111,6 +2272,11 @@
 				B6DD8F0811914BE000700E41 /* DDNumber.m in Sources */,
 				B6DD8F0911914BE000700E41 /* XMPPCapabilities.xcdatamodel in Sources */,
 				B6DD8F0A11914BE000700E41 /* XMPPRoster.xcdatamodel in Sources */,
+				B69EB0371191A149008720E8 /* ZBarHelpController.m in Sources */,
+				B69EB0381191A149008720E8 /* ZBarImage.m in Sources */,
+				B69EB0391191A149008720E8 /* ZBarImageScanner.m in Sources */,
+				B69EB03A1191A149008720E8 /* ZBarReaderController.m in Sources */,
+				B69EB03B1191A149008720E8 /* ZBarSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
