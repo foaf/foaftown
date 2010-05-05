@@ -330,8 +330,10 @@
 
 					[[cell deviceType] setText:@""];
 				  }  else {
-					[[cell deviceType] setText:@"(NoTube Network device)"]; // yes this is spaghetti to get here - TODO: de-pasta
-				}
+				//	[[cell deviceType] setText:@"(NoTube Network device)"]; // yes this is spaghetti to get here - TODO: de-pasta
+					[[cell deviceType] setText:myStatus];
+
+				}				
 				NSLog(@"UI STATUS: Matched %@ jid", r);
 				} else { 
 					DebugLog(@"Jid %@ != %@", r, jid);

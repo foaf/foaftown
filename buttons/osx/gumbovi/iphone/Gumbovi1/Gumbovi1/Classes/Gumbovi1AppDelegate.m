@@ -10,6 +10,7 @@
 //
 //  Thanks to Chris van Aart, Jens Finkhäuser, and Daniel Salber for Xcode & Obj-C advice.
 //
+// mortenf for foaf explorer logo
 // Release notes:
 // * before release, check executable properties and turn off EXC_BAD_ACCESS handling 
 //    ie. http://www.cocoadev.com/index.pl?NSZombieEnabled

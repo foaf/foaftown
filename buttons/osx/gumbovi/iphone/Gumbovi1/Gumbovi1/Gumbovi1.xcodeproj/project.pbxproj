@@ -459,6 +459,8 @@
 		B6DD8F1411914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6DD8F1511914BE000700E41 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B6DD8F1611914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
+		B6DD8F4D11915DD300700E41 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */; };
+		B6DD8F4E11915DD300700E41 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */; };
 		B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
 		B6E095E310B1B77E00F27218 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
@@ -686,7 +688,8 @@
 		B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B6C9591D1133065D00CF15AA /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = usr/lib/libiconv.2.dylib; sourceTree = SDKROOT; };
 		B6DD8F1B11914BE000700E41 /* Gumbovi1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gumbovi1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6DD8F1D11914BE000700E41 /* Gumbovi1-Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gumbovi1-Info copy.plist"; sourceTree = "<group>"; };
+		B6DD8F1D11914BE000700E41 /* Gumbovi-iPad.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gumbovi-iPad.plist"; sourceTree = "<group>"; };
+		B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = iPadMainWindow.xib; sourceTree = "<group>"; };
 		B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = ServerlessDemo.xcdatamodel; sourceTree = "<group>"; };
 		B6E095C410B1AE4E00F27218 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		B6E095E210B1B77E00F27218 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -781,6 +784,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B6A67F1B11357F2000EA4712 /* lists */,
+				B69F0E1A113FF9F500365B22 /* serverless */,
 				1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */,
 				1D3623240D0F684500981E51 /* Gumbovi1AppDelegate.h */,
 				B60ACAD81155642600E83353 /* ButtonCell.h */,
@@ -817,8 +822,6 @@
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				B6DE2914114185850080EC8F /* libraries */,
 				080E96DDFE201D6D7F000001 /* Classes */,
-				B69F0E1A113FF9F500365B22 /* serverless */,
-				B6A67F1B11357F2000EA4712 /* lists */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -842,6 +845,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B6DD8F5111915E2400700E41 /* iPad */,
 				B6DE2925114185B40080EC8F /* Sounds */,
 				B6A67EF111357C8000EA4712 /* Images */,
 				B69F0DD4113FC43500365B22 /* README.TXT */,
@@ -852,7 +856,7 @@
 				B6E095C410B1AE4E00F27218 /* Entitlements.plist */,
 				8D1107310486CEB800E47090 /* Gumbovi1-Info.plist */,
 				B6837618114192C800DEF94D /* BonjourUI-Info.plist */,
-				B6DD8F1D11914BE000700E41 /* Gumbovi1-Info copy.plist */,
+				B6DD8F1D11914BE000700E41 /* Gumbovi-iPad.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1070,6 +1074,7 @@
 				B69F0E31113FFAAA00365B22 /* Message.m */,
 			);
 			name = serverless;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		B6A5983D11611B1000EC1713 /* xmppframework */ = {
@@ -1169,6 +1174,14 @@
 				B6B74BFF113577B900DD019D /* libqrlib.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B6DD8F5111915E2400700E41 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		B6DE2914114185850080EC8F /* libraries */ = {
@@ -1353,6 +1366,7 @@
 				B68D262B118F3C10001BFA9D /* vlc-tv.png in Resources */,
 				B68D262C118F3C10001BFA9D /* www-tv.png in Resources */,
 				B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */,
+				B6DD8F4D11915DD300700E41 /* iPadMainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1510,6 +1524,7 @@
 				B6DD8EC511914BE000700E41 /* vlc-tv.png in Resources */,
 				B6DD8EC611914BE000700E41 /* www-tv.png in Resources */,
 				B6DD8EC711914BE000700E41 /* xbmc-tv.png in Resources */,
+				B6DD8F4E11915DD300700E41 /* iPadMainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1954,7 +1969,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
-				INFOPLIST_FILE = "Gumbovi1-Info copy.plist";
+				INFOPLIST_FILE = "Gumbovi-iPad.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
@@ -1985,7 +2000,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
-				INFOPLIST_FILE = "Gumbovi1-Info copy.plist";
+				INFOPLIST_FILE = "Gumbovi-iPad.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
@@ -2018,7 +2033,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
-				INFOPLIST_FILE = "Gumbovi1-Info copy.plist";
+				INFOPLIST_FILE = "Gumbovi-iPad.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
@@ -2052,7 +2067,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
-				INFOPLIST_FILE = "Gumbovi1-Info copy.plist";
+				INFOPLIST_FILE = "Gumbovi-iPad.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
@@ -2206,7 +2221,10 @@
 					"../../qrlib/src/**",
 					/usr/include/libxml2,
 				);
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/libidn/Mac/\"/**",
+					"\"$(SRCROOT)/libidn/${PLATFORM_NAME}\"",
+				);
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
