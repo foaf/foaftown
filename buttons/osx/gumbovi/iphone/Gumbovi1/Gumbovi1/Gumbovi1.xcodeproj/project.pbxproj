@@ -2823,6 +2823,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					zbar/,
 					"../../qrlib/src/**",
 					/usr/include/libxml2,
 				);
