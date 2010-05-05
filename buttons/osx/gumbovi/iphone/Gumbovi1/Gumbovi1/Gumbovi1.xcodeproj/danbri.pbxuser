@@ -48,9 +48,9 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
-		activeExecutable = B6DD8F1C11914BE000700E41 /* Gumbovi1 iPad UI */;
+		activeExecutable = B66EABF010A56AD20037F743 /* Gumbovi1 */;
 		activeSDKPreference = iphoneos3.1.3;
-		activeTarget = B6DD8E9111914BE000700E41 /* Gumbovi1 iPad UI */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* Gumbovi1 */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Gumbovi1 */,
 			B6DD8E9111914BE000700E41 /* Gumbovi1 iPad UI */,
@@ -63,6 +63,7 @@
 			B6837617114192C800DEF94D /* BonjourUI */,
 			B6A5995C11611B6900EC1713 /* Gumbovi1 - xmppframework2 */,
 			B6DD8F1C11914BE000700E41 /* Gumbovi1 iPad UI */,
+			B69E5ED81191662400BCC80E /* Gumbovi1-iPad */,
 		);
 		perUserDictionary = {
 			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
@@ -310,6 +311,8 @@
 			B69E5E271191644300BCC80E /* PlistBookmark */ = B69E5E271191644300BCC80E /* PlistBookmark */;
 			B69E5E281191644300BCC80E /* PlistBookmark */ = B69E5E281191644300BCC80E /* PlistBookmark */;
 			B69E5E291191644300BCC80E /* PlistBookmark */ = B69E5E291191644300BCC80E /* PlistBookmark */;
+			B69E5E491191651A00BCC80E /* PlistBookmark */ = B69E5E491191651A00BCC80E /* PlistBookmark */;
+			B69E5E4A1191651A00BCC80E /* PlistBookmark */ = B69E5E4A1191651A00BCC80E /* PlistBookmark */;
 			B69F0E75113FFDCC00365B22 = B69F0E75113FFDCC00365B22 /* PBXTextBookmark */;
 			B69F0E83113FFDCC00365B22 = B69F0E83113FFDCC00365B22 /* PBXTextBookmark */;
 			B69F0ED0113FFE7B00365B22 = B69F0ED0113FFE7B00365B22 /* PBXTextBookmark */;
@@ -2044,6 +2047,61 @@
 		name = "/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi-iPad.plist";
 		rLen = 0;
 		rLoc = 9223372036854775807;
+	};
+	B69E5E491191651A00BCC80E /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B6DD8F1D11914BE000700E41 /* Gumbovi-iPad.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi-iPad.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	B69E5E4A1191651A00BCC80E /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = B6DD8F1D11914BE000700E41 /* Gumbovi-iPad.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/danbri/working/xcode/osx/gumbovi/iphone/Gumbovi1/Gumbovi1/Gumbovi-iPad.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	B69E5E4D1191662400BCC80E /* Gumbovi1-iPad */ = {
+		activeExec = 0;
+		executables = (
+			B69E5ED81191662400BCC80E /* Gumbovi1-iPad */,
+		);
+	};
+	B69E5ED81191662400BCC80E /* Gumbovi1-iPad */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Gumbovi1-iPad";
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
 	};
 	B69F0DD4113FC43500365B22 /* README.TXT */ = {
 		uiCtxt = {

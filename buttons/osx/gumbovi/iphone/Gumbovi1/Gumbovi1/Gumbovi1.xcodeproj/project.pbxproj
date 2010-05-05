@@ -175,6 +175,136 @@
 		B68D262C118F3C10001BFA9D /* www-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2628118F3C10001BFA9D /* www-tv.png */; };
 		B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2629118F3C10001BFA9D /* xbmc-tv.png */; };
 		B69034D91156217E00F02FBC /* mythtv.png in Resources */ = {isa = PBXBuildFile; fileRef = B69034D81156217E00F02FBC /* mythtv.png */; };
+		B69E5E4F1191662400BCC80E /* foaflets-12pt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39510A5763500511209 /* foaflets-12pt.jpg */; };
+		B69E5E501191662400BCC80E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39610A5763500511209 /* Icon.png */; };
+		B69E5E511191662400BCC80E /* beancounter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39710A5763500511209 /* beancounter.jpg */; };
+		B69E5E521191662400BCC80E /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B67CC39810A5763500511209 /* buttons.png */; };
+		B69E5E541191662400BCC80E /* Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3010ADDCBD0089D78F /* Image.jpg */; };
+		B69E5E551191662400BCC80E /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3510ADDCBD0089D78F /* Data.plist */; };
+		B69E5E561191662400BCC80E /* notube.json in Resources */ = {isa = PBXBuildFile; fileRef = B656AA3610ADDCBD0089D78F /* notube.json */; };
+		B69E5E571191662400BCC80E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
+		B69E5E581191662400BCC80E /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = B6E095E210B1B77E00F27218 /* iTunesArtwork */; };
+		B69E5E591191662400BCC80E /* heartbuttons4-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56D10D0F67500EDD38D /* heartbuttons4-100x.png */; };
+		B69E5E5A1191662400BCC80E /* heartbuttons4.png in Resources */ = {isa = PBXBuildFile; fileRef = B668E56E10D0F67500EDD38D /* heartbuttons4.png */; };
+		B69E5E5B1191662400BCC80E /* heartbuttons4-down-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9110D1A3040068001F /* heartbuttons4-down-100x.png */; };
+		B69E5E5C1191662400BCC80E /* heartbuttons4-down.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9210D1A3040068001F /* heartbuttons4-down.png */; };
+		B69E5E5D1191662400BCC80E /* heartbuttons4-left-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9310D1A3040068001F /* heartbuttons4-left-100x.png */; };
+		B69E5E5E1191662400BCC80E /* heartbuttons4-left.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9410D1A3040068001F /* heartbuttons4-left.png */; };
+		B69E5E5F1191662400BCC80E /* heartbuttons4-righ-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9510D1A3040068001F /* heartbuttons4-righ-100x.png */; };
+		B69E5E601191662400BCC80E /* heartbuttons4-righ.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9610D1A3040068001F /* heartbuttons4-righ.png */; };
+		B69E5E611191662400BCC80E /* heartbuttons4-up-100x.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */; };
+		B69E5E621191662400BCC80E /* heartbuttons4-up.png in Resources */ = {isa = PBXBuildFile; fileRef = B648FE9810D1A3040068001F /* heartbuttons4-up.png */; };
+		B69E5E631191662400BCC80E /* control_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496821111AB4A0033F5D0 /* control_bar.png */; };
+		B69E5E641191662400BCC80E /* nav_wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = B67496841111AB7A0033F5D0 /* nav_wheel.png */; };
+		B69E5E651191662400BCC80E /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
+		B69E5E691191662400BCC80E /* FINGERPRINT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B6AFC752113812110013DE80 /* FINGERPRINT.jpg */; };
+		B69E5E6A1191662400BCC80E /* qr_bg_blur.png in Resources */ = {isa = PBXBuildFile; fileRef = B6B32F88113BE73F005F31EB /* qr_bg_blur.png */; };
+		B69E5E6B1191662400BCC80E /* pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B64E9334113D6699002137A2 /* pop.wav */; };
+		B69E5E6C1191662400BCC80E /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
+		B69E5E6D1191662400BCC80E /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
+		B69E5E711191662400BCC80E /* UnreadIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0EC9113FFE5F00365B22 /* UnreadIndicator.png */; };
+		B69E5E721191662400BCC80E /* GreenBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0ECC113FFE6800365B22 /* GreenBubble.png */; };
+		B69E5E731191662400BCC80E /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CD81148EF7A0047CF12 /* 15-tags.png */; };
+		B69E5E741191662400BCC80E /* 58-bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CD91148EF7A0047CF12 /* 58-bookmark.png */; };
+		B69E5E751191662400BCC80E /* 70-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDA1148EF7A0047CF12 /* 70-tv.png */; };
+		B69E5E761191662400BCC80E /* 20-gear2.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDB1148EF7A0047CF12 /* 20-gear2.png */; };
+		B69E5E771191662400BCC80E /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CDC1148EF7A0047CF12 /* 96-book.png */; };
+		B69E5E781191662400BCC80E /* 104-index-cards.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE21148F06B0047CF12 /* 104-index-cards.png */; };
+		B69E5E791191662400BCC80E /* 73-radar.png in Resources */ = {isa = PBXBuildFile; fileRef = B6EF3CE41148F0870047CF12 /* 73-radar.png */; };
+		B69E5E7A1191662400BCC80E /* bgbuttons.png in Resources */ = {isa = PBXBuildFile; fileRef = B61718431151A06100FF50CD /* bgbuttons.png */; };
+		B69E5E7C1191662400BCC80E /* 120px-Boxee.png in Resources */ = {isa = PBXBuildFile; fileRef = B60ACB3711561A6F00E83353 /* 120px-Boxee.png */; };
+		B69E5E7D1191662400BCC80E /* mythtv.png in Resources */ = {isa = PBXBuildFile; fileRef = B69034D81156217E00F02FBC /* mythtv.png */; };
+		B69E5E7E1191662400BCC80E /* foaf-explorer.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2620118F33B2001BFA9D /* foaf-explorer.png */; };
+		B69E5E7F1191662400BCC80E /* mythtv-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2624118F3BF7001BFA9D /* mythtv-tv.png */; };
+		B69E5E801191662400BCC80E /* tv-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2626118F3C10001BFA9D /* tv-tv.png */; };
+		B69E5E811191662400BCC80E /* vlc-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2627118F3C10001BFA9D /* vlc-tv.png */; };
+		B69E5E821191662400BCC80E /* www-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2628118F3C10001BFA9D /* www-tv.png */; };
+		B69E5E831191662400BCC80E /* xbmc-tv.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2629118F3C10001BFA9D /* xbmc-tv.png */; };
+		B69E5E851191662400BCC80E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		B69E5E861191662400BCC80E /* Gumbovi1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Gumbovi1AppDelegate.m */; };
+		B69E5E871191662400BCC80E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* FirstViewController.m */; };
+		B69E5E881191662400BCC80E /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AC10A5764900511209 /* DDXMLDocument.m */; };
+		B69E5E891191662400BCC80E /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3AE10A5764900511209 /* DDXMLElement.m */; };
+		B69E5E8A1191662400BCC80E /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B010A5764900511209 /* DDXMLNode.m */; };
+		B69E5E8B1191662400BCC80E /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B67CC3B310A5764900511209 /* NSStringAdditions.m */; };
+		B69E5E8C1191662400BCC80E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4810ADDD590089D78F /* NSObject+SBJSON.m */; };
+		B69E5E8D1191662400BCC80E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4A10ADDD590089D78F /* NSString+SBJSON.m */; };
+		B69E5E8E1191662400BCC80E /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4C10ADDD590089D78F /* SBJSON.m */; };
+		B69E5E8F1191662400BCC80E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA4E10ADDD590089D78F /* SBJsonBase.m */; };
+		B69E5E901191662400BCC80E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5010ADDD590089D78F /* SBJsonParser.m */; };
+		B69E5E911191662400BCC80E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = B656AA5210ADDD590089D78F /* SBJsonWriter.m */; };
+		B69E5E921191662400BCC80E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F1F11357F2000EA4712 /* DetailViewController.m */; };
+		B69E5E931191662400BCC80E /* DrillDownAppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2111357F2000EA4712 /* DrillDownAppAppDelegate.m */; };
+		B69E5E941191662400BCC80E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2311357F2000EA4712 /* RootViewController.m */; };
+		B69E5E951191662400BCC80E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67F2911357F2000EA4712 /* main.m */; };
+		B69E5E961191662400BCC80E /* qruiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE511357B8300EA4712 /* qruiAppDelegate.m */; };
+		B69E5E971191662400BCC80E /* QRImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A67EE211357B8300EA4712 /* QRImagePickerController.m */; };
+		B69E5E981191662400BCC80E /* Decoder.mm in Sources */ = {isa = PBXBuildFile; fileRef = B66F4135113BCCA5004DF167 /* Decoder.mm */; };
+		B69E5E991191662400BCC80E /* DecoderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4137113BCCA5004DF167 /* DecoderController.m */; };
+		B69E5E9A1191662400BCC80E /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B66F4147113BCD13004DF167 /* OverlayView.m */; };
+		B69E5E9B1191662400BCC80E /* LinkedTVRosterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */; };
+		B69E5E9C1191662400BCC80E /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E6D5F4113E9A27009DD63D /* WebViewController.m */; };
+		B69E5E9D1191662400BCC80E /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
+		B69E5E9E1191662400BCC80E /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
+		B69E5E9F1191662400BCC80E /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E31113FFAAA00365B22 /* Message.m */; };
+		B69E5EA01191662400BCC80E /* ServerlessDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3A113FFAEA00365B22 /* ServerlessDemoAppDelegate.m */; };
+		B69E5EA11191662400BCC80E /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E3E113FFB0200365B22 /* Service.m */; };
+		B69E5EA21191662400BCC80E /* StreamController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E40113FFB0200365B22 /* StreamController.m */; };
+		B69E5EA31191662400BCC80E /* DDString.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E51113FFB2E00365B22 /* DDString.m */; };
+		B69E5EA41191662400BCC80E /* SLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E65113FFD1000365B22 /* SLRootViewController.m */; };
+		B69E5EA51191662400BCC80E /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
+		B69E5EA61191662400BCC80E /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */; };
+		B69E5EA71191662400BCC80E /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B60ACAD91155642600E83353 /* ButtonCell.m */; };
+		B69E5EA81191662400BCC80E /* ButtonDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = B647AD2211594357007BE4E9 /* ButtonDevice.m */; };
+		B69E5EA91191662400BCC80E /* ButtonDeviceList.m in Sources */ = {isa = PBXBuildFile; fileRef = B6FA4762115BD12C00E7385E /* ButtonDeviceList.m */; };
+		B69E5EAA1191662400BCC80E /* XMPPJID.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986F11611B5300EC1713 /* XMPPJID.m */; };
+		B69E5EAB1191662400BCC80E /* XMPPPresence.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987711611B5300EC1713 /* XMPPPresence.m */; };
+		B69E5EAC1191662400BCC80E /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5984311611B5300EC1713 /* AsyncSocket.m */; };
+		B69E5EAD1191662400BCC80E /* LibIDN.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5985011611B5300EC1713 /* LibIDN.m */; };
+		B69E5EAE1191662400BCC80E /* XMPPElement.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986B11611B5300EC1713 /* XMPPElement.m */; };
+		B69E5EAF1191662400BCC80E /* XMPPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988811611B5300EC1713 /* XMPPStream.m */; };
+		B69E5EB01191662400BCC80E /* XMPPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987311611B5300EC1713 /* XMPPParser.m */; };
+		B69E5EB11191662400BCC80E /* MulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5985311611B5300EC1713 /* MulticastDelegate.m */; };
+		B69E5EB21191662400BCC80E /* XMPPIQ.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986D11611B5300EC1713 /* XMPPIQ.m */; };
+		B69E5EB31191662400BCC80E /* XMPPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987111611B5300EC1713 /* XMPPMessage.m */; };
+		B69E5EB41191662400BCC80E /* XMPPRoster.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988011611B5300EC1713 /* XMPPRoster.m */; };
+		B69E5EB51191662400BCC80E /* NSXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5985711611B5300EC1713 /* NSXMLElementAdditions.m */; };
+		B69E5EB61191662400BCC80E /* XMPPRosterCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988211611B5300EC1713 /* XMPPRosterCoreDataStorage.m */; };
+		B69E5EB71191662400BCC80E /* XMPPUserCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988D11611B5300EC1713 /* XMPPUserCoreDataStorage.m */; };
+		B69E5EB81191662400BCC80E /* XMPPResourceCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987C11611B5300EC1713 /* XMPPResourceCoreDataStorage.m */; };
+		B69E5EB91191662400BCC80E /* XMPPCapabilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986311611B5300EC1713 /* XMPPCapabilities.m */; };
+		B69E5EBA1191662400BCC80E /* XMPPCapabilitiesCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986511611B5300EC1713 /* XMPPCapabilitiesCoreDataStorage.m */; };
+		B69E5EBB1191662400BCC80E /* XMPPCapsResourceCoreDataStorageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986911611B5300EC1713 /* XMPPCapsResourceCoreDataStorageObject.m */; };
+		B69E5EBC1191662400BCC80E /* XMPPCapsCoreDataStorageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5986711611B5300EC1713 /* XMPPCapsCoreDataStorageObject.m */; };
+		B69E5EBD1191662400BCC80E /* XMPPUserMemoryStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988F11611B5300EC1713 /* XMPPUserMemoryStorage.m */; };
+		B69E5EBE1191662400BCC80E /* XMPPTransports.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988A11611B5300EC1713 /* XMPPTransports.m */; };
+		B69E5EBF1191662400BCC80E /* XMPPReconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987911611B5300EC1713 /* XMPPReconnect.m */; };
+		B69E5EC01191662400BCC80E /* XMPPPing.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987511611B5300EC1713 /* XMPPPing.m */; };
+		B69E5EC11191662400BCC80E /* XMPPRosterMemoryStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5988411611B5300EC1713 /* XMPPRosterMemoryStorage.m */; };
+		B69E5EC21191662400BCC80E /* XMPPResourceMemoryStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5987E11611B5300EC1713 /* XMPPResourceMemoryStorage.m */; };
+		B69E5EC31191662400BCC80E /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5985511611B5300EC1713 /* NSDataAdditions.m */; };
+		B69E5EC41191662400BCC80E /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = B6A5984B11611B5300EC1713 /* DDNumber.m */; };
+		B69E5EC51191662400BCC80E /* XMPPCapabilities.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B651DFD911621FD8009E1C55 /* XMPPCapabilities.xcdatamodel */; };
+		B69E5EC61191662400BCC80E /* XMPPRoster.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B651DFDB11621FF6009E1C55 /* XMPPRoster.xcdatamodel */; };
+		B69E5EC81191662400BCC80E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		B69E5EC91191662400BCC80E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		B69E5ECA1191662400BCC80E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
+		B69E5ECB1191662400BCC80E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10301132A46F00ED28CD /* CFNetwork.framework */; };
+		B69E5ECC1191662400BCC80E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */; };
+		B69E5ECD1191662400BCC80E /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
+		B69E5ECE1191662400BCC80E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
+		B69E5ECF1191662400BCC80E /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
+		B69E5ED01191662400BCC80E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
+		B69E5ED11191662400BCC80E /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
+		B69E5ED21191662400BCC80E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
+		B69E5EE21191662A00BCC80E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDA1191662A00BCC80E /* MainWindow.xib */; };
+		B69E5EE31191662A00BCC80E /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDB1191662A00BCC80E /* DetailView.xib */; };
+		B69E5EE41191662A00BCC80E /* ListsMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDC1191662A00BCC80E /* ListsMainWindow.xib */; };
+		B69E5EE51191662A00BCC80E /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDD1191662A00BCC80E /* RootViewController.xib */; };
+		B69E5EE61191662A00BCC80E /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDE1191662A00BCC80E /* ChatViewController.xib */; };
+		B69E5EE71191662A00BCC80E /* Bonjour.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDF1191662A00BCC80E /* Bonjour.xib */; };
+		B69E5EE81191662A00BCC80E /* SLRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EE01191662A00BCC80E /* SLRootViewController.xib */; };
+		B69E5EE91191662A00BCC80E /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EE11191662A00BCC80E /* ButtonCell.xib */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
 		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
@@ -459,7 +589,6 @@
 		B6DD8F1411914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6DD8F1511914BE000700E41 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B6DD8F1611914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
-		B6DD8F4D11915DD300700E41 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */; };
 		B6DD8F4E11915DD300700E41 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */; };
 		B6DE270111415E720080EC8F /* ServerlessDemo.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B6DE26FF11415E720080EC8F /* ServerlessDemo.xcdatamodel */; };
 		B6E095C510B1AE4E00F27218 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6E095C410B1AE4E00F27218 /* Entitlements.plist */; };
@@ -575,6 +704,15 @@
 		B68D2628118F3C10001BFA9D /* www-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "www-tv.png"; path = "files/www-tv.png"; sourceTree = "<group>"; };
 		B68D2629118F3C10001BFA9D /* xbmc-tv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "xbmc-tv.png"; path = "files/xbmc-tv.png"; sourceTree = "<group>"; };
 		B69034D81156217E00F02FBC /* mythtv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mythtv.png; path = files/mythtv.png; sourceTree = "<group>"; };
+		B69E5ED71191662400BCC80E /* Gumbovi1-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gumbovi1-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B69E5EDA1191662A00BCC80E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = "Resources-iPad/MainWindow.xib"; sourceTree = "<group>"; };
+		B69E5EDB1191662A00BCC80E /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DetailView.xib; path = "Resources-iPad/lists/DetailView.xib"; sourceTree = "<group>"; };
+		B69E5EDC1191662A00BCC80E /* ListsMainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListsMainWindow.xib; path = "Resources-iPad/lists/ListsMainWindow.xib"; sourceTree = "<group>"; };
+		B69E5EDD1191662A00BCC80E /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RootViewController.xib; path = "Resources-iPad/lists/RootViewController.xib"; sourceTree = "<group>"; };
+		B69E5EDE1191662A00BCC80E /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ChatViewController.xib; path = "Resources-iPad/ChatViewController.xib"; sourceTree = "<group>"; };
+		B69E5EDF1191662A00BCC80E /* Bonjour.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Bonjour.xib; path = "Resources-iPad/Bonjour.xib"; sourceTree = "<group>"; };
+		B69E5EE01191662A00BCC80E /* SLRootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SLRootViewController.xib; path = "Resources-iPad/SLRootViewController.xib"; sourceTree = "<group>"; };
+		B69E5EE11191662A00BCC80E /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ButtonCell.xib; path = "Resources-iPad/ButtonCell.xib"; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
 		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B69F0E1B113FFA2E00365B22 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
@@ -742,6 +880,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B69E5EC71191662400BCC80E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69E5EC81191662400BCC80E /* Foundation.framework in Frameworks */,
+				B69E5EC91191662400BCC80E /* UIKit.framework in Frameworks */,
+				B69E5ECA1191662400BCC80E /* CoreGraphics.framework in Frameworks */,
+				B69E5ECB1191662400BCC80E /* CFNetwork.framework in Frameworks */,
+				B69E5ECC1191662400BCC80E /* SystemConfiguration.framework in Frameworks */,
+				B69E5ECD1191662400BCC80E /* libiconv.2.dylib in Frameworks */,
+				B69E5ECE1191662400BCC80E /* AudioToolbox.framework in Frameworks */,
+				B69E5ECF1191662400BCC80E /* libqrlib.a in Frameworks */,
+				B69E5ED01191662400BCC80E /* CoreData.framework in Frameworks */,
+				B69E5ED11191662400BCC80E /* libidn.a in Frameworks */,
+				B69E5ED21191662400BCC80E /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6A5994B11611B6900EC1713 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -811,6 +967,7 @@
 				B6837616114192C800DEF94D /* Gumbovi1.app */,
 				B6A5995B11611B6900EC1713 /* Gumbovi1.app */,
 				B6DD8F1B11914BE000700E41 /* Gumbovi1.app */,
+				B69E5ED71191662400BCC80E /* Gumbovi1-iPad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -823,6 +980,7 @@
 				B6DE2914114185850080EC8F /* libraries */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				B69E5ED91191662400BCC80E /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				B619E67C11637C2300B00346 /* untitled.xcclassmodel */,
@@ -1046,6 +1204,21 @@
 			path = KissXML;
 			sourceTree = "<group>";
 		};
+		B69E5ED91191662400BCC80E /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				B69E5EDA1191662A00BCC80E /* MainWindow.xib */,
+				B69E5EDB1191662A00BCC80E /* DetailView.xib */,
+				B69E5EDC1191662A00BCC80E /* ListsMainWindow.xib */,
+				B69E5EDD1191662A00BCC80E /* RootViewController.xib */,
+				B69E5EDE1191662A00BCC80E /* ChatViewController.xib */,
+				B69E5EDF1191662A00BCC80E /* Bonjour.xib */,
+				B69E5EE01191662A00BCC80E /* SLRootViewController.xib */,
+				B69E5EE11191662A00BCC80E /* ButtonCell.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 		B69F0E1A113FF9F500365B22 /* serverless */ = {
 			isa = PBXGroup;
 			children = (
@@ -1238,6 +1411,23 @@
 			productReference = B6837616114192C800DEF94D /* Gumbovi1.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B69E5E4D1191662400BCC80E /* Gumbovi1-iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B69E5ED31191662400BCC80E /* Build configuration list for PBXNativeTarget "Gumbovi1-iPad" */;
+			buildPhases = (
+				B69E5E4E1191662400BCC80E /* Resources */,
+				B69E5E841191662400BCC80E /* Sources */,
+				B69E5EC71191662400BCC80E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Gumbovi1-iPad";
+			productName = Gumbovi1;
+			productReference = B69E5ED71191662400BCC80E /* Gumbovi1-iPad.app */;
+			productType = "com.apple.product-type.application";
+		};
 		B6A598BA11611B6900EC1713 /* Gumbovi1 - xmppframework2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6A5995711611B6900EC1713 /* Build configuration list for PBXNativeTarget "Gumbovi1 - xmppframework2" */;
@@ -1294,6 +1484,7 @@
 				B68375AD114192C800DEF94D /* BonjourUI */,
 				B6A598BA11611B6900EC1713 /* Gumbovi1 - xmppframework2 */,
 				B6DD8E9111914BE000700E41 /* Gumbovi1 iPad UI */,
+				B69E5E4D1191662400BCC80E /* Gumbovi1-iPad */,
 			);
 		};
 /* End PBXProject section */
@@ -1366,7 +1557,6 @@
 				B68D262B118F3C10001BFA9D /* vlc-tv.png in Resources */,
 				B68D262C118F3C10001BFA9D /* www-tv.png in Resources */,
 				B68D262D118F3C10001BFA9D /* xbmc-tv.png in Resources */,
-				B6DD8F4D11915DD300700E41 /* iPadMainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,6 +1600,66 @@
 				B68375D0114192C800DEF94D /* SLRootViewController.xib in Resources */,
 				B68375D1114192C800DEF94D /* UnreadIndicator.png in Resources */,
 				B68375D2114192C800DEF94D /* GreenBubble.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B69E5E4E1191662400BCC80E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69E5E4F1191662400BCC80E /* foaflets-12pt.jpg in Resources */,
+				B69E5E501191662400BCC80E /* Icon.png in Resources */,
+				B69E5E511191662400BCC80E /* beancounter.jpg in Resources */,
+				B69E5E521191662400BCC80E /* buttons.png in Resources */,
+				B69E5E541191662400BCC80E /* Image.jpg in Resources */,
+				B69E5E551191662400BCC80E /* Data.plist in Resources */,
+				B69E5E561191662400BCC80E /* notube.json in Resources */,
+				B69E5E571191662400BCC80E /* Entitlements.plist in Resources */,
+				B69E5E581191662400BCC80E /* iTunesArtwork in Resources */,
+				B69E5E591191662400BCC80E /* heartbuttons4-100x.png in Resources */,
+				B69E5E5A1191662400BCC80E /* heartbuttons4.png in Resources */,
+				B69E5E5B1191662400BCC80E /* heartbuttons4-down-100x.png in Resources */,
+				B69E5E5C1191662400BCC80E /* heartbuttons4-down.png in Resources */,
+				B69E5E5D1191662400BCC80E /* heartbuttons4-left-100x.png in Resources */,
+				B69E5E5E1191662400BCC80E /* heartbuttons4-left.png in Resources */,
+				B69E5E5F1191662400BCC80E /* heartbuttons4-righ-100x.png in Resources */,
+				B69E5E601191662400BCC80E /* heartbuttons4-righ.png in Resources */,
+				B69E5E611191662400BCC80E /* heartbuttons4-up-100x.png in Resources */,
+				B69E5E621191662400BCC80E /* heartbuttons4-up.png in Resources */,
+				B69E5E631191662400BCC80E /* control_bar.png in Resources */,
+				B69E5E641191662400BCC80E /* nav_wheel.png in Resources */,
+				B69E5E651191662400BCC80E /* Data.plist in Resources */,
+				B69E5E691191662400BCC80E /* FINGERPRINT.jpg in Resources */,
+				B69E5E6A1191662400BCC80E /* qr_bg_blur.png in Resources */,
+				B69E5E6B1191662400BCC80E /* pop.wav in Resources */,
+				B69E5E6C1191662400BCC80E /* README.TXT in Resources */,
+				B69E5E6D1191662400BCC80E /* BlueBubble.png in Resources */,
+				B69E5E711191662400BCC80E /* UnreadIndicator.png in Resources */,
+				B69E5E721191662400BCC80E /* GreenBubble.png in Resources */,
+				B69E5E731191662400BCC80E /* 15-tags.png in Resources */,
+				B69E5E741191662400BCC80E /* 58-bookmark.png in Resources */,
+				B69E5E751191662400BCC80E /* 70-tv.png in Resources */,
+				B69E5E761191662400BCC80E /* 20-gear2.png in Resources */,
+				B69E5E771191662400BCC80E /* 96-book.png in Resources */,
+				B69E5E781191662400BCC80E /* 104-index-cards.png in Resources */,
+				B69E5E791191662400BCC80E /* 73-radar.png in Resources */,
+				B69E5E7A1191662400BCC80E /* bgbuttons.png in Resources */,
+				B69E5E7C1191662400BCC80E /* 120px-Boxee.png in Resources */,
+				B69E5E7D1191662400BCC80E /* mythtv.png in Resources */,
+				B69E5E7E1191662400BCC80E /* foaf-explorer.png in Resources */,
+				B69E5E7F1191662400BCC80E /* mythtv-tv.png in Resources */,
+				B69E5E801191662400BCC80E /* tv-tv.png in Resources */,
+				B69E5E811191662400BCC80E /* vlc-tv.png in Resources */,
+				B69E5E821191662400BCC80E /* www-tv.png in Resources */,
+				B69E5E831191662400BCC80E /* xbmc-tv.png in Resources */,
+				B69E5EE21191662A00BCC80E /* MainWindow.xib in Resources */,
+				B69E5EE31191662A00BCC80E /* DetailView.xib in Resources */,
+				B69E5EE41191662A00BCC80E /* ListsMainWindow.xib in Resources */,
+				B69E5EE51191662A00BCC80E /* RootViewController.xib in Resources */,
+				B69E5EE61191662A00BCC80E /* ChatViewController.xib in Resources */,
+				B69E5EE71191662A00BCC80E /* Bonjour.xib in Resources */,
+				B69E5EE81191662A00BCC80E /* SLRootViewController.xib in Resources */,
+				B69E5EE91191662A00BCC80E /* ButtonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1644,6 +1894,79 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B69E5E841191662400BCC80E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69E5E851191662400BCC80E /* main.m in Sources */,
+				B69E5E861191662400BCC80E /* Gumbovi1AppDelegate.m in Sources */,
+				B69E5E871191662400BCC80E /* FirstViewController.m in Sources */,
+				B69E5E881191662400BCC80E /* DDXMLDocument.m in Sources */,
+				B69E5E891191662400BCC80E /* DDXMLElement.m in Sources */,
+				B69E5E8A1191662400BCC80E /* DDXMLNode.m in Sources */,
+				B69E5E8B1191662400BCC80E /* NSStringAdditions.m in Sources */,
+				B69E5E8C1191662400BCC80E /* NSObject+SBJSON.m in Sources */,
+				B69E5E8D1191662400BCC80E /* NSString+SBJSON.m in Sources */,
+				B69E5E8E1191662400BCC80E /* SBJSON.m in Sources */,
+				B69E5E8F1191662400BCC80E /* SBJsonBase.m in Sources */,
+				B69E5E901191662400BCC80E /* SBJsonParser.m in Sources */,
+				B69E5E911191662400BCC80E /* SBJsonWriter.m in Sources */,
+				B69E5E921191662400BCC80E /* DetailViewController.m in Sources */,
+				B69E5E931191662400BCC80E /* DrillDownAppAppDelegate.m in Sources */,
+				B69E5E941191662400BCC80E /* RootViewController.m in Sources */,
+				B69E5E951191662400BCC80E /* main.m in Sources */,
+				B69E5E961191662400BCC80E /* qruiAppDelegate.m in Sources */,
+				B69E5E971191662400BCC80E /* QRImagePickerController.m in Sources */,
+				B69E5E981191662400BCC80E /* Decoder.mm in Sources */,
+				B69E5E991191662400BCC80E /* DecoderController.m in Sources */,
+				B69E5E9A1191662400BCC80E /* OverlayView.m in Sources */,
+				B69E5E9B1191662400BCC80E /* LinkedTVRosterTableController.m in Sources */,
+				B69E5E9C1191662400BCC80E /* WebViewController.m in Sources */,
+				B69E5E9D1191662400BCC80E /* BonjourClient.m in Sources */,
+				B69E5E9E1191662400BCC80E /* ChatViewController.m in Sources */,
+				B69E5E9F1191662400BCC80E /* Message.m in Sources */,
+				B69E5EA01191662400BCC80E /* ServerlessDemoAppDelegate.m in Sources */,
+				B69E5EA11191662400BCC80E /* Service.m in Sources */,
+				B69E5EA21191662400BCC80E /* StreamController.m in Sources */,
+				B69E5EA31191662400BCC80E /* DDString.m in Sources */,
+				B69E5EA41191662400BCC80E /* SLRootViewController.m in Sources */,
+				B69E5EA51191662400BCC80E /* ServerlessDemo.xcdatamodel in Sources */,
+				B69E5EA61191662400BCC80E /* DDXMLElementAdditions.m in Sources */,
+				B69E5EA71191662400BCC80E /* ButtonCell.m in Sources */,
+				B69E5EA81191662400BCC80E /* ButtonDevice.m in Sources */,
+				B69E5EA91191662400BCC80E /* ButtonDeviceList.m in Sources */,
+				B69E5EAA1191662400BCC80E /* XMPPJID.m in Sources */,
+				B69E5EAB1191662400BCC80E /* XMPPPresence.m in Sources */,
+				B69E5EAC1191662400BCC80E /* AsyncSocket.m in Sources */,
+				B69E5EAD1191662400BCC80E /* LibIDN.m in Sources */,
+				B69E5EAE1191662400BCC80E /* XMPPElement.m in Sources */,
+				B69E5EAF1191662400BCC80E /* XMPPStream.m in Sources */,
+				B69E5EB01191662400BCC80E /* XMPPParser.m in Sources */,
+				B69E5EB11191662400BCC80E /* MulticastDelegate.m in Sources */,
+				B69E5EB21191662400BCC80E /* XMPPIQ.m in Sources */,
+				B69E5EB31191662400BCC80E /* XMPPMessage.m in Sources */,
+				B69E5EB41191662400BCC80E /* XMPPRoster.m in Sources */,
+				B69E5EB51191662400BCC80E /* NSXMLElementAdditions.m in Sources */,
+				B69E5EB61191662400BCC80E /* XMPPRosterCoreDataStorage.m in Sources */,
+				B69E5EB71191662400BCC80E /* XMPPUserCoreDataStorage.m in Sources */,
+				B69E5EB81191662400BCC80E /* XMPPResourceCoreDataStorage.m in Sources */,
+				B69E5EB91191662400BCC80E /* XMPPCapabilities.m in Sources */,
+				B69E5EBA1191662400BCC80E /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
+				B69E5EBB1191662400BCC80E /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				B69E5EBC1191662400BCC80E /* XMPPCapsCoreDataStorageObject.m in Sources */,
+				B69E5EBD1191662400BCC80E /* XMPPUserMemoryStorage.m in Sources */,
+				B69E5EBE1191662400BCC80E /* XMPPTransports.m in Sources */,
+				B69E5EBF1191662400BCC80E /* XMPPReconnect.m in Sources */,
+				B69E5EC01191662400BCC80E /* XMPPPing.m in Sources */,
+				B69E5EC11191662400BCC80E /* XMPPRosterMemoryStorage.m in Sources */,
+				B69E5EC21191662400BCC80E /* XMPPResourceMemoryStorage.m in Sources */,
+				B69E5EC31191662400BCC80E /* NSDataAdditions.m in Sources */,
+				B69E5EC41191662400BCC80E /* DDNumber.m in Sources */,
+				B69E5EC51191662400BCC80E /* XMPPCapabilities.xcdatamodel in Sources */,
+				B69E5EC61191662400BCC80E /* XMPPRoster.xcdatamodel in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B6A598EF11611B6900EC1713 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1824,6 +2147,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = Gumbovi1;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1855,6 +2179,7 @@
 					"-lxml2",
 				);
 				PRODUCT_NAME = Gumbovi1;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1953,6 +2278,119 @@
 				);
 				PRODUCT_NAME = Gumbovi1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9164329A-452F-4E7E-A825-1736EECD5D41";
+			};
+			name = DistributionTest;
+		};
+		B69E5ED41191662400BCC80E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "Gumbovi1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/Mac\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "Gumbovi1-iPad";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B69E5ED51191662400BCC80E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "Gumbovi1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/Mac\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "Gumbovi1-iPad";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		B69E5ED61191662400BCC80E /* DistributionTest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ARCHS[sdk=iphoneos*]" = armv7;
+				"ARCHS[sdk=iphonesimulator*]" = i386;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dan Brickley";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)\\\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Gumbovi1_Prefix.pch;
+				INFOPLIST_FILE = "Gumbovi1-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\"$(SRCROOT)/libidn/iphoneos\\\"",
+					"\\\"$(SRCROOT)/libidn/iphonesimulator\\\"",
+					"\\\"$(SRCROOT)/libidn/Mac\\\"",
+					"\\\"$(SRCROOT)/../newsrc/trunk/libidn\\\"",
+					"\\\"$(SRCROOT)\\\"",
+					"\\\"$(SRCROOT)/Mac\\\"",
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					CFNetwork,
+					"-lidn",
+					"-lxml2",
+				);
+				PRODUCT_NAME = "Gumbovi1-iPad";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9164329A-452F-4E7E-A825-1736EECD5D41";
+				SDKROOT = iphoneos3.2;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = DistributionTest;
 		};
@@ -2205,6 +2643,7 @@
 				);
 				PRODUCT_NAME = Gumbovi1;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9164329A-452F-4E7E-A825-1736EECD5D41";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DistributionTest;
 		};
@@ -2282,6 +2721,16 @@
 				B6837613114192C800DEF94D /* Debug */,
 				B6837614114192C800DEF94D /* Release */,
 				B6837615114192C800DEF94D /* DistributionTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B69E5ED31191662400BCC80E /* Build configuration list for PBXNativeTarget "Gumbovi1-iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B69E5ED41191662400BCC80E /* Debug */,
+				B69E5ED51191662400BCC80E /* Release */,
+				B69E5ED61191662400BCC80E /* DistributionTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
