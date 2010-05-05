@@ -322,11 +322,14 @@
 				NSString *fullJid = [r description];
 				NSString *myStatus = [NSString stringWithFormat:@"%@", [[ro presence] status]    ];
 				DebugLog(@"UI STATUS: %@", myStatus );
+
+				
 				if ( [r isEqual:jid] ) { 
-					if(myStatus != @"(null)" ) {
-					[[cell deviceType] setText:myStatus];
-				}
-					else {
+							//					if(myStatus != @"(null)" ) {
+				  if ([myStatus rangeOfString:@"null"].location != NSNotFound) {
+
+					[[cell deviceType] setText:@""];
+				  }  else {
 					[[cell deviceType] setText:@"(NoTube Network device)"]; // yes this is spaghetti to get here - TODO: de-pasta
 				}
 				NSLog(@"UI STATUS: Matched %@ jid", r);
