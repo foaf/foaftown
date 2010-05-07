@@ -165,7 +165,6 @@
 		B683760E114192C800DEF94D /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
 		B683760F114192C800DEF94D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B6837610114192C800DEF94D /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
-		B6837611114192C800DEF94D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B683761D114192E800DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B683761E114192EF00DEF94D /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B68D2621118F33B2001BFA9D /* foaf-explorer.png in Resources */ = {isa = PBXBuildFile; fileRef = B68D2620118F33B2001BFA9D /* foaf-explorer.png */; };
@@ -294,7 +293,6 @@
 		B69E5ECD1191662400BCC80E /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
 		B69E5ECE1191662400BCC80E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B69E5ECF1191662400BCC80E /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
-		B69E5ED01191662400BCC80E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69E5ED11191662400BCC80E /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B69E5ED21191662400BCC80E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
 		B69E5EE21191662A00BCC80E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B69E5EDA1191662A00BCC80E /* MainWindow.xib */; };
@@ -337,8 +335,6 @@
 		B69EB03A1191A149008720E8 /* ZBarReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0161191A149008720E8 /* ZBarReaderController.m */; };
 		B69EB03B1191A149008720E8 /* ZBarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0171191A149008720E8 /* ZBarSymbol.m */; };
 		B69EB03C1191A149008720E8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0051191A149008720E8 /* back.png */; };
-		B69EB03D1191A149008720E8 /* back.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0061191A149008720E8 /* back.svg */; };
-		B69EB03E1191A149008720E8 /* buttondown.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0071191A149008720E8 /* buttondown.svg */; };
 		B69EB03F1191A149008720E8 /* buttonmask.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0081191A149008720E8 /* buttonmask.svg */; };
 		B69EB0401191A149008720E8 /* buttonup.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0091191A149008720E8 /* buttonup.svg */; };
 		B69EB0411191A149008720E8 /* lightbulb.svg in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00A1191A149008720E8 /* lightbulb.svg */; };
@@ -349,13 +345,7 @@
 		B69EB0461191A149008720E8 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = B69EB00F1191A149008720E8 /* zbar-help.html */; };
 		B69EB0471191A149008720E8 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0101191A149008720E8 /* zbar-helpicons.png */; };
 		B69EB0481191A149008720E8 /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = B69EB0111191A149008720E8 /* zbar-samples.png */; };
-		B69EB0491191A149008720E8 /* ZBarHelpController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0131191A149008720E8 /* ZBarHelpController.m */; };
-		B69EB04A1191A149008720E8 /* ZBarImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0141191A149008720E8 /* ZBarImage.m */; };
-		B69EB04B1191A149008720E8 /* ZBarImageScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0151191A149008720E8 /* ZBarImageScanner.m */; };
-		B69EB04C1191A149008720E8 /* ZBarReaderController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0161191A149008720E8 /* ZBarReaderController.m */; };
-		B69EB04D1191A149008720E8 /* ZBarSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = B69EB0171191A149008720E8 /* ZBarSymbol.m */; };
 		B69F0DD6113FC43500365B22 /* README.TXT in Resources */ = {isa = PBXBuildFile; fileRef = B69F0DD4113FC43500365B22 /* README.TXT */; };
-		B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B69F0E20113FFA2E00365B22 /* BlueBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = B69F0E1B113FFA2E00365B22 /* BlueBubble.png */; };
 		B69F0E21113FFA2E00365B22 /* BonjourClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E1D113FFA2E00365B22 /* BonjourClient.m */; };
 		B69F0E27113FFA3E00365B22 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69F0E23113FFA3E00365B22 /* ChatViewController.m */; };
@@ -492,7 +482,6 @@
 		B6A5995111611B6900EC1713 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
 		B6A5995211611B6900EC1713 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B6A5995311611B6900EC1713 /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
-		B6A5995411611B6900EC1713 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6A5995511611B6900EC1713 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B6A5995611611B6900EC1713 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
 		B6A67F3411357F2000EA4712 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6A67F1D11357F2000EA4712 /* Data.plist */; };
@@ -635,7 +624,6 @@
 		B6DD8F1111914BE000700E41 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C9591D1133065D00CF15AA /* libiconv.2.dylib */; };
 		B6DD8F1211914BE000700E41 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */; };
 		B6DD8F1311914BE000700E41 /* libqrlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B74BFF113577B900DD019D /* libqrlib.a */; };
-		B6DD8F1411914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69F0E0F113FF99700365B22 /* CoreData.framework */; };
 		B6DD8F1511914BE000700E41 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B683761C114192E800DEF94D /* libidn.a */; };
 		B6DD8F1611914BE000700E41 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C08B708114FACC500511D74 /* CoreData.framework */; };
 		B6DD8F4E11915DD300700E41 /* iPadMainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6DD8F4C11915DD300700E41 /* iPadMainWindow.xib */; };
@@ -785,7 +773,6 @@
 		B69EB0161191A149008720E8 /* ZBarReaderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarReaderController.m; sourceTree = "<group>"; };
 		B69EB0171191A149008720E8 /* ZBarSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZBarSymbol.m; sourceTree = "<group>"; };
 		B69F0DD4113FC43500365B22 /* README.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
-		B69F0E0F113FF99700365B22 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B69F0E1B113FFA2E00365B22 /* BlueBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBubble.png; sourceTree = "<group>"; };
 		B69F0E1C113FFA2E00365B22 /* BonjourClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonjourClient.h; sourceTree = "<group>"; };
 		B69F0E1D113FFA2E00365B22 /* BonjourClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonjourClient.m; sourceTree = "<group>"; };
@@ -928,7 +915,6 @@
 				B6C9591E1133065E00CF15AA /* libiconv.2.dylib in Frameworks */,
 				B66B41331137FBE0003FFDF8 /* AudioToolbox.framework in Frameworks */,
 				B66F4113113BCBFC004DF167 /* libqrlib.a in Frameworks */,
-				B69F0E11113FF99700365B22 /* CoreData.framework in Frameworks */,
 				B683761D114192E800DEF94D /* libidn.a in Frameworks */,
 				1C08B709114FACC500511D74 /* CoreData.framework in Frameworks */,
 			);
@@ -946,7 +932,6 @@
 				B683760E114192C800DEF94D /* libiconv.2.dylib in Frameworks */,
 				B683760F114192C800DEF94D /* AudioToolbox.framework in Frameworks */,
 				B6837610114192C800DEF94D /* libqrlib.a in Frameworks */,
-				B6837611114192C800DEF94D /* CoreData.framework in Frameworks */,
 				B683761E114192EF00DEF94D /* libidn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,7 +948,6 @@
 				B69E5ECD1191662400BCC80E /* libiconv.2.dylib in Frameworks */,
 				B69E5ECE1191662400BCC80E /* AudioToolbox.framework in Frameworks */,
 				B69E5ECF1191662400BCC80E /* libqrlib.a in Frameworks */,
-				B69E5ED01191662400BCC80E /* CoreData.framework in Frameworks */,
 				B69E5ED11191662400BCC80E /* libidn.a in Frameworks */,
 				B69E5ED21191662400BCC80E /* CoreData.framework in Frameworks */,
 			);
@@ -981,7 +965,6 @@
 				B6A5995111611B6900EC1713 /* libiconv.2.dylib in Frameworks */,
 				B6A5995211611B6900EC1713 /* AudioToolbox.framework in Frameworks */,
 				B6A5995311611B6900EC1713 /* libqrlib.a in Frameworks */,
-				B6A5995411611B6900EC1713 /* CoreData.framework in Frameworks */,
 				B6A5995511611B6900EC1713 /* libidn.a in Frameworks */,
 				B6A5995611611B6900EC1713 /* CoreData.framework in Frameworks */,
 			);
@@ -999,7 +982,6 @@
 				B6DD8F1111914BE000700E41 /* libiconv.2.dylib in Frameworks */,
 				B6DD8F1211914BE000700E41 /* AudioToolbox.framework in Frameworks */,
 				B6DD8F1311914BE000700E41 /* libqrlib.a in Frameworks */,
-				B6DD8F1411914BE000700E41 /* CoreData.framework in Frameworks */,
 				B6DD8F1511914BE000700E41 /* libidn.a in Frameworks */,
 				B6DD8F1611914BE000700E41 /* CoreData.framework in Frameworks */,
 			);
@@ -1094,7 +1076,6 @@
 			isa = PBXGroup;
 			children = (
 				B683761C114192E800DEF94D /* libidn.a */,
-				B69F0E0F113FF99700365B22 /* CoreData.framework */,
 				1C08B708114FACC500511D74 /* CoreData.framework */,
 				B66B41311137FBE0003FFDF8 /* AudioToolbox.framework */,
 				B6BD10511132A5B100ED28CD /* SystemConfiguration.framework */,
@@ -1791,8 +1772,6 @@
 				B69E5EE81191662A00BCC80E /* SLRootViewController.xib in Resources */,
 				B69E5EE91191662A00BCC80E /* ButtonCell.xib in Resources */,
 				B69EB03C1191A149008720E8 /* back.png in Resources */,
-				B69EB03D1191A149008720E8 /* back.svg in Resources */,
-				B69EB03E1191A149008720E8 /* buttondown.svg in Resources */,
 				B69EB03F1191A149008720E8 /* buttonmask.svg in Resources */,
 				B69EB0401191A149008720E8 /* buttonup.svg in Resources */,
 				B69EB0411191A149008720E8 /* lightbulb.svg in Resources */,
@@ -2120,11 +2099,6 @@
 				B69E5EC41191662400BCC80E /* DDNumber.m in Sources */,
 				B69E5EC51191662400BCC80E /* XMPPCapabilities.xcdatamodel in Sources */,
 				B69E5EC61191662400BCC80E /* XMPPRoster.xcdatamodel in Sources */,
-				B69EB0491191A149008720E8 /* ZBarHelpController.m in Sources */,
-				B69EB04A1191A149008720E8 /* ZBarImage.m in Sources */,
-				B69EB04B1191A149008720E8 /* ZBarImageScanner.m in Sources */,
-				B69EB04C1191A149008720E8 /* ZBarReaderController.m in Sources */,
-				B69EB04D1191A149008720E8 /* ZBarSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

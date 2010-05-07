@@ -221,12 +221,13 @@
 			isPC = TRUE;
 		};
 		
-		// name="MythTV Buttons"
+		// name="MythTV Buttons" /// this is crap, and " and ' could get rewritten
+	  
 		if([xs rangeOfString:@"name=\"MythTV Buttons\""].location != NSNotFound) { isMythTV = TRUE; }
 		if([xs rangeOfString:@"name=\"VLC\""].location != NSNotFound) { isVLC = TRUE; } // TODO: send this from VLC
 		if([xs rangeOfString:@"name=\"BOXEE\""].location != NSNotFound) { isBOXEE = TRUE; }	// TODO: send this from Boxee
 		if([xs rangeOfString:@"name=\"XBMC\""].location != NSNotFound) { isXBMC = TRUE; }	// TODO: send this from XBMC
-		if([xs rangeOfString:@"name=\"WWW\""].location != NSNotFound) { isWWW = TRUE; }	// TODO: send this from Strophe.js
+		if([xs rangeOfString:@"WWW"].location != NSNotFound) { isWWW = TRUE; }	// TODO: send this from Strophe.js
 
 		DebugLog(@"XML to extract device summary is: %@", xs); // name="MythTV Buttons"
 		// see http://stackoverflow.com/questions/594797/how-to-use-nsscanner
