@@ -39,6 +39,19 @@ switchboard.on_iq do |message|
   p track.date_added.to_s     # "2006-06-30"
   body = "Currently playing #{ track.name } by #{ track.artist }, duration: #{  track.duration } "
 
+  if (message.query.namespace=='http://jabber.org/protocol/disco#info') 
+    p "Got a disco query."
+
+# todo: compose something like this ---    
+# Got a disco...[object Element] reply:
+# <iq to='alice.notube@gmail.com/hardcoded60F0140E' from='buttons@foaf.tv/38424986511273267380367639' id='3C790C2E-D536-48DB-8F76-F7358010AF68' type='result' xmlns='jabber:client'>
+#   <query xmlns='http://jabber.org/protocol/disco#info'>
+#   <identity category='client' type='bot' name='WWW'/>
+#   <feature xmlns='http://buttons.foaf.tv/#!html5_feature'/>
+#  </query>
+# </iq>
+  
+  end
   if (message.query.namespace=='http://buttons.foaf.tv/') 
     b = message.query.first_element('button').text.to_s
     puts "Got a buttons message! #{b}"
