@@ -32,11 +32,22 @@
 # We define basics, Vocab, Term, Property, Class
 # and populate them with data from RDF schemas, OWL, translations ... and nearby html files.
 
+import rdflib
+
+from rdflib import term
+
 from rdflib.namespace import Namespace
 from rdflib.graph import Graph, ConjunctiveGraph
-from rdflib.sparql.sparqlGraph  import SPARQLGraph
-from rdflib.sparql.graphPattern import GraphPattern
-from rdflib.sparql import Query 
+
+rdflib.plugin.register('sparql', rdflib.query.Processor,
+                       'rdfextras.sparql.processor', 'Processor')
+rdflib.plugin.register('sparql', rdflib.query.Result,
+                       'rdfextras.sparql.query', 'SPARQLQueryResult')
+
+# pre3: from rdflib.sparql.sparqlGraph  import SPARQLGraph
+#from rdflib.sparql.graphPattern import GraphPattern
+#from rdflib.sparql import Query 
+
 
 FOAF = Namespace('http://xmlns.com/foaf/0.1/')
 RDFS = Namespace('http://www.w3.org/2000/01/rdf-schema#')
@@ -58,10 +69,6 @@ import logging
 import os.path
 import cgi
 import operator
-
-bindings = { u"xfn": XFN, u"rdf": RDF, u"rdfs": RDFS, u"vs": VS }
-
-#g = None
 
 def speclog(str):
   sys.stderr.write("LOG: "+str+"\n")
@@ -288,7 +295,7 @@ class Vocab(object):
 
     query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a rdf:Property }'
 
-    relations = g.query(query, initNs=bindings)
+    relations = g.query(query)
     for (term, label, comment) in relations:
         p = Property(term)
 #        print "Made a property! "+str(p) + "using label: "#+str(label)
@@ -300,7 +307,7 @@ class Vocab(object):
           self.properties.append(p)
 
     query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type  FILTER (?type = <http://www.w3.org/2002/07/owl#Class> || ?type = <http://www.w3.org/2000/01/rdf-schema#Class> ) }'
-    relations = g.query(query, initNs=bindings)
+    relations = g.query(query)
     for (term, label, comment) in relations:
         c = Class(term)
 #        print "Made a class! "+str(p) + "using comment: "+comment
@@ -317,7 +324,7 @@ class Vocab(object):
 
     # http://www.w3.org/2003/06/sw-vocab-status/ns#"
     query = 'SELECT ?x ?vs WHERE { ?x <http://www.w3.org/2003/06/sw-vocab-status/ns#term_status> ?vs }'
-    status = g.query(query, initNs=bindings) 
+    status = g.query(query) 
     # print "status results: ",status.__len__()
     for x, vs in status:
       #print "STATUS: ",vs, " for ",x
@@ -332,7 +339,7 @@ class Vocab(object):
     q= 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type .  FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty>)}'
     q= 'SELECT distinct ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c . ?x a ?type . FILTER (?type = <http://www.w3.org/2002/07/owl#ObjectProperty> || ?type = <http://www.w3.org/2002/07/owl#DatatypeProperty> || ?type = <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> || ?type = <http://www.w3.org/2002/07/owl#FunctionalProperty> || ?type = <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>) } '
 
-    relations = g.query(q, initNs=bindings)
+    relations = g.query(q)
     for (term, label, comment) in relations:
         p = Property(str(term))
         got = self.lookup( str(term) )
@@ -367,7 +374,7 @@ class Vocab(object):
   def raw(self):
     g = self.graph
     query = 'SELECT ?x ?l ?c WHERE { ?x rdfs:label ?l . ?x rdfs:comment ?c  } '
-    relations = g.query(query, initNs=bindings)
+    relations = g.query(query)
     print "Properties and Classes (%d terms)" % len(relations) 
     print 40*"-"
     for (term, label, comment) in relations:
@@ -537,7 +544,7 @@ class VocabReport(object):
 
        q = 'SELECT ?d ?l WHERE {?d rdfs:domain <%s> . ?d rdfs:label ?l } ' % (term.uri)
 
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th>Properties include:</th>\n'
 
        contentStr = ''
@@ -554,7 +561,7 @@ class VocabReport(object):
 
 # class in range of
        q2 = 'SELECT ?d ?l WHERE {?d rdfs:range <%s> . ?d rdfs:label ?l } ' % (term.uri)
-       relations2 = g.query(q2, initNs=bindings)
+       relations2 = g.query(q2)
        startStr = '<tr><th>Used with:</th>\n'
 
        contentStr = ''
@@ -574,7 +581,7 @@ class VocabReport(object):
  
        q = 'SELECT ?sc ?l WHERE {<%s> rdfs:subClassOf ?sc . ?sc rdfs:label ?l } ' % (term.uri)
 
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th>Subclass Of</th>\n'
 
        contentStr = ''
@@ -590,7 +597,7 @@ class VocabReport(object):
        hasSubClass = ''
  
        q = 'SELECT ?sc ?l WHERE {?sc rdfs:subClassOf <%s>. ?sc rdfs:label ?l } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th>Has Subclass</th>\n'
 
        contentStr = ''
@@ -607,7 +614,7 @@ class VocabReport(object):
        classIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr	 = '\n'
 
        contentStr = ''
@@ -623,7 +630,7 @@ class VocabReport(object):
        isDisjointWith = ''
  
        q = 'SELECT ?dj ?l WHERE { <%s> <http://www.w3.org/2002/07/owl#disjointWith> ?dj . ?dj rdfs:label ?l } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th>Disjoint With:</th>\n'
 
        contentStr = ''
@@ -694,7 +701,7 @@ class VocabReport(object):
 # domain of properties
        g = self.vocab.graph
        q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th>Domain:</th>\n'
 
        contentStr = ''
@@ -709,7 +716,7 @@ class VocabReport(object):
 
 # range of properties
        q2 = 'SELECT ?d ?l WHERE {<%s> rdfs:range ?d . ?d rdfs:label ?l } ' % (term.uri)
-       relations2 = g.query(q2, initNs=bindings)
+       relations2 = g.query(q2)
        startStr = '<tr><th>Range:</th>\n'
        contentStr = ''
        for (range, label) in relations2:
@@ -726,7 +733,7 @@ class VocabReport(object):
        propertyIsDefinedBy = ''
  
        q = 'SELECT ?idb WHERE { <%s> rdfs:isDefinedBy ?idb  } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '\n'
 
        contentStr = ''
@@ -743,7 +750,7 @@ class VocabReport(object):
        ifp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#InverseFunctionalProperty> } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th colspan="2">Inverse Functional Property</th>\n'
 
        if (len(relations) > 0):
@@ -755,7 +762,7 @@ class VocabReport(object):
        fp = ''
  
        q = 'SELECT * WHERE { <%s> rdf:type <http://www.w3.org/2002/07/owl#FunctionalProperty> } ' % (term.uri)
-       relations = g.query(q, initNs=bindings)
+       relations = g.query(q)
        startStr = '<tr><th colspan="2">Functional Property</th>\n'
 
        if (len(relations) > 0):
