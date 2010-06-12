@@ -1,0 +1,1595 @@
+exporting patches:
+# HG changeset patch
+# User Dan Brickley <danbri@danbri.org>
+# Date 1276360172 -7200
+# Node ID b6941f026242f08de8271e2e541f6e78612e36e1
+# Parent  93c00bbf50d95f7219ac2ed083b43b348727fedb
+Begun trimming other bits from borrowed code, and commenting.y
+
+diff -r 93c00bbf50d9 -r b6941f026242 modules/importers/foaf.js
+--- a/modules/importers/foaf.js	Sat Jun 12 18:22:50 2010 +0200
++++ b/modules/importers/foaf.js	Sat Jun 12 18:29:32 2010 +0200
+@@ -218,6 +218,8 @@
+ 
+ /* FOAF++ STATUS: Not investigated what this does yet. Is pure hcard code still. 
+    Eventually we will poke around the RDF for FOAF and related vocabs, Bio, SKOS, vCard, DOAP etc.
++
++   q: what kind of object is aPerson? something from people api, or hcard?
+ */
+ 
+ function processPerson(aPerson, newPerson)
+@@ -230,6 +232,8 @@
+         // TODO traverse all types
+         addr.type = anAdr.type[0]; 
+       }
++
++/* danbri  
+       if (anAdr['street-address']) addr.streetAddress = anAdr['street-address'];
+       if (anAdr['extended-address']) addr.extendedAddress = anAdr['extended-address'];
+       if (anAdr['region']) addr.region = anAdr['region'];
+@@ -238,6 +242,7 @@
+       if (anAdr['post-office-box']) addr.postOfficeBox = anAdr['post-office-box'];
+       if (anAdr['locality']) addr.locality = anAdr['locality'];
+       newPerson.addresses.push(addr);
++*/
+     }
+   }
+   if (aPerson.bio) {
+# HG changeset patch
+# User Dan Brickley <danbri@danbri.org>
+# Date 1276359770 -7200
+# Node ID 93c00bbf50d95f7219ac2ed083b43b348727fedb
+# Parent  e1d631212d9929d92ae2aafce65a67112a7666b3
+First cut at a FOAF importer. We use the RDF parser from the MIT DIG Tabulator project (or try to).
+We don't use an RDFa parser yet. The file rdfparser.js is from the Tabulator code, plus term.js and uri.js.
+The class FOAFStore is from their test cases. However the parser isn't yet working. This seems to be re ns prefixes.
+The parser calls an unimplemented setPrefixForURI which I've attempted to add, but we get
+"No namespace for rdf:resource" errors when we feed it a valid LiveJournal account. Work in progress. Various bits of
+the original hCard source are still in the code, uselessly.
+
+Next steps: get basic parser working, and implement simple import. Consider RDFa. Consider writing all triples to SQL.
+
+diff -r e1d631212d99 -r 93c00bbf50d9 modules/import.js
+--- a/modules/import.js	Tue May 04 12:55:56 2010 -0700
++++ b/modules/import.js	Sat Jun 12 18:22:50 2010 +0200
+@@ -36,7 +36,7 @@
+  * ***** END LICENSE BLOCK ***** */
+ 
+ 
+-let EXPORTED_SYMBOLS = ["PeopleImporter", "ImporterBackend", "DiscovererBackend", "PoCoPerson"];
++let EXPORTED_SYMBOLS = ["PeopleImporter", "ImporterBackend", "DiscovererBackend", "PoCoPerson", "RDFParser"];
+ 
+ const Cc = Components.classes;
+ const Ci = Components.interfaces;
+@@ -47,6 +47,7 @@
+ Cu.import("resource://people/modules/ext/md5.js");
+ Cu.import("resource://people/modules/people.js");
+ 
++
+ function PeopleImporterSvc() {
+   this._backends = {};
+   this._liveBackends = {};
+@@ -215,4 +216,5 @@
+ Cu.import("resource://people/modules/importers/flickr.js");
+ Cu.import("resource://people/modules/importers/yelp.js");
+ Cu.import("resource://people/modules/importers/hcard.js");
++Cu.import("resource://people/modules/importers/foaf.js");
+ Cu.import("resource://people/modules/importers/amazon.js");
+diff -r e1d631212d99 -r 93c00bbf50d9 modules/importers/foaf.js
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/modules/importers/foaf.js	Sat Jun 12 18:22:50 2010 +0200
+@@ -0,0 +1,308 @@
++/* ***** BEGIN LICENSE BLOCK *****
++ * Version: MPL 1.1/GPL 2.0/LGPL 2.1
++ *
++ * The contents of this file are subject to the Mozilla Public License Version
++ * 1.1 (the "License"); you may not use this file except in compliance with
++ * the License. You may obtain a copy of the License at
++ * http://www.mozilla.org/MPL/
++ *
++ * Software distributed under the License is distributed on an "AS IS" basis,
++ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
++ * for the specific language governing rights and limitations under the
++ * License.
++ *
++ * The Original Code is People.
++ *
++ * The Initial Developer of the Original Code is Mozilla.
++ * Portions created by the Initial Developer are Copyright (C) 2009
++ * the Initial Developer. All Rights Reserved.
++ *
++ * Contributor(s):
++ *  Michael Hanson <mhanson@mozilla.com>
++ *  Dan Brickley <danbri@danbri.org>, converting this from hcard to FOAF/RDF (in progress)
++ *
++ * 
++ * Alternatively, the contents of this file may be used under the terms of
++ * either the GNU General Public License Version 2 or later (the "GPL"), or
++ * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
++ * in which case the provisions of the GPL or the LGPL are applicable instead
++ * of those above. If you wish to allow use of your version of this file only
++ * under the terms of either the GPL or the LGPL, and not to allow others to
++ * use your version of this file under the terms of the MPL, indicate your
++ * decision by deleting the provisions above and replace them with the notice
++ * and other provisions required by the GPL or the LGPL. If you do not delete
++ * the provisions above, a recipient may use your version of this file under
++ * the terms of any one of the MPL, the GPL or the LGPL.
++ *
++ * ***** END LICENSE BLOCK ***** */
++
++let EXPORTED_SYMBOLS = [];
++
++
++const Cc = Components.classes;
++const Ci = Components.interfaces;
++const Cu = Components.utils;
++
++Cu.import("resource://people/modules/utils.js");
++Cu.import("resource://people/modules/ext/log4moz.js");
++Cu.import("resource://people/modules/ext/resource.js");
++Cu.import("resource://people/modules/people.js");
++Cu.import("resource://people/modules/import.js");
++Cu.import("resource://gre/modules/Microformats.js"); // where is this used? todo
++Cu.import("resource://people/modules/importers/rdfparser.js");
++
++let IO_SERVICE = Cc["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
++
++
++
++
++/* STATUS
++
++This is rough, and includes many bits left from the original hcard.js which I copied.
++The initial goal is to parse RDF/XML, for which most of the code needed is in Tabulator's rdfquery.js,
++included here. In future, would also like to use RDFa, either via the rdfquery js or backplane implementations.
++
++The class FOAFStore is based on TestStore from the Tabulator tree. Not clear if we want to move to a richer 
++store. However something is wrong, around the setprefix stuff.
++2010-06-12 17:29:30	People.FOAFDiscoverer DEBUG	FOAFX Error while processing FOAF link: Error: RDF/XML syntax error: 
++No namespace for rdf:resource in undefined
++
++...previously setPrefixForURI was being called on our store, but un-implemented. I made a stub method that stashes
++the prefix/uri pairs in hashtable but nothing uses that. This is probably related to the namespace problem above.
++--Dan		*/
++
++
++
++
++function FOAFDiscoverer() {
++  this._log = Log4Moz.repository.getLogger("People.FOAFDiscoverer");
++  this._log.debug("FOAFX Initializing importer backend for " + this.displayName);
++};
++
++
++function getAttribute(element, name)
++{
++  var attrs = element.attributes;
++  var i;
++  for(i=attrs.length-1; i>=0; i--) {
++    if (attrs[i].name == name) {
++      return attrs[i].value;
++    }
++  }
++  return null;
++}
++
++
++let KNOWN_FOAFY = {"livejournal.com":1, "identi.ca":1,"status.net":1}; // Do we even need this? 
++
++function isKnownFOAFSite(parsedURI)
++{
++  try {
++    var hostName = parsedURI.host;
++    var tld = hostName.lastIndexOf(".");
++    if (tld > 0) {
++      var rootDomainIdx = hostName.lastIndexOf(".", tld-1);
++      hostName = hostName.slice(rootDomainIdx+1);
++    }
++    if (KNOWN_FOAFY[hostName]) return true;
++  } catch (e) {
++  }
++  return false;
++}
++
++FOAFDiscoverer.prototype = {
++  __proto__: DiscovererBackend.prototype,
++  get name() "FOAFProfile",
++  get displayName() "FOAF Profile Discovery",
++	get iconURL() "", // todo: add icon 
++
++  discover: function FOAFDiscoverer_discover(forPerson, completionCallback, progressFunction) {
++    for each (let link in forPerson.getProperty("urls")) {
++      let newPerson;
++      try {
++        var parsedURI = IO_SERVICE.newURI(link.value, null, null);
++      
++        if (true) // danbri hack: we try all sites, not just known FOAF hosts. Why not? 
++        {
++        
++          let discoveryToken = "foaf:" + link.value;
++          try 
++          {
++            progressFunction({initiate:discoveryToken, msg:"Looking for linked FOAF at " + link.value});
++            this._log.debug("XFOAF: Looking for linked FOAF at " + link.value);
++            try {
++              let pageResource = new Resource(link.value);
++              let dom = pageResource.get().dom;// Synchronous and slow. :(
++              if (newPerson == null) newPerson = {};
++
++//              var store = new FOAFStore()
++              var store = new RDFFormula()
++              var parser = new RDFParser(store);
++              parser.reify = parser.forceRDF = true; 
++
++              // First grab all the links with rel="meta" -- 
++              let relMeIterator = Utils.xpath(dom, "//*[@rel='meta']");
++              let anElement;
++
++              var i;
++              var urlCheckMap = {};
++              while (true) {
++                anElement = relMeIterator.iterateNext();
++                if (anElement == null) break;
++                
++                // For some reason I can't fathom, attributes.href isn't working here.
++                // We'll use a helper function instead.
++                if (anElement.nodeType == Ci.nsIDOMNode.ELEMENT_NODE)
++                {
++                  if (anElement.tagName.toLowerCase() == 'a' || anElement.tagName.toLowerCase() == 'link')
++                  {
++                    var href = getAttribute(anElement, "href");
++                    var text = anElement.textContent;
++                    
++                    try {
++                      var targetURI = IO_SERVICE.newURI(href, null, parsedURI);
++                      this._log.debug("XFOAF: Following rel=meta link: Resolved " + href + " to " + targetURI.spec + " (on " + parsedURI.spec+ ")");
++                      let foafResource = new Resource(targetURI.spec);
++                      let foafdom = foafResource.get().dom;// Synchronous and slow. :(
++                      //this._log.debug("XFOAF DOM is "+foafdom);
++
++
++		      // This needs fixing. We try to use rdfparser.js
++		      // this should give us back triples, which we could use directly or stash in SQL.
++		      // However it isn't succeeding yet.
++		      // For a test case, use someone with a LiveJournal account (eg. danbri, libby miller)
++
++		      parser.parse(foafdom, targetURI.spec); // todo: we get errors; ns prefixes aren't handled right.
++
++			//     this.store.setPrefixForURI('rdfs', "http://www.w3.org/2000/01/rdf-schema#")
++			// something is calling this and failing
++
++
++                      // TODO: perform lookup from href domain, or text, to canonical rels
++                      var aLink = {
++                        type: text, rel: text, value: targetURI.spec
++                      };
++                      if (newPerson.urls == undefined) newPerson.urls = [];
++                      newPerson.urls.push(aLink);
++                      urlCheckMap[href] = 1;
++                    } catch (e) {
++                      this._log.debug("FOAF: Error while processing FOAF link: " + e);
++                    }
++                  } 
++                } else {
++                  this._log.debug("FOAF: Got a rel=meta on a non-link: " + anElement);
++                }
++              }
++              
++            } catch (e) {
++              this._log.warn("Error while loading FOAF: " + e);            
++            }
++            completionCallback(newPerson, discoveryToken);
++          } catch (e) {
++            if (e != "DuplicatedDiscovery") {
++              this._log.warn("Error while loading FOAF: " + e);
++              progressFunction("Error while handling FOAFDiscoverer lookup: " + e);
++            }
++          }
++        }
++      } catch (e) {
++        this._log.warn("Error while handling FOAFDiscoverer lookup on " + link.value +": " + e);
++        progressFunction("Error while handling FOAFDiscoverer lookup: " + e);
++      }
++    }
++  }
++}
++
++
++
++
++/* FOAF++ STATUS: Not investigated what this does yet. Is pure hcard code still. 
++   Eventually we will poke around the RDF for FOAF and related vocabs, Bio, SKOS, vCard, DOAP etc.
++*/
++
++function processPerson(aPerson, newPerson)
++{
++  if (aPerson.adr) {
++    if (newPerson.addresses == undefined) newPerson.addresses = [];
++    for each (var anAdr in aPerson.adr) {
++      var addr = {};
++      if (anAdr.type) {
++        // TODO traverse all types
++        addr.type = anAdr.type[0]; 
++      }
++      if (anAdr['street-address']) addr.streetAddress = anAdr['street-address'];
++      if (anAdr['extended-address']) addr.extendedAddress = anAdr['extended-address'];
++      if (anAdr['region']) addr.region = anAdr['region'];
++      if (anAdr['postal-code']) addr.postalCode = anAdr['postal-code'];
++      if (anAdr['country-name']) addr.country = anAdr['country-name'];
++      if (anAdr['post-office-box']) addr.postOfficeBox = anAdr['post-office-box'];
++      if (anAdr['locality']) addr.locality = anAdr['locality'];
++      newPerson.addresses.push(addr);
++    }
++  }
++  if (aPerson.bio) {
++    newPerson.note = [{type:"bio", value:aPerson.bio}];
++  }
++  if (aPerson.bday) {
++    newPerson.bday = aPerson.bday;
++  }
++  if (aPerson.category) {
++    newPerson.category = aPerson.category;
++  }
++  if (aPerson.email) {
++    if (newPerson.emails == undefined) newPerson.emails = [];
++    for each (var anEmail in aPerson.email) {
++      var email = {};
++      if (anEmail.type) email.type = anEmail.type[0];// TODO handle other values
++      if (anEmail.values) email.values = anEmail.values[0];// TODO handle other values
++      newPerson.emails.push(email);
++    }
++  }
++  if (aPerson.fn) {
++    newPerson.displayName = aPerson.fn;
++  }
++  if (aPerson.geo) {
++    // TODO
++  }
++  if (aPerson.key) {
++    if (newPerson.publicKeys == undefined) newPerson.publicKeys = [];
++    for each (aKey in aPerson.key) {
++      newPerson.publicKeys.push(aKey);
++    }
++  }
++  if (aPerson.n) {
++    if (newPerson.name == undefined) newPerson.name = {};
++    if (aPerson.n['given-name']) newPerson.name.givenName = aPerson.n['given-name'][0];
++    if (aPerson.n['additional-name']) newPerson.name.additional = aPerson.n['additional-name'][0];
++    if (aPerson.n['family-name']) newPerson.name.familyName = aPerson.n['family-name'][0];
++  }
++  if (aPerson.org) {
++    // TODO this doesn't match the docs...
++    for each (anOrg in aPerson.org) {
++      if (anOrg['organization-name']) {
++        if (newPerson.organizations == undefined) newPerson.organizations = [];
++        newPerson.organizations.push({name:anOrg['organization-name']});
++      }
++    }
++    // TODO pull role in here?  or title?
++  }
++  if (aPerson.photo) {
++    if (newPerson.photos == undefined) newPerson.photos = [];
++    for each (var aPhoto in aPerson.photo) {
++      newPerson.photos.push( {type:"profile", value:aPhoto} );
++    }
++  }
++  if (aPerson.tel) {
++    for each (var aTel in aPerson.tel) {
++      var tel = {};
++      if (aTel.type) tel.type = aTel.type;
++      if (aTel.tel) tel.value = aTel.tel;
++    if (newPerson.phoneNumbers == undefined) newPerson.phoneNumbers = [];
++      newPerson.phoneNumbers.push(tel);
++    }
++  }
++
++}
++
++
++PeopleImporter.registerDiscoverer(FOAFDiscoverer);
+diff -r e1d631212d99 -r 93c00bbf50d9 modules/importers/rdfparser.js
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/modules/importers/rdfparser.js	Sat Jun 12 18:22:50 2010 +0200
+@@ -0,0 +1,1202 @@
++/**
++ * @fileoverview
++ * TABULATOR RDF PARSER
++ *
++ * Version 0.1
++ *  Parser believed to be in full positive RDF/XML parsing compliance
++ *  with the possible exception of handling deprecated RDF attributes
++ *  appropriately. Parser is believed to comply fully with other W3C
++ *  and industry standards where appropriate (DOM, ECMAScript, &c.)
++ *
++ *  Author: David Sheets <dsheets@mit.edu>
++ *  SVN ID: $Id$
++ *
++ * W3C® SOFTWARE NOTICE AND LICENSE
++ * http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
++ * This work (and included software, documentation such as READMEs, or
++ * other related items) is being provided by the copyright holders under
++ * the following license. By obtaining, using and/or copying this work,
++ * you (the licensee) agree that you have read, understood, and will
++ * comply with the following terms and conditions.
++ * 
++ * Permission to copy, modify, and distribute this software and its
++ * documentation, with or without modification, for any purpose and
++ * without fee or royalty is hereby granted, provided that you include
++ * the following on ALL copies of the software and documentation or
++ * portions thereof, including modifications:
++ * 
++ * 1. The full text of this NOTICE in a location viewable to users of
++ * the redistributed or derivative work.
++ * 2. Any pre-existing intellectual property disclaimers, notices, or terms and
++ * conditions. If none exist, the W3C Software Short Notice should be
++ * included (hypertext is preferred, text is permitted) within the body
++ * of any redistributed or derivative code.
++ * 3. Notice of any changes or modifications to the files, including the
++ * date changes were made. (We recommend you provide URIs to the location
++ * from which the code is derived.)
++ * 
++ * THIS SOFTWARE AND DOCUMENTATION IS PROVIDED "AS IS," AND COPYRIGHT
++ * HOLDERS MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED,
++ * INCLUDING BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS
++ * FOR ANY PARTICULAR PURPOSE OR THAT THE USE OF THE SOFTWARE OR
++ * DOCUMENTATION WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS,
++ * TRADEMARKS OR OTHER RIGHTS.
++ * 
++ * COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL
++ * OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR
++ * DOCUMENTATION.
++ * 
++ * The name and trademarks of copyright holders may NOT be used in
++ * advertising or publicity pertaining to the software without specific,
++ * written prior permission. Title to copyright in this software and any
++ * associated documentation will at all times remain with copyright
++ * holders.
++ */
++
++
++
++let EXPORTED_SYMBOLS = ["RDFParser", "FOAFStore", "RDFFormula"];
++
++
++
++// TestStore implementation from dig.csail.mit.edu/2005/ajar/ajaw/test/rdf/rdfparser.test.html
++// see also RDFIndexedFormula from dig.csail.mit.edu/2005/ajar/ajaw/rdf/identity.js
++//  (extends RDFFormula from dig.csail.mit.edu/2005/ajar/ajaw/rdf/term.js no indexing and smushing)
++// for the real implementation used by Tabulator which uses indexing and smushing
++//var store = new TestStore()
++//var parser = new RDFParser(store);
++// see http://brondsema.net/blog/index.php/2006/11/25/javascript_rdfparser_from_tabulator
++
++
++
++
++
++
++// -- begin term.js 
++
++// These are the classes corresponding to the RDF and N3 data models
++//
++// Designed to look like rdflib and cwm designs.
++//
++// Issues: Should the names start with RDF to make them
++//      unique as program-wide symbols?
++//
++// W3C open source licence 2005.
++//
++
++RDFTracking = 0  // Are we requiring reasons for statements?
++
++//takes in an object and makes it an object if it's a literal
++function makeTerm(val) {
++    //  tabulator.log.debug("Making term from " + val)
++    if (typeof val == 'object') return val;
++    if (typeof val == 'string') return new RDFLiteral(val);
++    if (typeof val == 'number') return new RDFLiteral(val); // @@ differet types
++    if (typeof val == 'boolean') return new RDFLiteral(val?"1":"0", undefined, 
++                                                RDFSymbol.prototype.XSDboolean);
++    if (typeof val == 'undefined') return undefined;
++    alert("Can't make term from " + val + " of type " + typeof val);
++}
++
++
++//	Symbol
++
++function RDFEmpty() {
++	return this;
++}
++RDFEmpty.prototype.termType = 'empty'
++RDFEmpty.prototype.toString = function () { return "()" }
++RDFEmpty.prototype.toNT = function () { return "@@" }
++
++function RDFSymbol_toNT(x) {
++    return ("<" + x.uri + ">")
++}
++
++function toNT() {
++    return RDFSymbol_toNT(this)
++}
++
++function RDFSymbol(uri) {
++    this.uri = uri
++    return this
++}
++	
++RDFSymbol.prototype.termType = 'symbol'
++RDFSymbol.prototype.toString = toNT
++RDFSymbol.prototype.toNT = toNT
++
++//  Some precalculaued symbols
++
++RDFSymbol.prototype.XSDboolean = new RDFSymbol('http://www.w3.org/2001/XMLSchema#boolean');
++RDFSymbol.prototype.integer = new RDFSymbol('http://www.w3.org/2001/XMLSchema#integer');
++
++
++//	Blank Node
++
++var RDFNextId = 0;  // Gobal genid
++RDFGenidPrefix = "genid:"
++NTAnonymousNodePrefix = "_:n"
++
++function RDFBlankNode(id) {
++    /*if (id)
++    	this.id = id;
++    else*/
++    this.id = RDFNextId++
++    return this
++}
++
++RDFBlankNode.prototype.termType = 'bnode'
++
++RDFBlankNode.prototype.toNT = function() {
++    return NTAnonymousNodePrefix + this.id
++}
++RDFBlankNode.prototype.toString = RDFBlankNode.prototype.toNT  
++
++//	Literal
++
++function RDFLiteral(value, lang, datatype) {
++    this.value = value
++    this.lang=lang;	  // string
++    this.datatype=datatype;  // term
++    this.toString = RDFLiteralToString
++    this.toNT = RDFLiteral_toNT
++    return this
++}
++
++RDFLiteral.prototype.termType = 'literal'
++
++function RDFLiteral_toNT() {
++    var str = this.value
++    if (typeof str != 'string') {
++        if (typeof str == 'number') return ''+str;
++	throw Error("Value of RDF literal is not string: "+str)
++    }
++    str = str.replace(/\\/g, '\\\\');  // escape
++    str = str.replace(/\"/g, '\\"');
++    str = '"' + str + '"'  //'
++
++    if (this.datatype){
++	str = str + '^^' + this.datatype//.toNT()
++    }
++    if (this.lang) {
++	str = str + "@" + this.lang
++    }
++    return str
++}
++
++function RDFLiteralToString() {
++    return ''+this.value
++}
++    
++RDFLiteral.prototype.toString = RDFLiteralToString   
++RDFLiteral.prototype.toNT = RDFLiteral_toNT
++
++function RDFCollection() {
++    this.id = RDFNextId++
++    this.elements = []
++    this.closed = false
++}
++
++RDFCollection.prototype.termType = 'collection'
++
++RDFCollection.prototype.toNT = function() {
++    return NTAnonymousNodePrefix + this.id
++}
++RDFCollection.prototype.toString = RDFCollection.prototype.toNT 
++
++RDFCollection.prototype.append = function (el) {
++    this.elements.push(el)
++}
++RDFCollection.prototype.unshift=function(el){
++    this.elements.unshift(el);
++}
++RDFCollection.prototype.shift=function(){
++    return this.elements.shift();
++}
++        
++RDFCollection.prototype.close = function () {
++    this.closed = true
++}
++
++//	Statement
++//
++//  This is a triple with an optional reason.
++//
++//   The reason can point to provenece or inference
++//
++function RDFStatement_toNT() {
++    return (this.subject.toNT() + " "
++	    + this.predicate.toNT() + " "
++	    +  this.object.toNT() +" .")
++}
++
++function RDFStatement(subject, predicate, object, why) {
++    this.subject = makeTerm(subject)
++    this.predicate = makeTerm(predicate)
++    this.object = makeTerm(object)
++    if (typeof why !='undefined') {
++	this.why = why
++    } else if (RDFTracking) {
++	tabulator.log.debug("WARNING: No reason on "+subject+" "+predicate+" "+object)
++    }
++    return this
++}
++
++RDFStatement.prototype.toNT = RDFStatement_toNT
++RDFStatement.prototype.toString = RDFStatement_toNT
++	
++
++//	Formula
++//
++//	Set of statements.
++
++function RDFFormula() {
++    this.statements = []
++    this.constraints = []
++    this.initBindings = []
++    this.optional = []
++    this.superFormula = null;
++
++
++    // added by danbri, uselessly. 
++    this.namespaces = {} 
++    this.setPrefixForURI = function(prefix, nsuri) {
++      this.namespaces[prefix] = nsuri
++    }
++    //end danbri
++    return this
++}
++
++
++function RDFFormula_toNT() {
++    // throw 'Who called me?';    
++    return "{" + this.statements.join('\n') + "}"
++}
++
++//RDFQueryFormula.prototype = new RDFFormula()
++//RDFQueryFormula.termType = 'queryFormula'
++RDFFormula.prototype.termType = 'formula'
++RDFFormula.prototype.toNT = RDFFormula_toNT
++RDFFormula.prototype.toString = RDFFormula_toNT   
++
++RDFFormula.prototype.add = function(subj, pred, obj, why) {
++    this.statements.push(new RDFStatement(subj, pred, obj, why))
++}
++
++// Convenience methods on a formula allow the creation of new RDF terms:
++
++RDFFormula.prototype.sym = function(uri,name) {
++    if (name != null) {
++        if (!tabulator.ns[uri]) throw 'The prefix "'+uri+'" is not set in the API';
++	uri = tabulator.ns[uri] + name
++    }
++    return new RDFSymbol(uri)
++}
++
++RDFFormula.prototype.literal = function(val, lang, dt) {
++    return new RDFLiteral(val.toString(), lang, dt)
++}
++
++RDFFormula.prototype.bnode = function(id) {
++    return new RDFBlankNode(id)
++}
++
++RDFFormula.prototype.formula = function() {
++    return new RDFFormula()
++}
++
++RDFFormula.prototype.collection = function () { // obsolete
++    return new RDFCollection()
++}
++
++RDFFormula.prototype.list = function (values) {
++    li = new RDFCollection();
++    if (values) {
++        for(var i = 0; i<values.length; i++) {
++            li.append(values[i]);
++        }
++    }
++    return li;
++}
++
++RDFFormula.instances={};
++RDFFormula.prototype.registerFormula = function(accesskey){
++    var superFormula = this.superFormula || this;
++    RDFFormula.instances[accesskey] = this;
++    var formulaTerm = superFormula.bnode();
++    superFormula.add(formulaTerm, tabulator.ns.rdf('type'),superFormula.sym("http://www.w3.org/2000/10/swap/log#Formula"));
++    superFormula.add(formulaTerm, tabulator.ns.foaf('name'), superFormula.literal(accesskey));
++    superFormula.add(formulaTerm, tabulator.ns.link('accesskey'), superFormula.literal(accesskey));
++    //RDFFormula.instances.push("accesskey");
++}
++
++
++/*  Variable
++**
++** Variables are placeholders used in patterns to be matched.
++** In cwm they are symbols which are the formula's list of quantified variables.
++** In sparl they are not visibily URIs.  Here we compromise, by having
++** a common special base URI for variables.
++*/
++
++RDFVariableBase = "varid:"; // We deem variabe x to be the symbol varid:x 
++
++function RDFVariable(rel) {
++    this.uri = URIjoin(rel, RDFVariableBase);
++    return this;
++}
++
++RDFVariable.prototype.termType = 'variable';
++RDFVariable.prototype.toNT = function() {
++    if (this.uri.slice(0, RDFVariableBase.length) == RDFVariableBase) {
++	return '?'+ this.uri.slice(RDFVariableBase.length);} // @@ poor man's refTo
++    return '?' + this.uri;
++};
++
++RDFVariable.prototype.toString = RDFVariable.prototype.toNT;
++RDFVariable.prototype.classOrder = 7;
++
++RDFFormula.prototype.variable = function(name) {
++    return new RDFVariable(name);
++};
++
++RDFVariable.prototype.hashString = RDFVariable.prototype.toNT;
++
++
++// The namespace function generator 
++
++function RDFNamespace(nsuri) {
++    return function(ln) { return new RDFSymbol(nsuri+(ln===undefined?'':ln)) }
++}
++
++RDFFormula.prototype.ns = function(nsuri) {
++    return function(ln) { return new RDFSymbol(nsuri+(ln===undefined?'':ln)) }
++}
++
++
++// Parse a single token
++//
++// The bnode bit should not be used on program-external values; designed
++// for internal work such as storing a bnode id in an HTML attribute.
++// Not coded for literals.
++
++RDFFormula.prototype.fromNT = function(str) {
++    var len = str.length
++    var ch = str.slice(0,1)
++    if (ch == '<') return this.sym(str.slice(1,len-1))
++    if (ch == '_') {
++	var x = new RDFBlankNode();
++	x.id = parseInt(str.slice(3));
++	RDFNextId--
++	return x
++    }
++    throw "Can't convert from NT"+str;
++    
++    //alert("Can't yet convert from NT: '"+str+"', "+str[0])
++}
++
++// ends
++
++
++
++// -- begin uri.js 
++
++//  Implementing URI-specific functions
++//
++//	See RFC 2386
++//
++// This is or was   http://www.w3.org/2005/10/ajaw/uri.js
++// 2005 W3C open source licence
++//
++//
++//  Take a URI given in relative or absolute form and a base
++//  URI, and return an absolute URI
++//
++//  See also http://www.w3.org/2000/10/swap/uripath.py
++//
++
++if (typeof Util == "undefined") { Util = {}}
++if (typeof Util.uri == "undefined") { Util.uri = {}}
++
++Util.uri.join = function (given, base) {
++    // if (typeof tabulator.log.debug != 'undefined') tabulator.log.debug("   URI given="+given+" base="+base)
++    var baseHash = base.indexOf('#')
++    if (baseHash > 0) base = base.slice(0, baseHash)
++    if (given.length==0) return base // before chopping its filename off
++    if (given.indexOf('#')==0) return base + given
++    var colon = given.indexOf(':')
++    if (colon >= 0) return given	// Absolute URI form overrides base URI
++    var baseColon = base.indexOf(':')
++    if (base == "") return given;
++    if (baseColon < 0) {
++        alert("Invalid base: "+ base + ' in join with ' +given);
++        return given
++    }
++    var baseScheme = base.slice(0,baseColon+1)  // eg http:
++    if (given.indexOf("//") == 0)     // Starts with //
++	return baseScheme + given;
++    if (base.indexOf('//', baseColon)==baseColon+1) {  // Any hostpart?
++	    var baseSingle = base.indexOf("/", baseColon+3)
++	if (baseSingle < 0) {
++	    if (base.length-baseColon-3 > 0) {
++		return base + "/" + given
++	    } else {
++		return baseScheme + given
++	    }
++	}
++    } else {
++	var baseSingle = base.indexOf("/", baseColon+1)
++	if (baseSingle < 0) {
++	    if (base.length-baseColon-1 > 0) {
++		return base + "/" + given
++	    } else {
++		return baseScheme + given
++	    }
++	}
++    }
++
++    if (given.indexOf('/') == 0)	// starts with / but not //
++	return base.slice(0, baseSingle) + given
++    
++    var path = base.slice(baseSingle)
++    var lastSlash = path.lastIndexOf("/")
++    if (lastSlash <0) return baseScheme + given
++    if ((lastSlash >=0) && (lastSlash < (path.length-1)))
++	path = path.slice(0, lastSlash+1) // Chop trailing filename from base
++    
++    path = path + given
++    while (path.match(/[^\/]*\/\.\.\//)) // must apply to result of prev
++	path = path.replace( /[^\/]*\/\.\.\//, '') // ECMAscript spec 7.8.5
++    path = path.replace( /\.\//g, '') // spec vague on escaping
++    path = path.replace( /\/\.$/, '/' )
++    return base.slice(0, baseSingle) + path
++}
++
++var tIOService;
++if (typeof( isExtension ) != "undefined" && isExtension) {
++    tIOService = Components.classes['@mozilla.org/network/io-service;1']
++                        .getService(Components.interfaces.nsIIOService);
++    Util.uri.join2 = function (given, base){
++       var baseURI = tIOService.newURI(base, null, null);
++       return tIOService.newURI(baseURI.resolve(given), null, null).spec;
++    }
++} else
++    Util.uri.join2 = Util.uri.join;
++    
++//  refTo:    Make a URI relative to a given base
++//
++// based on code in http://www.w3.org/2000/10/swap/uripath.py
++//
++Util.uri.commonHost = new RegExp("^[-_a-zA-Z0-9.]+:(//[^/]*)?/[^/]*$");
++Util.uri.refTo = function(base, uri) {
++    if (!base) return uri;
++    if (base == uri) return "";
++    var i =0; // How much are they identical?
++    while (i<uri.length && i < base.length)
++        if (uri[i] == base[i]) i++;
++        else break;
++    if (base.slice(0,i).match(Util.uri.commonHost)) {
++        var k = uri.indexOf('//');
++        if (k<0) k=-2; // no host
++        var l = uri.indexOf('/', k+2);   // First *single* slash
++        if (uri.slice(l+1, l+2) != '/' && base.slice(l+1, l+2) != '/'
++                           && uri.slice(0,l) == base.slice(0,l)) // common path to single slash
++            return uri.slice(l); // but no other common path segments
++    }
++     // fragment of base?
++    if (uri.slice(i, i+1) == '#' && base.length == i) return uri.slice(i);
++    while (i>0 && uri[i-1] != '/') i--;
++
++    if (i<3) return uri; // No way
++    if ((base.indexOf('//', i-2) > 0) || uri.indexOf('//', i-2) > 0)
++        return uri; // an unshared '//'
++    if (base.indexOf(':', i) >0) return uri; // unshared ':'
++    var n = 0;
++    for (var j=i; j<base.length; j++) if (base[j]=='/') n++;
++    if (n==0 && i < uri.length && uri[i] =='#') return './' + uri.slice(i);
++    if (n==0 && i == uri.length) return './';
++    var str = '';
++    for (var j=0; j<n; j++) str+= '../';
++    return str + uri.slice(i);
++}
++
++
++/** returns URI without the frag **/
++Util.uri.docpart = function (uri) {
++    var i = uri.indexOf("#")
++    if (i < 0) return uri
++    return uri.slice(0,i)
++} 
++
++/** return the protocol of a uri **/
++/** return null if there isn't one **/
++Util.uri.protocol = function (uri) {
++    var index = uri.indexOf(':');
++    if (index >= 0)
++        return uri.slice(0, index);
++    else
++        return null;
++} //protocol
++
++URIjoin = Util.uri.join
++uri_docpart = Util.uri.docpart
++uri_protocol = Util.uri.protocol
++
++
++//ends
++
++
++// -- begin rdfparser.js 
++
++
++/**
++ * @class Class defining an RDFParser resource object tied to an RDFStore
++ *  
++ * @author David Sheets <dsheets@mit.edu>
++ * @version 0.1
++ * 
++ * @constructor
++ * @param {RDFStore} store An RDFStore object
++ */
++function RDFParser(store) {
++    /** Standard namespaces that we know how to handle @final
++     *  @member RDFParser
++     */
++    RDFParser['ns'] = {'RDF':
++		       "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
++		       'RDFS':
++		       "http://www.w3.org/2000/01/rdf-schema#"}
++    /** DOM Level 2 node type magic numbers @final
++     *  @member RDFParser
++     */
++    RDFParser['nodeType'] = {'ELEMENT': 1, 'ATTRIBUTE': 2, 'TEXT': 3,
++			     'CDATA_SECTION': 4, 'ENTITY_REFERENCE': 5,
++			     'ENTITY': 6, 'PROCESSING_INSTRUCTION': 7,
++			     'COMMENT': 8, 'DOCUMENT': 9, 'DOCUMENT_TYPE': 10,
++			     'DOCUMENT_FRAGMENT': 11, 'NOTATION': 12}
++
++    /**
++     * Frame class for namespace and base URI lookups
++     * Base lookups will always resolve because the parser knows
++     * the default base.
++     *
++     * @private
++     */
++    this['frameFactory'] = function (parser, parent, element) {
++	return {'NODE': 1,
++		'ARC': 2,
++		'parent': parent,
++		'parser': parser,
++		'store': parser['store'],
++		'element': element,
++		'lastChild': 0,
++		'base': null,
++		'lang': null,
++		'node': null,
++		'nodeType': null,
++		'listIndex': 1,
++		'rdfid': null,
++		'datatype': null,
++		'collection': false,
++
++	/** Terminate the frame and notify the store that we're done */
++		'terminateFrame': function () {
++		    if (this['collection']) {
++			this['node']['close']()
++		    }
++		},
++	
++	/** Add a symbol of a certain type to the this frame */
++		'addSymbol': function (type, uri) {
++		    uri = Util.uri.join(uri, this['base'])
++		    this['node'] = this['store']['sym'](uri)
++		    this['nodeType'] = type
++		},
++	
++	/** Load any constructed triples into the store */
++		'loadTriple': function () {
++		    if (this['parent']['parent']['collection']) {
++			this['parent']['parent']['node']['append'](this['node'])
++		    }
++		    else {
++			this['store']['add'](this['parent']['parent']['node'],
++				       this['parent']['node'],
++				       this['node'],
++				       this['parser']['why'])
++		    }
++		    if (this['parent']['rdfid'] != null) { // reify
++			var triple = this['store']['sym'](
++			    Util.uri.join("#"+this['parent']['rdfid'],
++					  this['base']))
++			this['store']['add'](triple,
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']
++						     +"type"),
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']
++						     +"Statement"),
++					     this['parser']['why'])
++			this['store']['add'](triple,
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']
++						     +"subject"),
++					     this['parent']['parent']['node'],
++					     this['parser']['why'])
++			this['store']['add'](triple,
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']
++						     +"predicate"),
++					     this['parent']['node'],
++					     this['parser']['why'])
++			this['store']['add'](triple,
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']
++						     +"object"),
++					     this['node'],
++					     this['parser']['why'])
++		    }
++		},
++
++	/** Check if it's OK to load a triple */
++		'isTripleToLoad': function () {
++		    return (this['parent'] != null
++			    && this['parent']['parent'] != null
++			    && this['nodeType'] == this['NODE']
++			    && this['parent']['nodeType'] == this['ARC']
++			    && this['parent']['parent']['nodeType']
++			    == this['NODE'])
++		},
++
++	/** Add a symbolic node to this frame */
++		'addNode': function (uri) {
++		    this['addSymbol'](this['NODE'],uri)
++		    if (this['isTripleToLoad']()) {
++			this['loadTriple']()
++		    }
++		},
++
++	/** Add a collection node to this frame */
++		'addCollection': function () {
++		    this['nodeType'] = this['NODE']
++		    this['node'] = this['store']['collection']()
++		    this['collection'] = true
++		    if (this['isTripleToLoad']()) {
++			this['loadTriple']()
++		    }
++		},
++
++	/** Add a collection arc to this frame */
++		'addCollectionArc': function () {
++		    this['nodeType'] = this['ARC']
++		},
++
++	/** Add a bnode to this frame */
++		'addBNode': function (id) {
++		    if (id != null) {
++			if (this['parser']['bnodes'][id] != null) {
++			    this['node'] = this['parser']['bnodes'][id]
++			} else {
++			    this['node'] = this['parser']['bnodes'][id] = this['store']['bnode']()
++			}
++		    } else { this['node'] = this['store']['bnode']() }
++		    
++		    this['nodeType'] = this['NODE']
++		    if (this['isTripleToLoad']()) {
++			this['loadTriple']()
++		    }
++		},
++
++	/** Add an arc or property to this frame */
++		'addArc': function (uri) {
++		    if (uri == RDFParser['ns']['RDF']+"li") {
++			uri = RDFParser['ns']['RDF']+"_"+this['parent']['listIndex']++
++		    }
++		    this['addSymbol'](this['ARC'], uri)
++		},
++
++	/** Add a literal to this frame */
++		'addLiteral': function (value) {
++		    if (this['parent']['datatype']) {
++			this['node'] = this['store']['literal'](
++			    value, "", this['store']['sym'](
++				this['parent']['datatype']))
++		    }
++		    else {
++			this['node'] = this['store']['literal'](
++			    value, this['lang'])
++		    }
++		    this['nodeType'] = this['NODE']
++		    if (this['isTripleToLoad']()) {
++			this['loadTriple']()
++		    }
++		}
++	       }
++    }
++
++    /** Our triple store reference @private */
++    this['store'] = store
++    /** Our identified blank nodes @private */
++    this['bnodes'] = {}
++    /** A context for context-aware stores @private */
++    this['why'] = null
++    /** Reification flag */
++    this['reify'] = false
++
++    /**
++     * Build our initial scope frame and parse the DOM into triples
++     * @param {DOMTree} document The DOM to parse
++     * @param {String} base The base URL to use 
++     * @param {Object} why The context to which this resource belongs
++     */
++    this['parse'] = function (document, base, why) {
++        // alert('parse base:'+base);
++	var children = document['childNodes']
++
++	// clean up for the next run
++	this['cleanParser']()
++
++	// figure out the root element
++	var root = document.documentElement; //this is faster, I think, cross-browser issue? well, DOM 2
++	/*
++	if (document['nodeType'] == RDFParser['nodeType']['DOCUMENT']) {
++	    for (var c=0; c<children['length']; c++) {
++		if (children[c]['nodeType']
++		    == RDFParser['nodeType']['ELEMENT']) {
++		    var root = children[c]
++		    break
++		}
++	    }	    
++	}
++	else if (document['nodeType'] == RDFParser['nodeType']['ELEMENT']) {
++	    var root = document
++	}
++	else {
++	    throw new Error("RDFParser: can't find root in " + base
++			    + ". Halting. ")
++	    return false
++	}
++	*/
++	
++	this['why'] = why
++        
++
++	// our topmost frame
++
++	var f = this['frameFactory'](this)
++        this['base'] = base
++	f['base'] = base
++	f['lang'] = ''
++	
++	this['parseDOM'](this['buildFrame'](f,root))
++	return true
++    }
++    this['parseDOM'] = function (frame) {
++	// a DOM utility function used in parsing
++	var elementURI = function (el) {
++            if (el['namespaceURI'] == null) {
++                throw new Error("RDF/XML syntax error: No namespace for "
++                            +el['localName']+" in "+this.base)
++            }
++	    return el['namespaceURI'] + el['localName']
++	}
++	var dig = true // if we'll dig down in the tree on the next iter
++
++	while (frame['parent']) {
++	    var dom = frame['element']
++	    var attrs = dom['attributes']
++
++	    if (dom['nodeType']
++		== RDFParser['nodeType']['TEXT']
++		|| dom['nodeType']
++		== RDFParser['nodeType']['CDATA_SECTION']) {//we have a literal
++		frame['addLiteral'](dom['nodeValue'])
++	    }
++	    else if (elementURI(dom)
++		     != RDFParser['ns']['RDF']+"RDF") { // not root
++		if (frame['parent'] && frame['parent']['collection']) {
++		    // we're a collection element
++		    frame['addCollectionArc']()
++		    frame = this['buildFrame'](frame,frame['element'])
++		    frame['parent']['element'] = null
++		}
++                if (!frame['parent'] || !frame['parent']['nodeType']
++		    || frame['parent']['nodeType'] == frame['ARC']) {
++		    // we need a node
++		    var about =dom['getAttributeNodeNS'](
++			RDFParser['ns']['RDF'],"about")
++		    var rdfid =dom['getAttributeNodeNS'](
++			RDFParser['ns']['RDF'],"ID")
++		    if (about && rdfid) {
++			throw new Error("RDFParser: " + dom['nodeName']
++					+ " has both rdf:id and rdf:about."
++					+ " Halting. Only one of these"
++					+ " properties may be specified on a"
++					+ " node.");
++		    }
++		    if (about == null && rdfid) {
++			frame['addNode']("#"+rdfid['nodeValue'])
++			dom['removeAttributeNode'](rdfid)
++		    }
++		    else if (about == null && rdfid == null) {
++			var bnid = dom['getAttributeNodeNS'](
++			    RDFParser['ns']['RDF'],"nodeID")
++			if (bnid) {
++			    frame['addBNode'](bnid['nodeValue'])
++			    dom['removeAttributeNode'](bnid)
++			} else { frame['addBNode']() }
++		    }
++		    else {
++			frame['addNode'](about['nodeValue'])
++			dom['removeAttributeNode'](about)
++		    }
++		
++		    // Typed nodes
++		    var rdftype = dom['getAttributeNodeNS'](
++			RDFParser['ns']['RDF'],"type")
++		    if (RDFParser['ns']['RDF']+"Description"
++			!= elementURI(dom)) {
++			rdftype = {'nodeValue': elementURI(dom)}
++		    }
++		    if (rdftype != null) {
++			this['store']['add'](frame['node'],
++					     this['store']['sym'](
++						 RDFParser['ns']['RDF']+"type"),
++					     this['store']['sym'](
++						 Util.uri.join(
++						     rdftype['nodeValue'],
++						     frame['base'])),
++					     this['why'])
++			if (rdftype['nodeName']){
++			    dom['removeAttributeNode'](rdftype)
++			}
++		    }
++		    
++		    // Property Attributes
++		    for (var x = attrs['length']-1; x >= 0; x--) {
++			this['store']['add'](frame['node'],
++					     this['store']['sym'](
++						 elementURI(attrs[x])),
++					     this['store']['literal'](
++						 attrs[x]['nodeValue'],
++						 frame['lang']),
++					     this['why'])
++		    }
++		}
++		else { // we should add an arc (or implicit bnode+arc)
++		    frame['addArc'](elementURI(dom))
++
++		    // save the arc's rdf:ID if it has one
++		    if (this['reify']) {
++			var rdfid = dom['getAttributeNodeNS'](
++			    RDFParser['ns']['RDF'],"ID")
++			if (rdfid) {
++			    frame['rdfid'] = rdfid['nodeValue']
++			    dom['removeAttributeNode'](rdfid)
++			}
++		    }
++
++		    var parsetype = dom['getAttributeNodeNS'](
++			RDFParser['ns']['RDF'],"parseType")
++		    var datatype = dom['getAttributeNodeNS'](
++			RDFParser['ns']['RDF'],"datatype")
++		    if (datatype) {
++			frame['datatype'] = datatype['nodeValue']
++			dom['removeAttributeNode'](datatype)
++		    }
++
++		    if (parsetype) {
++			var nv = parsetype['nodeValue']
++			if (nv == "Literal") {
++			    frame['datatype']
++				= RDFParser['ns']['RDF']+"XMLLiteral"
++			    // (this.buildFrame(frame)).addLiteral(dom)
++			    // should work but doesn't
++			    frame = this['buildFrame'](frame)
++			    frame['addLiteral'](dom)
++			    dig = false
++			}
++			else if (nv == "Resource") {
++			    frame = this['buildFrame'](frame,frame['element'])
++			    frame['parent']['element'] = null
++			    frame['addBNode']()
++			}
++			else if (nv == "Collection") {
++			    frame = this['buildFrame'](frame,frame['element'])
++			    frame['parent']['element'] = null
++			    frame['addCollection']()
++			}
++			dom['removeAttributeNode'](parsetype)
++		    }
++
++		    if (attrs['length'] != 0) {
++			var resource = dom['getAttributeNodeNS'](
++			    RDFParser['ns']['RDF'],"resource")
++			var bnid = dom['getAttributeNodeNS'](
++			    RDFParser['ns']['RDF'],"nodeID")
++
++			frame = this['buildFrame'](frame)
++			if (resource) {
++			    frame['addNode'](resource['nodeValue'])
++			    dom['removeAttributeNode'](resource)
++			} else {
++			    if (bnid) {
++				frame['addBNode'](bnid['nodeValue'])
++				dom['removeAttributeNode'](bnid)
++			    } else { frame['addBNode']() }
++			}
++
++			for (var x = attrs['length']-1; x >= 0; x--) {
++			    var f = this['buildFrame'](frame)
++			    f['addArc'](elementURI(attrs[x]))
++			    if (elementURI(attrs[x])
++				==RDFParser['ns']['RDF']+"type"){
++				(this['buildFrame'](f))['addNode'](
++				    attrs[x]['nodeValue'])
++			    } else {
++				(this['buildFrame'](f))['addLiteral'](
++				    attrs[x]['nodeValue'])
++			    }
++			}
++		    }
++		    else if (dom['childNodes']['length'] == 0) {
++			(this['buildFrame'](frame))['addLiteral']("")
++		    }
++		}
++	    } // rdf:RDF
++
++	    // dig dug
++	    dom = frame['element']
++	    while (frame['parent']) {
++		var pframe = frame
++		while (dom == null) {
++		    frame = frame['parent']
++		    dom = frame['element']
++		}
++		var candidate = dom['childNodes'][frame['lastChild']]
++		if (candidate == null || !dig) {
++		    frame['terminateFrame']()
++		    if (!(frame = frame['parent'])) { break } // done
++		    dom = frame['element']
++		    dig = true
++		}
++		else if ((candidate['nodeType']
++			  != RDFParser['nodeType']['ELEMENT']
++			  && candidate['nodeType']
++			  != RDFParser['nodeType']['TEXT']
++			  && candidate['nodeType']
++			  != RDFParser['nodeType']['CDATA_SECTION'])
++			 || ((candidate['nodeType']
++			      == RDFParser['nodeType']['TEXT']
++			      || candidate['nodeType']
++			      == RDFParser['nodeType']['CDATA_SECTION'])
++			     && dom['childNodes']['length'] != 1)) {
++		    frame['lastChild']++
++		}
++		else { // not a leaf
++		    frame['lastChild']++
++		    frame = this['buildFrame'](pframe,
++					       dom['childNodes'][frame['lastChild']-1])
++		    break
++		}
++	    }
++	} // while
++    }
++
++    /**
++     * Cleans out state from a previous parse run
++     * @private
++     */
++    this['cleanParser'] = function () {
++	this['bnodes'] = {}
++	this['why'] = null
++    }
++
++    /**
++     * Builds scope frame 
++     * @private
++     */
++    this['buildFrame'] = function (parent, element) {
++	var frame = this['frameFactory'](this,parent,element)
++	if (parent) {
++	    frame['base'] = parent['base']
++	    frame['lang'] = parent['lang']
++	}
++	if (element == null
++	    || element['nodeType'] == RDFParser['nodeType']['TEXT']
++	    || element['nodeType'] == RDFParser['nodeType']['CDATA_SECTION']) {
++	    return frame
++	}
++
++	var attrs = element['attributes']
++
++	var base = element['getAttributeNode']("xml:base")
++	if (base != null) {
++	    frame['base'] = base['nodeValue']
++	    element['removeAttribute']("xml:base")
++	}
++	var lang = element['getAttributeNode']("xml:lang")
++	if (lang != null) {
++	    frame['lang'] = lang['nodeValue']
++	    element['removeAttribute']("xml:lang")
++	}
++
++	// remove all extraneous xml and xmlns attributes
++	for (var x = attrs['length']-1; x >= 0; x--) {
++	    if (attrs[x]['nodeName']['substr'](0,3) == "xml") {
++                if (attrs[x].name.slice(0,6)=='xmlns:') {
++                    var uri = attrs[x].nodeValue;
++                    // alert('base for namespac attr:'+this.base);
++                    if (this.base) uri = Util.uri.join(uri, this.base);
++                    this.store.setPrefixForURI(attrs[x].name.slice(6),uri);
++                }
++//		alert('rdfparser: xml atribute: '+attrs[x].name) //@@
++		element['removeAttributeNode'](attrs[x])
++	    }
++	}
++	return frame
++    }
++}
++
++
++
++
++
++
++
++////-------------- from tests
++//// teststore defined here
++
++
++// rdf parser tests
++
++function FOAFStore() {
++    this.bn = 97 // 'a'
++    this.triples = []
++    this.collections = {}
++    this.sym = function (uri) {
++        return {val: uri, type: "sym"}
++    }
++    
++    
++    // added by danbri 
++    this.namespaces = {} 
++    this.setPrefixForURI = function(prefix, nsuri) {
++      this.namespaces[prefix] = nsuri
++    }
++    //end danbri
++
++
++    this.collection = function () {
++        var store = this
++	var c = new Object()
++	c.val = this.bn++
++	c.type = "collection"
++	c.elements = []
++	c.append = function (el) { this.elements[this.elements.length]=el }
++	c.close = function () {
++	    var rdfns = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
++	    if (this.elements.length == 0) {
++	        store.add(this,store.sym(rdfns+"first"),store.sym(rdfns+"nil"))
++		return
++	    }
++	    var cn = this
++	    store.add(cn,store.sym(rdfns+"first"),this.elements[0])
++	    for (var x=1; x<this.elements.length; x++) {
++	        var nn = store.bnode()
++		store.add(cn,store.sym(rdfns+"rest"),nn)
++		cn = nn
++	        store.add(cn,store.sym(rdfns+"first"),this.elements[x])
++	    }
++	    store.add(cn,store.sym(rdfns+"rest"),store.sym(rdfns+"nil"))
++	}
++	return c
++    }
++    this.bnode = function () {
++        return {val: this.bn++, type: "bnode"}
++    }
++    this.literal = function (val, lang, type) {
++        return {val: val, datatype: type, type: "literal", lang: lang}
++    }
++    this.add = function (s,p,o,w) {
++	if (o.type == "literal" && o.datatype
++	    == "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral") {
++	    var val = ""
++	    var xmls = new XMLSerializer()
++	    for (var x=0; x < o.val.childNodes.length; x++) {
++	        val += xmls.serializeToString(o.val.childNodes[x])
++	    }
++	    o.val = val
++	}
++        if (s.type == "bnode" || s.type == "collection") {
++	    s = "_:"+String.fromCharCode(s.val)
++	}
++	else {
++	    s = "<"+s.val+">"
++	}
++	s += " <" + p.val + "> "
++        if (o.type == "literal") {
++            s += "\"" + o.val + "\""
++            if (o.datatype) { s += "^^<"+o.datatype+">" }
++	    if (o.lang != "") { s += "@"+o.lang }
++        }
++	else if (o.type == "bnode" || o.type == "collection") {
++	    s += "_:"+String.fromCharCode(o.val)
++	}
++        else {
++            s += "<" + o.val + ">"
++        }
++        this.triples[this.triples.length] = s + " ."
++    }
++}
++
++function setUpPage() {
++    xhr = XMLHTTPFactory()
++    setUpPageStatus = "complete"
++}
++
++function parseNT(text) {
++    var bnodes = {}
++    var bn = 97 // 'a'
++    text = text.split("\n")
++    var retval = []
++    for (var x = 0; x < text.length; x++) {
++        text[x] = text[x].replace(/\x0a/g,"")
++	text[x] = text[x].replace(/\x0d/g,"")
++	text[x] = text[x].replace(/\s*\.\s*$/,"")
++	text[x] = text[x].replace(/^\s*$/,"")
++        if (text[x][0] != "#" && text[x].length>0) {
++	    var s, p, o, unesc
++	    unesc = text[x].match(/\\u[0-9A-F]{4}/g)
++	    if (unesc != undefined) {
++	    for (var k = 0; k < unesc.length; k++) {
++	        text[x] = text[x].replace(eval("/\\\\u"
++                                               +unesc[k].slice(2)+"/g"),
++			                  String.fromCharCode(parseInt(
++				                       unesc[k].slice(2),16)))
++	    }
++	    }
++	    s = text[x].slice(0,text[x].indexOf(" "))
++	    text[x] = text[x].slice(text[x].indexOf(" ")+1).replace(/^\s*/,"")
++	    p = text[x].slice(0,text[x].indexOf(" "))
++	    o = text[x].slice(text[x].indexOf(" ")+1).replace(/^\s*/,"")
++	    function bnr(str) {
++	        if (bnodes[str.slice(2)] == undefined) {
++		    bnodes[str.slice(2)] = String.fromCharCode(bn++)
++		}
++		return "_:"+bnodes[str.slice(2)]
++	    }
++	    if (s.slice(0,2) == "_:") { s = bnr(s) }
++	    if (o.slice(0,2) == "_:") { o = bnr(o) }
++	    o = o.replace(/^ +/,"")
++	    retval[retval.length] = s+" "+p+" "+o+" ."
++        }
++    }
++
++    return retval
++}
++
++function esc(str) {
++  str = str.replace(/</g,"&lt;")
++  return str.replace(/>/g,"&gt;")
++}
++
