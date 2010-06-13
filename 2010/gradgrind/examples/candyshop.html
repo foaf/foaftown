@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+      xmlns:c="http://candy.foaf.tv/">
+<head><title>Candy shop example</title></head>
+<body>
+<h1>Candy Shop data</h1>
+
+<h2>Kids</h2>
+<ul>
+<li typeof="foaf:Person" about="#k1_anna"><span property="foaf:name">Anna</span></li>
+<li typeof="foaf:Person" about="#k2_betty"><span property="foaf:name">Betty</span></li>
+<li typeof="foaf:Person" about="#k3_christine"><span property="foaf:name">Christine</span></li>
+</ul>
+
+<h2>Candy</h2>
+<ul>
+<li typeof="c:Candy" about="#c1_ls"><span property="foaf:name">Lemon Sherbert</span></li>
+<li typeof="c:Candy" about="#c2_l"><span property="foaf:name">Liquorice</span></li>
+<li typeof="c:Candy" about="#c3_ppm"><span property="foaf:name">Peppermint</span></li>
+<li typeof="c:Candy" about="#c4_jb"><span property="foaf:name">Jellybeans</span></li>
+<li typeof="c:Candy" about="#c5_gd"><span property="foaf:name">Gumbdrops</span></li>
+<li typeof="c:Candy" about="#c6_pb"><span property="foaf:name">Peanut Brittle</span></li>
+<li typeof="c:Candy" about="#c6_sd"><span property="foaf:name">Space dust</span></li>
+</ul>
+
+<h3>Purchase History</h3>
+
+<ul>
+<li typeof="c:Purchase" about="#p1"><a rel="c:buyer" href="#k1_anna" property="c:when">2010-06-01</a>, Anna bought <a href="#c6_sd">Space dust</a></li>
+</ul>
+
+</body>
+</html>
