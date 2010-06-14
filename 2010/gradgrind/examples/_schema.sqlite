@@ -1,0 +1,95 @@
+-- 
+-- Created by SQL::Translator::Producer::SQLite
+-- Created on Mon Jun 14 00:18:21 2010
+-- 
+
+BEGIN TRANSACTION;
+
+--
+-- Table: CandyDB_g2t
+--
+CREATE TABLE CandyDB_g2t (
+  g mediumint(8) NOT NULL,
+  t mediumint(8) NOT NULL
+);
+
+CREATE INDEX tg ON CandyDB_g2t (t, g);
+
+CREATE UNIQUE INDEX gt ON CandyDB_g2t (g, t);
+
+--
+-- Table: CandyDB_id2val
+--
+CREATE TABLE CandyDB_id2val (
+  id mediumint(8) NOT NULL,
+  misc tinyint(1) NOT NULL DEFAULT 0,
+  val text NOT NULL,
+  val_type tinyint(1) NOT NULL DEFAULT 0
+);
+
+CREATE INDEX v ON CandyDB_id2val (val);
+
+CREATE UNIQUE INDEX id ON CandyDB_id2val (id, val_type);
+
+--
+-- Table: CandyDB_o2val
+--
+CREATE TABLE CandyDB_o2val (
+  id mediumint(8) NOT NULL,
+  misc tinyint(1) NOT NULL DEFAULT 0,
+  val text NOT NULL
+);
+
+CREATE INDEX v02 ON CandyDB_o2val (val);
+
+CREATE UNIQUE INDEX id02 ON CandyDB_o2val (id);
+
+--
+-- Table: CandyDB_s2val
+--
+CREATE TABLE CandyDB_s2val (
+  id mediumint(8) NOT NULL,
+  misc tinyint(1) NOT NULL DEFAULT 0,
+  val text NOT NULL
+);
+
+CREATE INDEX v03 ON CandyDB_s2val (val);
+
+CREATE UNIQUE INDEX id03 ON CandyDB_s2val (id);
+
+--
+-- Table: CandyDB_setting
+--
+CREATE TABLE CandyDB_setting (
+  k char(32) NOT NULL,
+  val text NOT NULL
+);
+
+CREATE UNIQUE INDEX k ON CandyDB_setting (k);
+
+--
+-- Table: CandyDB_triple
+--
+CREATE TABLE CandyDB_triple (
+  t mediumint(8) NOT NULL,
+  s mediumint(8) NOT NULL,
+  p mediumint(8) NOT NULL,
+  o mediumint(8) NOT NULL,
+  o_lang_dt mediumint(8) NOT NULL,
+  o_comp char(35) NOT NULL,
+  s_type tinyint(1) NOT NULL DEFAULT 0,
+  o_type tinyint(1) NOT NULL DEFAULT 0,
+  misc tinyint(1) NOT NULL DEFAULT 0
+);
+
+CREATE INDEX sp ON CandyDB_triple (s, p);
+
+CREATE INDEX os ON CandyDB_triple (o, s);
+
+CREATE INDEX po ON CandyDB_triple (p, o);
+
+CREATE INDEX misc ON CandyDB_triple (misc);
+
+CREATE UNIQUE INDEX t ON CandyDB_triple (t);
+
+COMMIT;
