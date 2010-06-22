@@ -684,7 +684,7 @@
 		B648FE9710D1A3040068001F /* heartbuttons4-up-100x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up-100x.png"; sourceTree = "<group>"; };
 		B648FE9810D1A3040068001F /* heartbuttons4-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heartbuttons4-up.png"; sourceTree = "<group>"; };
 		B64E91D0113D3ABC002137A2 /* LinkedTVRosterTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedTVRosterTableController.h; sourceTree = "<group>"; };
-		B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedTVRosterTableController.m; sourceTree = "<group>"; };
+		B64E91D1113D3ABC002137A2 /* LinkedTVRosterTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedTVRosterTableController.m; sourceTree = "<group>"; usesTabs = 0; };
 		B64E9334113D6699002137A2 /* pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.wav; sourceTree = "<group>"; };
 		B651DFD911621FD8009E1C55 /* XMPPCapabilities.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = XMPPCapabilities.xcdatamodel; path = xmppframework/XMPPCapabilities.xcdatamodel; sourceTree = "<group>"; };
 		B651DFDB11621FF6009E1C55 /* XMPPRoster.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = XMPPRoster.xcdatamodel; path = xmppframework/XMPPRoster.xcdatamodel; sourceTree = "<group>"; };
