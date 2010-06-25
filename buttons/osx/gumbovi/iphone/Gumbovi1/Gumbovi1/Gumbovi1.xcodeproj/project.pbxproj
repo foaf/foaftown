@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -669,7 +669,6 @@
 		B60ACADD1155644800E83353 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		B60ACB3711561A6F00E83353 /* 120px-Boxee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120px-Boxee.png"; sourceTree = "<group>"; };
 		B61718431151A06100FF50CD /* bgbuttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgbuttons.png; sourceTree = "<group>"; };
-		B619E67C11637C2300B00346 /* untitled.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; name = untitled.xcclassmodel; path = ../../../../../untitled.xcclassmodel; sourceTree = SOURCE_ROOT; };
 		B622B62810A5B9E8007E8F37 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		B644E40D11512F5000A154D1 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
 		B644E40E11512F5000A154D1 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
@@ -1036,7 +1035,6 @@
 				B69E5ED91191662400BCC80E /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				B619E67C11637C2300B00346 /* untitled.xcclassmodel */,
 			);
 			name = Gumbovi1;
 			sourceTree = "<group>";
@@ -1566,7 +1564,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Gumbovi1" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Gumbovi1 */;
 			projectDirPath = "";
@@ -2813,7 +2811,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos3.2;
 				VALID_ARCHS = "i386 armv6 armv7";
 			};
 			name = Debug;
