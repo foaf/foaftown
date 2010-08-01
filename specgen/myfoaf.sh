@@ -1,7 +1,11 @@
 #!/bin/sh
-
-# this assumes template.html in main dir, and drops a _tmp... file into that dir as a candidate index.html
-# also assumes http://svn.foaf-project.org/foaf/trunk/xmlns.com/ checked out in parallel filetree
+#
+# Sample usage script - this is how we currently rebuild the foaf spec
+#
+# this assumes template.html in main dir, and drops a new html file (named below, see --outfile) 
+# into that dir as a candidate index.html  also assumes http://svn.foaf-project.org/foaf/trunk/xmlns.com/ 
+# checked out in parallel filetree
+# danbri@danbri.org
 
 export XMLCOM=../xmlns.com
 # XMLCOM../../foaf/trunk/xmlns.com
