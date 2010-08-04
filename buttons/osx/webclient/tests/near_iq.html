@@ -1,0 +1,95 @@
+<html>
+ <head>
+  <title>Near</title>
+  <script type='text/javascript'  src='strophe.js'></script>
+ </head>
+
+<body>
+<script type="text/javascript">
+
+var jid='near@jabber.notu.be/gumboviListener';
+var password='gargonza'; // temporarily nonsecret, but how to deal with this long term?
+
+var far = "far@jabber.notu.be/gumboviListener"
+
+var st = 6;
+
+URL = 'http://jabber.notu.be/http-bind/'
+var connection = new Strophe.Connection(URL);
+
+function linked(status) {
+    st = status;
+    out("connection status: "+status );
+    if (status == Strophe.Status.CONNECTED) { 
+    out("connected");
+    var stanza = new Strophe.Builder( "message", {"to": far, "from": jid, 
+         "type": "chat"} ).c("body").t("hello! this is a buttons client in strophe js");
+    connection.send(stanza);
+    } 
+}
+
+
+//send a command
+function sendCommand(text,id) {
+    if (st == Strophe.Status.CONNECTED) { 
+      out("sent command: "+text);
+
+      var stanza = $iq({type: 'get',
+        to: far, from: jid, id: connection.getUniqueId()}).c('query',
+          {xmlns: 'http://buttons.foaf.tv/',id: id}).t(text);
+
+      //alert("SENDING "+stanza);
+      connection.send(stanza.tree());
+    } 
+}
+
+
+//get the nowp message
+function on_buttons(msg) { 
+    var q  = msg.firstChild;  
+    var id = q.getAttribute('id');
+    var command = q.childNodes[0].nodeValue;
+    out(command + " "+id);
+    if (command.match( new RegExp( /NOWP/) )) {  
+      out("got event "+command+" id "+id);
+    }
+    return true; 
+}
+
+
+//output status
+function out(msg) {
+  var out = document.getElementById('out');
+  out.innerHTML = msg;
+}
+
+
+connection.addHandler(on_buttons, "http://buttons.foaf.tv/", "iq", "get");
+//connection.addHandler(     on_message,     null,     "message",    "chat");
+connection.connect(    jid,     password, linked);
+</script>
+
+
+<!--
+        ERROR: 0,
+        CONNECTING: 1,
+        CONNFAIL: 2,
+        AUTHENTICATING: 3,
+        AUTHFAIL: 4,
+        CONNECTED: 5,
+        DISCONNECTED: 6,
+        DISCONNECTING: 7
+-->
+
+<p>
+<a href="#" onclick="javascript:sendCommand('LOAD','1234')">LOAD id '1234'</a><br />
+<a href="#" onclick="javascript:sendCommand('PLPZ')">toggle PLPZ</a>
+</p>
+
+<p><small>Status:</small>
+<span id="demo">
+<small><span id="out"></span></small>
+</span></p>
+
+</body>
+</html>
