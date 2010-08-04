@@ -40,7 +40,6 @@ function do_play(val){
 //send back a nowp command via a post message (interframe communication; nothing to do with strophe)
 function do_nowp(){
 //alert("nowp called");
-alert("nowp "+myid);
   var message = myid;
   unsafeWindow.parent.postMessage(message, "*");//replace * with the domain of 'far'
 }
