@@ -1,0 +1,134 @@
+<html>
+<head>
+
+<title>Far</title>
+
+<script type='text/javascript'  src='strophe.js'></script>
+<script type="text/javascript">
+
+function pause_media () {
+     var win = document.getElementById("iframe").contentWindow;
+     win.postMessage("pause", "*");//replace '*' with domain of your player
+}
+
+function play_media() {
+     var win = document.getElementById("iframe").contentWindow;
+     win.postMessage("play", "*");//replace '*' with domain of your player
+}
+
+function load_media(id) {
+  if(id && id!=""){
+     var win = document.getElementById("iframe").contentWindow;
+     win.postMessage("load,"+id, "*");//replace '*' with domain of your player
+  }
+}
+
+</script>
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+var st = 6;
+var plpzState=null;
+
+var jid='far@jabber.notu.be/gumboviListener';
+var near='near@jabber.notu.be/gumboviListener';
+
+var password='gargonza'; // temporarily nonsecret, but how to deal with this long term?
+
+var URL = 'http://jabber.notu.be/http-bind/'
+var connection = new Strophe.Connection(URL);
+
+function linked(status) {
+   st = status;
+   out("connection status: "+status );
+    if (status == Strophe.Status.CONNECTED) { 
+    out("connected");
+    } 
+}
+
+//catch the strophe messages and do something
+function on_message(msg) { 
+    event = Strophe.getText(msg.firstChild);
+    // text protocol for now; IQ as yet undefined.
+    if (event.match( new RegExp( /PLPZ/) )) {  
+        if(plpzState==null || plpzState=="pause"){
+          play_media();
+          plpzState="play";
+        }else{
+          pause_media();
+          plpzState="pause";
+        }
+    }
+    if (event.match( new RegExp( /LOAD/) )) {  
+      var arr = event.split(",");
+      if(arr[1]){
+        load_media(arr[1]);
+      }
+    }
+    return true; 
+}
+
+//send strophe command
+function sendCommand(text) {
+    out("sending: "+text+" ssc "+Strophe.Status.CONNECTED+"...." );
+    if (st == Strophe.Status.CONNECTED) {
+    var stanza = new Strophe.Builder( "message", {"to": near,
+         "type": "chat"} ).c("body").t(text);
+    connection.send(stanza);
+    }
+}
+
+//print status
+function out(msg) {
+  var out = document.getElementById('out');
+  out.innerHTML = msg;
+}
+
+connection.addHandler(     on_message,     null,     "message",    "chat");
+connection.connect(    jid,     password, linked);
+
+</script>
+
+<p><small>Status:</small>
+<span id="demo">
+<small><span id="out"></span></small>
+</span></p>
+
+<!--
+        ERROR: 0,
+        CONNECTING: 1,
+        CONNFAIL: 2,
+        AUTHENTICATING: 3,
+        AUTHFAIL: 4,
+        CONNECTED: 5,
+        DISCONNECTED: 6,
+        DISCONNECTING: 7
+-->
+
+</script>
+</head>
+<body>
+
+<iframe id="iframe" name="iframe" src ="test.html" width="90%" height="50%">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</body>
+
+<script type="text/javascript">
+
+//interframe communication
+ function receiveMessage(event)  
+ {  
+   out("got "+event.data);
+   sendCommand("NOWP,"+event.data);
+ }
+
+//activate interframe communication
+window.addEventListener("message", receiveMessage, false);
+
+</script>
+
+</html>

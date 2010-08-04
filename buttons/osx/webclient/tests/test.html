@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+
+<span id="out"></span>
+
+<script type="text/javascript">
+
+function play(){
+  out("play called");
+}
+function pause(){
+  out("pause called");
+}
+
+function out(msg) {
+  var out = document.getElementById('out');
+  out.innerHTML = msg;
+}
+
+
+</script>
+<p>Hello - this is the player iframe.</p>
+</body>
+</html>
