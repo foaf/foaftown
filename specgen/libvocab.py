@@ -287,7 +287,9 @@ class Vocab(object):
 
     self.terms = []
     self.properties = []
+    self.archaic_properties = []
     self.classes = []
+    self.archaic_classes = []
     tmpclasses=[]
     tmpproperties=[]
 
@@ -515,7 +517,7 @@ class VocabReport(object):
 # danbri hack 20100101 removed: href="http://www.w3.org/2003/06/sw-vocab-status/ns#%s" pending discussion w/ libby and leigh re URIs
 
     # first classes, then properties
-    eg = """<div class="specterm" id="term_%s" about="%s" typeof="%s">
+    eg = """<div class="specterm %s" id="term_%s" about="%s" typeof="%s">
             <h3>%s: %s</h3> 
             <em>%s</em> - %s <br /><table style="th { float: top; }">
 	    <tr><th>Status:</th>
@@ -667,7 +669,10 @@ class VocabReport(object):
        s = termlink(s)
 
 	# danbri added another term.id 20010101 and removed term.status
-       zz = eg % (term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id, term.id)
+       cssinfo='classterm ';
+       if (term.status == "archaic"):
+         cssinfo = cssinfo + 'archaic '
+       zz = eg % (cssinfo, term.id,term.uri,"rdfs:Class","Class", sn, term.label, term.comment, term.status,domainsOfClass,rangesOfClass+subClassOf+hasSubClass+classIsDefinedBy+isDisjointWith, s,term.id, term.id, term.id)
 
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
@@ -682,9 +687,14 @@ class VocabReport(object):
           archaicTxt = archaicTxt + zz
 
 ## then add the whole thing to the main tl string
-
     tl = tl+"<h2>Classes</h2>\n"
+#    cssinfo="classdef "
+#
+#    if(term.status=="archaic"):
+#     cssinfo = cssinfo + "archaic "
+#    tl = "<div class='%s'> %s %s</div>" % (cssinfo, tl, stableTxt+"\n"+testingTxt+"\n"+unstableTxt+"\n"+archaicTxt)
     tl = "%s %s" % (tl, stableTxt+"\n"+testingTxt+"\n"+unstableTxt+"\n"+archaicTxt)
+
     tl = tl+"<h2>Properties</h2>\n"
 
 # properties
@@ -703,6 +713,7 @@ class VocabReport(object):
        q = 'SELECT ?d ?l WHERE {<%s> rdfs:domain ?d . ?d rdfs:label ?l } ' % (term.uri)
        relations = g.query(q)
        startStr = '<tr><th>Domain:</th>\n'
+	# nice ui, see: http://vocab.org/bio/0.1/.html#Investiture
 
        contentStr = ''
        for (domain, label) in relations:
@@ -711,7 +722,7 @@ class VocabReport(object):
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
-          domainsOfProperty = "%s <td>%s</td></tr>" % (startStr, contentStr)
+          domainsOfProperty = "%s <td>having this property implies being a %s</td></tr>" % (startStr, contentStr)
 
 
 # range of properties
@@ -725,7 +736,7 @@ class VocabReport(object):
           contentStr = "%s %s" % (contentStr, termStr)
 
        if contentStr != "":
-          rangesOfProperty = "%s <td>%s</td>	</tr>" % (startStr, contentStr)
+          rangesOfProperty = "%s <td> every value of this property is a %s</td>	</tr>" % (startStr, contentStr)
 
 
 # is defined by
@@ -785,7 +796,10 @@ class VocabReport(object):
        s = termlink(s)
        
 	# danbri added another term.id 20010101
-       zz = eg % (term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id, term.id)
+       cssinfo='propertyterm ';
+       if (term.status == "archaic"):
+         cssinfo = cssinfo + 'archaic '
+       zz = eg % (cssinfo, term.id, term.uri,"rdf:Property","Property", sn, term.label, term.comment,term.status,domainsOfProperty,rangesOfProperty+propertyIsDefinedBy+ifp+fp, s,term.id, term.id, term.id)
 
 ## we add to the relevant string - stable, unstable, testing or archaic
        if(term.status == "stable"):
