@@ -15,7 +15,7 @@ export XMLCOM=../xmlns.com
 --prefix=foaf \
 --templatedir=$XMLCOM/htdocs/foaf/spec/ \
 --indexrdfdir=$XMLCOM/htdocs/foaf/spec/ \
---outfile=20100726.html \
+--outfile=20100809.html \
 --outdir=$XMLCOM/htdocs/foaf/spec/ 
 
 
