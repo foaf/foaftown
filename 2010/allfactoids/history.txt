@@ -1,4 +1,11 @@
 
+
+depictions
+find copies/ -exec grep 'img'  {} \;
+find copies/ -exec grep 'depiction'  {} \;
+
+
+
 http://ilrt.org/discovery/2001/11/ilrt-rdf-paper/index.html
 
 meta:
