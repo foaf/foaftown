@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns="http://purl.org/rss/1.0/">
+
+<channel rdf:about="http://ilrt.org/discovery/rdf-dev/roads/cgi-bin/desire/ig2rss">
+<title>RDF IG mail channel: www-rdf-interest</title>
+    <link>http://www.w3.org/RDF/Interest/</link>
+     <description>
+     An experimental channel scraped from the W3C RDF IG mail archives.
+     </description>
+    <image rdf:resource="http://www.w3.org/Icons/WWW/w3c_home"/> 
+
+<items>
+ <rdf:Seq>
+ </rdf:Seq>
+</items>
+</channel></rdf:RDF>

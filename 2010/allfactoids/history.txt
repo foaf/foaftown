@@ -1,0 +1,30 @@
+
+http://ilrt.org/discovery/2001/11/ilrt-rdf-paper/index.html
+
+meta:
+http://swordfish.rdfweb.org/discovery/2004/03/w3photo/blabla.xml
+
+http://rdfweb.org/2003/02/28/cwm-crawler-output.rdf
+
+http://web.archive.org/web/*/http://ilrt.org/people/bzims/webwho.xrdf
+
+
+# seals:
+http://web.archive.org/web/20030507004530/http://ilrt.org/people/bzims/webwho.xrdf
+
+http://web.archive.org/web/20030223163621/http://ilrt.org/discovery/rdf-dev/roads/cgi-bin/desire/ig2rss
+
+# watch out for recursion! wipe out the derrived files or something!
+find .  -exec grep seeAlso {} \; | sort | uniq > seeAlso2.txt
+
+http://rdfweb.org/tshirt1.jpg
+
+Hype
+
+Interest in RDFWeb is totally premature. Our prototype implementations are incomplete, and we've not finished designing the tatoos. Go away!
+
+T-shirts, however, are available. Various people who were represented in RDFWeb at the end of April 2001 feature in the first RDFWeb T-Shirt design. 18 were made and distributed.
+
+Satisfied customer(s)
+
+

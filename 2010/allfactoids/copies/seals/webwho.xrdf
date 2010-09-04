@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/TR/WD-rdf-schema#"
+        xmlns:misc="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+<web:Description web:about="genid:seals">
+<misc:name>Ian Sealy</misc:name>
+<misc:mbox web:resource="mailto:Ian.Sealy@bristol.ac.uk"/>
+<misc:friend web:resource="genid:danbri"/>
+<misc:friend web:resource="genid:kieren"/>
+<misc:friend web:resource="genid:martin"/>
+<misc:livesWith web:resource="genid:louise"/>
+</web:Description>
+
+<web:Description web:about="genid:danbri">
+<misc:name>Dan Brickley</misc:name>
+<misc:mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+</web:Description>
+
+<web:Description web:about="genid:kieren">
+<misc:name>Kieren Pitts</misc:name>
+<misc:mbox web:resource="mailto:Kieren.Pitts@bristol.ac.uk"/>
+</web:Description>
+
+<web:Description web:about="genid:martin">
+<misc:name>Martin Belcher</misc:name>
+<misc:mbox web:resource="mailto:Martin.Belcher@bristol.ac.uk"/>
+<misc:livesWith web:resource="genid:lotta"/>
+</web:Description>
+
+<web:Description web:about="genid:lotta">
+<misc:name>Lotta Lundh</misc:name>
+<misc:livesWith web:resource="genid:martin"/>
+</web:Description>
+
+</web:RDF>

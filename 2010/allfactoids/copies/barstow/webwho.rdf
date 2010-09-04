@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!-- RDF Web Ring information for Art Barstow
+     last update: Jan 30, 2001
+     location: http://www.w3.org/People/Barstow/webwho.xrdf
+  -->
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+<rdf:Description about="genid:barstow">
+  <foaf:name>Art Barstow</foaf:name>
+  <foaf:mbox rdf:resource="mailto:barstow@w3.org"/>
+  <foaf:homePage rdf:resource="http://www.w3.org/People/Barstow"/>
+  <foaf:workplaceHomePage rdf:resource="http://www.w3.org"/>
+  <foaf:img rdf:resource="http://www.w3.org/People/Barstow/Images/Art/Art-Jan-10-2001.jpg"/>
+  
+  <!-- Folks in the RDF web ring that I know -->
+  <foaf:knows rdf:resource="genid:dajobe"/>
+  <foaf:knows rdf:resource="genid:danbri"/>
+
+  <!-- My interests -->
+  <foaf:interest>
+    <rdf:Description rdf:about="http://www.w3.org/RDF/" dc:title="Resource Description Framework"/>
+  </foaf:interest>
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://www.w3.org/RDF/Implementations/SiRPAC/" dc:title="W3C's Online RDF Service"/>
+  </foaf:interest>
+
+</rdf:Description>
+
+</rdf:RDF>
