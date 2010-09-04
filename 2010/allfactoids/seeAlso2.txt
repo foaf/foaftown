@@ -1,0 +1,67 @@
+	  <rdfs:seeAlso rdf:resource="http://www.ilrt.bris.ac.uk/people/cmdjb/webwho.xrdf" />
+	<!-- <rdfs:seeAlso rdf:resource="http://weblog.greenpeace.org/foaf.rdf" /> -->
+	<rdfs:seeAlso web:resource="http://bailey.dscga.com/michaelmwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://mail.bris.ac.uk/~plmlp/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://purl.org/net/dajobe/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://purl.org/net/eric/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://tribble.ilrt.bris.ac.uk/~cmjg/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://www.apocalypse.org/~mags/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://www.oreillynet.com/~rael/webwho.xrdf"/>
+	<rdfs:seeAlso web:resource="http://www.w3.org/People/Barstow/webwho.rdf"/>
+	<rdfs:seeAlso web:resource="http://www.w3.org/People/Connolly/home-smart.rdf"/>
+            <rdfs:seeAlso rdf:resource="http://simonstl.com/foaf.rdf" />
+            <rdfs:seeAlso rdf:resource="http://www.zooleika.org.uk/bio/foaf.rdf" />
+          <rdfs:seeAlso rdf:resource="http://www.picdiary.com/foaf.rdf" />
+          <rdfs:seeAlso rdf:resource="http://www.snee.com/bob/foaf.rdf" />
+        <rdfs:seeAlso rdf:resource="http://clark.dallas.tx.us/kendall/foaf.rdf" />
+        <rdfs:seeAlso rdf:resource="http://eikeon.com/foaf.rdf" />
+        <rdfs:seeAlso rdf:resource="http://husk.org/misc/blech.xml" />
+       <rdfs:seeAlso rdf:resource="http://www.w3.org/People/Berners-Lee/card.rdf" />
+      <!-- <rdfs:seeAlso rdf:resource="http://www.mycgiserver.com/~jasonbell/foaf/foaf.rdf" /> -->
+      <rdfs:seeAlso rdf:resource="http://ilrt.org/people/bzims/webwho.xrdf"/>
+      <rdfs:seeAlso rdf:resource="http://rdfweb.org/~pldab/rdfweb/danbri-foaf.rdf"/>
+      <rdfs:seeAlso rdf:resource="http://www.aaronsw.com/about.xrdf"/>
+      <rdfs:seeAlso rdf:resource="http://www.libbymiller.com/webwho.xrdf"/>
+      <rdfs:seeAlso web:resource="//http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=dan"/>
+      <rdfs:seeAlso web:resource="http://ilrt.org/discovery/demos/RSSWeb/newitems-daniel.brickley@bristol.ac.uk/"/>
+      <rdfs:seeAlso web:resource="http://ilrt.org/discovery/demos/RSSWeb/newitems-libby.miller@bristol.ac.uk/"/>
+      <rdfs:seeAlso web:resource="http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=martin"/>
+      <rdfs:seeAlso web:resource="http://www.blogspace.com/rss/rss10"/>
+     <rdfs:seeAlso rdf:resource="http://www.ilrt.bristol.ac.uk/discovery/rdf/resources/rss.rdf"/>
+     <rdfs:seeAlso web:resource="http://www.glandscape.com/cgi-bin/prnxml.rss"/>
+  </rdfs:seeAlso>
+  <rdfs:seeAlso rdf:resource="http://www.picdiary.com/pics.rdf" />
+  <rdfs:seeAlso web:resource="http://www.aaronsw.com/about.xrdf"/>
+  <rdfs:seeAlso>
+<rdfs:seeAlso web:resource="http://ilrt.org/people/bzims/webwho.xrdf"/>
+<rdfs:seeAlso web:resource="http://rdfweb.org/~pldab/rdfweb/webwho.xrdf"/>
+<rdfs:seeAlso web:resource="http://www.libbymiller.com/webwho.xrdf"/>
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:barstow','http://www.w3.org/People/Barstow/webwho.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:dajobe','http://purl.org/net/dajobe/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:danbri','http://rdfweb.org/~pldab/rdfweb/danbri-biblio.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:danbri','http://rdfweb.org/~pldab/rdfweb/danbri-foaf.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:danbri','http://rdfweb.org/~pldab/rdfweb/danbri.wot.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:danbri','http://rdfweb.org/~pldab/rdfweb/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:danbri','http://rdfwebring.org/~pldab/rdfweb/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:emiller','http://purl.org/net/eric/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:jan','http://tribble.ilrt.bris.ac.uk/~cmjg/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:jang','http://tribble.ilrt.bris.ac.uk/~cmjg/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:libby','http://www.libbymiller.com/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:mags','http://www.apocalypse.org/~mags/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:michaelm','http://bailey.dscga.com/michaelmwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:poulter','http://mail.bris.ac.uk/~plmlp/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','genid:seals','http://ilrt.org/people/bzims/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://ilrt.org/discovery/rdf-dev/roads/cgi-bin/desire/ig2rss','http://ilrt.org/discovery/rdf-dev/roads/cgi-bin/desire/ig2rss').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://purl.org/net/dajobe/webwho.xrdf#genid102','http://www.libbymiller.com/webwho.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://rdfwebring.org/rweb/who?mbox=mailto:connolly@w3.org','http://www.w3.org/People/Connolly/events/events-smart.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=dan','http://http//swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=dan').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=martin','http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=martin').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://tribble.ilrt.bris.ac.uk/~cmjg/juke/playlist.rss','http://tribble.ilrt.bris.ac.uk/~cmjg/juke/playlist.rss').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://www.aaronsw.com/','http://www.aaronsw.com/about.xrdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://www.blogspace.com/rss/rss10','http://www.blogspace.com/rss/rss10').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://www.glandscape.com/cgi-bin/prnxml.rss','http://www.glandscape.com/cgi-bin/prnxml.rss').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','http://www.ilrt.bristol.ac.uk/discovery/rdf/resources/rss.rdf','http://www.ilrt.bristol.ac.uk/discovery/rdf/resources/rss.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','var:1234-1234-1234-4321:DanC','http://www.w3.org/People/Connolly/events/events-smart.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','var:1234-1234-1234-4321:DanC','http://www.w3.org/People/Connolly/home-smart.rdf').
+rdf('http://www.w3.org/2000/01/rdf-schema#seeAlso','var:234234453453453453734:rael','http://www.oreillynet.com/~rael/webwho.xrdf').
+seeAlsos.txt

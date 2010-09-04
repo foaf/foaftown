@@ -1,0 +1,393 @@
+<?xml version="1.0"?>
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:rss="http://purl.org/rss/1.0/"
+        xmlns="http://xmlns.com/foaf/0.1/"
+        xmlns:wn="http://xmlns.com/wordnet/1.6/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+<!-- danbri's webwho rdfweb.org file, foaf section... -->
+
+<web:Description about="genid:danbri">
+<mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+
+<rdfs:seeAlso web:resource="http://rdfweb.org/~pldab/rdfweb/webwho.xrdf"/>
+
+<!-- connections to other peoples -->
+
+<livesWith web:resource="genid:libby"/>
+<livesWith web:resource="genid:craig"/>
+<knowsWell web:resource="genid:craig"/>
+<knowsWell web:resource="genid:seals"/>
+
+<knowsWell web:resource="genid:mags"/>
+
+<knowsWell>
+	<web:Description about="genid:poulter">
+	<name>Martin Poulter</name>
+	<homepage web:resource="http://mail.bris.ac.uk/~plmlp/"/>
+	</web:Description>
+</knowsWell>
+
+<knowsWell>
+	<web:Description about="genid:libby">
+	<img web:resource="http://swordfish.rdfweb.org/~libby/libby.jpg"/>
+	<depiction> 
+		<web:Description about="http://137.222.34.138/~pldab/rdfweb/libby.gif">
+		<dc:title>Libby Miller, Oxford (1993-ish)</dc:title>
+		<dc:description>A photo of Libby Miller, taken while at Oxford University</dc:description>
+		<dc:format>image/gif</dc:format>
+		</web:Description>
+  	  </depiction>
+	</web:Description>
+</knowsWell>
+
+<knowsWell>
+	<web:Description about="genid:emiller">
+	<mbox web:resource="mailto:emiller@oclc.org"/>
+	<img web:resource="http://www.oclc.org/~emiller/capture.jpg"/>
+	<depiction> 
+		<web:Description about="http://www.ilrt.bristol.ac.uk/people/cmdjb/events/dc7/orig/eric.png">
+		<dc:title>Eric Miller, relaxing.</dc:title>
+		<dc:format>image/png</dc:format>
+		</web:Description>
+	</depiction>
+	<homepage web:resource="http://purl.org/net/eric/"/>
+	<rdfs:seeAlso web:resource="http://purl.org/net/eric/webwho.xrdf"/>
+	<name>Eric Miller</name>
+	</web:Description>
+</knowsWell>
+
+<knowsWell>
+	<web:Description about="genid:jang">
+	<mbox web:resource="mailto:jan.grant@bristol.ac.uk"/>
+	<rdfs:seeAlso web:resource="http://tribble.ilrt.bris.ac.uk/~cmjg/webwho.xrdf"/>
+	<depiction>
+		<web:Description about="http://tribble.ilrt.bris.ac.uk/~cmjg/test/wizard.jpg">
+		<dc:title>Jan Grant, Queen's Silver Jubilee</dc:title>
+		<dc:description>vi user</dc:description>
+		<dc:format>image/jpeg</dc:format>
+		</web:Description>
+	</depiction>
+	</web:Description>
+</knowsWell>
+
+<knows>
+	<web:Description about="genid:michaelm">
+	<mbox web:resource="mailto:michaelm@netsol.com"/>
+	<rdfs:seeAlso web:resource="http://bailey.dscga.com/michaelmwho.xrdf"/>
+	</web:Description>
+</knows>
+
+
+<knows>
+	<web:Description about="var:234234453453453453734:rael">
+ 	<name>Rael Dornfest</name>
+	<homepage web:resource="http://www.oreillynet.com/~rael/"/>
+	<mbox web:resource="mailto:rael@oreilly.com"/>
+	<rdfs:seeAlso web:resource="http://www.oreillynet.com/~rael/webwho.xrdf"/>
+	</web:Description>
+</knows>
+
+<knows>
+  <!-- note, to due incomplete smushing algorithm, 
+  we need to use Aaron's chosen URI for himself here. -->
+
+  <web:Description about="http://www.aaronsw.com/">
+  <name>Aaron Swartz</name>
+
+   <made>
+     <rss:channel web:about="http://www.blogspace.com/rss/rss10">
+     <rss:title>RSS Info</rss:title>
+      <rdfs:seeAlso web:resource="http://www.blogspace.com/rss/rss10"/>
+     </rss:channel>
+   </made>
+
+  <rdfs:seeAlso web:resource="http://www.aaronsw.com/about.xrdf"/>
+   </web:Description>
+</knows>
+
+<friend>
+	<web:Description about="genid:dajobe">
+	<mbox web:resource="mailto:dave.beckett@bristol.ac.uk"/>
+	<rdfs:seeAlso web:resource="http://purl.org/net/dajobe/webwho.xrdf"/>
+	<name>Dave Beckett</name>
+	</web:Description>
+</friend>
+
+<friend>
+	<web:Description about="genid:barstow">
+	<name>Art Barstow</name>
+	<mbox web:resource="mailto:barstow@w3.org"/>
+	<rdfs:seeAlso web:resource="http://www.w3.org/People/Barstow/webwho.rdf"/>
+	<name>Art Barstow</name>
+	</web:Description>
+</friend>
+
+
+<friend>
+	<web:Description about="var:1234-1234-1234-4321:DanC">
+	<rdfs:seeAlso web:resource="http://www.w3.org/People/Connolly/home-smart.rdf"/>
+	<mbox web:resource="mailto:connolly@w3.org"/>
+	<name>Dan Connolly</name>
+	</web:Description>
+</friend>
+
+
+</web:Description>
+
+
+<!-- damey -->
+
+<web:Description about="http://website.lineone.net/~steve_c-t/Scientology/Pickets/10-03-2001/damien.jpg">
+ <foaf:depicts>
+  <wn:Person>
+   <foaf:mbox web:resource="mailto:d.m.steer@ise.ac.uk"/>
+   <foaf:name>Damian "Damey" Steer</foaf:name>
+   <foaf:nick>damey</foaf:nick>
+   <foaf:friend web:resource="genid:danbri"/>
+  </wn:Person>
+ </foaf:depicts>
+</web:Description> 
+
+
+<!-- publications, using dublin core -->
+
+<wn:Document web:about="http://rdfweb.org/">
+   <dc:title>The RDF Web home page</dc:title>
+   <dc:description>
+   rdfweb.org is an experimental linked information system. This page
+   provides links to some early writeup and prototype work.
+   </dc:description>
+   <dc:format>text/html</dc:format>
+   <dc:creator>
+       <wn:Person web:about="genid:danbri">
+        <mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>
+</wn:Document>
+
+<!-- some of libby's docs -->
+
+
+
+<wn:Document web:about="http://ilrt.org/discovery/2000/09/rudolf/recommender.html">
+<dc:title>Aggregating Recommendations using RDF</dc:title>
+<dc:description>
+This paper describes an early implementation of an XML/RDF-based metadata 
+service environment, focussing on the
+       convergence of cataloguing, bookmarking, recommendation and 
+filtering applications facilitated by XML and RDF. The
+       recommendation system uses RDF to store user recommendations and 
+annotation data, using the RDF syntax and the 
+       Dublin Core vocabulary.
+ It is entirely configurable also using RDF/XML. The display of the 
+recommendations is left open,
+       although they may be displayed using an RDF display tool which 
+opens up the possibility of aggregating diverse 
+       recommendations, remote or local. The paper then discusses several 
+different models of metadata aggregation with 
+       respect to the incentives of contributors to create high-quality 
+metadata, and the evaluation strategies of the aggregation 
+       sites.
+</dc:description>
+<dc:subject>RDF; annotations; recommender; aggregation; metadata</dc:subject>
+<dc:format>text/html</dc:format>
+   <dc:creator>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>   
+</wn:Document>
+
+
+<wn:Document web:about="http://ilrt.org/discovery/2000/11/rss-query/">
+<dc:title>RDF: Extending and Querying RSS channels</dc:title>
+<dc:description>
+This document explores some examples based around the idea of extending 
+RSS using RDF-based modularisation, and then querying the resulting data
+in ways that exploit those extensions. 
+</dc:description>
+<dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:danbri">
+        <mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+
+   <dc:contributor>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+
+</wn:Document>
+
+<wn:Document web:about="http://ilrt.org/discovery/2000/10/swsql/">
+<dc:title>RDF, SQL and the Semantic Web (rough draft)</dc:title>
+<dc:description>
+This is a quick writeup some work in progress, exploring various 
+inter-relationships between relational databases, tools
+       from the logic programming community, and W3C's RDF. We first 
+discuss some broad issues surrounding RDF APIs
+       and query systems, before exploring a number of more detailed case 
+studies. Our first case study is based around our 
+       SQL-ish ("Squish") interface to any RDF database that exports 
+either the Jena or Stanford RDF APIs. Our second case 
+       study shows how tools from the logic programming community can be 
+used to export RDBMS systems to the Web. 
+</dc:description>
+<dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:danbri">
+        <mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+
+   <dc:contributor>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+</wn:Document>
+
+
+<wn:Document web:about="http://ilrt.org/discovery/2000/11/statements/">
+<dc:title>RDF: Statements, Statings - 
+A summary of some discussion threads</dc:title>
+<dc:description>
+This paper sets out to summarise two lengthy threads from the RDF Interest 
+group mailing list in November 2000. The 
+       argument centred around some different approaches to modelling RDF 
+statements in RDF (and the corresponding 
+       confusion as to what exactly an RDF statement amounts to). 
+</dc:description>
+<dc:format>text/html</dc:format>
+
+   <dc:creator>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>
+
+</wn:Document>
+
+<wn:Document web:about="http://ilrt.org/discovery/2000/11/lux/">
+<dc:title>
+Ontologies and Metadata - 
+A (draft) discussion of issues raised by the Semantic Web Technologies
+Workshop, 22-23 November 2000.  
+</dc:title>
+<dc:description>
+A discussion of what ontologies might mean in the context of the semantic 
+web. This is not a full and complete 
+description of the workshop: a link to presentions will be made when 
+they are available. 
+</dc:description>
+
+   <dc:creator>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>
+
+</wn:Document>
+
+
+<wn:Document web:about="http://www.w3.org/TandS/QL/QL98/pp/enabling.html">
+   <dc:title>Enabling Inferencing</dc:title>
+   <dc:description>
+    This paper presents an overview of the query services that might be
+built on top of XML/RDF data. It does not 
+    present a specific proposal for an RDF query language; instead, it
+argues for a query language that is expressed in 
+    terms of the RDF logical data model rather than one particular
+concrete syntax  
+   </dc:description>
+   <dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:danbri">
+        <mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+
+   <dc:contributor>
+       <wn:Person web:about="genid:emiller">
+        <mbox web:resource="mailto:emiller@oclc.org"/>
+       </wn:Person>
+   </dc:contributor>
+
+   <dc:contributor>
+       <wn:Person web:about="genid:ora">
+        <mbox web:resource="mailto:ora.lassila@nokia.com"/>
+       </wn:Person>
+   </dc:contributor>
+
+   <dc:contributor>
+       <wn:Person web:about="genid:guha">
+        <mbox web:resource="mailto:guha@guha.com"/>
+       </wn:Person>
+   </dc:contributor>
+
+</wn:Document>
+
+<!-- some more descriptions of others -->
+
+<web:Description about="genid:mags">
+	<name>Margaret Hart</name>
+	<mbox web:resource="mailto:mags@apocalypse.org"/>
+	<img web:resource="http://purl.org/net/danbri/2000/06/mh.jpg"/>
+	<rdfs:seeAlso web:resource="http://www.apocalypse.org/~mags/webwho.xrdf"/>
+</web:Description>
+
+<web:Description about="genid:libby">
+<name>Libby Miller</name>
+<mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+<livesWith web:resource="genid:danbri"/>
+<livesWith web:resource="genid:craig"/>
+<workplaceHomepage web:resource="http://ilrt.org/"/>
+<rdfs:seeAlso web:resource="http://www.libbymiller.com/webwho.xrdf"/>
+</web:Description>
+
+<web:Description about="genid:craig">
+	<name>Craig Dibble</name>
+	<mbox web:resource="mailto:craigd@netgates.co.uk"/>
+	<livesWith web:resource="genid:danbri"/>
+	<livesWith web:resource="genid:libby"/>
+	<wife>
+		<web:Description>
+		<name>Liz</name>
+		</web:Description>
+	</wife>
+	<homepage web:resource="http://www.netgates.co.uk/customers/cd004"/>
+	<img web:resource="http://www.netgates.co.uk/customers/cd004/me-res.jpg"/>
+</web:Description>
+
+
+<web:Description about="genid:seals">
+	<name>Ian Sealy</name>
+	<mbox web:resource="mailto:Ian.Sealy@bristol.ac.uk"/>
+	<homepage web:resource="http://zeus.bris.ac.uk/~bzims/"/>
+	<img web:resource="http://zeus.bris.ac.uk/~bzims/ian.jpg"/>
+<rdfs:seeAlso web:resource="http://ilrt.org/people/bzims/webwho.xrdf"/>
+</web:Description>
+
+<web:Description about="genid:poulter">
+	<name>Martin L Poulter</name>
+	<mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+	<knowsWell web:resource="genid:danbri"/>
+	<knowsWell web:resource="genid:libby"/>
+	<knowsWell web:resource="genid:craig"/>
+	<rdfs:seeAlso web:resource="http://mail.bris.ac.uk/~plmlp/webwho.xrdf"/>
+
+   <made>
+    <rss:channel web:about="http://www.glandscape.com/cgi-bin/prnxml.rss">
+     <rss:title>Channel of Filth</rss:title>
+     <rdfs:seeAlso web:resource="http://www.glandscape.com/cgi-bin/prnxml.rss"/>
+    </rss:channel>
+   </made>
+
+</web:Description>
+
+</web:RDF>
+
