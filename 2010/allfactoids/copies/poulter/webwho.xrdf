@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:rss="http://purl.org/rss/1.0/"
+        xmlns="http://xmlns.com/foaf/0.1/"
+        xmlns:wn="http://xmlns.com/wordnet/1.6/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+<!-- This is Martin Poulter's SemWeb home page. Join the Semantic Web now by copying this file,
+replacing my information with yours, then telling me the web location of the resulting file. -->
+<!-- See http://www.rdfweb.org/ for background, documentation and to actually view the SemWeb -->
+
+<!-- Start with basic information about myself -->
+
+<wn:Person web:about="genid:poulter">
+  <name>Martin Poulter</name>
+  <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+  <homepage web:resource="http://eis.bris.ac.uk/~plmlp/"/>
+  <workplaceHomepage web:resource="http://ilrt.org/"/>
+  <projectHomepage web:resource="http://www.economics.ltsn.ac.uk/" />
+  <rdfs:seeAlso web:resource="http://www.weird.co.uk/martin/webwho.xrdf"/>
+  <img web:resource="http://www.ltss.bris.ac.uk/martin.jpg"/>
+
+<!-- Connections to other people, Including pointers to pictures which depict those people. -->
+
+
+<knowsWell>
+ <web:Description about="genid:libby">
+        <name>Libby Miller</name>
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+        <workplaceHomepage web:resource="http://ilrt.org/"/>
+	<homepage web:resource="http://www.libbymiller.com/"/>
+	<rdfs:seeAlso web:resource="http://www.libbymiller.com/webwho.xrdf"/>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:danbri">
+	<name>Dan Brickley</name>
+	<mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+	<homepage web:resource="http://purl.org/net/danbri/"/>
+	<workplaceHomepage web:resource="http://ilrt.org/"/>
+	<rdfs:seeAlso web:resource="http://rdfweb.org/~pldab/rdfweb/webwho.xrdf"/>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:pldms">
+	<name>Damian Steer</name>
+	<workplaceHomepage web:resource="http://www.lse.ac.uk/"/>
+	<mbox web:resource="mailto:d.m.steer@lse.ac.uk"/>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:craig">
+        <name>Craig Dibble</name>
+        <mbox web:resource="mailto:craigd@netgates.co.uk"/>
+        <homepage web:resource="http://www.netgates.co.uk/customers/cd004"/>
+	<workplaceHomepage web:resource="http://www.netgates.co.uk/"/>
+	<depiction>
+                <web:Description about="http://chewbacca.ilrt.bris.ac.uk/~plmlp/normal/fullsize/craig.jpg">
+                <dc:title>Craig on the roof</dc:title>
+                <dc:description>Craig Dibble photographed on the roof of his house, 26 August 2000</dc:description>
+                <dc:format>image/jpeg</dc:format>
+                </web:Description>
+        </depiction>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:npizzor">
+        <name>Pastor N. Pizzor</name>
+        <mbox web:resource="mailto:n.pizzor@weird.co.uk"/>
+        <workplaceHomepage web:resource="http://www.weird.co.uk/praise/"/>
+	<rdfs:seeAlso web:resource="http://www.weird.co.uk/rdf/webwho.xrdf"/>
+	<made>
+		<rss:channel web:about="http://www.glandscape.com/cgi-bin/prnxml.rss">
+		<rss:title>Channel of Filth</rss:title>
+		<rdfs:seeAlso web:resource="http://www.glandscape.com/cgi-bin/prnxml.rss"/>
+		</rss:channel>
+	</made>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:gid">
+        <name>Tom Gidden</name>
+        <mbox web:resource="mailto:gid@litebase.com"/>
+        <workplaceHomepage web:resource="http://gids-games.com/"/>
+	<depiction>
+                <web:Description about="http://chewbacca.ilrt.bris.ac.uk/~plmlp/normal/fullsize/tom.jpg">
+                <dc:title>Tom Gidden, Clifton Starbucks, 26 August 2000</dc:title>
+                <dc:description>Tom reacts with bemusement to the appearance of friend Martin P in &quot;Normal&quot; mode.</dc:description>
+                <dc:format>image/jpeg</dc:format>
+                </web:Description>
+        </depiction>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:philhall">
+        <name>Fine Art Phil</name>
+        <mbox web:resource="mailto:me@sonofken.co.uk"/>
+        <workplaceHomepage web:resource="http://www.sonofken.co.uk/"/>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:cmitchell">
+        <name>Chris Mitchell</name>
+        <mbox web:resource="mailto:chris.mitchell@bristol.ac.uk"/>
+        <workplaceHomepage web:resource="http://ilrt.org/"/>
+	<projectHomepage web:resource="http://www.economics.ltsn.ac.uk/" />
+	<homepage web:resource="http://www.ilrt.bris.ac.uk/~cmcjm/"/>
+	<img web:resource="http://www.economics.ltsn.ac.uk/contact/chris.jpg"/>
+ </web:Description>
+</knowsWell>
+<knowsWell>
+ <web:Description about="genid:bhagesh">
+        <name>Bhagesh Sachania</name>
+        <mbox web:resource="mailto:b.m.sachania@bristol.ac.uk"/>
+	<projectHomepage web:resource="http://www.economics.ltsn.ac.uk/" />
+        <workplaceHomepage web:resource="http://ilrt.org/"/>
+	<img web:resource="http://www.economics.ltsn.ac.uk/contact/bhagesh.jpg"/>
+ </web:Description>
+</knowsWell>
+<knows>
+ <web:Description about="genid:dajobe">
+        <mbox web:resource="mailto:dave.beckett@bristol.ac.uk"/>
+        <rdfs:seeAlso web:resource="http://purl.org/net/dajobe/webwho.xrdf"/>
+        <name>Dave Beckett</name>
+ </web:Description>
+</knows>
+<knows>
+ <web:Description about="genid:seals"> 
+        <name>Ian Sealy</name>
+        <mbox web:resource="mailto:Ian.Sealy@bristol.ac.uk"/>
+        <homepage web:resource="http://zeus.bris.ac.uk/~bzims/"/>
+	<workplaceHomepage web:resource="http://ilrt.org/"/>
+ <rdfs:seeAlso web:resource="http://ilrt.org/people/bzims/webwho.xrdf"/>
+ </web:Description>
+</knows>
+<knows>
+ <web:Description about="genid:martin"> 
+        <name>Martin Belcher</name>
+        <mbox web:resource="mailto:martin.belcher@bristol.ac.uk"/>
+	<workplaceHomepage web:resource="http://ilrt.org/"/>
+ </web:Description>
+</knows>
+</wn:Person>
+
+<!-- Now some info about publications and online resources that I've been involved in -->
+
+
+
+<wn:Document web:about="http://www.sosig.ac.uk/subject-guides/philosophy.html">
+<dc:title>Philosophy on the Internet: A SOSIG Subject Guide</dc:title>
+<dc:description>
+	The philosophy section of SOSIG (the Social Science Internet Gateway)
+	describes hundreds of high quality resources that are freely available over
+	the Internet. This guide aims to introduce some of the ways in which philosophers
+	can use these resources, and the Internet generally, to support their work. 
+</dc:description>
+<dc:subject>philosophy; resource discovery; research; university teaching</dc:subject>
+<dc:format>text/html</dc:format>
+   <dc:creator>
+       <wn:Person web:about="genid:poulter">
+        <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>   
+</wn:Document>
+
+<wn:Document web:about="http://eis.bris.ac.uk/~plmlp/cultout.txt">
+<dc:title>Cult Concern FAQ: What to do if a friend or loved-one joins a cult</dc:title>
+<dc:description>
+	This is the official Usenet FAQ (Frequently Asked Questions) document giving general
+	advice and contacts for those who think that someone they know is in an abusive
+	totalitarian group.
+</dc:description>
+<dc:subject>cults; totalitarianism; social pressure; exit counselling</dc:subject>
+<dc:format>text/html</dc:format>
+   <dc:creator>
+       <wn:Person web:about="genid:poulter">
+        <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:creator>   
+</wn:Document>
+
+<wn:Document web:about="http://www.economics.ltsn.ac.uk/interneteconomist/">
+   <dc:title>Internet Economist</dc:title>
+   <dc:description>
+	This interactive online tutorial lets you develop the Internet information skills you need as an
+	economist. It explains how to find and evaluate web sites for use in economics learning, teaching
+	and research. It gives many examples of essential sites in many different categories of the economics web..
+   </dc:description>
+   <dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:poulter">
+        <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+   <dc:contributor>
+       <wn:Person web:about="genid:libby">
+        <mbox web:resource="mailto:libby.miller@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+   <dc:contributor>
+       <wn:Person web:about="genid:emmap">
+        <mbox web:resource="mailto:emma.place@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+</wn:Document>
+
+
+<wn:Document web:about="http://www.weird.co.uk/">
+   <dc:title>WEIRD WebZine</dc:title>
+   <dc:description>
+   Are you sick of cyberculture? WEIRD (not WIRED) brings you parody articles, spoof adverts and cartoons
+   with our perspective on lifestyle journalism and the wired world. And we've got some penis jokes.
+   </dc:description>
+   <dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:poulter">
+        <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+   <dc:contributor>
+       <wn:Person web:about="genid:gid">
+        <mbox web:resource="mailto:gid@litebase.com"/>
+       </wn:Person>
+   </dc:contributor>
+</wn:Document>
+
+<wn:Document web:about="http://www.demon.co.uk/castle/scientology.html">
+   <dc:title>Steve's UK Scientology Criticism Page</dc:title>
+   <dc:description>
+	This site has a set of resources for UK critics of the Scientology/Dianetics
+	organisation, including reports on specific events, information on protests and
+	a large media archive.
+   </dc:description>
+   <dc:format>text/html</dc:format>
+   <dc:contributor>
+       <wn:Person web:about="genid:poulter">
+        <mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+       </wn:Person>
+   </dc:contributor>
+   <dc:contributor>
+       <wn:Person web:about="genid:stevea">
+        <mbox web:resource="mailto:stevea@castlsys.demon.co.uk"/>
+       </wn:Person>
+   </dc:contributor>
+</wn:Document>
+
+
+</web:RDF>
+
+
+
+

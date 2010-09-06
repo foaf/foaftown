@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+
+<rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:wot="http://xmlns.com/wot/0.1/"
+        xmlns:plan="http://usefulinc.com/ns/scutter/0.1#"
+        xmlns:rss="http://purl.org/rss/1.0/"
+        >
+
+<!-- things to say about this file -->
+<foaf:PersonalProfileDocument rdf:about="">
+  <!-- digital signature for this file -->
+  <wot:assurance rdf:resource="foaf.rdf.asc" />
+  <!-- i made this file! -->
+  <foaf:maker rdf:resource="#edd" />
+  <!-- one of the topics of this document is me -->
+  <foaf:primaryTopic rdf:resource="#edd" />
+  <dc:title>Edd Dumbill's FOAF file</dc:title>
+</foaf:PersonalProfileDocument>
+
+<foaf:Person rdf:about="#edd">
+  <foaf:myersBriggs>ENFJ</foaf:myersBriggs>
+  <foaf:aimChatID>EddDumbill</foaf:aimChatID>
+  <foaf:homepage rdf:resource="http://heddley.com/edd/" />
+  <foaf:mbox rdf:resource="mailto:edd@xml.com"/>
+</foaf:Person>
+
+<!-- things to say about myself -->
+<foaf:Person rdf:ID="edd">
+  <foaf:name>Edd Dumbill</foaf:name>
+
+  <foaf:mbox rdf:resource="mailto:edd@usefulinc.com"/>
+  <foaf:mbox rdf:resource="mailto:ejad@debian.org"/>
+  <foaf:mbox rdf:resource="mailto:edd@xml.com"/>
+
+  <foaf:mbox_sha1sum>1ba3bffdd13a136d38b77542f2e26fd1dc0042f2</foaf:mbox_sha1sum>
+
+  <foaf:nick>edd</foaf:nick>
+  <foaf:nick>edd-lap</foaf:nick>
+
+  <foaf:homepage rdf:resource="http://heddley.com/edd/" />
+  <foaf:workplaceHomepage rdf:resource="http://xml.com/" />
+
+  <foaf:schoolHomepage rdf:resource="http://kingsgrantham.8m.com/" />
+  <foaf:schoolHomepage rdf:resource="http://www.york.ac.uk/" />
+
+  <foaf:weblog rdf:resource="http://times.usefulinc.com/" />
+
+  <!-- refer to my weblog's RSS, asserting my makership of it -->
+  <rdfs:seeAlso>
+    <rss:channel rdf:about="http://times.usefulinc.com/">
+        <foaf:maker rdf:resource="#edd" />
+    </rss:channel>
+  </rdfs:seeAlso>
+
+  <!-- private info for authorized agents only -->
+  <rdfs:seeAlso>
+      <foaf:Document rdf:about="http://heddley.com/edd/foaf-private.rdf.asc">
+        <!-- encrypted for the #foaf community -->
+        <wot:encryptedTo>
+          <wot:PubKey wot:hex_id="6C7F734E" />
+        </wot:encryptedTo>
+        <!-- encrypted for the #bots community -->
+        <wot:encryptedTo>
+          <wot:PubKey wot:hex_id="6C746DD1" />
+        </wot:encryptedTo>
+      </foaf:Document>
+  </rdfs:seeAlso>
+
+  <foaf:img>
+      <foaf:Image
+        rdf:about="http://heddley.com/edd/images/edd-shoulders.jpg">
+        <dc:description>Small head and Shoulders shot of Edd, taken at
+            Sausalito, San Francisco</dc:description>
+        <dc:title>Edd Dumbill</dc:title>
+      </foaf:Image>
+  </foaf:img>
+
+  <foaf:depiction 
+        rdf:resource="http://heddley.com/edd/images/edd-shoulders.jpg" />
+
+      <foaf:knows>
+        <foaf:Person>
+          <foaf:mbox rdf:resource="mailto:dave@dajobe.org" />
+          <foaf:nick>dajobe</foaf:nick>
+	  <rdfs:seeAlso rdf:resource="http://www.ilrt.bris.ac.uk/people/cmdjb/webwho.xrdf" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+          <foaf:mbox rdf:resource="mailto:matt@picdiary.com" />
+          <foaf:nick>mattb</foaf:nick>
+          <foaf:name>Matt Biddulph</foaf:name>
+          <rdfs:seeAlso rdf:resource="http://www.picdiary.com/foaf.rdf" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+          <foaf:mbox rdf:resource="mailto:me@aaronsw.com" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person rdf:about="http://danbri.org/foaf#danbri">
+            <foaf:mbox rdf:resource="mailto:danbri@w3.org" />
+            <foaf:nick>danbri</foaf:nick>
+
+            <foaf:depiction rdf:resource="http://photos.heddley.com/albums/www2002/hawaii_017.sized.jpg" />
+
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:simonstl@simonstl.com" />
+            <foaf:nick>simon</foaf:nick>
+            <foaf:nick>simonstl</foaf:nick>
+            <foaf:name>Simon St.Laurent</foaf:name>
+            <rdfs:seeAlso rdf:resource="http://simonstl.com/foaf.rdf" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:vdv@dyomedea.com" />
+            <foaf:nick>eric</foaf:nick>
+            <foaf:nick>vdv</foaf:nick>
+            <foaf:name>Eric van der Vlist</foaf:name>
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:uche.ogbuji@fourthought.com" />
+            <foaf:nick>uche</foaf:nick>
+            <foaf:name>Uche Ogbuji</foaf:name>
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:giles@gilest.org" />
+            <foaf:nick>giles</foaf:nick>
+            <foaf:name>Giles Turnbull</foaf:name>
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:phil@chimpen.com" />
+            <foaf:nick>phil</foaf:nick>
+            <foaf:nick>phil_ps2</foaf:nick>
+            <foaf:nick>phl</foaf:nick>
+            <foaf:name>Phil McCarthy</foaf:name>
+        </foaf:Person>
+      </foaf:knows>
+      
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:brendan.quinn@bbc.co.uk" />
+            <foaf:nick>brendan</foaf:nick>
+            <foaf:nick>svlad</foaf:nick>
+            <foaf:name>Brendan Quinn</foaf:name>
+            <foaf:depiction rdf:resource="http://gilest.org/2002/xcom/bus_brendan.jpg" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person>
+            <foaf:mbox rdf:resource="mailto:claire@usefulinc.com" />
+            <foaf:nick>clurr</foaf:nick>
+            <foaf:nick>klurr</foaf:nick>
+            <foaf:name>Claire Rowland</foaf:name>
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person rdf:nodeID="zool">
+            <foaf:mbox rdf:resource="mailto:zool@frot.org" />
+            <rdfs:seeAlso rdf:resource="http://www.zooleika.org.uk/bio/foaf.rdf" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person rdf:nodeID="space">
+            <foaf:mbox rdf:resource="mailto:space@shadowgirl.net" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person rdf:nodeID="yoz">
+            <foaf:mbox rdf:resource="mailto:yoz@yoz.com" />
+        </foaf:Person>
+      </foaf:knows>
+
+      <foaf:knows>
+        <foaf:Person rdf:nodeID="robin">
+            <foaf:mbox rdf:resource="mailto:robin@knowscape.com" />
+        </foaf:Person>
+      </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="kip">
+        <foaf:mbox rdf:resource="mailto:khampton@totalcinema.com" />
+        <foaf:name>Kip Hampton</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="eikeon">
+        <foaf:mbox rdf:resource="mailto:eikeon@eikeon.com" />
+        <rdfs:seeAlso rdf:resource="http://eikeon.com/foaf.rdf" />
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="blech">
+        <foaf:mbox rdf:resource="mailto:paulm@husk.org" />
+        <rdfs:seeAlso rdf:resource="http://husk.org/misc/blech.xml" />
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="jasonb">
+      <foaf:mbox rdf:resource="mailto:jason@pharmalicensing.com" />
+      <foaf:name>Jason Bell</foaf:name>
+      <!-- <rdfs:seeAlso rdf:resource="http://www.mycgiserver.com/~jasonbell/foaf/foaf.rdf" /> -->
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="kendall">
+        <foaf:mbox rdf:resource="mailto:kendall@monkeyfist.com" />
+        <rdfs:seeAlso rdf:resource="http://clark.dallas.tx.us/kendall/foaf.rdf" />
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:nodeID="gillo">
+        <foaf:mbox rdf:resource="mailto:gcutrupi@ams.greenpeace.org" />
+	<!-- <rdfs:seeAlso rdf:resource="http://weblog.greenpeace.org/foaf.rdf" /> -->
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person rdf:nodeID="ducharme">
+          <foaf:name>Bob DuCharme</foaf:name>
+          <rdfs:seeAlso rdf:resource="http://www.snee.com/bob/foaf.rdf" />
+          <foaf:mbox rdf:resource="mailto:bob&#64;snee.com" />
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+     <foaf:Person rdf:about="http://www.w3.org/People/Berners-Lee/card#i">
+       <foaf:name>Timothy Berners-Lee</foaf:name>
+       <rdfs:seeAlso rdf:resource="http://www.w3.org/People/Berners-Lee/card.rdf" />
+     </foaf:Person>
+  </foaf:knows>
+
+</foaf:Person>
+<!-- end of description about me -->
+
+<!-- time for some random other stuff -->
+
+<!-- some misc pictures -->
+
+<foaf:Image
+    rdf:about="http://matthau.yoz.com/cam/20020609/bots_talk4.jpg">
+    <dc:description>From left to right: Edd, Yoz, Matt Webb, Jo Walsh,
+        Celia Romaniuk</dc:description>
+    <dc:title>Bots panel from XCom2002</dc:title>
+    <foaf:depicts rdf:resource="#edd" />
+    <foaf:depicts rdf:nodeID="space" />
+    <foaf:depicts rdf:nodeID="zool" />
+    <foaf:depicts rdf:nodeID="yoz" />
+</foaf:Image>
+
+<foaf:Image
+	rdf:about="http://www.gnome.org/~gman/photos/guadec-norway/crw_1242.jpg">
+	<dc:description>Edd at the GUADEC conference</dc:description>
+	<dc:creator>Glynn Foster</dc:creator>
+	<foaf:depicts rdf:resource="#edd" />
+</foaf:Image>
+
+</rdf:RDF>

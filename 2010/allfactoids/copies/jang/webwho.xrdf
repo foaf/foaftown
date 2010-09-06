@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:rss="http://purl.org/rss/1.0/"
+	>
+
+
+<!-- genids are really variables. this needs thinking aboot more -->
+
+
+<web:Description web:about="genid:jan">
+
+	<foaf:name>Jan Grant</foaf:name>
+	<foaf:mbox web:resource="mailto:jan.grant@bristol.ac.uk"/>
+	<rdfs:seeAlso web:resource="http://ioctl.org/jan/webwho.xweb"/>
+	<foaf:img web:resource="http://www.ilrt.bris.ac.uk/about/staff/images/jangrant.jpg"/>
+	<foaf:workplaceHomepage web:resource="http://www.ilrt.bris.ac.uk/about/staff/web_staff?search=cmjg"/>
+	<foaf:homepage web:resource="http://ioctl.org/jan/"/>
+
+
+<!-- connections to other peoples -->
+
+	<foaf:knowsWell>
+		<web:Description about="genid:danbri">
+			<rdfs:seeAlso web:resource="http://rdfwebring.org/~pldab/webweb/webwho.xweb"/>
+		</web:Description>
+	</foaf:knowsWell>
+
+<!--
+   <foaf:made>
+    <rss:channel web:about="http://tribble.ilrt.bris.ac.uk/~cmjg/juke/playlist.rss">
+     <rss:title>jan recently listening to...</rss:title>
+     <rdfs:seeAlso web:resource="http://tribble.ilrt.bris.ac.uk/~cmjg/juke/playlist.rss"/>
+    </rss:channel>
+   </foaf:made>
+-->
+
+</web:Description>
+
+</web:RDF>
+

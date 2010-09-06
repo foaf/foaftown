@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" 
+		xmlns:wot="http://xmlns.com/wot/0.1/" >
+
+<rdf:Description rdf:about="">
+  <wot:assurance rdf:resource="foaf.rdf.asc"/>
+</rdf:Description>
+
+<rdf:Description rdf:ID="rjp">
+
+	<foaf:name>Rob Partington</foaf:name>
+	<foaf:firstName>Rob</foaf:firstName>
+	<foaf:surname>Partington</foaf:surname>
+	<foaf:nick>rjp</foaf:nick>
+	<foaf:nick>zimpenfish</foaf:nick>
+
+	<foaf:homepage rdf:resource="http://es.ca.pi.st/" />
+	<foaf:homepage rdf:resource="http://frottage.org/rjp/" />
+
+	<foaf:mbox rdf:resource="mailto:rjp@frottage.org" />
+	<foaf:mbox rdf:resource="mailto:rjp@browser.org" />
+	<foaf:mbox rdf:resource="mailto:rjp@pi.st" />
+	<foaf:phone rdf:resource="tel:+447973971094"/>
+	<foaf:workplaceHomepage rdf:resource="http://www.easynet.net/"/>
+	<foaf:workInfoHomepage rdf:resource="newsmaster / developer"/>
+
+	<foaf:image>
+	<rdf:Description rdf:about="http://es.ca.pi.st/rjp_hoody.jpg">
+	 <dc:description>Scally</dc:description> 
+	 <dc:title>Rob Partington</dc:title> 
+	 </rdf:Description>
+  </foaf:image>
+
+  <foaf:depiction rdf:resource="http://es.ca.pi.st/rjp_hoody.jpg" /> 
+
+<!-- friends -->
+
+	<foaf:knows>
+		<rdf:Description rdf:ID="yaxu">
+			<foaf:mbox rdf:resource="mailto:alex@slab.org" />
+		 	<foaf:mbox rdf:resource="mailto:alex@state51.co.uk" />
+			<foaf:nick>veeg</foaf:nick>
+		        <foaf:nick>yaxu</foaf:nick>
+			<foaf:nick>foochre</foaf:nick>
+                        <foaf:homepage rdf:resource="http://slab.org" />
+	  <foaf:homepage rdf:resource="http://slub.org/" /> 
+		</rdf:Description>
+	</foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person rdf:ID="blech">
+        <foaf:mbox rdf:resource="mailto:paulm@husk.org" />
+        <rdfs:seeAlso rdf:resource="http://husk.org/misc/blech.xml" />
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+	<rdf:Description rdf:ID="zool">
+	  <foaf:mbox rdf:resource="mailto:jo@abduction.org" /> 
+	  <foaf:mbox rdf:resource="mailto:zool@frot.org" /> 
+	  <foaf:nick>zool</foaf:nick> 
+	  <foaf:name>Jo Walsh</foaf:name> 
+	  <foaf:homepage rdf:resource="http://zooleika.org.uk/" /> 
+	</rdf:Description>
+
+ </foaf:knows>
+
+	<foaf:knows>
+		<foaf:Person rdf:ID="gryn">
+			<foaf:mbox rdf:resource="mailto:gryn@plig.net" />
+			<foaf:nick>gryn</foaf:nick>
+                        <foaf:name>Glyn Davies</foaf:name>
+                        <foaf:homepage rdf:resource="http://www.snax.net" />
+		</foaf:Person>
+	</foaf:knows>
+
+
+</rdf:Description>
+
+</rdf:RDF>

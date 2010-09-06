@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:wot="http://xmlns.com/wot/0.1/" >
+
+<rdf:Description rdf:ID="blech">
+  <foaf:name>Paul Mison</foaf:name>
+
+  <foaf:mbox rdf:resource="mailto:paulm@husk.org"/>
+
+  <foaf:nick>blech</foaf:nick>
+  <foaf:nick>blech_</foaf:nick>
+
+  <foaf:homepage rdf:resource="http://husk.org/" />
+
+  <foaf:image>
+	<rdf:Description rdf:about="http://husk.org/pics/imgs/walks/wander/broadgate_wander_2002-05-17/z_graffiti_mirror_me.jpg">
+	 <dc:description>I liked the z in a circle, and captured myself by mistake.</dc:description> 
+	 <dc:title>Paul Mison, z, graffiti</dc:title> 
+	 </rdf:Description>
+  </foaf:image>
+
+  <foaf:depiction rdf:resource="http://husk.org/pics/imgs/walks/wander/broadgate_wander_2002-05-17/z_graffiti_mirror_me.jpg" /> 
+
+</rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:rss="http://purl.org/rss/1.0/"
+        xmlns:misc="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+
+<!-- genids are really variables. this needs thinking aboot more -->
+
+<web:Description about="genid:libby"> 
+<misc:name>Libby Miller</misc:name>
+<misc:mbox web:resource="mailto:libby.miller@bristol.ac.uk"/> 
+<misc:knowsWell web:resource="genid:poulter"/> 
+<misc:livesWith web:resource="genid:danbri"/>
+<misc:livesWith web:resource="genid:craig"/> 
+<misc:knowsWell web:resource="genid:sarahm"/> 
+<misc:knowsWell web:resource="genid:pldms"/>
+<misc:calendar web:resource="http://intranet.ilrt.bris.ac.uk/files/private/General/DLRS/techie-asp/xcalendar/testall.asp" />
+<misc:calendar web:resource="http://yaddle.ilrt.bris.ac.uk/~libby/cal/palmcal.rdf" />
+
+   <misc:made>
+     <rss:channel web:about="http://ilrt.org/discovery/demos/RSSWeb/newitems-libby.miller@bristol.ac.uk/">
+	<rss:title>Libby's recommendations</rss:title>
+      <rdfs:seeAlso web:resource="http://ilrt.org/discovery/demos/RSSWeb/newitems-libby.miller@bristol.ac.uk/"/>
+     </rss:channel>
+   </misc:made>
+
+
+<misc:workplaceHomepage web:resource="http://ilrt.org/"/>
+
+</web:Description>
+
+<web:Description about="genid:pldms">
+<misc:name>Damian Steer</misc:name>
+<misc:livesWith web:resource="genid:sarahm"/>
+<misc:mbox web:resource="mailto:d.m.steer@lse.ac.uk"/>
+</web:Description>
+
+<web:Description about="genid:craig">
+<misc:name>Craig Dibble</misc:name>
+<misc:livesWith web:resource="genid:libby"/>
+<misc:mbox web:resource="mailto:craigd@netgates.co.uk"/>
+</web:Description>
+
+<web:Description about="genid:poulter">
+<misc:name>Martin Poulter</misc:name>
+<misc:mbox web:resource="mailto:m.l.poulter@bristol.ac.uk"/>
+
+
+   <misc:made>
+     <rss:channel web:about="http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=martin">
+     <rss:title>Depictions of Martin</rss:title>
+      <rdfs:seeAlso web:resource="http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=martin"/>
+     </rss:channel>
+   </misc:made>
+
+</web:Description>
+
+<web:Description about="genid:danbri">
+<misc:name>Danny boy</misc:name>
+<misc:mbox web:resource="mailto:daniel.brickley@bristol.ac.uk"/>
+
+   <misc:made>
+     <rss:channel web:about="http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=dan">
+     <rss:title>Depictions of Dan</rss:title>
+      <rdfs:seeAlso web:resource="//http://swordfish.rdfweb.org:10013/rdfquery/jsp/rdfquery/photosrss.jsp?term=dan"/>
+     </rss:channel>
+   </misc:made>
+
+   <misc:made>
+     <rss:channel web:about="http://ilrt.org/discovery/demos/RSSWeb/newitems-daniel.brickley@bristol.ac.uk/">
+     <rss:title>Dan's recommendations</rss:title>
+      <rdfs:seeAlso web:resource="http://ilrt.org/discovery/demos/RSSWeb/newitems-daniel.brickley@bristol.ac.uk/"/>
+     </rss:channel>
+   </misc:made>
+
+
+
+</web:Description>
+
+
+<web:Description about="genid:sarahm">
+<misc:name>Sarah Miller</misc:name>
+<misc:mbox web:resource="mailto:sMiller@brannellert.com"/>
+<misc:sister web:resource="genid:libby"/>
+<misc:livesWith web:resource="genid:pldms"/>
+<misc:workplaceHomepage web:resource="http://www.brannellert.com/"/>
+</web:Description>
+
+
+</web:RDF>
+
+
+
+
