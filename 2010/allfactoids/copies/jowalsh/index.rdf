@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+xmlns="http://purl.org/rss/1.0/">
+
+
+<channel rdf:about="http://www.zooleika.org.uk/botz/">
+<title>botz</title>
+<link>http://www.zooleika.org.uk/botz/</link>
+<description></description>
+
+
+<rdfs:seeAlso rdf:resource="http://www.zooleika.org.uk/botz/public_html/index.rdf"/>
+
+<rdfs:seeAlso rdf:resource="http://www.zooleika.org.uk/botz/recursibot/index.rdf"/>
+
+
+<items>
+<rdf:Seq>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/69words.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/aaschool.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/aaschool.keywords.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/bots.rant.20020729.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/bots.messaging.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/talking_sign.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/hitherto.map.20020721.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/index.html"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/kendall.chat.20020724.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/kinoc.chat.20020712.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/kinoc.chat.20020716.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/music.metadata.chat.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/pants.dump.20020712.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/rant.20020621.html"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/rti.residency.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/story.about.pigs.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/techcoop.response.reply.20020818.txt"/>
+
+<rdf:li rdf:resource="http://www.zooleika.org.uk/botz/techcoop.response.20020817.txt"/>
+
+</rdf:Seq>
+</items>
+
+</channel>
+
+
+
+
+<item rdf:about="http://www.zooleika.org.uk/botz/69words.txt">
+<title>69words</title>
+<link>http://www.zooleika.org.uk/botz/69words.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/aaschool.txt">
+<title>aaschool</title>
+<link>http://www.zooleika.org.uk/botz/aaschool.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/aaschool.keywords.txt">
+<title>aaschool.keywords</title>
+<link>http://www.zooleika.org.uk/botz/aaschool.keywords.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/bots.rant.20020729.txt">
+<title>bots.rant.20020729</title>
+<link>http://www.zooleika.org.uk/botz/bots.rant.20020729.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/bots.messaging.txt">
+<title>bots.messaging</title>
+<link>http://www.zooleika.org.uk/botz/bots.messaging.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/talking_sign.txt">
+<title>talking_sign</title>
+<link>http://www.zooleika.org.uk/botz/talking_sign.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/hitherto.map.20020721.txt">
+<title>hitherto.map.20020721</title>
+<link>http://www.zooleika.org.uk/botz/hitherto.map.20020721.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/index.html">
+<title>index</title>
+<link>http://www.zooleika.org.uk/botz/index.html</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/kendall.chat.20020724.txt">
+<title>kendall.chat.20020724</title>
+<link>http://www.zooleika.org.uk/botz/kendall.chat.20020724.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/kinoc.chat.20020712.txt">
+<title>kinoc.chat.20020712</title>
+<link>http://www.zooleika.org.uk/botz/kinoc.chat.20020712.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/kinoc.chat.20020716.txt">
+<title>kinoc.chat.20020716</title>
+<link>http://www.zooleika.org.uk/botz/kinoc.chat.20020716.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/music.metadata.chat.txt">
+<title>music.metadata.chat</title>
+<link>http://www.zooleika.org.uk/botz/music.metadata.chat.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/pants.dump.20020712.txt">
+<title>pants.dump.20020712</title>
+<link>http://www.zooleika.org.uk/botz/pants.dump.20020712.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/rant.20020621.html">
+<title>rant.20020621</title>
+<link>http://www.zooleika.org.uk/botz/rant.20020621.html</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/rti.residency.txt">
+<title>rti.residency</title>
+<link>http://www.zooleika.org.uk/botz/rti.residency.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/story.about.pigs.txt">
+<title>story.about.pigs</title>
+<link>http://www.zooleika.org.uk/botz/story.about.pigs.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/techcoop.response.reply.20020818.txt">
+<title>techcoop.response.reply.20020818</title>
+<link>http://www.zooleika.org.uk/botz/techcoop.response.reply.20020818.txt</link>
+</item>
+
+<item rdf:about="http://www.zooleika.org.uk/botz/techcoop.response.20020817.txt">
+<title>techcoop.response.20020817</title>
+<link>http://www.zooleika.org.uk/botz/techcoop.response.20020817.txt</link>
+</item>
+
+
+</rdf:RDF>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<web:RDF xmlns:web="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:misc="http://xmlns.com/foaf/0.1/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+
+<!-- genids are really variables. this needs thinking aboot more -->
+
+
+<web:Description about="genid:michaelm">
+<misc:name>Michael Mealling</misc:name>
+<misc:mbox web:resource="mailto:michaelm@netsol.com"/>
+<rdfs:seeAlso web:resource="http://bailey.dscga.com/michaelmwho.xrdf"/>
+<misc:mbox web:resource="mailto:michaelm@netsol.com"/>
+<misc:workplaceHomepage web:resource="http://www.nsol.com/"/>
+
+<!-- connections to other peoples -->
+c
+<misc:knowsWell web:resource="genid:emiller"/>
+
+<misc:knowsWell>
+        <web:Description about="genid:emiller">
+        <misc:mbox web:resource="mailto:emiller@oclc.org"/>
+        <misc:img web:resource="http://www.oclc.org/~emiller/capture.jpg"/>
+        <misc:homepage web:resource="http://purl.org/net/eric/"/>
+        <misc:name>Eric Miller</misc:name>
+        </web:Description>
+</misc:knowsWell>
+
+</web:Description>
+
+
+<!-- some more descriptions of others -->
+
+</web:RDF>

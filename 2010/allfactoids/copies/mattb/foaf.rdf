@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+
+<rdf:RDF 
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:wot="http://xmlns.com/wot/0.1/"
+        xmlns:air="http://www.megginson.com/exp/ns/airports#" 
+        xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#" 
+        xmlns:wn="http://xmlns.com/wordnet/1.6/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/" >
+
+<!-- digital signature for this file -->
+<rdf:Description rdf:about="">
+  <wot:assurance rdf:resource="foaf.rdf.asc" />
+</rdf:Description>
+
+<foaf:Person>
+  <foaf:name>Matt Biddulph</foaf:name>
+
+	<foaf:mbox_sha1sum>600dd27ff619633eabea90206bf14a6a4a88d7db</foaf:mbox_sha1sum>
+	<foaf:mbox_sha1sum>5fd8a57c696af9763c5ffed091ffd70d18783a66</foaf:mbox_sha1sum>
+
+  <foaf:nick>mattb</foaf:nick>
+  <foaf:nick>mattb-lap</foaf:nick>
+
+  <foaf:homepage rdf:resource="http://www.picdiary.com" />
+  <foaf:workplaceHomepage rdf:resource="http://www.bbc.co.uk" />
+
+  <rdfs:seeAlso rdf:resource="http://www.picdiary.com/pics.rdf" />
+
+  <contact:nearestAirport>
+    <wn:Airport air:icao="EGLC" air:iata="LCY"/>
+  </contact:nearestAirport>
+
+  <foaf:image>
+    <foaf:Person
+        rdf:about="http://www.picdiary.com/misc/mattb_bw.jpg">
+        <dc:description>Black and white picture of Matt Biddulph</dc:description>
+        <dc:title>Matt Biddulph</dc:title>
+    </foaf:Person>
+  </foaf:image>
+
+  <foaf:depiction rdf:resource="http://www.plasticbag.org/images/extra/clown/IMG_0098.JPG" />
+  <foaf:depiction rdf:resource="http://www.picdiary.com/misc/mattb_bw.jpg" />
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>970987f991961f2553a1bf2574166fa29befbccb</foaf:mbox_sha1sum>
+      <foaf:nick>dajobe</foaf:nick>
+      <foaf:name>Dave Beckett</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>af38fd193eeee43b55dcc84798f390089ee6bf85</foaf:mbox_sha1sum>
+      <foaf:nick>spli</foaf:nick>
+      <foaf:name>Simon Frost</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>236f106a649073b5690e0e63b65fa835b6cb81fa</foaf:mbox_sha1sum>
+        <foaf:nick>clurr</foaf:nick>
+        <foaf:nick>klurr</foaf:nick>
+        <foaf:name>Claire Rowland</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>1ba3bffdd13a136d38b77542f2e26fd1dc0042f2</foaf:mbox_sha1sum>
+      <foaf:nick>edd</foaf:nick>
+      <foaf:name>Edd Dumbill</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>6954b01f2f65adcf6b21c2f3ddb4582fae9af348</foaf:mbox_sha1sum>
+        <foaf:nick>giles</foaf:nick>
+        <foaf:name>Giles Turnbull</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>ca9f1895e1aab74bea68585fd626ed248042f825</foaf:mbox_sha1sum>
+        <foaf:nick>phil</foaf:nick>
+        <foaf:name>Phil McCarthy</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <foaf:Person>
+	<foaf:mbox_sha1sum>47ad9462bd2221edc8cb0aa0126cfc1db7bae876</foaf:mbox_sha1sum>
+        <foaf:nick>plasticbagUK</foaf:nick>
+        <foaf:name>Tom Coates</foaf:name>
+    </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>595ee1578fcae63603a957842000d1c8b1eda862</foaf:mbox_sha1sum>
+        <foaf:nick>brendan</foaf:nick>
+        <foaf:name>Brendan Quinn</foaf:name>
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>53e1e23f331d3a50921008c6f3af231cfdd8b62f</foaf:mbox_sha1sum>
+          <foaf:nick>willard</foaf:nick>
+          <foaf:nick>willo</foaf:nick>
+          <foaf:name>Will Wade</foaf:name>
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>10e014791f563ef7a72eb30e5b9496c0597ca87d</foaf:mbox_sha1sum>
+          <foaf:nick>Anna</foaf:nick>
+          <foaf:name>Anna Johnson</foaf:name>
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>af4f9b76ee3dceefd5bcbc0d1485541fd6078005</foaf:mbox_sha1sum>
+          <foaf:name>Paul Mison</foaf:name>
+          <foaf:nick>blech</foaf:nick>
+          <foaf:depiction rdf:resource="http://www.plasticbag.org/images/extra/clown/IMG_0098.JPG" />
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>4829af19130151de1c4def299d73d33f33dee0fb</foaf:mbox_sha1sum>
+          <foaf:nick>zool</foaf:nick>
+          <foaf:name>Jo Walsh</foaf:name>
+          <foaf:depiction rdf:resource="http://www.plasticbag.org/images/extra/clown/IMG_0098.JPG" />
+          <foaf:depiction rdf:resource="http://www.davidbrophy.com/pix/images/2002-07-27%20Upsideclown%20second%20aniversary/+IMG_3103.jpg" />
+      </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+	  <foaf:Person>
+	<foaf:mbox_sha1sum>974f6519c9256fb8f841978d3ce3e5a2eb1b471e</foaf:mbox_sha1sum>
+		  <foaf:nick>hitherto</foaf:nick>
+		  <foaf:name>Simon Batistoni</foaf:name>
+          <foaf:depiction rdf:resource="http://www.davidbrophy.com/pix/images/2002-07-27%20Upsideclown%20second%20aniversary/+IMG_3103.jpg" />
+	  </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+	  <foaf:Person>
+	<foaf:mbox_sha1sum>df1d86a6f4f98c4b336dcd70cac9d26a2f5665c5</foaf:mbox_sha1sum>
+		  <foaf:nick>Elthek</foaf:nick>
+		  <foaf:name>Chris Ball</foaf:name>
+	  </foaf:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+      <foaf:Person>
+	<foaf:mbox_sha1sum>fda7548ababd51f56ce24cf13073556717c2d3da</foaf:mbox_sha1sum>
+	<foaf:mbox_sha1sum>ac7b2a0700299371472b4dea0f3e84fa6820ca71</foaf:mbox_sha1sum>
+	<foaf:mbox_sha1sum>cc8044272582bc04b1c7b18ee508803aaa6ef854</foaf:mbox_sha1sum>
+          <foaf:nick>deb</foaf:nick>
+          <foaf:name>Deb Bassett</foaf:name>
+      </foaf:Person>
+  </foaf:knows>
+  
+</foaf:Person>
+
+</rdf:RDF>

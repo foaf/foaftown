@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+        xmlns:rss="http://purl.org/rss/1.0/"
+        xmlns:foaf="http://xmlns.com/foaf/0.1/"
+        xmlns:wn="http://xmlns.com/wordnet/1.6/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:wot="http://xmlns.com/wot/0.1/"
+
+>
+
+
+<wn:Person rdf:about="genid:dajobe">
+  <foaf:name>Dave Beckett</foaf:name>
+  <foaf:mbox rdf:resource="mailto:dave.beckett@bristol.ac.uk"/>
+  <foaf:homepage rdf:resource="http://purl.org/net/dajobe/"/>
+  <foaf:img rdf:resource="http://www.ilrt.bris.ac.uk/people/cmdjb/face.png"/>
+
+  <foaf:workplaceHomePage rdf:resource="http://www.ilrt.bris.ac.uk/" />
+
+  <foaf:depiction>
+    <rdf:Description rdf:about="http://www.ilrt.bris.ac.uk/people/cmdjb/face.png">
+       <dc:title>Dave in 2001</dc:title>
+       <dc:format>image/png</dc:format>
+    </rdf:Description>
+  </foaf:depiction>
+
+  <foaf:knows>
+    <wn:Person rdf:about="genid:martinh">
+	  <foaf:name>Martin Hamilton</foaf:name>
+	  <foaf:mbox rdf:resource="mailto:martinh@gnu.org"/>
+          <foaf:homepage rdf:resource="http://www.net.lut.ac.uk/~martin/" />
+     </wn:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <wn:Person rdf:about="genid:edd">
+	  <foaf:name>Edd Dumbill</foaf:name>
+	  <foaf:mbox rdf:resource="mailto:edd@usefulinc.com"/>
+     </wn:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <wn:Person>
+      <foaf:mbox rdf:resource="mailto:danbri@w3.org"/>
+      <rdfs:seeAlso rdf:resource="http://rdfweb.org/~pldab/rdfweb/danbri-foaf.rdf"/>
+    </wn:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <wn:Person>
+      <foaf:mbox rdf:resource="mailto:libby.miller@bristol.ac.uk"/>
+      <rdfs:seeAlso rdf:resource="http://www.libbymiller.com/webwho.xrdf"/>
+    </wn:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <wn:Person>
+      <foaf:name>Ian Sealy</foaf:name>
+      <foaf:mbox rdf:resource="mailto:ian.sealy@bristol.ac.uk"/>
+      <rdfs:seeAlso rdf:resource="http://ilrt.org/people/bzims/webwho.xrdf"/>
+    </wn:Person>
+  </foaf:knows>
+
+  <foaf:knows>
+    <wn:Person>
+      <foaf:name>Aaron Swartz</foaf:name>
+      <foaf:mbox rdf:resource="mailto:me@aaronsw.com"/>
+      <rdfs:seeAlso rdf:resource="http://www.aaronsw.com/about.xrdf"/>
+    </wn:Person>
+  </foaf:knows>
+
+  <foaf:made>
+    <rss:channel rdf:about="http://www.ilrt.bristol.ac.uk/discovery/rdf/resources/rss.rdf">
+     <rss:title>RDF Resource Guide</rss:title>
+     <rdfs:seeAlso rdf:resource="http://www.ilrt.bristol.ac.uk/discovery/rdf/resources/rss.rdf"/>
+    </rss:channel>
+  </foaf:made>
+
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://purl.org/dc/" dc:title="Dublin Core Metadata Initiative" />
+  </foaf:interest>
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://www.w3.org/RDF/" dc:title="Resource Description Framework (RDF)" /> 
+  </foaf:interest>
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://purl.org/rss/" dc:title="RDF Site Summary (RSS 1.0)" />
+  </foaf:interest>
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://www.w3.org/Metadata/" dc:title="Metadata" /> 
+  </foaf:interest>
+
+  <foaf:interest>
+    <rdf:Description rdf:about="http://www.w3.org/2000/01/sw/" dc:title="Semantic Web Development" /> 
+  </foaf:interest>
+
+</wn:Person>
+
+
+<!-- Documents -->
+<wn:Document rdf:about="http://www.redland.opensource.ac.uk/notes/concepts.html">
+  <dc:title>RDF and RDF Schema Concepts Reference</dc:title>
+  <dc:description>A summary of the syntax concepts defined in the RDF Model and
+  Syntax and RDF Schemas specification.</dc:description>
+  <dc:format>text/html</dc:format>
+  <dc:creator>
+    <wn:Person rdf:about="genid:dajobe">
+      <foaf:mbox rdf:resource="mailto:dave.beckett@bristol.ac.uk"/>
+    </wn:Person>
+  </dc:creator>
+</wn:Document>
+
+<wn:Document rdf:about="http://www-uk.hpl.hp.com/people/bwm/rdf/issues/containersyntax/">
+  <dc:title>A Proposed Interpretation of RDF Containers</dc:title>
+  <dc:description>A strawman proposal to interpret the RDF syntax
+container grammar productions (seq, bag, alternative) using the
+typedNode production and rules for rdf:li property generation.
+  </dc:description>
+  <dc:format>text/html</dc:format>
+  <dc:creator>
+    <wn:Person rdf:about="genid:bwm">
+      <foaf:mbox rdf:resource="mailto:bwm@hplb.hpl.hp.com"/>
+    </wn:Person>
+  </dc:creator>
+  <dc:creator>
+    <wn:Person rdf:about="genid:dajobe">
+      <foaf:mbox rdf:resource="mailto:dave.beckett@bristol.ac.uk"/>
+    </wn:Person>
+  </dc:creator>
+</wn:Document>
+
+
+
+      <!-- digital signature for this file -->
+      <rdf:Description rdf:about="">
+         <wot:assurance rdf:resource="webwho.xrdf.asc" />
+      </rdf:Description>
+
+
+</rdf:RDF>
+

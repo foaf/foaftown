@@ -1,0 +1,54 @@
+<!-- last updated 2003-07-17 -->
+<rdf:RDF 
+       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+       xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+       xmlns:air="http://www.megginson.com/exp/ns/airports#" 
+       xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#" 
+       xmlns:wn="http://xmlns.com/wordnet/1.6/"
+>
+
+<foaf:Person>
+      <foaf:name >Bob DuCharme</foaf:name>
+      <foaf:mbox>bob&#64;snee.com</foaf:mbox>
+      <foaf:nick >Bob</foaf:nick>
+      <foaf:nearestAirport><wn:Airport air:icao="KCHO" air:iata="CHO"/></foaf:nearestAirport>
+      <foaf:workplacehomepage rdf:resource="http://www.lexisnexis.com" />
+      <foaf:homepage rdf:resource="http://www.snee.com/bob" />
+      <foaf:based_near rdf:resource="Charlottesville, Virginia, USA" />
+      <foaf:made rdf:resource="http://www.amazon.com/exec/obidos/ASIN/1930110111/ref%3Dase%5FbobducharmeA/102-8121983-4408132" />
+      <foaf:made rdf:resource="http://www.amazon.com/exec/obidos/tg/detail/-/0130826766/ref=ase_bobducharmeA/102-8121983-4408132" />
+      <foaf:made rdf:resource="http://www.amazon.com/exec/obidos/ISBN%3D0134757408/bobducharmeA/102-8121983-4408132" />
+      <foaf:made rdf:resource="http://www.snee.com/bob/opsys.html" />
+      <foaf:depiction
+           rdf:resource="http://www.snee.com/bob/headshot.jpg" />
+	   <foaf:schoolHomepage rdf:resource="http://www.columbia.edu/"/>
+	   <foaf:schoolHomepage rdf:resource="http://www.nyu.edu/"/>
+      <foaf:knows>
+           <foaf:Person>
+                <foaf:mbox rdf:resource="mailto:edd&#64;xml.com" />
+                <foaf:name>Edd Dumbill</foaf:name>
+                <foaf:page rdf:resource="http://heddley.com/edd/foaf.rdf"/>
+           </foaf:Person>
+      </foaf:knows>
+      <foaf:knows>
+           <foaf:Person>
+                <foaf:mbox rdf:resource="mailto:simon&#64;xmlhack.com" />
+                <foaf:name>Simon St.Laurent</foaf:name>
+           </foaf:Person>
+      </foaf:knows>
+		<foaf:knows>
+		  <foaf:Person>
+			  <foaf:name>Eric van der Vlist</foaf:name>
+			  <foaf:mbox rdf:resource="mailto:mailto:vdv&#64;dyomedea.com" />
+		  </foaf:Person>
+		</foaf:knows>
+		<foaf:knows>
+		  <foaf:Person>
+			  <foaf:name>Norman Walsh</foaf:name>
+			  <foaf:mbox rdf:resource="ndw&#64;nwalsh.com" />
+           <foaf:page rdf:resource="http://nwalsh.com/foaf.rdf" />
+		  </foaf:Person>
+		</foaf:knows>
+</foaf:Person>
+</rdf:RDF>

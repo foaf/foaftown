@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:word="http://xmlns.com/wordnet/1.6/"
+>
+<word:Person rdf:ID="aaronsw">
+<!--	<foaf:mbox rdf:resource="mailto:aaron@swartzfam.com"/>
+	<foaf:mbox rdf:resource="mailto:aaron@theinfo.org"/>
+	<foaf:mbox rdf:resource="mailto:aaron@blogspace.com"/>
+	<foaf:mbox rdf:resource="mailto:aswartz@upclink.com"/>
+	<foaf:mbox rdf:resource="mailto:a@logicerror.com"/> -->
+	<foaf:mbox rdf:resource="mailto:me@aaronsw.com"/>
+	<foaf:nick>AaronSw</foaf:nick>
+	<foaf:aimNick rdf:resource="aim:addbuddy?screenname=jediofpi" />
+	<foaf:homepage rdf:resource="http://www.aaronsw.com/" />
+	<foaf:weblog rdf:resource="http://www.aaronsw.com/weblog/" />
+	<foaf:pubkeyAddress rdf:resource="pgp.asc" />
+	<foaf:firstname>Aaron</foaf:firstname>
+	<foaf:surname>Swartz</foaf:surname>
+	<foaf:name>Aaron Swartz</foaf:name>
+	<foaf:contribProject rdf:resource="http://purl.org/rss/" /> 
+	<foaf:interest rdf:resource="http://www.w3.org/Metadata/" /> 
+	<foaf:knows rdf:resource="#rael"/>
+	<foaf:knows rdf:resource="#danbri"/>
+	<foaf:knows rdf:resource="#libby"/>
+	<foaf:knows rdf:resource="#emiller"/>
+	<foaf:knows rdf:resource="#connolly"/>
+	<foaf:knows rdf:resource="#edd"/>
+	<foaf:knows rdf:resource="#dajobe"/>
+</word:Person>
+
+
+<word:Project rdf:about="http://purl.org/rss/">
+	<dc:title>RDF Site Summary (RSS)</dc:title>
+	<foaf:mbox rdf:resource="mailto:rss-dev@egroups.com" />
+</word:Project>
+
+<rdf:Description rdf:about="http://purl.org/rss/1.0/">
+	<dc:contributor rdf:resource="#aaronsw" />
+	<dc:contributor rdf:resource="#rael" />
+	<dc:contributor rdf:resource="#danbri" />
+	<dc:title>RDF Site Summary (RSS) 1.0</dc:title>
+</rdf:Description>
+
+<rdf:Description rdf:about="http://blogspace.com/rss/">
+	<dc:title>RSS Info</dc:title>
+	<dc:creator rdf:resource="#aaronsw" />
+	<dc:description>News and information on the RSS format</dc:description>
+</rdf:Description>
+
+<word:Person rdf:ID="danbri">
+	<foaf:name>Dan Brickley</foaf:name>
+	<foaf:mbox rdf:resource="mailto:daniel.brickley@bristol.ac.uk" />
+</word:Person>
+
+<word:Person rdf:ID="rael">
+	<foaf:mbox rdf:resource="mailto:rael@oreilly.com" />
+</word:Person>
+
+<word:Person rdf:ID="libby">
+	<foaf:name>Libby Miller</foaf:name>
+	<foaf:mbox rdf:resource="mailto:libby.miller@bristol.ac.uk" />
+</word:Person>
+
+<word:Person rdf:ID="connolly">
+	<foaf:mbox rdf:resource="mailto:connolly@w3.org" />
+</word:Person>
+
+<word:Person rdf:ID="emiller">
+	<foaf:mbox rdf:resource="mailto:em@w3.org"/>
+</word:Person>
+<word:Person rdf:ID="edd">
+	<foaf:mbox rdf:resource="mailto:edd@usefulinc.com" />
+        <foaf:depiction rdf:resource="http://www.zooleika.org.uk/vids/xcom2002/trust_metrics_FOAF.mpg" />
+</word:Person>
+<word:Person rdf:ID="dajobe">
+	<foaf:mbox rdf:resource="mailto:dave.beckett@bristol.ac.uk"/>
+</word:Person>
+</rdf:RDF>
