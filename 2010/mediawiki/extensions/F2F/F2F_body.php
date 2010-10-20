@@ -37,32 +37,31 @@ class F2F extends SpecialPage
         $u = array();
         $sitehome = "http://wiki.foaf-project.org/";
         $wgOut->addWikiText( "This is the [http://wiki.foaf-project.org/w/F2FMediawikiPlugin F2F Mediawiki extension]");
-	$wgOut->addHTML("<div xmlns:foaf='http://xmlns.com/foaf/0.1/'><div about='#!aActiveOpenIDTrustGroup' typeof='foaf:Group'>\n");
+
+	$wgOut->addHTML("\n<div xmlns:foaf='http://xmlns.com/foaf/0.1/'>\n<div about='#!aActiveOpenIDTrustGroup' typeof='foaf:Group'>\n");
         $wgOut->addHTML("<span rel='foaf:maker'>OpenID accept list for ");
 	$wgOut->addHTML("<a href='/' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
         $wgOut->addHTML("<ul>\n");
-# <span rel='foaf:member'><li typeof='foaf:Agent' about='#!ah_5711c8ae25de381eda9ebae69d17a6ca5a03f5cf'><a rel='foaf:openid foaf:account' href='http://aberingi.pip.verisignlabs.com/'>http://aberingi.pip.verisignlabs.com/</a></li></span>
-
-
         $db = wfGetDB( DB_SLAVE ); 
-
-        # Todo: How do we emit RDFa via addWikiText() ?
-
 	$sql = "SELECT user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
        		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id ;" ;
-        $wgOut->addWikiText("SQL was: " . $sql);
-
+        // $wgOut->addWikiText("SQL was: " . $sql);
         $res = $db->query($sql, __METHOD__);
         for ($j=0; $j<$db->numRows($res); $j++) {
             $row = $db->fetchRow($res);
             if (!isset($u[$row[0]]))
                 $u[$row[0]] = $dates;
-	        $wgOut->addHTML("<li typeof='foaf:Agent' property='foaf:name'>");
+	        $wgOut->addHTML("<li rel='foaf:member'>\n");
+                $wgOut->addHTML("<div typeof='foaf:Agent'>");
                 $wgOut->addHTML(  "<span property='foaf:name'>" . $row['user_name'] . "</span>");
-//                $wgOut->addHTML("<span " " . $row['user_email'] . " <a href='" . $row['uoi_openid']. "'>link</a> \n");
                 $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid'>link</a>");
+		$wgOut->addHTML("</div>\n");
 		$wgOut->addHTML("</li>\n");
         }
+        $wgOut->addHTML("</ul>\n");
+        $wgOut->addHTML("</div>\n");
+        $wgOut->addHTML("</div>");
+
         $db->freeResult($res);
     }
 }
