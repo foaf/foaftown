@@ -4,6 +4,8 @@ class F2F extends SpecialPage
 
 # http://inspector.sindice.com/inspect?url=http://wiki.foaf-project.org/w/Special:F2F&content=
 # see also http://www.mediawiki.org/wiki/Manual:$wgOut
+#
+# thanks: mhausenblas, presbrey
 
 {
     function F2F() {
@@ -52,8 +54,9 @@ class F2F extends SpecialPage
 	$wgOut->addHTML("<a href='/' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
         $wgOut->addHTML("<ul>\n");
         $db = wfGetDB( DB_SLAVE ); 
-	$sql = "SELECT user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
+	$sql = "SELECT distinct user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
        		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id GROUP BY uoi_openid;" ;
+//       		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id" ;
         $wgOut->addHTML("<!-- SQL was: " . $sql . " -->");
         $res = $db->query($sql, __METHOD__);
         for ($j=0; $j<$db->numRows($res); $j++) {
@@ -62,8 +65,8 @@ class F2F extends SpecialPage
                 $u[$row[0]] = $dates;
 	        $wgOut->addHTML("<li rel='foaf:member'>\n");
                 $wgOut->addHTML("<div typeof='foaf:Agent'>");
-                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid foaf:account'>");
-                $wgOut->addHTML(  "<span property='foaf:name'>" . $row['user_name'] . "</span>");
+                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid foaf:account' property='foaf:name'>");
+                $wgOut->addHTML(  "<span>" . $row['user_name'] . "</span>");
     		$wgOut->addHTML("</a>\n");
 		$wgOut->addHTML("</div>\n");
 		$wgOut->addHTML("</li>\n");
