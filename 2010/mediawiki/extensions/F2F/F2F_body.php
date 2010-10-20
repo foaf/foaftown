@@ -1,6 +1,8 @@
 <?php
 class F2F extends SpecialPage
 
+
+# http://inspector.sindice.com/inspect?url=http://wiki.foaf-project.org/w/Special:F2F&content=
 # see also http://www.mediawiki.org/wiki/Manual:$wgOut
 
 {
@@ -60,7 +62,7 @@ class F2F extends SpecialPage
                 $u[$row[0]] = $dates;
 	        $wgOut->addHTML("<li rel='foaf:member'>\n");
                 $wgOut->addHTML("<div typeof='foaf:Agent'>");
-                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid'>");
+                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid foaf:account'>");
                 $wgOut->addHTML(  "<span property='foaf:name'>" . $row['user_name'] . "</span>");
     		$wgOut->addHTML("</a>\n");
 		$wgOut->addHTML("</div>\n");
