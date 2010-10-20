@@ -43,7 +43,7 @@ class F2F extends SpecialPage
 	$wgOut->addHTML("<a href='/' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
         $wgOut->addHTML("<ul>\n");
         $db = wfGetDB( DB_SLAVE ); 
-	$sql = "SELECT user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
+	$sql = "SELECT distinct user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
        		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id ;" ;
         // $wgOut->addWikiText("SQL was: " . $sql);
         $res = $db->query($sql, __METHOD__);
