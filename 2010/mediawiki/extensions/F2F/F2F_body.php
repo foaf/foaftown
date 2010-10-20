@@ -1,11 +1,24 @@
 <?php
 class F2F extends SpecialPage
-
-
+#
+#
+# This is the F2F exporter
+# Author: Dan Brickley <danbri@danbri.org>
+# http://wiki.foaf-project.org/w/F2FMediawikiPlugin
+#
+# nearby useful links:
 # http://inspector.sindice.com/inspect?url=http://wiki.foaf-project.org/w/Special:F2F&content=
 # see also http://www.mediawiki.org/wiki/Manual:$wgOut
 #
 # thanks: mhausenblas, presbrey
+
+# Some/all of these in LocalSettings.php are needed (todo - clarify)
+#$wgHTML5 = true;
+#$wgAllowRdfaAttributes = true; // http://www.mediawiki.org/wiki/Manual:$wgAllowRdfaAttributes$wgAllowMicrodataAttributes = true;
+#$wgWellFormedXml = true;
+#$wgRawHtml = true;
+
+# debugging: rapper -i rdfa http://wiki.foaf-project.org/w/Special:F2F
 
 {
     function F2F() {
