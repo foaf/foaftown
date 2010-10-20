@@ -31,11 +31,18 @@ class F2F extends SpecialPage
     function execute( $par ) {
         global $wgRequest, $wgOut, $wgUser;
         $this->setHeaders();
-        $wgOut->setPagetitle('F2F');
+ //       $wgOut->setPagetitle('F2F');   // http://svn.wikimedia.org/doc/classOutputPage.html
+ 	$wgOut->setArticleBodyOnly(true);
         $user = $wgUser->getName();
+
+        $wgOut->addHTML("<!DOCTYPE html>\n");
+        $wgOut->addHTML("<html xmlns='http://www.w3.org/1999/xhtml'><head><title>F2F group list(s)</title></head>");
+        $wgOut->addHTML("<body>");
+
         $wgOut->addWikiText("Logged in as " . $user);
         $u = array();
         $sitehome = "http://wiki.foaf-project.org/";
+
         $wgOut->addWikiText( "This is the [http://wiki.foaf-project.org/w/F2FMediawikiPlugin F2F Mediawiki extension]");
 
 	$wgOut->addHTML("\n<div xmlns:foaf='http://xmlns.com/foaf/0.1/'>\n<div about='#!aActiveOpenIDTrustGroup' typeof='foaf:Group'>\n");
@@ -43,9 +50,9 @@ class F2F extends SpecialPage
 	$wgOut->addHTML("<a href='/' rel='foaf:weblog foaf:account'>this wiki</a></span>\n");
         $wgOut->addHTML("<ul>\n");
         $db = wfGetDB( DB_SLAVE ); 
-	$sql = "SELECT distinct user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
-       		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id ;" ;
-        // $wgOut->addWikiText("SQL was: " . $sql);
+	$sql = "SELECT user_real_name, user_email, uoi_openid, user_id, user_name,  ug_group FROM " 
+       		. " user, user_groups, user_openid WHERE user.user_id = user_openid.uoi_user AND user_groups.ug_user = user.user_id GROUP BY uoi_openid;" ;
+        $wgOut->addHTML("<!-- SQL was: " . $sql . " -->");
         $res = $db->query($sql, __METHOD__);
         for ($j=0; $j<$db->numRows($res); $j++) {
             $row = $db->fetchRow($res);
@@ -53,14 +60,18 @@ class F2F extends SpecialPage
                 $u[$row[0]] = $dates;
 	        $wgOut->addHTML("<li rel='foaf:member'>\n");
                 $wgOut->addHTML("<div typeof='foaf:Agent'>");
+                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid'>");
                 $wgOut->addHTML(  "<span property='foaf:name'>" . $row['user_name'] . "</span>");
-                $wgOut->addHTML("<a href='" . $row['uoi_openid']. "' rel='foaf:openid'>link</a>");
+    		$wgOut->addHTML("</a>\n");
 		$wgOut->addHTML("</div>\n");
 		$wgOut->addHTML("</li>\n");
         }
         $wgOut->addHTML("</ul>\n");
         $wgOut->addHTML("</div>\n");
         $wgOut->addHTML("</div>");
+
+        $wgOut->addHTML("</body>");
+        $wgOut->addHTML("</html>");
 
         $db->freeResult($res);
     }
