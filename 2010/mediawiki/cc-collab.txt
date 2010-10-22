@@ -1,0 +1,42 @@
+[19:47]  <nyergler> nkinkade: are we still requiring email confirmation for wiki edits? (don't want to change, just can't remember)
+[19:47]  <nkinkade> nyergler: I'll have to check.  I have this vague recollection that we removed that and were going to play it by ear.
+[19:47]  <nkinkade> One sec., someones at the door.
+[19:47]  <nyergler> ok
+[19:47]  * jgay has quit (Quit: Ex-Chat)
+[19:47]  
+[19:47]  * Loaded log from Fri Oct 22 18:31:06 2010
+[19:47]   
+[19:47]  * Now talking on #cc
+[19:47]  * Topic for #cc is: Creative Commons FAQ http://creativecommons.org/faq/ :: chat logs -> http://mirrors.creativecommons.org/irc/cc/ :: No answer? Email the lists - http://creativecommons.org/discuss :: This channel has nothing to do with credit cards.  Sorry scammers. :: <nyergler> paroneayea, i concur that "restart at midnight" is no way to live
+[19:47]  * Topic for #cc set by paroneayea!~user@fsf/member/paroneayea at Mon Jun 28 18:15:56 2010
+[19:50]  * JED3 (~johndoig@adsl-71-134-244-234.dsl.pltn13.pacbell.net) has joined #cc
+[19:53]  <nyergler> nkinkade: when you get a chance can you double check what we're doing now wrt wiki editing?
+[20:13]  * thisisparker_ has quit (Ping timeout: 245 seconds)
+[20:19]  * bassel (~bassel@213.130.110.132) has joined #cc
+[20:24]  * bassel has quit (Remote host closed the connection)
+[20:26]  <danbri> hi nyergler, thanks, i'd love to know too
+[20:26]  <nyergler> danbri: yup, that's why i'm checking :)
+[20:26]  <danbri> :)
+[20:26]  <danbri> esp. curious whether email signups are enough to keep the devils away
+[20:27]  <nyergler> danbri: i can tell you they're not, at least not fully
+[20:27]  <danbri> oh and a privacy question; if someone comes along to cc wiki and makes an openid-facilitated comment, do you consider that a matter of public record (ie. you could expose the openid as data at some point...)
+[20:27]  <danbri> not = not enough protection...? or not yet using email much
+[20:28]  <nyergler> not enough protection; i'm thinking that we turned off the email confirmation requirement because
+[20:28]  <nyergler> a) it was causing lots of emails to the effect of, "why can't i edit?"
+[20:28]  <danbri> oof
+[20:28]  <nyergler> b) it wasn't eliminating spam
+[20:28]  <nyergler> :/
+[20:28]  <danbri> so i somehow missed a load of new spam, it was not showing in the default 'recent edits' view
+[20:29]  <nyergler> weird; does that view exclude "minor edits" by default?
+[20:29]  <danbri> probably i should grep sql dumps for 'viagra' next time, or something low-level like that
+[20:29]  <danbri> maybe, or they were talk pages perhaps
+[20:29]  <danbri> we didn't do a lot of forensics beyond rescue/repair
+[20:29]  <nyergler> right
+[20:30]  <danbri> by we I mean Libby Miller who did the rescuing bit; i'm more trying to figure out how to keep it both open and safe... tough one :/
+[20:30]  <nyergler> we're saved at the moment by having one volunteer who does a great job watching things
+[20:30]  <danbri> ah, lucky
+[20:30]  <nyergler> right
+[20:30]  <nyergler> yes, quite
+[20:30]  <nyergler> nkinkade: what's the extension we turned on for Jesse in the CC wiki?
+
+
