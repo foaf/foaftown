@@ -9,3 +9,13 @@ by danbri, using the Perl utility posted here.
 License terms unknown.
 
 
+
+
+
+2010 update - having trouble install Gedcom perl from cpan
+
+alternative? 
+http://bigasterisk.com/darcs/?r=famtree;a=headblob;f=/ged2rdf
+
+[12:25]  <drewp> danbri: i have some old parser here: http://bigasterisk.com/darcs/?r=famtree;a=headblob;f=/ged2rdf
+
