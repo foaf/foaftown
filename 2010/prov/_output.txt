@@ -1,5 +1,10 @@
 
+# Graph URI: file:///surf2.html#myblog
+<file:///surf2.html> <http://www.w3.org/1999/xhtml/vocab#meta> <file:///surf2.html#> .
+
+
 # Graph URI: _:RDFaDefaultGraph
+<file:///surf2.html> <http://www.w3.org/1999/xhtml/vocab#stylesheet> <file:///style.css> .
 <file:///surf2.html#quote> a <http://purl.org/net/opmv/ns#Artifact> .
 
 
