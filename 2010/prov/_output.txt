@@ -1,0 +1,11 @@
+
+# Graph URI: _:RDFaDefaultGraph
+<file:///surf2.html#quote> a <http://purl.org/net/opmv/ns#Artifact> .
+
+
+# Graph URI: http://www.nytimes.com/2010/03/14/sports/14surf.html
+<file:///surf2.html#aggregation> <http://purl.org/net/opmv/ns#used> <http://www.nytimes.com/2010/03/14/sports/14surf.html> ;
+	<http://purl.org/net/opmv/ns#wasPerformedBy> "John Smith" ;
+	a <http://purl.org/net/opmv/ns#Process> .
+<file:///surf2.html#quote> <http://purl.org/net/opmv/ns#wasGeneratedBy> <file:///surf2.html#aggregation> .
+
