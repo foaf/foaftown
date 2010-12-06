@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:cc="http://creativecommons.org/ns#" 
+xmlns:dc="http://purl.org/dc/elements/1.1/" 
+xmlns:opmv="http://purl.org/net/opmv/ns#">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <base href="http://opmv.googlecode.com/svn/trunk/js/example/" />
+  <title>Surf's Up!</title>
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="content">
+      <div id="header">
+        <h1><a href="#" rel="meta" graph="#myblog">SURF BLOG</a></h1>
+      </div>
+
+      <div id="container">
+        <div id="sidebar">
+          <img src="./smallks.jpg" width="250" />
+        </div>
+
+        <div id="main">
+          <h2>Kelly Slater on the New Age</h2>
+
+          <div typeof="opmv:Artifact" resource="#quote">
+            "That's the future of surfing," said 
+	    <span typeof="foaf:Person"><span property="foaf:name">Kelly Slater</span>, <span property="foaf:page">38</span></span>,
+            a nine-time world champion from Cocoa Beach, Fla. "It's
+            really in the air. The deepest barrels that are ever
+            going to be ridden have already happened. Probably the
+            best carving that's ever going to be done is being done
+            now or it's been done."<br />
+            <span rel="opmv:wasGeneratedBy" graph=
+            "http://www.nytimes.com/2010/03/14/sports/14surf.html"><span about="#aggregation"
+            typeof="opmv:Process">from: <a rel="opmv:used" 
+	href="http://www.nytimes.com/2010/03/14/sports/14surf.html">Surfing's Next Generation Takes to the Air</a><br />
+            <br />
+            <i>Post by <span property="opmv:wasPerformedBy">John
+            Smith</span></i></span></span>
+          </div>
+        </div><!--main-->
+      </div><!--container-->
+    </div><!-- content -->
+  </div><!-- wrapper -->
+  <hr />
+
+  <p>meta^2 prov: based on <a href=
+  "http://code.google.com/p/opmv/source/browse/trunk#trunk/js/example">
+  an example</a> from Paul Groth and friends.</p>
+</body>
+</html>
