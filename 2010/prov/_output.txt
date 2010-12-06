@@ -1,16 +1,19 @@
 
-# Graph URI: file:///surf2.html#myblog
-<file:///surf2.html> <http://www.w3.org/1999/xhtml/vocab#meta> <file:///surf2.html#> .
-
-
 # Graph URI: _:RDFaDefaultGraph
-<file:///surf2.html> <http://www.w3.org/1999/xhtml/vocab#stylesheet> <file:///style.css> .
-<file:///surf2.html#quote> a <http://purl.org/net/opmv/ns#Artifact> .
+<http://opmv.googlecode.com/svn/trunk/js/example/> <http://www.w3.org/1999/xhtml/vocab#stylesheet> <http://opmv.googlecode.com/svn/trunk/js/example/style.css> .
 
 
 # Graph URI: http://www.nytimes.com/2010/03/14/sports/14surf.html
-<file:///surf2.html#aggregation> <http://purl.org/net/opmv/ns#used> <http://www.nytimes.com/2010/03/14/sports/14surf.html> ;
+[] <foaf:age> "38" ;
+	<foaf:name> "Kelly Slater" ;
+	a <foaf:Person> .
+<http://opmv.googlecode.com/svn/trunk/js/example/#aggregation> <http://purl.org/net/opmv/ns#used> <http://www.nytimes.com/2010/03/14/sports/14surf.html> ;
 	<http://purl.org/net/opmv/ns#wasPerformedBy> "John Smith" ;
 	a <http://purl.org/net/opmv/ns#Process> .
-<file:///surf2.html#quote> <http://purl.org/net/opmv/ns#wasGeneratedBy> <file:///surf2.html#aggregation> .
+<http://opmv.googlecode.com/svn/trunk/js/example/#quote> <http://purl.org/net/opmv/ns#wasGeneratedBy> <http://opmv.googlecode.com/svn/trunk/js/example/#aggregation> ;
+	a <http://purl.org/net/opmv/ns#Artifact> .
+
+
+# Graph URI: http://opmv.googlecode.com/svn/trunk/js/example/#myblog
+<http://opmv.googlecode.com/svn/trunk/js/example/> <http://www.w3.org/1999/xhtml/vocab#meta> <http://opmv.googlecode.com/svn/trunk/js/example/#> .
 
