@@ -7,8 +7,11 @@ use constant { TRUE  => 1, FALSE => 0,};
 # Note, CPAN installation of the RDF stuff may fail UNLESS you
 # install Test::Simple via CPAN first. Known problem with RDF::Trine.
 
+# See also: testing with Redland Raptor parser:
+#  e.g. rapper -i rdfa nyt-example.html http://nyt.example.com/people/kelly_slater/
 
-my $file = "surf3.html";
+my $arg = shift;
+my $file = $arg || "surf3.html";
 my $base_uri = "http://example.com/rdfatests#";
 my $markup = '';
 open(IN,$file) || die "No file to read, $file";
