@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dc="http://purl.org/dc/terms/" >
+
+<head>
+  <title>A fictional NYT page!</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <base href="http://nyt.example.com/people/kelly_slater/"/>
+</head>
+
+<body>
+<p graph="#from_freebase">
+  <span about="#id" typeof="foaf:Person">
+  <span property="foaf:name">Kelly Slater</span> is <span property="foaf:age">38</span> (<span property="foaf:dateOfBirth" content="1972-02-11">born Feb 11, 1972</span>)
+  <span property="foaf:gender" content="male"/>
+  <a href="" rev="foaf:primaryTopic">this document</a> is based on <a about="#from_freebase" href="http://www.freebase.com/view/en/kelly_slater" rel="dc:source">Freebase</a>
+ </span>
+</p>
+
+<!-- note: these invisible bits need not be ... just simplifying for now -->
+
+<p graph="http://www.freebase.com/view/en/kelly_slater#catalogx">
+  <span about="#id" typeof="foaf:Person">
+     <span rel="http://www.nytimes.com/2009/09/18/sports/18surfing.html" property="foaf:isPrimaryTopicOf" />
+     <span rel="http://www.nytimes.com/2010/11/14/sports/14surfing.html" property="foaf:isPrimaryTopicOf" />
+     <span rel="http://www.nytimes.com/2006/08/20/sports/playmagazine/20slater-irons.html" property="foaf:page" />
+   </span>
+</p>
+
+</body>
+</html>
