@@ -1,5 +1,9 @@
 <!DOCTYPE html> 
 
+<html>
+<head><title>Badges, groups, lists</head>
+</head>
+<body xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dc="http://purl.org/dc/terms/">
 
 <h1>Badges, Groups and Lists</h1>
 
@@ -143,6 +147,38 @@ like 'semweb' to apply to other users.
  </ul>
  </li>
 </ul>
+
+<p>Let's define some groups. We'll do it all within this page for now, but the
+idea is that markup on the foursquare or wikipedia or identica or twitter sites 
+would be doing likewise, and that common hidden markup could give shared
+structure highlighting what these sites are all doing in common.
+</p>
+
+<hr />
+
+<p about="#langskill_hr_1" id="langskill_hr_1" typeof="foaf:Group">
+<span property="foaf:name">Group 1: basic croatian</span>
+<span property="dc:description">People with basic language skills in croatian
+</span>
+This is a sub-group of the <a rel="rdfs:subClassOf"
+href="#langskill_hr_1">langskill_hr_1 basic croatian</a>
+</p>
+
+<p about="#langskill_hr" id="langskill_hr" typeof="foaf:Group">
+<span property="foaf:name">Group 1: basic croatian</span>
+<span property="dc:description">People with basic language skills in croatian.
+</span>
+This is a superset of the <a rev="rdfs:subClassOf"
+href="#langskill_hr_1">langskill_hr_1 basic croatian</a>
+group.
+</p>
+
+<p about="#location_boxee_party" typeof="foaf:Group">
+<span property="foaf:name">Group 2: Boxee party attendees</span>
+<span property="dc:description">Someone considered a fan of boxee, based
+on having attended the time/place of the boxee launch party.
+</span>
+</p>
 
 
 
