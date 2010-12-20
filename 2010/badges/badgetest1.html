@@ -1,0 +1,152 @@
+<!DOCTYPE html> 
+
+
+<h1>Badges, Groups and Lists</h1>
+
+<p>
+This page describes some badges<a href="http://www.youtube.com/watch?v=nsdZKCh6RsU">...</a> - it is a work-in-progress towards
+expressing information about groups and lists and badges in RDFa/FOAF. 
+</p>
+
+<p>
+See also: <a href="http://en.wikipedia.org/wiki/Wikipedia:Userboxes">wikipedia:Userboxes</a> 
+and associated <a href="http://en.wikipedia.org/wiki/Wikipedia:Userboxes/Gallery">gallery</a>.
+</p>
+
+<p>
+The approach explored here is that each page defines a group of people who
+are a subset of the group of all people. By providing a unified representation
+for making claims about these groups, we open up the data for re-use.
+</p>
+
+<p>
+Often Wikipedia badges have associated parameters. You might have a badge
+indicating that you're in a group who like a particular food; who are interested
+in a certain kind of thing; who are fond of some specific animal, etc.
+</p>
+
+
+<dl>
+<dt>
+<a href="http://en.wikipedia.org/wiki/Template:Catscratches">Template:Catscratches</a>
+</dt>
+<dd>This user has been scratched several times by their pet cat.</dd>
+</dl>
+
+<p>Here's the wikipedia definition,
+<pre>
+{{userbox
+| border-c = #85C8F2
+| id       = [[Image:Cat03.jpg|50px]]
+| id-c     = white
+| info     = This user has been scratched several times by their pet cat.
+| info-c   = blue
+| info-fc  = {{{info-fc|white}}}
+| info-s   = {{{info-s|8}}}
+| usercategory  = 
+| nocat = {{{nocat|}}}
+}}
+</pre>
+</p>
+
+<p>
+The Wikipedia badges for human language are amongst the most generative, ie. there 
+is an underlying system that sits behind each specific template. For example:
+</p>
+<blockquote>
+So, for example, {{Babel|en|de-1}} would indicate a native speaker of English with basic knowledge of German. {{Babel|en-5|sv|no-4|he-3|lt-2|es-1|an-0}} would indicate a professional proficiency of the English language, a native speaker of Swedish with an almost-native knowledge of Norwegian, advanced knowledge of Hebrew, an intermediate knowledge of Lithuanian, a basic knowledge of Spanish and no knowledge of Aragonese.
+</blockquote>
+
+<p>
+So we can combine "xx-1 for basic ability - enough to understand written material or simple questions in this language."
+ with a <a href="http://meta.wikimedia.org/wiki/Complete_list_of_language_wikis_available">language code</a> to create a specific language ability code.
+</p>
+
+<p>
+For example: the Wikipedia code for the Croatian language is 'hr', and basic ability is '-1', so 
+basic Croatian language ability is hr-1. 
+</p>
+
+<h4>Enumerations</h4>	
+<p>Other systems have simple enumerated lists, for example <a href="http://www.nanpalmero.com/wp-content/uploads/2010/02/list-of-foursquare-badges.pdf">foursquare</a>.
+</p>
+
+<ul>
+<li>foursquare example: 66, "Boxee Fan", "You took the L train to Brooklyn to attend a software party! Pretty hardcore. venue & date specific
+"</li>
+<li>foursquare example: 73, Jetsetter, "Hopping around the world one airport at a time... congrats on your 5th airport checkin 
+and safe travels!"</li>
+</ul>
+
+<hr/>
+
+<h4>Formalising</h4>
+
+<p>What do all these systems have in common?</p>
+
+<p>
+They declare <em>groups</em> (lets say of people; we could also treat 
+non-human agents, organizations, groups etc. in a similar way, but simply for now). 
+</p>
+<p>
+The give a short natural language description characterising that group. They
+may also have a short name, an image link. And in many cases they may be part of
+a more complex system defining groups of groups.
+</p>
+
+<p>
+Consider a Boxee Fan with basic knowledge of Croatian.</p>
+
+<p>
+In foursquare, this person would be in group 66 by virtue of having 
+checked in at a Boxee.tv promotional event. This means that the group membership is 
+asserted by the foursquare service, rather than the user.
+</p>
+
+<p>In Wikipedia, the language ability could be encoded as part of a larger 'Babel' template.</p>
+
+<p>The wikipedia markup {{Babel|en|hr-1}} gives rise to HTML markup showing:
+<ul>
+<li>en - This user is a native speaker of English.</li>
+<li>hr-1 - Ovaj suradnik posjeduje osnovno znanje hrvatskog jezika.</li>
+</ul>
+
+<p>
+So again, we have simple local-to-some-site codes for groups; just as our user is 
+in group '66' on foursquare, they're in groups (let's say) "babel en" and "babel hr-1"
+on Wikipedia. Unlike foursquare, these group membership claims are typically
+asserted by the user, but are accessible for anyone in the wiki to edit.
+</p>
+
+<p>
+Mailing list membership, or groups in <a href="identi.ca">identi.ca</a> (statusnet) or <a href="http://support.twitter.com/entries/76460-how-to-use-twitter-lists">Twitter lists</a>
+can also be looked at this way. Again, they select some but not (usually) all people
+and put them in a named group; in some cases (identi.ca) the groups are 
+self-selecting; in others (twitter) they are annotations applied by others. On
+twitter for example, each user account can create named lists with short names
+like 'semweb' to apply to other users. 
+</p>
+ 
+<p>Is there an underlying model?</p>
+
+<ul>
+<li>groups, lists and badges require a <em>claims-based</em> perspective: some party is asserting that some (typically other) party is a member of some group</li>
+<li>Each group typically is defined within a Web page, with label, description, icon etc.</li>
+<li>Different sites provide different mechanisms for asserting group membership, and different APIs to the resulting data</li>
+<li>The various specific groups used in an assertion often have rich relationships to each other (eg. compare 'en-1' with 'en-5', or the cluster of cat-related groups defined at Wikipedia)</li>
+<li>To varying degrees, it may be possible to make template-ized claims about members of some group in machine-friendly form.
+ <ul>
+  <li>if person x is in this group, they work (or have worked) for organization y</li>
+  <li>if person x is in this group, they speak read or write language y, with ability z</li>
+  <li>if person x is in this group, they are interested in entity y</li>
+  <li>if person x is in this group, they are interested in topic y</li>
+ </ul>
+ </li>
+</ul>
+
+
+
+<hr />
+<em>Dan Brickley, working-in-progressing...</em>
+</body>
+</html>
