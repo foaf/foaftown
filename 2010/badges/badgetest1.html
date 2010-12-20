@@ -205,6 +205,38 @@ language for dealing with patterns and hierarchies concerning these different (s
 <img src="images/rdfviz-mini.png" alt="Mini rdf graph diagram showing a person related to a couple of groups" /> 
 <p>See also: <a href="images/rdfviz.png">generated diagram</a> showing groups, classes, everything (beware: spaghetti!)</p>
 
+<h4>Data Access</h4>
+
+<p>Ok, now we've integrated this badge data, it is queryable.</p>
+
+<p>To test that, I used commandline tools, but that doesn't matter...</p>
+
+<pre>
+<![CDATA[
+   prefix foaf: <http://xmlns.com/foaf/0.1/> 
+   prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+   prefix badge: <http://svn.foaf-project.org/foaftown/2010/badges/badgetest1.html#>
+   select distinct * where { 
+     ?x foaf:homepage ?y . 
+     ?x a ?g . 
+     ?g rdfs:subClassOf badge:Langskill_hr .
+   } 
+]]>
+</pre>
+
+<p>Running that on commandline (<em>roqet --data _out.xml -e 'query-goes-here'</em>) gives the following sqlish bindings back</p>:
+
+<pre>
+<![CDATA[
+result: [x=uri<http://danbri.org/foaf.rdf#danbri>, y=uri<http://danbri.org/>, g=uri<http://svn.foaf-project.org/foaftown/2010/badges/badgetest1.html#Langskill_hr_1>]
+roqet: Query returned 1 results
+]]>
+</pre>
+
+<p>
+In other words, we said "try to match some values for ?x, ?y and ?g where ?y is the homepage of ?x, ?x is of type ?g, and ?g is a subclass of another type, badge:Langskill_hr. However
+because the whole thing is structured in terms of objects and types, we can freely mix in other information, eg. foursquare badges, wikipedia badges, twitter lists and identi.ca groups.</p> 
+
 <hr />
 <em>Dan Brickley, working-in-progressing...</em>
 </body>
