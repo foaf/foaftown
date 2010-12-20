@@ -5,8 +5,8 @@
 <body
  xmlns:foaf="http://xmlns.com/foaf/0.1/" 
  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+ xmlns:badge="http://svn.foaf-project.org/foaftown/2010/badges/badgetest1.html#"
  xmlns:dc="http://purl.org/dc/terms/">
-
 <h1>Badges, Groups and Lists</h1>
 
 <p>
@@ -158,7 +158,7 @@ structure highlighting what these sites are all doing in common.
 
 <hr />
 
-<p about="#langskill_hr_1" id="langskill_hr_1" typeof="foaf:Group rdfs:Class">
+<p about="#Langskill_hr_1" id="Langskill_hr_1" typeof="foaf:Group rdfs:Class">
 <span property="rdfs:label">Group 1: basic croatian</span>
 <span property="rdfs:comment">People with basic language skills in croatian
 </span>
@@ -166,7 +166,7 @@ This is a sub-group of the <a rel="rdfs:subClassOf"
 href="#langskill_hr">langskill_hr basic croatian</a>
 </p>
 
-<p about="#langskill_hr" id="langskill_hr" typeof="foaf:Group rdfs:Class">
+<p about="#Langskill_hr" id="Langskill_hr" typeof="foaf:Group rdfs:Class">
 <span property="rdfs:label">Group 1: basic croatian</span>
 <span property="rdfs:comment">People with basic language skills in croatian.</span>
 This is a superset of the <a rev="rdfs:subClassOf" href="#langskill_hr_1">langskill_hr_1 basic croatian</a>
@@ -174,13 +174,26 @@ group.
 <span rel="rdfs:subClassOf" href="foaf:Person"/>
 </p>
 
-<p about="#location_boxee_party" id="location_boxee_party" typeof="foaf:Group rdfs:Class" >
+<p about="#Location_boxee_party" id="Location_boxee_party" typeof="foaf:Group rdfs:Class" >
 <span property="rdfs:label">Group 2: Boxee party attendees</span>
 <span property="rdfs:comment">Someone considered a fan of boxee, based
 on having attended the time/place of the boxee launch party.
 </span>
 </p>
 
+<p>
+So the HTML markup of this page includes some RDFa that declares two groups, using RDFa/FOAF. It defines them both as 
+instances of the class 'foaf:Group', and as sub-classes of 'foaf:Person'. This slightly awkward trick allows us to talk
+about the group as a thing, eg. something with a logo, a creator, etc., but also to use the fancy maths from RDF's OWL 
+language for dealing with patterns and hierarchies concerning these different (sub)classes of person. 
+</p>
+
+<p>So let's introduce an example person, well, me...</p>
+
+<ul typeof="foaf:Person badge:Langskill_hr_1 badge:Location_boxee_party">
+<li property="foaf:Name>Dan Brickley</li>
+<li><a href="http://danbri.org/" rel="foaf:homepage foaf:account"></li>
+</ul>
 
 
 <hr />
